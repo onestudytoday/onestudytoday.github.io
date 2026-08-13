@@ -1,0 +1,78 @@
+name: Keep the Instagram token alive
+
+# The whole pipeline dies quietly if the 60-day token lapses, so this runs
+# every Sunday and refreshes whenever fewer than 20 days remain. Three
+# consecutive failures still leave you weeks of runway.
+#
+# It writes the new token straight back into the repository secret, so you
+# never touch it by hand.
+
+on:
+  schedule:
+    - cron: "0 12 * * 0"        # Sundays 12:00 UTC (07:00 America/Chicago)
+  workflow_dispatch:            # and any time you click "Run workflow"
+
+permissions:
+  contents: read
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Report current token status
+        env:
+          META_APP_ID: ${{ secrets.META_APP_ID }}
+          META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_BUSINESS_ACCOUNT_ID: ${{ secrets.IG_BUSINESS_ACCOUNT_ID }}
+        run: python src/auth.py status
+
+      - name: Refresh if the token is inside the 20-day window
+        env:
+          META_APP_ID: ${{ secrets.META_APP_ID }}
+          META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_BUSINESS_ACCOUNT_ID: ${{ secrets.IG_BUSINESS_ACCOUNT_ID }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python src/auth.py ensure
+
+      - name: Shout if it failed
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = "Instagram token refresh FAILED";
+            const body = [
+              "The weekly token refresh did not succeed.",
+              "",
+              "**You have roughly 20 days before posting stops working.**",
+              "",
+              "Check the failed run above. The usual causes:",
+              "- `GH_PAT` expired, so the new token could not be written back",
+              "- the Meta app was put into development mode",
+              "- permissions were revoked on the Instagram account",
+              "",
+              "Fix steps are in `docs/RUNBOOK.md` under *Re-authorising from scratch*.",
+              "",
+              `Run: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`
+            ].join("\n");
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              state: "open", labels: "token-alert"
+            });
+            if (existing.data.length === 0) {
+              await github.rest.issues.create({
+                owner: context.repo.owner, repo: context.repo.repo,
+                title, body, labels: ["token-alert"]
+              });
+            }
