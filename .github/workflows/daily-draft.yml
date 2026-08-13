@@ -1,0 +1,134 @@
+name: Draft today's post
+
+# Runs every weekday morning. Sources studies for the day's niche, vets them,
+# drafts the carousel, renders the slides, commits everything, and opens a
+# GitHub issue you can review from your phone.
+#
+# It NEVER publishes. Publishing happens when you comment "approve" on the
+# issue, which fires publish-on-approve.yml.
+
+on:
+  schedule:
+    # 11:00 UTC = 06:00 America/Chicago (CDT). Adjust for your own timezone.
+    # Mon Nature · Tue Mind · Wed Health · Thu Space · Fri Wildcard
+    - cron: "0 11 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      niche:
+        description: "Force a niche (leave blank for today's)"
+        required: false
+        type: choice
+        options: ["", "nature", "psych", "health", "physics", "wildcard"]
+      days:
+        description: "Recency window in days"
+        required: false
+        default: "14"
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: draft-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Draft, vet and render
+        id: draft
+        env:
+          META_APP_ID: ${{ secrets.META_APP_ID }}
+          META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_BUSINESS_ACCOUNT_ID: ${{ secrets.IG_BUSINESS_ACCOUNT_ID }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          PUBLIC_IMAGE_BASE: ${{ vars.PUBLIC_IMAGE_BASE }}
+          HANDLE: ${{ vars.HANDLE }}
+          THEME: ${{ vars.THEME }}
+          ALLOW_PREPRINTS: ${{ vars.ALLOW_PREPRINTS }}
+        run: |
+          set -o pipefail
+          ARGS=""
+          if [ -n "${{ inputs.niche }}" ]; then ARGS="--niche ${{ inputs.niche }}"; fi
+          if [ -n "${{ inputs.days }}" ]; then ARGS="$ARGS --days ${{ inputs.days }}"; fi
+          python src/pipeline.py run $ARGS | tee run.log
+          NEW=$(ls -1 data/queue/*.json 2>/dev/null | head -1 || true)
+          echo "post_file=$NEW" >> "$GITHUB_OUTPUT"
+
+      - name: Stage slide JPEGs for GitHub Pages
+        if: steps.draft.outputs.post_file != ''
+        env:
+          PUBLIC_IMAGE_BASE: ${{ vars.PUBLIC_IMAGE_BASE }}
+        run: |
+          python - <<'PY'
+          import json, glob, sys
+          sys.path.insert(0, "src")
+          from pathlib import Path
+          from publish import to_jpeg
+          from config import DOCS
+          for f in glob.glob("data/queue/*.json"):
+              post = json.loads(Path(f).read_text())
+              pngs = sorted(str(p) for p in Path("out/posts", post["id"]).glob("*.png"))
+              if pngs:
+                  to_jpeg(pngs, DOCS / "img" / post["id"])
+                  print("staged", post["id"], len(pngs))
+          PY
+
+      - name: Commit the queue
+        if: steps.draft.outputs.post_file != ''
+        run: |
+          git config user.name  "onestudytoday-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/ docs/ out/ || true
+          git commit -m "draft: $(date -u +%Y-%m-%d) queue" || echo "nothing to commit"
+          git push
+
+      - name: Open the review issue
+        if: steps.draft.outputs.post_file != ''
+        uses: actions/github-script@v7
+        env:
+          POST_FILE: ${{ steps.draft.outputs.post_file }}
+          PUBLIC_IMAGE_BASE: ${{ vars.PUBLIC_IMAGE_BASE }}
+        with:
+          script: |
+            const { execSync } = require("child_process");
+            const fs = require("fs");
+            const post = JSON.parse(fs.readFileSync(process.env.POST_FILE, "utf8"));
+            const body = execSync(
+              `python src/issue.py "${process.env.POST_FILE}" "${process.env.PUBLIC_IMAGE_BASE}"`,
+              { encoding: "utf8", maxBuffer: 10 * 1024 * 1024 });
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `REVIEW ${post.niche} · ${post.cover.headline.replace(/\*\*/g, "").slice(0, 80)}`,
+              body,
+              labels: ["review", post.niche]
+            });
+
+      - name: Report when nothing survived vetting
+        if: steps.draft.outputs.post_file == ''
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require("fs");
+            const log = fs.existsSync("run.log") ? fs.readFileSync("run.log", "utf8") : "";
+            await github.rest.issues.create({
+              owner: context.repo.owner, repo: context.repo.repo,
+              title: `No post today — nothing cleared vetting`,
+              body: "Every candidate was rejected or the sources returned nothing.\n\n"
+                  + "```\n" + log.slice(-6000) + "\n```\n\n"
+                  + "Re-run with a wider window: Actions → Draft today's post → "
+                  + "Run workflow → days = 21.",
+              labels: ["no-post"]
+            });
