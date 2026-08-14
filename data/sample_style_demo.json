@@ -1,0 +1,42 @@
+{
+  "id": "2026-08-11-psych-dbs-memory",
+  "niche": "psych",
+  "study": {
+    "title": "Deep brain stimulation reshapes memory cell assemblies and drives distinct transcriptional programs in human cortex",
+    "journal": "Nature",
+    "pub_date": "2026-08-05",
+    "pub_date_display": "Aug 5, 2026",
+    "doi": "10.1038/s41586-026-10879-9",
+    "doi_display": "doi.org/10.1038/s41586-026-10879-9",
+    "url": "https://www.nature.com/articles/s41586-026-10879-9",
+    "is_preprint": false,
+    "server": null,
+    "n": 12
+  },
+  "cover": {
+    "kicker": "Nature · human brain tissue",
+    "headline": "Zapping the brain doesn't just fire neurons. It **rewrites which genes they switch on.**"
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "We use brain stimulation on thousands of patients. We barely know why it works.",
+      "body": "Deep brain stimulation already treats Parkinson's, epilepsy and severe depression. But the theory has been crude: electricity goes in, symptoms improve, nobody can say what actually changed inside the cell.\n\nSo a team at UT Southwestern and UCLA did something rare. They stimulated the brains of 12 patients already undergoing epilepsy surgery, then read the genetic activity of the exact tissue they had just stimulated.",
+      "stat": { "value": "12", "label": "patients · living human cortex, not mice" }
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Stimulation strengthened the neuron gangs that store a memory — and woke up the support cells too.",
+      "body": "They identified 19 distinct 'cell assemblies' — clusters of neurons that fire together to encode a memory. Stimulation made those clusters fire more tightly together.\n\nThen the surprise: the electricity triggered separate gene programs in neurons and in astrocytes, the support cells long dismissed as brain glue. Both were running plasticity machinery — the molecular toolkit for rewiring a connection."
+    }
+  ],
+  "caveats": [
+    "Only 12 patients, all with epilepsy — a brain that is already unusual.",
+    "They sampled temporal cortex. Clinical DBS targets deeper structures this study never touched.",
+    "This is hours of stimulation. Real patients get years of it, and nobody knows what that does."
+  ],
+  "cta": {
+    "headline": "Follow for one real study, every weekday.",
+    "sub": "Peer-reviewed. Caveats included. Never hyped past what the data says."
+  }
+}
