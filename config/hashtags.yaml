@@ -1,0 +1,97 @@
+# ---------------------------------------------------------------------------
+# HASHTAG STRATEGY
+#
+# READ THIS BEFORE CHANGING `hashtag_count`.
+#
+# Hashtags are no longer a growth lever on Instagram. Following a hashtag was
+# removed in December 2024, and Instagram's own guidance now points at 3-5
+# relevant tags, with discovery driven by KEYWORDS in the caption and profile
+# rather than by tag volume. Dumping 30 tags is, at best, neutral.
+#
+# So the default here is 5. The tiers below still matter, because which 5 you
+# use decides whether you are competing against a million posts or a thousand:
+#
+#   ANCHOR  (1-2)  1M+ posts. Pure topic signal to the recommender. You will
+#                  never rank in them, and that is fine.
+#   TARGET  (2)    50k-800k posts. Where a small account can plausibly surface.
+#   NICHE   (1-2)  under 50k posts. Where you can genuinely hit "top posts"
+#                  from a standing start, and where the real followers live.
+#
+# The `rotating` pool keeps consecutive posts from carrying an identical block.
+#
+# The real discovery work happens in the caption's first line, which is why
+# copy_spec.yaml forces the caption to open by restating the hook in plain,
+# searchable language. Write for the search box, not the tag list.
+# ---------------------------------------------------------------------------
+
+# Change this if you want to experiment. 5 is the current evidence-based
+# default; anything above ~10 is cargo cult.
+hashtag_count: 5
+
+core:
+  anchor: ["#science", "#scicomm", "#stemeducation"]
+  niche: ["#sciencedaily", "#researchpaper", "#peerreviewed", "#studyfindings"]
+
+sets:
+
+  nature:
+    anchor: ["#nature", "#climatechange"]
+    target: ["#climatescience", "#marinebiology", "#ecology", "#conservation",
+             "#oceanscience", "#biodiversity", "#environmentalscience"]
+    niche: ["#climateresearch", "#oceanography", "#carbonremoval",
+            "#ecologyresearch", "#planetaryhealth"]
+
+  psych:
+    anchor: ["#psychology", "#neuroscience"]
+    target: ["#brainscience", "#cognitivescience", "#mentalhealthscience",
+             "#neuroplasticity", "#psychologyfacts", "#behavioralscience",
+             "#memoryresearch"]
+    niche: ["#cognitiveneuroscience", "#neuroscienceresearch", "#psychresearch",
+            "#brainresearch", "#neurotech"]
+
+  health:
+    anchor: ["#health", "#medicine"]
+    target: ["#medicalresearch", "#publichealth", "#clinicaltrial",
+             "#evidencebasedmedicine", "#healthscience", "#nutritionscience",
+             "#longevity"]
+    niche: ["#medtwitter", "#clinicalresearch", "#healthresearch",
+            "#medicalstudy", "#healthevidence"]
+
+  physics:
+    anchor: ["#space", "#physics"]
+    target: ["#astronomy", "#astrophysics", "#quantumphysics", "#cosmology",
+             "#jwst", "#spacescience", "#blackholes"]
+    niche: ["#astrophysicsresearch", "#quantumresearch", "#cosmicdawn",
+            "#telescopescience", "#particlephysics"]
+
+  wildcard:
+    anchor: ["#science", "#discovery"]
+    target: ["#paleontology", "#evolution", "#biology", "#genetics",
+             "#archaeology", "#fossils", "#naturalhistory"]
+    niche: ["#sciencefriday", "#studyoftheweek", "#newresearch",
+            "#fossilfriday", "#evolutionaryscience"]
+
+# Rotated in so consecutive posts never share an identical block.
+rotating:
+  - "#learnontiktokreels"
+  - "#sciencecommunication"
+  - "#curiousminds"
+  - "#factsmatter"
+  - "#sciencelovers"
+  - "#researchmatters"
+  - "#knowledgeispower"
+  - "#sciencenerd"
+  - "#todayilearned"
+  - "#academicresearch"
+
+# Never use these. Either banned, shadow-limited, or bot-swamped.
+banned:
+  - "#follow4follow"
+  - "#likeforlike"
+  - "#instagood"
+  - "#viral"
+  - "#explorepage"
+  - "#fyp"
+  - "#trending"
+  - "#brain"          # heavily moderated
+  - "#beauty"

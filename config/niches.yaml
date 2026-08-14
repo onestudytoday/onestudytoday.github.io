@@ -1,0 +1,153 @@
+# ---------------------------------------------------------------------------
+# Weekday niche definitions.
+#
+# Each niche declares WHERE to look and WHAT counts as on-topic. Tweak the
+# `include` terms to steer the account's personality; tweak `journals` to
+# tighten or loosen the credibility bar.
+#
+# `tier` drives part of the credibility score in vet.py:
+#   1 = flagship generalist    2 = top specialist    3 = strong specialist
+# Anything not listed still gets through, it just starts with fewer points.
+# ---------------------------------------------------------------------------
+
+defaults:
+  recency_days: 14
+  per_source_limit: 60
+  min_abstract_chars: 500      # below this there is not enough to summarise
+  max_candidates: 25
+
+niches:
+
+  # ---------------------------------------------------------------- MONDAY
+  nature:
+    day: Monday
+    label: "NATURE & ENVIRONMENT"
+    accent: "#22C55E"
+    europepmc_query: >
+      (ecology OR biodiversity OR "climate change" OR ecosystem OR conservation
+       OR evolution OR "animal behaviour" OR "animal behavior" OR ocean
+       OR rainforest OR extinction OR pollinator OR microbiome OR "coral reef"
+       OR permafrost OR wildfire OR migration)
+    arxiv_categories: []
+    crossref_terms: ["climate", "biodiversity", "ecology", "conservation biology"]
+    journals:
+      1: ["Nature", "Science", "Proceedings of the National Academy of Sciences",
+          "Nature Climate Change", "Nature Ecology & Evolution"]
+      2: ["Current Biology", "Ecology Letters", "Global Change Biology",
+          "Proceedings of the Royal Society B", "Nature Communications",
+          "Science Advances", "Nature Geoscience", "eLife"]
+      3: ["Journal of Animal Ecology", "Conservation Biology", "Ecology",
+          "Functional Ecology", "Biology Letters", "Environmental Research Letters",
+          "Molecular Ecology", "Journal of Ecology"]
+    exclude_terms: ["case report", "erratum", "protocol", "study protocol"]
+
+  # --------------------------------------------------------------- TUESDAY
+  psych:
+    day: Tuesday
+    label: "PSYCHOLOGY & NEUROSCIENCE"
+    accent: "#A855F7"
+    europepmc_query: >
+      (memory OR cognition OR "decision making" OR sleep OR emotion OR attention
+       OR depression OR anxiety OR neuroimaging OR "prefrontal cortex" OR dopamine
+       OR "social behaviour" OR "social behavior" OR consciousness OR perception
+       OR learning OR habit OR loneliness OR motivation OR bias)
+    arxiv_categories: []
+    crossref_terms: ["cognitive neuroscience", "psychology", "behavioural science"]
+    journals:
+      1: ["Nature", "Science", "Nature Neuroscience", "Nature Human Behaviour",
+          "Neuron", "Proceedings of the National Academy of Sciences"]
+      2: ["Psychological Science", "JAMA Psychiatry", "Current Biology",
+          "Nature Communications", "eLife", "Trends in Cognitive Sciences",
+          "Science Advances", "Journal of Neuroscience", "Cerebral Cortex"]
+      3: ["Cognition", "Psychological Bulletin", "Journal of Experimental Psychology",
+          "Social Psychological and Personality Science", "Cortex", "NeuroImage",
+          "Sleep", "Emotion", "Developmental Science", "Psychonomic Bulletin & Review"]
+    exclude_terms: ["case report", "erratum", "protocol", "commentary"]
+
+  # ------------------------------------------------------------- WEDNESDAY
+  health:
+    day: Wednesday
+    label: "HEALTH & MEDICINE"
+    accent: "#F43F5E"
+    europepmc_query: >
+      ("randomized controlled trial" OR "randomised controlled trial"
+       OR "meta-analysis" OR "cohort study" OR vaccine OR cancer OR diabetes
+       OR cardiovascular OR obesity OR "gut microbiome" OR exercise OR diet
+       OR dementia OR "clinical trial" OR longevity OR immunotherapy OR statin)
+    arxiv_categories: []
+    crossref_terms: ["clinical trial", "public health", "epidemiology"]
+    journals:
+      1: ["The New England Journal of Medicine", "The Lancet", "JAMA",
+          "BMJ", "Nature Medicine", "Nature", "Science"]
+      2: ["The Lancet Oncology", "The Lancet Public Health", "JAMA Internal Medicine",
+          "Annals of Internal Medicine", "Circulation", "The Lancet Neurology",
+          "Nature Communications", "JAMA Network Open", "Cell Metabolism",
+          "Diabetes Care", "European Heart Journal"]
+      3: ["PLOS Medicine", "BMC Medicine", "Journal of the American Heart Association",
+          "Gut", "Thorax", "Sleep Medicine", "The American Journal of Clinical Nutrition",
+          "British Journal of Sports Medicine"]
+    exclude_terms: ["case report", "erratum", "protocol", "letter to the editor"]
+    require_human_subjects: true
+
+  # -------------------------------------------------------------- THURSDAY
+  physics:
+    day: Thursday
+    label: "PHYSICS & SPACE"
+    accent: "#38BDF8"
+    europepmc_query: ""
+    arxiv_categories: ["astro-ph.GA", "astro-ph.EP", "astro-ph.HE", "astro-ph.CO",
+                       "astro-ph.SR", "gr-qc", "quant-ph", "physics.space-ph",
+                       "hep-ex", "cond-mat.quant-gas"]
+    crossref_terms: ["exoplanet", "black hole", "quantum", "gravitational wave",
+                     "dark matter", "neutrino", "superconductor"]
+    journals:
+      1: ["Nature", "Science", "Nature Astronomy", "Nature Physics",
+          "Physical Review Letters"]
+      2: ["The Astrophysical Journal Letters", "The Astrophysical Journal",
+          "Monthly Notices of the Royal Astronomical Society", "Nature Communications",
+          "Science Advances", "Physical Review X", "Astronomy & Astrophysics"]
+      3: ["Physical Review D", "Physical Review B", "New Journal of Physics",
+          "The Planetary Science Journal", "Journal of High Energy Physics",
+          "Classical and Quantum Gravity"]
+    exclude_terms: ["erratum", "comment on", "reply to"]
+    prefer_peer_reviewed_mirror: true   # arXiv hit -> try to find the journal version
+
+  # ---------------------------------------------------------------- FRIDAY
+  wildcard:
+    day: Friday
+    label: "STUDY OF THE WEEK"
+    accent: "#FBBF24"
+    # Friday pulls from every other niche's leftovers, re-ranked by the
+    # engagement of that week's published posts. See pipeline.pick_friday().
+    inherits: ["nature", "psych", "health", "physics"]
+    journals: {}
+
+# ---------------------------------------------------------------------------
+# Publishers/journals that are auto-rejected regardless of niche.
+# Sourced from widely used predatory-publisher watchlists. Extend freely.
+# ---------------------------------------------------------------------------
+blocklist_publishers:
+  - "OMICS"
+  - "Scientific Research Publishing"
+  - "SCIRP"
+  - "Academic Journals Inc"
+  - "David Publishing"
+  - "Bentham Open"
+  - "Science Publishing Group"
+  - "IOSR"
+  - "Global Journals"
+  - "Austin Publishing Group"
+  - "Juniper Publishers"
+  - "MedCrave"
+  - "SciTechnol"
+  - "Longdom"
+  - "Hilaris"
+
+# Journals with a documented history of low-rigour or heavily criticised output.
+# Not auto-rejected - they lose credibility points and get a warning.
+watchlist_journals:
+  - "Medical Hypotheses"
+  - "Cureus"
+  - "Journal of Personality and Social Psychology"   # replication-crisis history
+  - "Frontiers in Psychology"
+  - "International Journal of Environmental Research and Public Health"

@@ -1,0 +1,95 @@
+# ---------------------------------------------------------------------------
+# THE POST TEMPLATE, as enforceable numbers.
+#
+# These are not style suggestions. draft.py passes them to the model, then
+# validates the returned copy against them and retries on violation. The
+# renderer is designed around these exact ranges - go outside them and text
+# starts shrinking to stay inside the safe area.
+#
+# Word counts were set by rendering at 1080x1350 and finding the point where
+# Poppins Bold stops being readable on a phone held at arm's length.
+# ---------------------------------------------------------------------------
+
+carousel:
+  slides_min: 5
+  slides_max: 7
+  order:
+    - cover          # 1  the hook
+    - setup          # 2  why this question matters
+    - setup_extra    # 3  optional, only if the context genuinely needs it
+    - findings       # 4  what they actually found
+    - findings_extra # 5  optional, the second finding or the mechanism
+    - caveats        # 6  ALWAYS present. non-negotiable.
+    - cta            # 7  follow + link to the paper
+
+fields:
+
+  cover.kicker:
+    words: [3, 7]
+    chars_max: 44
+    rule: "Journal name plus the one contextual detail that makes it credible.
+           Example: 'Nature · 42,000 adults, 9 years'."
+
+  cover.headline:
+    words: [9, 18]
+    chars_max: 115
+    sentences: [1, 2]
+    accent_runs: [1, 1]          # exactly one **highlighted** phrase
+    rule: "One sentence a smart 15-year-old understands instantly. State the
+           finding, not the topic. Never a question. Never a colon-title.
+           The **highlighted** phrase carries the surprise."
+
+  slide.eyebrow:
+    fixed_values: ["The setup", "What they found", "The mechanism", "Why it matters"]
+
+  slide.title:
+    words: [10, 20]
+    chars_max: 130
+    rule: "A full sentence that could stand alone as a mini-headline."
+
+  slide.body:
+    words: [55, 90]
+    paragraphs: [2, 2]
+    rule: "Two paragraphs separated by a blank line. First paragraph sets the
+           scene, second delivers the turn. Short sentences. No jargon that
+           is not immediately defined in the same sentence."
+
+  slide.stat.value:
+    chars_max: 7
+    rule: "One number that anchors the slide. '42,000' or '12' or '3.4x'."
+
+  slide.stat.label:
+    words: [4, 10]
+    chars_max: 52
+
+  caveats:
+    count: [2, 4]
+    words_each: [10, 24]
+    rule: "Plain-English limits, not hedging. Every caveat the vetting engine
+           marked as REQUIRED must appear, rewritten in this voice."
+
+  cta.headline:
+    words: [5, 10]
+    chars_max: 58
+
+  cta.sub:
+    words: [8, 18]
+    chars_max: 96
+
+  caption:
+    words: [70, 140]
+    rule: "Opens with a line that repeats the hook in different words. Ends
+           with the study link and a question that is answerable in four words."
+
+voice:
+  register: "Bold and punchy. Confident, never breathless."
+  banned_openers: ["Scientists have discovered", "A new study shows",
+                   "Researchers at", "In a groundbreaking", "Did you know"]
+  banned_words: ["breakthrough", "revolutionary", "game-changer", "miracle",
+                 "shocking", "mind-blowing", "unbelievable", "insane",
+                 "proves", "proven", "cure"]
+  banned_punctuation: ["!", "?!", "..."]
+  emoji: false
+  second_person_ok: true
+  contractions: true
+  sentence_length_target: 14        # average words per sentence
