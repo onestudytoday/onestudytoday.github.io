@@ -1,0 +1,10 @@
+Poppins and Lora are licensed under the SIL Open Font License, Version 1.1.
+Poppins: Copyright (c) Indian Type Foundry, Jonny Pinhorn.
+Lora: Copyright (c) Cyreal.
+Full licence text: https://openfontlicense.org
+
+Liberation Mono is licensed under the SIL Open Font License, Version 1.1.
+Copyright (c) Red Hat, Inc.
+
+These files are vendored so that rendering on a GitHub Actions runner is
+byte-identical to rendering on your laptop.
