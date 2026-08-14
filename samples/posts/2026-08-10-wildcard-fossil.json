@@ -1,0 +1,61 @@
+{
+  "id": "2026-08-10-wildcard-fossil",
+  "niche": "wildcard",
+  "study": {
+    "title": "A new archosauriform from the Middle Triassic of southern Brazil and the early diversification of Archosauria",
+    "journal": "Scientific Reports",
+    "pub_date": "2026-08-10",
+    "pub_date_display": "Aug 10, 2026",
+    "doi": "10.1038/s41598-026-53740-9",
+    "doi_display": "doi.org/10.1038/s41598-026-53740-9",
+    "url": "https://doi.org/10.1038/s41598-026-53740-9",
+    "is_preprint": false,
+    "server": null,
+    "n": null
+  },
+  "cover": {
+    "kicker": "Scientific Reports \u00b7 Brazil",
+    "headline": "A fossil sat lost in a drawer for twenty years. **It was a species nobody had named.**"
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Dinosaurs and crocodiles share a grandparent, and that grandparent is barely known.",
+      "body": "Before either group existed there was a sprawl of reptiles called archosauriforms, quietly experimenting with body plans in the Triassic. One of those experiments led to everything from sparrows to saltwater crocodiles.\n\nThe fossil record for that stretch is thin. So when a specimen collected in southern Brazil went missing for two decades, a real piece of the family tree went with it. It resurfaced in 2022."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "The bones belong to an unnamed reptile with legs held halfway under its body.",
+      "body": "The team named it Silescelida acristata and placed it close to Euparkeriidae, on the branch running towards dinosaurs and crocodiles rather than inside either.\n\nIts legs sat in a semi-erect posture, tucked further under the body than a sprawling lizard but not fully upright. That halfway stance is the anatomical shift that eventually let archosaurs move efficiently enough to take over.",
+      "stat": {
+        "value": "240 M",
+        "label": "years old, from the Middle Triassic"
+      }
+    }
+  ],
+  "caveats": [
+    "The specimen is fragmentary. Most of what survives is limb bones, not a full skeleton.",
+    "Where a species sits on the family tree often shifts once more fossils turn up.",
+    "Scientific Reports is a broad-scope journal, so this got less specialist scrutiny than a Nature paper."
+  ],
+  "cta": {
+    "headline": "One real study. Every weekday.",
+    "sub": "Follow for science you can actually check. Every paper linked in bio."
+  },
+  "caption": "Somebody dug this up in southern Brazil, and then it was accidentally lost for more than twenty years. It came back in 2022 and turned out to be a species nobody had described.\n\nSilescelida acristata is a Middle Triassic archosauriform, roughly 240 million years old, sitting near Euparkeriidae on the lineage that runs towards both dinosaurs and crocodiles. The detail that matters is the legs: a semi-erect posture, tucked further under the body than a sprawling lizard, which is the shift that made archosaur locomotion efficient.\n\nFair warning, the specimen is fragmentary and mostly limb bones, and family-tree placements like this move around as new material appears.\n\nFull study: doi.org/10.1038/s41598-026-53740-9\n\nTeam dinosaur, or team crocodile?",
+  "hashtag_set": "wildcard",
+  "vet": {
+    "key": "x",
+    "verdict": "HOLD",
+    "score": 58,
+    "flags": [],
+    "design": "descriptive (fossil)",
+    "sample_size": null,
+    "subjects": "not applicable",
+    "journal_tier": null,
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [],
+    "notes": []
+  }
+}

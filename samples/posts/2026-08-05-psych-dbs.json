@@ -1,0 +1,63 @@
+{
+  "id": "2026-08-05-psych-dbs",
+  "niche": "psych",
+  "study": {
+    "title": "Deep brain stimulation reshapes memory cell assemblies and drives distinct transcriptional programs in human cortex",
+    "journal": "Nature",
+    "pub_date": "2026-08-05",
+    "pub_date_display": "Aug 5, 2026",
+    "doi": "10.1038/s41586-026-10879-9",
+    "doi_display": "doi.org/10.1038/s41586-026-10879-9",
+    "url": "https://www.nature.com/articles/s41586-026-10879-9",
+    "is_preprint": false,
+    "server": null,
+    "n": 12
+  },
+  "cover": {
+    "kicker": "Nature \u00b7 12 human brains",
+    "headline": "Zapping the brain doesn't just fire neurons. **It changes which genes they switch on.**"
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "We put electrodes in thousands of human brains and still cannot say why it helps.",
+      "body": "Deep brain stimulation already treats Parkinson's, epilepsy and severe depression. The working theory has stayed crude: electricity goes in, symptoms get better, nobody can point to what changed inside the cell.\n\nGetting the answer means reading living human brain tissue, which you cannot ethically do on a volunteer. So a team waited for patients already having epilepsy surgery and asked them."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Stimulation tightened the neuron gangs that hold a memory, and woke the support cells.",
+      "body": "They mapped 19 cell assemblies, the clusters of neurons that fire together to encode one memory. After stimulation those clusters fired in tighter lockstep than before.\n\nThen the surprise. The electricity switched on separate gene programs in neurons and in astrocytes, the support cells long written off as brain glue. Both were running plasticity machinery, the molecular toolkit for rewiring a connection.",
+      "stat": {
+        "value": "19",
+        "label": "memory cell assemblies mapped and tracked"
+      }
+    }
+  ],
+  "caveats": [
+    "Only twelve people, all with epilepsy, which is a brain already behaving unusually.",
+    "They sampled temporal cortex. Clinical stimulation targets deeper structures this study never touched.",
+    "This captures hours of stimulation. Real patients get years, and nobody knows what that does."
+  ],
+  "cta": {
+    "headline": "One real study. Every weekday.",
+    "sub": "Follow for science you can actually check. Every paper linked in bio."
+  },
+  "caption": "We have been putting electrodes into human brains for decades without a solid molecular account of why it works. This paper goes and looks.\n\nTwelve patients undergoing epilepsy surgery had a region of cortex stimulated, and the team then read the genetic activity of that exact tissue, with eight more patients supplying validation data. Stimulation strengthened 19 memory-encoding cell assemblies and triggered distinct transcriptional programs in neurons and in astrocytes.\n\nThat second half matters. Astrocytes were treated as passive scaffolding for most of the last century, and here they are, running plasticity genes.\n\nLimits worth holding onto: twelve people, all with epilepsy, temporal cortex only, and only the first few hours of stimulation.\n\nFull study: doi.org/10.1038/s41586-026-10879-9\n\nSurprised, or not surprised?",
+  "hashtag_set": "psych",
+  "vet": {
+    "key": "x",
+    "verdict": "HOLD",
+    "score": 71,
+    "flags": [],
+    "design": "experiment",
+    "sample_size": 12,
+    "subjects": "human",
+    "journal_tier": 1,
+    "required_caveats": [
+      "Only 12 people took part."
+    ],
+    "required_badges": [],
+    "draft_rules": [],
+    "notes": []
+  }
+}

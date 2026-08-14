@@ -1,0 +1,61 @@
+{
+  "id": "2026-08-12-physics-bhstar",
+  "niche": "physics",
+  "study": {
+    "title": "A black hole star at cosmic dawn: MoM-BH*-1 and the nature of little red dots",
+    "journal": "Nature",
+    "pub_date": "2026-08-12",
+    "pub_date_display": "Aug 12, 2026",
+    "doi": "10.1038/s41586-026-10846-4",
+    "doi_display": "doi.org/10.1038/s41586-026-10846-4",
+    "url": "https://doi.org/10.1038/s41586-026-10846-4",
+    "is_preprint": false,
+    "server": null,
+    "n": null
+  },
+  "cover": {
+    "kicker": "Nature \u00b7 JWST, cosmic dawn",
+    "headline": "Solar-system sized, outshining every star we know of. **And it is not a star.**"
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "JWST kept finding tiny red dots in the early universe that nobody could explain.",
+      "body": "Since Webb switched on, its deep images have been littered with compact, very red points of light from the universe's first billion years. The obvious reading was dust, which reddens light the same way smoke reddens a sunset.\n\nThat reading had a problem. Make them dusty galaxies and you need more stars, forming faster, than the early universe had time to build. The dots were breaking the timeline."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "The reddening is not dust. It is a cocoon of hydrogen gas wrapped around a black hole.",
+      "body": "Spectroscopy killed the dust idea outright. At specific wavelengths the light simply vanished, which dust does not do and dense hydrogen gas does. So the team modelled what sits inside the cocoon.\n\nThe best fit is a black hole feeding hard, buried in gas so thick the whole object mimics a single enormous star. Nuclear fusion cannot generate that much power. Something falling into a black hole can.",
+      "stat": {
+        "value": "660 M",
+        "label": "years after the Big Bang, this existed"
+      }
+    }
+  ],
+  "caveats": [
+    "This is one object. A category of cosmic thing does not get established on a single example.",
+    "The interpretation leans on model fitting, so a different model could still fit the same light.",
+    "Mass estimates for objects this far away carry wide error bars that headlines tend to drop."
+  ],
+  "cta": {
+    "headline": "One real study. Every weekday.",
+    "sub": "Follow for science you can actually check. Every paper linked in bio."
+  },
+  "caption": "The little red dots have been the most annoying thing in astronomy for three years. Webb sees them everywhere in the early universe and nothing explained them cleanly.\n\nThis paper describes MoM-BH*-1, seen as it was roughly 660 million years after the Big Bang. Spectroscopy rules out dust as the source of its redness, because the light disappears at wavelengths where dust would let it through and dense hydrogen would not. Modelling points to an accreting black hole wrapped in a thick gas envelope, radiating far more than fusion could ever manage from an object that size.\n\nHold it loosely. This is one object, and the case rests on model fitting.\n\nFull study: doi.org/10.1038/s41586-026-10846-4\n\nStar, or something new?",
+  "hashtag_set": "physics",
+  "vet": {
+    "key": "x",
+    "verdict": "PASS",
+    "score": 78,
+    "flags": [],
+    "design": "observation + modelling",
+    "sample_size": null,
+    "subjects": "not applicable",
+    "journal_tier": 1,
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [],
+    "notes": []
+  }
+}

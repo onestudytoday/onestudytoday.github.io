@@ -1,0 +1,61 @@
+{
+  "id": "2026-07-29-nature-iron",
+  "niche": "nature",
+  "study": {
+    "title": "Climate benefit and ecological cost trade-offs for ocean iron fertilization",
+    "journal": "Nature",
+    "pub_date": "2026-07-29",
+    "pub_date_display": "Jul 29, 2026",
+    "doi": "10.1038/s41586-026-10795-y",
+    "doi_display": "doi.org/10.1038/s41586-026-10795-y",
+    "url": "https://www.nature.com/articles/s41586-026-10795-y",
+    "is_preprint": false,
+    "server": null,
+    "n": null
+  },
+  "cover": {
+    "kicker": "Nature \u00b7 60-year ocean model",
+    "headline": "Dumping iron in the ocean does pull carbon down. **Then the ocean burps half of it back.**"
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Iron is the missing nutrient across a third of the ocean. Add it, and plankton bloom.",
+      "body": "Plankton pull carbon dioxide out of the air, then sink when they die, dragging that carbon to the deep sea. Huge stretches of ocean are starved of iron, so the plankton never get going. Sprinkle iron in, and you get a bloom.\n\nThat trick has been pitched as climate engineering for thirty years. Nobody had run the numbers across the whole ocean, over decades, while tracking what it does to everything living down there."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Sixty years of fertilising ten ocean regions bought between 1.1 and 5.3 ppm of CO2.",
+      "body": "For scale, humans add roughly 2.5 ppm to the atmosphere every single year. So six decades of continuously seeding the ocean buys back somewhere between five months and two years of emissions.\n\nWorse, more than half of the captured carbon leaked back out within decades of stopping. The Southern Ocean performed best. The equatorial Pacific paid the steepest ecological price for the least return.",
+      "stat": {
+        "value": "5.3 ppm",
+        "label": "best case, after 60 years of seeding"
+      }
+    }
+  ],
+  "caveats": [
+    "This is a computer model, not an experiment. No iron was actually dumped in any ocean.",
+    "Equatorial seeding shrank zooplankton and widened low-oxygen dead zones. The food web pays.",
+    "Over half the captured carbon came back out. The ocean is a leaky bank, not a vault."
+  ],
+  "cta": {
+    "headline": "One real study. Every weekday.",
+    "sub": "Follow for science you can actually check. Every paper linked in bio."
+  },
+  "caption": "Seeding the ocean with iron is one of the oldest ideas in climate engineering, and this is the most complete audit of it yet.\n\nA team ran a process-rich ocean biogeochemical model across ten ocean biomes for sixty simulated years, tracking both the carbon and the ecosystem. Net removal came out between 1.1 and 5.3 ppm of atmospheric CO2. Humanity currently adds about 2.5 ppm a year. More than half of what got captured was re-emitted within decades of switching the iron off.\n\nThe ecological bill is the part that rarely makes headlines: less energy reaching higher animals, expanding oxygen-minimum zones, less zooplankton.\n\nBig caveat: this is a model, not a field trial.\n\nFull study: doi.org/10.1038/s41586-026-10795-y\n\nWorth it, or not worth it?",
+  "hashtag_set": "nature",
+  "vet": {
+    "key": "x",
+    "verdict": "PASS",
+    "score": 76,
+    "flags": [],
+    "design": "modelling",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": 1,
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [],
+    "notes": []
+  }
+}
