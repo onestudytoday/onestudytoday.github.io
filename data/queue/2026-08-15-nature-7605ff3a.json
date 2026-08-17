@@ -1,0 +1,89 @@
+{
+  "id": "2026-08-15-nature-7605ff3a",
+  "niche": "nature",
+  "study": {
+    "title": "Synthetic microbial communities: emerging live biotherapeutics for targeted gut microbiome modulation",
+    "journal": "Gut microbes",
+    "pub_date": "2026-08-15",
+    "pub_date_display": "Aug 15, 2026",
+    "doi": "10.1080/19490976.2026.2719056",
+    "doi_display": "doi.org/10.1080/19490976.2026.2719056",
+    "url": "https://doi.org/10.1080/19490976.2026.2719056",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Zhang R",
+      "Li H",
+      "Wang C",
+      "Yang G."
+    ]
+  },
+  "cover": {
+    "kicker": "Gut Microbes review",
+    "headline": "Scientists are **building custom bacteria teams** to replace risky fecal transplants for gut disease."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Fecal transplants work for gut diseases, but nobody knows exactly what's in them.",
+      "body": "When your gut microbiome goes wrong, it can trigger infections, inflammatory bowel disease, even colorectal cancer. Fecal microbiota transplants can help by importing healthy bacteria from donors, but the composition is undefined and carries biosafety risks.\n\nEnter synthetic microbial communities: lab-assembled teams of specific bacterial strains, rationally designed instead of scooped from a donor. Researchers wanted to map how these SynComs compare to traditional transplants and whether they can restore gut health through targeted mechanisms."
+    },
+    {
+      "eyebrow": "The mechanism",
+      "title": "These designer communities work two ways: direct combat against bad bacteria and immune system tuning.",
+      "body": "SynComs restore intestinal balance through dual action. They directly antagonize harmful microbes competing for the same ecological niche, blocking pathogens from taking hold.\n\nSimultaneously, they modulate the host immune network, helping the body reset its own defenses. Researchers can build these communities using top-down approaches, starting with complex mixtures and removing components, or bottom-up strategies that assemble individual strains from scratch based on known functions."
+    },
+    {
+      "eyebrow": "Why it matters",
+      "title": "Early research shows promise for C. difficile infection, inflammatory bowel disease, and colorectal cancer.",
+      "body": "The clinical translation landscape is expanding. Current research demonstrates potential across three major gut conditions, with compositionally defined formulations offering reproducibility that donor stool cannot match.\n\nBut challenges remain: host colonization resistance prevents some bacteria from sticking, manufacturing standards need development, and regulatory frameworks for microbiokinetics are still emerging. This review maps the gap between lab promise and clinical reality for these emerging live biotherapeutics."
+    }
+  ],
+  "caveats": [
+    "This is a review paper analyzing existing research, not a new experimental study with original data.",
+    "The paper does not report specific clinical outcomes or success rates for SynCom treatments in patients."
+  ],
+  "cta": {
+    "headline": "Science that's actively reshaping medicine",
+    "sub": "Follow for research that bridges the gap between laboratory discovery and clinical application."
+  },
+  "caption": "Instead of transplanting undefined mixtures of bacteria from healthy donors, researchers are engineering precise microbial communities to treat gut disease. This Gut Microbes review examined how these synthetic microbial communities (SynComs) compare to traditional fecal transplants, analyzing construction strategies and mechanisms of action. The analysis covered applications in C. difficile infection, inflammatory bowel disease, and colorectal cancer. This is a review synthesizing existing literature, not new clinical trial data. Full study: doi.org/10.1080/19490976.2026.2719056 \u2014 Designer bacteria: promising or premature?",
+  "hashtag_set": "health",
+  "vet": {
+    "key": "7605ff3af7175169",
+    "verdict": "PASS",
+    "score": 50,
+    "flags": [
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Gut microbes' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "mechanistic / lab",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [],
+    "notes": []
+  },
+  "qa": {
+    "lint_errors": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": []
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": true
+  },
+  "status": "needs_review",
+  "source_niche": "nature"
+}
