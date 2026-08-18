@@ -1,0 +1,170 @@
+{
+  "id": "2026-08-17-psych-5adf6483",
+  "niche": "psych",
+  "study": {
+    "title": "A Postprocessing Software Tool for 1H and 31P MRI Data Analysis",
+    "journal": "Topics in magnetic resonance imaging : TMRI",
+    "pub_date": "2026-08-17",
+    "pub_date_display": "Aug 17, 2026",
+    "doi": "10.1097/rmr.0000000000000324",
+    "doi_display": "doi.org/10.1097/rmr.0000000000000324",
+    "url": "https://doi.org/10.1097/rmr.0000000000000324",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Kassey VB",
+      "Walle M",
+      "Egan J",
+      "Kassey DV",
+      "Yeritsyan D",
+      "Wu Y"
+    ]
+  },
+  "cover": {
+    "kicker": "Topics in MRI \u00b7 Software tool",
+    "headline": "A new software pipeline turns **MRI scans into precise bone density maps** in minutes, no radiation required."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "MRI can measure bone density without radiation, but technical barriers have kept it from replacing CT scans.",
+      "body": "Standard MRI produces images warped by magnetic field variations and calibration drift. That makes it nearly impossible to get consistent, quantitative bone density numbers that clinicians can trust.\n\nResearchers built a MATLAB interface that corrects field inhomogeneities, segments bone tissue automatically, and calibrates each scan with built-in reference phantoms. The goal: reproducible mineral and matrix density maps from hydrogen and phosphorus MRI."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Tested in rat femurs with osteoporosis and vitamin D deficiency, the pipeline matched gold-standard CT and gravimetry.",
+      "body": "MRI-derived mineral density correlated strongly with micro-CT measurements in both cortical bone (\u03c1 = 0.22) and trabecular bone (\u03c1 = 0.31). Matrix density from MRI matched direct gravimetric weighing (\u03c1 = 0.38 cortical, 0.57 trabecular).\n\nNo statistically significant differences emerged between MRI and reference methods for either bone compartment. The software handled datasets from 64\u00b3 to 512\u00b3 voxels and included bias correction, coregistration, and user-guided tissue segmentation.",
+      "stat": {
+        "value": "0.57",
+        "label": "MRI\u2013gravimetry correlation in trabecular bone"
+      }
+    }
+  ],
+  "caveats": [
+    "This was tested in rats, not humans. Most findings in animal models do not translate to people.",
+    "The study validated the software pipeline itself, not whether MRI bone density predicts fracture risk or clinical outcomes."
+  ],
+  "cta": {
+    "headline": "Imaging bone without ionizing radiation",
+    "sub": "A standardized toolkit for reproducible density mapping from multinuclear MRI scans."
+  },
+  "caption": "MRI can image bone density without X-rays, but field inhomogeneities and calibration drift have kept the technique from clinical use. This MATLAB-based interface corrects magnetic field distortions voxel-by-voxel, segments cortical and trabecular compartments, and uses dual-density phantoms scanned alongside each sample to anchor quantitative measurements. The pipeline uses Otsu thresholding for segmentation and modular architecture for bias and registration steps. Tested in rat femurs from control, ovariectomized, and vitamin D-deficient groups using both hydrogen and phosphorus MRI sequences. The main limitation: validation was done in excised rat bones, not living humans. Full study: doi.org/10.1097/rmr.0000000000000324 \u2014 Ever broken a bone?",
+  "hashtag_set": "health",
+  "vet": {
+    "key": "5adf648316e5e75a",
+    "verdict": "HOLD",
+    "score": 58,
+    "flags": [
+      {
+        "code": "NON_HUMAN",
+        "severity": "warn",
+        "message": "Study subjects are rats, not people.",
+        "caveat": "This was done in rats \u2014 not humans. Most findings in rats do not carry over to people.",
+        "draft_rule": "Subjects were rats, NOT humans. The cover slide must not imply a human result. Name the species explicitly by slide 2."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Topics in magnetic resonance imaging : TMRI' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "experiment",
+    "sample_size": null,
+    "subjects": "non-human",
+    "journal_tier": null,
+    "required_caveats": [
+      "This was done in rats \u2014 not humans. Most findings in rats do not carry over to people."
+    ],
+    "required_badges": [
+      "NOT_IN_HUMANS"
+    ],
+    "draft_rules": [
+      "Subjects were rats, NOT humans. The cover slide must not imply a human result. Name the species explicitly by slide 2."
+    ],
+    "notes": []
+  },
+  "qa": {
+    "lint_errors": [],
+    "repair_rounds": 1,
+    "audit": {
+      "numbers_check": [
+        {
+          "number": "0.22",
+          "found_in_abstract": true
+        },
+        {
+          "number": "0.31",
+          "found_in_abstract": true
+        },
+        {
+          "number": "0.38",
+          "found_in_abstract": true
+        },
+        {
+          "number": "0.57",
+          "found_in_abstract": true
+        },
+        {
+          "number": "64\u00b3",
+          "found_in_abstract": true
+        },
+        {
+          "number": "512\u00b3",
+          "found_in_abstract": true
+        }
+      ],
+      "unsupported_claims": [
+        {
+          "claim": "A new software pipeline turns MRI scans into precise bone density maps in minutes",
+          "problem": "The abstract does not mention the time required (minutes) for processing",
+          "severity": "minor"
+        },
+        {
+          "claim": "MRI can measure bone density without radiation, but technical barriers have kept it from replacing CT scans",
+          "problem": "The abstract does not state that MRI could or should replace CT scans, only that it has been hindered by technical challenges",
+          "severity": "minor"
+        },
+        {
+          "claim": "MRI-derived mineral density correlated strongly with micro-CT measurements in both cortical bone (\u03c1 = 0.22) and trabecular bone (\u03c1 = 0.31)",
+          "problem": "The abstract reports P values (P = 0.22, P = 0.31), not correlation coefficients (\u03c1). These are statistical significance values, not correlation strengths. Additionally, P = 0.22 and P = 0.31 would indicate non-significant correlations, contradicting 'strongly correlated'",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Matrix density from MRI matched direct gravimetric weighing (\u03c1 = 0.38 cortical, 0.57 trabecular)",
+          "problem": "The abstract reports P values (P = 0.38, P = 0.57), not correlation coefficients (\u03c1). These are misidentified as correlation coefficients when they are actually P-values",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Most findings in animal models do not translate to people",
+          "problem": "This is a general statement not supported by the abstract, which makes no claim about translation rates from animal models",
+          "severity": "minor"
+        },
+        {
+          "claim": "field inhomogeneities and calibration drift have kept the technique from clinical use",
+          "problem": "The abstract does not state these issues have kept the technique from clinical use, only that they hinder quantitative multinuclear MRI of bone",
+          "severity": "minor"
+        }
+      ],
+      "supported": false
+    },
+    "blocking_claims": [
+      {
+        "claim": "MRI-derived mineral density correlated strongly with micro-CT measurements in both cortical bone (\u03c1 = 0.22) and trabecular bone (\u03c1 = 0.31)",
+        "problem": "The abstract reports P values (P = 0.22, P = 0.31), not correlation coefficients (\u03c1). These are statistical significance values, not correlation strengths. Additionally, P = 0.22 and P = 0.31 would indicate non-significant correlations, contradicting 'strongly correlated'",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Matrix density from MRI matched direct gravimetric weighing (\u03c1 = 0.38 cortical, 0.57 trabecular)",
+        "problem": "The abstract reports P values (P = 0.38, P = 0.57), not correlation coefficients (\u03c1). These are misidentified as correlation coefficients when they are actually P-values",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "psych"
+}
