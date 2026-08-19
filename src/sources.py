@@ -378,10 +378,21 @@ def fetch_candidates(niche: str, days: Optional[int] = None,
     limit = defaults["per_source_limit"]
 
     studies: List[Study] = []
+    # Each source call goes over the network to a service we do not control.
+    # A single timeout or 5xx from Europe PMC or arXiv used to crash the whole
+    # weekday job with an uncaught exception - "Draft today's post" would go
+    # red with nothing to show for it, even though the other source was fine.
+    # Isolate them: log a warning and carry on with whatever succeeded.
     if n.get("europepmc_query"):
-        studies += europepmc_search(n["europepmc_query"], days, limit, include_preprints)
+        try:
+            studies += europepmc_search(n["europepmc_query"], days, limit, include_preprints)
+        except Exception as e:
+            print(f"  ! Europe PMC fetch failed, continuing without it: {e}")
     if n.get("arxiv_categories"):
-        studies += arxiv_search(n["arxiv_categories"], days, limit)
+        try:
+            studies += arxiv_search(n["arxiv_categories"], days, limit)
+        except Exception as e:
+            print(f"  ! arXiv fetch failed, continuing without it: {e}")
 
     # de-dupe within the batch
     seen, uniq = set(), []
