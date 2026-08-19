@@ -18,7 +18,7 @@ from typing import Any, Dict, List
 
 import yaml
 
-from config import ROOT, settings
+from config import ROOT
 
 TAGS = yaml.safe_load((ROOT / "config" / "hashtags.yaml").read_text())
 
@@ -85,7 +85,6 @@ def build_hashtags(post: Dict[str, Any], total: int = None) -> str:
 
 def build_caption(post: Dict[str, Any]) -> str:
     st = post["study"]
-    s = settings()
 
     authors = st.get("authors") or []
     if len(authors) > 2:
