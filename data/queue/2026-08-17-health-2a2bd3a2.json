@@ -23,35 +23,39 @@
   },
   "cover": {
     "kicker": "Gut Microbes, mouse models",
-    "headline": "A common gut bacterium is linked to **reduced liver scarring** in mice with metabolic and drug-induced disease."
+    "headline": "A gut bacterium is linked to **reduced liver scarring** in mice with chronic liver disease."
   },
   "slides": [
     {
       "eyebrow": "The setup",
-      "title": "Chronic liver disease often progresses to fibrosis\u2014scarring that stiffens tissue and impairs function.",
-      "body": "Metabolic dysfunction-associated liver disease and other chronic conditions can trigger fibrosis, where the liver deposits excessive extracellular matrix proteins like collagen. This scarring process is associated with stiffening, reduced liver function, and in severe cases, cirrhosis.\n\nAntifibrotic therapies remain limited. Researchers tested whether a commensal gut bacterium, Phocaeicola coprocola, was associated with fibrosis severity in two different mouse models: one fed a Western diet, the other treated with chemicals that induce advanced scarring."
+      "title": "Chronic liver disease often progresses to fibrosis, a scarring process with few treatment options.",
+      "body": "Conditions like metabolic liver disease frequently advance to fibrosis, where the organ becomes scarred and stiff. Despite how common this progression is, effective therapies that reverse or halt the scarring remain limited.\n\nResearchers tested whether a commensal bacterium called Phocaeicola coprocola could influence fibrosis in mice fed a Western diet or given drugs that induce advanced scarring."
     },
     {
       "eyebrow": "What they found",
-      "title": "Mice given P. coprocola showed reduced liver scarring markers, even without the bacterium colonizing their gut.",
-      "body": "In the advanced fibrosis model, P. coprocola administration was associated with significantly reduced cholestatic markers and fibrosis severity. The bacterium's presence correlated with selective downregulation of extracellular matrix genes including Col1a1, Col3a1, and Mmp2\u2014key components of scar tissue formation.\n\nSurprisingly, these effects occurred even when the bacterium didn't detectably colonize the gut, suggesting stable engraftment isn't necessary. The mechanism appeared independent of broad inflammatory suppression or upstream TGF-\u03b2-Smad signaling, the usual fibrosis pathway targets."
+      "title": "Mice given the bacterium showed reduced fibrosis markers and lower expression of scarring-related genes.",
+      "body": "In both diet-induced and chemically induced fibrosis models, administration of P. coprocola was linked to decreased severity of scarring. The bacterium was associated with selective downregulation of extracellular matrix genes including Col1a1, Col3a1, and Mmp2.\n\nNotably, these effects occurred even without detectable gut colonization, suggesting stable engraftment wasn't necessary. The mechanism appeared to bypass typical inflammatory or TGF-\u03b2 signaling pathways.",
+      "stat": {
+        "value": "0",
+        "label": "colonization needed for effect"
+      }
     },
     {
       "eyebrow": "Why it matters",
-      "title": "The findings suggest that microbiome interventions could target liver scarring through matrix remodeling, not just inflammation.",
-      "body": "Most antifibrotic strategies focus on blocking inflammation or growth factor signaling upstream. This study found that P. coprocola was linked to selective modulation of the extracellular matrix itself\u2014the physical scaffold of scar tissue\u2014offering a potentially distinct therapeutic angle.\n\nIn human data included in the study, circulating ECM remodeling markers like PIIINP, MMP2, and TIMP1 were associated with fibrosis severity, supporting the translational relevance. The bacterium also correlated with enhanced colonic barrier gene expression and altered metabolic signaling between host and microbiome."
+      "title": "The findings suggest extracellular matrix remodeling can be targeted independently of upstream inflammation.",
+      "body": "Most antifibrotic approaches focus on blocking inflammatory signals early in the scarring cascade. This bacterium appears linked to a different route: directly modulating the matrix proteins that form scar tissue.\n\nIn humans, circulating markers of ECM remodeling correlated with fibrosis severity, supporting the relevance of this pathway. The approach could represent a microbiome-based strategy for liver fibrosis across multiple disease types."
     }
   ],
   "caveats": [
-    "This study found a pattern, not a cause. Something else could explain the link between the bacterium and reduced scarring.",
-    "All experiments were conducted in mice. Whether P. coprocola has similar effects in human liver fibrosis remains untested.",
-    "The mechanism by which a non-colonizing bacterium influences liver tissue remodeling is still unclear and requires further investigation."
+    "This study found a pattern, not a cause. Something else could explain the link.",
+    "The experiments were conducted in mice, so the findings may not translate directly to human liver disease.",
+    "The mechanism behind the observed effects remains incompletely understood, particularly how a non-colonizing bacterium exerts influence."
   ],
   "cta": {
-    "headline": "Research translated without the spin",
-    "sub": "Follow for the latest studies explained in plain English, no hype allowed."
+    "headline": "Want the full paper now?",
+    "sub": "Swipe up to read the complete study in Gut Microbes."
   },
-  "caption": "Liver scarring from chronic disease might be influenced by gut bacteria in unexpected ways. Researchers gave mice with metabolic or chemically induced liver fibrosis a dose of Phocaeicola coprocola, a commensal bacterium. The treatment was linked to reduced expression of extracellular matrix genes\u2014the molecular scaffolding of scar tissue\u2014even though the bacterium didn't establish lasting gut colonization. In humans, the same matrix remodeling markers tracked with fibrosis severity. All work was done in mouse models; human therapeutic potential is unproven. Full study: doi.org/10.1080/19490976.2026.2718623\n\nMicrobiome-based liver therapy?",
+  "caption": "A commensal gut bacterium appears linked to reduced liver scarring in two different mouse models of chronic liver disease. Phocaeicola coprocola was associated with downregulation of key extracellular matrix genes including collagen and remodeling enzymes, even without stable gut colonization. The effects occurred independently of broad inflammatory suppression. In human samples, circulating ECM markers correlated with fibrosis severity. Published in Gut Microbes using Western diet and chemically induced fibrosis models in mice. The work is observational and doesn't establish causation. Full study: doi.org/10.1080/19490976.2026.2718623  Ever heard of this bacterium?",
   "hashtag_set": "health",
   "vet": {
     "key": "2a2bd3a21c8dfab9",
@@ -80,49 +84,112 @@
     "notes": []
   },
   "qa": {
-    "lint_errors": [
-      "GUARDRAIL hype: Draft contains promotional hype wording."
-    ],
-    "repair_rounds": 2,
+    "lint_errors": [],
+    "repair_rounds": 1,
     "audit": {
       "supported": false,
       "unsupported_claims": [
         {
-          "claim": "A common gut bacterium is linked to **reduced liver scarring** in mice",
-          "problem": "The abstract states P. coprocola 'significantly reduced...fibrosis severity' and 'attenuated hepatic steatosis'. This is presented as an intervention/treatment effect, not merely a correlation or 'link'. The copy uses weaker associational language ('linked to') which understates what the study actually showed.",
-          "severity": "minor"
-        },
-        {
-          "claim": "Mice given P. coprocola showed reduced liver scarring markers",
-          "problem": "The abstract doesn't specifically mention 'liver scarring markers' as an outcome measure. It mentions reduction in 'cholestatic markers and fibrosis severity' and 'downregulation of extracellular matrix (ECM)-related fibrogenic programs'. While ECM genes could be considered markers, the abstract doesn't use the term 'scarring markers'.",
-          "severity": "minor"
-        },
-        {
-          "claim": "The bacterium's presence correlated with selective downregulation of extracellular matrix genes",
-          "problem": "The abstract states the effects 'were instead associated with selective downregulation' - this is describing the mechanism of action in an experimental intervention, not a correlation. The copy inappropriately converts an experimental finding into correlational language.",
-          "severity": "minor"
-        },
-        {
-          "claim": "The bacterium also correlated with enhanced colonic barrier gene expression",
-          "problem": "The abstract states 'P. coprocola also enhanced colonic epithelial barrier-related gene expression' - this is an active experimental effect, not a correlation. The copy weakens the claim inappropriately.",
-          "severity": "minor"
-        },
-        {
-          "claim": "This study found a pattern, not a cause. Something else could explain the link between the bacterium and reduced scarring.",
-          "problem": "This is misleading. The abstract describes experimental interventions where P. coprocola was administered to mice in controlled models, not observational correlations. The study design (intervention in animal models) supports causal inference within the mouse model context, not merely pattern-finding.",
+          "claim": "A gut bacterium is linked to **reduced liver scarring** in mice with chronic liver disease.",
+          "problem": "The abstract describes an intervention study where P. coprocola was administered to mice, not an observational association study. The use of 'linked to' throughout the copy converts a causal experimental design into correlational language, which misrepresents the study type.",
           "severity": "blocking"
+        },
+        {
+          "claim": "administration of P. coprocola was linked to decreased severity of scarring",
+          "problem": "The abstract states P. coprocola 'significantly reduced' fibrosis severity in the DDC+TAA model, describing a direct experimental effect, not just a 'link'.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "The bacterium was associated with selective downregulation of extracellular matrix genes",
+          "problem": "The abstract describes a mechanistic finding where effects 'were instead associated with selective downregulation' - this refers to the mechanism being associated with downregulation, not the bacterium merely being associated with it in a correlational sense. The copy's language weakens the experimental finding.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "This bacterium appears linked to a different route: directly modulating the matrix proteins that form scar tissue.",
+          "problem": "Again converts the experimental intervention finding into correlational language ('appears linked to' rather than describing the experimental mechanism identified).",
+          "severity": "blocking"
+        },
+        {
+          "claim": "A commensal gut bacterium appears linked to reduced liver scarring in two different mouse models",
+          "problem": "This was an experimental intervention study, not an observational association study. The language 'appears linked' mischaracterizes the study design.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Phocaeicola coprocola was associated with downregulation of key extracellular matrix genes",
+          "problem": "Same issue - converts experimental causation into correlation language.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "This study found a pattern, not a cause. Something else could explain the link.",
+          "problem": "This is false. The abstract describes controlled experimental interventions in mouse models where P. coprocola was administered, which is designed to test causation, not just patterns or associations.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "The work is observational and doesn't establish causation.",
+          "problem": "This is incorrect. The abstract describes intervention studies in mouse models with administration of P. coprocola in controlled experiments, which is experimental work designed to test causation, not observational work.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "doi.org/10.1080/19490976.2026.2718623",
+          "problem": "The DOI is not provided in the abstract, so cannot be verified. Additionally, the year 2026 is in the future, which seems implausible.",
+          "severity": "minor"
         }
       ],
-      "numbers_check": []
+      "numbers_check": [
+        {
+          "number": "0 colonization needed for effect",
+          "found_in_abstract": false
+        }
+      ]
     },
     "blocking_claims": [
       {
-        "claim": "This study found a pattern, not a cause. Something else could explain the link between the bacterium and reduced scarring.",
-        "problem": "This is misleading. The abstract describes experimental interventions where P. coprocola was administered to mice in controlled models, not observational correlations. The study design (intervention in animal models) supports causal inference within the mouse model context, not merely pattern-finding.",
+        "claim": "A gut bacterium is linked to **reduced liver scarring** in mice with chronic liver disease.",
+        "problem": "The abstract describes an intervention study where P. coprocola was administered to mice, not an observational association study. The use of 'linked to' throughout the copy converts a causal experimental design into correlational language, which misrepresents the study type.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "administration of P. coprocola was linked to decreased severity of scarring",
+        "problem": "The abstract states P. coprocola 'significantly reduced' fibrosis severity in the DDC+TAA model, describing a direct experimental effect, not just a 'link'.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "The bacterium was associated with selective downregulation of extracellular matrix genes",
+        "problem": "The abstract describes a mechanistic finding where effects 'were instead associated with selective downregulation' - this refers to the mechanism being associated with downregulation, not the bacterium merely being associated with it in a correlational sense. The copy's language weakens the experimental finding.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "This bacterium appears linked to a different route: directly modulating the matrix proteins that form scar tissue.",
+        "problem": "Again converts the experimental intervention finding into correlational language ('appears linked to' rather than describing the experimental mechanism identified).",
+        "severity": "blocking"
+      },
+      {
+        "claim": "A commensal gut bacterium appears linked to reduced liver scarring in two different mouse models",
+        "problem": "This was an experimental intervention study, not an observational association study. The language 'appears linked' mischaracterizes the study design.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Phocaeicola coprocola was associated with downregulation of key extracellular matrix genes",
+        "problem": "Same issue - converts experimental causation into correlation language.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "This study found a pattern, not a cause. Something else could explain the link.",
+        "problem": "This is false. The abstract describes controlled experimental interventions in mouse models where P. coprocola was administered, which is designed to test causation, not just patterns or associations.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "The work is observational and doesn't establish causation.",
+        "problem": "This is incorrect. The abstract describes intervention studies in mouse models with administration of P. coprocola in controlled experiments, which is experimental work designed to test causation, not observational work.",
         "severity": "blocking"
       }
     ],
-    "unverified_numbers": [],
+    "unverified_numbers": [
+      {
+        "number": "0 colonization needed for effect",
+        "found_in_abstract": false
+      }
+    ],
     "publishable": false
   },
   "status": "needs_review",
