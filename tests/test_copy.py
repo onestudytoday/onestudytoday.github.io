@@ -19,6 +19,9 @@ from render import render_post                                    # noqa: E402
 from review import blocking_reasons                               # noqa: E402
 from vet import VetReport                                         # noqa: E402
 
+REQUIRED_SETTINGS = ("META_APP_ID", "META_APP_SECRET",
+                     "IG_ACCESS_TOKEN", "IG_BUSINESS_ACCOUNT_ID")
+
 SAMPLES = sorted((ROOT / "samples" / "posts").glob("*.json"))
 
 
@@ -137,3 +140,23 @@ def test_flatten_excludes_cta_when_asked():
     post = json.loads(SAMPLES[0].read_text())
     assert post["cta"]["headline"] in flatten(post)
     assert post["cta"]["headline"] not in flatten(post, include_cta=False)
+
+
+def test_build_caption_does_not_require_instagram_credentials(monkeypatch):
+    # Regression test for the "Draft today's post" failure of 2026-08-12:
+    # `python src/issue.py <queue-file> <image-base>` runs in a workflow step
+    # that deliberately does NOT get META_APP_ID/META_APP_SECRET/
+    # IG_ACCESS_TOKEN/IG_BUSINESS_ACCOUNT_ID - it only builds a GitHub issue
+    # body from a post already on disk, it never touches the Instagram API.
+    # caption.build_caption() used to call settings() anyway (the result was
+    # never even used), so that step crashed with
+    # "Missing required setting: META_APP_ID" before an issue was ever opened.
+    for name in REQUIRED_SETTINGS:
+        monkeypatch.delenv(name, raising=False)
+    post = json.loads(SAMPLES[0].read_text())
+    cap = build_caption(post)  # must not raise SystemExit
+    assert cap
+
+    from issue import build as build_issue  # noqa: E402
+    body = build_issue(post, "https://example.github.io/img")
+    assert post["id"] in body
