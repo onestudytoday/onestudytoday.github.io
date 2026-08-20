@@ -1,0 +1,194 @@
+{
+  "id": "2026-08-19-physics-01d74795",
+  "niche": "physics",
+  "study": {
+    "title": "Diffuse HI emission in the circumgalactic medium of NGC891 and NGC4565 - III: azimuthal profiles",
+    "journal": "arXiv",
+    "pub_date": "2026-08-19",
+    "pub_date_display": "Aug 19, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2608.19186v1",
+    "url": "http://arxiv.org/abs/2608.19186v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Mary Rickel",
+      "Sanskriti Das",
+      "Nickolas M. Pingel",
+      "D. J. Pisano",
+      "Adam Leroy",
+      "Smita Mathur"
+    ]
+  },
+  "cover": {
+    "kicker": "arXiv \u2022 Preprint study",
+    "headline": "Two spiral galaxies are **surrounded by lopsided halos of hydrogen gas** that spin slower than their disks."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "The gas around galaxies should tell us how they grow, but separating halo from disk is brutally hard.",
+      "body": "NGC 891 and NGC 4565 are edge-on spiral galaxies wrapped in faint hydrogen emission that extends far beyond their visible disks. Previous work caught hints of inflow along the galaxies' poles and rotation along their edges, but no one had mapped the full circle.\n\nSingle-dish radio telescopes see everything, including contamination from the bright disk. Interferometers filter out diffuse structure. The team compared deep Green Bank Telescope observations with archival data to isolate truly diffuse gas within 25\u201330 kiloparsecs."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "The inner hydrogen halo is wildly asymmetric, with far more gas between the disk and pole than along the edges.",
+      "body": "In this early paper, the team reports that 30\u201338 % of the emission around NGC 891 and 18\u201328 % around NGC 4565 cannot be explained by the interferometer maps, pointing to genuine circumgalactic gas. That gas is not evenly distributed: there is 4\u20136 times more hydrogen along the diagonal axes than along the disk plane, and 3\u20137 times more than along the poles.\n\nThe velocity profiles suggest the diffuse halo co-rotates with the disk but lags behind it, spinning more slowly than the stars and gas locked in the galaxies' main structures.",
+      "stat": {
+        "value": "4\u20136\u00d7",
+        "label": "more hydrogen on diagonals than disk edges"
+      }
+    }
+  ],
+  "caveats": [
+    "This is a preprint and has not been peer reviewed yet, so no independent expert has verified the analysis.",
+    "The study found a pattern in gas distribution, not a cause\u2014other factors could explain the lopsided structure and lagged rotation."
+  ],
+  "cta": {
+    "headline": "Science that skips the press release",
+    "sub": "Real studies, real limits, no hype. Tap follow so you never miss one."
+  },
+  "caption": "Galaxies sit inside invisible envelopes of hydrogen that hold clues to how they feed and evolve, but measuring that gas without confusing it with the bright disk has been nearly impossible. A team used the Green Bank Telescope to map hydrogen around two edge-on spirals at every angle, then cross-referenced the signal against interferometer data to subtract contamination. The result: a lopsided, slowly spinning halo concentrated along the diagonals. The study observed NGC 891 and NGC 4565, two nearby spiral galaxies. The findings rest on subtracting one telescope's map from another, a method still being refined. Full study: http://arxiv.org/abs/2608.19186v1  Your galaxy shape preference?",
+  "hashtag_set": "physics",
+  "vet": {
+    "key": "01d7479537c8f39b",
+    "verdict": "HOLD",
+    "score": 36,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      },
+      {
+        "code": "CORRELATIONAL",
+        "severity": "warn",
+        "message": "Design reads as observational (cross-sectional (observational)); markers: survey",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      }
+    ],
+    "design": "cross-sectional (observational)",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'.",
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "lint_errors": [
+      "slide2.body: 94 words, spec is 55-90"
+    ],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "surrounded by lopsided halos of hydrogen gas",
+          "problem": "The abstract does not describe the halos as 'lopsided'. It states the neutral CGM lacks azimuthal symmetry and has more HI along off-axes, but 'lopsided' is not used and implies a different kind of asymmetry.",
+          "severity": "minor"
+        },
+        {
+          "claim": "extends far beyond their visible disks",
+          "problem": "The abstract focuses on the inner neutral CGM (< 25 kpc for NGC891, < 30 kpc for NGC4565). While previous work (Das2020b, Das2024a) traced emission out to ~100 kpc, this study specifically examines the inner CGM, not far-reaching extensions.",
+          "severity": "minor"
+        },
+        {
+          "claim": "within 25\u201330 kiloparsecs",
+          "problem": "The abstract specifies '< 25 kpc for NGC891, < 30 kpc for NGC4565', not a combined '25\u201330 kiloparsecs' range. This conflates two distinct measurements.",
+          "severity": "minor"
+        },
+        {
+          "claim": "The inner hydrogen halo is wildly asymmetric",
+          "problem": "'Wildly asymmetric' is an interpretation not supported by the abstract. The abstract states the findings 'nullify the common assumption of azimuthal symmetry' but does not characterize the degree of asymmetry as 'wild'.",
+          "severity": "minor"
+        },
+        {
+          "claim": "In this early paper, the team reports",
+          "problem": "The abstract does not indicate this is an 'early paper' or preliminary report. This suggests incomplete work not supported by the abstract.",
+          "severity": "minor"
+        },
+        {
+          "claim": "spinning more slowly than the stars and gas locked in the galaxies' main structures",
+          "problem": "The abstract states the diffuse inner CGM shows 'lagged co-rotation with the HI disk' but does not mention stars or compare to stars' rotation speeds.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Galaxies sit inside invisible envelopes of hydrogen",
+          "problem": "This is a generalization beyond the two specific galaxies studied (NGC891 and NGC4565). The abstract does not make claims about galaxies in general.",
+          "severity": "minor"
+        },
+        {
+          "claim": "http://arxiv.org/abs/2608.19186v1",
+          "problem": "This specific arXiv identifier does not appear in the abstract and cannot be verified as correct.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "25 kpc",
+          "found_in_abstract": true
+        },
+        {
+          "number": "30 kpc",
+          "found_in_abstract": true
+        },
+        {
+          "number": "25\u201330 kiloparsecs",
+          "found_in_abstract": false
+        },
+        {
+          "number": "30\u201338 %",
+          "found_in_abstract": true
+        },
+        {
+          "number": "18\u201328 %",
+          "found_in_abstract": true
+        },
+        {
+          "number": "4\u20136 times",
+          "found_in_abstract": true
+        },
+        {
+          "number": "3\u20137 times",
+          "found_in_abstract": true
+        },
+        {
+          "number": "4\u20136\u00d7",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "http://arxiv.org/abs/2608.19186v1",
+        "problem": "This specific arXiv identifier does not appear in the abstract and cannot be verified as correct.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "25\u201330 kiloparsecs",
+        "found_in_abstract": false
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "physics"
+}
