@@ -449,6 +449,7 @@ def assemble(s: Study, rep: VetReport, copy: Dict[str, Any],
         "id": f"{s.pub_date}-{s.niche}-{s.key[:8]}",
         "niche": s.niche,
         "study": {
+            "key": s.key,      # stable ledger identity - see sources.study_key()
             "title": s.title,
             "journal": s.journal,
             "pub_date": s.pub_date,
