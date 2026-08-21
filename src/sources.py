@@ -364,6 +364,28 @@ def mark_seen(led: Dict[str, Any], s: Study) -> None:
         "doi": s.doi, "title": s.title[:160], "at": datetime.utcnow().isoformat()}
 
 
+def study_key(post: Dict[str, Any]) -> str:
+    """The ledger key for a post that already exists on disk (queued, killed,
+    or published) - i.e. the `Study.key` of the study it was drafted from.
+
+    Posts drafted from 2026-08-21 onward carry this directly as
+    `post["study"]["key"]`. For posts drafted before that, it's rebuilt from
+    the DOI the same way `Study.key` computes it, since that's the only piece
+    of the original identity a post still carries. A preprint with no DOI
+    drafted before this fix can't be reconstructed exactly and falls back to
+    the post id, which won't match future sourcing - an acceptable gap for the
+    handful of posts already in flight, closed for everything drafted after.
+    """
+    st = post.get("study", {}) or {}
+    k = st.get("key")
+    if k:
+        return k
+    doi = (st.get("doi") or "").lower().strip()
+    if doi:
+        return hashlib.sha1(doi.encode()).hexdigest()[:16]
+    return post.get("id", "")
+
+
 # ---------------------------------------------------------------------------
 def load_niches() -> Dict[str, Any]:
     return yaml.safe_load((ROOT / "config" / "niches.yaml").read_text())
@@ -405,7 +427,12 @@ def fetch_candidates(niche: str, days: Optional[int] = None,
 
     # drop anything we have already used or already rejected
     led = load_ledger()
-    used = set(led.get("posted", {})) | set(led.get("rejected", {}))
+    # "seen" catches a study that was drafted and is sitting in an open,
+    # not-yet-decided review issue - without this, running the draft workflow
+    # again before you approve or kill it just pulls and drafts it a second
+    # time, since it is neither "posted" nor "rejected" yet.
+    used = (set(led.get("posted", {})) | set(led.get("rejected", {}))
+            | set(led.get("seen", {})))
     uniq = [s for s in uniq if s.key not in used]
 
     # abstract must be substantial enough to summarise honestly
