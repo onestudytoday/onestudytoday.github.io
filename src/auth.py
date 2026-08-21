@@ -45,6 +45,24 @@ class AuthError(RuntimeError):
     pass
 
 
+def _redact(text: Any) -> str:
+    """Blank out credentials before they can end up in an error message.
+
+    The Graph API takes the app secret and the access token as query
+    parameters, so when a call fails at the network level the exception text
+    requests raises quotes the whole URL back - secrets included. GitHub masks
+    known secrets in Actions logs, but nothing masks the terminal on your own
+    laptop, and a screenshot of a red error is exactly the thing people paste
+    into an issue or send to someone when asking for help.
+    """
+    s = settings()
+    out = str(text)
+    for v in (s.meta_app_secret, s.ig_access_token, s.github_pat):
+        if v and len(v) > 6:
+            out = out.replace(v, "***REDACTED***")
+    return out
+
+
 @dataclass
 class TokenInfo:
     valid: bool
@@ -104,7 +122,7 @@ def inspect(token: Optional[str] = None) -> TokenInfo:
         )
         payload = r.json()
     except Exception as e:  # network / json
-        raise AuthError(f"Could not reach the Graph API: {e}")
+        raise AuthError(f"Could not reach the Graph API: {_redact(e)}")
 
     if "error" in payload:
         # Might be an Instagram-Login token, which Facebook's debug endpoint
