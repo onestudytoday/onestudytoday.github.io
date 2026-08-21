@@ -6,6 +6,10 @@
 # API response cache - regenerated on demand
 data/cache/
 
+# Local record of when the Instagram token last rotated. Holds the last eight
+# characters of each token - not enough to use, but no reason to publish it.
+data/token_history.jsonl
+
 # Python
 __pycache__/
 *.py[cod]
