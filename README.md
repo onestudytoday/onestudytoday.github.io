@@ -6,7 +6,9 @@ incapable of publishing hype.
 
 **Start here:** [`docs/RUNBOOK.md`](docs/RUNBOOK.md) — full setup, written for
 someone who has never used a terminal.
-**Then:** [`docs/GROWTH.md`](docs/GROWTH.md) — cadence and growth plan.
+**Then:** [`docs/LAUNCH.md`](docs/LAUNCH.md) — the ten days around your first
+post, from zero followers.
+**After that:** [`docs/GROWTH.md`](docs/GROWTH.md) — cadence and growth plan.
 
 ---
 
@@ -30,8 +32,9 @@ someone who has never used a terminal.
   review            GitHub issue on your phone, or a local web app
      |              YOU comment `approve`. Nothing else publishes.
      v
-  publishing        Instagram Graph API carousel
-                    link-in-bio page rebuilds itself
+  publishing        Instagram Graph API carousel, at your niche's
+                    peak-engagement time (docs/GROWTH.md) - not the
+                    moment you approved it. link-in-bio rebuilds itself.
 ```
 
 ---
@@ -58,7 +61,7 @@ These are gates in the pipeline, not items on a checklist.
 Prove they work, offline, in half a second:
 
 ```bash
-python -m pytest tests/ -q      # 52 passed
+python -m pytest tests/ -q      # 95 passed
 ```
 
 ---
