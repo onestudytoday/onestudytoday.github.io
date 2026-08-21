@@ -1,12 +1,19 @@
-name: Publish on approval
+name: Approve, kill, or force-approve
 
 # The human gate. Fires only when the repository owner comments "approve" on a
 # review issue. Anyone else commenting does nothing.
 #
 # Comments understood:
-#   approve         publish it
-#   force approve   publish it even though a blocker is flagged
-#   kill            reject and add to the do-not-use ledger
+#   approve         mark it approved - it publishes at its niche's next
+#                   peak-engagement slot (docs/GROWTH.md), not immediately.
+#                   See scheduled-publish.yml.
+#   force approve   same, but overriding a flagged blocker
+#   kill            reject it now and add it to the do-not-use ledger
+#
+# This workflow never talks to the Instagram API itself. Approving used to
+# publish in the same job, which meant a post went out at whatever time you
+# happened to review it - typically right at the 6am draft slot - instead of
+# when your audience is actually around.
 
 on:
   issue_comment:
@@ -16,12 +23,32 @@ permissions:
   contents: write
   issues: write
 
+# Two "approve" comments in quick succession used to start two publish jobs at
+# once, both racing to post the same carousel. Queue them instead: the second
+# one runs after the first has finished and finds nothing left approved.
+concurrency:
+  group: publish-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
 jobs:
   gate:
+    # This is the gate. Everything below it only ever runs for you.
+    #
+    #   * comment.user.login is filled in by GitHub from the authenticated
+    #     account that posted the comment. It is not something a commenter can
+    #     set, and GitHub will not let two accounts exist whose usernames
+    #     differ only by capitalisation, so a plain == is a real check.
+    #   * author_association == 'OWNER' is a second, independent statement from
+    #     GitHub that this commenter owns the repository. Both have to agree.
+    #   * The issue also has to be open and carry the 'review' label, which only
+    #     someone with write access to the repo can put on an issue.
+    #
+    # The words are matched lower case: comment "approve", not "Approve".
     if: >
       github.event.issue.state == 'open' &&
       contains(github.event.issue.labels.*.name, 'review') &&
       github.event.comment.user.login == github.repository_owner &&
+      github.event.comment.author_association == 'OWNER' &&
       (
         startsWith(github.event.comment.body, 'approve') ||
         startsWith(github.event.comment.body, 'force approve') ||
@@ -44,7 +71,30 @@ jobs:
           BODY: ${{ github.event.issue.body }}
           COMMENT: ${{ github.event.comment.body }}
         run: |
-          POST_ID=$(printf '%s' "$BODY" | grep -oP '(?<=onestudytoday-post-id: )[^\s]+' | head -1)
+          set -euo pipefail
+          # The issue body is machine-written, but parts of it (the paper's
+          # title, the drafted headline and caption) come from a public
+          # research database and from a language model, so treat the whole
+          # thing as untrusted text.
+          #
+          # Two things make that safe:
+          #   1. only the exact HTML-comment marker that issue.py writes is
+          #      matched, and the LAST one wins, so a marker smuggled into a
+          #      paper title earlier in the body cannot win the race;
+          #   2. whatever comes out has to look like a post id - a date, then
+          #      lower-case letters, digits and hyphens, nothing else. That
+          #      rules out every shell metacharacter, spaces, quotes, slashes
+          #      and dots, so it cannot become a second command or a path.
+          # Without step 2 a crafted paper title could have put shell
+          # metacharacters into the commands below.
+          POST_ID=$(printf '%s' "$BODY" \
+            | grep -oP '(?<=<!-- onestudytoday-post-id: )[A-Za-z0-9._-]+(?= -->)' \
+            | tail -1 || true)
+          if ! printf '%s' "$POST_ID" | grep -qE '^[0-9]{4}-[0-9]{2}-[0-9]{2}-[a-z0-9-]{1,48}$'; then
+            echo "Refusing to act: this issue has no valid post id marker."
+            echo "Expected a line like <!-- onestudytoday-post-id: 2026-08-21-psych-1a2b3c4d -->"
+            exit 1
+          fi
           echo "post_id=$POST_ID" >> "$GITHUB_OUTPUT"
           C=$(printf '%s' "$COMMENT" | tr '[:upper:]' '[:lower:]')
           case "$C" in
@@ -53,63 +103,59 @@ jobs:
             kill*)           echo "action=kill" >> "$GITHUB_OUTPUT" ;;
           esac
 
+      # The post id goes to these three steps through the environment and is
+      # quoted as "$POST_ID". Pasting it in with ${{ }} would drop it into the
+      # command line as raw script text.
       - name: Kill it
         if: steps.what.outputs.action == 'kill'
-        run: python src/review.py reject "${{ steps.what.outputs.post_id }}" "killed from issue"
+        env:
+          POST_ID: ${{ steps.what.outputs.post_id }}
+        run: python src/review.py reject "$POST_ID" "killed from issue"
 
       - name: Approve it
         if: steps.what.outputs.action == 'approve'
-        run: python src/review.py approve "${{ steps.what.outputs.post_id }}"
+        env:
+          POST_ID: ${{ steps.what.outputs.post_id }}
+        run: python src/review.py approve "$POST_ID"
 
       - name: Force approve it
         if: steps.what.outputs.action == 'force'
-        run: python src/review.py force-approve "${{ steps.what.outputs.post_id }}"
-
-      - name: Publish to Instagram
-        id: pub
-        if: steps.what.outputs.action != 'kill'
         env:
-          META_APP_ID: ${{ secrets.META_APP_ID }}
-          META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
-          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
-          IG_BUSINESS_ACCOUNT_ID: ${{ secrets.IG_BUSINESS_ACCOUNT_ID }}
-          PUBLIC_IMAGE_BASE: ${{ vars.PUBLIC_IMAGE_BASE }}
-          HANDLE: ${{ vars.HANDLE }}
-        run: |
-          set -o pipefail
-          python src/pipeline.py publish-approved --live | tee publish.log
-
-      - name: Rebuild the link-in-bio page
-        if: steps.what.outputs.action != 'kill'
-        env:
-          HANDLE: ${{ vars.HANDLE }}
-          META_APP_ID: ${{ secrets.META_APP_ID }}
-          META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
-          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
-          IG_BUSINESS_ACCOUNT_ID: ${{ secrets.IG_BUSINESS_ACCOUNT_ID }}
-        run: python src/linkinbio.py
+          POST_ID: ${{ steps.what.outputs.post_id }}
+        run: python src/review.py force-approve "$POST_ID"
 
       - name: Commit the result
+        env:
+          POST_ID: ${{ steps.what.outputs.post_id }}
+          ACTION: ${{ steps.what.outputs.action }}
         run: |
           git config user.name  "onestudytoday-bot"
           git config user.email "bot@users.noreply.github.com"
           git add data/ docs/ || true
-          git commit -m "publish: ${{ steps.what.outputs.post_id }} (${{ steps.what.outputs.action }})" || echo "nothing to commit"
+          git commit -m "publish: $POST_ID ($ACTION)" || echo "nothing to commit"
           git push
 
       - name: Close the issue with the outcome
         uses: actions/github-script@v7
+        env:
+          ACTION: ${{ steps.what.outputs.action }}
         with:
           script: |
-            const fs = require("fs");
-            const act = "${{ steps.what.outputs.action }}";
+            const act = process.env.ACTION;
             let msg;
             if (act === "kill") {
               msg = "Killed. Added to the do-not-use ledger so it will never be sourced again.";
             } else {
-              const log = fs.existsSync("publish.log") ? fs.readFileSync("publish.log", "utf8") : "";
-              msg = "Published.\n\n```json\n" + log.slice(-3000) + "\n```\n\n"
-                  + "The link-in-bio page has been rebuilt.";
+              // Which label on this issue names the niche, so the message can
+              // say roughly when it'll actually go out.
+              const PUBLISH_TIMES = { nature: "7:00am", psych: "7:00am",
+                health: "12:00pm", physics: "9:00am", wildcard: "9:00am" };
+              const labels = context.payload.issue.labels.map(l => l.name);
+              const niche = labels.find(l => l in PUBLISH_TIMES);
+              const when = niche ? `around ${PUBLISH_TIMES[niche]} Central` : "at its next scheduled slot";
+              msg = (act === "force" ? "Force-approved" : "Approved") +
+                ` — it'll actually go out ${when}, whenever that next arrives ` +
+                "(reviewing early doesn't publish early). I'll comment here again once it's live.";
             }
             await github.rest.issues.createComment({
               owner: context.repo.owner, repo: context.repo.repo,
