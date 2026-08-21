@@ -182,8 +182,18 @@ one thing: **does the copy say anything the paper does not?**
 
 Comment `approve` on the issue.
 
-The publish workflow fires, posts the carousel to Instagram, rebuilds your
-link-in-bio page, and closes the issue with the result.
+That closes the issue and marks the post approved - it does **not** post to
+Instagram right away. A separate workflow checks every 15 minutes for
+approved posts and publishes each one once its niche's peak-engagement time
+arrives (the table in `docs/GROWTH.md` - e.g. nature/psych at 7am Central,
+health at noon). Reviewing at 6am does not publish at 6am; it just means the
+post is ready and waiting for its slot. Once it actually goes out, the bot
+comments on the (already-closed) issue again with the result, and the
+link-in-bio page rebuilds itself.
+
+Want something out immediately instead of waiting for its slot? Actions →
+**Publish approved posts** → **Run workflow**. That publishes everything
+currently approved right now, ignoring the time gate.
 
 Other comments it understands:
 - `kill` — reject it, and never source that study again
@@ -250,6 +260,8 @@ python src/pipeline.py publish-approved --live   # actually posts
 | re-render after editing a post file | `python src/pipeline.py render <post-id>` |
 | check the guardrails still work | `python -m pytest tests/ -q` |
 | rebuild the bio page | `python src/linkinbio.py` |
+| publish anything approved, right now | `python src/pipeline.py publish-approved --live` |
+| publish only what's past its niche's slot | `python src/pipeline.py publish-scheduled --live` |
 
 ---
 
