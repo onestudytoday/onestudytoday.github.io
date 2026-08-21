@@ -57,12 +57,31 @@ jobs:
           HANDLE: ${{ vars.HANDLE }}
           THEME: ${{ vars.THEME }}
           ALLOW_PREPRINTS: ${{ vars.ALLOW_PREPRINTS }}
+          # The two "Run workflow" inputs come in as environment variables and
+          # are read as shell variables below. They are NOT written into the
+          # script with ${{ }}, which would paste whatever was typed in the box
+          # straight into the command line - GitHub's documented script
+          # injection hole. Only someone with write access to this repo can
+          # start a workflow_dispatch, so this was never open to the public,
+          # but the box is a text field and the shell should not trust it.
+          INPUT_NICHE: ${{ inputs.niche }}
+          INPUT_DAYS: ${{ inputs.days }}
         run: |
-          set -o pipefail
-          ARGS=""
-          if [ -n "${{ inputs.niche }}" ]; then ARGS="--niche ${{ inputs.niche }}"; fi
-          if [ -n "${{ inputs.days }}" ]; then ARGS="$ARGS --days ${{ inputs.days }}"; fi
-          python src/pipeline.py run $ARGS | tee run.log
+          set -euo pipefail
+          ARGS=()
+          if [ -n "${INPUT_NICHE:-}" ]; then
+            case "$INPUT_NICHE" in
+              nature|psych|health|physics|wildcard) ARGS+=(--niche "$INPUT_NICHE") ;;
+              *) echo "Refusing to run: unrecognised niche '$INPUT_NICHE'"; exit 1 ;;
+            esac
+          fi
+          if [ -n "${INPUT_DAYS:-}" ]; then
+            case "$INPUT_DAYS" in
+              ''|*[!0-9]*) echo "Refusing to run: days must be a whole number"; exit 1 ;;
+              *) ARGS+=(--days "$INPUT_DAYS") ;;
+            esac
+          fi
+          python src/pipeline.py run "${ARGS[@]}" | tee run.log
           NEW=$(ls -1 data/queue/*.json 2>/dev/null | head -1 || true)
           echo "post_file=$NEW" >> "$GITHUB_OUTPUT"
 
@@ -102,11 +121,15 @@ jobs:
           PUBLIC_IMAGE_BASE: ${{ vars.PUBLIC_IMAGE_BASE }}
         with:
           script: |
-            const { execSync } = require("child_process");
+            // execFileSync, not execSync: the arguments are passed to python as
+            // a list instead of being pasted into a shell command line, so a
+            // filename or a Pages URL can never turn into a second command.
+            const { execFileSync } = require("child_process");
             const fs = require("fs");
             const post = JSON.parse(fs.readFileSync(process.env.POST_FILE, "utf8"));
-            const body = execSync(
-              `python src/issue.py "${process.env.POST_FILE}" "${process.env.PUBLIC_IMAGE_BASE}"`,
+            const body = execFileSync(
+              "python",
+              ["src/issue.py", process.env.POST_FILE, process.env.PUBLIC_IMAGE_BASE || ""],
               { encoding: "utf8", maxBuffer: 10 * 1024 * 1024 });
             await github.rest.issues.create({
               owner: context.repo.owner,
