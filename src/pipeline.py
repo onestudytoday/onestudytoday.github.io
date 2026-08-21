@@ -167,35 +167,101 @@ def run(niche: Optional[str] = None, days: int = 14, limit: int = 1,
 
 
 # ---------------------------------------------------------------------------
-def publish_approved(live: bool = False) -> None:
+# Approving a post (the GitHub comment gate) only ever sets status="approved".
+# It used to publish in the same breath, which meant the post went out at
+# whatever time you happened to review it - usually right at the 6am draft
+# slot, not when your audience is actually around. These two functions are
+# what decouple "you decided yes" from "it actually goes out":
+#
+#   publish_approved()   publishes every approved post right now, regardless
+#                         of time. The manual override - what
+#                         `workflow_dispatch` on scheduled-publish.yml runs,
+#                         and what "python src/pipeline.py publish-approved
+#                         --live" always did.
+#   publish_scheduled()  publishes an approved post only once its niche's
+#                         peak-engagement time (docs/GROWTH.md) has arrived in
+#                         the configured timezone. This is what the frequent
+#                         cron in scheduled-publish.yml runs. It is timezone-
+#                         aware the same way todays_niche() is, so it is not
+#                         vulnerable to the UTC-vs-Chicago mixup that hit the
+#                         drafting side.
+#
+# Both funnel through _publish_one() so there is exactly one place that knows
+# how to actually turn an approved post into a live Instagram post.
+# ---------------------------------------------------------------------------
+PUBLISH_TIMES = {
+    # America/Chicago wall-clock time of day, from docs/GROWTH.md's weekly
+    # rhythm table. Wildcard uses Friday's slot regardless of which niche it
+    # was actually sourced from.
+    "nature": "07:00", "psych": "07:00", "health": "12:00",
+    "physics": "09:00", "wildcard": "09:00",
+}
+
+
+def _publish_one(f: Path, post: Dict[str, Any], live: bool) -> Dict[str, Any]:
     from publish import publish, stage_images
-    from review import load as load_post
-    n = 0
+    pngs = sorted(str(p) for p in (OUT / "posts" / post["id"]).glob("*.png"))
+    if not pngs:
+        print(f"  {post['id']}: no rendered slides, skipping")
+        return {}
+    urls = stage_images(post, pngs)
+    res = publish(post, urls, live=live)
+    print(json.dumps(res, indent=2))
+    if live and res.get("media_id"):
+        post["status"] = "published"
+        post["published"] = {
+            "media_id": res["media_id"],
+            "at": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")}
+        (PUBLISHED / f"{post['id']}.json").write_text(json.dumps(post, indent=2))
+        f.unlink()
+        led = load_ledger()
+        led.setdefault("posted", {})[study_key(post)] = {
+            "doi": post["study"]["doi"], "media_id": res["media_id"]}
+        save_ledger(led)
+    return res
+
+
+def publish_approved(live: bool = False) -> List[Dict[str, Any]]:
+    """Publish every approved post right now, ignoring peak-time gating."""
+    n, results = 0, []
     for f in sorted(QUEUE.glob("*.json")):
         post = json.loads(f.read_text())
         if post.get("status") != "approved":
             continue
-        pngs = sorted(str(p) for p in (OUT / "posts" / post["id"]).glob("*.png"))
-        if not pngs:
-            print(f"  {post['id']}: no rendered slides, skipping")
-            continue
-        urls = stage_images(post, pngs)
-        res = publish(post, urls, live=live)
-        print(json.dumps(res, indent=2))
-        if live and res.get("media_id"):
-            post["status"] = "published"
-            post["published"] = {
-                "media_id": res["media_id"],
-                "at": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")}
-            (PUBLISHED / f"{post['id']}.json").write_text(json.dumps(post, indent=2))
-            f.unlink()
-            led = load_ledger()
-            led.setdefault("posted", {})[study_key(post)] = {
-                "doi": post["study"]["doi"], "media_id": res["media_id"]}
-            save_ledger(led)
+        results.append(_publish_one(f, post, live))
         n += 1
     if not n:
         print("Nothing approved is waiting.")
+    return results
+
+
+def publish_scheduled(live: bool = True, tz: str = "America/Chicago",
+                      _now: Optional[datetime] = None) -> List[Dict[str, Any]]:
+    """Publish approved posts whose niche's peak-time slot has arrived.
+
+    Meant to run often (every ~15 minutes, see scheduled-publish.yml) rather
+    than at one exact cron time, specifically so it never depends on GitHub's
+    UTC cron surviving a daylight-saving transition. A post approved well
+    before its slot just waits; one approved late is published on the very
+    next poll instead of being silently skipped.
+    """
+    now = _now or datetime.now(ZoneInfo(tz))
+    n, results = 0, []
+    for f in sorted(QUEUE.glob("*.json")):
+        post = json.loads(f.read_text())
+        if post.get("status") != "approved":
+            continue
+        target = PUBLISH_TIMES.get(post.get("niche", ""))
+        if target:
+            th, tm = (int(x) for x in target.split(":"))
+            target_dt = now.replace(hour=th, minute=tm, second=0, microsecond=0)
+            if now < target_dt:
+                continue   # not this post's turn yet
+        results.append(_publish_one(f, post, live))
+        n += 1
+    if not n:
+        print("Nothing is both approved and past its scheduled slot yet.")
+    return results
 
 
 # ---------------------------------------------------------------------------
@@ -217,6 +283,9 @@ def _main():
     pa = sub.add_parser("publish-approved")
     pa.add_argument("--live", action="store_true")
 
+    ps = sub.add_parser("publish-scheduled")
+    ps.add_argument("--live", action="store_true")
+
     sub.add_parser("linkinbio")
 
     a = ap.parse_args()
@@ -232,6 +301,8 @@ def _main():
         print("\n".join(rerender(p)))
     elif a.cmd == "publish-approved":
         publish_approved(a.live)
+    elif a.cmd == "publish-scheduled":
+        publish_scheduled(a.live)
     elif a.cmd == "linkinbio":
         from linkinbio import build
         print(build())
