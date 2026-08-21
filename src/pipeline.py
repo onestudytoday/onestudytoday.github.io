@@ -23,18 +23,35 @@ import sys
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Any, Dict, List, Optional
+from zoneinfo import ZoneInfo
 
 from config import OUT, PUBLISHED, QUEUE, settings
 from draft import draft_post, skeleton
 from render import contact_sheet, render_post
-from sources import Study, fetch_candidates, load_ledger, save_ledger
+from sources import Study, fetch_candidates, load_ledger, mark_seen, save_ledger, study_key
 from vet import vet
 
 WEEKDAY_NICHE = {0: "nature", 1: "psych", 2: "health", 3: "physics", 4: "wildcard"}
 
 
-def todays_niche(d: Optional[date] = None) -> Optional[str]:
-    return WEEKDAY_NICHE.get((d or date.today()).weekday())
+def todays_niche(d: Optional[date] = None, tz: str = "America/Chicago") -> Optional[str]:
+    """Which weekday's niche "today" is, in the configured operating
+    timezone - NOT the CI runner's UTC clock.
+
+    GitHub Actions runners are UTC. Without this, any manual trigger after
+    roughly 7pm Central already reads as tomorrow (UTC has rolled over while
+    it's still today locally), so it silently drafted the wrong weekday's
+    niche. That's what actually produced the wildcard/wildcard repeat on
+    20-21 Aug 2026 - it looked like a re-sourcing bug from the ledger side,
+    but the pipeline had genuinely already moved on to "Friday" a few hours
+    early each time.
+    """
+    if d is None:
+        try:
+            d = datetime.now(ZoneInfo(tz)).date()
+        except Exception:
+            d = datetime.now(ZoneInfo("America/Chicago")).date()
+    return WEEKDAY_NICHE.get(d.weekday())
 
 
 # ---------------------------------------------------------------------------
@@ -75,7 +92,7 @@ def pick_friday_source_niche() -> str:
 def run(niche: Optional[str] = None, days: int = 14, limit: int = 1,
         use_api: bool = True, dry_source: bool = False) -> List[Dict[str, Any]]:
     s = settings()
-    niche = niche or todays_niche()
+    niche = niche or todays_niche(tz=s.timezone or "America/Chicago")
     if not niche:
         print("Weekend. Nothing scheduled.")
         return []
@@ -133,6 +150,9 @@ def run(niche: Optional[str] = None, days: int = 14, limit: int = 1,
               f"lint={len(qa['lint_errors'])} "
               f"blocking={len(qa['blocking_claims'])} "
               f"publishable={qa['publishable']}")
+        # Mark it seen so a re-run before you approve/kill this one doesn't
+        # pull and draft the same study a second time (see fetch_candidates).
+        mark_seen(led, st)
         made.append(post)
         if len(made) >= limit:
             break
@@ -170,7 +190,7 @@ def publish_approved(live: bool = False) -> None:
             (PUBLISHED / f"{post['id']}.json").write_text(json.dumps(post, indent=2))
             f.unlink()
             led = load_ledger()
-            led.setdefault("posted", {})[post["id"]] = {
+            led.setdefault("posted", {})[study_key(post)] = {
                 "doi": post["study"]["doi"], "media_id": res["media_id"]}
             save_ledger(led)
         n += 1
