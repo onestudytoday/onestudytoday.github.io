@@ -7,5 +7,11 @@
       "reason": "killed from issue"
     }
   },
-  "seen": {}
+  "seen": {
+    "2a2bd3a21c8dfab9": {
+      "doi": "10.1080/19490976.2026.2718623",
+      "title": "<i>Phocaeicola coprocola</i> attenuates liver fibrosis by modulating extracellular matrix remodeling",
+      "at": "2026-08-21T11:58:36.821658"
+    }
+  }
 }
