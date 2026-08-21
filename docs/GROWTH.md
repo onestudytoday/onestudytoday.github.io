@@ -2,6 +2,9 @@
 
 Five posts a week, indefinitely, without burning out or drifting into hype.
 
+This assumes posts are already going out. If you have not published yet, read
+[`LAUNCH.md`](LAUNCH.md) first.
+
 ---
 
 ## The one number that matters
