@@ -76,6 +76,19 @@ def set_status(post_id: str, status: str, note: str = "") -> Dict[str, Any]:
     post["status"] = status
     post.setdefault("review", {})[status] = {"note": note}
     save(post)
+    if status == "rejected":
+        # This is what "kill ... never source that study again" (issue.py,
+        # docs/RUNBOOK.md) actually depends on. Without it, killing a post
+        # from the GitHub comment gate - the only way this happens in
+        # production - never touched the ledger, so the same study was free
+        # to be sourced and drafted all over again on the next run.
+        from sources import load_ledger, save_ledger, study_key
+        led = load_ledger()
+        led.setdefault("rejected", {})[study_key(post)] = {
+            "title": post["study"].get("title", "")[:160],
+            "doi": post["study"].get("doi", ""),
+            "reason": note or "killed by reviewer"}
+        save_ledger(led)
     return post
 
 
@@ -305,12 +318,7 @@ class Handler(BaseHTTPRequestHandler):
                 post["status"] = "approved"
                 save(post)
         elif self.path == "/reject":
-            post["status"] = "rejected"
-            save(post)
-            from sources import load_ledger, save_ledger
-            led = load_ledger()
-            led.setdefault("rejected", {})[post["id"]] = {"title": post["study"]["title"]}
-            save_ledger(led)
+            set_status(pid, "rejected")
 
         self.send_response(303)
         self.send_header("Location", f"/#{pid}")
