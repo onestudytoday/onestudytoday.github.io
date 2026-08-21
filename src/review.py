@@ -362,6 +362,10 @@ def _main():
         return
     if a.cmd == "force-approve":
         p = load(a.post_id)
+        if not p:
+            # Reached from the GitHub comment gate. Fail with a sentence a
+            # human can act on rather than a TypeError on None.
+            raise SystemExit(f"No queued post with id {a.post_id}")
         p["status"] = "approved"
         p.setdefault("review", {})["forced"] = True
         save(p)
