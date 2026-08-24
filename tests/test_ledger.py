@@ -111,3 +111,36 @@ def test_killing_a_post_adds_it_to_the_rejected_ledger(tmp_path, monkeypatch):
 
     led = json.loads((tmp_path / "ledger.json").read_text())
     assert s.key in led["rejected"]
+
+
+# ------------------------------------------------- kill deletes the queue file
+def test_killing_a_post_deletes_its_queue_file(tmp_path, monkeypatch):
+    # Regression test for the "same wildcard study every run" incident of
+    # 24 Aug 2026: kill only ever flipped a status field and left the file
+    # sitting in data/queue/ forever. daily-draft.yml used to pick "whichever
+    # queue file sorts first" to decide which post to open a review issue
+    # for, so an old killed post with an early date prefix could permanently
+    # win that pick over whatever a run had actually just drafted - the
+    # review issue kept showing a study that had already been killed, run
+    # after run, while genuinely new drafts never got reviewed at all. The
+    # workflow itself was fixed to stop guessing from the directory, but a
+    # killed post that no longer exists on disk can't be picked by ANY future
+    # bug of that shape either.
+    import review
+
+    queue_dir = tmp_path / "queue"
+    queue_dir.mkdir()
+    monkeypatch.setattr(sources, "LEDGER", tmp_path / "ledger.json")
+    monkeypatch.setattr(review, "QUEUE", queue_dir)
+
+    s = _study("10.1000/delete-me")
+    post = {"id": "2026-08-14-wildcard-oldstale1", "status": "needs_review",
+            "study": {"key": s.key, "doi": s.doi, "title": s.title},
+            "qa": {}, "vet": {}, "caveats": ["x"]}
+    p = queue_dir / f"{post['id']}.json"
+    p.write_text(json.dumps(post))
+
+    review.set_status(post["id"], "rejected", "killed from issue")
+
+    assert not p.exists()
+    assert review.queued() == []
