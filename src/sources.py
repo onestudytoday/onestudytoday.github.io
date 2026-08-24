@@ -25,6 +25,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import sys
 import time
@@ -47,6 +48,7 @@ EPMC = "https://www.ebi.ac.uk/europepmc/webservices/rest/search"
 CROSSREF = "https://api.crossref.org/works"
 ARXIV = "https://export.arxiv.org/api/query"
 BIORXIV = "https://api.biorxiv.org/details"
+ALTMETRIC = "https://api.altmetric.com/v1/doi"
 
 PREPRINT_SERVERS = {
     "biorxiv": "bioRxiv", "medrxiv": "medRxiv", "arxiv": "arXiv",
@@ -387,6 +389,65 @@ def study_key(post: Dict[str, Any]) -> str:
 
 
 # ---------------------------------------------------------------------------
+# Projected engagement - which of today's already-eligible candidates is
+# worth trying first.
+#
+# This is a tiebreaker layered on top of everything above it, not a
+# replacement for any of it: recency and the vet.py credibility gates still
+# decide who is even IN the running. This only decides the ORDER they get
+# tried in when more than one candidate would otherwise qualify.
+#
+# Real attention data (news, social shares, Reddit, policy citations - what
+# actually predicts whether people engage with a post) lives behind
+# Altmetric's API, which has required a key for every request since Nov 2025.
+# Individual researchers can request a free key through Altmetric's
+# Scientometric Researcher Access program, but it is explicitly scoped to
+# "a specific academic project" and requires applying directly through
+# Altmetric - there is no instant self-serve signup, and there is no
+# guarantee a social-media account (rather than a research project) is
+# accepted. So this only ever calls Altmetric if ALTMETRIC_API_KEY is set
+# (add it to .env locally / as a GitHub secret in CI, same as every other
+# credential - see RUNBOOK); without one it costs nothing and calls nothing.
+#
+# Either way, the fallback is two signals already being fetched for other
+# reasons - citation count and open-access status - which vet.py also treats
+# as small credibility bonuses. For a paper published in the last 14 days
+# (this account's whole premise) both are usually still 0: citations and
+# attention both take time to accumulate, and there is no honest way around
+# that with a free source. So most candidates score identically here and
+# this falls back to exactly the old recency-only order - it only pulls a
+# candidate to the front when it already shows real, measurable traction.
+def altmetric_score(doi: str) -> Optional[float]:
+    key = os.environ.get("ALTMETRIC_API_KEY", "").strip()
+    if not key or not doi:
+        return None
+    try:
+        d = _get(f"{ALTMETRIC}/{doi}", {"key": key}, cache_key=f"alt:{doi}", ttl=3600)
+    except Exception:
+        return None   # covers "no key configured yet", 404 "not tracked
+                       # yet", and any transient network/API failure alike -
+                       # all of them mean the same thing to the caller: fall
+                       # back to the free proxy.
+    if not isinstance(d, dict):
+        return None
+    try:
+        return float(d.get("score", 0) or 0)
+    except (TypeError, ValueError):
+        return None
+
+
+def engagement_proxy(s: Study) -> float:
+    alt = altmetric_score(s.doi)
+    if alt is not None:
+        return 1000.0 + alt   # a real attention score always outranks the
+                               # free fallback below, regardless of scale
+    score = min(s.citations, 50) * 2
+    if s.open_access:
+        score += 3
+    return score
+
+
+# ---------------------------------------------------------------------------
 def load_niches() -> Dict[str, Any]:
     return yaml.safe_load((ROOT / "config" / "niches.yaml").read_text())
 
@@ -443,8 +504,16 @@ def fetch_candidates(niche: str, days: Optional[int] = None,
     uniq = [s for s in uniq
             if not any(e in (s.title + " " + " ".join(s.pub_types)).lower() for e in ex)]
 
+    # Recency picks WHICH candidates make the cut; engagement then decides
+    # the order they're tried in within that already-chosen set. Scoring
+    # happens after the truncation, not before, so this never costs more
+    # Altmetric lookups than a run already had candidates for - the cost
+    # scales with max_candidates, not with however many raw results the
+    # sources happened to return.
     uniq.sort(key=lambda s: (s.pub_date or ""), reverse=True)
-    return uniq[: defaults["max_candidates"]]
+    uniq = uniq[: defaults["max_candidates"]]
+    uniq.sort(key=engagement_proxy, reverse=True)
+    return uniq
 
 
 # ---------------------------------------------------------------------------
