@@ -1,0 +1,162 @@
+{
+  "id": "2026-08-21-nature-e1d18f24",
+  "niche": "nature",
+  "study": {
+    "key": "e1d18f242fe71a7d",
+    "title": "From gut to brain: data-driven evidence suggests causal contribution of gut-microbiota to major depressive disorder in humans",
+    "journal": "Gut microbes",
+    "pub_date": "2026-08-21",
+    "pub_date_display": "Aug 21, 2026",
+    "doi": "10.1080/19490976.2026.2718589",
+    "doi_display": "doi.org/10.1080/19490976.2026.2718589",
+    "url": "https://doi.org/10.1080/19490976.2026.2718589",
+    "is_preprint": false,
+    "server": "",
+    "n": 1269,
+    "authors": [
+      "Fehse L",
+      "Ribeiro AH",
+      "Winter NR",
+      "Thanarajah SE",
+      "Fisch L",
+      "Welzel M"
+    ]
+  },
+  "cover": {
+    "kicker": "Gut Microbes \u00b7 1,269 participants",
+    "headline": "Two gut bacteria are linked to **major depression** in the largest human causal-inference study."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Animal studies hint the gut microbiome might play a role in depression, but human evidence has been messy.",
+      "body": "Major depressive disorder affects millions worldwide and remains one of the leading causes of disability. Researchers have long suspected the gut microbiome might be involved, and rodent experiments suggest it could be a contributor\u2014but human studies have been small, inconsistent, and can't tell correlation from causation.\n\nThis team set out to fix that. They recruited 1,269 people with and without depression, used rigorous diagnostic interviews, and applied cutting-edge causal inference tools to ask whether any bacteria might go together with depression in a directional way."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Four bacterial taxa differed between people with depression and healthy controls, and two showed a potential causal signal.",
+      "body": "Eggerthella, Hungatella, Coprobacillus, and Lachnospiraceae FCS020 all showed significant differences in relative abundance between the two groups. When the researchers applied data-driven causal inference methods\u2014designed to tease out direction of influence\u2014Eggerthella and Hungatella emerged as potentially linked to major depressive disorder.\n\nThose two taxa remained associated with depression even after accounting for body mass index, suggesting two distinct pathways connecting gut microbes to mood. The findings held regardless of whether participants were taking antidepressants.",
+      "stat": {
+        "value": "1,269",
+        "label": "people studied across multiple centers"
+      }
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Something else could explain the link.",
+    "The analysis relied on cross-sectional data, so it captures a snapshot in time rather than tracking changes.",
+    "Causal inference tools can suggest direction but cannot replace experiments that directly manipulate the microbiome."
+  ],
+  "cta": {
+    "headline": "Want the full causal framework?",
+    "sub": "Swipe up to read the complete paper and methods in Gut Microbes."
+  },
+  "caption": "The bacteria living in your gut might be linked to whether you develop major depression. Researchers analyzed stool samples and clinical assessments from 1,269 people\u2014some with major depressive disorder, some without\u2014and found that four bacterial taxa differed between the groups. Using advanced causal inference methods from Judea Pearl's framework, they identified two bacteria, Eggerthella and Hungatella, as potentially associated with depression through pathways independent of body weight. The association held even in people taking antidepressants. The study was published in Gut Microbes and represents the largest multicenter cohort with both microbiome data and in-depth diagnostic interviews. This is observational work, so it can't establish causation. Full study: doi.org/10.1080/19490976.2026.2718589 What surprised you most here?",
+  "hashtag_set": "health",
+  "vet": {
+    "key": "e1d18f242fe71a7d",
+    "verdict": "HOLD",
+    "score": 46,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "warn",
+        "message": "Design reads as observational (cross-sectional (observational)); markers: cross-sectional, cohort, association",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      },
+      {
+        "code": "CAUSAL_LANGUAGE_IN_OBSERVATIONAL",
+        "severity": "warn",
+        "message": "The paper's own text uses causal verbs (causes) despite an observational design. The authors are overreaching - do not repeat it.",
+        "caveat": null,
+        "draft_rule": null
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Gut microbes' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "cross-sectional (observational)",
+    "sample_size": 1269,
+    "subjects": "human",
+    "journal_tier": null,
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": []
+  },
+  "qa": {
+    "lint_errors": [
+      "GUARDRAIL causal_verb_on_observational: Draft uses a causal verb but the study design is observational."
+    ],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "This is observational work, so it can't establish causation.",
+          "problem": "This contradicts the abstract's central claim. The abstract explicitly states it provides 'the first data-driven evidence for a potential causal role of gut microbiota in the pathophysiology of depression in humans' and 'found evidence for Eggerthella and Hungatella as potential causal contributors to MDD.' While the copy's caveat about observational data is technically reasonable, stating flatly that it 'can't establish causation' directly contradicts the paper's own framing of finding causal evidence using causal inference methods.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Full study: doi.org/10.1080/19490976.2026.2718589",
+          "problem": "The abstract contains no DOI or publication identifier. This specific DOI does not appear in the abstract and cannot be verified. Additionally, the year 2026 appears to be in the future, which is suspicious.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Eggerthella and Hungatella emerged as potentially linked to major depressive disorder",
+          "problem": "The abstract states these taxa were found to be 'potential causal contributors to MDD,' not merely 'potentially linked.' The copy weakens the claim from causal contributors to just linked/associated, which understates what the abstract claims.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Two gut bacteria are linked to **major depression** in the largest human causal-inference study.",
+          "problem": "The abstract does not claim this is 'the largest human causal-inference study'\u2014it claims it is 'one of the largest multicenter MDD cohorts for which microbiome data and in-depth diagnostic assessment are available.' These are different claims.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "1,269",
+          "found_in_abstract": true
+        },
+        {
+          "number": "two",
+          "found_in_abstract": true
+        },
+        {
+          "number": "four",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "This is observational work, so it can't establish causation.",
+        "problem": "This contradicts the abstract's central claim. The abstract explicitly states it provides 'the first data-driven evidence for a potential causal role of gut microbiota in the pathophysiology of depression in humans' and 'found evidence for Eggerthella and Hungatella as potential causal contributors to MDD.' While the copy's caveat about observational data is technically reasonable, stating flatly that it 'can't establish causation' directly contradicts the paper's own framing of finding causal evidence using causal inference methods.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Full study: doi.org/10.1080/19490976.2026.2718589",
+        "problem": "The abstract contains no DOI or publication identifier. This specific DOI does not appear in the abstract and cannot be verified. Additionally, the year 2026 appears to be in the future, which is suspicious.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Two gut bacteria are linked to **major depression** in the largest human causal-inference study.",
+        "problem": "The abstract does not claim this is 'the largest human causal-inference study'\u2014it claims it is 'one of the largest multicenter MDD cohorts for which microbiome data and in-depth diagnostic assessment are available.' These are different claims.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "nature"
+}
