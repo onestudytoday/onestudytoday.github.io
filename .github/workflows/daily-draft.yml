@@ -53,6 +53,10 @@ jobs:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
           IG_BUSINESS_ACCOUNT_ID: ${{ secrets.IG_BUSINESS_ACCOUNT_ID }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Optional. Leave this secret unset and sourcing just uses the free
+          # citations + open-access fallback (sources.engagement_proxy) - a
+          # real Altmetric attention score only kicks in once this exists.
+          ALTMETRIC_API_KEY: ${{ secrets.ALTMETRIC_API_KEY }}
           PUBLIC_IMAGE_BASE: ${{ vars.PUBLIC_IMAGE_BASE }}
           HANDLE: ${{ vars.HANDLE }}
           THEME: ${{ vars.THEME }}
@@ -82,7 +86,19 @@ jobs:
             esac
           fi
           python src/pipeline.py run "${ARGS[@]}" | tee run.log
-          NEW=$(ls -1 data/queue/*.json 2>/dev/null | head -1 || true)
+          # Read the id straight out of THIS run's own "-> queued <id>" line
+          # (pipeline.py run()), not a directory listing. A plain `ls
+          # data/queue/*.json | head -1` picks whatever file sorts first
+          # alphabetically - and killing a post only ever changes its status
+          # field, it never deletes the file - so an old rejected post with
+          # an earlier date prefix would permanently win that pick and get a
+          # fresh review issue opened for IT every run, while whatever this
+          # run actually just drafted silently never got reviewed at all.
+          NEW_ID=$(grep -oP '(?<=-> queued )\S+' run.log | tail -1 || true)
+          NEW=""
+          if [ -n "$NEW_ID" ]; then
+            NEW="data/queue/${NEW_ID}.json"
+          fi
           echo "post_file=$NEW" >> "$GITHUB_OUTPUT"
 
       - name: Stage slide JPEGs for GitHub Pages
