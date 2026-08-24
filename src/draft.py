@@ -367,12 +367,39 @@ def _wc(s: str) -> int:
     return len(re.findall(r"\b[\w'’\-]+\b", s or ""))
 
 
+def _typed(container: Dict[str, Any], key: str, kind: type,
+          errs: List[str], where: str) -> Any:
+    """Safely pull a nested field the model was asked to emit via the tool
+    schema. The API guarantees the top-level tool-call arguments are a JSON
+    object, but nested field TYPES inside that are only requested, not
+    enforced - and an unusual candidate can occasionally come back with a
+    field as the wrong type. A HOLD-status paper about porcine coronavirus
+    nucleocapsid signalling once got "cover" back as a bare string instead of
+    an object, which crashed straight through a `.get()` chain deep in this
+    function and silently dropped the whole candidate in pipeline.run()'s
+    `except Exception` - one candidate quietly skipped every run, never
+    fixed, never even visible unless you went looking at the raw log.
+    Reporting it as a lint failure instead means it feeds into the same
+    repair round-trip as a bad word count: the model gets told exactly what
+    was wrong and gets up to MAX_REPAIRS tries to correct it, rather than the
+    whole draft attempt dying on the spot.
+    """
+    v = container.get(key) if isinstance(container, dict) else None
+    if not isinstance(v, kind):
+        noun = "an object" if kind is dict else "a list"
+        got = type(v).__name__ if v is not None else "nothing"
+        errs.append(f"{where}: expected {noun}, got {got}")
+        return kind()
+    return v
+
+
 def lint(post: Dict[str, Any], rep: VetReport, study: Any = None) -> List[str]:
     spec = SPEC["fields"]
     voice = SPEC["voice"]
     errs: List[str] = []
 
     def check_words(label, text, key):
+        text = text if isinstance(text, str) else ""
         lo, hi = spec[key]["words"]
         n = _wc(text)
         if not (lo <= n <= hi):
@@ -381,43 +408,52 @@ def lint(post: Dict[str, Any], rep: VetReport, study: Any = None) -> List[str]:
         if cm and len(text) > cm:
             errs.append(f"{label}: {len(text)} chars, max {cm}")
 
-    cov = post.get("cover", {})
+    cov = _typed(post, "cover", dict, errs, "cover")
     check_words("cover.kicker", cov.get("kicker", ""), "cover.kicker")
     check_words("cover.headline", cov.get("headline", ""), "cover.headline")
 
-    runs = len(re.findall(r"\*\*.+?\*\*", cov.get("headline", "")))
+    runs = len(re.findall(r"\*\*.+?\*\*", cov.get("headline") or ""))
     if runs != 1:
         errs.append(f"cover.headline: {runs} highlighted phrases, need exactly 1")
 
-    slides = post.get("slides", [])
+    slides = _typed(post, "slides", list, errs, "slides")
     if not (2 <= len(slides) <= 4):
         errs.append(f"slides: {len(slides)}, need 2-4")
-    stats = sum(1 for sl in slides if sl.get("stat"))
+    stats = sum(1 for sl in slides if isinstance(sl, dict) and sl.get("stat"))
     if stats > 1:
         errs.append(f"slides: {stats} stat callouts, only 1 allowed")
     for i, sl in enumerate(slides, 1):
+        if not isinstance(sl, dict):
+            errs.append(f"slide{i}: expected an object, got {type(sl).__name__}")
+            continue
         check_words(f"slide{i}.title", sl.get("title", ""), "slide.title")
         check_words(f"slide{i}.body", sl.get("body", ""), "slide.body")
-        paras = [p for p in re.split(r"\n\s*\n", sl.get("body", "")) if p.strip()]
+        paras = [p for p in re.split(r"\n\s*\n", sl.get("body") or "") if p.strip()]
         if len(paras) != 2:
             errs.append(f"slide{i}.body: {len(paras)} paragraphs, need exactly 2")
         st = sl.get("stat")
-        if st:
-            if len(st.get("value", "")) > spec["slide.stat.value"]["chars_max"]:
+        if st is not None and not isinstance(st, dict):
+            errs.append(f"slide{i}.stat: expected an object, got {type(st).__name__}")
+        elif st:
+            if len(st.get("value", "") or "") > spec["slide.stat.value"]["chars_max"]:
                 errs.append(f"slide{i}.stat.value too long: '{st.get('value')}'")
             check_words(f"slide{i}.stat.label", st.get("label", ""), "slide.stat.label")
 
-    cav = post.get("caveats", [])
+    cav = _typed(post, "caveats", list, errs, "caveats")
     lo, hi = spec["caveats"]["count"]
     if not (lo <= len(cav) <= hi):
         errs.append(f"caveats: {len(cav)} items, need {lo}-{hi}")
     wlo, whi = spec["caveats"]["words_each"]
     for i, c in enumerate(cav, 1):
+        if not isinstance(c, str):
+            errs.append(f"caveat{i}: expected text, got {type(c).__name__}")
+            continue
         if not (wlo <= _wc(c) <= whi):
             errs.append(f"caveat{i}: {_wc(c)} words, spec is {wlo}-{whi}")
 
-    check_words("cta.headline", post.get("cta", {}).get("headline", ""), "cta.headline")
-    check_words("cta.sub", post.get("cta", {}).get("sub", ""), "cta.sub")
+    cta = _typed(post, "cta", dict, errs, "cta")
+    check_words("cta.headline", cta.get("headline", ""), "cta.headline")
+    check_words("cta.sub", cta.get("sub", ""), "cta.sub")
     check_words("caption", post.get("caption", ""), "caption")
 
     blob = flatten(post)
@@ -456,17 +492,35 @@ def lint(post: Dict[str, Any], rep: VetReport, study: Any = None) -> List[str]:
 
 
 def flatten(post: Dict[str, Any], include_cta: bool = True) -> str:
-    parts = [post.get("cover", {}).get("kicker", ""),
-             post.get("cover", {}).get("headline", "")]
-    for sl in post.get("slides", []):
-        parts += [sl.get("title", ""), sl.get("body", "")]
-        if sl.get("stat"):
-            parts += [sl["stat"].get("value", ""), sl["stat"].get("label", "")]
-    parts += post.get("caveats", [])
+    # Defensive on every nested lookup, same reasoning as _typed() above: this
+    # runs on the RAW model output inside lint() before any repair round has
+    # had a chance to fix a malformed field, so it cannot assume post["cover"]
+    # etc. are actually the object/list shape the schema asked for.
+    def s(v: Any) -> str:
+        return v if isinstance(v, str) else ""
+
+    cov = post.get("cover")
+    cov = cov if isinstance(cov, dict) else {}
+    parts = [s(cov.get("kicker")), s(cov.get("headline"))]
+
+    slides = post.get("slides")
+    for sl in (slides if isinstance(slides, list) else []):
+        if not isinstance(sl, dict):
+            continue
+        parts += [s(sl.get("title")), s(sl.get("body"))]
+        st = sl.get("stat")
+        if isinstance(st, dict):
+            parts += [s(st.get("value")), s(st.get("label"))]
+
+    cav = post.get("caveats")
+    parts += [c for c in (cav if isinstance(cav, list) else []) if isinstance(c, str)]
+
     if include_cta:
-        parts += [post.get("cta", {}).get("headline", ""),
-                  post.get("cta", {}).get("sub", "")]
-    parts += [post.get("caption", "")]
+        cta = post.get("cta")
+        cta = cta if isinstance(cta, dict) else {}
+        parts += [s(cta.get("headline")), s(cta.get("sub"))]
+
+    parts += [s(post.get("caption"))]
     return "\n".join(p for p in parts if p)
 
 
@@ -478,6 +532,40 @@ def flatten(post: Dict[str, Any], include_cta: bool = True) -> str:
 # finished copy in plain Python and compare it against the study it came from,
 # so a post cannot carry a link, a handle or a statistic that the source paper
 # does not account for - however persuasive the abstract was.
+_NUMBER_WORDS = {
+    0: "zero", 1: "one", 2: "two", 3: "three", 4: "four", 5: "five",
+    6: "six", 7: "seven", 8: "eight", 9: "nine", 10: "ten",
+    11: "eleven", 12: "twelve", 13: "thirteen", 14: "fourteen",
+    15: "fifteen", 16: "sixteen", 17: "seventeen", 18: "eighteen",
+    19: "nineteen", 20: "twenty",
+}
+
+
+def _number_word_appears(val: float, abstract: str) -> bool:
+    """True if the spelled-out English word for a whole number 0-20 appears
+    in the abstract as its own word - "seven" inside "seven-fold" or
+    "sevenfold" both count, a hyphen and no space both act as a word
+    boundary. "seven" inside "seventeen" does NOT count - \\b sits between
+    a word character and a non-word character, and there is no such
+    boundary in the middle of "seventeen".
+
+    Added after a real incident: an abstract said "seven-fold" and the
+    drafted copy correctly restated it as "7-fold", but the number-check
+    only ever compared digit strings, so it flagged 7 as unsupported and
+    blocked the post over two numbers that mean exactly the same thing.
+    Scoped to 0-20 deliberately - past that, spelled-out numbers have
+    enough phrasing variants ("one hundred and twenty" vs "one hundred
+    twenty") that a wrong match is more likely than a right one, and larger
+    figures are worth a human's eye anyway.
+    """
+    if val != int(val):
+        return False
+    word = _NUMBER_WORDS.get(int(val))
+    if not word:
+        return False
+    return re.search(rf"\b{word}\b", abstract or "", re.I) is not None
+
+
 _URLISH = re.compile(
     r"(?:https?://|www\.)\S+"
     r"|\b10\.\d{4,9}/\S+"
@@ -531,9 +619,12 @@ def local_unverified_numbers(text: str, abstract: str) -> List[Dict[str, Any]]:
     The audit call already asks a model to do this. This is the same check done
     in code, so the answer does not depend on a model that was itself shown the
     abstract. Deliberately lenient - it skips small counting numbers and years,
-    strips the study link out first, and accepts a number that appears inside a
-    longer number in the abstract (44 in 44.3) - so what survives is a figure
-    with no counterpart in the source at all.
+    strips the study link out first, accepts a number that appears inside a
+    longer number in the abstract (44 in 44.3), and accepts the spelled-out
+    word for 0-20 as equivalent to its digit (7 vs the abstract's
+    "seven-fold" - see _number_word_appears) - so what survives is a figure
+    with no counterpart in the source at all, not just a different spelling
+    of the same one.
     """
     body = _URLISH.sub(" ", text or "")
     abs_norm = re.sub(r"(?<=\d)[,\s](?=\d)", "", abstract or "")
@@ -558,6 +649,9 @@ def local_unverified_numbers(text: str, abstract: str) -> List[Dict[str, Any]]:
             continue                        # a year, not a finding
         if plain in abs_norm:
             continue
+        if _number_word_appears(val, abstract):
+            continue                        # "7" vs the abstract's
+                                             # "seven-fold" - same number
         out.append({"number": tok, "found_in_abstract": False,
                     "checked_by": "code"})
     return out[:8]
@@ -577,6 +671,12 @@ strict and literal. A claim is unsupported if:
   - the copy generalises beyond the population, species, or setting studied
   - a number in the copy does not appear in the abstract, or has been rounded, \
 converted, or restated in a way that changes its meaning
+
+A number written differently but meaning the same VALUE is not a mismatch - \
+"7-fold" and "seven-fold", "12" and "twelve", "3%" and "three percent" are the \
+same number. Only flag a number if the actual value is different, invented, or \
+misleadingly rounded/converted - never merely because it is spelled differently \
+than the abstract spells it.
 
 Mark severity "blocking" for anything that would mislead a reader about what the \
 study found. Mark "minor" for wording that is loose but not misleading.
