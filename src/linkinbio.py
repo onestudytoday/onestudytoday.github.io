@@ -24,7 +24,8 @@ from datetime import date, datetime
 from pathlib import Path
 from typing import Any, Dict, List
 
-from config import DOCS, PUBLISHED, settings
+from config import DOCS, PUBLISHED
+from config import handle as handle_setting
 from theme import NICHES
 
 PROFILE_LINKS: List[Dict[str, str]] = [
@@ -101,7 +102,6 @@ METHOD = """
 
 
 def build() -> str:
-    s = settings()
     posts: List[Dict[str, Any]] = []
     for f in PUBLISHED.glob("*.json"):
         try:
@@ -138,7 +138,7 @@ def build() -> str:
     if not sections:
         sections = ['<h2>This week</h2><div class="src">First posts land soon.</div>']
 
-    handle = s.handle
+    handle = handle_setting()
     doc = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
