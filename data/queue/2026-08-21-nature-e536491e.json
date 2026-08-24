@@ -1,0 +1,149 @@
+{
+  "id": "2026-08-21-nature-e536491e",
+  "niche": "nature",
+  "study": {
+    "key": "e536491ebb8707ff",
+    "title": "G protein-coupled estrogen receptor (GPER) modulates epithelial-mesenchymal transition-like phenotype in human glioblastoma cells",
+    "journal": "Cell adhesion & migration",
+    "pub_date": "2026-08-21",
+    "pub_date_display": "Aug 21, 2026",
+    "doi": "10.1080/19336918.2026.2720325",
+    "doi_display": "doi.org/10.1080/19336918.2026.2720325",
+    "url": "https://doi.org/10.1080/19336918.2026.2720325",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Pe\u00f1a-Guti\u00e9rrez KM",
+      "Hern\u00e1ndez-Ortega K",
+      "Castro-Reyes BA",
+      "Rosas-Benitez A",
+      "V\u00e1zquez-Mart\u00ednez ER",
+      "Garc\u00eda-Becerra R"
+    ]
+  },
+  "cover": {
+    "kicker": "Cell Adhesion & Migration \u2022 lab study",
+    "headline": "A membrane estrogen receptor **drives aggressive behavior** in glioblastoma cells grown in the lab."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Glioblastoma is the deadliest brain tumor, and estrogen has been linked to its spread.",
+      "body": "The hormone 17\u03b2-estradiol can make glioblastoma cells more aggressive by acting through receptors inside the cell. But there's another estrogen receptor\u2014GPER\u2014sitting on the cell membrane, and its role in glioblastoma has been largely overlooked.\n\nDoes this surface receptor also influence how tumor cells migrate and invade surrounding tissue? And could blocking it change their behavior?"
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Activating GPER with estrogen or a targeted drug increased both migration and invasion in two glioblastoma cell lines.",
+      "body": "Researchers tested U251 and U87 cells with estrogen, a GPER-specific activator called G-1, and a blocker called G-15. Both estrogen and G-1 ramped up cell migration and invasion, while G-15 reduced these effects whether used alone or combined with the activators.\n\nGPER activation also pushed cells toward a mesenchymal-like state\u2014a shape-shifting process associated with metastasis and treatment resistance in many cancers."
+    },
+    {
+      "eyebrow": "Why it matters",
+      "title": "This pathway could explain part of why sex hormones influence glioblastoma progression and survival.",
+      "body": "If GPER signaling drives invasion and phenotype changes in human tumors the way it does in cultured cells, blocking it might slow disease spread. The receptor is already a drug target in other cancers.\n\nUnderstanding how membrane and intracellular estrogen receptors work together\u2014or compete\u2014could open new combination strategies for one of the hardest cancers to treat."
+    }
+  ],
+  "caveats": [
+    "This study used two cell lines grown in lab dishes, not tumors in living organisms or human patients.",
+    "The experiments did not track whether blocking GPER affects tumor growth or survival, only migration and invasion markers."
+  ],
+  "cta": {
+    "headline": "Curious how hormones shape cancer?",
+    "sub": "Follow for research that connects biology, behavior, and treatment\u2014one study at a time."
+  },
+  "caption": "A receptor on the surface of glioblastoma cells responds to estrogen and appears to crank up their ability to migrate and invade, according to lab experiments in two human-derived cell lines. Researchers used a GPER agonist called G-1 and an antagonist called G-15 to isolate the receptor's effects, finding that activation promoted a mesenchymal-like phenotype linked to aggressive cancer behavior. Published in Cell Adhesion & Migration, the study worked with U251 and U87 cells under controlled conditions. Results in cultured cells don't guarantee the same dynamics occur in living tumors. Full study: doi.org/10.1080/19336918.2026.2720325\u2014What brain tumor scares you most?",
+  "hashtag_set": "health",
+  "vet": {
+    "key": "e536491ebb8707ff",
+    "verdict": "PASS",
+    "score": 50,
+    "flags": [
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Cell adhesion & migration' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "mechanistic / lab",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [],
+    "notes": []
+  },
+  "qa": {
+    "lint_errors": [],
+    "repair_rounds": 1,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "drives aggressive behavior",
+          "problem": "The abstract states GPER activation 'increased migration and invasion' but does not use the term 'aggressive behavior' or establish that GPER 'drives' this as a causal mechanism. The abstract only shows GPER activation is associated with or increases these behaviors.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Glioblastoma is the deadliest brain tumor",
+          "problem": "The abstract states glioblastomas are 'the most frequent and aggressive central nervous system tumors' but does not claim they are 'the deadliest'",
+          "severity": "minor"
+        },
+        {
+          "claim": "estrogen has been linked to its spread",
+          "problem": "The abstract states progression is 'influenced by sex hormones' and E2 'enhances proliferative, migratory, and invasive capacities' but does not specifically state estrogen has been linked to 'spread'",
+          "severity": "minor"
+        },
+        {
+          "claim": "its role in glioblastoma has been largely overlooked",
+          "problem": "The abstract states the role 'remains poorly understood' which is not the same as 'largely overlooked'",
+          "severity": "minor"
+        },
+        {
+          "claim": "a shape-shifting process associated with metastasis and treatment resistance in many cancers",
+          "problem": "The abstract does not mention metastasis or treatment resistance. It only describes EMT-like process without these additional associations.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "This pathway could explain part of why sex hormones influence glioblastoma progression and survival",
+          "problem": "The abstract mentions 'progression is influenced by sex hormones' but does not mention 'survival' as being influenced by sex hormones",
+          "severity": "minor"
+        },
+        {
+          "claim": "The receptor is already a drug target in other cancers",
+          "problem": "This claim is not mentioned anywhere in the abstract",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Full study: doi.org/10.1080/19336918.2026.2720325",
+          "problem": "This DOI is not provided in the abstract. Additionally, the year 2026 is in the future, which appears incorrect.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": []
+    },
+    "blocking_claims": [
+      {
+        "claim": "a shape-shifting process associated with metastasis and treatment resistance in many cancers",
+        "problem": "The abstract does not mention metastasis or treatment resistance. It only describes EMT-like process without these additional associations.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "The receptor is already a drug target in other cancers",
+        "problem": "This claim is not mentioned anywhere in the abstract",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Full study: doi.org/10.1080/19336918.2026.2720325",
+        "problem": "This DOI is not provided in the abstract. Additionally, the year 2026 is in the future, which appears incorrect.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "nature"
+}
