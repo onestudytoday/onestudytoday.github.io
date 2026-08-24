@@ -103,11 +103,15 @@
     "unverified_numbers": [],
     "publishable": false
   },
-  "status": "approved",
+  "status": "published",
   "source_niche": "nature",
   "review": {
     "approved": {
       "note": ""
     }
+  },
+  "published": {
+    "media_id": "18138721987610554",
+    "at": "2026-08-24T19:41:56Z"
   }
 }
