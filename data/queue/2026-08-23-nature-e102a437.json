@@ -1,0 +1,108 @@
+{
+  "id": "2026-08-23-nature-e102a437",
+  "niche": "nature",
+  "study": {
+    "key": "e102a437c05f39c4",
+    "title": "Porcine deltacoronavirus nucleocapsid protein inhibits RIG-I signaling pathway by suppressing G3BP1-mediated stress granules formation",
+    "journal": "Virulence",
+    "pub_date": "2026-08-23",
+    "pub_date_display": "Aug 23, 2026",
+    "doi": "10.1080/21505594.2026.2721825",
+    "doi_display": "doi.org/10.1080/21505594.2026.2721825",
+    "url": "https://doi.org/10.1080/21505594.2026.2721825",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Guo M",
+      "Hu Y",
+      "Wang D",
+      "Tang Y",
+      "Yuan J",
+      "Shi C"
+    ]
+  },
+  "cover": {
+    "kicker": "Virulence \u00b7 Swine pathogen study",
+    "headline": "A pig virus **disarms the immune system** by dismantling the cell's own alarm structures."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Stress granules are tiny defense hubs inside cells that help fight off viral infections.",
+      "body": "When a virus invades, cells form stress granules\u2014clumps of RNA and protein that slow down viral replication and boost the immune response. Porcine deltacoronavirus causes severe diarrhea in young pigs and is considered an emerging zoonotic threat.\n\nResearchers knew the virus evades immunity, but the mechanism remained unclear. The question: how does this coronavirus disable the stress granule defense system?"
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "The virus triggered stress granules early on, then systematically dismantled them to replicate freely.",
+      "body": "In infected pig cells, stress granules formed during early infection but gradually disassembled as the virus progressed. When researchers artificially induced stress granules, viral replication dropped significantly. The virus depends on breaking down these defenses.\n\nThe viral nucleocapsid protein directly binds to G3BP1, the core scaffolding protein of stress granules, preventing assembly. This binding also blocks G3BP1 from recruiting RIG-I, a key immune sensor, thereby suppressing interferon production and weakening antiviral defenses."
+    },
+    {
+      "eyebrow": "Why it matters",
+      "title": "This immune evasion trick is conserved across multiple coronaviruses, suggesting a common vulnerability.",
+      "body": "The researchers found that diverse coronaviruses share this stress granule-disrupting function through their nucleocapsid proteins, correlating with structural similarities. This conservation suggests the mechanism is critical for viral success.\n\nBecause the nucleocapsid protein is structurally conserved, it represents a promising target for developing broad-spectrum antiviral therapies that could work against multiple coronavirus species."
+    }
+  ],
+  "caveats": [
+    "This was done in pigs, not humans. Most findings in pigs do not carry over to people.",
+    "The study used cell culture and lab models, not natural infection conditions in living animals.",
+    "The broad-spectrum antiviral potential remains theoretical until tested in clinical settings."
+  ],
+  "cta": {
+    "headline": "Read the full viral mechanism",
+    "sub": "See how a viral protein outsmarts the cell's stress response system."
+  },
+  "caption": "A coronavirus that infects pigs has evolved a clever way to dismantle one of the cell's first lines of defense. Porcine deltacoronavirus initially triggers stress granules\u2014protective protein clusters that normally restrict viral replication\u2014then uses its nucleocapsid protein to tear them apart. The viral protein binds to G3BP1, the scaffolding molecule that holds stress granules together, preventing assembly and blocking immune signaling. The study was published in Virulence and conducted in pig cell cultures. The work",
+  "hashtag_set": "nature",
+  "vet": {
+    "key": "e102a437c05f39c4",
+    "verdict": "HOLD",
+    "score": 46,
+    "flags": [
+      {
+        "code": "NON_HUMAN",
+        "severity": "warn",
+        "message": "Study subjects are pigs, not people.",
+        "caveat": "This was done in pigs \u2014 not humans. Most findings in pigs do not carry over to people.",
+        "draft_rule": "Subjects were pigs, NOT humans. The cover slide must not imply a human result. Name the species explicitly by slide 2."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Virulence' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "mechanistic / lab",
+    "sample_size": null,
+    "subjects": "non-human",
+    "journal_tier": null,
+    "required_caveats": [
+      "This was done in pigs \u2014 not humans. Most findings in pigs do not carry over to people."
+    ],
+    "required_badges": [
+      "NOT_IN_HUMANS"
+    ],
+    "draft_rules": [
+      "Subjects were pigs, NOT humans. The cover slide must not imply a human result. Name the species explicitly by slide 2."
+    ],
+    "notes": []
+  },
+  "qa": {
+    "lint_errors": [
+      "slide3.body: 53 words, spec is 55-90"
+    ],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": []
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "nature"
+}
