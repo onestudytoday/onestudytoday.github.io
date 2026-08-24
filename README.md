@@ -61,7 +61,7 @@ These are gates in the pipeline, not items on a checklist.
 Prove they work, offline, in half a second:
 
 ```bash
-python -m pytest tests/ -q      # 95 passed
+python -m pytest tests/ -q      # 109 passed
 ```
 
 ---
