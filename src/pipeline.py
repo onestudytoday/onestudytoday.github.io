@@ -25,7 +25,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 from zoneinfo import ZoneInfo
 
-from config import OUT, PUBLISHED, QUEUE, settings
+from config import DOCS, OUT, PUBLISHED, QUEUE, settings
 from draft import draft_post, skeleton
 from render import contact_sheet, render_post
 from sources import Study, fetch_candidates, load_ledger, mark_seen, save_ledger, study_key
@@ -199,12 +199,31 @@ PUBLISH_TIMES = {
 
 
 def _publish_one(f: Path, post: Dict[str, Any], live: bool) -> Dict[str, Any]:
-    from publish import publish, stage_images
-    pngs = sorted(str(p) for p in (OUT / "posts" / post["id"]).glob("*.png"))
-    if not pngs:
-        print(f"  {post['id']}: no rendered slides, skipping")
-        return {}
-    urls = stage_images(post, pngs)
+    from publish import public_urls, publish, stage_images
+
+    # docs/img/<id>/*.jpg is what daily-draft.yml's "Stage slide JPEGs for
+    # GitHub Pages" step already produced and committed, right after
+    # rendering, in that same run. It is the ONLY copy of the slides that
+    # survives to reach a publish run days later on a different runner:
+    # out/posts/ is gitignored working-file scratch (see .gitignore -
+    # "Rendered PNGs are working files"), regenerated fresh each time
+    # `pipeline.py run` renders, and gone from every checkout after that.
+    # Checking out/posts/<id>/ here - as this used to, unconditionally -
+    # meant every post silently "had no rendered slides" on any publish run
+    # that did not happen to share a runner with the draft that made it,
+    # which in practice is every scheduled-publish.yml run there has ever
+    # been. Prefer the already-staged JPEGs; only fall back to converting
+    # fresh PNGs for the same-session local flow (`pipeline.py run` followed
+    # immediately by `publish-approved` in one shell).
+    staged = sorted((DOCS / "img" / post["id"]).glob("*.jpg"))
+    if staged:
+        urls = public_urls(staged, post["id"])
+    else:
+        pngs = sorted(str(p) for p in (OUT / "posts" / post["id"]).glob("*.png"))
+        if not pngs:
+            print(f"  {post['id']}: no rendered slides, skipping")
+            return {}
+        urls = stage_images(post, pngs)
     res = publish(post, urls, live=live)
     print(json.dumps(res, indent=2))
     if live and res.get("media_id"):
