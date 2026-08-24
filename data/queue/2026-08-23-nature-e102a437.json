@@ -103,6 +103,11 @@
     "unverified_numbers": [],
     "publishable": false
   },
-  "status": "needs_review",
-  "source_niche": "nature"
+  "status": "approved",
+  "source_niche": "nature",
+  "review": {
+    "approved": {
+      "note": ""
+    }
+  }
 }
