@@ -1,0 +1,137 @@
+{
+  "id": "2026-08-21-nature-6dbfcc43",
+  "niche": "nature",
+  "study": {
+    "key": "6dbfcc4377000d9e",
+    "title": "BIOCARD framework: integrating fecal bile acids, lipids, and metabolites to assess response to a cardiovascular health intervention",
+    "journal": "Gut microbes",
+    "pub_date": "2026-08-21",
+    "pub_date_display": "Aug 21, 2026",
+    "doi": "10.1080/19490976.2026.2719242",
+    "doi_display": "doi.org/10.1080/19490976.2026.2719242",
+    "url": "https://doi.org/10.1080/19490976.2026.2719242",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Zhang H",
+      "Chen L",
+      "Xu R",
+      "Jung H",
+      "Gao S",
+      "Khalsa AS"
+    ]
+  },
+  "cover": {
+    "kicker": "Gut Microbes, randomised trial",
+    "headline": "Traditional health tests missed diet changes. **Fecal bile acids and metabolites caught them.**"
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Nutrition interventions aim to prevent heart disease, but we need better ways to detect early responses.",
+      "body": "Cardiovascular disease is a leading cause of death, especially in under-resourced communities. Nutritional changes are a key prevention tool, but traditional clinical measures like blood pressure and body fat often lack sensitivity.\n\nResearchers wanted to know if analyzing fecal bile acids, lipids, and metabolites could reveal molecular shifts that conventional indicators miss when people change their diet.",
+      "stat": {
+        "value": "10-week",
+        "label": "intervention duration tested in trial"
+      }
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Fecal molecular analysis detected intervention differences that standard clinical tests did not.",
+      "body": "The study tracked caregivers and children through a randomized trial comparing a multicomponent garden intervention to education only. Traditional clinical measures showed limited sensitivity for detecting differences between groups.\n\nFecal multi-omics analysis revealed intervention-associated changes in metabolites, lipids, and bile acids. Children showed more apparent molecular variation than their parents, and network analysis linked selected features to blood pressure, body fat, skin carotenoids, and diet quality scores."
+    }
+  ],
+  "caveats": [
+    "This framework is exploratory and designed to complement, not replace, conventional health indicators for assessing nutrition interventions.",
+    "The study does not identify which specific molecular changes are most important or how long they persist after the intervention ends."
+  ],
+  "cta": {
+    "headline": "Molecular tools for prevention research",
+    "sub": "Fecal analysis may help detect early responses to dietary changes before symptoms appear."
+  },
+  "caption": "Standard blood pressure and body composition tests often miss early molecular responses to nutrition interventions, even when diet quality improves. Researchers developed the BIOCARD framework, which integrates fecal bile acids, lipids, and polar metabolites to capture intervention-related changes at the molecular level. The study enrolled caregiver-child pairs in a ten-week randomized controlled trial and found that while conventional clinical indicators showed limited sensitivity, fecal multi-omics revealed intervention-associated molecular differences, particularly in children. Published in Gut Microbes with caregiver-child pairs as participants. The framework is exploratory and intended to complement existing measures. Full study: doi.org/10.1080/19490976.2026.2719242 \u2014 Worth the added complexity?",
+  "hashtag_set": "health",
+  "vet": {
+    "key": "6dbfcc4377000d9e",
+    "verdict": "PASS",
+    "score": 68,
+    "flags": [
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Gut microbes' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "randomised trial",
+    "sample_size": null,
+    "subjects": "human",
+    "journal_tier": null,
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [],
+    "notes": []
+  },
+  "qa": {
+    "lint_errors": [
+      "GUARDRAIL hype: Draft contains promotional hype wording."
+    ],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "doi.org/10.1080/19490976.2026.2719242",
+          "problem": "The abstract does not provide any DOI or publication reference. The copy includes a specific DOI that cannot be verified from the abstract.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Published in Gut Microbes",
+          "problem": "While the copy header mentions 'Gut Microbes, randomised trial', the abstract itself does not state where the study was published. This appears to be added information not supported by the abstract.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Cardiovascular disease is a leading cause of death",
+          "problem": "The abstract states CVD is 'a leading cause of morbidity and mortality' but the copy changes this to 'leading cause of death' - omitting morbidity and slightly changing the claim.",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "10-week",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2026",
+          "found_in_abstract": false
+        },
+        {
+          "number": "2719242",
+          "found_in_abstract": false
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "doi.org/10.1080/19490976.2026.2719242",
+        "problem": "The abstract does not provide any DOI or publication reference. The copy includes a specific DOI that cannot be verified from the abstract.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "2026",
+        "found_in_abstract": false
+      },
+      {
+        "number": "2719242",
+        "found_in_abstract": false
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "nature"
+}
