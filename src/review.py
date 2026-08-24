@@ -75,13 +75,12 @@ def set_status(post_id: str, status: str, note: str = "") -> Dict[str, Any]:
               "yourself and disagree with the checker.")
     post["status"] = status
     post.setdefault("review", {})[status] = {"note": note}
-    save(post)
     if status == "rejected":
-        # This is what "kill ... never source that study again" (issue.py,
-        # docs/RUNBOOK.md) actually depends on. Without it, killing a post
-        # from the GitHub comment gate - the only way this happens in
-        # production - never touched the ledger, so the same study was free
-        # to be sourced and drafted all over again on the next run.
+        # The ledger entry below is what "kill ... never source that study
+        # again" (issue.py, docs/RUNBOOK.md) actually depends on - without
+        # it, killing a post from the GitHub comment gate (the only way this
+        # happens in production) never touched the ledger, so the same study
+        # was free to be sourced and drafted all over again on the next run.
         from sources import load_ledger, save_ledger, study_key
         led = load_ledger()
         led.setdefault("rejected", {})[study_key(post)] = {
@@ -89,6 +88,25 @@ def set_status(post_id: str, status: str, note: str = "") -> Dict[str, Any]:
             "doi": post["study"].get("doi", ""),
             "reason": note or "killed by reviewer"}
         save_ledger(led)
+        # The ledger entry is the thing that actually keeps this study out of
+        # future sourcing - once it's written, this file has nothing left to
+        # do. Leaving it behind in data/queue/ forever, just with a status
+        # field flipped, was the root of a real production bug: a workflow
+        # step used to pick "whichever queue file sorts first" to decide
+        # which post to open a review issue for, and a killed post with an
+        # early date prefix could permanently win that pick over whatever was
+        # actually freshly drafted. Deleting it here removes that failure
+        # mode at the source instead of only at the one call site that
+        # tripped over it (.github/workflows/daily-draft.yml now also reads
+        # the id from its own run's log rather than the directory, so this
+        # isn't the only fix - but a queue file that no longer exists can't
+        # be picked by ANY future bug of that shape, which a live file with a
+        # status flag can).
+        p = QUEUE / f"{post_id}.json"
+        if p.exists():
+            p.unlink()
+        return post
+    save(post)
     return post
 
 
