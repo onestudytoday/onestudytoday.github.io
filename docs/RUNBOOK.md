@@ -130,6 +130,27 @@ Then switch to the **Variables** tab and add four:
 > Secret, then update the `META_APP_SECRET` value above. Takes 30 seconds and
 > closes the only real security hole in this setup.
 
+### 1.6 Rank candidates by projected engagement  **YOU — optional, can be added later**
+
+Sourcing already leans toward whichever eligible candidate looks likely to
+land best, using two free signals it fetches anyway — citation count and
+open-access status. For a study published in the last 14 days both are
+usually still zero (neither citations nor real attention has had time to
+accumulate), so this mostly just falls back to picking the newest one, same
+as before.
+
+A stronger signal — real news/social/Reddit attention, from Altmetric —
+exists, but there is no instant self-serve signup for it. Altmetric requires
+a key for every request now, and free keys go through their **Scientometric
+Researcher Access** program, explicitly scoped to "a specific academic
+project" — worth applying for, not guaranteed for a social account like this
+one. Start at <https://www.altmetric.com/solutions/free-tools/> if you want
+to try.
+
+If you get a key: add one more secret, `ALTMETRIC_API_KEY`. That's the whole
+integration — the code already checks for it and switches over automatically.
+If you don't: skip this section entirely. Nothing else changes.
+
 ---
 
 ## Part 2 — Prove the token works (2 minutes)
