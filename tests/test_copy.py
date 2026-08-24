@@ -160,3 +160,76 @@ def test_build_caption_does_not_require_instagram_credentials(monkeypatch):
     from issue import build as build_issue  # noqa: E402
     body = build_issue(post, "https://example.github.io/img")
     assert post["id"] in body
+
+
+# ---------------------------------------------------------------------------
+# Regression test for the 24 Aug 2026 production incident: a HOLD-status
+# candidate ("Porcine deltacoronavirus nucleocapsid protein inhibits RIG-I
+# signaling") twice in a row got a malformed tool-call response back from the
+# drafting model - "cover" came back as a plain string instead of an object -
+# which crashed straight through lint()'s first `.get()` call. pipeline.run()
+# caught the exception and silently skipped the candidate every time, with no
+# visible trace beyond one easily-missed log line. lint() and flatten() are
+# now defensive about every nested field's TYPE, not just its presence, so a
+# malformed field becomes a reportable lint error - feeding the normal repair
+# round-trip - instead of an unhandled crash.
+def test_malformed_cover_is_a_lint_error_not_a_crash():
+    post = {"cover": "just a string, not an object",
+            "slides": [{"eyebrow": "The setup", "title": "t", "body": "b\n\nb"}],
+            "caveats": ["a caveat, long enough to pass the word check here"],
+            "cta": {"headline": "h", "sub": "s"}, "caption": "c"}
+    errs = lint(post, VetReport(key="x"))
+    assert any("cover" in e and "expected an object" in e for e in errs)
+
+
+def test_malformed_slide_element_is_a_lint_error_not_a_crash():
+    post = {"cover": {"kicker": "k", "headline": "**h**"},
+            "slides": ["not an object", {"eyebrow": "The setup", "title": "t", "body": "b\n\nb"}],
+            "caveats": ["a caveat, long enough to pass the word check here"],
+            "cta": {"headline": "h", "sub": "s"}, "caption": "c"}
+    errs = lint(post, VetReport(key="x"))
+    assert any(e.startswith("slide1:") for e in errs)
+
+
+def test_malformed_post_shape_does_not_crash_flatten():
+    # flatten() is called from inside lint() on the raw, pre-repair post, so
+    # it has to survive the same malformed shapes lint() does.
+    post = {"cover": "bad", "slides": "bad", "caveats": "bad",
+            "cta": "bad", "caption": 12345}
+    assert isinstance(flatten(post), str)  # must not raise
+
+
+# ---------------------------------------------------------------------------
+# Regression test for a real block: an abstract said "seven-fold" and the
+# drafted copy correctly restated it as "7-fold", but the code-side number
+# check only ever compared digit strings, so it flagged 7 as an unsupported
+# number and blocked the post over two numbers that mean exactly the same
+# thing. local_unverified_numbers() now also accepts the spelled-out word for
+# 0-20 as equivalent to its digit.
+def test_digit_form_of_a_spelled_out_number_is_not_flagged():
+    from draft import local_unverified_numbers
+    # 7 is already exempt below 10 regardless (a "small counting number"), so
+    # use 12/twelve - large enough to actually need the word-equivalence
+    # check, not just fall through the existing small-number exemption.
+    abstract = "Risk increased twelve-fold in the exposed group compared to controls."
+    assert local_unverified_numbers("The risk went up 12-fold.", abstract) == []
+
+
+def test_number_word_boundary_does_not_match_inside_a_longer_number_word():
+    # Unit-level, bypassing local_unverified_numbers()'s own <=10 exemption
+    # (which would otherwise mask this): "seven" must not match inside
+    # "seventeen" - a different, larger number that just happens to contain
+    # it as a substring.
+    from draft import _number_word_appears
+    assert _number_word_appears(7.0, "The study followed seventeen participants.") is False
+    assert _number_word_appears(7.0, "Risk rose seven-fold in the exposed group.") is True
+
+
+def test_word_equivalence_is_scoped_to_zero_through_twenty():
+    from draft import local_unverified_numbers
+    # 25 has no digit form in the (word-spelled) abstract and is above the
+    # scoped range, so this should still be flagged rather than silently
+    # matched against something like "twenty-five" via partial logic.
+    abstract = "Response rates were twenty-five percent in the treated arm."
+    bad = local_unverified_numbers("Response rates hit 25%.", abstract)
+    assert [n["number"] for n in bad] == ["25%"]
