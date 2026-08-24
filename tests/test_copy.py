@@ -162,6 +162,30 @@ def test_build_caption_does_not_require_instagram_credentials(monkeypatch):
     assert post["id"] in body
 
 
+def test_linkinbio_build_does_not_require_instagram_credentials(monkeypatch, tmp_path):
+    # Regression test for the "Publish approved posts" outage of 2026-08-21
+    # through 2026-08-24: scheduled-publish.yml's "Rebuild the link-in-bio
+    # page" step (`python src/linkinbio.py`) deliberately only passes HANDLE
+    # into its env, not META_APP_ID/META_APP_SECRET/IG_ACCESS_TOKEN/
+    # IG_BUSINESS_ACCOUNT_ID - rebuilding docs/index.html never touches the
+    # Instagram API. linkinbio.build() used to call settings() anyway just to
+    # reach s.handle (the exact same shape of bug as build_caption() above),
+    # so this step raised "Missing required setting: META_APP_ID" and failed
+    # the job on *every* run of the every-15-minutes cron, whether or not
+    # anything was even queued to publish - silently, because nothing else
+    # in the pipeline surfaces a single CI step failing that way.
+    import config
+    import linkinbio
+    for name in REQUIRED_SETTINGS:
+        monkeypatch.delenv(name, raising=False)
+    monkeypatch.setattr(config, "PUBLISHED", tmp_path)
+    monkeypatch.setattr(linkinbio, "PUBLISHED", tmp_path)
+    monkeypatch.setattr(linkinbio, "DOCS", tmp_path)
+
+    out = linkinbio.build()  # must not raise SystemExit
+    assert Path(out).exists()
+
+
 # ---------------------------------------------------------------------------
 # Regression test for the 24 Aug 2026 production incident: a HOLD-status
 # candidate ("Porcine deltacoronavirus nucleocapsid protein inhibits RIG-I
