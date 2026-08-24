@@ -60,6 +60,22 @@ def _opt(name: str, default: str = "") -> str:
     return os.environ.get(name, default).strip()
 
 
+def handle() -> str:
+    """The @handle, for display purposes only.
+
+    Deliberately does NOT go through settings() / _req(), because settings()
+    demands all four Meta/Instagram credentials even though this value never
+    touches the Graph API. linkinbio.py used to call settings() just to reach
+    s.handle - the exact "required a credential, then never used it" bug
+    caption.build_caption() had (see tests/test_copy.py) - and the CI step
+    that rebuilds the link-in-bio page (scheduled-publish.yml) only ever
+    passes HANDLE into its env, not the Meta secrets, so that call raised
+    "Missing required setting: META_APP_ID" and failed the job on every
+    single run, whether or not anything was even queued to publish.
+    """
+    return _opt("HANDLE", "@onestudytoday")
+
+
 @dataclass(frozen=True)
 class Settings:
     # --- Meta / Instagram
