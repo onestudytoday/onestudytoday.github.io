@@ -1,0 +1,165 @@
+{
+  "id": "2026-08-24-psych-c4a9ced1",
+  "niche": "psych",
+  "study": {
+    "key": "c4a9ced1a320d3dc",
+    "title": "Unraveling the protective effect of weekend catch-up sleep on overactive bladder risk",
+    "journal": "Annals of medicine",
+    "pub_date": "2026-08-24",
+    "pub_date_display": "Aug 24, 2026",
+    "doi": "10.1080/07853890.2026.2702805",
+    "doi_display": "doi.org/10.1080/07853890.2026.2702805",
+    "url": "https://doi.org/10.1080/07853890.2026.2702805",
+    "is_preprint": false,
+    "server": "",
+    "n": 4195,
+    "authors": [
+      "Li Z",
+      "Liu X",
+      "Chen X",
+      "Li F",
+      "Xing W",
+      "Tian H"
+    ]
+  },
+  "cover": {
+    "kicker": "Annals of Medicine, 4195 adults",
+    "headline": "**Weekend catch-up sleep** is linked to lower risk of overactive bladder, but only up to a point."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Overactive bladder affects millions, and research shows it goes together with poor sleep.",
+      "body": "Overactive bladder brings frequent, urgent bathroom trips that disrupt daily life. Sleep problems and bladder symptoms often appear together, but most research focuses on total sleep duration.\n\nWeekend catch-up sleep\u2014extra hours on Saturday and Sunday to compensate for weekday sleep debt\u2014is common, but no one had looked at whether it has any relationship with overactive bladder prevalence or severity."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "People who got weekend catch-up sleep were less likely to have overactive bladder symptoms.",
+      "body": "Researchers analyzed 4,195 adults from a 2017\u20132018 national health survey. Both the presence and severity of overactive bladder were negatively linked to weekend catch-up sleep after adjusting for age, sex, BMI, and other factors.\n\nThe relationship followed a U-shape: the prevalence of overactive bladder dropped as catch-up sleep increased, then started rising again. The turning point was 1.5 hours of extra weekend sleep.",
+      "stat": {
+        "value": "1.5 h",
+        "label": "optimal weekend catch-up sleep"
+      }
+    },
+    {
+      "eyebrow": "Why it matters",
+      "title": "Moderate weekend sleep extension goes together with lower overactive bladder symptom severity.",
+      "body": "Among the 997 participants with overactive bladder, those with moderate weekend catch-up sleep showed lower symptom severity. The effect held across subgroups, though interactions were observed.\n\nThis pattern suggests that making up modest amounts of sleep on weekends\u2014roughly 90 minutes\u2014goes together with better bladder health, while oversleeping may not offer the same benefit. It's a low-cost strategy worth exploring."
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Something else could explain the link.",
+    "Data came from a single survey cycle, so changes over time were not tracked.",
+    "Weekend catch-up sleep was self-reported, which can introduce measurement error."
+  ],
+  "cta": {
+    "headline": "Sleep more strategically this weekend",
+    "sub": "Small adjustments to weekend sleep might help more than you think."
+  },
+  "caption": "Catching up on sleep during the weekend is linked to a lower chance of overactive bladder, according to data from more than four thousand U.S. adults. The sweet spot appears to be about 90 minutes of extra weekend sleep\u2014any more than that, and the benefit fades. Among nearly a thousand people with overactive bladder, those who slept moderately longer on weekends also had less severe symptoms. Published in Annals of Medicine using National Health and Nutrition Examination Survey data from 2017 to 2018. This was an observational study, so it cannot establish causation. Full study: doi.org/10.1080/07853890.2026.2702805\n\nHow much do you oversleep?",
+  "hashtag_set": "health",
+  "vet": {
+    "key": "c4a9ced1a320d3dc",
+    "verdict": "HOLD",
+    "score": 54,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "warn",
+        "message": "Design reads as observational (cross-sectional (observational)); markers: survey, association, associated with, linked to",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Annals of medicine' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "cross-sectional (observational)",
+    "sample_size": 4195,
+    "subjects": "human",
+    "journal_tier": null,
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": []
+  },
+  "qa": {
+    "lint_errors": [],
+    "repair_rounds": 1,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "Overactive bladder affects millions",
+          "problem": "The abstract does not state that overactive bladder affects millions. This is an unsupported generalization.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Full study: doi.org/10.1080/07853890.2026.2702805",
+          "problem": "The abstract does not provide any DOI or URL. This DOI appears to be fabricated (note the future year 2026).",
+          "severity": "blocking"
+        },
+        {
+          "claim": "How much do you oversleep?",
+          "problem": "This appears to be a call-to-action or engagement question not supported by the abstract, and it frames weekend catch-up sleep as 'oversleeping' which is not how the abstract describes it.",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "4195",
+          "found_in_abstract": true
+        },
+        {
+          "number": "4,195",
+          "found_in_abstract": true
+        },
+        {
+          "number": "997",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2017\u20132018",
+          "found_in_abstract": true
+        },
+        {
+          "number": "1.5 hours",
+          "found_in_abstract": true
+        },
+        {
+          "number": "1.5 h",
+          "found_in_abstract": true
+        },
+        {
+          "number": "90 minutes",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Full study: doi.org/10.1080/07853890.2026.2702805",
+        "problem": "The abstract does not provide any DOI or URL. This DOI appears to be fabricated (note the future year 2026).",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "90",
+        "found_in_abstract": false,
+        "checked_by": "code"
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "psych"
+}
