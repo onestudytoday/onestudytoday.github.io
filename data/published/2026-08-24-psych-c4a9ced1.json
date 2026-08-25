@@ -160,9 +160,13 @@
     ],
     "publishable": false
   },
-  "status": "approved",
+  "status": "published",
   "source_niche": "psych",
   "review": {
     "forced": true
+  },
+  "published": {
+    "media_id": "18618259471029423",
+    "at": "2026-08-25T21:19:01Z"
   }
 }
