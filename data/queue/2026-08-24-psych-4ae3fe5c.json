@@ -1,0 +1,165 @@
+{
+  "id": "2026-08-24-psych-4ae3fe5c",
+  "niche": "psych",
+  "study": {
+    "key": "4ae3fe5cc1785e24",
+    "title": "Self\u2011harm ideation in perinatal women: Prevalence across gestational and postpartum windows and general risk and protective factors",
+    "journal": "Dialogues in clinical neuroscience",
+    "pub_date": "2026-08-24",
+    "pub_date_display": "Aug 24, 2026",
+    "doi": "10.1080/19585969.2026.2719514",
+    "doi_display": "doi.org/10.1080/19585969.2026.2719514",
+    "url": "https://doi.org/10.1080/19585969.2026.2719514",
+    "is_preprint": false,
+    "server": "",
+    "n": 6550,
+    "authors": [
+      "Stefana A",
+      "Mirabella F",
+      "Gigantesco A",
+      "Calamandrei G",
+      "Camoni L",
+      "Perinatal Mental Health Network group."
+    ]
+  },
+  "cover": {
+    "kicker": "Dialogues in Clinical Neuroscience",
+    "headline": "**Self-harm thoughts affect 1\u20132% of pregnant and postpartum women** who answer an explicit screening question."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Pregnancy and the postpartum year bring mental health vulnerability, but how common are self-harm thoughts?",
+      "body": "The perinatal period is a time of heightened risk for mental health struggles. Self-harm ideation can emerge during pregnancy or after birth, but prevalence estimates vary and most screening tools skip direct questions about self-harm.\n\nThis cross-sectional study recruited 5,087 pregnant women and 6,550 postpartum women to map how often self-harm thoughts occur when women are asked explicitly, and what factors go together with elevated risk."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Self-harm ideation was reported by 2.3% of pregnant women and 1.1% of those in the postpartum period.",
+      "body": "Among pregnant women, higher depressive symptom scores were linked to self-harm ideation, with an odds ratio of 1.27 per unit increase. Immigrant status was also associated with higher risk, while better economic conditions were linked to lower odds.\n\nIn the postpartum group, depressive symptoms remained strongly associated with self-harm thoughts. Stable paid employment was linked to a 59% lower odds of reporting ideation compared to those without it.",
+      "stat": {
+        "value": "2.3%",
+        "label": "pregnant women reported self-harm thoughts"
+      }
+    },
+    {
+      "eyebrow": "Why it matters",
+      "title": "Routine perinatal screening often omits explicit self-harm questions, potentially missing people who would disclose if asked.",
+      "body": "Combining mood screening with assessment of socioeconomic adversity may improve identification of women who need additional support. The models showed good to excellent ability to distinguish those with and without self-harm ideation.\n\nThe findings suggest that screening should include direct questions about self-harm thoughts and continue throughout the first postpartum year, not just immediately after delivery."
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Something else could explain the link.",
+    "Self-report screening depends on willingness to disclose, which varies by individual and cultural context."
+  ],
+  "cta": {
+    "headline": "Should perinatal screening always ask about self-harm?",
+    "sub": "The data suggest explicit questions reveal thoughts that otherwise go undetected."
+  },
+  "caption": "A fraction of women experience thoughts of self-harm during pregnancy or after giving birth, and many will report them when screening tools ask directly. This cross-sectional study in Dialogues in Clinical Neuroscience tracked 5,087 pregnant and 6,550 postpartum women using a single self-harm question embedded in the Edinburgh Postnatal Depression Scale. Depressive symptom severity was the strongest correlate in both windows; economic hardship and immigrant status were linked to higher risk during pregnancy, while stable employment was protective postpartum. This is a snapshot in time, not a causal test. Full study: doi.org/10.1080/19585969.2026.2719514 \u2014 Does your screening ask explicitly?",
+  "hashtag_set": "health",
+  "vet": {
+    "key": "4ae3fe5cc1785e24",
+    "verdict": "HOLD",
+    "score": 62,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "warn",
+        "message": "Design reads as observational (cross-sectional (observational)); markers: cross-sectional, associated with",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      }
+    ],
+    "design": "cross-sectional (observational)",
+    "sample_size": 6550,
+    "subjects": "unclear",
+    "journal_tier": 1,
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": []
+  },
+  "qa": {
+    "lint_errors": [],
+    "repair_rounds": 1,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "59% lower odds",
+          "problem": "The abstract states OR = 0.41 for stable paid employment postpartum. The copy calculates this as '59% lower odds' (1 - 0.41 = 0.59 = 59%). However, the abstract does not present this percentage, and converting an odds ratio to a percentage reduction can be misleading to lay readers. The abstract only provides the OR value.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Full study: doi.org/10.1080/19585969.2026.2719514",
+          "problem": "The abstract contains no DOI or any reference to this specific DOI. This is an added fact not found in the abstract.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "This cross-sectional study in Dialogues in Clinical Neuroscience",
+          "problem": "The abstract does not mention the journal name 'Dialogues in Clinical Neuroscience'. This is an added fact.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "1\u20132%",
+          "found_in_abstract": true
+        },
+        {
+          "number": "5,087",
+          "found_in_abstract": true
+        },
+        {
+          "number": "6,550",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2.3%",
+          "found_in_abstract": true
+        },
+        {
+          "number": "1.1%",
+          "found_in_abstract": true
+        },
+        {
+          "number": "1.27",
+          "found_in_abstract": true
+        },
+        {
+          "number": "59%",
+          "found_in_abstract": false
+        },
+        {
+          "number": "0.41",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Full study: doi.org/10.1080/19585969.2026.2719514",
+        "problem": "The abstract contains no DOI or any reference to this specific DOI. This is an added fact not found in the abstract.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "This cross-sectional study in Dialogues in Clinical Neuroscience",
+        "problem": "The abstract does not mention the journal name 'Dialogues in Clinical Neuroscience'. This is an added fact.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "59%",
+        "found_in_abstract": false
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "psych"
+}
