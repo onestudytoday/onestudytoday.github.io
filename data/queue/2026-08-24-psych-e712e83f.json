@@ -1,0 +1,165 @@
+{
+  "id": "2026-08-24-psych-e712e83f",
+  "niche": "psych",
+  "study": {
+    "key": "e712e83f9000a5d8",
+    "title": "Constructing knowledge and moral skills through hospital clown interventions: a qualitative study",
+    "journal": "International journal of qualitative studies on health and well-being",
+    "pub_date": "2026-08-24",
+    "pub_date_display": "Aug 24, 2026",
+    "doi": "10.1080/17482631.2026.2683228",
+    "doi_display": "doi.org/10.1080/17482631.2026.2683228",
+    "url": "https://doi.org/10.1080/17482631.2026.2683228",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Castillo M A",
+      "Montoya Villegas M",
+      "Ben\u00edtez E",
+      "Lasso EF."
+    ]
+  },
+  "cover": {
+    "kicker": "Int J Qual Stud Health \u2022 interview study",
+    "headline": "Hospital clowns develop **moral skills that matter in clinical care**, not just entertainment techniques."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Clown practice in hospitals is often dismissed as distraction, but the job requires something deeper.",
+      "body": "Hospital clowns navigate environments where emotions run high, boundaries shift constantly, and every interaction demands real-time ethical judgment. They decide when to enter a room, when to push gently, when to retreat.\n\nResearchers interviewed 51 people\u2014clowns, patients, family members, nurses, physicians, and medical students\u2014to identify the moral know-how these performers develop through clinical encounters. The question: what kind of relational wisdom emerges from this work, and does it teach us anything about care itself."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Five core competencies emerged, all rooted in emotional awareness, adaptability, and acceptance of mistakes.",
+      "body": "Clowns described knowing how to embody the character through ongoing emotional self-awareness. They learned to connect by reading emotions, self-regulating, and adapting intuitively. They developed the capacity to err, treating mistakes as part of relational engagement rather than failure.\n\nThey also learned how to adapt with sensitivity to context and how to arrive and leave, discerning when their presence helped and when withdrawal was the ethical choice. These skills reflect situated empathy, emotional regulation, and fallibility\u2014qualities the authors argue are central to person-centered clinical practice.",
+      "stat": {
+        "value": "51",
+        "label": "people interviewed across five roles"
+      }
+    },
+    {
+      "eyebrow": "Why it matters",
+      "title": "These experiential forms of learning offer a complement to traditional dilemma-based models in clinical ethics.",
+      "body": "Medical education tends to focus on abstract ethical principles and hypothetical scenarios. The moral know-how enacted by hospital clowns is different: it's relational, context-sensitive, and learned through repeated real-world encounters with vulnerability.\n\nThe authors suggest these competencies may have important implications for how we train healthcare professionals. Emotional regulation, the ability to recognize when to step back, and comfort with imperfection are not commonly taught in formal curricula, yet they shape the quality of care in ways that technical skill alone cannot address."
+    }
+  ],
+  "caveats": [
+    "This study describes competencies identified through interviews, not measured outcomes of clown interventions on patient wellbeing.",
+    "The sample included only seven hospital clowns, limiting the diversity of perspectives on how these skills are developed or enacted."
+  ],
+  "cta": {
+    "headline": "What care skill matters most to you?",
+    "sub": "Tag someone training in healthcare or working in a role that demands emotional nuance."
+  },
+  "caption": "The moral skills hospital clowns develop go well beyond making people laugh. Researchers interviewed 51 people across five roles\u2014clowns, patients, families, and clinical staff\u2014and identified five core competencies rooted in emotional self-awareness, situated empathy, and the ability to recognize and correct mistakes in real time. One finding: clowns learn to discern not just how to connect, but when to leave, treating withdrawal as an ethical act rather than a failure. The study was published in the International Journal of Qualitative Studies on Health and Well-being and used semi-structured interviews analyzed through inductive thematic analysis. The sample of clowns was small. Full study: doi.org/10.1080/17482631.2026.2683228 \u2014 What defines good care?",
+  "hashtag_set": "health",
+  "vet": {
+    "key": "e712e83f9000a5d8",
+    "verdict": "PASS",
+    "score": 56,
+    "flags": [
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'International journal of qualitative studies on health and well-being' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "human",
+    "journal_tier": null,
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [],
+    "notes": []
+  },
+  "qa": {
+    "lint_errors": [],
+    "repair_rounds": 0,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "Researchers interviewed 51 people\u2014clowns, patients, family members, nurses, physicians, and medical students",
+          "problem": "The abstract states 7 hospital clowns, 10 patients, 17 family members, and 17 healthcare professionals (8 nurses, 3 physicians, and 6 medical students). This totals 51 people, but the copy states 'interviewed 51 people across five roles' multiple times. However, there are six distinct groups listed in the abstract (clowns, patients, family members, nurses, physicians, medical students), not five roles.",
+          "severity": "minor"
+        },
+        {
+          "claim": "51 people interviewed across five roles",
+          "problem": "The abstract identifies six distinct groups: hospital clowns, patients, family members, nurses, physicians, and medical students. The copy claims 'five roles' when there are actually six groups.",
+          "severity": "minor"
+        },
+        {
+          "claim": "The study was published in the International Journal of Qualitative Studies on Health and Well-being",
+          "problem": "The abstract does not state where the study was published. The copy header says 'Int J Qual Stud Health \u2022 interview study' but this appears to be part of the copy itself, not the abstract.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Full study: doi.org/10.1080/17482631.2026.2683228",
+          "problem": "No DOI or publication identifier appears in the abstract. This specific DOI is invented by the copy.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "51",
+          "found_in_abstract": true
+        },
+        {
+          "number": "7",
+          "found_in_abstract": true
+        },
+        {
+          "number": "10",
+          "found_in_abstract": true
+        },
+        {
+          "number": "17",
+          "found_in_abstract": true
+        },
+        {
+          "number": "8",
+          "found_in_abstract": true
+        },
+        {
+          "number": "3",
+          "found_in_abstract": true
+        },
+        {
+          "number": "6",
+          "found_in_abstract": true
+        },
+        {
+          "number": "five",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "The study was published in the International Journal of Qualitative Studies on Health and Well-being",
+        "problem": "The abstract does not state where the study was published. The copy header says 'Int J Qual Stud Health \u2022 interview study' but this appears to be part of the copy itself, not the abstract.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Full study: doi.org/10.1080/17482631.2026.2683228",
+        "problem": "No DOI or publication identifier appears in the abstract. This specific DOI is invented by the copy.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "51",
+        "found_in_abstract": false,
+        "checked_by": "code"
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "psych"
+}
