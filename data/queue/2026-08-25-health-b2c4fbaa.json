@@ -1,0 +1,185 @@
+{
+  "id": "2026-08-25-health-b2c4fbaa",
+  "niche": "health",
+  "study": {
+    "key": "b2c4fbaa3b8002d9",
+    "title": "Clinical practice patterns and unmet needs in the use of GLP-1 receptor agonists in sleep medicine: A pan-European survey performed in the European sleep apnoea database network",
+    "journal": "Pulmonology",
+    "pub_date": "2026-08-25",
+    "pub_date_display": "Aug 25, 2026",
+    "doi": "10.1080/25310429.2026.2722795",
+    "doi_display": "doi.org/10.1080/25310429.2026.2722795",
+    "url": "https://doi.org/10.1080/25310429.2026.2722795",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Testelmans D",
+      "Bonsignore MR",
+      "Pataka A",
+      "Fanfulla F",
+      "Ryan S",
+      "Lombardi C"
+    ]
+  },
+  "cover": {
+    "kicker": "Pulmonology \u00b7 Pan-European survey",
+    "headline": "Weight-loss drugs are arriving in sleep clinics, but **no one agrees on how to use them**."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "GLP-1 drugs reduce weight and sleep apnoea severity, but real-world clinical practice remains undefined.",
+      "body": "Tirzepatide and similar medications recently gained regulatory approval for obstructive sleep apnoea with obesity. Sleep medicine is starting to integrate these drugs into treatment, but there are no agreed protocols.\n\nThe European Sleep Apnoea Database network surveyed 24 centres across 14 countries to map current practice patterns, diagnostic timing, and how clinicians manage airway pressure therapy when patients lose weight on these medications."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Forty-two percent of centres allow sleep physicians to prescribe GLP-1 drugs directly within the clinic.",
+      "body": "Most clinicians still recommend diagnostic sleep studies in both symptomatic and asymptomatic patients recently started on GLP-1 therapy\u201492% and 81%, respectively. Sixty-one percent of centres consider weight loss above 10% a meaningful threshold for reassessing sleep apnoea.\n\nDespite expecting reductions in apnoea severity, only 14% of centres proactively re-titrate or withdraw positive airway pressure therapy. Monitoring focuses on weight trajectory, symptoms, and telemonitoring data, but structured interdisciplinary pathways are largely absent.",
+      "stat": {
+        "value": "14%",
+        "label": "proactively adjust airway pressure"
+      }
+    }
+  ],
+  "caveats": [
+    "This survey captured practice patterns at one point in time, not whether any approach works better.",
+    "Industry funding supported part of this work, which is worth noting when interpreting the findings."
+  ],
+  "cta": {
+    "headline": "Want the full practice breakdown?",
+    "sub": "Swipe to see what European sleep centres actually do with GLP-1 drugs."
+  },
+  "caption": "GLP-1 receptor agonists are moving into European sleep medicine, but practice varies wildly across centres. The ESADA network surveyed 24 sleep centres in 14 countries. Indications were consistent\u2014moderate-to-severe obesity with metabolic comorbidities\u2014but follow-up strategies and airway pressure management diverged sharply. Most centres lack structured interdisciplinary pathways despite the complexity of managing both weight-loss therapy and sleep apnoea treatment. Published in Pulmonology, based on responses from clinicians at European sleep centres. This is a snapshot of practice, not a test of outcomes. Full study: doi.org/10.1080/25310429.2026.2722795 \u2014 Does your clinic use GLP-1s?",
+  "hashtag_set": "health",
+  "vet": {
+    "key": "b2c4fbaa3b8002d9",
+    "verdict": "HOLD",
+    "score": 44,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "warn",
+        "message": "Design reads as observational (cross-sectional (observational)); markers: survey",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Pulmonology' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      },
+      {
+        "code": "INDUSTRY_FUNDING",
+        "severity": "warn",
+        "message": "Funder list contains commercial entities: bayer, eli lilly",
+        "caveat": "This study was funded in part by industry, which is worth knowing when you read the result.",
+        "draft_rule": null
+      }
+    ],
+    "design": "cross-sectional (observational)",
+    "sample_size": null,
+    "subjects": "human",
+    "journal_tier": null,
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link.",
+      "This study was funded in part by industry, which is worth knowing when you read the result."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": []
+  },
+  "qa": {
+    "lint_errors": [],
+    "repair_rounds": 0,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "Tirzepatide and similar medications recently gained regulatory approval for obstructive sleep apnoea with obesity.",
+          "problem": "The abstract mentions 'recent regulatory approval of tirzepatide for OSA with obesity' (singular, specific drug) but the copy generalizes to 'Tirzepatide and similar medications' (plural) gaining approval for this indication. The abstract does not state that similar medications also gained regulatory approval for OSA with obesity.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Published in Pulmonology, based on responses from clinicians at European sleep centres.",
+          "problem": "The abstract does not mention that this was published in Pulmonology. This is an added fact not present in the abstract.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Full study: doi.org/10.1080/25310429.2026.2722795",
+          "problem": "The abstract does not contain this DOI or any DOI. This is an added fact not present in the abstract.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Industry funding supported part of this work, which is worth noting when interpreting the findings.",
+          "problem": "The abstract does not mention industry funding or any funding source. This is an added fact not present in the abstract.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "24 centres",
+          "found_in_abstract": true
+        },
+        {
+          "number": "14 countries",
+          "found_in_abstract": true
+        },
+        {
+          "number": "42 percent",
+          "found_in_abstract": true
+        },
+        {
+          "number": "92%",
+          "found_in_abstract": true
+        },
+        {
+          "number": "81%",
+          "found_in_abstract": true
+        },
+        {
+          "number": "61 percent",
+          "found_in_abstract": true
+        },
+        {
+          "number": "10%",
+          "found_in_abstract": true
+        },
+        {
+          "number": "14%",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Tirzepatide and similar medications recently gained regulatory approval for obstructive sleep apnoea with obesity.",
+        "problem": "The abstract mentions 'recent regulatory approval of tirzepatide for OSA with obesity' (singular, specific drug) but the copy generalizes to 'Tirzepatide and similar medications' (plural) gaining approval for this indication. The abstract does not state that similar medications also gained regulatory approval for OSA with obesity.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Published in Pulmonology, based on responses from clinicians at European sleep centres.",
+        "problem": "The abstract does not mention that this was published in Pulmonology. This is an added fact not present in the abstract.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Full study: doi.org/10.1080/25310429.2026.2722795",
+        "problem": "The abstract does not contain this DOI or any DOI. This is an added fact not present in the abstract.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Industry funding supported part of this work, which is worth noting when interpreting the findings.",
+        "problem": "The abstract does not mention industry funding or any funding source. This is an added fact not present in the abstract.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "health"
+}
