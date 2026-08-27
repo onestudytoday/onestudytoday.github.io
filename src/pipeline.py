@@ -198,8 +198,61 @@ PUBLISH_TIMES = {
 }
 
 
+def already_published(post: Dict[str, Any]) -> Optional[str]:
+    """The media_id if this post has already gone live, else None.
+
+    THE reason this exists: publishing to Instagram is irreversible the
+    instant the Graph API accepts it, but the only record that it happened is
+    a `git push` that runs several steps LATER in scheduled-publish.yml. Every
+    one of these ordinary events discards that record while the carousel stays
+    live:
+
+      * a second approved post in the same batch fails to publish (the
+        exception used to abort the whole run, see publish_scheduled);
+      * the link-in-bio rebuild fails;
+      * `git push` is rejected as non-fast-forward because publish-on-approve
+        pushed an approval while this job was running.
+
+    In each case the next 15-minute poll checks out a repo where the post is
+    still status="approved" with its queue file intact - and, before this
+    guard, cheerfully published the identical carousel again. And again, every
+    15 minutes, until the daily quota ran out.
+
+    So the publish path now asks "did I already do this?" before it acts, and
+    answers from the two records that outlive a single runner: the committed
+    data/published/<id>.json, and the ledger's "posted" map.
+    """
+    p = PUBLISHED / f"{post['id']}.json"
+    if p.exists():
+        try:
+            prev = json.loads(p.read_text())
+            return (prev.get("published") or {}).get("media_id") or "unknown"
+        except Exception:
+            return "unknown"      # unreadable but present: still do not repost
+    try:
+        led = load_ledger()
+    except Exception:
+        return None
+    entry = (led.get("posted") or {}).get(study_key(post))
+    if isinstance(entry, dict):
+        return entry.get("media_id") or "unknown"
+    return None
+
+
 def _publish_one(f: Path, post: Dict[str, Any], live: bool) -> Dict[str, Any]:
     from publish import public_urls, publish, stage_images
+
+    seen = already_published(post)
+    if seen:
+        print(f"  {post['id']}: already published (media_id {seen}) - "
+              f"NOT publishing again")
+        # The queue file is the thing that keeps re-offering it. Clearing it
+        # is what actually breaks the loop, so do it on the live path even
+        # though nothing was sent.
+        if live and f.exists():
+            f.unlink()
+        return {"post_id": post["id"], "skipped": "already_published",
+                "media_id": seen}
 
     # docs/img/<id>/*.jpg is what daily-draft.yml's "Stage slide JPEGs for
     # GitHub Pages" step already produced and committed, right after
@@ -240,18 +293,50 @@ def _publish_one(f: Path, post: Dict[str, Any], live: bool) -> Dict[str, Any]:
     return res
 
 
+def _publish_batch(jobs: List[tuple], live: bool) -> List[Dict[str, Any]]:
+    """Run _publish_one over several posts, isolating each one's failures.
+
+    Without this, a PublishError on the SECOND post propagated out of the
+    process after the FIRST was already live on Instagram - killing the
+    workflow step, skipping the commit, and losing the only record that post
+    one had gone out. One transient Graph API hiccup was therefore enough to
+    duplicate a different, perfectly successful post.
+
+    So: every post gets its own try/except, every success is recorded
+    immediately, and the process only exits non-zero at the very END, once all
+    the bookkeeping is safely on disk for the commit step to pick up. Failing
+    loudly still matters - you want the red run - but it must not cost the
+    posts that worked.
+    """
+    results, failures = [], []
+    for f, post in jobs:
+        try:
+            results.append(_publish_one(f, post, live))
+        except Exception as e:
+            failures.append((post.get("id", "?"), e))
+            print(f"  ! {post.get('id', '?')}: publish failed: {e}")
+    if failures:
+        print(f"\n{len(failures)} post(s) failed to publish:")
+        for pid, e in failures:
+            print(f"   - {pid}: {type(e).__name__}: {e}")
+        print("Posts that succeeded above HAVE been recorded and will be "
+              "committed. Nothing will be republished on the next run.")
+        raise SystemExit(1)
+    return results
+
+
 def publish_approved(live: bool = False) -> List[Dict[str, Any]]:
     """Publish every approved post right now, ignoring peak-time gating."""
-    n, results = 0, []
+    jobs = []
     for f in sorted(QUEUE.glob("*.json")):
         post = json.loads(f.read_text())
         if post.get("status") != "approved":
             continue
-        results.append(_publish_one(f, post, live))
-        n += 1
-    if not n:
+        jobs.append((f, post))
+    if not jobs:
         print("Nothing approved is waiting.")
-    return results
+        return []
+    return _publish_batch(jobs, live)
 
 
 def publish_scheduled(live: bool = True, tz: str = "America/Chicago",
@@ -265,7 +350,7 @@ def publish_scheduled(live: bool = True, tz: str = "America/Chicago",
     next poll instead of being silently skipped.
     """
     now = _now or datetime.now(ZoneInfo(tz))
-    n, results = 0, []
+    jobs = []
     for f in sorted(QUEUE.glob("*.json")):
         post = json.loads(f.read_text())
         if post.get("status") != "approved":
@@ -276,11 +361,11 @@ def publish_scheduled(live: bool = True, tz: str = "America/Chicago",
             target_dt = now.replace(hour=th, minute=tm, second=0, microsecond=0)
             if now < target_dt:
                 continue   # not this post's turn yet
-        results.append(_publish_one(f, post, live))
-        n += 1
-    if not n:
+        jobs.append((f, post))
+    if not jobs:
         print("Nothing is both approved and past its scheduled slot yet.")
-    return results
+        return []
+    return _publish_batch(jobs, live)
 
 
 # ---------------------------------------------------------------------------
