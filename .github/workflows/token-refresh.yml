@@ -14,6 +14,17 @@ on:
 
 permissions:
   contents: read
+  # Required by the "Shout if it failed" step below. A permissions: block
+  # REPLACES the defaults outright - every scope not listed here is set to
+  # none - so with contents:read alone the GITHUB_TOKEN that
+  # actions/github-script uses had no issues scope, and the alert step 403'd
+  # instead of opening the issue. The one notification channel for a dying
+  # token could never have fired.
+  #
+  # contents:read stays correct and minimal for the rest of the job: nothing
+  # here commits, and auth.py writes the refreshed secret through GH_PAT
+  # against the REST API, not through GITHUB_TOKEN.
+  issues: write
 
 jobs:
   refresh:
