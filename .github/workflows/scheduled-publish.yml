@@ -29,6 +29,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # The commit step below rebases onto origin before retrying a
+          # rejected push. The default shallow clone (fetch-depth: 1) cannot
+          # rebase, so the retry would fail exactly when it is needed.
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -60,24 +65,147 @@ jobs:
           HANDLE: ${{ vars.HANDLE }}
         run: python src/linkinbio.py
 
+      # always(), and BEFORE the commit step's `git add`: a post that went
+      # live before a later failure should still get its issue comment.
       - name: Find which posts just went live
         id: published
+        if: always()
         run: |
           IDS=$(git status --porcelain data/published \
             | awk '{print $2}' | xargs -n1 basename 2>/dev/null \
             | sed 's/\.json$//' | tr '\n' ' ')
           echo "ids=$IDS" >> "$GITHUB_OUTPUT"
 
+      # if: always() is the whole point of this step, not a detail.
+      #
+      # Publishing to Instagram is irreversible the moment the Graph API
+      # accepts it, but the record that it happened - data/published/<id>.json,
+      # the deleted queue file, the ledger entry - is only written to this
+      # runner's disk. THIS step is what makes that record durable. Gated on
+      # success, any later failure (a second post erroring, the link-in-bio
+      # rebuild, the porcelain step) threw the record away while the carousel
+      # stayed live, and the next 15-minute poll published it all over again.
+      #
+      # The push is retried with a rebase because publish-on-approve.yml
+      # commits an approval whenever you comment on an issue, and a plain push
+      # from here is then rejected as non-fast-forward. That rejection used to
+      # be enough, on its own, to duplicate a post.
       - name: Commit the result
+        if: always()
         run: |
+          set -uo pipefail
+          # Written once, up here, because a heredoc cannot be indented inside
+          # the retry loop below without breaking its terminator.
+          cat > /tmp/reconcile.py <<'PY'
+          """Resolve a merge conflict in favour of KEEPING the publish record.
+
+          data/ledger.json is written by every workflow - this one adds to
+          "posted", the approve/kill gate adds to "rejected", the morning draft
+          adds to "seen". json.dumps(indent=2) puts those edits on adjacent
+          lines, so while the ledger is still small git cannot auto-merge them
+          and a plain rebase aborts. That is worst on a young account and eases
+          as the file grows, which is exactly backwards.
+
+          The ledger is a union of additive maps, so merge it as one. For any
+          other conflicting path our side wins, because our side is the only
+          record that a carousel is ALREADY LIVE on Instagram - and losing a
+          "rejected"/"seen" entry just means a study may be re-sourced later,
+          while losing a "posted" entry means posting the same carousel twice.
+          """
+          import json, subprocess
+
+          def sh(*a):
+              return subprocess.run(a, capture_output=True, text=True)
+
+          unmerged = sh("git", "diff", "--name-only", "--diff-filter=U").stdout.split()
+          for path in unmerged:
+              if path.endswith("ledger.json"):
+                  def side(rev):
+                      r = sh("git", "show", f"{rev}:{path}")
+                      try:
+                          return json.loads(r.stdout)
+                      except Exception:
+                          return {}
+                  ours, theirs = side("HEAD"), side("MERGE_HEAD")
+                  merged = {}
+                  for bucket in ("posted", "rejected", "seen"):
+                      merged[bucket] = {**(theirs.get(bucket) or {}),
+                                        **(ours.get(bucket) or {})}
+                  with open(path, "w") as fh:
+                      json.dump(merged, fh, indent=2)
+                  sh("git", "add", "--", path)
+                  print(f"  union-merged {path}")
+              elif sh("git", "checkout", "--ours", "--", path).returncode == 0:
+                  sh("git", "add", "--", path)
+                  print(f"  kept our {path}")
+              else:
+                  # We deleted it (a published post's queue file). Stay deleted.
+                  sh("git", "rm", "-f", "--", path)
+                  print(f"  kept our deletion of {path}")
+          PY
+
           git config user.name  "onestudytoday-bot"
           git config user.email "bot@users.noreply.github.com"
           git add data/ docs/ || true
-          git commit -m "publish: $(date -u +%Y-%m-%dT%H:%M:%SZ)" || echo "nothing to commit"
-          git push
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+            exit 0
+          fi
+          # No `|| true` here: a commit that genuinely FAILS must not be
+          # mistaken for "nothing to commit" and silently discard the record.
+          git commit -m "publish: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+
+          for attempt in 1 2 3 4 5; do
+            if git push; then
+              echo "pushed on attempt $attempt"
+              exit 0
+            fi
+            echo "push rejected (attempt $attempt) - reconciling with origin"
+            git fetch origin "$GITHUB_REF_NAME"
+            if ! git merge --no-edit "origin/$GITHUB_REF_NAME"; then
+              python3 /tmp/reconcile.py
+              git commit --no-edit || true
+            fi
+            sleep $(( attempt * 3 ))
+          done
+          echo "FAILED to push the publish record after 5 attempts."
+          echo "Posts may already be live on Instagram without being recorded."
+          exit 1
+
+      # scheduled-publish.yml had no failure alert at all. A red run in the
+      # Actions tab is not a notification - and this is the one workflow whose
+      # silent failure can put the same carousel out twice.
+      - name: Shout if publishing failed
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = "Publishing FAILED - check before the next run";
+            const body = [
+              "The scheduled publish run did not finish cleanly.",
+              "",
+              "**A post may already be live on Instagram without having been",
+              "recorded in the repo.** The publish path refuses to repost",
+              "anything it can see a record for, so check that first:",
+              "",
+              "1. Open the account and see what actually went out.",
+              "2. If a post is live but `data/published/` has no file for it,",
+              "   say so here and it can be recorded by hand before the next",
+              "   15-minute run.",
+              "",
+              `Run: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`
+            ].join("\n");
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              state: "open", labels: "publish-alert" });
+            if (existing.data.length === 0) {
+              await github.rest.issues.create({
+                owner: context.repo.owner, repo: context.repo.repo,
+                title, body, labels: ["publish-alert"] });
+            }
 
       - name: Comment on the review issue for each post that went live
-        if: steps.published.outputs.ids != ''
+        if: always() && steps.published.outputs.ids != ''
         uses: actions/github-script@v7
         env:
           IDS: ${{ steps.published.outputs.ids }}
