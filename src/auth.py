@@ -33,7 +33,7 @@ from typing import Any, Dict, Optional
 
 import requests
 
-from config import ROOT, settings
+from config import ROOT, _opt, settings
 
 REFRESH_THRESHOLD_DAYS = 20
 TIMEOUT = 30
@@ -342,6 +342,38 @@ def ensure(force: bool = False) -> Dict[str, Any]:
                 "written": written, "after": asdict(after)})
     print(f"Refreshed via {res['path']}. New token valid for "
           f"{after.days_left:.1f} days. Written: {written}")
+
+    # A refresh that could not be SAVED is a failed refresh, and it has to
+    # exit non-zero or nobody ever finds out.
+    #
+    # persist() catches every exception from the GitHub secret write-back and
+    # only prints to stderr, so an expired, revoked or misnamed GH_PAT left
+    # the repository secret holding the OLD token while this function returned
+    # normally. token-refresh.yml then went green every Sunday - and because
+    # the alert issue is wired to `if: failure()`, the one notification you
+    # actually need never fired. The token would simply age out and, on about
+    # day 60, drafting and publishing would stop together with no warning.
+    #
+    # In CI (GITHUB_REPOSITORY set) the repository secret is the ONLY copy
+    # that matters: there is no .env on a runner, and the runner's filesystem
+    # is discarded. So a dotenv-only write is not success there.
+    in_ci = bool(_opt("GITHUB_REPOSITORY"))
+    if in_ci and not written.get("github_secret"):
+        raise AuthError(
+            "Token was refreshed and verified, but could NOT be written back "
+            "to the GitHub repository secret - so the new token has been "
+            "thrown away and IG_ACCESS_TOKEN still holds the old one.\n"
+            "Usual cause: the GH_PAT secret is missing, misnamed, expired, or "
+            "lacks the 'Secrets: write' permission on this repository.\n"
+            "Fix it in docs/RUNBOOK.md under 'Re-authorising from scratch'. "
+            "Until it is fixed, posting stops when the current token expires."
+        )
+    if not any(written.values()):
+        raise AuthError(
+            "Token was refreshed and verified, but was not persisted "
+            "anywhere - neither .env nor the GitHub repository secret. The "
+            "new token has been lost."
+        )
     return out
 
 
