@@ -111,6 +111,23 @@ class VetReport:
     sample_size: Optional[int] = None
     subjects: str = "unclear"      # human | non-human | mixed | unclear
     journal_tier: Optional[int] = None
+    # Set at the moment the "causal verbs are banned in every slide" rule is
+    # injected into the drafting prompt, so the CODE gate that enforces it and
+    # the PROMPT rule that requests it can never disagree. check_draft() used
+    # to re-derive the condition from `design.endswith("(observational)")`,
+    # which is a strictly narrower set than the one that triggers the rule -
+    # a mendelian randomisation study, or any design (including "unclear")
+    # that merely carries observational markers, got the prompt instruction
+    # but no enforcement, leaving the ban resting entirely on the model's
+    # goodwill for exactly the studies whose design is least clear-cut.
+    causal_language_banned: bool = False
+    # The species labels detect_subjects() actually found ("mice", "pigs",
+    # "cell lines", ...). Stored so the animal-claim gate can ask whether the
+    # copy names THIS study's species, instead of consulting a hard-coded list
+    # of ten plural words that silently failed to cover cattle, cell lines,
+    # non-human primates, xenografts or computer simulation - and that missed
+    # "a mouse model" because it only knew "mice".
+    species: List[str] = field(default_factory=list)
     required_caveats: List[str] = field(default_factory=list)
     required_badges: List[str] = field(default_factory=list)
     draft_rules: List[str] = field(default_factory=list)
@@ -189,25 +206,74 @@ def detect_subjects(s: Study) -> Tuple[str, List[str]]:
     return "unclear", []
 
 
+# Ordered MOST authoritative first - see detect_sample_size for why that
+# matters. Each must expose the number as group(1).
 N_PATTERNS = [
     r"\bn\s*=\s*([\d][\d,\s]{0,10}\d|\d)",
-    r"\b([\d][\d,]{2,})\s+(?:participants|patients|adults|children|individuals|subjects|volunteers|respondents|people)\b",
-    r"\b(?:recruited|enrolled|included|analys\w+|studied|followed)\s+([\d][\d,]{1,})\b",
+    # `\d[\d,]*\d|\d` cannot END on a comma, which is what stops
+    # "Between 2017 and 2019, patients were screened" being read as a
+    # 2019-person study: with the trailing comma excluded from the capture the
+    # required \s+ before the noun no longer matches at all.
+    r"\b(\d[\d,]*\d|\d)\s+(?:participants|patients|adults|children|individuals|subjects|volunteers|respondents|people)\b",
+    r"\b(?:recruited|enrolled|included|analys\w+|studied|followed)\s+(\d[\d,]*\d|\d)\b",
 ]
+
+# A properly formed count: either plain digits, or digits in 3-digit
+# comma groups. Rejects "20, 22" from "(n = 20, 22, and 24)", which the n=
+# pattern happily spans and which used to be read as 2022.
+_WELL_FORMED_N = re.compile(r"\d{1,3}(?:,\d{3})+|\d+")
 
 
 def detect_sample_size(s: Study) -> Optional[int]:
+    """The study's human participant count, or None if it never states one.
+
+    Two bugs used to live here, and both defeated the "human sample under 30"
+    guardrail in the direction that matters - making small studies look big.
+
+    1. The participant-noun pattern required at least three characters in the
+       number (`[\\d][\\d,]{2,}`), so "18 patients" or "24 adults" simply did
+       not match. The whole TINY_SAMPLE path - the warn flag, its forced
+       caveat, its 10-point deduction - was blind to exactly the studies it
+       exists to catch. (It only ever seemed to work because the phrasings
+       that reach the recruiting-verb pattern, like "recruited 18", still
+       matched - which is also the single phrasing the old test pinned.)
+
+    2. It took `max()` across every match, so any larger unrelated count -
+       images, records, trials, person-years - overwrote the real one. An
+       abstract reading "we enrolled 26 participants; we analysed 12,400
+       brain images" was recorded as a 12,400-person study: no TINY_SAMPLE,
+       a large-sample credibility bonus, `n: 12400` on the review card, and
+       "sample size: 12400" fed to the drafting model as fact.
+
+    So: consult the patterns in PRIORITY ORDER, and take the largest match
+    from the FIRST pattern that hits - never across patterns. An explicit
+    "n = 26" beats "26 participants", which beats "enrolled 26", so a count of
+    images or records phrased with a weaker pattern can no longer displace a
+    properly stated participant count.
+
+    Largest-within-one-pattern, rather than first-within-one-pattern, because
+    a single abstract routinely states several counts at the SAME level of
+    authority and the total is the one that describes the study: "follow-up
+    was available for 24 participants out of the 310 randomised" is a
+    310-person trial, and "discovery cohort (n=28), replication cohort
+    (n=1,204)" is a 1,204-person study. Taking the first match called both of
+    those tiny - which, now that a missing forced caveat BLOCKS approval,
+    would have made "only 24 people took part" a mandatory sentence on a post
+    about a 310-person trial.
+    """
     t = f"{s.title} {s.abstract}"
-    best = None
     for pat in N_PATTERNS:
+        vals = []
         for m in re.finditer(pat, t, re.I):
-            raw = re.sub(r"[,\s]", "", m.group(1))
-            if not raw.isdigit():
+            raw = re.sub(r"\s", "", m.group(1))
+            if not _WELL_FORMED_N.fullmatch(raw):
                 continue
-            v = int(raw)
+            v = int(raw.replace(",", ""))
             if 1 <= v <= 100_000_000:
-                best = v if best is None else max(best, v)
-    return best
+                vals.append(v)
+        if vals:
+            return max(vals)
+    return None
 
 
 def journal_tier(s: Study, niche_cfg: Dict[str, Any]) -> Optional[int]:
@@ -304,6 +370,19 @@ def vet(s: Study, niche: Optional[str] = None, allow_preprints: bool = True,
                         "slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. "
                         "Use 'is linked to', 'goes together with', 'people who X also Y'."),
         ))
+        # Arm the code gate for a design that IS observational - not for the
+        # wider `obs_markers and not causal_design` half of this branch. Those
+        # markers are words like "association", "cohort", "registry" and
+        # "linked to", which appear constantly in the abstracts of designs
+        # that are not observational at all: a meta-analysis of fourteen
+        # randomised trials trips them, and banning causal verbs there is both
+        # wrong on the science (a meta-analysis of RCTs is the most causally
+        # authoritative thing this pipeline can source) and wrong in the
+        # message, which would tell you "the study design is observational"
+        # about an RCT. Those studies still get the caveat and the prompt
+        # rule; they just are not code-blocked for saying "reduces".
+        if is_observational:
+            rep.causal_language_banned = True
         score -= 6
         if causal_lang:
             rep.add(Flag(
@@ -317,6 +396,7 @@ def vet(s: Study, niche: Optional[str] = None, allow_preprints: bool = True,
 
     # ------------------------------------------------------------ SUBJECTS
     rep.subjects, species = detect_subjects(s)
+    rep.species = list(species)
     if rep.subjects == "non-human":
         pretty = " and ".join(species) or "non-human subjects"
         rep.add(Flag(
@@ -426,18 +506,47 @@ def vet(s: Study, niche: Optional[str] = None, allow_preprints: bool = True,
 # ---------------------------------------------------------------------------
 # Post-draft verification: does the written copy overclaim vs the abstract?
 # ---------------------------------------------------------------------------
+def _names_the_species(draft: str, rep: VetReport) -> bool:
+    """Does this copy tell the reader what the study was actually done in?
+
+    Derived from the species THIS study was detected as using, not from a
+    fixed word list. For each detected label we accept the label itself, every
+    NON_HUMAN_MARKERS key that maps to it (so "a mouse model" counts for the
+    "mice" label), and a naive singular of each (so "the pig" counts for
+    "pigs"). Falling back to any marker at all when a report predates the
+    species field keeps older queued posts behaving sensibly.
+    """
+    d = draft.lower()
+    labels = list(getattr(rep, "species", None) or [])
+    terms = set()
+    if labels:
+        for lab in labels:
+            terms.add(lab.lower())
+            for key, mapped in NON_HUMAN_MARKERS.items():
+                if mapped.lower() == lab.lower():
+                    terms.add(key.strip().lower())
+    else:
+        terms = {k.strip().lower() for k in NON_HUMAN_MARKERS}
+        terms |= {v.lower() for v in NON_HUMAN_MARKERS.values()}
+    for t in list(terms):
+        if len(t) > 3 and t.endswith("s"):
+            terms.add(t[:-1])
+    return any(t and t in d for t in terms)
+
+
 CLAIM_CHECK_PATTERNS = {
     "causal_verb_on_observational": (
-        lambda draft, rep: rep.design.endswith("(observational)")
+        # getattr fallback keeps posts drafted before causal_language_banned
+        # existed (their stored vet dict has no such key) still enforced.
+        lambda draft, rep: (getattr(rep, "causal_language_banned", False)
+                            or rep.design.endswith("(observational)"))
         and any(v in draft.lower() for v in CAUSAL_VERBS),
         "Draft uses a causal verb but the study design is observational."),
     "human_claim_on_animal": (
         lambda draft, rep: rep.subjects == "non-human"
         and any(w in draft.lower() for w in
                 (" you ", "your ", "people ", "humans ", "we can now"))
-        and not any(w in draft.lower() for w in
-                    ("mice", "rats", "zebrafish", "cells", "worms", "flies",
-                     "macaques", "pigs", "dogs", "organoid")),
+        and not _names_the_species(draft, rep),
         "Draft speaks to humans but the study was not done in humans."),
     "hype": (
         lambda draft, rep: any(h in draft.lower() for h in HYPE_WORDS),
@@ -451,12 +560,36 @@ CLAIM_CHECK_PATTERNS = {
 }
 
 
-def check_draft(draft_text: str, rep: VetReport) -> List[str]:
-    """Returns a list of violations. Empty list means the draft is clean."""
+# Checks that must NOT see the caveats slide.
+#
+# `human_claim_on_animal` fires only when NO species word appears anywhere in
+# the text it is given. For a non-human study the pipeline FORCES a caveat
+# naming the species onto the fine-print slide - so feeding it the whole post
+# meant the mandated caveat supplied the species word itself and switched off
+# the only code gate stopping the cover slide from claiming a human result.
+# The better a post complied with the caveat rule, the more completely its
+# animal-claim check was disabled.
+#
+# This is the same carve-out, for the same reason, as the existing
+# include_cta=False: a surface that is not a claim about the study must not be
+# able to satisfy - or trip - a claim check.
+CLAIMS_ONLY_CHECKS = {"human_claim_on_animal"}
+
+
+def check_draft(draft_text: str, rep: VetReport,
+                claim_text: Optional[str] = None) -> List[str]:
+    """Returns a list of violations. Empty list means the draft is clean.
+
+    `draft_text` is the study-specific copy. `claim_text` is that same copy
+    with the caveats slide removed; checks in CLAIMS_ONLY_CHECKS run against
+    it. Callers that omit it get the old single-surface behaviour.
+    """
+    claims = draft_text if claim_text is None else claim_text
     out = []
     for code, (fn, msg) in CLAIM_CHECK_PATTERNS.items():
+        text = claims if code in CLAIMS_ONLY_CHECKS else draft_text
         try:
-            if fn(draft_text, rep):
+            if fn(text, rep):
                 out.append(f"{code}: {msg}")
         except Exception:
             continue
