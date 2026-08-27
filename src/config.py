@@ -57,7 +57,22 @@ def _req(name: str) -> str:
 
 
 def _opt(name: str, default: str = "") -> str:
-    return os.environ.get(name, default).strip()
+    """An optional setting, falling back to `default`.
+
+    An env var that exists but is EMPTY counts as unset. That is not
+    hypothetical tidiness: GitHub Actions defines the variable with an empty
+    value whenever `${{ vars.SOMETHING }}` is undefined or misspelled, so
+    `os.environ.get(name, default)` finds the key, skips the default, and
+    hands back "". Every caller then silently took a wrong value instead of
+    the documented one - and the worst of them flips a guardrail the wrong
+    way: `ALLOW_PREPRINTS` unset made `_opt(...).lower() == "true"` False,
+    which turns preprints into an automatic REJECT and silently kills every
+    Thursday (physics is almost entirely preprints), while the runbook says
+    an empty Thursday is normal. Same class of bug for THEME (falls back to
+    an unstyled render), HANDLE and GRAPH_VERSION.
+    """
+    v = os.environ.get(name, "").strip()
+    return v if v else default.strip()
 
 
 def handle() -> str:
