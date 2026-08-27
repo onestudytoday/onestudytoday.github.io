@@ -55,10 +55,33 @@ def save(post: Dict[str, Any]) -> None:
 
 
 def rerender(post: Dict[str, Any]) -> List[str]:
-    from config import settings
+    """Re-render a post's slides after an edit - and RESTAGE them.
+
+    Re-rendering used to write only into out/posts/<id>/, which .gitignore
+    excludes as working scratch. The slides that actually publish are the
+    JPEGs in docs/img/<id>/, staged once at draft time and committed. So
+    fixing an overstated headline or a missing caveat here corrected the
+    review card and the caption while Instagram still received the ORIGINAL
+    slides - the edit was silently discarded at exactly the moment it
+    mattered most, and the published carousel showed the old cover next to
+    the new caption.
+
+    Restaging is therefore part of re-rendering, not a separate step someone
+    has to remember. Stale JPEGs from a previous render are removed first, so
+    an edit that changes the slide count cannot leave an orphaned slide (a
+    deleted caveats slide, say) still sitting there to be published.
+    """
+    from config import DOCS, settings
+    from publish import to_jpeg
     d = OUT / "posts" / post["id"]
     paths = render_post(post, settings().theme, str(d))
     contact_sheet(paths, str(OUT / "posts" / f"SHEET_{post['id']}.png"))
+
+    staged_dir = DOCS / "img" / post["id"]
+    if staged_dir.exists():
+        for old in staged_dir.glob("*.jpg"):
+            old.unlink()
+    to_jpeg(paths, staged_dir)
     return paths
 
 
@@ -121,6 +144,19 @@ def blocking_reasons(post: Dict[str, Any]) -> List[str]:
     for e in qa.get("lint_errors", []) or []:
         if e.startswith("GUARDRAIL"):
             out.append(f"Guardrail violation: {e}")
+        elif e.startswith("required caveat not represented"):
+            # The vetting engine decides certain caveats MUST appear on the
+            # fine-print slide - "done in mice, not humans", "found a pattern,
+            # not a cause", "only 24 people took part", the industry-funding
+            # disclosure. draft.lint() already notices when the drafting model
+            # dropped one, but it emits a plain unprefixed error, and this
+            # function only ever counted the "GUARDRAIL"-prefixed ones. So
+            # every forced caveat except the preprint one (handled separately
+            # below) was detected and then ignored: a post missing its
+            # mandated caveat had zero blockers and a plain `approve` from
+            # your phone published it. These are the specific promises the
+            # README makes about this account, so they block.
+            out.append(f"Missing forced caveat: {e}")
     for c in qa.get("blocking_claims", []) or []:
         out.append(f"Unsupported claim: \"{c.get('claim','')[:90]}\" - {c.get('problem','')}")
     for n in qa.get("unverified_numbers", []) or []:
@@ -135,6 +171,19 @@ def blocking_reasons(post: Dict[str, Any]) -> List[str]:
         out.append("No link to the original study.")
     if not post.get("caveats"):
         out.append("No caveats slide.")
+
+    # A skeleton() post is the hand-authoring aid pipeline.run() falls back to
+    # when ANTHROPIC_API_KEY is missing - every field is literal instruction
+    # text ("**WRITE THE HOOK.** One sentence."). It is not a draft, and it
+    # passed every check here because none of them look at whether the copy
+    # was actually written. An unnoticed missing/expired API key would have
+    # opened a normal-looking review issue whose approval published template
+    # text to Instagram.
+    from draft import flatten as _flatten
+    body = _flatten(post)
+    if "WRITE THE HOOK" in body or body.count("WRITE ") >= 3:
+        out.append("This is an unwritten skeleton draft, not finished copy - "
+                   "the drafting step did not run (check ANTHROPIC_API_KEY).")
     return out
 
 
