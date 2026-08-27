@@ -473,7 +473,15 @@ def lint(post: Dict[str, Any], rep: VetReport, study: Any = None) -> List[str]:
     # boilerplate ("science you can actually check") and its second-person
     # phrasing is not a claim about the study, so including it produced false
     # positives on the animal-claim rule.
-    errs += [f"GUARDRAIL {v}" for v in check_draft(flatten(post, include_cta=False), rep)]
+    # claim_text drops the caveats slide as well. A non-human study is FORCED
+    # to carry a caveat naming the species, and that caveat used to satisfy
+    # the animal-claim gate's "is the species mentioned anywhere?" test all by
+    # itself - so complying with the caveat rule disabled the check on the
+    # cover. See vet.CLAIMS_ONLY_CHECKS.
+    errs += [f"GUARDRAIL {v}" for v in check_draft(
+        flatten(post, include_cta=False),
+        rep,
+        claim_text=flatten(post, include_cta=False, include_caveats=False))]
 
     # A link or a handle in the copy is the visible end of a prompt injection:
     # the drafting model is never asked for one. GUARDRAIL, so review.py counts
@@ -491,7 +499,8 @@ def lint(post: Dict[str, Any], rep: VetReport, study: Any = None) -> List[str]:
     return errs
 
 
-def flatten(post: Dict[str, Any], include_cta: bool = True) -> str:
+def flatten(post: Dict[str, Any], include_cta: bool = True,
+            include_caveats: bool = True) -> str:
     # Defensive on every nested lookup, same reasoning as _typed() above: this
     # runs on the RAW model output inside lint() before any repair round has
     # had a chance to fix a malformed field, so it cannot assume post["cover"]
@@ -512,8 +521,9 @@ def flatten(post: Dict[str, Any], include_cta: bool = True) -> str:
         if isinstance(st, dict):
             parts += [s(st.get("value")), s(st.get("label"))]
 
-    cav = post.get("caveats")
-    parts += [c for c in (cav if isinstance(cav, list) else []) if isinstance(c, str)]
+    if include_caveats:
+        cav = post.get("caveats")
+        parts += [c for c in (cav if isinstance(cav, list) else []) if isinstance(c, str)]
 
     if include_cta:
         cta = post.get("cta")
