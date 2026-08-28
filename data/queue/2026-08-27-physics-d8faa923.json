@@ -1,0 +1,174 @@
+{
+  "id": "2026-08-27-physics-d8faa923",
+  "niche": "wildcard",
+  "study": {
+    "key": "d8faa9237ad78e6a",
+    "title": "The Atacama Cosmology Telescope: Constraints on the anisotropic screening and birefringence effects with DR6",
+    "journal": "arXiv",
+    "pub_date": "2026-08-27",
+    "pub_date_display": "Aug 27, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2608.27458v1",
+    "url": "http://arxiv.org/abs/2608.27458v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Darby M. Kramer",
+      "Alexander van Engelen",
+      "Frank J. Qu",
+      "Christopher Cain",
+      "Irene Abril-Cabezas",
+      "J. Richard Bond"
+    ]
+  },
+  "cover": {
+    "kicker": "arXiv preprint from ACT",
+    "headline": "Telescopes hunt for **hidden twists in the oldest light** and come up empty-handed."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "The cosmic microwave background holds clues to physics that standard models can't explain.",
+      "body": "Light from the Big Bang can be stretched, scattered, and even rotated by forces we barely understand. Two effects interest cosmologists: anisotropic screening, where free electrons scatter photons in patchy ways during reionization, and cosmic birefringence, where polarization rotates due to physics beyond the standard model.\n\nBoth are linked to fingerprints in microwave sky maps. The team reports using ACT Data Release 6 to search for these subtle signals and test whether anything exotic is going on."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "No significant detection of either effect appeared in the maps or power spectra.",
+      "body": "For anisotropic screening, the upper limit sits two orders of magnitude above what current reionization models predict. Some foreground contamination showed up at one frequency, matching expectations from extragalactic simulations.\n\nFor cosmic birefringence, the team reports an upper limit on the Chern-Simons coupling term of less than 0.049 divided by the inflationary Hubble scale. That result aligns with previous analyses and rules out some exotic physics scenarios.",
+      "stat": {
+        "value": "100\u00d7",
+        "label": "higher than reionization model predictions"
+      }
+    }
+  ],
+  "caveats": [
+    "This is a preprint and hasn't been peer reviewed yet, so no independent expert has vetted the methods or conclusions.",
+    "The study found patterns in telescope data, not causes. Other astrophysical processes could produce similar signals."
+  ],
+  "cta": {
+    "headline": "Want all the technical details?",
+    "sub": "Swipe to the caption for the journal name, sample info, and study link."
+  },
+  "caption": "The oldest light in the universe can reveal whether exotic physics beyond our standard models is real. Researchers used the Atacama Cosmology Telescope's sixth data release to map two subtle effects: patchy electron scattering during reionization and polarization rotation from parity-violating forces. They report finding neither. The birefringence constraint places a firm ceiling on certain theories that invoke new particles or fields. One frequency channel showed contamination consistent with extragalactic foreground sources. This is a preprint on arXiv analyzing microwave sky survey data. The upper limits are still far from the signal strength that theory predicts. Full study: http://arxiv.org/abs/2608.27458v1\n\nWhich survey hunts CMB signals?",
+  "hashtag_set": "physics",
+  "vet": {
+    "key": "d8faa9237ad78e6a",
+    "verdict": "HOLD",
+    "score": 36,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      },
+      {
+        "code": "CORRELATIONAL",
+        "severity": "warn",
+        "message": "Design reads as observational (cross-sectional (observational)); markers: survey",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      }
+    ],
+    "design": "cross-sectional (observational)",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": true,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'.",
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "lint_errors": [
+      "GUARDRAIL causal_verb_on_observational: Draft uses a causal verb but the study design is observational."
+    ],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "upper limit on the Chern-Simons coupling term of less than 0.049 divided by the inflationary Hubble scale",
+          "problem": "The abstract states the limit as 'g_{a \u03b3} < 4.9 \u00d7 10^{-2} / H_I', which equals 0.049. The copy says 'less than 0.049' which is correct, but the abstract uses the '<' symbol to mean the limit IS 4.9 \u00d7 10^{-2} / H_I, not that it's less than that value. The '<' indicates the coupling must be below this threshold, making 0.049/H_I the upper limit itself, not a value the limit is less than.",
+          "severity": "minor"
+        },
+        {
+          "claim": "100\u00d7 higher than reionization model predictions",
+          "problem": "The abstract states 'two orders of magnitude above predictions', which equals 100\u00d7. However, this is presented as a graphical callout element '100\u00d7' separate from the text, potentially misleading readers about what this number represents without full context.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Full study: http://arxiv.org/abs/2608.27458v1",
+          "problem": "The abstract does not contain any URL or arXiv identifier. This link appears to be invented.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Researchers used the Atacama Cosmology Telescope's sixth data release",
+          "problem": "The abstract mentions 'ACT Data Release 6' but never spells out that ACT stands for 'Atacama Cosmology Telescope'. While this is likely correct, it is adding information not present in the abstract.",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "two orders of magnitude",
+          "found_in_abstract": true
+        },
+        {
+          "number": "100",
+          "found_in_abstract": false
+        },
+        {
+          "number": "0.049",
+          "found_in_abstract": true
+        },
+        {
+          "number": "4.9 \u00d7 10^{-2}",
+          "found_in_abstract": true
+        },
+        {
+          "number": "6",
+          "found_in_abstract": true
+        },
+        {
+          "number": "one",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Full study: http://arxiv.org/abs/2608.27458v1",
+        "problem": "The abstract does not contain any URL or arXiv identifier. This link appears to be invented.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "100",
+        "found_in_abstract": false
+      },
+      {
+        "number": "0.049",
+        "found_in_abstract": false,
+        "checked_by": "code"
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "physics"
+}
