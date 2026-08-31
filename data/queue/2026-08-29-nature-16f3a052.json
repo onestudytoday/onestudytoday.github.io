@@ -1,0 +1,216 @@
+{
+  "id": "2026-08-29-nature-16f3a052",
+  "niche": "nature",
+  "study": {
+    "key": "16f3a052254860b4",
+    "title": "Impact of Anthropogenic Activities and Climate Change on the Wetlands in the North-West of Madagascar",
+    "journal": "Plant-environment interactions (Hoboken, N.J.)",
+    "pub_date": "2026-08-29",
+    "pub_date_display": "Aug 29, 2026",
+    "doi": "10.1002/pei3.70206",
+    "doi_display": "doi.org/10.1002/pei3.70206",
+    "url": "https://doi.org/10.1002/pei3.70206",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Ramiandrisoa BA",
+      "Raoelina JT",
+      "Ramanandraibe ST",
+      "Manjato NV",
+      "Maharombaka C",
+      "Goyder D"
+    ]
+  },
+  "cover": {
+    "kicker": "Plant-Environment Interactions study",
+    "headline": "Wetlands in northwest Madagascar are losing species as **temperatures climb and rainfall drops** over two decades."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Macrophytes\u2014aquatic plants\u2014are early indicators of ecosystem stress in wetlands across Madagascar.",
+      "body": "Four wetland sites in the Boeny Region were surveyed to understand how climate and human activity shape plant communities. The region has seen measurable shifts in temperature and precipitation over twenty years.\n\nResearchers used standardized 1\u00d71 meter quadrats to document every species present, looking for patterns that could explain why some wetlands hold more diversity than others."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Ninety-eight plant species were recorded, with each of the four sites hosting unique species found nowhere else.",
+      "body": "Mahajanga II had 12 species found only there. Marovoay had 18 unique species, Ankarafantsika 16, and Ambatoboeny five. The plants belonged to 73 genera across 33 families.\n\nStatistical analysis showed species distribution tracked longitude, latitude, and vegetation cover. Temperature increased across all three districts over two decades, while precipitation steadily declined during the same period.",
+      "stat": {
+        "value": "98",
+        "label": "plant species documented across sites"
+      }
+    }
+  ],
+  "caveats": [
+    "The study documents correlation between climate variables and plant diversity but does not establish direct causation.",
+    "Twenty years of climate data provides context, but the floristic surveys represent a snapshot in time, not continuous monitoring."
+  ],
+  "cta": {
+    "headline": "Read the full floristic inventory",
+    "sub": "See the complete species list and statistical models linking climate to wetland diversity."
+  },
+  "caption": "Madagascar's northwestern wetlands are changing as the climate shifts around them. This floristic survey of four sites in the Boeny Region catalogued 98 macrophyte species, with substantial variation between locations\u2014some species appeared at only one site. Rarefaction curves showed Shannon diversity stabilizing across sites, while db-RDA revealed that geographic coordinates and vegetation cover explained much of the species distribution. The study notes that temperature rose and rainfall fell across the region over the past two decades, a pattern that coincides with shifts in plant community composition. Published in Plant-Environment Interactions, the work surveyed four wetland sites using 1\u00d71 meter quadrats. The authors note that conservation attention is needed. Full study: doi.org/10.1002/pei3.70206. Which site had most unique species?",
+  "hashtag_set": "nature",
+  "vet": {
+    "key": "16f3a052254860b4",
+    "verdict": "HOLD",
+    "score": 46,
+    "flags": [
+      {
+        "code": "NON_HUMAN",
+        "severity": "warn",
+        "message": "Study subjects are rats, not people.",
+        "caveat": "This was done in rats \u2014 not humans. Most findings in rats do not carry over to people.",
+        "draft_rule": "Subjects were rats, NOT humans. The cover slide must not imply a human result. Name the species explicitly by slide 2."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Plant-environment interactions (Hoboken, N.J.)' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "non-human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [
+      "rats"
+    ],
+    "required_caveats": [
+      "This was done in rats \u2014 not humans. Most findings in rats do not carry over to people."
+    ],
+    "required_badges": [
+      "NOT_IN_HUMANS"
+    ],
+    "draft_rules": [
+      "Subjects were rats, NOT humans. The cover slide must not imply a human result. Name the species explicitly by slide 2."
+    ],
+    "notes": []
+  },
+  "qa": {
+    "lint_errors": [
+      "required caveat not represented: 'This was done in rats \u2014 not humans. Most findings in rats do not carry...'"
+    ],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "Wetlands in northwest Madagascar are losing species as **temperatures climb and rainfall drops** over two decades.",
+          "problem": "The abstract does not state that wetlands are 'losing species'. It states that an increase in temperature and decrease in precipitation were observed, but does not establish that species loss occurred.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Macrophages\u2014aquatic plants\u2014are early indicators of ecosystem stress in wetlands across Madagascar.",
+          "problem": "The abstract does not describe macrophytes as 'early indicators of ecosystem stress'. The abstract only states they are 'vulnerable to various factors'.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "The region has seen measurable shifts in temperature and precipitation over twenty years.",
+          "problem": "The abstract states 'two decades', not 'twenty years'. While these mean the same thing, the abstract uses 'two decades' consistently. However, this is the same value so not a problem.",
+          "severity": "minor"
+        },
+        {
+          "claim": "each of the four sites hosting unique species found nowhere else",
+          "problem": "The abstract states specific numbers of unique species per site (12, 18, 16, 5), but does not explicitly state that these species were 'found nowhere else' in general\u2014only that they were unique among the four study sites.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Temperature increased across all three districts over two decades",
+          "problem": "The abstract states 'we observed an increase in temperature at the three districts including the study sites'. This supports the claim.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Published in Plant-Environment Interactions",
+          "problem": "The abstract does not mention the journal name 'Plant-Environment Interactions'.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Full study: doi.org/10.1002/pei3.70206",
+          "problem": "The abstract does not contain this DOI or any DOI.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "1\u00d71 meter",
+          "found_in_abstract": true
+        },
+        {
+          "number": "two decades",
+          "found_in_abstract": true
+        },
+        {
+          "number": "twenty years",
+          "found_in_abstract": true
+        },
+        {
+          "number": "98",
+          "found_in_abstract": true
+        },
+        {
+          "number": "four sites",
+          "found_in_abstract": true
+        },
+        {
+          "number": "12",
+          "found_in_abstract": true
+        },
+        {
+          "number": "18",
+          "found_in_abstract": true
+        },
+        {
+          "number": "16",
+          "found_in_abstract": true
+        },
+        {
+          "number": "five",
+          "found_in_abstract": true
+        },
+        {
+          "number": "73",
+          "found_in_abstract": true
+        },
+        {
+          "number": "33",
+          "found_in_abstract": true
+        },
+        {
+          "number": "three districts",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Wetlands in northwest Madagascar are losing species as **temperatures climb and rainfall drops** over two decades.",
+        "problem": "The abstract does not state that wetlands are 'losing species'. It states that an increase in temperature and decrease in precipitation were observed, but does not establish that species loss occurred.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Macrophages\u2014aquatic plants\u2014are early indicators of ecosystem stress in wetlands across Madagascar.",
+        "problem": "The abstract does not describe macrophytes as 'early indicators of ecosystem stress'. The abstract only states they are 'vulnerable to various factors'.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Published in Plant-Environment Interactions",
+        "problem": "The abstract does not mention the journal name 'Plant-Environment Interactions'.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Full study: doi.org/10.1002/pei3.70206",
+        "problem": "The abstract does not contain this DOI or any DOI.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "nature"
+}
