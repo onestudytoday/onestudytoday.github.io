@@ -45,6 +45,19 @@ jobs:
 
       - run: pip install -r requirements.txt
 
+      # ubuntu-latest ships with ffmpeg, but "ships with" is a property of an
+      # image that Actions rerolls without asking. If it ever stops being true,
+      # reel building fails soft (src/pipeline.py catches it) and every Friday
+      # quietly goes out as a carousel forever - a silent downgrade of the one
+      # format that reaches non-followers. One idempotent line removes the
+      # whole failure mode.
+      - name: Make sure ffmpeg is available (for Reels)
+        run: |
+          if ! command -v ffmpeg >/dev/null 2>&1; then
+            sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          fi
+          ffmpeg -version | head -1
+
       - name: Draft, vet and render
         id: draft
         env:
@@ -61,6 +74,10 @@ jobs:
           HANDLE: ${{ vars.HANDLE }}
           THEME: ${{ vars.THEME }}
           ALLOW_PREPRINTS: ${{ vars.ALLOW_PREPRINTS }}
+          # Which weekdays go out as a Reel. Unset falls back to "wildcard"
+          # (Friday) - see pipeline.reel_niches(). Set it to "off" to disable;
+          # an EMPTY value means unset here, not off.
+          REEL_NICHES: ${{ vars.REEL_NICHES }}
           # The two "Run workflow" inputs come in as environment variables and
           # are read as shell variables below. They are NOT written into the
           # script with ${{ }}, which would paste whatever was typed in the box
@@ -120,14 +137,51 @@ jobs:
                   print("staged", post["id"], len(pngs))
           PY
 
+      # Hardened to match scheduled-publish.yml's commit step. This one never
+      # got the 24 Aug treatment, and it now carries reel.mp4 as well as the
+      # queue file and the slide JPEGs.
+      #
+      # `git commit || echo "nothing to commit"` turns a REAL commit failure
+      # into a green step - then `git push` succeeds vacuously ("Everything
+      # up-to-date") and the next step opens a review issue for a queue file
+      # that is not in the repository. tests/test_audit_regressions.py already
+      # forbids that exact pattern in scheduled-publish.yml; it simply never
+      # looked at this file.
+      #
+      # The retry matters more now than it did: publish-on-approve.yml commits
+      # whenever you comment on an issue and shares no concurrency group with
+      # this workflow, so a non-fast-forward rejection here is ordinary rather
+      # than exotic - and it used to lose the whole day's draft.
       - name: Commit the queue
         if: steps.draft.outputs.post_file != ''
         run: |
+          set -uo pipefail
           git config user.name  "onestudytoday-bot"
           git config user.email "bot@users.noreply.github.com"
           git add data/ docs/ out/ || true
-          git commit -m "draft: $(date -u +%Y-%m-%d) queue" || echo "nothing to commit"
-          git push
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+            exit 0
+          fi
+          # No `|| true`: a commit that genuinely FAILS must not be mistaken
+          # for "nothing to commit".
+          git commit -m "draft: $(date -u +%Y-%m-%d) queue"
+
+          for attempt in 1 2 3 4 5; do
+            if git push; then
+              echo "pushed on attempt $attempt"
+              exit 0
+            fi
+            echo "push rejected (attempt $attempt) - rebasing onto origin"
+            git fetch origin "$GITHUB_REF_NAME"
+            # A draft adds new files rather than editing existing ones, so a
+            # rebase here is safe: unlike the publish path there is no ledger
+            # edit to conflict on.
+            git rebase "origin/$GITHUB_REF_NAME" || { git rebase --abort; exit 1; }
+            sleep $(( attempt * 3 ))
+          done
+          echo "FAILED to push the draft after 5 attempts."
+          exit 1
 
       - name: Open the review issue
         if: steps.draft.outputs.post_file != ''
