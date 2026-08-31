@@ -50,6 +50,20 @@ jobs:
           IG_BUSINESS_ACCOUNT_ID: ${{ secrets.IG_BUSINESS_ACCOUNT_ID }}
           PUBLIC_IMAGE_BASE: ${{ vars.PUBLIC_IMAGE_BASE }}
           HANDLE: ${{ vars.HANDLE }}
+          # Reels: decides whether this post publishes as a Reel or a carousel.
+          # It must match daily-draft.yml's value, because that is the run that
+          # decided whether to BUILD a reel.mp4 at all. If they disagree the
+          # publish step finds no video and falls back to a carousel, which is
+          # safe but silently wastes the Reel.
+          REEL_NICHES: ${{ vars.REEL_NICHES }}
+          # Crossposting. All four are optional: an unset platform is SKIPPED
+          # and says so in the log, and a crosspost failure can never fail this
+          # job (see crosspost.crosspost_all). Bluesky needs only an app
+          # password; Threads needs its own Meta app - see docs/RUNBOOK.md.
+          BLUESKY_HANDLE: ${{ vars.BLUESKY_HANDLE }}
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          THREADS_USER_ID: ${{ vars.THREADS_USER_ID }}
         run: |
           set -o pipefail
           # GITHUB_EVENT_NAME is set automatically by Actions on every run -
@@ -211,9 +225,7 @@ jobs:
           IDS: ${{ steps.published.outputs.ids }}
         with:
           script: |
-            const fs = require("fs");
             const ids = process.env.IDS.trim().split(/\s+/).filter(Boolean);
-            const log = fs.existsSync("publish.log") ? fs.readFileSync("publish.log", "utf8") : "";
             const issues = await github.rest.issues.listForRepo({
               owner: context.repo.owner, repo: context.repo.repo,
               state: "all", labels: "review", per_page: 100 });
@@ -223,11 +235,27 @@ jobs:
               const marker = `<!-- onestudytoday-post-id: ${id} -->`;
               const issue = issues.data.find(i => (i.body || "").includes(marker));
               if (!issue) continue;
+              // The publish log is NOT pasted in here any more.
+              //
+              // It used to paste the tail of publish.log. The Graph API
+              // takes access_token as a QUERY PARAMETER, so a network-level
+              // failure makes requests quote the whole URL - token included -
+              // into an exception, which gets printed and tee'd into this
+              // file. Actions secret masking does not cover it: masking
+              // applies to the workflow LOG STREAM, not to bytes a process
+              // writes to a file, and not to payloads sent to the REST API.
+              // This comment body is a REST payload on a PUBLIC repository.
+              //
+              // src/secrets_guard.py now scrubs credentials before they can
+              // reach the log at all. This is the second lock on that door:
+              // the run link gives the same diagnostics to anyone who can
+              // already read the logs, without republishing them to the world.
               await github.rest.issues.createComment({
                 owner: context.repo.owner, repo: context.repo.repo,
                 issue_number: issue.number,
-                body: "Published.\n\n```\n" + log.slice(-2000) + "\n```\n\n" +
-                      "The link-in-bio page has been rebuilt." });
+                body: "Published.\n\nThe link-in-bio page has been rebuilt.\n\n" +
+                      `[Full publish log](${context.serverUrl}/${context.repo.owner}` +
+                      `/${context.repo.repo}/actions/runs/${context.runId})` });
               if (issue.state !== "closed") {
                 await github.rest.issues.update({
                   owner: context.repo.owner, repo: context.repo.repo,
