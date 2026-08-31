@@ -11,10 +11,29 @@
 # ---------------------------------------------------------------------------
 
 defaults:
-  recency_days: 14
+  # How far back a study may have been published and still be postable.
+  #
+  # This was 14 days, which was too tight to be worth it. A fortnight of one
+  # niche is a few dozen papers, most of them incremental, so the pipeline was
+  # picking the best of a bad shortlist - and vet.py hard-REJECTS anything past
+  # this line, so a genuinely good paper found on day 15 was simply thrown away.
+  #
+  # At ~75 days the pool is large enough that the interest ranking in
+  # interest.py has something real to choose between, which is where the
+  # quality actually comes from. Nothing about a study three months old is
+  # less true, and no reader has seen it either.
+  #
+  # A useful side effect: citation counts and news pickup need weeks to
+  # accumulate, so `engagement_proxy` and any future attention signal start
+  # returning something other than 0 at this window. At 14 days they could not.
+  recency_days: 75
   per_source_limit: 60
   min_abstract_chars: 500      # below this there is not enough to summarise
-  max_candidates: 25
+  # The batch the model actually ranks. Raised alongside the window: a wider
+  # net is only worth casting if more of it gets looked at. See the three-step
+  # shortlist in sources.fetch_candidates - a pool 4x this size is gathered by
+  # recency, cut to this by the free heuristic, then ranked by the model.
+  max_candidates: 40
 
 niches:
 
@@ -121,6 +140,105 @@ niches:
     # engagement of that week's published posts. See pipeline.pick_friday().
     inherits: ["nature", "psych", "health", "physics"]
     journals: {}
+
+# ---------------------------------------------------------------------------
+# Interest heuristic - the free layer of the ranking in src/interest.py.
+#
+# This is the knob for how relatable the account's subject matter skews. It
+# runs before (and, with no ANTHROPIC_API_KEY, instead of) the model ranking.
+# It only ever REORDERS candidates: nothing here can admit a study that
+# vetting would reject, or suppress a caveat.
+#
+# `relatable` - subject matter a general audience has lived experience of.
+#   A hit in the TITLE counts double a hit in the abstract, because a term in
+#   the title is what the paper is about, whereas the same term in an abstract
+#   is often just a control variable. Add terms to steer the account toward a
+#   subject; remove them to stop chasing one.
+#
+# `surprise` - phrasings that signal the result overturns something. These are
+#   the highest-value signal per character: a paper that contradicts a common
+#   assumption is interesting without needing any exaggeration, which is the
+#   only kind of interesting this account is allowed to trade on.
+# ---------------------------------------------------------------------------
+interest:
+  relatable:
+    - sleep
+    - insomnia
+    - dream
+    - nap
+    - coffee
+    - caffeine
+    - alcohol
+    - exercise
+    - walking
+    - running
+    - diet
+    - fasting
+    - sugar
+    - screen time
+    - social media
+    - smartphone
+    - loneliness
+    - friendship
+    - memory
+    - forgetting
+    - ageing
+    - aging
+    - longevity
+    - dementia
+    - stress
+    - anxiety
+    - depression
+    - mood
+    - music
+    - reading
+    - procrastination
+    - motivation
+    - habit
+    - money
+    - income
+    - dog
+    - cat
+    - pet
+    - parenting
+    - child
+    - teenager
+    - adolescent
+    - gut
+    - microbiome
+    - vitamin
+    - obesity
+    - weight
+    - pain
+    - placebo
+    - language
+    - attention
+    - decision
+    - risk
+    - trust
+    - happiness
+  surprise:
+    - contrary to
+    - unexpected
+    - surprising
+    - challenges
+    - overturns
+    - first evidence
+    - for the first time
+    - reverses
+    - no evidence
+    - failed to replicate
+    - larger than
+    - smaller than
+    - unlike previous
+    - long-assumed
+    - widely believed
+    - myth
+    - contradicts
+    - rethink
+    - previously thought
+    - not associated
+    - no effect
 
 # ---------------------------------------------------------------------------
 # Publishers/journals that are auto-rejected regardless of niche.

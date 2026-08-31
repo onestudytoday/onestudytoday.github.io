@@ -91,6 +91,29 @@ def handle() -> str:
     return _opt("HANDLE", "@onestudytoday")
 
 
+def anthropic_key() -> str:
+    """The Anthropic API key, or "" if unset.
+
+    Standalone for the same reason as handle() above: interest.py is imported
+    by sources.py, which runs in contexts that have no Meta credentials at
+    all (`python src/sources.py <niche>` locally, and any future workflow
+    step that only sources candidates). Reaching this through settings()
+    would demand all four Graph API secrets to decide whether we can rank
+    candidates - the same "required a credential, then never used it" shape
+    that broke linkinbio.build() on every CI run.
+
+    Returns "" rather than raising: interest ranking is an ENHANCEMENT. With
+    no key the pipeline still sources, vets, drafts and publishes exactly as
+    it did before, just without the model's opinion on what is interesting.
+    """
+    return _opt("ANTHROPIC_API_KEY")
+
+
+def draft_model() -> str:
+    """The model id used for drafting and interest scoring. See anthropic_key()."""
+    return _opt("DRAFT_MODEL", "claude-sonnet-4-5")
+
+
 @dataclass(frozen=True)
 class Settings:
     # --- Meta / Instagram
@@ -135,7 +158,13 @@ def settings() -> Settings:
         github_pat=_opt("GH_PAT"),
         theme=_opt("THEME", "neon"),
         handle=_opt("HANDLE", "@onestudytoday"),
-        recency_days=int(_opt("RECENCY_DAYS", "14")),
+        # NOTE: config/niches.yaml `defaults.recency_days` is the authoritative
+        # publication window - it is what sources.fetch_candidates and vet()
+        # actually read. This field is a legacy override that nothing currently
+        # consumes; the fallback is kept in step with the YAML so that if
+        # something ever does start reading it, it does not silently reimpose
+        # a fortnight-long window that vet() would then enforce as STALE.
+        recency_days=int(_opt("RECENCY_DAYS", "75")),
         allow_preprints=_opt("ALLOW_PREPRINTS", "true").lower() == "true",
         timezone=_opt("TZ", "America/Chicago"),
     )

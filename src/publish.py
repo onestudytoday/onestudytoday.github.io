@@ -36,6 +36,7 @@ from PIL import Image
 
 from caption import build_caption, caption_stats
 from config import DOCS, PUBLISHED, QUEUE, settings
+from secrets_guard import redact, safe_error
 
 TIMEOUT = 60
 POLL_SECONDS = 4
@@ -89,39 +90,167 @@ def stage_images(post: Dict[str, Any], png_paths: List[str]) -> List[str]:
 # ---------------------------------------------------------------------------
 def check_quota() -> Dict[str, Any]:
     s = settings()
-    r = requests.get(f"{s.graph}/{s.ig_business_account_id}/content_publishing_limit",
-                     params={"fields": "config,quota_usage",
-                             "access_token": s.ig_access_token}, timeout=TIMEOUT)
-    j = r.json()
+    try:
+        r = requests.get(
+            f"{s.graph}/{s.ig_business_account_id}/content_publishing_limit",
+            params={"fields": "config,quota_usage",
+                    "access_token": s.ig_access_token}, timeout=TIMEOUT)
+        j = r.json()
+    except Exception as e:
+        # The token is a QUERY PARAMETER, so requests puts the whole URL -
+        # token included - into the exception it raises. That text is printed,
+        # tee'd to publish.log, and the tail of that file is posted into a
+        # GitHub issue comment on a PUBLIC repo. Never let a raw exception out
+        # of a function that holds a credential. See src/secrets_guard.py.
+        raise PublishError(f"Quota check failed: {safe_error(e)}")
     if "error" in j:
-        raise PublishError(f"Quota check failed: {json.dumps(j['error'], indent=2)}")
+        raise PublishError(
+            f"Quota check failed: {redact(json.dumps(j['error'], indent=2))}")
     return (j.get("data") or [{}])[0]
 
 
 def _post(path: str, params: Dict[str, Any]) -> Dict[str, Any]:
     s = settings()
     params = {**params, "access_token": s.ig_access_token}
-    r = requests.post(f"{s.graph}/{path}", data=params, timeout=TIMEOUT)
-    j = r.json()
+    try:
+        r = requests.post(f"{s.graph}/{path}", data=params, timeout=TIMEOUT)
+        j = r.json()
+    except Exception as e:
+        raise PublishError(f"POST /{path} failed: {safe_error(e)}")
     if "error" in j:
-        raise PublishError(f"POST /{path} failed:\n{json.dumps(j['error'], indent=2)}")
+        raise PublishError(
+            f"POST /{path} failed:\n{redact(json.dumps(j['error'], indent=2))}")
     return j
 
 
-def wait_ready(container_id: str) -> None:
+def wait_ready(container_id: str, max_polls: int = MAX_POLLS,
+               poll_seconds: int = POLL_SECONDS) -> None:
+    """Block until a container is FINISHED, or raise.
+
+    `status_code` is the field that matters; `status` is requested alongside it
+    purely because an ERROR carries no explanation on its own, and the verbose
+    field is the only place a reason ever appears. Meta's own docs describe a
+    bare ERROR with no diagnostics as normal, so throwing away the one
+    available detail would make a failed Reel genuinely un-debuggable.
+
+    EXPIRED and PUBLISHED are terminal too, and neither used to be handled:
+    EXPIRED means the container aged out of its 24-hour window, and PUBLISHED
+    means this container has ALREADY been published. Polling on through those
+    to a timeout - the old behaviour - turns "this is already live" into
+    "never became ready", which reads like a transient failure and invites a
+    retry that would post the same thing twice.
+    """
     s = settings()
-    for _ in range(MAX_POLLS):
-        r = requests.get(f"{s.graph}/{container_id}",
-                         params={"fields": "status_code,status",
-                                 "access_token": s.ig_access_token}, timeout=TIMEOUT)
-        j = r.json()
+    for _ in range(max_polls):
+        try:
+            r = requests.get(f"{s.graph}/{container_id}",
+                             params={"fields": "status_code,status",
+                                     "access_token": s.ig_access_token},
+                             timeout=TIMEOUT)
+            j = r.json()
+        except Exception as e:
+            raise PublishError(
+                f"Polling container {container_id} failed: {safe_error(e)}")
         code = j.get("status_code")
         if code == "FINISHED":
             return
         if code == "ERROR":
-            raise PublishError(f"Container {container_id} errored: {j.get('status')}")
-        time.sleep(POLL_SECONDS)
+            raise PublishError(
+                f"Container {container_id} errored: {redact(j.get('status'))}")
+        if code == "EXPIRED":
+            raise PublishError(
+                f"Container {container_id} EXPIRED - it was not published within "
+                f"24 hours of being created.")
+        if code == "PUBLISHED":
+            raise PublishError(
+                f"Container {container_id} reports PUBLISHED - this media is "
+                f"ALREADY LIVE. Refusing to publish it again.")
+        time.sleep(poll_seconds)
     raise PublishError(f"Container {container_id} never became ready.")
+
+
+# ---------------------------------------------------------------------------
+# Reels
+# ---------------------------------------------------------------------------
+# A video container is not ready when it is created - Meta transcodes it
+# server-side after fetching the file. Meta recommends polling once a minute
+# for no more than five minutes; in practice a short Reel is usually ready well
+# inside that, and long or high-bitrate uploads routinely run past it. So the
+# budget here is deliberately larger than the carousel one (30 x 4s = 2 min),
+# and expressed as its own constants rather than reusing the image values.
+REEL_POLL_SECONDS = 6
+REEL_MAX_POLLS = 60          # up to 6 minutes
+
+
+def publish_reel(post: Dict[str, Any], video_url: str, live: bool,
+                 share_to_feed: bool = True) -> Dict[str, Any]:
+    """Publish one Reel: create a REELS container, wait for it, publish it.
+
+    Deliberately mirrors publish() rather than sharing code with it. The two
+    paths differ in the ways that matter - a Reel is a single container with no
+    children, it needs a much longer readiness wait, and it takes share_to_feed
+    - and the carousel path is the one that is proven in production. Folding
+    them together would put the account's only working publish route at risk
+    to save a dozen lines.
+    """
+    # Guards BEFORE anything else, including building the caption. Caption
+    # assembly reads a dozen fields off the post and raises KeyError on a
+    # malformed one - so with the guards second, an unapproved post failed with
+    # a KeyError about some caption field instead of "this is not approved".
+    # A safety check that only runs when the data is already well-formed is not
+    # much of a safety check.
+    if post.get("status") != "approved":
+        raise PublishError(
+            f"Refusing to publish a Reel: status is '{post.get('status')}', not "
+            f"'approved'. Approve it first:  python src/review.py approve {post['id']}")
+    if not video_url:
+        raise PublishError("No video_url - build the Reel first (src/reel.py).")
+
+    s = settings()
+    caption = build_caption(post)
+
+    plan = {
+        "post_id": post["id"],
+        "kind": "REELS",
+        "video_url": video_url,
+        "share_to_feed": share_to_feed,
+        "caption_chars": len(caption),
+        "caption_preview": caption[:300],
+        "caption_stats": caption_stats(caption),
+    }
+    if not live:
+        plan["mode"] = "DRY RUN - nothing was sent to Instagram"
+        return plan
+
+    # Reels are published through the same /media_publish edge as feed posts,
+    # and Meta documents no exemption, so they consume the SAME 100-per-24h
+    # quota. quota_total is read from the response rather than hardcoded
+    # because Meta's own guide and reference example disagree (100 vs 50).
+    quota = check_quota()
+    used = (quota.get("quota_usage") or 0)
+    cap = ((quota.get("config") or {}).get("quota_total") or 25)
+    if used >= cap:
+        raise PublishError(f"Daily publishing quota exhausted ({used}/{cap}).")
+
+    container = _post(f"{s.ig_business_account_id}/media", {
+        "media_type": "REELS",
+        "video_url": video_url,
+        "caption": caption,
+        "share_to_feed": "true" if share_to_feed else "false",
+        # Frame 0 is the cover slide, which is already designed to be the
+        # thumbnail. thumb_offset defaults to 0 anyway; stating it means a
+        # future timing change cannot silently move the cover.
+        "thumb_offset": "0",
+    })
+    wait_ready(container["id"], max_polls=REEL_MAX_POLLS,
+               poll_seconds=REEL_POLL_SECONDS)
+
+    result = _post(f"{s.ig_business_account_id}/media_publish",
+                   {"creation_id": container["id"]})
+
+    plan.update({"mode": "LIVE", "container_id": container["id"],
+                 "media_id": result.get("id"), "quota_before": f"{used}/{cap}"})
+    return plan
 
 
 # ---------------------------------------------------------------------------
@@ -183,12 +312,16 @@ def publish(post: Dict[str, Any], image_urls: List[str], live: bool) -> Dict[str
 def insights(media_id: str) -> Dict[str, Any]:
     """Engagement for the Friday wildcard ranking."""
     s = settings()
-    r = requests.get(f"{s.graph}/{media_id}/insights",
-                     params={"metric": "reach,likes,comments,saved,shares,profile_visits",
-                             "access_token": s.ig_access_token}, timeout=TIMEOUT)
-    j = r.json()
+    try:
+        r = requests.get(
+            f"{s.graph}/{media_id}/insights",
+            params={"metric": "reach,likes,comments,saved,shares,profile_visits",
+                    "access_token": s.ig_access_token}, timeout=TIMEOUT)
+        j = r.json()
+    except Exception as e:
+        return {"error": safe_error(e)}
     if "error" in j:
-        return {"error": j["error"]}
+        return {"error": json.loads(redact(json.dumps(j["error"])))}
     return {d["name"]: d["values"][0]["value"] for d in j.get("data", [])}
 
 

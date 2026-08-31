@@ -26,10 +26,51 @@ from typing import Any, Dict, List, Optional
 from zoneinfo import ZoneInfo
 
 from config import DOCS, OUT, PUBLISHED, QUEUE, settings
+from config import _opt as _opt
 from draft import draft_post, skeleton
 from render import contact_sheet, render_post
 from sources import Study, fetch_candidates, load_ledger, mark_seen, save_ledger, study_key
-from vet import vet
+from vet import default_recency_days, vet
+from publish import PublishError
+from secrets_guard import safe_error
+from reel import DEFAULT_BG, ReelError, build_reel, reel_public_url
+
+
+# ---------------------------------------------------------------------------
+# Which weekdays go out as a Reel instead of a carousel.
+#
+# Not "both": a Reel and a carousel of the same study on the same day is
+# duplicate content on the profile, and - per Meta's own docs - Reels publish
+# through the same /media_publish edge and consume the same 100-per-24h quota,
+# so it costs two of them to say one thing.
+#
+# The default is the Friday wildcard, because docs/LAUNCH.md already ranks
+# "The Friday Reel" as the #2 source of the first hundred followers and the
+# only format that reaches non-followers in volume at a standing start.
+#
+# Set REEL_NICHES to a comma-separated list to change it
+# ("nature,psych,health,physics,wildcard" makes every day a Reel).
+#
+# To turn Reels OFF, set it to the literal "off" (or "none") - NOT to an empty
+# string. That is not a quirk worth hiding: config._opt deliberately treats an
+# empty env var as unset, because GitHub Actions sets `${{ vars.X }}` to "" for
+# any variable that is undefined or misspelled, and every caller that took ""
+# at face value silently got the wrong behaviour (the ALLOW_PREPRINTS bug that
+# killed every Thursday). Under those semantics an empty REEL_NICHES means
+# "unset", which means the default, which means Reels stay ON - so an explicit
+# sentinel is the only honest way to express "off".
+_REELS_OFF = {"off", "none", "no", "false", "0"}
+
+
+def reel_niches() -> set:
+    raw = _opt("REEL_NICHES", "wildcard").strip()
+    if raw.lower() in _REELS_OFF:
+        return set()
+    return {n.strip().lower() for n in raw.split(",") if n.strip()}
+
+
+def wants_reel(niche: Optional[str]) -> bool:
+    return bool(niche) and niche.lower() in reel_niches()
 
 WEEKDAY_NICHE = {0: "nature", 1: "psych", 2: "health", 3: "physics", 4: "wildcard"}
 
@@ -89,8 +130,16 @@ def pick_friday_source_niche() -> str:
 
 
 # ---------------------------------------------------------------------------
-def run(niche: Optional[str] = None, days: int = 14, limit: int = 1,
+def run(niche: Optional[str] = None, days: Optional[int] = None, limit: int = 1,
         use_api: bool = True, dry_source: bool = False) -> List[Dict[str, Any]]:
+    # None, not a literal. The publication window is defined once, in
+    # config/niches.yaml, and vet() rejects anything past it as STALE. When
+    # this signature carried its own default of 14, widening the window in the
+    # YAML changed which studies were FETCHED but not which were ACCEPTED:
+    # the daily draft would source three months of candidates and then hard-
+    # reject every one over a fortnight old, for a completely silent empty run.
+    if days is None:
+        days = default_recency_days()
     s = settings()
     niche = niche or todays_niche(tz=s.timezone or "America/Chicago")
     if not niche:
@@ -143,6 +192,24 @@ def run(niche: Optional[str] = None, days: int = 14, limit: int = 1,
         d = OUT / "posts" / post["id"]
         paths = render_post(post, s.theme, str(d))
         contact_sheet(paths, str(OUT / "posts" / f"SHEET_{post['id']}.png"))
+
+        # Build the Reel HERE, at draft time, not at publish time. Instagram
+        # fetches video_url with its own crawler, so the file must already be
+        # committed and already served by Pages before publishing names that
+        # URL. See build_reel()'s docstring. Never fatal: a post with no Reel
+        # still publishes perfectly well as a carousel.
+        if wants_reel(niche):
+            try:
+                info = build_reel(post["id"], bg=post.get("theme", {}).get("bg")
+                                  or DEFAULT_BG, images=[Path(p) for p in paths])
+                post["reel"] = {"path": info["path"], "duration": info["duration"],
+                                "bytes": info["bytes"]}
+                print(f"           -> reel {info['duration']}s "
+                      f"{info['bytes'] / 1e6:.1f}MB")
+            except Exception as e:
+                print(f"           ! reel build failed, will publish as a "
+                      f"carousel instead: {e}")
+
         (QUEUE / f"{post['id']}.json").write_text(json.dumps(post, indent=2))
 
         qa = post["qa"]
@@ -268,21 +335,61 @@ def _publish_one(f: Path, post: Dict[str, Any], live: bool) -> Dict[str, Any]:
     # been. Prefer the already-staged JPEGs; only fall back to converting
     # fresh PNGs for the same-session local flow (`pipeline.py run` followed
     # immediately by `publish-approved` in one shell).
-    staged = sorted((DOCS / "img" / post["id"]).glob("*.jpg"))
-    if staged:
-        urls = public_urls(staged, post["id"])
+    # Reel or carousel. The Reel decision comes FIRST, before slide resolution,
+    # because a Reel does not need the carousel JPEGs at all.
+    #
+    # It used to come after, and that was a silent permanent stall: run() builds
+    # reel.mp4 into docs/img/<id>/, CREATING that directory, while the JPEGs are
+    # staged by a separate later workflow step that is skipped whenever
+    # out/posts/<id>/ is empty. A post could therefore have a committed Reel and
+    # no JPEGs - and the `return {}` below would fire first, every 15 minutes,
+    # forever, exiting 0 with no alert and never closing the review issue.
+    reel_file = DOCS / "img" / post["id"] / "reel.mp4"
+    if wants_reel(post.get("niche")) and reel_file.exists():
+        from publish import publish_reel
+        video_url = reel_public_url(post["id"], settings().public_image_base)
+        res = publish_reel(post, video_url, live=live)
     else:
-        pngs = sorted(str(p) for p in (OUT / "posts" / post["id"]).glob("*.png"))
-        if not pngs:
-            print(f"  {post['id']}: no rendered slides, skipping")
-            return {}
-        urls = stage_images(post, pngs)
-    res = publish(post, urls, live=live)
+        staged = sorted((DOCS / "img" / post["id"]).glob("*.jpg"))
+        if staged:
+            urls = public_urls(staged, post["id"])
+        else:
+            pngs = sorted(str(p) for p in (OUT / "posts" / post["id"]).glob("*.png"))
+            if not pngs:
+                # RAISE, do not `return {}`. A bare return made this a success
+                # as far as _publish_batch was concerned: exit 0, no ids, no
+                # `if: failure()` alert, queue file untouched - so the run went
+                # green while the post was permanently unpublishable and
+                # retried on every poll. A post stuck approved-and-unshippable
+                # has to be loud.
+                raise PublishError(
+                    f"{post['id']}: no slides in docs/img/{post['id']}/ and no "
+                    f"PNGs in out/posts/{post['id']}/ - nothing to publish. The "
+                    f"draft run staged nothing, so this post can never publish "
+                    f"until it is re-rendered.")
+            urls = stage_images(post, pngs)
+        if wants_reel(post.get("niche")):
+            print(f"  {post['id']}: no reel.mp4 committed, publishing as a carousel")
+        res = publish(post, urls, live=live)
     print(json.dumps(res, indent=2))
+
+    # A LIVE result with no media_id means the publish call came back 200 with
+    # a body we did not understand. Instagram may well have accepted it. The
+    # old code let that fall straight through the `if live and media_id` below,
+    # writing no published record and no ledger entry, so the next poll
+    # republished it - the exact 24 Aug bug, reachable through a new door.
+    if live and res.get("mode") == "LIVE" and not res.get("media_id"):
+        raise PublishError(
+            f"{post['id']}: publish returned no media_id. The post MAY ALREADY "
+            f"BE LIVE on Instagram. Check the account before re-running; if it "
+            f"is live, record it by hand in data/published/{post['id']}.json so "
+            f"the next scheduled run does not post it a second time.")
+
     if live and res.get("media_id"):
         post["status"] = "published"
         post["published"] = {
             "media_id": res["media_id"],
+            "kind": res.get("kind", "CAROUSEL"),
             "at": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")}
         (PUBLISHED / f"{post['id']}.json").write_text(json.dumps(post, indent=2))
         f.unlink()
@@ -290,6 +397,53 @@ def _publish_one(f: Path, post: Dict[str, Any], live: bool) -> Dict[str, Any]:
         led.setdefault("posted", {})[study_key(post)] = {
             "doi": post["study"]["doi"], "media_id": res["media_id"]}
         save_ledger(led)
+
+        # Crosspost LAST, and only after every record above is on disk.
+        #
+        # Ordering is the whole point. By this line the post is irreversibly
+        # live on Instagram, and the files that prove it have been written. An
+        # exception escaping here would abort the run AFTER that - which is
+        # precisely the shape that republished the same carousel every 15
+        # minutes before the 24 Aug fixes. crosspost_all() is written never to
+        # raise; the try/except is the second lock on the same door.
+        try:
+            from crosspost import crosspost_all
+            cp = crosspost_all(post, live=live)
+            for r in cp["posted"]:
+                print(f"  crossposted to {r['platform']}")
+            for r in cp["skipped"]:
+                print(f"  {r['platform']} not configured: {r['reason']}")
+            for r in cp["failed"]:
+                print(f"  ! {r['platform']} crosspost FAILED: {r.get('error')}")
+            res["crosspost"] = cp
+
+            # Persist the outcome. Without this the crosspost result existed
+            # only as three print lines: res was already printed above and the
+            # published record already written, so nothing machine-readable
+            # survived. A crosspost that FAILED was then unrecoverable -
+            # already_published() short-circuits every later run, so it would
+            # never be retried and its absence would never be noticed.
+            #
+            # Safe to write here precisely because everything irreversible and
+            # everything load-bearing is already on disk: this rewrite can fail
+            # without costing the Instagram record.
+            post["crosspost"] = {
+                "at": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "posted": [r["platform"] for r in cp["posted"]],
+                "skipped": [r["platform"] for r in cp["skipped"]],
+                "failed": {r["platform"]: r.get("error") for r in cp["failed"]},
+            }
+            (PUBLISHED / f"{post['id']}.json").write_text(json.dumps(post, indent=2))
+
+            # A failed crosspost is not worth failing the run over, but it must
+            # not be invisible either - an annotation surfaces in the Actions
+            # UI without touching the exit code.
+            for r in cp["failed"]:
+                print(f"::warning title=Crosspost failed::"
+                      f"{r['platform']} for {post['id']}: {r.get('error')}")
+        except Exception as e:                                # pragma: no cover
+            print(f"  ! crosspost step failed (post is live and recorded): "
+                  f"{safe_error(e)}")
     return res
 
 
@@ -375,7 +529,11 @@ def _main():
 
     r = sub.add_parser("run")
     r.add_argument("--niche", choices=list(set(WEEKDAY_NICHE.values())))
-    r.add_argument("--days", type=int, default=14)
+    # No default= here either: None reaches run(), which resolves it from
+    # config/niches.yaml. See the comment in run().
+    r.add_argument("--days", type=int, default=None,
+                   help="Publication window in days (default: "
+                        "defaults.recency_days in config/niches.yaml)")
     r.add_argument("--limit", type=int, default=1)
     r.add_argument("--no-api", action="store_true", help="use the hand-fill skeleton")
     r.add_argument("--sources-only", action="store_true",

@@ -289,9 +289,28 @@ def journal_tier(s: Study, niche_cfg: Dict[str, Any]) -> Optional[int]:
 
 
 # ---------------------------------------------------------------------------
+def default_recency_days() -> int:
+    """The publication window, read from the ONE place that defines it.
+
+    This used to be a literal `14` in vet()'s signature, duplicating
+    config/niches.yaml's `defaults.recency_days`. Two copies of a number that
+    must agree is the exact seam the 24 Aug audit kept finding: widening the
+    window in the YAML would have left every caller that does not explicitly
+    pass recency_days - `python src/vet.py`, tests, any future entry point -
+    still hard-REJECTING anything over a fortnight old as STALE, with a
+    message confidently naming the wrong window.
+    """
+    try:
+        return int(load_niches()["defaults"]["recency_days"])
+    except Exception:
+        return 75
+
+
 def vet(s: Study, niche: Optional[str] = None, allow_preprints: bool = True,
-        recency_days: int = 14, deep: bool = True) -> VetReport:
+        recency_days: Optional[int] = None, deep: bool = True) -> VetReport:
     """Run every gate. `deep=True` makes the extra Crossref/retraction calls."""
+    if recency_days is None:
+        recency_days = default_recency_days()
     cfg = load_niches()
     niche = niche or s.niche or "nature"
     ncfg = cfg["niches"].get(niche, {})

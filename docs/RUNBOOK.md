@@ -130,14 +130,48 @@ Then switch to the **Variables** tab and add four:
 > Secret, then update the `META_APP_SECRET` value above. Takes 30 seconds and
 > closes the only real security hole in this setup.
 
-### 1.6 Rank candidates by projected engagement  **YOU — optional, can be added later**
+### 1.6 How the day's study actually gets chosen  **nothing to do — already on**
 
-Sourcing already leans toward whichever eligible candidate looks likely to
-land best, using two free signals it fetches anyway — citation count and
-open-access status. For a study published in the last 14 days both are
-usually still zero (neither citations nor real attention has had time to
-accumulate), so this mostly just falls back to picking the newest one, same
-as before.
+This is the part that decides whether the account is worth following, so it
+is worth understanding.
+
+Candidates are ranked in three steps, in `src/interest.py`:
+
+1. **A recency pool.** Everything published inside the window
+   (`defaults.recency_days` in `config/niches.yaml`, currently 75 days).
+2. **A free heuristic**, run on every candidate, no network and no API key.
+   It rewards subject matter a general audience has lived experience of
+   (`interest.relatable` in `niches.yaml`) and phrasings that signal a result
+   overturning something (`interest.surprise`). A term in the *title* counts
+   double the same term in the abstract. Papers that are purely molecular —
+   cell lines, assays, knockouts, with no stated human consequence — are
+   pushed down.
+3. **One batched model call**, using the `ANTHROPIC_API_KEY` you already have
+   for drafting. It ranks the shortlist on a single question: *would a
+   curious non-scientist stop scrolling for this, presented honestly?* — and
+   returns the one-line hook it would lead with. Costs a few cents a run.
+
+**Tuning it:** edit the `interest:` lists in `config/niches.yaml`. Adding
+terms steers the account toward a subject; removing them stops it chasing one.
+No code change needed.
+
+**If `ANTHROPIC_API_KEY` is missing or the call fails**, step 3 is skipped,
+step 2's order stands, and the run log says so explicitly. It never silently
+scores everything zero — that failure mode is precisely what hid the old
+engagement ranking for months.
+
+**What this cannot do:** ranking only ever *reorders*. It cannot admit a
+study that vetting would reject, suppress a caveat, or mark anything
+publishable. `vet()` runs afterwards unchanged and you still approve every
+post by hand. That is what makes it safe to feed it untrusted abstracts.
+
+> **Why studies used to be dull.** Before this existed, ordering fell back to
+> "newest that passes vetting" — the old ranking scored citation count, which
+> is ~0 for every paper inside the window, so the sort did nothing. Nothing
+> anywhere asked whether a human would care. That is how the first post ever
+> published was about porcine deltacoronavirus RIG-I signalling.
+
+#### Optional: a real attention signal
 
 A stronger signal — real news/social/Reddit attention, from Altmetric —
 exists, but there is no instant self-serve signup for it. Altmetric requires
@@ -150,6 +184,111 @@ to try.
 If you get a key: add one more secret, `ALTMETRIC_API_KEY`. That's the whole
 integration — the code already checks for it and switches over automatically.
 If you don't: skip this section entirely. Nothing else changes.
+
+Note that at a 75-day window this matters more than it used to. Citation
+counts and news pickup need weeks to accumulate; at the old 14-day window
+they were always zero and the signal was dead on arrival. At two-plus months
+there is something real to measure.
+
+---
+
+### 1.7 Reels  **nothing to do — already on**
+
+Friday's post goes out as a **Reel** instead of a carousel. Every other day is
+unchanged.
+
+Why Friday: a carousel is shown mostly to people who already follow you, and
+Reels are what Instagram pushes to people who don't. `docs/LAUNCH.md` already
+ranks the Friday Reel as the #2 source of your first hundred followers and the
+only format that reaches non-followers in volume from a standing start. It is
+the single biggest automated reach lever available, and it costs you nothing
+per week.
+
+**How it works.** `src/reel.py` composes the same rendered slides onto a 9:16
+canvas, adds a slow drift so it does not read as a static slideshow,
+crossfades between them, and encodes an MP4 that satisfies every documented
+Meta Reels requirement (H.264, yuv420p, a silent AAC track, `+faststart`,
+3s-15min, under 300 MB). A 5-slide post makes a ~16-second, ~3 MB Reel.
+
+**The MP4 is built during DRAFTING, not publishing**, and committed alongside
+the slide JPEGs. That is deliberate and load-bearing: Instagram does not accept
+uploaded video, it fetches `video_url` with its own crawler, so the file has to
+already be committed and already served by GitHub Pages before the publish step
+names that URL. Building it at publish time would point Meta at a file that
+only exists on that runner's disk.
+
+**Changing it.** Set the `REEL_NICHES` repository *variable*:
+
+| Value | Effect |
+|---|---|
+| unset | Friday only (the default) |
+| `nature,psych,health,physics,wildcard` | every day is a Reel |
+| `off` | no Reels, carousels every day |
+
+Set it in **both** `daily-draft.yml`'s and `scheduled-publish.yml`'s
+environment — the draft run decides whether to *build* a Reel, the publish run
+decides whether to *use* one. Both already read the variable; you only set it
+once, in Settings → Secrets and variables → Actions → Variables.
+
+> Use the literal `off` to disable, **not** an empty value. An empty variable
+> means "unset" everywhere in this codebase, because Actions sets undefined
+> variables to `""` — the same rule that made `ALLOW_PREPRINTS` silently kill
+> every Thursday. Empty means "use the default", and the default is on.
+
+**If a Reel cannot be built** — ffmpeg missing, a render problem — the post
+publishes as a carousel and says so in the log. It never blocks publishing.
+
+---
+
+### 1.8 Crossposting to Bluesky and Threads  **YOU — Bluesky is worth 5 minutes**
+
+When a study publishes to Instagram, the finding and its DOI are also posted to
+Bluesky and Threads. Both are optional and both are **skipped, not failed**,
+when unconfigured — the log says which. Neither can ever fail a publish run.
+
+#### Bluesky — do this one
+
+The science community actually moved to Bluesky, and researchers are the
+audience whose approval makes a science account credible. There is no app to
+create and no review process.
+
+1. bsky.app → Settings → Privacy and Security → **App Passwords** → Add.
+2. Copy the `xxxx-xxxx-xxxx-xxxx` password. **Use an app password, never your
+   real one** — this one can be revoked without touching your account.
+3. Repo → Settings → Secrets and variables → Actions:
+   - **Secret** `BLUESKY_APP_PASSWORD` = the app password
+   - **Variable** `BLUESKY_HANDLE` = e.g. `onestudytoday.bsky.social`
+
+That is the whole integration. Posts carry a clickable DOI link and a preview
+card (Bluesky does not unfurl links on its own, so the card is generated here).
+
+#### Threads — more setup, do it later
+
+Threads is **not** "Instagram with another endpoint" and this is the part that
+surprises people: it needs its own Meta app configured with the **Threads use
+case**, its own OAuth consent flow, its own token and its own user id. Your
+existing Instagram token and Meta app credentials do not work.
+
+1. developers.facebook.com → create an app → add the **Threads** use case.
+2. Add `threads_basic` and `threads_content_publish` to its permissions.
+3. Run the OAuth flow for your own account, exchange the short-lived token for
+   a long-lived one (`grant_type=th_exchange_token`).
+4. `GET https://graph.threads.net/v1.0/me?fields=id,username` for your user id.
+5. Repo settings:
+   - **Secret** `THREADS_ACCESS_TOKEN`
+   - **Variable** `THREADS_USER_ID`
+
+> **The 60-day trap.** A Threads long-lived token expires in 60 days.
+> `token-refresh.yml` now renews it every Sunday alongside the Instagram one.
+> But an **already-expired** Threads token cannot be refreshed at all — Meta
+> requires it to be unexpired — and the only way back is redoing the whole
+> consent flow. If the Sunday job goes red, fix it that week.
+
+Check either at any time with:
+
+```
+python src/threads_auth.py status
+```
 
 ---
 

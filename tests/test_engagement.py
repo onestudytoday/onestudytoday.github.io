@@ -100,5 +100,53 @@ def test_fetch_candidates_reorders_by_engagement_within_the_recency_cut(monkeypa
     monkeypatch.setattr(sources, "europepmc_search",
                         lambda *a, **kw: [newer_but_ignored, older_but_buzzing])
 
-    result = fetch_candidates("nature", days=14)
+    # rank_by_interest=False is load-bearing, not tidiness. Interest ranking
+    # (interest.py) now runs AFTER this sort and is the final word on order.
+    # Without this flag the two studies here happen to score identically on
+    # the heuristic, so the stable sort leaves engagement's order intact and
+    # this test passes - but it would be passing because interest ranking
+    # declined to disagree, not because engagement decided anything. That is
+    # the "test that passes for the wrong reason" shape the 24 Aug audit found
+    # twice. Isolate the layer actually under test.
+    result = fetch_candidates("nature", days=14, rank_by_interest=False)
     assert [s.doi for s in result] == ["10.1/buzzing", "10.1/fresh"]
+
+
+def test_interest_ranking_overrides_engagement_order(monkeypatch):
+    """Interest is the final word; engagement is only the tie-break beneath it.
+
+    The companion to the test above: engagement_proxy is very nearly a
+    constant on this account (a paper inside the recency window has almost
+    always been cited zero times), which is exactly why ordering used to
+    collapse back to publication date. When the two layers disagree, interest
+    must win - otherwise nothing has actually changed.
+    """
+    import interest
+    monkeypatch.setattr(sources, "load_niches", lambda: {
+        "defaults": {"recency_days": 75, "per_source_limit": 60,
+                     "min_abstract_chars": 500, "max_candidates": 25},
+        "niches": {"nature": {"europepmc_query": "test", "arxiv_categories": [],
+                              "exclude_terms": []}},
+    })
+    monkeypatch.setattr(sources, "load_ledger",
+                        lambda: {"posted": {}, "rejected": {}, "seen": {}})
+    monkeypatch.delenv("ALTMETRIC_API_KEY", raising=False)
+    monkeypatch.setattr(interest, "anthropic_key", lambda: "")
+
+    cited_but_dull = _study(citations=40, doi="10.1/dull")
+    cited_but_dull.title = "Nsp2 antagonises RIG-I signalling"
+    cited_but_dull.abstract = ("in vitro transfect knockout assay cell line "
+                               "expression levels " + "q" * 700)
+
+    uncited_but_interesting = _study(citations=0, doi="10.1/interesting")
+    uncited_but_interesting.title = "Sleep duration and memory in older adults"
+    uncited_but_interesting.abstract = (
+        "In 340 participants we measured sleep and memory. Contrary to previous "
+        "reports, longer sleep was not associated with better recall. " + "q" * 600)
+
+    monkeypatch.setattr(sources, "europepmc_search",
+                        lambda *a, **kw: [cited_but_dull, uncited_but_interesting])
+
+    result = fetch_candidates("nature", days=75)
+    assert result[0].doi == "10.1/interesting", \
+        "a heavily-cited but unpostable mechanism paper outranked a relatable one"

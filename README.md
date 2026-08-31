@@ -16,7 +16,12 @@ post, from zero followers.
 
 ```
   sourcing          Europe PMC · arXiv · Crossref · bioRxiv/medRxiv
-     |              per-niche queries, 14-day window, dedupe ledger
+     |              per-niche queries, ~75-day window, dedupe ledger
+     v
+  ranking           heuristic (relatable subject + surprise markers)
+     |              then one batched model call: "would a curious
+     |              non-scientist stop scrolling, presented HONESTLY?"
+     |              -> reorders only; cannot admit anything vetting rejects
      v
   vetting           retraction check · predatory publisher blocklist
      |              preprint detection · design classification

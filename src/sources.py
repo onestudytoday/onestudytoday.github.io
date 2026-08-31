@@ -39,6 +39,10 @@ import requests
 import yaml
 
 from config import CACHE, DATA, ROOT
+# Imported lazily-safe: interest.py imports only from config, never from
+# sources, so this cannot become a cycle (draft.py already imports sources).
+from interest import heuristic_interest, load_interest_terms
+from interest import rank as interest_rank
 
 CONTACT = "onestudytoday-bot@example.com"   # change to your email; improves rate limits
 UA = f"One Study Today/1.0 (Instagram science summaries; mailto:{CONTACT})"
@@ -79,6 +83,13 @@ class Study:
     funders: List[str] = field(default_factory=list)
     license: str = ""
     niche: str = ""
+    # Set by interest.rank(). Declared here rather than attached ad hoc so
+    # they survive to_dict() into the queued post, where drafting and review
+    # can read the SAME verdict instead of recomputing their own.
+    interest_score: float = 0.0
+    interest_hook: str = ""
+    interest_reason: str = ""
+    interest_source: str = ""   # "model" | "heuristic" | "" (never ranked)
     raw: Dict[str, Any] = field(default_factory=dict)
 
     @property
@@ -453,7 +464,8 @@ def load_niches() -> Dict[str, Any]:
 
 
 def fetch_candidates(niche: str, days: Optional[int] = None,
-                     include_preprints: bool = True) -> List[Study]:
+                     include_preprints: bool = True,
+                     rank_by_interest: bool = True) -> List[Study]:
     cfg = load_niches()
     defaults = cfg["defaults"]
     n = cfg["niches"][niche]
@@ -504,15 +516,37 @@ def fetch_candidates(niche: str, days: Optional[int] = None,
     uniq = [s for s in uniq
             if not any(e in (s.title + " " + " ".join(s.pub_types)).lower() for e in ex)]
 
-    # Recency picks WHICH candidates make the cut; engagement then decides
-    # the order they're tried in within that already-chosen set. Scoring
-    # happens after the truncation, not before, so this never costs more
-    # Altmetric lookups than a run already had candidates for - the cost
-    # scales with max_candidates, not with however many raw results the
-    # sources happened to return.
+    # ---- Shortlisting, in three steps. The order of these matters. ----
+    #
+    # This used to be "sort by date, keep the newest 25". That was safe while
+    # the window was 14 days, because 25 candidates was most of what existed.
+    # With a window of two or three months it quietly becomes the dominant
+    # filter: the sources return hundreds, and truncating by DATE throws away
+    # every interesting older paper before anything has looked at whether it
+    # is interesting. Widening the window would then have made the account
+    # WORSE - more to choose from, and a chooser that only sees the newest
+    # slice of it.
+    #
+    # So: take a generous recency pool, rank THAT by the free heuristic, and
+    # only then cut to the batch the model pays attention to.
+    pool_size = max(defaults["max_candidates"] * 4, 60)
     uniq.sort(key=lambda s: (s.pub_date or ""), reverse=True)
+    uniq = uniq[:pool_size]
+
+    terms = load_interest_terms()
+    uniq.sort(key=lambda s: heuristic_interest(s, terms), reverse=True)
     uniq = uniq[: defaults["max_candidates"]]
+
+    # engagement_proxy is kept only as the last tie-break. On this account it
+    # is very nearly a constant: it scores citations, and a paper published
+    # inside the recency window has almost always been cited zero times. That
+    # is exactly why ordering used to collapse back to publication date and
+    # the pipeline drafted whatever was newest rather than whatever was worth
+    # reading. interest.rank() is the real ordering now; see interest.py.
     uniq.sort(key=engagement_proxy, reverse=True)
+    if rank_by_interest:
+        print(f"  ranking {len(uniq)} candidates by interest...")
+        uniq = interest_rank(uniq)
     return uniq
 
 
