@@ -1,0 +1,145 @@
+{
+  "id": "2026-08-23-nature-144e35cc",
+  "niche": "nature",
+  "study": {
+    "key": "144e35cc75bfe151",
+    "title": "Natural microbiota confer life-long protection against obesity via an early-life, immune-mediated effect on brown adipocytes",
+    "journal": "Gut microbes",
+    "pub_date": "2026-08-23",
+    "pub_date_display": "Aug 23, 2026",
+    "doi": "10.1080/19490976.2026.2718613",
+    "doi_display": "doi.org/10.1080/19490976.2026.2718613",
+    "url": "https://doi.org/10.1080/19490976.2026.2718613",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Azar S",
+      "Gavrilova O",
+      "Baker G",
+      "Oh JH",
+      "Fukutomi K",
+      "Seishima J"
+    ]
+  },
+  "cover": {
+    "kicker": "Gut Microbes \u2022 Mouse study",
+    "headline": "Wild gut bacteria **protect mice from obesity for life** by reprogramming fat-burning tissue in early development."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Obesity rates have climbed in industrialized countries as gut microbiota diversity has fallen.",
+      "body": "Laboratory mice raised in sterile facilities harbor far fewer bacterial species than wild rodents. This microbial simplicity may explain why lab mice gain weight so easily on high-fat diets.\n\nResearchers introduced complex, natural microbiota from wild mice into lab mice to test whether a richer gut ecosystem could prevent diet-induced obesity across the lifespan and identify the mechanism."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Mice colonized with natural microbiota gained less weight on high-fat diets and burned more energy throughout life.",
+      "body": "Both male and female mice across different genetic backgrounds stayed leaner when exposed to wild microbiota. Single-nuclei RNA sequencing revealed that brown adipose tissue\u2014the body's primary heat-generating fat\u2014showed a transcriptional signature of heightened thermogenic activity.\n\nThe protection transferred even to adult germ-free mice, ruling out developmental programming and pointing instead to an immune response triggered by microbial exposure.",
+      "stat": {
+        "value": "life",
+        "label": "Duration of obesity protection"
+      }
+    },
+    {
+      "eyebrow": "The mechanism",
+      "title": "The effect depended on monocytes infiltrating brown fat tissue early in life, not developmental changes.",
+      "body": "Natural microbiota increased chemokine levels and monocyte presence in brown adipose tissue during early life. When researchers used CCR2-deficient mice\u2014which cannot recruit these immune cells properly\u2014the animals lost all protection against obesity, the thermogenic signature, and the boost in energy expenditure.\n\nInjecting wild-type bone marrow into CCR2-deficient mice restored the protective effect, confirming that infiltrating myeloid cells bridge gut microbiota and fat-burning capacity."
+    }
+  ],
+  "caveats": [
+    "This was done in mice, not humans. Most findings in mice do not carry over to people.",
+    "The study used microbiota from wild mice, which differ substantially from human gut ecosystems in composition and function."
+  ],
+  "cta": {
+    "headline": "Want the full technical detail?",
+    "sub": "Swipe up to read the complete study in Gut Microbes and explore the data."
+  },
+  "caption": "Complex gut bacteria from wild mice keep lab mice lean for life by boosting the activity of brown fat, the tissue responsible for burning calories as heat. Researchers found that natural microbiota raised monocyte levels in brown adipose tissue during early life, creating a lasting shift in energy expenditure. Mice lacking the receptor needed to recruit these immune cells lost all protection. The effect worked in both sexes and multiple genetic strains, and transferred even when microbiota were introduced in adulthood. Published in Gut Microbes using laboratory mice and wild-derived microbiota. The main limitation: mice are not people, and microbial ecosystems differ profoundly between species. Full study: doi.org/10.1080/19490976.2026.2718613 \u2014 Do you track your weight?",
+  "hashtag_set": "health",
+  "vet": {
+    "key": "144e35cc75bfe151",
+    "verdict": "HOLD",
+    "score": 58,
+    "flags": [
+      {
+        "code": "NON_HUMAN",
+        "severity": "warn",
+        "message": "Study subjects are mice, not people.",
+        "caveat": "This was done in mice \u2014 not humans. Most findings in mice do not carry over to people.",
+        "draft_rule": "Subjects were mice, NOT humans. The cover slide must not imply a human result. Name the species explicitly by slide 2."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Gut microbes' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "experiment",
+    "sample_size": null,
+    "subjects": "non-human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [
+      "mice"
+    ],
+    "required_caveats": [
+      "This was done in mice \u2014 not humans. Most findings in mice do not carry over to people."
+    ],
+    "required_badges": [
+      "NOT_IN_HUMANS"
+    ],
+    "draft_rules": [
+      "Subjects were mice, NOT humans. The cover slide must not imply a human result. Name the species explicitly by slide 2."
+    ],
+    "notes": []
+  },
+  "qa": {
+    "lint_errors": [],
+    "repair_rounds": 1,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "protect mice from obesity for life by reprogramming fat-burning tissue in early development",
+          "problem": "The abstract explicitly states protection was NOT due to developmental programming ('indicating an association with the timing of immune response induction rather than BAT developmental programming'). The copy incorrectly states it works 'by reprogramming fat-burning tissue in early development.'",
+          "severity": "blocking"
+        },
+        {
+          "claim": "The effect depended on monocytes infiltrating brown fat tissue early in life, not developmental changes.",
+          "problem": "This contradicts the headline claim that protection works 'by reprogramming fat-burning tissue in early development.' While this statement is accurate, the copy is internally inconsistent.",
+          "severity": "minor"
+        },
+        {
+          "claim": "doi.org/10.1080/19490976.2026.2718613",
+          "problem": "The abstract does not provide any DOI or publication identifier. This specific DOI appears to be fabricated (note the future year 2026).",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Published in Gut Microbes",
+          "problem": "The abstract does not state where this research was published. While 'Gut Microbes' appears in the copy header as a label, the abstract itself does not confirm publication venue.",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": []
+    },
+    "blocking_claims": [
+      {
+        "claim": "protect mice from obesity for life by reprogramming fat-burning tissue in early development",
+        "problem": "The abstract explicitly states protection was NOT due to developmental programming ('indicating an association with the timing of immune response induction rather than BAT developmental programming'). The copy incorrectly states it works 'by reprogramming fat-burning tissue in early development.'",
+        "severity": "blocking"
+      },
+      {
+        "claim": "doi.org/10.1080/19490976.2026.2718613",
+        "problem": "The abstract does not provide any DOI or publication identifier. This specific DOI appears to be fabricated (note the future year 2026).",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "nature"
+}
