@@ -133,9 +133,23 @@
     "unverified_numbers": [],
     "publishable": false
   },
-  "status": "approved",
+  "status": "published",
   "source_niche": "psych",
   "review": {
     "forced": true
+  },
+  "published": {
+    "media_id": "17884768854476409",
+    "kind": "CAROUSEL",
+    "at": "2026-09-01T13:27:25Z"
+  },
+  "crosspost": {
+    "at": "2026-09-01T13:27:25Z",
+    "posted": [],
+    "skipped": [
+      "bluesky",
+      "threads"
+    ],
+    "failed": {}
   }
 }

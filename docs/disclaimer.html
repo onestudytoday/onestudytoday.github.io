@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Disclaimer &amp;amp; corrections</title>
+<meta name="description" content="Not medical advice: how to read these summaries, how we handle corrections and retractions, and how we cite sources.">
+<link rel="canonical" href="https://onestudytoday.github.io/disclaimer.html">
+<meta name="theme-color" content="#0B0B0F">
+<style>
+:root{--bg:#0B0B0F;--fg:#fff;--muted:#8A8A99;--line:#23232E;--focus:#FBBF24}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+font:1rem/1.6 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,sans-serif;
+-webkit-font-smoothing:antialiased}
+/* Base link colour. Without this, any <a> not covered by a more specific rule
+   below falls back to the user agent's default link blue (#0000EE), which
+   against this #0B0B0F background is about 2:1 - a real, serious contrast
+   failure, and one that is easy to miss precisely because the styled links
+   (.btn, .item, footer, .prose) all look fine. It was caught by running
+   axe-core over the built pages, not by reading the stylesheet.
+   Underline is left on deliberately: a link inside a paragraph of muted text
+   must not rely on colour alone to be identifiable (WCAG 1.4.1). */
+a{color:var(--fg)}
+.wrap{max-width:620px;margin:0 auto;padding:3.25rem 1.375rem 5.625rem}
+.brand{font-size:1.875rem;font-weight:800;letter-spacing:-1px;margin:0}
+.tag{color:var(--muted);margin:.625rem 0 2.125rem;font-size:.9375rem}
+.btn{display:block;border:1px solid var(--line);border-radius:14px;padding:1.0625rem 1.25rem;
+margin-bottom:.75rem;text-decoration:none;color:#fff;transition:.15s;background:#101016}
+.btn:hover{border-color:#3a3a4a;transform:translateY(-1px)}
+.btn b{display:block;font-size:1rem}
+.btn span{color:var(--muted);font-size:.84375rem}
+h2{font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);
+margin:2.625rem 0 .875rem;font-weight:800}
+.list{list-style:none;margin:0;padding:0}
+.item{display:flex;gap:.875rem;padding:.9375rem 0;border-bottom:1px solid var(--line);
+text-decoration:none;color:#fff}
+.item:hover .t{text-decoration:underline}
+.day{flex:0 0 74px;font-size:.65625rem;font-weight:800;letter-spacing:1.4px;padding-top:3px}
+.t{font-size:.96875rem;line-height:1.42}
+.src{color:var(--muted);font-size:.8125rem;margin-top:4px}
+.badge{display:inline-block;font-size:.625rem;font-weight:800;letter-spacing:1px;
+border:1px solid #FBBF24;color:#FBBF24;border-radius:5px;padding:1px 6px;margin-left:6px}
+.method{border:1px solid var(--line);border-radius:14px;padding:1.375rem;margin-top:2.75rem;
+background:#101016}
+.method h2,.method h3{margin:0 0 .75rem;font-size:.9375rem;letter-spacing:0;
+text-transform:none;color:var(--fg)}
+.method li{color:#c9c9d4;font-size:.90625rem;margin-bottom:9px}
+footer{color:var(--muted);font-size:.78125rem;margin-top:2.75rem;text-align:center}
+footer a{color:var(--muted)}
+.legal{margin:0 0 .75rem;padding:0;list-style:none}
+.legal li{display:inline;white-space:nowrap}
+.legal li+li::before{content:" · ";white-space:pre}
+.prose{color:#c9c9d4;font-size:.9375rem}
+.prose h2{font-size:.9375rem;letter-spacing:0;text-transform:none;color:var(--fg);
+margin:2rem 0 .5rem}
+.prose a{color:#fff}
+.note{color:var(--muted);font-size:.78125rem;margin-top:1.5rem}
+
+/* --- WCAG 2.4.7 Focus Visible / 2.4.11 Focus Appearance ------------------
+   There was no focus style at all, so a keyboard user's position on the page
+   was whatever the browser drew by default - which on a #0B0B0F background is
+   frequently a thin dark ring nobody can see. Every interactive element on
+   this page is an <a>, so one rule covers all of them. :focus-visible rather
+   than :focus so a mouse click does not leave a ring behind. */
+a:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:4px}
+
+/* Skip link: off-screen until focused, then pinned top-left. */
+.skip{position:absolute;left:-9999px;top:0;background:var(--focus);color:#0B0B0F;
+padding:.75rem 1rem;font-weight:800;text-decoration:none;border-radius:0 0 8px 0;z-index:10}
+.skip:focus{left:0}
+
+/* 1.4.11-friendly: bump the decorative borders when the reader has asked the
+   OS for more contrast. */
+@media (prefers-contrast:more){
+  :root{--line:#6a6a80;--muted:#b9b9c8}
+}
+
+/* 2.3.3: the only motion here is the button lift, but honour the setting. */
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+  .btn:hover{transform:none}
+}
+</style></head><body>
+<a class="skip" href="#main">Skip to main content</a>
+<div class="wrap">
+<header><p class="tag"><a href="./">← @onestudytoday</a></p></header>
+<main id="main">
+<h1 class="brand">Disclaimer &amp;amp; corrections</h1>
+<div class="prose">
+
+<h2>Not medical advice</h2>
+<p>This account summarises newly published scientific research, including
+health and medical research. It is general information about what a study
+reported. It is <strong>not</strong> medical advice, diagnosis or treatment,
+and it is not a substitute for a conversation with a qualified clinician who
+knows your situation.</p>
+<p>Do not start, stop or change any treatment on the basis of a post here.
+A single study is one piece of evidence, usually early, often in a small group
+of people, and sometimes not in people at all.</p>
+
+<h2>What we claim, and what we do not</h2>
+<p>Every post links to the original paper so you can check it yourself. We
+summarise; we do not peer-review. A study appearing here is not an endorsement
+of its conclusions, and covering a paper does not mean we think it is
+correct - only that it was published, passed our vetting checks, and is worth
+knowing about.</p>
+<p>Where a study is observational, our posts are not permitted to describe it
+as showing cause. Where a study is a preprint, the post says so. Where a study
+was done in animals, the post says so.</p>
+
+<h2>Corrections</h2>
+<p>We will get things wrong. When we do, we want to know quickly and fix it
+publicly rather than quietly.</p>
+<p>If you spot an error - a misread number, a mischaracterised design, a study
+that has since been retracted - tell us and we will correct or delete the post
+and say that we did. Retraction status is checked automatically before
+anything is written, but that check runs at the time of writing, and papers are
+retracted after publication.</p>
+<p><a href="https://instagram.com/onestudytoday">Message us on Instagram</a></p>
+
+<h2>Sources and copyright</h2>
+<p>Posts are our own plain-language summaries, written from publicly available
+metadata and abstracts. We do not reproduce full papers, paywalled text, or
+publishers' figures and images. Study titles, journal names, authors and
+publication dates are reproduced as factual citation, and every post links to
+the publisher's own page for the paper.</p>
+<p>If you are a rights holder and believe something here goes beyond that,
+contact us and we will take it down while we look at it.</p>
+
+</div>
+</main>
+<footer>
+<ul class="legal"><li><a href="./">All studies</a></li><li><a href="accessibility.html">Accessibility</a></li><li><a href="privacy.html">Privacy</a></li><li><span aria-current="page">Disclaimer & corrections</span></li></ul>
+<p>Summaries of published research, for general information only. Not medical advice.</p>
+<p>Updated automatically when a post publishes · <time datetime="2026-09-01">01 Sep 2026</time></p>
+</footer>
+</div>
+</body></html>

@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Accessibility</title>
+<meta name="description" content="Our accessibility statement, what this site conforms to, known limitations, and how to report a problem.">
+<link rel="canonical" href="https://onestudytoday.github.io/accessibility.html">
+<meta name="theme-color" content="#0B0B0F">
+<style>
+:root{--bg:#0B0B0F;--fg:#fff;--muted:#8A8A99;--line:#23232E;--focus:#FBBF24}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+font:1rem/1.6 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,sans-serif;
+-webkit-font-smoothing:antialiased}
+/* Base link colour. Without this, any <a> not covered by a more specific rule
+   below falls back to the user agent's default link blue (#0000EE), which
+   against this #0B0B0F background is about 2:1 - a real, serious contrast
+   failure, and one that is easy to miss precisely because the styled links
+   (.btn, .item, footer, .prose) all look fine. It was caught by running
+   axe-core over the built pages, not by reading the stylesheet.
+   Underline is left on deliberately: a link inside a paragraph of muted text
+   must not rely on colour alone to be identifiable (WCAG 1.4.1). */
+a{color:var(--fg)}
+.wrap{max-width:620px;margin:0 auto;padding:3.25rem 1.375rem 5.625rem}
+.brand{font-size:1.875rem;font-weight:800;letter-spacing:-1px;margin:0}
+.tag{color:var(--muted);margin:.625rem 0 2.125rem;font-size:.9375rem}
+.btn{display:block;border:1px solid var(--line);border-radius:14px;padding:1.0625rem 1.25rem;
+margin-bottom:.75rem;text-decoration:none;color:#fff;transition:.15s;background:#101016}
+.btn:hover{border-color:#3a3a4a;transform:translateY(-1px)}
+.btn b{display:block;font-size:1rem}
+.btn span{color:var(--muted);font-size:.84375rem}
+h2{font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);
+margin:2.625rem 0 .875rem;font-weight:800}
+.list{list-style:none;margin:0;padding:0}
+.item{display:flex;gap:.875rem;padding:.9375rem 0;border-bottom:1px solid var(--line);
+text-decoration:none;color:#fff}
+.item:hover .t{text-decoration:underline}
+.day{flex:0 0 74px;font-size:.65625rem;font-weight:800;letter-spacing:1.4px;padding-top:3px}
+.t{font-size:.96875rem;line-height:1.42}
+.src{color:var(--muted);font-size:.8125rem;margin-top:4px}
+.badge{display:inline-block;font-size:.625rem;font-weight:800;letter-spacing:1px;
+border:1px solid #FBBF24;color:#FBBF24;border-radius:5px;padding:1px 6px;margin-left:6px}
+.method{border:1px solid var(--line);border-radius:14px;padding:1.375rem;margin-top:2.75rem;
+background:#101016}
+.method h2,.method h3{margin:0 0 .75rem;font-size:.9375rem;letter-spacing:0;
+text-transform:none;color:var(--fg)}
+.method li{color:#c9c9d4;font-size:.90625rem;margin-bottom:9px}
+footer{color:var(--muted);font-size:.78125rem;margin-top:2.75rem;text-align:center}
+footer a{color:var(--muted)}
+.legal{margin:0 0 .75rem;padding:0;list-style:none}
+.legal li{display:inline;white-space:nowrap}
+.legal li+li::before{content:" · ";white-space:pre}
+.prose{color:#c9c9d4;font-size:.9375rem}
+.prose h2{font-size:.9375rem;letter-spacing:0;text-transform:none;color:var(--fg);
+margin:2rem 0 .5rem}
+.prose a{color:#fff}
+.note{color:var(--muted);font-size:.78125rem;margin-top:1.5rem}
+
+/* --- WCAG 2.4.7 Focus Visible / 2.4.11 Focus Appearance ------------------
+   There was no focus style at all, so a keyboard user's position on the page
+   was whatever the browser drew by default - which on a #0B0B0F background is
+   frequently a thin dark ring nobody can see. Every interactive element on
+   this page is an <a>, so one rule covers all of them. :focus-visible rather
+   than :focus so a mouse click does not leave a ring behind. */
+a:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:4px}
+
+/* Skip link: off-screen until focused, then pinned top-left. */
+.skip{position:absolute;left:-9999px;top:0;background:var(--focus);color:#0B0B0F;
+padding:.75rem 1rem;font-weight:800;text-decoration:none;border-radius:0 0 8px 0;z-index:10}
+.skip:focus{left:0}
+
+/* 1.4.11-friendly: bump the decorative borders when the reader has asked the
+   OS for more contrast. */
+@media (prefers-contrast:more){
+  :root{--line:#6a6a80;--muted:#b9b9c8}
+}
+
+/* 2.3.3: the only motion here is the button lift, but honour the setting. */
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+  .btn:hover{transform:none}
+}
+</style></head><body>
+<a class="skip" href="#main">Skip to main content</a>
+<div class="wrap">
+<header><p class="tag"><a href="./">← @onestudytoday</a></p></header>
+<main id="main">
+<h1 class="brand">Accessibility</h1>
+<div class="prose">
+
+<p>We want every reader to be able to use this page, including people using a
+screen reader, keyboard-only navigation, browser zoom or a raised default font
+size.</p>
+
+<h2>How accessible this page is</h2>
+<p>This site aims to conform to <a href="https://www.w3.org/TR/WCAG21/"
+rel="noopener noreferrer" target="_blank">WCAG 2.1 level AA</a> (opens in a new
+tab), the standard US courts and regulators reference. We believe the site
+currently meets it.</p>
+
+<h2>What that means here in practice</h2>
+<ul>
+<li>Every text and background colour pair on the site is at or above the 4.5:1
+    contrast ratio AA requires; the lowest is 4.96:1.</li>
+<li>Everything is reachable and operable with a keyboard alone, and the
+    element you are on is always shown with a visible amber focus ring.</li>
+<li>A "skip to main content" link is the first thing a keyboard or screen
+    reader user reaches.</li>
+<li>The page uses real landmarks and headings, and the study list is marked up
+    as a list, so a screen reader can announce and jump through it.</li>
+<li>Links that open a new tab say so in their accessible name.</li>
+<li>Text is sized in relative units, so it follows your browser's font size
+    setting as well as zoom.</li>
+<li>Motion is disabled if your system asks for reduced motion, and borders
+    strengthen if it asks for higher contrast.</li>
+<li>Nothing on the site depends on colour alone to convey meaning.</li>
+</ul>
+
+<h2>Known limitations</h2>
+<p>Every study links out to a journal or repository we do not control. Once you
+follow one of those links you are on someone else's site, and we cannot make
+any promise about how accessible it is.</p>
+<p>Study titles and journal names are reproduced exactly as the publisher
+recorded them. If a publisher's own title contains an unexplained abbreviation
+or a formatting oddity, it will appear here that way, because silently
+rewriting a paper's title would be worse.</p>
+
+<h2>How this was checked</h2>
+<p>Contrast ratios are computed from the site's own palette rather than
+eyeballed. The structural requirements above - the skip link, the landmarks,
+the list semantics, the focus styles, the new-tab warnings - are each pinned by
+an automated test that runs on every change to the site, so they cannot be
+removed by accident later.</p>
+<p>This site does <strong>not</strong> use an accessibility overlay or
+plug-in widget. Those are widely regarded by disabled users and accessibility
+practitioners as unhelpful, and they have themselves attracted litigation.</p>
+
+<h2>Tell us if something is wrong</h2>
+<p>If any part of this site is difficult or impossible for you to use, please
+tell us and we will fix it. This is a one-person project, so the honest promise
+is: we will reply within a week and tell you what we are doing about it.</p>
+<p><a href="https://instagram.com/onestudytoday">Message us on Instagram</a></p>
+
+</div>
+</main>
+<footer>
+<ul class="legal"><li><a href="./">All studies</a></li><li><span aria-current="page">Accessibility</span></li><li><a href="privacy.html">Privacy</a></li><li><a href="disclaimer.html">Disclaimer & corrections</a></li></ul>
+<p>Summaries of published research, for general information only. Not medical advice.</p>
+<p>Updated automatically when a post publishes · <time datetime="2026-09-01">01 Sep 2026</time></p>
+</footer>
+</div>
+</body></html>
