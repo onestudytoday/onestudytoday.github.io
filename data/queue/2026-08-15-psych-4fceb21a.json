@@ -1,0 +1,138 @@
+{
+  "id": "2026-08-15-psych-4fceb21a",
+  "niche": "psych",
+  "study": {
+    "key": "4fceb21ae088d433",
+    "title": "Therapeutic potential and underlying mechanisms of engineered young plasma-derived exosomes in Alzheimer's disease",
+    "journal": "Bioactive materials",
+    "pub_date": "2026-08-15",
+    "pub_date_display": "Aug 15, 2026",
+    "doi": "10.1016/j.bioactmat.2026.08.008",
+    "doi_display": "doi.org/10.1016/j.bioactmat.2026.08.008",
+    "url": "https://doi.org/10.1016/j.bioactmat.2026.08.008",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Chen H",
+      "Si Y",
+      "Cheng Q",
+      "Yu Q",
+      "Cui Z",
+      "Yu S"
+    ]
+  },
+  "cover": {
+    "kicker": "Bioactive Materials \u2022 Mouse study",
+    "headline": "Engineered particles from young blood **reduced toxic plaques in mice** with Alzheimer's-like disease."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Blood from young organisms improves memory in aging animals, but how could this work for Alzheimer's?",
+      "body": "Exosomes are tiny membrane-wrapped packets that circulate in blood and carry molecular cargo between cells. Young plasma is rich in them, and researchers have suspected they might help reverse age-related memory loss.\n\nBut no one had tested whether exosomes from young blood could actually treat Alzheimer's pathology, or figured out how to get them into brain tissue efficiently enough to matter."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Researchers extracted exosomes from young plasma, tagged them with a brain-targeting peptide, and injected them into mice.",
+      "body": "The engineered exosomes crossed into brain tissue and reached neurons. They reduced both amyloid-\u03b2 plaques and phosphorylated tau protein, the two signature pathologies of Alzheimer's disease. Synaptic structure was restored, more neurons survived, and the mice performed better on cognitive tasks.\n\nThe engineered version outperformed unmodified young plasma exosomes on every measure, thanks to the targeting peptide that helped them reach neurons more efficiently.",
+      "stat": {
+        "value": "3\u00d7Tg",
+        "label": "triple-transgenic AD mouse model"
+      }
+    },
+    {
+      "eyebrow": "The mechanism",
+      "title": "The exosomes worked by suppressing a protein called RPTOR, which switched on autophagy and cleared toxic proteins.",
+      "body": "Autophagy is the cellular recycling system that breaks down damaged proteins and clears debris. The engineered exosomes inhibited RPTOR expression, a molecular brake on autophagy, letting neurons ramp up their cleanup machinery and dispose of amyloid and tau aggregates.\n\nWhen researchers artificially overexpressed RPTOR in separate experiments, it blocked the therapeutic effects entirely. Single-cell analysis also showed the exosomes shifted the balance of brain cell types, increasing healthy surveillance microglia while reducing inflammatory ones."
+    }
+  ],
+  "caveats": [
+    "This was done in cells in a dish and mice, not humans. Most findings in mice do not carry over to people.",
+    "The study used a genetically engineered mouse model that mimics some but not all features of human Alzheimer's disease."
+  ],
+  "cta": {
+    "headline": "Neurodegenerative disease meets rejuvenation biology",
+    "sub": "Could tiny packets from young blood become a delivery vehicle for brain therapies?"
+  },
+  "caption": "Exosomes extracted from the blood of young organisms and engineered with a targeting peptide reduced Alzheimer's pathology in mice. The modified particles crossed into brain tissue, delivered their cargo to neurons, and triggered autophagy\u2014the cell's waste-disposal system\u2014which cleared toxic plaques and tangles. Single-cell profiling showed they also reshaped the immune landscape of the brain, boosting helpful microglia and reducing harmful ones. Published in Bioactive Materials using a 3\u00d7Tg mouse model of Alzheimer's disease. This was a lab study in mice, not a human trial. Full study: doi.org/10.1016/j.bioactmat.2026.08.008 \u2014 What comes after proof-of-concept?",
+  "hashtag_set": "health",
+  "vet": {
+    "key": "4fceb21ae088d433",
+    "verdict": "HOLD",
+    "score": 46,
+    "flags": [
+      {
+        "code": "NON_HUMAN",
+        "severity": "warn",
+        "message": "Study subjects are cells in a dish and mice, not people.",
+        "caveat": "This was done in cells in a dish and mice \u2014 not humans. Most findings in cells in a dish and mice do not carry over to people.",
+        "draft_rule": "Subjects were cells in a dish and mice, NOT humans. The cover slide must not imply a human result. Name the species explicitly by slide 2."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Bioactive materials' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "mechanistic / lab",
+    "sample_size": null,
+    "subjects": "non-human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [
+      "cells in a dish",
+      "mice"
+    ],
+    "required_caveats": [
+      "This was done in cells in a dish and mice \u2014 not humans. Most findings in cells in a dish and mice do not carry over to people."
+    ],
+    "required_badges": [
+      "NOT_IN_HUMANS"
+    ],
+    "draft_rules": [
+      "Subjects were cells in a dish and mice, NOT humans. The cover slide must not imply a human result. Name the species explicitly by slide 2."
+    ],
+    "notes": []
+  },
+  "qa": {
+    "lint_errors": [
+      "GUARDRAIL hype: Draft contains promotional hype wording."
+    ],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "Published in Bioactive Materials using a 3\u00d7Tg mouse model of Alzheimer's disease.",
+          "problem": "The abstract does not state that this was published in Bioactive Materials. While the copy header says 'Bioactive Materials \u2022 Mouse study', the abstract itself contains no journal name.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Full study: doi.org/10.1016/j.bioactmat.2026.08.008",
+          "problem": "The abstract does not contain any DOI or URL. This specific DOI is invented and not found in the abstract. Additionally, the year 2026 is in the future, making this clearly fabricated.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "3\u00d7Tg",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Full study: doi.org/10.1016/j.bioactmat.2026.08.008",
+        "problem": "The abstract does not contain any DOI or URL. This specific DOI is invented and not found in the abstract. Additionally, the year 2026 is in the future, making this clearly fabricated.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "psych"
+}
