@@ -1,0 +1,49 @@
+name: Run the test suite
+
+# The one gap every audit has flagged: 284 tests exist and nothing ran them on
+# push. A regression could reach the live account silently between now and the
+# next time someone happens to run pytest by hand.
+#
+# Runs on every push, on all branches - a regression introduced anywhere
+# should fail loud here before it can reach main.
+#
+# Deliberately NOT triggered on pull_request (or pull_request_target /
+# workflow_run): this repo's own tests/test_security.py bans those triggers
+# repo-wide, because a solo repo with no reason to accept external PRs gains
+# nothing from them and they're the trigger shape that runs a PR's own code
+# against repo context. `push` covers every commit that actually matters here.
+
+on:
+  push:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Run pytest
+        env:
+          # Four dummy, non-secret placeholders - NOT the real credentials.
+          # config.settings() hard-requires these to exist so a handful of
+          # render/dry-run tests can build a Settings object; nothing in the
+          # test suite makes a live Graph API call, so a fake value that is
+          # merely non-empty is sufficient. Deliberately NOT wired to
+          # `secrets.*`: a plain push trigger should never need read access
+          # to real credentials, and this keeps it that way even if the
+          # workflow is ever run against an untrusted branch.
+          META_APP_ID: ci-placeholder
+          META_APP_SECRET: ci-placeholder
+          IG_ACCESS_TOKEN: ci-placeholder
+          IG_BUSINESS_ACCOUNT_ID: ci-placeholder
+        run: python -m pytest tests/ -q
