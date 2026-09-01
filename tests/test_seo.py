@@ -239,14 +239,24 @@ def test_sitemap_is_well_formed_xml_with_the_newest_post_as_lastmod(site):
     root = ET.fromstring(site.sitemap)            # raises if malformed
     assert root.tag == f"{SM_NS}urlset"
     urls = root.findall(f"{SM_NS}url")
-    assert len(urls) == 1
 
+    # The site root, first, carrying the newest study's date as lastmod.
     loc = urls[0].findtext(f"{SM_NS}loc")
     assert loc == linkinbio.site_url()
     assert loc.startswith("https://") and loc.endswith("/")
 
     newest = max(json.loads(f.read_text())["study"]["pub_date"] for f in SAMPLES)
     assert urls[0].findtext(f"{SM_NS}lastmod") == newest
+
+    # Plus the small-print pages, which are ours. Still NOT the study links -
+    # those point at publishers we do not own, and listing someone else's URL
+    # in our sitemap is both wrong and ignored.
+    listed = {u.findtext(f"{SM_NS}loc") for u in urls}
+    for name, _label in linkinbio.LEGAL_PAGES:
+        assert linkinbio.site_url() + name in listed, name
+    assert len(urls) == 1 + len(linkinbio.LEGAL_PAGES)
+    for u in urls:
+        assert u.findtext(f"{SM_NS}loc").startswith(linkinbio.site_url())
 
 
 def test_robots_allows_everything_and_points_at_the_sitemap(site):
@@ -330,7 +340,17 @@ def test_semantic_html_landmarks(site):
     site.build()
     doc = site.html
     assert doc.count("<h1") == 1
-    assert "<main class=\"wrap\">" in doc and "</main>" in doc
+    # A main landmark, and the skip link's target lands on it. This used to
+    # assert the literal string '<main class="wrap">'; the landmark now carries
+    # the id instead and the layout div carries the class, so the assertion is
+    # written against the STRUCTURE it always meant rather than that one
+    # spelling of it.
+    assert re.search(r'<main\b[^>]*\bid="main"', doc)
+    assert "</main>" in doc
+    assert '<a class="skip" href="#main"' in doc
+    # Footer is a sibling of main, not inside it: site-wide small print does
+    # not belong in the page's main landmark.
+    assert doc.index("</main>") < doc.index("<footer>")
     assert doc.count("<article>") == len(SAMPLES)
     assert re.search(r'<time datetime="\d{4}-\d{2}-\d{2}">', doc)
     # The load-bearing CSS classes are all still on the page.
