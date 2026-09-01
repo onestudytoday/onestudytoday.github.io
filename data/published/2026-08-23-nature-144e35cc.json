@@ -140,9 +140,23 @@
     "unverified_numbers": [],
     "publishable": false
   },
-  "status": "approved",
+  "status": "published",
   "source_niche": "nature",
   "review": {
     "forced": true
+  },
+  "published": {
+    "media_id": "17913120954258882",
+    "kind": "CAROUSEL",
+    "at": "2026-09-01T02:08:59Z"
+  },
+  "crosspost": {
+    "at": "2026-09-01T02:08:59Z",
+    "posted": [],
+    "skipped": [
+      "bluesky",
+      "threads"
+    ],
+    "failed": {}
   }
 }
