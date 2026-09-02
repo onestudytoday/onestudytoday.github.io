@@ -1,0 +1,142 @@
+{
+  "id": "2026-07-25-health-9082b349",
+  "niche": "health",
+  "study": {
+    "key": "9082b349c2f54be9",
+    "title": "Species-origin identification of the deer in the Purtier Placenta Live Stem Cell Therapy by DNA typing",
+    "journal": "Forensic science international. Genetics",
+    "pub_date": "2026-07-25",
+    "pub_date_display": "Jul 25, 2026",
+    "doi": "10.1016/j.fsigen.2026.103594",
+    "doi_display": "doi.org/10.1016/j.fsigen.2026.103594",
+    "url": "https://doi.org/10.1016/j.fsigen.2026.103594",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Kotkov\u00e1 L",
+      "Vinitzky S",
+      "Loskot M",
+      "Fischer O",
+      "Dr\u00e1bek J."
+    ]
+  },
+  "cover": {
+    "kicker": "Forensic Science International",
+    "headline": "A popular supplement claimed deer placenta could treat cancer. **DNA testing revealed the wrong species inside.**"
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Purtier Placenta Live Stem Cell Therapy claims to contain living red deer placenta stem cells.",
+      "body": "The Singapore-based supplement is marketed as maintaining health and youthfulness, with implications it can alleviate diabetes, cancer, and neurodegenerative diseases. None of these claims is traceable in clinical trial registries. The product has gained popularity among Czech oncological patients.\n\nAuthorities in the UAE, Philippines, and Singapore have issued warnings or penalties about misleading claims. Researchers designed a three-stage DNA testing process to verify whether the capsules actually contained the red deer species depicted on the official website."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "DNA analysis identified the primary species as Rusa unicolor or timorensis, not red deer.",
+      "body": "Using barcoding primer mixes, melting analysis, and Sanger sequencing against seven reference species, the team extracted and tested DNA from 6th Edition capsules. The main component was Rusa unicolor/timorensis, with minor components of Dama dama and Cervus elaphus.\n\nWhile the capsule did contain deer-origin material, the species composition did not match the red deer prominently featured in marketing. The researchers concluded that the lack of specific information and the wording of marketing materials may be misleading.",
+      "stat": {
+        "value": "3",
+        "label": "deer species detected in capsules"
+      }
+    }
+  ],
+  "caveats": [
+    "This was a forensic analysis of product composition, not a clinical trial of health effects.",
+    "The study tested only the 6th Edition capsules, not other versions of the product."
+  ],
+  "cta": {
+    "headline": "When marketing outpaces the evidence",
+    "sub": "DNA forensics can verify whether a product contains what the label promises."
+  },
+  "caption": "DNA forensics caught a popular supplement making claims its ingredients couldn't support. Researchers in the Czech Republic tested capsules from Purtier Placenta Live Stem Cell Therapy after oncological patients began using it as an alternative treatment. The product's marketing featured red deer and promised living stem cells that could treat serious diseases, but none of these claims appeared in clinical trial registries. Three-stage DNA analysis revealed the capsules primarily contained Rusa unicolor or timorensis, with only minor traces of the advertised red deer species. Published in Forensic Science International: Genetics. The study analyzed 6th Edition capsules using barcoding and sequencing against seven reference species. Main limitation: this was product verification, not a test of therapeutic claims. Full study: doi.org/10.1016/j.fsigen.2026.103594 Worth the premium price?",
+  "hashtag_set": "wildcard",
+  "vet": {
+    "key": "9082b349c2f54be9",
+    "verdict": "PASS",
+    "score": 74,
+    "flags": [],
+    "design": "mechanistic / lab",
+    "sample_size": null,
+    "subjects": "human",
+    "journal_tier": 1,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [],
+    "notes": []
+  },
+  "qa": {
+    "lint_errors": [],
+    "repair_rounds": 1,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "A popular supplement claimed deer placenta could treat cancer.",
+          "problem": "The abstract states that individual ingredients are accompanied by statements 'implying that Purtier Placenta can alleviate or cure diseases such as diabetes, cancer, and neurodegenerative diseases.' This is about implications/suggestions, not direct claims to 'treat' cancer. The copy presents this as a direct claim to treat cancer.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Full study: doi.org/10.1016/j.fsigen.2026.103594",
+          "problem": "This DOI does not appear anywhere in the abstract. The DOI year (2026) is also suspicious as it appears to be a future date. This is an invented citation.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Published in Forensic Science International: Genetics.",
+          "problem": "The abstract does not mention the journal name 'Forensic Science International: Genetics' - only the copy header mentions 'Forensic Science International' without the 'Genetics' suffix.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Researchers in the Czech Republic tested capsules",
+          "problem": "The abstract does not state that the researchers were in the Czech Republic. It only mentions that the product gained popularity among Czech oncological patients.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "11",
+          "found_in_abstract": true
+        },
+        {
+          "number": "three-stage",
+          "found_in_abstract": true
+        },
+        {
+          "number": "seven",
+          "found_in_abstract": true
+        },
+        {
+          "number": "6th Edition",
+          "found_in_abstract": true
+        },
+        {
+          "number": "3 deer species",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Full study: doi.org/10.1016/j.fsigen.2026.103594",
+        "problem": "This DOI does not appear anywhere in the abstract. The DOI year (2026) is also suspicious as it appears to be a future date. This is an invented citation.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Published in Forensic Science International: Genetics.",
+        "problem": "The abstract does not mention the journal name 'Forensic Science International: Genetics' - only the copy header mentions 'Forensic Science International' without the 'Genetics' suffix.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Researchers in the Czech Republic tested capsules",
+        "problem": "The abstract does not state that the researchers were in the Czech Republic. It only mentions that the product gained popularity among Czech oncological patients.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "health"
+}
