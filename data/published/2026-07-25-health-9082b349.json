@@ -137,9 +137,23 @@
     "unverified_numbers": [],
     "publishable": false
   },
-  "status": "approved",
+  "status": "published",
   "source_niche": "health",
   "review": {
     "forced": true
+  },
+  "published": {
+    "media_id": "18164803498466650",
+    "kind": "CAROUSEL",
+    "at": "2026-09-02T17:09:30Z"
+  },
+  "crosspost": {
+    "at": "2026-09-02T17:09:30Z",
+    "posted": [],
+    "skipped": [
+      "bluesky",
+      "threads"
+    ],
+    "failed": {}
   }
 }
