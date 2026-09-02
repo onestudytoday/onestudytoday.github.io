@@ -137,6 +137,9 @@
     "unverified_numbers": [],
     "publishable": false
   },
-  "status": "needs_review",
-  "source_niche": "health"
+  "status": "approved",
+  "source_niche": "health",
+  "review": {
+    "forced": true
+  }
 }
