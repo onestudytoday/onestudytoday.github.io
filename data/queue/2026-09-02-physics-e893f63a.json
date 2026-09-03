@@ -1,0 +1,151 @@
+{
+  "id": "2026-09-02-physics-e893f63a",
+  "niche": "physics",
+  "study": {
+    "key": "e893f63a36008732",
+    "title": "Ultralight Bosons Explain the Mass-Spin Correlations in the Merging Binary Black Hole Population",
+    "journal": "arXiv",
+    "pub_date": "2026-09-02",
+    "pub_date_display": "Sep 2, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2609.02678v1",
+    "url": "http://arxiv.org/abs/2609.02678v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Xiao-Xiao Kou",
+      "Vuk Mandic",
+      "Ran Ding",
+      "Chi Tian"
+    ]
+  },
+  "cover": {
+    "kicker": "arXiv \u2022 Preprint analysis",
+    "headline": "The spins of merging black holes **match a prediction from exotic ultralight particles** that might not exist."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Ultralight bosons are hypothetical particles that could sap spin from fast-rotating black holes.",
+      "body": "If these bosons exist, they would trigger superradiant instabilities around rapidly spinning black holes, forming oscillating clouds and draining rotational energy. This would leave a telltale signature: a relationship between black hole mass and how fast they spin.\n\nGravitational wave detectors have now catalogued dozens of black hole mergers. If the boson theory is right, the mass-spin pattern in that population should match what superradiance predicts."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "The team reports that black hole spins align with predictions from a boson with mass around 10\u207b\u00b9\u00b2 eV.",
+      "body": "They modeled spin distributions informed by superradiance physics and compared them to merging binaries observed in gravitational wave catalogs GWTC-3.0 through GWTC-5.0. The match improved as more events were added.\n\nFor GWTC-5.0, the Bayes factor reached approximately 7.8 in favor of the superradiance model. Notably, the boson mass range overlaps with an independent estimate from waveform analysis of a single event, GW190728.",
+      "stat": {
+        "value": "~7.8",
+        "label": "Bayes factor for GWTC-5.0"
+      }
+    },
+    {
+      "eyebrow": "Why it matters",
+      "title": "If confirmed, this would be the first indirect evidence for a new fundamental particle from astrophysics.",
+      "body": "Ultralight bosons are predicted by some theories beyond the Standard Model but have never been directly detected. Finding their fingerprint in the population statistics of black hole mergers would open a new window into particle physics using gravitational waves.\n\nThe authors describe the evidence as compelling compatibility, not proof. The pattern could have other explanations, and the work has not yet been peer reviewed."
+    }
+  ],
+  "caveats": [
+    "This is a preprint and has not been peer reviewed, so no independent expert has vetted the work yet.",
+    "The analysis shows statistical compatibility with a boson model but does not rule out alternative explanations for the mass-spin pattern.",
+    "The evidence is based on population-level statistics across catalogs, not direct detection of the particles themselves."
+  ],
+  "cta": {
+    "headline": "Want the full technical details?",
+    "sub": "Swipe back through the slides or follow the study link in the caption."
+  },
+  "caption": "Black holes observed merging across the universe show a curious relationship between their mass and how fast they spin\u2014and in this early paper, researchers report it lines up with what you would expect if exotic ultralight particles are stealing rotational energy. The boson mass that fits best is around 10\u207b\u00b9\u00b2 electronvolts, overlapping with an independent estimate from gravitational waveform analysis. The analysis used merging binary black hole data from gravitational wave transient catalogs GWTC-3.0 through GWTC-5.0, with statistical preference for the superradiance model strengthening as the dataset grew. This is a preprint on arXiv and has not been peer reviewed. Full study: http://arxiv.org/abs/2609.02678v1\n\nDoes this change particle physics?",
+  "hashtag_set": "physics",
+  "vet": {
+    "key": "e893f63a36008732",
+    "verdict": "HOLD",
+    "score": 42,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "lint_errors": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "The Bayes factor reached approximately 7.8 in favor of the superradiance model.",
+          "problem": "The abstract states the Bayes factor is ln B \u2248 7.8 (natural logarithm of B), not B \u2248 7.8. These are very different values: ln B = 7.8 means B \u2248 2440, not B \u2248 7.8.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "~7.8 Bayes factor for GWTC-5.0",
+          "problem": "The abstract states ln B \u2248 7.8, which is the natural logarithm of the Bayes factor, not the Bayes factor itself. The actual Bayes factor would be approximately e^7.8 \u2248 2440.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "The spins of merging black holes match a prediction from exotic ultralight particles that might not exist.",
+          "problem": "The headline states as definitive fact that the spins 'match' the prediction. The abstract says the mass-spin relation is 'consistent with' the GWTCs and describes 'compelling evidence' of 'compatibility,' which are weaker claims than a definitive match.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Full study: http://arxiv.org/abs/2609.02678v1",
+          "problem": "The abstract does not contain this URL or any arXiv identifier. This is an invented reference.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "10\u207b\u00b9\u00b2 eV",
+          "found_in_abstract": true
+        },
+        {
+          "number": "7.8",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "The Bayes factor reached approximately 7.8 in favor of the superradiance model.",
+        "problem": "The abstract states the Bayes factor is ln B \u2248 7.8 (natural logarithm of B), not B \u2248 7.8. These are very different values: ln B = 7.8 means B \u2248 2440, not B \u2248 7.8.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "~7.8 Bayes factor for GWTC-5.0",
+        "problem": "The abstract states ln B \u2248 7.8, which is the natural logarithm of the Bayes factor, not the Bayes factor itself. The actual Bayes factor would be approximately e^7.8 \u2248 2440.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Full study: http://arxiv.org/abs/2609.02678v1",
+        "problem": "The abstract does not contain this URL or any arXiv identifier. This is an invented reference.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "physics"
+}
