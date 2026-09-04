@@ -1,0 +1,158 @@
+{
+  "id": "2026-08-12-psych-8ba02a9b",
+  "niche": "wildcard",
+  "study": {
+    "key": "8ba02a9b8223ef05",
+    "title": "\"I've let screens take over\": Maternal Guilt About Media and Relations to Children's Problematic Media Use",
+    "journal": "Computers in human behavior",
+    "pub_date": "2026-08-12",
+    "pub_date_display": "Aug 12, 2026",
+    "doi": "10.1016/j.chb.2026.109138",
+    "doi_display": "doi.org/10.1016/j.chb.2026.109138",
+    "url": "https://doi.org/10.1016/j.chb.2026.109138",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Coyne SM",
+      "Hirschi T",
+      "Gale M",
+      "Jones BL",
+      "Van Alfen M",
+      "Almeida LM"
+    ]
+  },
+  "cover": {
+    "kicker": "Computers in Human Behavior",
+    "headline": "**Maternal guilt about screen time** is linked more to depression and parenting ideals than actual hours watched."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Parents today feel intense guilt about media use, but what actually predicts those feelings?",
+      "body": "The narrative around children and screens is soaked in moral panic. Mothers especially face pressure to regulate media perfectly, often while managing their own device habits. But is that guilt really about the hours logged?\n\nResearchers surveyed 474 U.S. mothers to find out what drives guilt about their own and their child's media use, and whether actual screen time or content mattered as much as we assume."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "About half of mothers reported moderate or higher levels of guilt related to media use.",
+      "body": "Mothers who felt guilty about their child's media use also reported higher depression, lower confidence in managing media, and children with more problematic media behaviors. Guilt about their own media use was linked to depression and child media problems, too.\n\nYounger mothers reported more guilt of both types. Notably, neither the amount of screen time nor the type of content predicted guilt levels. The feelings were tied to emotional well-being and parenting ideals, not actual behavior.",
+      "stat": {
+        "value": "~50%",
+        "label": "of mothers felt moderate or high media guilt"
+      }
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Something else could explain the link.",
+    "The sample was 65% White and may not reflect all mothers' experiences.",
+    "Guilt and child behavior were both reported by mothers, which can introduce bias."
+  ],
+  "cta": {
+    "headline": "Screen guilt isn't about the clock",
+    "sub": "It's tied to how parents feel about themselves and their ideals."
+  },
+  "caption": "Maternal guilt about children's screen time is surprisingly disconnected from how much media is actually consumed. Researchers analyzed survey data from 474 U.S. mothers with children averaging 7.5 years old and found that guilt was linked to maternal depression, lower parenting confidence, and children's problematic media behaviors\u2014but not to screen time amounts or content type. Younger mothers felt more guilt across the board. The findings suggest that guilt reflects internal emotional states and cultural parenting ideals more than objective measures of device use. This was a cross-sectional survey. Full study: doi.org/10.1016/j.chb.2026.109138\\n\\nDo you feel media guilt?",
+  "hashtag_set": "psych",
+  "vet": {
+    "key": "8ba02a9b8223ef05",
+    "verdict": "PASS",
+    "score": 50,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "note",
+        "message": "Design reads as observational (unclear); markers: associated with",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Computers in human behavior' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": []
+  },
+  "qa": {
+    "lint_errors": [],
+    "repair_rounds": 1,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "children averaging 7.5 years old",
+          "problem": "The abstract states M child age = 7.48 yrs, which the copy has rounded to 7.5. This changes the actual reported value.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Full study: doi.org/10.1016/j.chb.2026.109138",
+          "problem": "The abstract does not contain any DOI or publication reference. This information was invented.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "474",
+          "found_in_abstract": true
+        },
+        {
+          "number": "65%",
+          "found_in_abstract": true
+        },
+        {
+          "number": "7.5 years",
+          "found_in_abstract": false
+        },
+        {
+          "number": "~50% (about half)",
+          "found_in_abstract": true
+        },
+        {
+          "number": "50%",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Full study: doi.org/10.1016/j.chb.2026.109138",
+        "problem": "The abstract does not contain any DOI or publication reference. This information was invented.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "7.5 years",
+        "found_in_abstract": false
+      },
+      {
+        "number": "50%",
+        "found_in_abstract": false,
+        "checked_by": "code"
+      },
+      {
+        "number": "7.5",
+        "found_in_abstract": false,
+        "checked_by": "code"
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "psych"
+}
