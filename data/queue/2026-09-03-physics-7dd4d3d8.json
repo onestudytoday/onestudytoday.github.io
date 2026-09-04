@@ -1,0 +1,112 @@
+{
+  "id": "2026-09-03-physics-7dd4d3d8",
+  "niche": "physics",
+  "study": {
+    "key": "7dd4d3d8efa58536",
+    "title": "Properties of Seasonal Ice at Sisyphi Cavi and Implications for Current Modification of Martian Gullies",
+    "journal": "arXiv",
+    "pub_date": "2026-09-03",
+    "pub_date_display": "Sep 3, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2609.03885v1",
+    "url": "http://arxiv.org/abs/2609.03885v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Apolline Leclef",
+      "Mathieu Vincendon",
+      "Cateline Lantz",
+      "Fran\u00e7ois Andrieu",
+      "Marie Ausseresse",
+      "John Carter"
+    ]
+  },
+  "cover": {
+    "kicker": "arXiv preprint, not peer reviewed",
+    "headline": "Martian gullies are still changing today, but **the force behind them remains unclear.**"
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Fresh gullies on Mars suggest something is carving channels right now, but what?",
+      "body": "Gullies on Mars\u2014channels carved into slopes\u2014are geologically recent, and some are still being modified today. Two competing ideas exist: liquid water trickling down slopes, or processes driven by frozen carbon dioxide ice that sublimates each spring.\n\nThe team reports observations from Sisyphi Cavi, an active site at 68\u00b0S where gullies continue to evolve. By analyzing infrared spectral data of seasonal ices, they aimed to test which mechanism is responsible."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "The analysis detected no water ice on the surface and no direct evidence of CO2 geysers driving gully changes.",
+      "body": "Using CRISM and OMEGA instruments, the researchers found that water ice is not detectable as an independent surface layer, though it may exist as minor inclusions within CO2 ice. Faint sulfate salt signatures appeared but showed no clear link to gully activity.\n\nDark spots suggesting CO2 geysers form in late winter to early spring, but gully modifications happen later\u2014mid to late spring\u2014during the final stages of CO2 ice sublimation. This timing mismatch undermines a direct connection between geysers and gully carving."
+    },
+    {
+      "eyebrow": "The mechanism",
+      "title": "Instead, the team proposes that CO2-ice-based fluidization or avalanche processes explain the modifications.",
+      "body": "In this early paper, the available observations provide no support for liquid water contributing to present-day activity at this site. They also offer no backing for the geyser hypothesis as the main driver of gully changes.\n\nThe timing and conditions observed point instead toward processes involving CO2 ice behaving more like a flowing or collapsing material during late-stage sublimation. These mechanisms could reshape slopes without requiring either liquid water or explosive venting through translucent ice.",
+      "stat": {
+        "value": "68\u00b0S",
+        "label": "latitude of the active site studied"
+      }
+    }
+  ],
+  "caveats": [
+    "This is a preprint that has not been peer reviewed, so no independent expert has verified the work yet.",
+    "The study focuses on one specific Martian site, so these findings may not apply to all active gullies on Mars.",
+    "The mechanism proposed is based on timing and composition data, not direct observation of the physical process in action."
+  ],
+  "cta": {
+    "headline": "The science behind changing Martian slopes",
+    "sub": "Swipe through to see what infrared spectroscopy reveals about ice and erosion on another planet."
+  },
+  "caption": "Something is still reshaping gully channels on Mars, but researchers analyzing one active site report that neither liquid water nor explosive CO2 geysers appear responsible. The team used infrared spectroscopy to characterize seasonal ices at Sisyphi Cavi, finding that water ice was not detected at the surface and that the timing of geyser-linked dark spots does not align with observed gully changes. Instead, CO2-ice-based avalanche or fluidization processes during late sublimation may explain the modifications. The study examined spectral data from CRISM and OMEGA instruments at a single high-latitude site. This work has not been peer reviewed. Full study: http://arxiv.org/abs/2609.03885v1 \u2014 Which planet fascinates you more?",
+  "hashtag_set": "nature",
+  "vet": {
+    "key": "7dd4d3d8efa58536",
+    "verdict": "HOLD",
+    "score": 42,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      }
+    ],
+    "design": "mechanistic / lab",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "lint_errors": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "68\u00b0S",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": true
+  },
+  "status": "needs_review",
+  "source_niche": "physics"
+}
