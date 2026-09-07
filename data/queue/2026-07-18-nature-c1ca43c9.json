@@ -1,0 +1,154 @@
+{
+  "id": "2026-07-18-nature-c1ca43c9",
+  "niche": "nature",
+  "study": {
+    "key": "c1ca43c997f9ea93",
+    "title": "Self-powered photothermal-thermoelectric bioelectronic dressings combined with antioxidant immune regulation accelerate diabetic infected wounds healing",
+    "journal": "Biomaterials",
+    "pub_date": "2026-07-18",
+    "pub_date_display": "Jul 18, 2026",
+    "doi": "10.1016/j.biomaterials.2026.124471",
+    "doi_display": "doi.org/10.1016/j.biomaterials.2026.124471",
+    "url": "https://doi.org/10.1016/j.biomaterials.2026.124471",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Yuan X",
+      "Shi J",
+      "Zhang Y",
+      "Ding M",
+      "Zhang Y",
+      "Li R"
+    ]
+  },
+  "cover": {
+    "kicker": "Biomaterials \u00b7 Lab device",
+    "headline": "A self-powered wound dressing harvests body heat to **kill bacteria and speed healing** in diabetic wounds."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Diabetic wounds heal slowly because of infection, inflammation, and oxidative stress all at once.",
+      "body": "Chronic diabetic wounds are trapped in a vicious cycle: bacterial infection triggers immune responses, those responses generate damaging reactive oxygen species, and persistent inflammation prevents tissue from closing. Current treatments target one problem at a time.\n\nWhat if a single dressing could sterilize the wound, stimulate tissue growth, and calm the immune system without batteries or wires?"
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "The dressing uses near-infrared light to kill bacteria, then converts body heat into 106 millivolts of electricity.",
+      "body": "The layered device combines a graphene-infused photothermal layer, a bismuth telluride thermoelectric generator, and an antioxidant hydrogel. Under near-infrared irradiation, the top layer heats up to eliminate bacteria while creating a temperature gradient that generates approximately 190 millivolts.\n\nAfter the light stops, the natural temperature difference between skin and air sustains a stable 106 millivolt output. That low-level electrical field promotes fibroblast proliferation, endothelial cell migration, and blood vessel formation.",
+      "stat": {
+        "value": "190 mV",
+        "label": "Peak voltage from body heat"
+      }
+    },
+    {
+      "eyebrow": "The mechanism",
+      "title": "The electrical field disrupts bacterial membranes while astaxanthin shifts immune cells toward tissue repair mode.",
+      "body": "The sustained electrical stimulation enhances antimicrobial efficacy by disrupting bacterial membrane integrity. Meanwhile, the thermoresponsive hydrogel releases astaxanthin, a potent antioxidant that scavenges reactive oxygen species and polarizes macrophages toward the pro-regenerative M2 phenotype.\n\nIn vivo experiments with single-cell RNA sequencing confirmed the dressing eradicated Staphylococcus aureus infection, accelerated re-epithelialization, stimulated vascularization, and modulated immune responses in diabetic wound models."
+    }
+  ],
+  "caveats": [
+    "The study does not specify whether experiments were conducted in animal models or human patients.",
+    "No sample size or statistical details are provided in the abstract to assess robustness of findings."
+  ],
+  "cta": {
+    "headline": "Science that repairs itself every day",
+    "sub": "Follow for research that turns physical principles into medical tools."
+  },
+  "caption": "Diabetic wounds often stay open for months, caught between infection, inflammation, and oxidative damage. Researchers designed a three-layer bandage that addresses all three without external power: a graphene photothermal layer heats under near-infrared light to sterilize tissue, a thermoelectric generator converts that heat into electrical current, and an astaxanthin-loaded hydrogel releases antioxidants. After the initial light treatment, the dressing continues generating roughly 106 millivolts from ambient body heat alone. Published in Biomaterials using in vivo wound models. The abstract does not specify species, sample size, or whether human trials have begun. Full study: doi.org/10.1016/j.biomaterials.2026.124471\n\nWhat powers your curiosity today?",
+  "hashtag_set": "health",
+  "vet": {
+    "key": "c1ca43c997f9ea93",
+    "verdict": "PASS",
+    "score": 50,
+    "flags": [
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Biomaterials' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [],
+    "notes": []
+  },
+  "qa": {
+    "lint_errors": [],
+    "repair_rounds": 1,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "A self-powered wound dressing harvests body heat to **kill bacteria and speed healing** in diabetic wounds.",
+          "problem": "The abstract describes photothermal sterilization under NIR irradiation as the primary bacteria-killing mechanism, not body heat. Body heat (after NIR cessation) sustains electrical stimulation for healing promotion, but does not kill bacteria according to the abstract.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "The dressing uses near-infrared light to kill bacteria, then converts body heat into 106 millivolts of electricity.",
+          "problem": "The abstract states the natural skin-environment temperature difference sustains ~106 mV, not that body heat alone is converted into 106 mV. The abstract specifies 'natural skin-environment temperature difference' which is different from simply 'body heat'.",
+          "severity": "minor"
+        },
+        {
+          "claim": "190 mV Peak voltage from body heat",
+          "problem": "The abstract states the ~190 mV is generated when 'the PTG raises local temperature' under NIR irradiation and 'creates a thermal gradient that activates the TEG'. This is not from body heat but from the photothermal heating creating a gradient. The body heat sustains only ~106 mV.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Published in Biomaterials using in vivo wound models.",
+          "problem": "The abstract does not state this work has been published. It appears to be an abstract of a study, but there is no indication it has been formally published.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Full study: doi.org/10.1016/j.biomaterials.2026.124471",
+          "problem": "No DOI is provided in the abstract. Additionally, the year 2026 appears to be in the future, making this claim highly suspicious.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "106 millivolts",
+          "found_in_abstract": true
+        },
+        {
+          "number": "190 millivolts",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "A self-powered wound dressing harvests body heat to **kill bacteria and speed healing** in diabetic wounds.",
+        "problem": "The abstract describes photothermal sterilization under NIR irradiation as the primary bacteria-killing mechanism, not body heat. Body heat (after NIR cessation) sustains electrical stimulation for healing promotion, but does not kill bacteria according to the abstract.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "190 mV Peak voltage from body heat",
+        "problem": "The abstract states the ~190 mV is generated when 'the PTG raises local temperature' under NIR irradiation and 'creates a thermal gradient that activates the TEG'. This is not from body heat but from the photothermal heating creating a gradient. The body heat sustains only ~106 mV.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Published in Biomaterials using in vivo wound models.",
+        "problem": "The abstract does not state this work has been published. It appears to be an abstract of a study, but there is no indication it has been formally published.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Full study: doi.org/10.1016/j.biomaterials.2026.124471",
+        "problem": "No DOI is provided in the abstract. Additionally, the year 2026 appears to be in the future, making this claim highly suspicious.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "nature"
+}
