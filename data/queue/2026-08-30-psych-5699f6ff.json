@@ -134,6 +134,9 @@
     ],
     "publishable": false
   },
-  "status": "needs_review",
-  "source_niche": "psych"
+  "status": "approved",
+  "source_niche": "psych",
+  "review": {
+    "forced": true
+  }
 }
