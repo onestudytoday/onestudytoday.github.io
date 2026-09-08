@@ -1,0 +1,171 @@
+{
+  "id": "2026-08-25-psych-7227939c",
+  "niche": "psych",
+  "study": {
+    "key": "7227939cda1fb6ef",
+    "title": "An agent's partial knowledge of a hidden array impacts infants' representations of object quantity",
+    "journal": "Journal of experimental child psychology",
+    "pub_date": "2026-08-25",
+    "pub_date_display": "Aug 25, 2026",
+    "doi": "10.1016/j.jecp.2026.106642",
+    "doi_display": "doi.org/10.1016/j.jecp.2026.106642",
+    "url": "https://doi.org/10.1016/j.jecp.2026.106642",
+    "is_preprint": false,
+    "server": "",
+    "n": 85,
+    "authors": [
+      "Applin JB",
+      "Kibbe MM."
+    ]
+  },
+  "cover": {
+    "kicker": "Journal of Experimental Child Psychology",
+    "headline": "Babies can **borrow another person's memory** when their own number tracking breaks down."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Infants younger than one year can track hidden objects, but only up to three.",
+      "body": "Show a baby four crackers being hidden in a container, and their mental representation collapses entirely\u2014a phenomenon researchers call catastrophic forgetting. They can't even recall that one cracker is there, let alone four.\n\nBut infants also represent objects differently when another person is watching. They seem to encode what the other agent saw, not just what they themselves observed. Could an agent's partial view rescue an infant from representational failure?"
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "When a second observer had partial knowledge of the arrays, infants used that perspective to choose containers.",
+      "body": "Eighty-five infants aged 10 to 14 months watched experimenters hide crackers in two containers, then crawled to one. Sometimes the quantities were within infant limits\u2014one versus two crackers\u2014and sometimes beyond them\u2014one versus four.\n\nWhen a second experimenter had observed only part of the array, infants' choices reflected that agent's perspective, not their own full view. This happened even in the one-versus-four condition, where infants normally experience total representational collapse.",
+      "stat": {
+        "value": "85",
+        "label": "infants tested, ages 10\u201314 months"
+      }
+    },
+    {
+      "eyebrow": "Why it matters",
+      "title": "Infants may automatically replace their own quantity representations with those of an observing agent.",
+      "body": "The findings suggest that adopting another person's perspective isn't optional for babies\u2014it may be mandatory. When an agent has partial knowledge, infants appear to substitute that viewpoint for their own, even when doing so means ignoring information they themselves witnessed.\n\nThis social override might actually help. By borrowing a simpler representation from someone who saw less, infants can maintain a subset memory in situations where their own cognitive limits would otherwise cause complete failure."
+    }
+  ],
+  "caveats": [
+    "The study tested only one age range and one type of choice task, so the mandatory substitution effect may not generalize broadly.",
+    "The abstract does not specify whether infants showed this perspective-taking equally across all trials or only in certain conditions."
+  ],
+  "cta": {
+    "headline": "Science that shifts your assumptions",
+    "sub": "Follow for studies that change how you see cognition, development, and behavior."
+  },
+  "caption": "Infants can track a few hidden objects, but above three their memory collapses completely. Now it turns out they may rescue themselves by borrowing someone else's perspective. Researchers tested 85 babies aged 10 to 14 months in an ordinal choice task with crackers hidden in containers. When a second observer had partial knowledge of the arrays, infants used that agent's viewpoint to guide their choices\u2014even when it meant ignoring what they themselves had seen. This happened in both easy and impossible conditions, suggesting the substitution may be mandatory. Journal of Experimental Child Psychology, sample of 85 infants. The study used only one task type in one narrow age window. Full study: doi.org/10.1016/j.jecp.2026.106642 When do you trust others' perspectives?",
+  "hashtag_set": "psych",
+  "vet": {
+    "key": "7227939cda1fb6ef",
+    "verdict": "PASS",
+    "score": 62,
+    "flags": [
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Journal of experimental child psychology' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "experiment",
+    "sample_size": 85,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [],
+    "notes": []
+  },
+  "qa": {
+    "lint_errors": [],
+    "repair_rounds": 0,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "Infants younger than one year can track hidden objects, but only up to three.",
+          "problem": "The abstract says 'if the number of objects hidden in a location exceeds three, infants experience catastrophic forgetting' - meaning they can track UP TO three, but the copy says 'only up to three' which could be interpreted the same way. However, the abstract does not specify 'infants younger than one year' - it just says 'infants'. The study tested 10-14 month olds, who are within the one-year range, but the abstract does not make this generalization to all infants younger than one year.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Show a baby four crackers being hidden in a container, and their mental representation collapses entirely\u2014a phenomenon researchers call catastrophic forgetting. They can't even recall that one cracker is there, let alone four.",
+          "problem": "The abstract describes 'catastrophic forgetting' as 'failing to represent even a subset of the objects' - it does not explicitly state that infants 'can't even recall that one cracker is there'. This is a reasonable interpretation but goes slightly beyond what the abstract states.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Full study: doi.org/10.1016/j.jecp.2026.106642",
+          "problem": "The abstract does not contain any DOI or URL. This information is invented and not supported by the abstract.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "When do you trust others' perspectives?",
+          "problem": "This appears to be a question posed to readers at the end, not a factual claim from the study. However, it could be interpreted as suggesting this is what the study addresses, which is not supported by the abstract.",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "85",
+          "found_in_abstract": true
+        },
+        {
+          "number": "10 to 14 months",
+          "found_in_abstract": true
+        },
+        {
+          "number": "10\u201314 months",
+          "found_in_abstract": true
+        },
+        {
+          "number": "one year",
+          "found_in_abstract": false
+        },
+        {
+          "number": "three",
+          "found_in_abstract": true
+        },
+        {
+          "number": "four",
+          "found_in_abstract": true
+        },
+        {
+          "number": "one versus two",
+          "found_in_abstract": true
+        },
+        {
+          "number": "one versus four",
+          "found_in_abstract": true
+        },
+        {
+          "number": "1 vs. 2",
+          "found_in_abstract": true
+        },
+        {
+          "number": "1 vs. 4",
+          "found_in_abstract": true
+        },
+        {
+          "number": "1 vs. 1",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Full study: doi.org/10.1016/j.jecp.2026.106642",
+        "problem": "The abstract does not contain any DOI or URL. This information is invented and not supported by the abstract.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "one year",
+        "found_in_abstract": false
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "psych"
+}
