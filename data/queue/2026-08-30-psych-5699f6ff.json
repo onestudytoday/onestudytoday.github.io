@@ -1,0 +1,139 @@
+{
+  "id": "2026-08-30-psych-5699f6ff",
+  "niche": "psych",
+  "study": {
+    "key": "5699f6ffe6b246a3",
+    "title": "Do words shape who can do what? How subtle linguistic cues can influence children's categorization and ability judgments",
+    "journal": "Journal of experimental child psychology",
+    "pub_date": "2026-08-30",
+    "pub_date_display": "Aug 30, 2026",
+    "doi": "10.1016/j.jecp.2026.106641",
+    "doi_display": "doi.org/10.1016/j.jecp.2026.106641",
+    "url": "https://doi.org/10.1016/j.jecp.2026.106641",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Nguyen SP",
+      "Seip IJ",
+      "Blue LX",
+      "Glenn JL",
+      "Russo A."
+    ]
+  },
+  "cover": {
+    "kicker": "J. Exp. Child Psych. \u2022 2 studies",
+    "headline": "The words we use to talk about scientists or artists **might change how kids see their own abilities**."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "How do children decide who belongs in science, art, or sports\u2014and whether they themselves can succeed there?",
+      "body": "We label people in two ways: as category members (\"a scientist\") or as action-takers (\"someone who does science\"). The first frames identity as bounded and exclusive. The second makes participation feel open.\n\nResearchers tested whether this subtle linguistic difference is linked to how children and adults classify themselves and judge their own abilities across science, arts, and sports."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Language had minimal impact on judgments about other people, but it was linked to how participants viewed themselves.",
+      "body": "In Study 1, when categorizing and judging others' abilities, the wording made little difference. Age was the main factor shaping responses. But Study 2, which asked participants about themselves, told a different story.\n\nCategory-focused language (\"scientist\") was linked to children picking a single domain and adults endorsing multiple. Action-focused language (\"does science\") was linked to children rating their ability lower in one domain but higher across two.",
+      "stat": {
+        "value": "2",
+        "label": "studies with different patterns"
+      }
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Something else could explain the link.",
+    "The research did not measure actual ability or long-term behavior, only self-reported judgments at one point in time."
+  ],
+  "cta": {
+    "headline": "How we talk shapes how we think",
+    "sub": "Subtle shifts in language go together with real differences in self-perception."
+  },
+  "caption": "Calling someone \"a scientist\" versus \"someone who does science\" sounds like a trivial difference. But those two phrasings are linked to measurably different patterns in how children classify themselves and rate their own abilities. The researchers ran two studies with children and adults, testing categorization and ability judgments across science, arts, and sports. They found that language mattered most when people judged themselves, not others. The sample included both children and adults across multiple domains. This study found a pattern, not proof of causation. Full study: doi.org/10.1016/j.jecp.2026.106641 Which framing resonates with you?",
+  "hashtag_set": "psych",
+  "vet": {
+    "key": "5699f6ffe6b246a3",
+    "verdict": "PASS",
+    "score": 50,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "note",
+        "message": "Design reads as observational (unclear); markers: associated with",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Journal of experimental child psychology' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": []
+  },
+  "qa": {
+    "lint_errors": [],
+    "repair_rounds": 1,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "The words we use to talk about scientists or artists **might change how kids see their own abilities**.",
+          "problem": "The abstract found that language was 'related to' or 'associated with' self-relevant judgments, but did not establish causation. The word 'change' implies causation, which is stronger than the correlational relationship found.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Full study: doi.org/10.1016/j.jecp.2026.106641",
+          "problem": "This DOI does not appear anywhere in the abstract. It appears to be invented or added from outside the abstract.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Category-focused language was linked to children picking a single domain and adults endorsing multiple.",
+          "problem": "The abstract says category-focused language was associated with 'children more likely to classify themselves into a single domain and adults more likely to endorse cross-classification.' The copy says 'children picking' and 'adults endorsing multiple' which is a simplified restatement but the abstract says 'more likely' whereas the copy states it more definitively without the probability qualifier in a way that could be misleading.",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "2",
+          "found_in_abstract": false
+        },
+        {
+          "number": "two",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Full study: doi.org/10.1016/j.jecp.2026.106641",
+        "problem": "This DOI does not appear anywhere in the abstract. It appears to be invented or added from outside the abstract.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "2",
+        "found_in_abstract": false
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "psych"
+}
