@@ -1,0 +1,161 @@
+{
+  "id": "2026-09-05-health-a7ad951a",
+  "niche": "health",
+  "study": {
+    "key": "a7ad951a9d8bc20c",
+    "title": "Milk-derived peptone reduces EHEC virulence by inhibiting the type III secretion system",
+    "journal": "Virulence",
+    "pub_date": "2026-09-05",
+    "pub_date_display": "Sep 5, 2026",
+    "doi": "10.1080/21505594.2026.2721084",
+    "doi_display": "doi.org/10.1080/21505594.2026.2721084",
+    "url": "https://doi.org/10.1080/21505594.2026.2721084",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Braverman D",
+      "Batushansky A",
+      "Sal-Man N."
+    ]
+  },
+  "cover": {
+    "kicker": "Virulence \u00b7 lab model",
+    "headline": "Milk protein fragments **shut down the attack machinery** of a dangerous E. coli strain in lab tests."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Enterohemorrhagic E. coli uses a molecular syringe to inject toxins into human cells.",
+      "body": "This type III secretion system lets the bacteria stick to the gut lining and cause severe diarrhea. While we know diet shapes which microbes live in our intestines, almost nothing is known about whether food components directly affect how virulent pathogens behave.\n\nResearchers tested peptones\u2014protein fragments from different dietary sources\u2014to see if any altered EHEC virulence while keeping overall nutrient levels constant. They were looking for direct effects on bacterial behavior, not just changes to the microbiome."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Bacteria grown with casein-derived peptone showed reduced type III secretion activity and adherence to host cells.",
+      "body": "Casein is the main protein in milk. When EHEC was cultured with casein peptone, the bacteria were less able to attach to human cells in lab dishes. The effector protein Tir, which the bacteria inject through their molecular syringe, also showed limited translocation into host cells.\n\nThe data suggest casein peptone is linked to a behavioral shift: bacteria became more motile and less adherent. The inhibitory effect wasn't limited to EHEC\u2014other pathogens with type III secretion systems showed similar responses.",
+      "stat": {
+        "value": "casein",
+        "label": "milk protein tied to effect"
+      }
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Something else could explain the link.",
+    "All experiments were done with bacteria in lab dishes, not in living animals or humans.",
+    "The specific molecules in casein responsible for the effect remain unidentified."
+  ],
+  "cta": {
+    "headline": "Science that feeds your curiosity",
+    "sub": "Follow for the latest research on diet, microbes, and health\u2014explained clearly."
+  },
+  "caption": "Protein fragments from milk are linked to reduced virulence in a dangerous strain of E. coli. Researchers grew enterohemorrhagic E. coli with peptones derived from various protein sources and found that casein peptone was associated with suppressed activity of the type III secretion system\u2014the molecular apparatus the bacteria use to invade host cells. The team also observed the inhibitory pattern in other pathogens that rely on similar attack machinery. Published in Virulence using laboratory bacterial cultures. The work does not identify which components of casein are responsible. Full study: doi.org/10.1080/21505594.2026.2721084\n\nWhat intrigues you most?",
+  "hashtag_set": "health",
+  "vet": {
+    "key": "a7ad951a9d8bc20c",
+    "verdict": "HOLD",
+    "score": 36,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "note",
+        "message": "Design reads as observational (unclear); markers: associated with",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      },
+      {
+        "code": "CAUSAL_LANGUAGE_IN_OBSERVATIONAL",
+        "severity": "warn",
+        "message": "The paper's own text uses causal verbs (causes) despite an observational design. The authors are overreaching - do not repeat it.",
+        "caveat": null,
+        "draft_rule": null
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Virulence' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": []
+  },
+  "qa": {
+    "lint_errors": [],
+    "repair_rounds": 1,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "Milk protein fragments **shut down the attack machinery** of a dangerous E. coli strain in lab tests.",
+          "problem": "The abstract states there was a 'significant reduction' in T3SS activity, not a complete 'shut down'. This overstates the finding.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Enterohemorrhagic E. coli uses a molecular syringe to inject toxins into human cells.",
+          "problem": "The abstract does not mention 'toxins' being injected. It mentions the effector protein Tir and T3SS activity related to adherence, but does not describe toxin injection.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Published in Virulence using laboratory bacterial cultures.",
+          "problem": "The abstract does not state that this work was published in the journal 'Virulence'. This appears to be an invented publication detail.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Full study: doi.org/10.1080/21505594.2026.2721084",
+          "problem": "No DOI appears in the abstract. This is an invented reference that cannot be verified from the source material.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "This study found a pattern, not a cause. Something else could explain the link.",
+          "problem": "The abstract describes experimental manipulation where bacteria were 'grown with' different peptones and direct effects were observed. This is an experimental intervention showing causation in the lab setting, not merely an observational pattern or correlation.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": []
+    },
+    "blocking_claims": [
+      {
+        "claim": "Milk protein fragments **shut down the attack machinery** of a dangerous E. coli strain in lab tests.",
+        "problem": "The abstract states there was a 'significant reduction' in T3SS activity, not a complete 'shut down'. This overstates the finding.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Enterohemorrhagic E. coli uses a molecular syringe to inject toxins into human cells.",
+        "problem": "The abstract does not mention 'toxins' being injected. It mentions the effector protein Tir and T3SS activity related to adherence, but does not describe toxin injection.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Published in Virulence using laboratory bacterial cultures.",
+        "problem": "The abstract does not state that this work was published in the journal 'Virulence'. This appears to be an invented publication detail.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Full study: doi.org/10.1080/21505594.2026.2721084",
+        "problem": "No DOI appears in the abstract. This is an invented reference that cannot be verified from the source material.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "This study found a pattern, not a cause. Something else could explain the link.",
+        "problem": "The abstract describes experimental manipulation where bacteria were 'grown with' different peptones and direct effects were observed. This is an experimental intervention showing causation in the lab setting, not merely an observational pattern or correlation.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "health"
+}
