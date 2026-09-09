@@ -1,0 +1,173 @@
+{
+  "id": "2026-07-04-health-0fdc9c2f",
+  "niche": "health",
+  "study": {
+    "key": "0fdc9c2fdc8e70b8",
+    "title": "Genomic epidemiology reveals agricultural environments as direct conduits for multidrug-resistant Salmonella ST34 transmission into the food chain",
+    "journal": "Food microbiology",
+    "pub_date": "2026-07-04",
+    "pub_date_display": "Jul 4, 2026",
+    "doi": "10.1016/j.fm.2026.105224",
+    "doi_display": "doi.org/10.1016/j.fm.2026.105224",
+    "url": "https://doi.org/10.1016/j.fm.2026.105224",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Liao N",
+      "Huang P",
+      "Deng G",
+      "Liu D",
+      "Riley LW",
+      "Liu C"
+    ]
+  },
+  "cover": {
+    "kicker": "Food Microbiology \u00b7 China cohort",
+    "headline": "Agricultural wastewater is **funneling drug-resistant Salmonella directly into cities** through the food supply."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Multidrug-resistant Salmonella moving from farms to urban food poses a major safety threat.",
+      "body": "Salmonella carrying resistance to multiple antibiotics can spread from agricultural settings into the food chain, but the exact routes and scale of transmission have remained unclear. Understanding how resistant strains move from pre-harvest environments through food systems into human populations is essential for prevention.\n\nResearchers used genomic epidemiology and quantitative risk assessment to trace Salmonella transmission across urban and rural food environments in Jiangxi Province, China, analyzing 237 isolates collected between 2015 and 2021."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "A highly resistant clone dominated urban retail food and clinical cases, genetically identical to farm isolates.",
+      "body": "One strain, ST34, accounted for the majority of urban infections and showed 72.4% multidrug resistance rates. Genetic analysis revealed minimal differences\u2014just 2 to 10 core genome mutations\u2014between ST34 samples from agricultural wastewater and urban clinical cases, providing strong evidence of direct transmission through the food supply chain.\n\nMeanwhile, a different livestock-associated strain, ST155, with 31.2% resistance rates, predominated in rural areas. The ST34 clone expanded at 8.3% annually, driven by higher resistance and virulence than other lineages.",
+      "stat": {
+        "value": "2-10",
+        "label": "mutations between farm and city isolates"
+      }
+    },
+    {
+      "eyebrow": "Why it matters",
+      "title": "Rural populations faced 139-fold higher infection risk from contaminated irrigation water used on fresh produce.",
+      "body": "Quantitative risk assessment confirmed profound geographic inequality: rural residents consuming produce irrigated with contaminated water experienced vastly elevated infection rates compared to urban populations. Agricultural waste streams are acting as active conduits for high-risk resistant bacteria entering the food chain.\n\nThe findings point to the need for targeted interventions before harvest, improved water management in farming, and integrated One Health surveillance systems that monitor pathogens across agriculture, food production, and human health to reduce disproportionate regional health burdens."
+    }
+  ],
+  "caveats": [
+    "The study analyzed isolates from one Chinese province; transmission patterns may differ in other agricultural and food systems.",
+    "Genetic proximity suggests direct transmission but cannot rule out all intermediate steps or shared environmental sources between farm and city."
+  ],
+  "cta": {
+    "headline": "What's lurking in your irrigation water?",
+    "sub": "Tag someone who works at the intersection of agriculture, food safety, and public health."
+  },
+  "caption": "Drug-resistant bacteria are hitchhiking from farms to dinner plates through agricultural wastewater. Genomic tracking across 237 Salmonella samples in China revealed that a single highly resistant clone found in urban clinical infections was genetically nearly identical to strains in agricultural wastewater, with as few as 2 core genome mutations separating them. The same contaminated irrigation water used on fresh produce created a 139-fold higher annual infection risk for rural populations compared to urban residents. Published in Food Microbiology from a 2015-2021 collection across Jiangxi Province. The study cannot definitively exclude all intermediate transmission steps. Full study: doi.org/10.1016/j.fm.2026.105224 \u2014 Is your water supply monitored?",
+  "hashtag_set": "health",
+  "vet": {
+    "key": "0fdc9c2fdc8e70b8",
+    "verdict": "PASS",
+    "score": 50,
+    "flags": [
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Food microbiology' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [],
+    "notes": []
+  },
+  "qa": {
+    "lint_errors": [],
+    "repair_rounds": 0,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "Agricultural wastewater is **funneling drug-resistant Salmonella directly into cities** through the food supply.",
+          "problem": "The abstract states transmission from 'pre-harvest environments' and 'agricultural wastewater' to 'urban clinical cases' through 'the food supply chain as the primary vector,' but does not specify that wastewater is funneling Salmonella 'directly into cities.' The abstract discusses transmission through food, not wastewater flowing into cities.",
+          "severity": "minor"
+        },
+        {
+          "claim": "One strain, ST34, accounted for the majority of urban infections",
+          "problem": "The abstract states ST34 'dominated urban retail food and clinical sources' but does not say it 'accounted for the majority of urban infections.' Domination does not necessarily mean majority.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Published in Food Microbiology",
+          "problem": "The abstract does not state where this study was published. This appears to be external information added by the copy.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Full study: doi.org/10.1016/j.fm.2026.105224",
+          "problem": "The abstract does not provide a DOI or any publication reference. This specific DOI is not mentioned in the abstract.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Food Microbiology \u00b7 China cohort",
+          "problem": "The abstract does not mention publication in 'Food Microbiology' journal. This information is not supported by the abstract.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "237",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2015-2021",
+          "found_in_abstract": true
+        },
+        {
+          "number": "72.4%",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2-10",
+          "found_in_abstract": true
+        },
+        {
+          "number": "31.2%",
+          "found_in_abstract": true
+        },
+        {
+          "number": "8.3%",
+          "found_in_abstract": true
+        },
+        {
+          "number": "139-fold",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Published in Food Microbiology",
+        "problem": "The abstract does not state where this study was published. This appears to be external information added by the copy.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Full study: doi.org/10.1016/j.fm.2026.105224",
+        "problem": "The abstract does not provide a DOI or any publication reference. This specific DOI is not mentioned in the abstract.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Food Microbiology \u00b7 China cohort",
+        "problem": "The abstract does not mention publication in 'Food Microbiology' journal. This information is not supported by the abstract.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "health"
+}
