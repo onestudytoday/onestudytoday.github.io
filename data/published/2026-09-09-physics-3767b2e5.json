@@ -136,9 +136,23 @@
     "unverified_numbers": [],
     "publishable": false
   },
-  "status": "approved",
+  "status": "published",
   "source_niche": "physics",
   "review": {
     "forced": true
+  },
+  "published": {
+    "media_id": "18216722902351007",
+    "kind": "CAROUSEL",
+    "at": "2026-09-10T15:55:53Z"
+  },
+  "crosspost": {
+    "at": "2026-09-10T15:55:53Z",
+    "posted": [],
+    "skipped": [
+      "bluesky",
+      "threads"
+    ],
+    "failed": {}
   }
 }
