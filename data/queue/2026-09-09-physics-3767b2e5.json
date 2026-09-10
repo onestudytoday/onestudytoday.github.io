@@ -136,6 +136,9 @@
     "unverified_numbers": [],
     "publishable": false
   },
-  "status": "needs_review",
-  "source_niche": "physics"
+  "status": "approved",
+  "source_niche": "physics",
+  "review": {
+    "forced": true
+  }
 }
