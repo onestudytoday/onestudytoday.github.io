@@ -1,0 +1,141 @@
+{
+  "id": "2026-09-09-physics-3767b2e5",
+  "niche": "physics",
+  "study": {
+    "key": "3767b2e5c7621aea",
+    "title": "From stardust to interstellar grain growth in the first galaxies: a cosmological transition in dust evolution near z ~ 8.9",
+    "journal": "arXiv",
+    "pub_date": "2026-09-09",
+    "pub_date_display": "Sep 9, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2609.10290v1",
+    "url": "http://arxiv.org/abs/2609.10290v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Denis Burgarella",
+      "Tom J. L. C. Bakx",
+      "Raffaella Schneider",
+      "Hiddo S. B. Algera",
+      "Chloe Aurin",
+      "Tim Dewachter"
+    ]
+  },
+  "cover": {
+    "kicker": "arXiv \u2022 preprint study",
+    "headline": "Astronomers report a **cosmic dust transition** about 570 million years after the Big Bang."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Dust drives how galaxies evolve, but when and how did that process start in the early universe?",
+      "body": "Observations hint that galaxies beyond redshift 9 carry much less dust than slightly younger ones. That pattern suggests something fundamental changed in how cosmic dust formed and accumulated during the first billion years.\n\nThe question is whether this marks a shift in the dominant dust-production mechanism, and what physical conditions would trigger such a transition in the infant universe."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Using JWST, ALMA, and NOEMA data, the team reports a transition near redshift 8.9 in dust mass.",
+      "body": "The analysis identifies a preferred break around z ~ 8.9, roughly 570 million years after the Big Bang. The evidence appears strongest in dust mass and the ratio of dust to stellar mass, derived mostly from JWST spectrophotometry and partly from sub-millimeter observations.\n\nUltraviolet attenuation measurements align with a transition at the same epoch but do not independently demand one on their own.",
+      "stat": {
+        "value": "z ~ 8.9",
+        "label": "Redshift of the dust transition"
+      }
+    },
+    {
+      "eyebrow": "The mechanism",
+      "title": "The models suggest efficient interstellar grain growth kicks in above a characteristic metallicity threshold.",
+      "body": "In this early paper, the team interprets the transition as the point when grain growth in interstellar gas began to dominate over supernova-produced grains. Before that epoch, exploding stars delivered most of the dust.\n\nPopulation III stars can modify the earliest chemical enrichment but leave the timing of the dust transition nearly unchanged and are not required for the transition to emerge."
+    }
+  ],
+  "caveats": [
+    "This is a preprint that has not been peer reviewed, so no independent expert has verified the work yet.",
+    "The sample combines JWST, ALMA, and NOEMA observations, but the number of galaxies analyzed is not specified in the abstract.",
+    "The transition depends on models of dust evolution and a statistical break analysis, which carry their own assumptions."
+  ],
+  "cta": {
+    "headline": "How does cosmic dust shape galaxies?",
+    "sub": "Swipe through to see what changed in the infant universe's dust budget."
+  },
+  "caption": "When did dust begin to shape galaxies in the early universe? A team using JWST, ALMA, and NOEMA observations reports evidence for a transition near redshift 8.9, about 570 million years after the Big Bang, when the dominant dust-production mechanism appears to have shifted. The analysis applies a censored change-point method to dust mass and ultraviolet attenuation measurements across cosmic time. The findings suggest that before this epoch, supernovae delivered most of the dust; afterward, grain growth in interstellar gas took over. This is a preprint posted to arXiv combining spectrophotometry and sub-millimeter data. The main limitation is that it has not yet been peer reviewed. Full study: http://arxiv.org/abs/2609.10290v1\n\nWhen did dust change?",
+  "hashtag_set": "physics",
+  "vet": {
+    "key": "3767b2e5c7621aea",
+    "verdict": "HOLD",
+    "score": 42,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      }
+    ],
+    "design": "mechanistic / lab",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "lint_errors": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "Full study: http://arxiv.org/abs/2609.10290v1",
+          "problem": "The abstract does not contain any arXiv link or identifier. This URL appears to be invented and cannot be verified from the abstract.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "galaxies beyond redshift 9 carry much less dust",
+          "problem": "The abstract states 'substantially lower dust masses at z \u2273 9' (z greater than or approximately equal to 9), not 'beyond redshift 9'. The abstract's phrasing includes z~9, while 'beyond' suggests strictly greater than 9.",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "570 million years",
+          "found_in_abstract": true
+        },
+        {
+          "number": "9",
+          "found_in_abstract": true
+        },
+        {
+          "number": "8.9",
+          "found_in_abstract": true
+        },
+        {
+          "number": "z ~ 8.9",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Full study: http://arxiv.org/abs/2609.10290v1",
+        "problem": "The abstract does not contain any arXiv link or identifier. This URL appears to be invented and cannot be verified from the abstract.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "physics"
+}
