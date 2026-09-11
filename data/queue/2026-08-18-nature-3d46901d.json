@@ -1,0 +1,164 @@
+{
+  "id": "2026-08-18-nature-3d46901d",
+  "niche": "wildcard",
+  "study": {
+    "key": "3d46901d12b9b210",
+    "title": "A universal consuming endogenous H&lt;sub&gt;2&lt;/sub&gt;S strategy using bismuth-metal-organic nanocapsule networks for overcoming osteosarcoma cisplatin resistance",
+    "journal": "Bioactive materials",
+    "pub_date": "2026-08-18",
+    "pub_date_display": "Aug 18, 2026",
+    "doi": "10.1016/j.bioactmat.2026.08.011",
+    "doi_display": "doi.org/10.1016/j.bioactmat.2026.08.011",
+    "url": "https://doi.org/10.1016/j.bioactmat.2026.08.011",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Lin Y",
+      "Yuan K",
+      "Liu Y",
+      "Du Y",
+      "Chang H",
+      "Hou L"
+    ]
+  },
+  "cover": {
+    "kicker": "Bioactive Materials \u2022 lab study",
+    "headline": "A simple gas molecule inside tumors may explain why **osteosarcoma resists one of the oldest cancer drugs.**"
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Osteosarcoma, the most common bone cancer in teens, frequently resists cisplatin chemotherapy.",
+      "body": "More than half of osteosarcoma cases show resistance to cisplatin, one of the most widely used chemotherapy agents. The reasons behind this resistance have remained unclear, limiting treatment options for adolescents facing this aggressive bone malignancy.\n\nHydrogen sulfide is a gaseous signaling molecule that cells produce naturally to regulate their internal chemistry. Recent evidence links it to chemoresistance in several cancers, but its specific role in osteosarcoma had not been tested."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "The team identified endogenous hydrogen sulfide as a key driver of cisplatin resistance in osteosarcoma cells.",
+      "body": "Working with osteosarcoma cell cultures, researchers found that hydrogen sulfide produced inside tumor cells actively protects them from cisplatin. Cells maintain this protective molecule through redundant production pathways, making it difficult to block with conventional enzyme inhibitors.\n\nThe team engineered a bismuth-based nanoparticle that binds intracellular hydrogen sulfide, forming bismuth sulfide crystals. This process not only depletes the protective gas but also triggers ferroptosis, a form of cell death, by degrading GPX4, a protein that normally prevents oxidative damage."
+    },
+    {
+      "eyebrow": "The mechanism",
+      "title": "The nanoparticles enhanced cisplatin efficacy while enabling photoacoustic imaging of tumor sites in real time.",
+      "body": "The bismuth nanocapsules circulate as larger structures that gradually break down into smaller particles, remaining intact until they reach the tumor. Once inside osteosarcoma cells, they scavenge hydrogen sulfide and convert it to bismuth sulfide, which emits a photoacoustic signal for diagnostic imaging.\n\nThis conversion simultaneously triggers endoplasmic reticulum stress and routes the protective enzyme GPX4 for destruction through the cell's waste disposal system. The dual depletion of hydrogen sulfide and GPX4 makes cisplatin significantly more effective against previously resistant osteosarcoma cells."
+    }
+  ],
+  "caveats": [
+    "This work used osteosarcoma cell cultures and lab models, not human patients with bone cancer.",
+    "The study did not report comparative survival data or quantify the degree of cisplatin sensitization achieved.",
+    "Long-term safety, biodistribution, and clearance of bismuth nanocapsules in living systems were not assessed."
+  ],
+  "cta": {
+    "headline": "Chemoresistance is chemistry, not fate",
+    "sub": "Small molecules inside tumors can determine whether treatment succeeds or fails."
+  },
+  "caption": "Hydrogen sulfide, a gas that cells produce naturally to manage their internal chemistry, may be shielding osteosarcoma tumors from cisplatin. Researchers engineered bismuth-based nanoparticles that bind and remove this protective molecule, simultaneously triggering a lethal oxidative chain reaction and enabling real-time imaging of tumors. The work, published in Bioactive Materials, used osteosarcoma cell cultures and did not involve human subjects. The dual-action approach overcomes the redundancy in how tumors make hydrogen sulfide, offering a potential route around one of the most stubborn barriers in adolescent bone cancer treatment. Full study: doi.org/10.1016/j.bioactmat.2026.08.011\n\nWhich matters more: diagnosis or treatment?",
+  "hashtag_set": "health",
+  "vet": {
+    "key": "3d46901d12b9b210",
+    "verdict": "PASS",
+    "score": 54,
+    "flags": [
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Bioactive materials' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "mechanistic / lab",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "lint_errors": [],
+    "repair_rounds": 0,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "More than half of osteosarcoma cases show resistance to cisplatin",
+          "problem": "The abstract mentions 'high chemoresistance rates' but does not provide the specific statistic that 'more than half' of cases show resistance to cisplatin",
+          "severity": "blocking"
+        },
+        {
+          "claim": "osteosarcoma resists one of the oldest cancer drugs",
+          "problem": "The abstract does not characterize cisplatin as 'one of the oldest cancer drugs'",
+          "severity": "minor"
+        },
+        {
+          "claim": "one of the most widely used chemotherapy agents",
+          "problem": "The abstract does not describe cisplatin as 'one of the most widely used chemotherapy agents'",
+          "severity": "minor"
+        },
+        {
+          "claim": "The reasons behind this resistance have remained unclear",
+          "problem": "The abstract states 'its role in osteosarcoma remains unclear' but does not say that the general reasons behind cisplatin resistance have remained unclear",
+          "severity": "minor"
+        },
+        {
+          "claim": "The study did not report comparative survival data or quantify the degree of cisplatin sensitization achieved",
+          "problem": "The abstract does not indicate what the study did or did not report beyond what is stated. This is an inference not supported by the abstract",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Long-term safety, biodistribution, and clearance of bismuth nanocapsules in living systems were not assessed",
+          "problem": "The abstract does not state what was or was not assessed regarding safety, biodistribution, or clearance",
+          "severity": "blocking"
+        },
+        {
+          "claim": "published in Bioactive Materials",
+          "problem": "The abstract does not indicate where the study was published",
+          "severity": "blocking"
+        },
+        {
+          "claim": "doi.org/10.1016/j.bioactmat.2026.08.011",
+          "problem": "The abstract does not provide a DOI or publication reference",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": []
+    },
+    "blocking_claims": [
+      {
+        "claim": "More than half of osteosarcoma cases show resistance to cisplatin",
+        "problem": "The abstract mentions 'high chemoresistance rates' but does not provide the specific statistic that 'more than half' of cases show resistance to cisplatin",
+        "severity": "blocking"
+      },
+      {
+        "claim": "The study did not report comparative survival data or quantify the degree of cisplatin sensitization achieved",
+        "problem": "The abstract does not indicate what the study did or did not report beyond what is stated. This is an inference not supported by the abstract",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Long-term safety, biodistribution, and clearance of bismuth nanocapsules in living systems were not assessed",
+        "problem": "The abstract does not state what was or was not assessed regarding safety, biodistribution, or clearance",
+        "severity": "blocking"
+      },
+      {
+        "claim": "published in Bioactive Materials",
+        "problem": "The abstract does not indicate where the study was published",
+        "severity": "blocking"
+      },
+      {
+        "claim": "doi.org/10.1016/j.bioactmat.2026.08.011",
+        "problem": "The abstract does not provide a DOI or publication reference",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "nature"
+}
