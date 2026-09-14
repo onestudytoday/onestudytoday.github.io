@@ -1,0 +1,148 @@
+{
+  "id": "2026-09-03-nature-06439688",
+  "niche": "nature",
+  "study": {
+    "key": "06439688c648fa98",
+    "title": "'&lt;i&gt;In Every River, in Every Lake&lt;/i&gt;': Impacts of Beaver Population Change on Indigenous Livelihoods and Wellbeing in the Inuvialuit Settlement Region, Western Canadian Arctic",
+    "journal": "Human ecology: an interdisciplinary journal",
+    "pub_date": "2026-09-03",
+    "pub_date_display": "Sep 3, 2026",
+    "doi": "10.1007/s10745-026-00758-2",
+    "doi_display": "doi.org/10.1007/s10745-026-00758-2",
+    "url": "https://doi.org/10.1007/s10745-026-00758-2",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Pearce C",
+      "Rohse M",
+      "Walshe N",
+      "Wheeler HC."
+    ]
+  },
+  "cover": {
+    "kicker": "Human Ecology \u2022 25 interviews",
+    "headline": "Beaver population shifts in the Arctic are **reshaping Indigenous travel, food and cultural identity**."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "As beavers expand north in the warming Arctic, Inuvialuit communities face new challenges on the land.",
+      "body": "Researchers interviewed 25 Inuvialuit knowledge holders from three communities near the Mackenzie Delta in the western Canadian Arctic. The goal was to understand how changing beaver populations affect daily life, harvesting and wellbeing.\n\nBeavers disrupting water routes and ecosystems is not just an ecological curiosity. For communities that depend on the land for food, travel and cultural continuity, these shifts touch everything from the cost of living to collective identity."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Beaver population change is linked to disrupted subsistence harvesting, altered travel routes and increased risk.",
+      "body": "Knowledge holders reported that beaver activity has changed where and how people can travel and harvest. The animals alter water flow and landscape features that Indigenous communities have relied on for generations.\n\nParticipants connected the beaver expansion to local warming, but also pointed to decades of social transformation in their communities. Ecological and social factors interact, creating wide-ranging consequences that go beyond the physical presence of beavers.",
+      "stat": {
+        "value": "25",
+        "label": "Inuvialuit knowledge holders interviewed"
+      }
+    },
+    {
+      "eyebrow": "Why it matters",
+      "title": "The shifts are linked to stresses on Inuvialuit collective identity, knowledge transfer and connections to the land.",
+      "body": "Beyond making travel harder or more expensive, ecosystem transformation poses challenges to cultural continuity. When landscapes change rapidly, traditional knowledge must adapt, and the ability to pass that knowledge to younger generations is strained.\n\nThe research highlights how climate-driven ecological change in the Arctic goes together with social pressures, creating compounding effects on Indigenous livelihoods. What looks like a wildlife population shift is also a cultural and economic stress test."
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Something else could explain the link.",
+    "Findings reflect the experiences of 25 knowledge holders from three communities, not all Inuvialuit or Arctic Indigenous groups."
+  ],
+  "cta": {
+    "headline": "Science in context, no hype",
+    "sub": "Follow for research that matters, explained the way it actually works."
+  },
+  "caption": "Expanding beaver populations in the western Canadian Arctic are linked to disrupted travel routes, harder subsistence harvesting and increased costs for Inuvialuit communities near the Mackenzie Delta. Researchers interviewed 25 Inuvialuit knowledge holders from Inuvik, Tuktoyaktuk and Aklavik about how beaver population shifts affect their livelihoods and wellbeing. Participants connected the changes to both local warming and social transformations over recent decades. The study used qualitative interviews, so it captures lived experience rather than measuring direct causal mechanisms. Published in Human Ecology. Full study: doi.org/10.1007/s10745-026-00758-2 What changes have you noticed?",
+  "hashtag_set": "nature",
+  "vet": {
+    "key": "06439688c648fa98",
+    "verdict": "PASS",
+    "score": 60,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "note",
+        "message": "Design reads as observational (unclear); markers: associated with, linked to",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "human",
+    "journal_tier": 3,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "lint_errors": [],
+    "repair_rounds": 1,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "Beaver population shifts in the Arctic are **reshaping Indigenous travel, food and cultural identity**",
+          "problem": "The abstract says beavers 'have disrupted subsistence harvesting activities and travelling routes' and discusses impact on 'Inuvialuit livelihoods and wellbeing', 'collective identity', 'knowledge and connections to the land'. However, the copy uses 'reshaping' which implies active transformation is happening, while the abstract discusses 'disrupted' and 'challenges'. The word 'food' specifically is not mentioned in the abstract - only 'subsistence harvesting activities'.",
+          "severity": "minor"
+        },
+        {
+          "claim": "As beavers expand north in the warming Arctic",
+          "problem": "The abstract does not state that beavers are 'expanding north'. It mentions 'recent changes in the population of beavers' and that change was 'attributed to the local effects of a warming climate', but does not specify directional expansion northward.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Researchers interviewed 25 Inuvialuit knowledge holders from three communities near the Mackenzie Delta in the western Canadian Arctic.",
+          "problem": "The abstract states interviews were conducted with knowledge holders 'from the three communities of Inuvik, Tuktoyaktuk, and Aklavik' which are 'in and around the lower Mackenzie Delta'. The copy says 'near' the Mackenzie Delta, which is slightly different from 'in and around the lower Mackenzie Delta'.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Beaver population change is linked to disrupted subsistence harvesting, altered travel routes and increased risk.",
+          "problem": "The abstract says 'recent changes in the population of beavers have disrupted subsistence harvesting activities and travelling routes' and increased 'exposure of active harvesters to risk'. The copy says 'altered travel routes' while the abstract says 'disrupted travelling routes'. 'Altered' is weaker and different from 'disrupted'.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Full study: doi.org/10.1007/s10745-026-00758-2",
+          "problem": "This DOI is not provided in the abstract. The abstract does not contain any DOI or publication reference information.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "25",
+          "found_in_abstract": true
+        },
+        {
+          "number": "three",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "As beavers expand north in the warming Arctic",
+        "problem": "The abstract does not state that beavers are 'expanding north'. It mentions 'recent changes in the population of beavers' and that change was 'attributed to the local effects of a warming climate', but does not specify directional expansion northward.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Full study: doi.org/10.1007/s10745-026-00758-2",
+        "problem": "This DOI is not provided in the abstract. The abstract does not contain any DOI or publication reference information.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "nature"
+}
