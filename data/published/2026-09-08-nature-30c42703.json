@@ -100,9 +100,23 @@
     "unverified_numbers": [],
     "publishable": true
   },
-  "status": "approved",
+  "status": "published",
   "source_niche": "nature",
   "review": {
     "forced": true
+  },
+  "published": {
+    "media_id": "18120400846902089",
+    "kind": "CAROUSEL",
+    "at": "2026-09-14T14:01:48Z"
+  },
+  "crosspost": {
+    "at": "2026-09-14T14:01:48Z",
+    "posted": [],
+    "skipped": [
+      "bluesky",
+      "threads"
+    ],
+    "failed": {}
   }
 }
