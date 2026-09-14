@@ -100,6 +100,9 @@
     "unverified_numbers": [],
     "publishable": true
   },
-  "status": "needs_review",
-  "source_niche": "nature"
+  "status": "approved",
+  "source_niche": "nature",
+  "review": {
+    "forced": true
+  }
 }
