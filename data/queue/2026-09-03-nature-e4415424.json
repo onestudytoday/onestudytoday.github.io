@@ -1,0 +1,184 @@
+{
+  "id": "2026-09-03-nature-e4415424",
+  "niche": "nature",
+  "study": {
+    "key": "e4415424d9e4e2e1",
+    "title": "Evolution of the experience with the semiconstrained distal radioulnar joint arthroplasty: A single center review of medium-term outcomes and complications",
+    "journal": "Journal of hand surgery global online",
+    "pub_date": "2026-09-03",
+    "pub_date_display": "Sep 3, 2026",
+    "doi": "10.1016/j.jhsg.2026.101117",
+    "doi_display": "doi.org/10.1016/j.jhsg.2026.101117",
+    "url": "https://doi.org/10.1016/j.jhsg.2026.101117",
+    "is_preprint": false,
+    "server": "",
+    "n": 34,
+    "authors": [
+      "Greminger M",
+      "Bandzaite L",
+      "Besmens IS",
+      "Fischer G",
+      "Calcagni M."
+    ]
+  },
+  "cover": {
+    "kicker": "Journal Hand Surg Global \u2022 34 patients",
+    "headline": "When wrist joints wear out, **a metal implant can reduce pain and keep motion stable** for years."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "The distal radioulnar joint connects your forearm bones at the wrist, and when it fails, turning your palm hurts.",
+      "body": "Injury, arthritis, and other conditions can destroy this joint. Surgeons have increasingly turned to a semiconstrained implant called the Aptis to replace it, but medium-term data on how well it works\u2014and what goes wrong\u2014has been limited.\n\nThis team in a single center tracked 36 implants in 34 patients over an average of 4.4 years to see how pain, motion, and weight-bearing ability evolved, and how often revision surgery was needed."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Pain dropped significantly after surgery, and active range of motion plus weight-bearing ability stayed stable over time.",
+      "body": "In the 15 patients with complete data and a surviving implant, the before-and-after comparison showed meaningful pain relief. No infections occurred. The implant itself survived in 91% of cases at a mean follow-up of 53 months.\n\nBut 27% of patients needed revision surgery for complications. The authors stress that extremely precise surgical technique is mandatory\u2014small errors in placement or tension can lead to problems that require a second operation.",
+      "stat": {
+        "value": "91%",
+        "label": "implant survival at 53 months"
+      }
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause\u2014something else could explain the link between the implant and the outcomes.",
+    "Sample size was 34 patients. Worth replicating in a larger group before anyone changes practice."
+  ],
+  "cta": {
+    "headline": "Science worth sharing lives here",
+    "sub": "Follow for the studies that actually move the conversation forward."
+  },
+  "caption": "A specialized wrist implant is linked to lasting pain relief and stable function in people whose distal radioulnar joint has failed. Thirty-four patients received the Aptis semiconstrained implant between 2010 and 2021, and surgeons tracked pain, range of motion, and weight bearing over an average of 4.4 years. Pain levels dropped significantly, and motion stayed consistent. The implant survived in 91% of cases at 53 months, but more than a quarter of patients needed revision surgery\u2014underscoring how technically demanding the procedure is. Published in Journal of Hand Surgery Global Online. The study was observational and relatively small. One limitation: only 15 patients had complete data for the before-and-after comparison. Full study: doi.org/10.1016/j.jhsg.2026.101117  \nWhat's your wrist mobility like?",
+  "hashtag_set": "health",
+  "vet": {
+    "key": "e4415424d9e4e2e1",
+    "verdict": "PASS",
+    "score": 48,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "note",
+        "message": "Design reads as observational (unclear); markers: retrospective",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      },
+      {
+        "code": "SMALL_SAMPLE",
+        "severity": "note",
+        "message": "34 participants - modest.",
+        "caveat": "Sample size was 34 \u2014 worth replicating before anyone changes what they do.",
+        "draft_rule": null
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Journal of hand surgery global online' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "unclear",
+    "sample_size": 34,
+    "subjects": "human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link.",
+      "Sample size was 34 \u2014 worth replicating before anyone changes what they do."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": []
+  },
+  "qa": {
+    "lint_errors": [],
+    "repair_rounds": 0,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "doi.org/10.1016/j.jhsg.2026.101117",
+          "problem": "The abstract does not provide any DOI or publication identifier. This DOI appears to be invented, and the year 2026 is in the future, which is impossible for a study tracking patients from 2010-2021.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Published in Journal of Hand Surgery Global Online",
+          "problem": "The abstract mentions 'Journal Hand Surg Global' but the copy states 'Journal of Hand Surgery Global Online' - this adds 'Online' which is not in the abstract.",
+          "severity": "minor"
+        },
+        {
+          "claim": "This study found a pattern, not a cause\u2014something else could explain the link between the implant and the outcomes.",
+          "problem": "The abstract does not discuss causation versus correlation or suggest that something else could explain the outcomes. This interpretive statement is not supported by the abstract.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "34 patients",
+          "found_in_abstract": true
+        },
+        {
+          "number": "36 implants",
+          "found_in_abstract": true
+        },
+        {
+          "number": "4.4 years",
+          "found_in_abstract": true
+        },
+        {
+          "number": "15 patients",
+          "found_in_abstract": true
+        },
+        {
+          "number": "27%",
+          "found_in_abstract": true
+        },
+        {
+          "number": "91%",
+          "found_in_abstract": true
+        },
+        {
+          "number": "53 months",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2010",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2021",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2026",
+          "found_in_abstract": false
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "doi.org/10.1016/j.jhsg.2026.101117",
+        "problem": "The abstract does not provide any DOI or publication identifier. This DOI appears to be invented, and the year 2026 is in the future, which is impossible for a study tracking patients from 2010-2021.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "This study found a pattern, not a cause\u2014something else could explain the link between the implant and the outcomes.",
+        "problem": "The abstract does not discuss causation versus correlation or suggest that something else could explain the outcomes. This interpretive statement is not supported by the abstract.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "2026",
+        "found_in_abstract": false
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "nature"
+}
