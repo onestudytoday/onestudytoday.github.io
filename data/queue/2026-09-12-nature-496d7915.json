@@ -1,0 +1,135 @@
+{
+  "id": "2026-09-12-nature-496d7915",
+  "niche": "nature",
+  "study": {
+    "key": "496d79150298cb45",
+    "title": "Antibiotics as infrastructure: Labour, precarity and healthcare ecology in a Nepali industrial town",
+    "journal": "Global public health",
+    "pub_date": "2026-09-12",
+    "pub_date_display": "Sep 12, 2026",
+    "doi": "10.1080/17441692.2026.2726614",
+    "doi_display": "doi.org/10.1080/17441692.2026.2726614",
+    "url": "https://doi.org/10.1080/17441692.2026.2726614",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Upadhyay R",
+      "Kotwani A",
+      "Seeberg J."
+    ]
+  },
+  "cover": {
+    "kicker": "Global Public Health \u2022 Ethnographic study",
+    "headline": "In Nepali steel factories, **antibiotics keep injured workers on shift** instead of helping them heal."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Industrial workers face a choice: treat an injury properly, or stay employed.",
+      "body": "Steel production workers in Nepal experience frequent injuries in environments with minimal labour protection. When getting hurt is routine and missing work means losing income, the healthcare system faces a question: does medicine facilitate recovery, or does it just keep people working?\n\nResearchers conducted ethnographic fieldwork at a steel factory, observing the factory clinic, health camps, pharmacies and private polyclinics. They surveyed and interviewed workers to map how care actually unfolds in this high-risk, low-protection setting."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Providers routinely dispensed broad-spectrum antibiotics without prescription or diagnostic testing.",
+      "body": "Nearly half of workers reported recent illness, and few had avoided work-related injuries. Most were male labour migrants from India with little or no education. A mix of healthcare providers dispensed antibiotics freely, driven by commercial incentives and worker demand for quick relief.\n\nMinimal diagnostic differentiation occurred. When factory clinic treatment failed, workers entered commercialised medical circuits that enabled continued work under unsafe conditions rather than addressing the underlying harm. Awareness of antimicrobial resistance was uneven across the system.",
+      "stat": {
+        "value": "~50%",
+        "label": "of workers reported recent illness"
+      }
+    },
+    {
+      "eyebrow": "Why it matters",
+      "title": "Antibiotics functioned as labour infrastructure, sustaining productivity while increasing resistance risk.",
+      "body": "In exploitative work conditions, medicines were linked to maintaining work capacity rather than recovery. The pattern reveals how unsafe labour environments go together with inappropriate antibiotic use, creating conditions for antimicrobial resistance development.\n\nThe healthcare ecology surrounding the factory channelled injured workers into care pathways designed to return them to hazardous work quickly. Commercial and employment pressures aligned to prioritise productivity over healing, with antibiotics serving as the chemical bridge between injury and continued labour."
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Something else could explain the link.",
+    "Findings are specific to one Nepali steel factory and may not apply to other industrial settings or countries.",
+    "The study relied on worker self-reports for illness and injury, which may be incomplete or influenced by recall."
+  ],
+  "cta": {
+    "headline": "Science explained. One study at a time.",
+    "sub": "Follow for research that matters, translated into plain English you can actually use."
+  },
+  "caption": "When workplace injuries are routine and missing a shift means losing income, antibiotics can become tools for sustaining labour rather than supporting recovery. This ethnographic study in a Nepali steel factory found that providers routinely dispensed broad-spectrum antibiotics without prescriptions, driven by commercial incentives and demand for quick relief. Workers were mostly male Indian labour migrants with minimal education. The research appeared in Global Public Health and draws on surveys, interviews, and observation across factory clinics, pharmacies and health centers. This is an observational study from one factory setting. Full study: doi.org/10.1080/17441692.2026.2726614  Worth the follow?",
+  "hashtag_set": "health",
+  "vet": {
+    "key": "496d79150298cb45",
+    "verdict": "HOLD",
+    "score": 50,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "warn",
+        "message": "Design reads as observational (cross-sectional (observational)); markers: survey",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Global public health' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "cross-sectional (observational)",
+    "sample_size": null,
+    "subjects": "human",
+    "journal_tier": null,
+    "causal_language_banned": true,
+    "species": [],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": []
+  },
+  "qa": {
+    "lint_errors": [],
+    "repair_rounds": 0,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "Nearly half of workers reported recent illness",
+          "problem": "The abstract states 'nearly half reported recent illness' but this is presented as ~50% in the copy, which is a reasonable interpretation and is supported",
+          "severity": "minor"
+        },
+        {
+          "claim": "doi.org/10.1080/17441692.2026.2726614",
+          "problem": "This DOI is not mentioned in the abstract. The year 2026 appears to be a future date, which suggests this DOI may be fabricated or incorrect. DOIs and citations must match the abstract exactly.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "50% (approximately half)",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "doi.org/10.1080/17441692.2026.2726614",
+        "problem": "This DOI is not mentioned in the abstract. The year 2026 appears to be a future date, which suggests this DOI may be fabricated or incorrect. DOIs and citations must match the abstract exactly.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "50%",
+        "found_in_abstract": false,
+        "checked_by": "code"
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "nature"
+}
