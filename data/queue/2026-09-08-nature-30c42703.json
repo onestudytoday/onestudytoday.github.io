@@ -1,0 +1,105 @@
+{
+  "id": "2026-09-08-nature-30c42703",
+  "niche": "nature",
+  "study": {
+    "key": "30c427036316ec38",
+    "title": "A gut commensal &lt;i&gt;Serratia marcescens&lt;/i&gt; inhibits dengue virus infection via prodigiosin-induced autophagy in &lt;i&gt;Aedes albopictus&lt;/i&gt;",
+    "journal": "Virulence",
+    "pub_date": "2026-09-08",
+    "pub_date_display": "Sep 8, 2026",
+    "doi": "10.1080/21505594.2026.2721757",
+    "doi_display": "doi.org/10.1080/21505594.2026.2721757",
+    "url": "https://doi.org/10.1080/21505594.2026.2721757",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Huang Y",
+      "Li H",
+      "Ding J",
+      "Zhu Y",
+      "Wang N",
+      "Zhang J"
+    ]
+  },
+  "cover": {
+    "kicker": "Virulence \u2022 lab study",
+    "headline": "A red pigment made by **mosquito gut bacteria blocks dengue** by triggering viral cleanup inside cells."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Mosquito gut bacteria influence whether viruses can spread, but we barely know how they do it.",
+      "body": "Dengue virus relies on Aedes mosquitoes to reach humans. Bacteria living inside mosquito guts can interfere with that process, but the specific molecules they produce and the mechanisms they use remain poorly understood.\n\nResearchers isolated a native gut bacterium called Serratia marcescens from wild-caught mosquitoes in China and tested whether it could suppress dengue infection and, if so, how."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "The bacterium secretes a red pigment called prodigiosin that cuts dengue RNA levels in mosquito guts.",
+      "body": "Metabolomic analysis revealed that prodigiosin, a pigment naturally produced by the strain, acts as an antiviral compound. Treatment with prodigiosin suppressed dengue infection in mosquito cells in a dose- and time-dependent manner.\n\nIn adult Aedes albopictus mosquitoes, prodigiosin treatment significantly reduced dengue virus type 2 RNA levels in the midgut, the organ where the virus first replicates after a mosquito takes an infected blood meal.",
+      "stat": {
+        "value": "DENV2",
+        "label": "virus strain blocked in midguts"
+      }
+    },
+    {
+      "eyebrow": "The mechanism",
+      "title": "Prodigiosin accumulates in the cell's protein factory, triggering stress signals that activate autophagy to clear the virus.",
+      "body": "Prodigiosin localizes to the endoplasmic reticulum and induces ER stress, upregulating the chaperone protein GRP78. This activates a complete autophagic flux: conversion of Atg8-I to Atg8-II, autophagosome formation, and lysosomal activity all increased.\n\nThe pigment drives autophagosomes and lysosomes to converge, trapping dengue particles in lysosomal compartments where they are degraded. When researchers knocked down the autophagy gene Atg8 or blocked ER stress with drugs, prodigiosin lost its antiviral effect."
+    }
+  ],
+  "caveats": [
+    "This is a lab and cell-culture study in mosquitoes, not a test of whether the approach works in the field.",
+    "The study does not test whether prodigiosin or the bacterium can reduce transmission of dengue to humans."
+  ],
+  "cta": {
+    "headline": "Microbes blocking viruses at the source",
+    "sub": "A natural gut symbiont uses chemistry to shut down dengue before it spreads."
+  },
+  "caption": "Bacteria living in mosquito guts can determine whether dengue spreads. Researchers isolated Serratia marcescens from wild Aedes albopictus mosquitoes in Wenzhou, China, and found it secretes prodigiosin, a red pigment that suppresses dengue infection. The pigment localizes to the endoplasmic reticulum, induces cellular stress, and triggers autophagy\u2014a cleanup process that shuttles viral particles into lysosomes for degradation. When the autophagy gene Atg8 was knocked down, the antiviral effect disappeared. The study was conducted in mosquito",
+  "hashtag_set": "nature",
+  "vet": {
+    "key": "30c427036316ec38",
+    "verdict": "PASS",
+    "score": 54,
+    "flags": [
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Virulence' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "mechanistic / lab",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "lint_errors": [],
+    "repair_rounds": 0,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "2",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": true
+  },
+  "status": "needs_review",
+  "source_niche": "nature"
+}
