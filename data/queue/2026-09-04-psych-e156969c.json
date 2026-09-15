@@ -1,0 +1,156 @@
+{
+  "id": "2026-09-04-psych-e156969c",
+  "niche": "psych",
+  "study": {
+    "key": "e156969cb0d0c592",
+    "title": "Respiratory Support With Nasal High Flow Reduces Opioid Requirements During Endoscopic Retrograde Cholangiopancreatography",
+    "journal": "DEN open",
+    "pub_date": "2026-09-04",
+    "pub_date_display": "Sep 4, 2026",
+    "doi": "10.1002/deo2.70421",
+    "doi_display": "doi.org/10.1002/deo2.70421",
+    "url": "https://doi.org/10.1002/deo2.70421",
+    "is_preprint": false,
+    "server": "",
+    "n": 118,
+    "authors": [
+      "Mori T",
+      "Ayuse T",
+      "Sato S",
+      "Ichinomia T",
+      "Yano R",
+      "Shimakura A"
+    ]
+  },
+  "cover": {
+    "kicker": "DEN open \u00b7 RCT, n=94",
+    "headline": "High-flow nasal oxygen **cut opioid use by 23%** during sedated endoscopy procedures."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Endoscopic procedures often require opioids for sedation, but they slow breathing and delay recovery.",
+      "body": "Endoscopic retrograde cholangiopancreatography threads a scope through the digestive tract to diagnose or treat bile duct and pancreatic problems. Patients receive sedation, usually including opioids like pethidine for comfort. But opioids depress breathing and extend recovery time.\n\nNasal high flow delivers warmed, humidified oxygen at higher rates than standard nasal cannulas. It supports breathing mechanics and stabilizes oxygen levels. The question: could better respiratory support reduce the amount of opioid needed during these procedures?"
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Patients randomized to nasal high flow needed 38% less opioid medication than those on standard oxygen.",
+      "body": "Ninety-four patients undergoing ERCP under dexmedetomidine-based sedation were randomized to nasal high flow or low-flow oxygen. Everyone received the same sedation protocol, with opioid doses adjusted as needed for comfort.\n\nThe nasal high flow group required a median total pethidine dose of 43.75 mg versus 70.00 mg in the standard oxygen group. Poisson regression confirmed a 23% reduction in opioid requirements. Carbon dioxide levels and oxygenation remained comparable between groups, and no adverse events were linked to either oxygen method.",
+      "stat": {
+        "value": "43.75mg",
+        "label": "median opioid dose with nasal high flow"
+      }
+    }
+  ],
+  "caveats": [
+    "Trial stopped early at 94 of 118 planned patients due to slow recruitment, which may reduce statistical power.",
+    "Single-center study limits generalizability to other hospitals or endoscopy settings with different protocols."
+  ],
+  "cta": {
+    "headline": "Better breathing support, less medication",
+    "sub": "Nasal high flow may offer a safer sedation approach for diagnostic procedures."
+  },
+  "caption": "Better respiratory support during sedated procedures may allow doctors to use less opioid medication. In this randomized trial of 94 patients undergoing endoscopic bile duct procedures, nasal high flow oxygen reduced opioid requirements by 23% compared to standard low-flow oxygen while maintaining stable carbon dioxide and oxygen levels. EEG monitoring showed patients in the nasal high flow group achieved deeper sedation despite receiving less medication. Published in DEN open, the trial enrolled 94 of a planned 118 patients. Enrollment ended early due to slow recruitment. Full study: doi.org/10.1002/deo2.70421\n\nDo you prefer fewer medications?",
+  "hashtag_set": "health",
+  "vet": {
+    "key": "e156969cb0d0c592",
+    "verdict": "PASS",
+    "score": 72,
+    "flags": [
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'DEN open' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      },
+      {
+        "code": "HYPE_LANGUAGE",
+        "severity": "note",
+        "message": "Paper text contains hype words: proves",
+        "caveat": null,
+        "draft_rule": "Do not reuse the paper's promotional wording."
+      }
+    ],
+    "design": "randomised trial",
+    "sample_size": 118,
+    "subjects": "human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [
+      "Do not reuse the paper's promotional wording."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "lint_errors": [],
+    "repair_rounds": 1,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "Patients randomized to nasal high flow needed 38% less opioid medication than those on standard oxygen.",
+          "problem": "The abstract states the incidence rate ratio was 0.77 (23% reduction) and median doses were 43.75 mg vs 70.00 mg (37.5% reduction), but does not state '38% less'. This appears to be a rounded or calculated figure not directly stated in the abstract.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "High-flow nasal oxygen **cut opioid use by 23%** during sedated endoscopy procedures.",
+          "problem": "While the abstract mentions an incidence rate ratio of 0.77 which corresponds to a 23% reduction, the copy states this as a definitive cut in 'opioid use' when the abstract specifically refers to 'opioid requirements' measured by incidence rate ratio, not actual usage reduction. The 23% refers to the IRR statistical measure, not a simple percentage reduction in dose.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Nasal high flow oxygen reduced opioid requirements by 23% compared to standard low-flow oxygen",
+          "problem": "Same as above - the 23% refers to the incidence rate ratio (0.77), which is a statistical measure. The abstract does show this, but the copy could be interpreted as stating a 23% dose reduction when the actual median dose reduction was from 70.00 to 43.75 mg (37.5%).",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "94",
+          "found_in_abstract": true
+        },
+        {
+          "number": "23%",
+          "found_in_abstract": true
+        },
+        {
+          "number": "38%",
+          "found_in_abstract": false
+        },
+        {
+          "number": "43.75 mg",
+          "found_in_abstract": true
+        },
+        {
+          "number": "70.00 mg",
+          "found_in_abstract": true
+        },
+        {
+          "number": "118",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Patients randomized to nasal high flow needed 38% less opioid medication than those on standard oxygen.",
+        "problem": "The abstract states the incidence rate ratio was 0.77 (23% reduction) and median doses were 43.75 mg vs 70.00 mg (37.5% reduction), but does not state '38% less'. This appears to be a rounded or calculated figure not directly stated in the abstract.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "38%",
+        "found_in_abstract": false
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "psych"
+}
