@@ -1,0 +1,166 @@
+{
+  "id": "2026-09-04-psych-96bf628f",
+  "niche": "psych",
+  "study": {
+    "key": "96bf628f6e9cb580",
+    "title": "An oral coral-like resveratrol nanocomplex protects against dry eye disease through ocular and systemic redox homeostasis",
+    "journal": "Bioactive materials",
+    "pub_date": "2026-09-04",
+    "pub_date_display": "Sep 4, 2026",
+    "doi": "10.1016/j.bioactmat.2026.08.039",
+    "doi_display": "doi.org/10.1016/j.bioactmat.2026.08.039",
+    "url": "https://doi.org/10.1016/j.bioactmat.2026.08.039",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Cui Q",
+      "Li Y",
+      "Xie M",
+      "Liu Z",
+      "Guo Y",
+      "Zang Y"
+    ]
+  },
+  "cover": {
+    "kicker": "Bioactive Materials \u00b7 Mice",
+    "headline": "An oral resveratrol nanocomplex is linked to **protection against dry eye disease** in mice."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Dry eye disease involves chronic inflammation and oxidative stress, but topical treatments face compliance issues.",
+      "body": "Dry eye disease progressively damages ocular tissues through inflammation and oxidative stress working together. Standard topical treatments like anti-inflammatory drops and artificial tears face poor long-term compliance and side effects.\n\nEmerging evidence suggests systemic oxidative imbalance contributes to the disease. Oral antioxidants could offer a complementary approach, but poor absorption and rapid clearance have limited their use. Resveratrol, a polyphenol antioxidant, faces exactly this bioavailability problem."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "A coral-like nanocomplex increased resveratrol bioavailability by 6.62-fold and ocular accumulation by 2.49-fold in mice.",
+      "body": "Researchers created a coral-like resveratrol nanocomplex using sericin and dipotassium glycyrrhizinate as natural carriers. This formulation markedly enhanced gastrointestinal stability and systemic exposure compared to regular resveratrol.\n\nIn mice, oral bioavailability increased approximately 6.62-fold. Ocular accumulation rose 2.49-fold. The nanocomplex was associated with protection against benzalkonium chloride-induced corneal damage, tear film dysfunction, and inflammatory responses in an experimental dry eye model.",
+      "stat": {
+        "value": "6.62\u00d7",
+        "label": "increase in oral bioavailability"
+      }
+    },
+    {
+      "eyebrow": "The mechanism",
+      "title": "The nanocomplex was associated with both ocular and systemic redox balance, plus shifts in gut microbiota.",
+      "body": "The protective effects appeared to work through both local ocular antioxidant activity and systemic redox homeostasis. Rather than acting solely on the eye surface, the oral formulation may offer complementary benefits through multiple pathways.\n\nThe nanocomplex was also associated with modulation of gut microbiota composition and metabolic profiles in the mice. This suggests oral redox intervention could reduce reliance on prolonged topical treatment by addressing systemic factors that contribute to dry eye disease."
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Other factors could explain the association between the nanocomplex and dry eye protection.",
+    "This was done in mice, not humans. Most findings in mice do not translate to people."
+  ],
+  "cta": {
+    "headline": "Oral antioxidants for eye disease",
+    "sub": "A bioavailability problem meets nanotechnology in a mouse model of dry eye."
+  },
+  "caption": "A new resveratrol delivery system is associated with protection against dry eye disease in mice, working through both ocular and systemic antioxidant pathways rather than just topical action. The coral-like nanocomplex used natural carriers\u2014sericin and dipotassium glycyrrhizinate\u2014and was fabricated through a pH-ultrasonic-shifting method in water. Published in Bioactive Materials, the study used mice with experimentally induced dry eye. This was a pattern-finding study in animals, and most mouse findings don't translate to humans. Full study: doi.org/10.1016/j.bioactmat.2026.08.039 Do you use eye drops?",
+  "hashtag_set": "health",
+  "vet": {
+    "key": "96bf628f6e9cb580",
+    "verdict": "HOLD",
+    "score": 36,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "note",
+        "message": "Design reads as observational (unclear); markers: associated with",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      },
+      {
+        "code": "CAUSAL_LANGUAGE_IN_OBSERVATIONAL",
+        "severity": "warn",
+        "message": "The paper's own text uses causal verbs (protects against) despite an observational design. The authors are overreaching - do not repeat it.",
+        "caveat": null,
+        "draft_rule": null
+      },
+      {
+        "code": "NON_HUMAN",
+        "severity": "warn",
+        "message": "Study subjects are mice, not people.",
+        "caveat": "This was done in mice \u2014 not humans. Most findings in mice do not carry over to people.",
+        "draft_rule": "Subjects were mice, NOT humans. The cover slide must not imply a human result. Name the species explicitly by slide 2."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Bioactive materials' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "non-human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [
+      "mice"
+    ],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link.",
+      "This was done in mice \u2014 not humans. Most findings in mice do not carry over to people."
+    ],
+    "required_badges": [
+      "NOT_IN_HUMANS"
+    ],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'.",
+      "Subjects were mice, NOT humans. The cover slide must not imply a human result. Name the species explicitly by slide 2."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "lint_errors": [],
+    "repair_rounds": 1,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "Full study: doi.org/10.1016/j.bioactmat.2026.08.039",
+          "problem": "The abstract does not contain any DOI or citation information. The copy invents a specific DOI (including a future year 2026) that does not appear in the abstract.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Published in Bioactive Materials",
+          "problem": "While 'Bioactive Materials' appears in the copy header as a journal name, the abstract itself does not state where this work was published. The copy presents this as a factual claim about publication.",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "6.62-fold",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2.49-fold",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2026",
+          "found_in_abstract": false
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Full study: doi.org/10.1016/j.bioactmat.2026.08.039",
+        "problem": "The abstract does not contain any DOI or citation information. The copy invents a specific DOI (including a future year 2026) that does not appear in the abstract.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "2026",
+        "found_in_abstract": false
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "psych"
+}
