@@ -1,0 +1,175 @@
+{
+  "id": "2026-09-01-psych-e7893f9a",
+  "niche": "psych",
+  "study": {
+    "key": "e7893f9a0bc832d7",
+    "title": "U.S. children draw on personal experiences and perceived parental beliefs to form attitudes about immigrant groups",
+    "journal": "Journal of experimental child psychology",
+    "pub_date": "2026-09-01",
+    "pub_date_display": "Sep 1, 2026",
+    "doi": "10.1016/j.jecp.2026.106650",
+    "doi_display": "doi.org/10.1016/j.jecp.2026.106650",
+    "url": "https://doi.org/10.1016/j.jecp.2026.106650",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Elenbaas L",
+      "Norris MN",
+      "Singman J",
+      "Kim MWC",
+      "Zhang M."
+    ]
+  },
+  "cover": {
+    "kicker": "Journal of Experimental Child Psychology",
+    "headline": "Kids blend **their own friendships with what they think their parents believe** to shape views on immigrants."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "The U.S. is diversifying fast, and children form attitudes about immigrant groups early in life.",
+      "body": "Kids don't develop their views about people from other countries in a vacuum. They have direct experiences at school and in their neighborhoods, and they pick up cues from their parents about who belongs and who doesn't.\n\nResearchers wanted to know which matters more for 8- to 11-year-olds: the actual contact they have with immigrants, or what they believe their parents think about those relationships."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Both direct contact and perceived parental attitudes were linked to how kids felt about immigrants, but parents carried more weight.",
+      "body": "Children who had more direct contact with immigrants liked them more and saw them as more American. The associations were moderate: \u03b2 = .16 for liking and \u03b2 = .20 for seeing immigrants as American.\n\nBut children who believed their parents were comfortable with immigrant contact showed much stronger links. They liked immigrants more (\u03b2 = .56), felt closer to them (\u03b2 = .28), and were more interested in including them in activities (\u03b2 = .40).",
+      "stat": {
+        "value": "\u03b2 = .56",
+        "label": "Link between perceived parental comfort and liking"
+      }
+    },
+    {
+      "eyebrow": "Why it matters",
+      "title": "The findings held across six different immigrant groups, from Mexico to Poland to Nigeria.",
+      "body": "The 262 children in the study had varying levels of actual contact with people from each country. Yet the pattern was consistent: what kids thought their parents believed was linked to their attitudes regardless of which group they were asked about.\n\nThis suggests that parental cues may shape children's intergroup attitudes broadly, even for groups the family has little direct experience with."
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Something else could explain the link.",
+    "The research relied on what children reported, not observed behavior or actual parental beliefs.",
+    "All participants were U.S. children, so the findings may not apply in other countries or cultural contexts."
+  ],
+  "cta": {
+    "headline": "Science explained, one study at a time",
+    "sub": "Follow for the latest research that actually matters, stripped of the hype."
+  },
+  "caption": "Children's attitudes about immigrants are linked to both their own friendships and what they sense from their parents. Researchers surveyed 262 American kids aged 8 to 11 in 2024 and 2025, asking about their direct contact with immigrants and their perceptions of how comfortable their parents would be with that contact. The study included attitudes toward six immigrant groups: people from Mexico, China, India, El Salvador, Nigeria, and Poland. Perceived parental comfort showed stronger associations with kids' attitudes than their own direct contact did. Published in the Journal of Experimental Child Psychology, the study is observational and cannot establish that parental beliefs cause children's attitudes. Full study: doi.org/10.1016/j.jecp.2026.106650 Where did you grow up?",
+  "hashtag_set": "psych",
+  "vet": {
+    "key": "e7893f9a0bc832d7",
+    "verdict": "PASS",
+    "score": 50,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "note",
+        "message": "Design reads as observational (unclear); markers: association, associated with",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Journal of experimental child psychology' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": []
+  },
+  "qa": {
+    "lint_errors": [
+      "slide2.title: 132 chars, max 130"
+    ],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "Researchers surveyed 262 American kids aged 8 to 11 in 2024 and 2025",
+          "problem": "The abstract does not state that researchers 'surveyed' the children. The abstract describes what was investigated but does not specify the method as a survey.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Published in the Journal of Experimental Child Psychology",
+          "problem": "The abstract does not state this study was published in the Journal of Experimental Child Psychology. The copy invents publication venue information not found in the abstract.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Full study: doi.org/10.1016/j.jecp.2026.106650",
+          "problem": "The abstract does not contain any DOI or link. This specific DOI is completely invented and not supported by the abstract.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "8- to 11-year-old",
+          "found_in_abstract": true
+        },
+        {
+          "number": "262",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2024 and 2025",
+          "found_in_abstract": true
+        },
+        {
+          "number": ".16",
+          "found_in_abstract": true
+        },
+        {
+          "number": ".20",
+          "found_in_abstract": true
+        },
+        {
+          "number": ".56",
+          "found_in_abstract": true
+        },
+        {
+          "number": ".28",
+          "found_in_abstract": true
+        },
+        {
+          "number": ".40",
+          "found_in_abstract": true
+        },
+        {
+          "number": "six",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Published in the Journal of Experimental Child Psychology",
+        "problem": "The abstract does not state this study was published in the Journal of Experimental Child Psychology. The copy invents publication venue information not found in the abstract.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Full study: doi.org/10.1016/j.jecp.2026.106650",
+        "problem": "The abstract does not contain any DOI or link. This specific DOI is completely invented and not supported by the abstract.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "psych"
+}
