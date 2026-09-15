@@ -1,0 +1,140 @@
+{
+  "id": "2026-09-02-psych-ebbd8da3",
+  "niche": "psych",
+  "study": {
+    "key": "ebbd8da38cab4319",
+    "title": "Victim vs bystander: balancing a transgressor's intention and apology in Chinese children's forgiveness",
+    "journal": "Journal of experimental child psychology",
+    "pub_date": "2026-09-02",
+    "pub_date_display": "Sep 2, 2026",
+    "doi": "10.1016/j.jecp.2026.106645",
+    "doi_display": "doi.org/10.1016/j.jecp.2026.106645",
+    "url": "https://doi.org/10.1016/j.jecp.2026.106645",
+    "is_preprint": false,
+    "server": "",
+    "n": 313,
+    "authors": [
+      "Wang L",
+      "Zhang Y",
+      "Zhou M",
+      "Ma Z",
+      "Cheng X."
+    ]
+  },
+  "cover": {
+    "kicker": "Journal of Experimental Child Psychology",
+    "headline": "Chinese children forgive differently when they're the victim versus **when they're watching from the sidelines.**"
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "In cultures that prize group harmony, forgiveness matters\u2014but who forgives more, victims or bystanders?",
+      "body": "Forgiveness keeps social groups functioning, especially in collectivist cultures like China where maintaining relationships and group harmony takes priority. Children learn to forgive by reading social cues\u2014was the harm intentional, did the transgressor apologize, and crucially, are they the one who got hurt or are they watching someone else get hurt.\n\nMost research treats these factors separately. This study tested how Chinese children aged 4 to 6 weigh intention and apology together, and whether their willingness to forgive changes depending on whether they're the victim or a bystander."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Bystanders were more forgiving than victims, and apologies shaped how much intention mattered.",
+      "body": "Across two experiments with 449 children total, kids were more likely to forgive when the harm was unintentional and when the transgressor apologized. But bystanders consistently showed greater forgiveness than victims across all scenarios.\n\nApologies also moderated the role of intention. When a transgressor apologized, children's forgiveness increased regardless of intent. When there was no apology, intention mattered more. Perspective further influenced this balance\u2014victims and bystanders weighted intention and apology differently when deciding whether to forgive.",
+      "stat": {
+        "value": "449",
+        "label": "children tested across both experiments"
+      }
+    }
+  ],
+  "caveats": [
+    "The study used hypothetical scenarios, not real conflicts children experienced themselves.",
+    "Results reflect forgiveness in a Chinese cultural context and may not generalize to individualist cultures."
+  ],
+  "cta": {
+    "headline": "Kids learn forgiveness from context",
+    "sub": "Intention, apology, and perspective shape how young children decide who gets a second chance."
+  },
+  "caption": "When you're the one who got hurt, forgiveness comes harder. Chinese children aged 4 to 6 were more willing to forgive transgressors when they observed the harm as bystanders than when they were the victims themselves. The study also found that apologies changed how much intention mattered\u2014when someone said sorry, kids forgave more regardless of whether the harm was intentional. The research involved 449 children across two scenario-based experiments, published in the Journal of Experimental Child Psychology. The scenarios were hypothetical rather than real conflicts. Full study: doi.org/10.1016/j.jecp.2026.106645 Victim or bystander\u2014which are you?",
+  "hashtag_set": "psych",
+  "vet": {
+    "key": "ebbd8da38cab4319",
+    "verdict": "PASS",
+    "score": 56,
+    "flags": [
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Journal of experimental child psychology' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "unclear",
+    "sample_size": 313,
+    "subjects": "human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [],
+    "notes": []
+  },
+  "qa": {
+    "lint_errors": [],
+    "repair_rounds": 1,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "449 children total",
+          "problem": "The abstract states Experiment 1 had N=136 and Experiment 2 had N=313, which totals 449. However, the abstract does not explicitly state this total, and without knowing whether the experiments used independent samples or overlapping participants, calculating and stating '449 children total' involves an assumption not directly supported by the abstract.",
+          "severity": "minor"
+        },
+        {
+          "claim": "The research involved 449 children across two scenario-based experiments",
+          "problem": "Same issue as above - the abstract gives N=136 and N=313 separately but does not state the total or confirm these were independent samples that can be summed to 449.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Full study: doi.org/10.1016/j.jecp.2026.106645",
+          "problem": "The abstract contains no DOI or reference number. This information is not supported by the abstract.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "4-6",
+          "found_in_abstract": true
+        },
+        {
+          "number": "4 to 6",
+          "found_in_abstract": true
+        },
+        {
+          "number": "449",
+          "found_in_abstract": false
+        },
+        {
+          "number": "136",
+          "found_in_abstract": true
+        },
+        {
+          "number": "313",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Full study: doi.org/10.1016/j.jecp.2026.106645",
+        "problem": "The abstract contains no DOI or reference number. This information is not supported by the abstract.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "449",
+        "found_in_abstract": false
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "psych"
+}
