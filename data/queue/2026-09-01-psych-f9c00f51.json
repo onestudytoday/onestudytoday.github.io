@@ -1,0 +1,198 @@
+{
+  "id": "2026-09-01-psych-f9c00f51",
+  "niche": "psych",
+  "study": {
+    "key": "f9c00f51ae272cf2",
+    "title": "Effectiveness of dietary, physical activity, and lifestyle interventions on weight and cardiometabolic outcomes in adults with overweight or obesity: an umbrella review of 112 systematic reviews and meta-analyses from 50 countries",
+    "journal": "Obesity pillars",
+    "pub_date": "2026-09-01",
+    "pub_date_display": "Sep 1, 2026",
+    "doi": "10.1016/j.obpill.2026.100324",
+    "doi_display": "doi.org/10.1016/j.obpill.2026.100324",
+    "url": "https://doi.org/10.1016/j.obpill.2026.100324",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Mummadi MK",
+      "Gavaravarapu SM",
+      "Reddy SN",
+      "Ramanujam K",
+      "Prakash R",
+      "Vadde SR"
+    ]
+  },
+  "cover": {
+    "kicker": "Obesity Pillars \u00b7 112 reviews",
+    "headline": "**Combining diet, exercise, and behavior change** topped single tactics for weight and metabolic health."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Overweight and obesity affect 2.5 billion adults, but clinicians lack a unified comparison of what works.",
+      "body": "Nutrition interventions, physical activity programs, and behavioral modification all claim benefits. But which approach delivers the most weight loss? Which improves blood sugar, cholesterol, and blood pressure most effectively? And do those benefits last?\n\nResearchers analyzed 112 systematic reviews covering 2332 randomized trials from 50 countries to compare every non-drug approach head-to-head across outcomes and durations."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Combined diet and physical activity produced the largest weight loss beyond 12 months and the largest BMI reduction.",
+      "body": "Multicomponent programs combining diet, exercise, and behavioral support reduced weight by 3.68 kg after 12 months and cut BMI by 1.22 points between 6 and 12 months. They also delivered the largest improvements in fasting glucose and insulin resistance.\n\nPhysical activity alone produced the largest drop in systolic blood pressure at 6 to 12 months: 6.10 mm Hg. Lipid effects were inconsistent across intervention types, and heterogeneity was high in most comparisons.",
+      "stat": {
+        "value": "\u22123.68kg",
+        "label": "weight loss, combined approach after 12 mo"
+      }
+    },
+    {
+      "eyebrow": "Why it matters",
+      "title": "Cardiometabolic benefits appeared partly independent of weight lost, so programs remain useful even without hitting targets.",
+      "body": "Many patients do not reach the 5 to 10 percent weight-loss benchmarks clinicians often cite. This analysis shows that combined diet, activity, and behavioral programs improve blood sugar, insulin sensitivity, and blood pressure regardless.\n\nThat means multicomponent lifestyle interventions offer metabolic protection even when the scale does not move as much as hoped. The benefit comes from the behavior change itself, not just the pounds shed."
+    }
+  ],
+  "caveats": [
+    "Heterogeneity was high across most comparisons, with I-squared values commonly between 70 and 99 percent.",
+    "Confidence in 69 percent of the included reviews was rated low or critically low by AMSTAR 2 quality appraisal."
+  ],
+  "cta": {
+    "headline": "What combination works for you?",
+    "sub": "Follow for the latest on nutrition, metabolism, and evidence-based lifestyle interventions."
+  },
+  "caption": "Multicomponent lifestyle programs that combine diet, physical activity, and behavioral support outperform single-tactic approaches for weight loss and metabolic health. This umbrella review in Obesity Pillars analyzed 112 systematic reviews and meta-analyses covering 2332 unique randomized trials in adults with overweight or obesity. Combined interventions reduced weight by 3.68 kg beyond 12 months and cut BMI by 1.22 points at 6 to 12 months, while also improving fasting glucose and insulin resistance. Importantly, cardiometabolic benefits appeared partly independent of the weight lost, meaning programs remain worthwhile even for patients who do not hit conventional 5 to 10 percent weight-loss targets. Heterogeneity was high and confidence in most reviews was low. Full study: doi.org/10.1016/j.obpill.2026.100324\n\nWhich intervention intrigues you?",
+  "hashtag_set": "health",
+  "vet": {
+    "key": "f9c00f51ae272cf2",
+    "verdict": "PASS",
+    "score": 72,
+    "flags": [
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Obesity pillars' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "meta-analysis",
+    "sample_size": null,
+    "subjects": "human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "lint_errors": [
+      "GUARDRAIL hype: Draft contains promotional hype wording."
+    ],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "Multicomponent programs combining diet, exercise, and behavioral support reduced weight by 3.68 kg after 12 months",
+          "problem": "The abstract states the 3.68 kg weight reduction was 'beyond 12 mo' (more than 12 months), not 'after 12 months' (at 12 months). The copy changes the timing.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "cut BMI by 1.22 points between 6 and 12 months",
+          "problem": "The abstract states the BMI reduction at '<12 mo' was '-1.22; 95% CI: -2.31, -0.13)', but the complete text appears truncated in the abstract (missing text before the semicolon). The copy claims this is '1.22 points' but the abstract shows -1.22 with a CI, and the timing appears to be '<12 mo' not 'between 6 and 12 months'. The copy also presents this more definitively than the abstract supports given the truncation.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Researchers analyzed 112 systematic reviews covering 2332 randomized trials from 50 countries",
+          "problem": "The abstract states '2332 unique randomized trials' but does not mention '50 countries'. This is an invented detail.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Multicomponent lifestyle programs that combine diet, physical activity, and behavioral support outperform single-tactic approaches for weight loss and metabolic health",
+          "problem": "The abstract states 'multicomponent programs combining diet, physical activity, and behavioural support gave the greatest cardiometabolic benefit' but does not explicitly state they 'outperform' single approaches for weight loss. The abstract says 'All intervention types produced significant but modest weight reduction' and that combined diet and physical activity yielded 'the largest' reduction, but does not frame this as 'outperforming' in a direct comparison.",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "2.5 billion",
+          "found_in_abstract": true
+        },
+        {
+          "number": "112",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2332",
+          "found_in_abstract": true
+        },
+        {
+          "number": "50 countries",
+          "found_in_abstract": false
+        },
+        {
+          "number": "3.68 kg",
+          "found_in_abstract": true
+        },
+        {
+          "number": "12 months",
+          "found_in_abstract": true
+        },
+        {
+          "number": "1.22 points",
+          "found_in_abstract": true
+        },
+        {
+          "number": "6 to 12 months",
+          "found_in_abstract": true
+        },
+        {
+          "number": "6.10 mm Hg",
+          "found_in_abstract": true
+        },
+        {
+          "number": "70 and 99 percent",
+          "found_in_abstract": true
+        },
+        {
+          "number": "69 percent",
+          "found_in_abstract": true
+        },
+        {
+          "number": "5 to 10 percent",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Multicomponent programs combining diet, exercise, and behavioral support reduced weight by 3.68 kg after 12 months",
+        "problem": "The abstract states the 3.68 kg weight reduction was 'beyond 12 mo' (more than 12 months), not 'after 12 months' (at 12 months). The copy changes the timing.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "cut BMI by 1.22 points between 6 and 12 months",
+        "problem": "The abstract states the BMI reduction at '<12 mo' was '-1.22; 95% CI: -2.31, -0.13)', but the complete text appears truncated in the abstract (missing text before the semicolon). The copy claims this is '1.22 points' but the abstract shows -1.22 with a CI, and the timing appears to be '<12 mo' not 'between 6 and 12 months'. The copy also presents this more definitively than the abstract supports given the truncation.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Researchers analyzed 112 systematic reviews covering 2332 randomized trials from 50 countries",
+        "problem": "The abstract states '2332 unique randomized trials' but does not mention '50 countries'. This is an invented detail.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "50 countries",
+        "found_in_abstract": false
+      },
+      {
+        "number": "1.22",
+        "found_in_abstract": false,
+        "checked_by": "code"
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "psych"
+}
