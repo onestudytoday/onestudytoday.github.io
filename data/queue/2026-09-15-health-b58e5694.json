@@ -151,10 +151,13 @@
     "unverified_numbers": [],
     "publishable": false
   },
-  "status": "needs_review",
+  "status": "approved",
   "source_niche": "health",
   "reel_status": {
     "built": false,
     "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'health'"
+  },
+  "review": {
+    "forced": true
   }
 }
