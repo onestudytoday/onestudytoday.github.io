@@ -1,0 +1,220 @@
+{
+  "id": "2026-09-04-health-68691744",
+  "niche": "health",
+  "study": {
+    "key": "68691744d51062e8",
+    "title": "Very Early Outcomes in Endoscopic Versus Open Carpal Tunnel Release",
+    "journal": "Journal of hand surgery global online",
+    "pub_date": "2026-09-04",
+    "pub_date_display": "Sep 4, 2026",
+    "doi": "10.1016/j.jhsg.2026.101104",
+    "doi_display": "doi.org/10.1016/j.jhsg.2026.101104",
+    "url": "https://doi.org/10.1016/j.jhsg.2026.101104",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Reitz RJ",
+      "Shah K",
+      "Chung CC",
+      "Penn J",
+      "Ostergaard P",
+      "Ladd A"
+    ]
+  },
+  "cover": {
+    "kicker": "Journal of Hand Surgery, prospective",
+    "headline": "Both types of carpal tunnel surgery work. But **one gets you back to work days faster**."
+  },
+  "slides": [
+    {
+      "eyebrow": "The assumption",
+      "title": "Endoscopic and open carpal tunnel release both relieve symptoms, so the choice is mostly preference.",
+      "body": "Carpal tunnel release can be done through a traditional open incision or with an endoscope through a smaller cut. Both techniques decompress the nerve and eventually restore function.\n\nThe assumption is that once you account for surgeon skill and postoperative care, the two approaches deliver similar results in the first two weeks after surgery. The long-term outcomes are what matter most."
+    },
+    {
+      "eyebrow": "What the data says",
+      "title": "Endoscopic patients reported less pain at day 3, day 7, and day 14 after surgery.",
+      "body": "A prospective multicenter study tracked patients after carpal tunnel release using standardized postoperative care. Pain scores on both the Numeric Rating Scale and the Patient-Rated Wrist and Hand Evaluation were lower in the endoscopic group at every measured checkpoint.\n\nFunction scores also favored the endoscopic approach. Patients who had endoscopic release showed earlier return of hand function across multiple assessment tools in the first two weeks.",
+      "stat": {
+        "value": "50%",
+        "label": "returned to work by day 3"
+      }
+    },
+    {
+      "eyebrow": "Why it matters",
+      "title": "Fifty percent of endoscopic patients were back at work by day 3, versus 20 percent in the open group.",
+      "body": "The difference in return-to-work rates was significant at both day 3 and day 7. For people who need to meet family responsibilities or cannot afford extended time off, those extra days matter.\n\nThe gap narrowed over time, but the very early postoperative period between days 3 and 14 is when the endoscopic approach showed its clearest advantage in pain, function, and return to work."
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Something else could explain the link between technique and recovery speed.",
+    "The study does not report total sample size or how patients were assigned to each procedure.",
+    "All three surgeons were fellowship-trained hand specialists. Results may differ in other settings."
+  ],
+  "cta": {
+    "headline": "Send this to someone facing carpal tunnel surgery",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Endoscopic carpal tunnel release is linked to less pain and faster return to work in the first two weeks after surgery compared to the open technique. A prospective multicenter study followed patients after both procedures using standardized postoperative care. Endoscopic patients had lower pain scores at days 3, 7, and 14, better early function scores, and significantly higher rates of return to work at days 3 and 7. The study appeared in the Journal of Hand Surgery Global Online and involved three fellowship-trained hand surgeons. The abstract does not specify total sample size. Full study: doi.org/10.1016/j.jhsg.2026.101104 \u2014 Send this to someone facing carpal tunnel surgery who wants to know what those first two weeks might actually feel like.",
+  "hashtag_set": "health",
+  "vet": {
+    "key": "68691744d51062e8",
+    "verdict": "HOLD",
+    "score": 46,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "note",
+        "message": "Design reads as observational (unclear); markers: cohort, associated with",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      },
+      {
+        "code": "CAUSAL_LANGUAGE_IN_OBSERVATIONAL",
+        "severity": "warn",
+        "message": "The paper's own text uses causal verbs (results in) despite an observational design. The authors are overreaching - do not repeat it.",
+        "caveat": null,
+        "draft_rule": null
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Journal of hand surgery global online' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "reversal",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "Fifty percent of endoscopic patients were back at work by day 3, versus 20 percent in the open group.",
+          "problem": "The abstract does not provide these specific percentages. It only states there was 'a significant difference (P' and mentions 'earlier rates of return to work on PODs 3 and 7 in favor of the endoscopic group' but does not give the actual percentages of 50% and 20%.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "50% returned to work by day 3",
+          "problem": "This specific percentage does not appear in the abstract. The abstract mentions earlier return to work rates but does not provide the actual percentage.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "The assumption is that once you account for surgeon skill and postoperative care, the two approaches deliver similar results in the first two weeks after surgery.",
+          "problem": "The abstract does not state this assumption. In fact, the study hypothesis was the opposite - that ECTR patients would have improved function and less pain in the very early postoperative period.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "The long-term outcomes are what matter most.",
+          "problem": "The abstract does not make this claim. The abstract emphasizes the importance of the very early postoperative period (days 3-14) for patients' ability to function, meet family responsibilities, and return to work.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Journal of Hand Surgery Global Online",
+          "problem": "The abstract does not specify the journal name. It only mentions 'Purpose' and study characteristics, not the publication venue.",
+          "severity": "minor"
+        },
+        {
+          "claim": "doi.org/10.1016/j.jhsg.2026.101104",
+          "problem": "The abstract does not provide any DOI or reference number. This appears to be invented information.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "50%",
+          "found_in_abstract": false
+        },
+        {
+          "number": "20 percent",
+          "found_in_abstract": false
+        },
+        {
+          "number": "3 (day)",
+          "found_in_abstract": true
+        },
+        {
+          "number": "7 (day)",
+          "found_in_abstract": true
+        },
+        {
+          "number": "14 (day)",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2 years",
+          "found_in_abstract": true
+        },
+        {
+          "number": "Three (surgeons)",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Fifty percent of endoscopic patients were back at work by day 3, versus 20 percent in the open group.",
+        "problem": "The abstract does not provide these specific percentages. It only states there was 'a significant difference (P' and mentions 'earlier rates of return to work on PODs 3 and 7 in favor of the endoscopic group' but does not give the actual percentages of 50% and 20%.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "50% returned to work by day 3",
+        "problem": "This specific percentage does not appear in the abstract. The abstract mentions earlier return to work rates but does not provide the actual percentage.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "The assumption is that once you account for surgeon skill and postoperative care, the two approaches deliver similar results in the first two weeks after surgery.",
+        "problem": "The abstract does not state this assumption. In fact, the study hypothesis was the opposite - that ECTR patients would have improved function and less pain in the very early postoperative period.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "doi.org/10.1016/j.jhsg.2026.101104",
+        "problem": "The abstract does not provide any DOI or reference number. This appears to be invented information.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "50%",
+        "found_in_abstract": false
+      },
+      {
+        "number": "20 percent",
+        "found_in_abstract": false
+      },
+      {
+        "number": "20",
+        "found_in_abstract": false,
+        "checked_by": "code"
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "health",
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'health'"
+  }
+}
