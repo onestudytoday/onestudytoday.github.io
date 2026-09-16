@@ -24,10 +24,43 @@ import json
 import sys
 from pathlib import Path
 
+import pytest
+
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 
 import pipeline                      # noqa: E402
 import publish as publish_mod        # noqa: E402
+
+
+@pytest.fixture(autouse=True)
+def _isolate_from_real_publish_history(tmp_path, monkeypatch):
+    """Every test in this file is about WHERE _publish_one finds its images.
+    None of them is about publish history - so none of them may read the
+    repository's real record of what has already gone live.
+
+    This is not hypothetical tidiness. The fixture post below deliberately
+    reuses the id from the 24 Aug incident, 2026-08-23-nature-e102a437,
+    because that is the incident the module docstring documents. That post
+    has since actually been published, so BOTH of the records
+    `already_published()` consults now exist in the repo:
+
+        1. data/published/2026-08-23-nature-e102a437.json  <- checked first
+        2. data/ledger.json's "posted" map
+
+    and `_publish_one` consults them before it looks at any image path. The
+    test short-circuited on "already published - NOT publishing again" and
+    died on a KeyError - but ONLY against a checkout that contains those
+    records. It passed in the working tree it was written in, where nothing
+    had been published yet, and failed in the repository it was committed
+    to. That is the same shape as the out/posts vs docs/img bug this file
+    exists to pin: two environments disagreeing about what is on disk.
+
+    Both records are isolated here, not just the one that happened to fire,
+    so no future test in this module can silently re-acquire the dependency.
+    """
+    monkeypatch.setattr(pipeline, "PUBLISHED", tmp_path / "published-isolated")
+    monkeypatch.setattr(pipeline, "load_ledger", lambda: {})
+    monkeypatch.setattr(pipeline, "save_ledger", lambda led: None)
 
 
 def _approved_post(post_id="2026-08-23-nature-e102a437", niche="nature"):

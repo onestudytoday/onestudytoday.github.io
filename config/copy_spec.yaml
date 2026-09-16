@@ -40,7 +40,13 @@ fields:
            The **highlighted** phrase carries the surprise."
 
   slide.eyebrow:
-    fixed_values: ["The setup", "What they found", "The mechanism", "Why it matters"]
+    # Kept as the union of every format's eyebrows below, because render.py
+    # turns this string into a filename and anything outside this set has
+    # never been through that path.
+    fixed_values: ["The setup", "What they found", "The mechanism", "Why it matters",
+                   "The assumption", "What the data says", "Why the difference",
+                   "What they did", "What came back", "How it works",
+                   "Why this matters", "The result", "What changes"]
 
   slide.title:
     words: [10, 20]
@@ -93,3 +99,89 @@ voice:
   second_person_ok: true
   contractions: true
   sentence_length_target: 14        # average words per sentence
+
+# ---------------------------------------------------------------------------
+# POST FORMATS
+#
+# Every post used to be built from one skeleton: "The setup" -> "What they
+# found" -> caveats -> CTA, in that order, with those exact eyebrow labels
+# baked into the drafting schema's enum. That is the single biggest reason the
+# copy reads as machine-written. Fifteen posts deep, the grid is visibly a
+# template, and no amount of word-level polish fixes a repeated shape.
+#
+# So there are now four skeletons and the pipeline rotates them. `shape` and
+# `cta_shape` go into the drafting prompt; `eyebrows` becomes the JSON schema
+# enum for that draft, so the model physically cannot emit labels from a
+# different format and quietly drift back to the default one.
+#
+# Adding a format: add the eyebrows to fields."slide.eyebrow".fixed_values as
+# well. render.py lowercases the eyebrow into a PNG filename, so keep them
+# ASCII, no punctuation, no slashes.
+# ---------------------------------------------------------------------------
+formats:
+
+  - name: explainer
+    eyebrows: ["The setup", "What they found", "The mechanism", "Why it matters"]
+    shape: >-
+      Open on why the question matters and the tension the study resolves,
+      then deliver the result.
+    cta_shape: >-
+      Name the single thing a reader now knows that they did not know before
+      opening the post.
+
+  - name: reversal
+    eyebrows: ["The assumption", "What the data says", "Why the difference",
+               "Why it matters"]
+    shape: >-
+      Open on what a reasonable person would assume is true here - stated
+      plainly and without strawmanning it - then show what was actually
+      measured. The gap between the two IS the post. Do not manufacture a
+      reversal: if the study confirms the obvious, say so and make the
+      interesting part how precisely it was pinned down.
+    cta_shape: >-
+      Address the reader who held the assumption, without mocking them.
+
+  - name: procedural
+    eyebrows: ["What they did", "What came back", "How it works", "Why it matters"]
+    shape: >-
+      Open on the concrete thing the researchers physically did - who, how
+      many, for how long, in what - before any interpretation. Method first,
+      motivation second. This is the format that earns trust, so keep the
+      numbers close to the verbs.
+    cta_shape: >-
+      Point at the part of the method a sceptic would want to check.
+
+  - name: stakes
+    eyebrows: ["Why this matters", "The result", "What changes", "Why it matters"]
+    shape: >-
+      Open on the concrete consequence for one identifiable person, then the
+      finding, then how much it actually moves. Be honest about the size of
+      the effect; a small effect stated exactly is more interesting than a
+      large one implied.
+    cta_shape: >-
+      Name who specifically should see this and why it is relevant to them.
+
+# ---------------------------------------------------------------------------
+# THE CTA SLIDE
+#
+# Rewritten to ask for a SEND rather than a follow. As of 2026 shares and
+# sends to DMs are the most heavily weighted ranking signal on Instagram, with
+# saves and comments behind them and likes close to noise - and this account's
+# content ("one real study, stated honestly") is unusually well suited to
+# being forwarded to a specific person. Nothing in the old CTA asked for that.
+#
+# The send prompt must NAME the study's subject. A generic "send this to a
+# friend" is filler, fits any post on the account, and is rejected by
+# style.py's cta check. Specificity is also what makes a send actually happen:
+# people forward things to a particular person for a particular reason.
+# ---------------------------------------------------------------------------
+cta:
+  ask: send
+  rules:
+    - "cta.headline asks the reader to send the post to a specific kind of
+       person, and names something concrete from THIS study."
+    - "Never 'send this to a friend' or 'tag someone who' - name the person by
+       what they believe, argue, worry about, or keep bringing up."
+    - "cta.sub carries the brand line and the link promise, not the ask."
+    - "Never 'Follow for ...'. The follow is earned by the other six slides."
+  sub_default: "One real study, every weekday. The full paper is linked in bio."

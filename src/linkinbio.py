@@ -671,6 +671,39 @@ def _newest_pub_date(posts: List[Dict[str, Any]]) -> str:
     return max(dates) if dates else ""
 
 
+def last_publish_date(posts: List[Dict[str, Any]]) -> date:
+    """The date the most recent post actually went live on Instagram.
+
+    This is what the footer's "Updated automatically when a post publishes"
+    line is CLAIMING to show, and it used to show `utcnow().date()` instead -
+    the moment the page was regenerated, which is a different thing.
+
+    That was not merely imprecise, it was expensive. The page is rebuilt on
+    every scheduled-publish run, so the first rebuild after UTC midnight
+    changed the date string on index.html and all three small-print pages,
+    produced a real diff, and got committed. One junk commit per day, forever,
+    each one changing four files, each one triggering a CI run on push, all of
+    it inflating a history that a fetch-depth:0 clone re-downloads on every
+    poll. 365 commits a year that said nothing happened.
+
+    Reading it from the newest `published.at` means the line is true AND the
+    file only changes when a post actually publishes - the same principle
+    sitemap_xml's lastmod already follows ("the file only claims a change when
+    there actually was one"). Note this is the POST's publish timestamp, not
+    `study.pub_date`, which is when the journal published the paper.
+    """
+    stamps = []
+    for p in posts:
+        at = _iso_date((p.get("published") or {}).get("at"))
+        if at:
+            stamps.append(at)
+    if not stamps:
+        # Nothing published yet: fall back to today. There is no publish
+        # history to be stale against, and an empty footer date is worse.
+        return datetime.utcnow().date()
+    return datetime.strptime(max(stamps), "%Y-%m-%d").date()
+
+
 def sitemap_xml(posts: List[Dict[str, Any]], base: Optional[str] = None) -> str:
     """The sitemap document as a string.
 
@@ -849,7 +882,9 @@ def build() -> str:
             f"each with a direct link to the original paper, its journal and "
             f"its publication date. Vetted for retractions and preprints.")
     og_image = _og_image(base, posts)
-    built = datetime.utcnow().date()
+    # NOT utcnow(): see last_publish_date(). Using the build time here put a
+    # fresh date on four pages every UTC midnight and committed the diff.
+    built = last_publish_date(posts)
 
     head_seo = "\n".join([
         f'<link rel="canonical" href="{html.escape(base)}">',

@@ -23,12 +23,15 @@ CLI:
 from __future__ import annotations
 
 import argparse
+import copy
+import hashlib
 import json
 import re
 import secrets
 import sys
 import textwrap
 from dataclasses import asdict
+from datetime import date
 from typing import Any, Dict, List, Optional, Tuple
 
 import yaml
@@ -99,7 +102,7 @@ UNTRUSTED_NOTE = (
 # ---------------------------------------------------------------------------
 # Tool schema - this is what forces well-formed output
 # ---------------------------------------------------------------------------
-POST_SCHEMA = {
+_POST_SCHEMA_TEMPLATE = {
     "name": "emit_post",
     "description": "Emit the finished carousel copy for one study.",
     "input_schema": {
@@ -277,11 +280,58 @@ in the caption body. The only link in a finished post is the study link, and \
 that is added for you afterwards."""
 
 
-def build_prompt(s: Study, rep: VetReport) -> str:
+FORMATS: List[Dict[str, Any]] = SPEC["formats"]
+CTA_SPEC: Dict[str, Any] = SPEC["cta"]
+
+
+def pick_format(s: Study, when: Optional[date] = None) -> Dict[str, Any]:
+    """Which post skeleton this draft uses.
+
+    Deterministic, so a given study on a given day always produces the same
+    format and the tests do not need to stub a random source.
+
+    The date ordinal is the primary term, so consecutive weekdays cycle
+    through different skeletons and the grid stops looking like a template -
+    which is the entire point. The study key is mixed in as a secondary term
+    so that redrafting the same day (which happens: the drafting workflow gets
+    run several times in a row when the first study is not interesting enough)
+    does not hand back the same shape every time.
+    """
+    when = when or date.today()
+    salt = int(hashlib.sha1(str(s.key).encode()).hexdigest()[:4], 16)
+    return FORMATS[(when.toordinal() + salt) % len(FORMATS)]
+
+
+def build_post_schema(fmt: Dict[str, Any]) -> Dict[str, Any]:
+    """The tool schema for one draft, with THIS format's eyebrows as the enum.
+
+    The eyebrow enum used to be a module-level constant listing the single
+    skeleton's four labels, which is why every post on the account has the
+    same four. Building it per draft is what makes rotation real: the model
+    cannot emit another format's labels, so it cannot half-drift back to the
+    default shape while claiming to use a new one.
+    """
+    schema = copy.deepcopy(_POST_SCHEMA_TEMPLATE)
+    (schema["input_schema"]["properties"]["slides"]["items"]
+           ["properties"]["eyebrow"]["enum"]) = list(fmt["eyebrows"])
+    return schema
+
+
+def build_prompt(s: Study, rep: VetReport,
+                 fmt: Optional[Dict[str, Any]] = None) -> str:
     rules = "\n".join(f"  - {r}" for r in rep.draft_rules) or "  (none)"
     caveats = "\n".join(f"  - {c}" for c in rep.required_caveats) or "  (none)"
     spec = SPEC["fields"]
     fence = _fence_id()
+
+    fmt = fmt or pick_format(s)
+    fmt_name = fmt["name"]
+    fmt_shape = " ".join(str(fmt["shape"]).split())
+    cta_shape = " ".join(str(fmt["cta_shape"]).split())
+    cta_sub_default = CTA_SPEC["sub_default"]
+    ebs = list(fmt["eyebrows"])
+    eb_setup, eb_found = ebs[0], ebs[1]
+    eb_third = ebs[2] if len(ebs) > 2 else ebs[1]
 
     def rng(k):
         f = spec[k]
@@ -341,21 +391,36 @@ def build_prompt(s: Study, rep: VetReport) -> str:
         - cta.sub         : {rng('cta.sub')}
         - caption         : {rng('caption')}
 
-        STRUCTURE
-        Slide 2 must use eyebrow "The setup" and explain why anyone should care
-        about this question, ending on the tension the study resolves.
-        Slide 3 (and optionally 4) must use eyebrow "What they found" or
-        "The mechanism" and deliver the actual result with real numbers.
+        STRUCTURE - this post uses the "{fmt_name}" format
+        {fmt_shape}
+
+        Slide 2 must use eyebrow "{eb_setup}". Slide 3 (and optionally 4) must
+        use "{eb_found}" or "{eb_third}" and deliver the actual result with
+        real numbers. These labels are fixed for this format; you cannot use
+        labels from any other format.
         Add a `stat` object to whichever slide has the single most striking
         number. Only one slide gets a stat.
+
+        THE CTA SLIDE - ask for a send, not a follow
+        {cta_shape}
+        - cta.headline asks the reader to send this post to a specific kind of
+          person, and NAMES something concrete from this study. Never "send
+          this to a friend" and never "tag someone who" - identify the person
+          by what they believe, argue, worry about, or keep bringing up.
+        - cta.sub carries the brand line, not the ask. Use exactly:
+          "{cta_sub_default}"
+        - Never write "Follow for ...". The follow is earned by the other
+          slides, and asking for it costs you the send.
 
         CAPTION
         Open by restating the hook in different words than the cover slide.
         Give one extra detail that did not fit on the slides. Name the journal
         and the sample. State the main limitation in one short sentence. End
-        with the link line "Full study: {s.doi_display}" and then a short
-        question the reader can answer in four words. That link is the only web
-        address allowed anywhere in the post.
+        with the link line "Full study: {s.doi_display}" and then one sentence
+        naming the specific person the reader should send this to and why -
+        the same ask as the CTA slide, worded differently. Not a question, not
+        "thoughts?", and not a request for a follow: a send is worth more than
+        either. That link is the only web address allowed anywhere in the post.
 
         Write the post.""").replace("__OSD_STUDY_MATERIAL__", study_material)
 
@@ -488,6 +553,16 @@ def lint(post: Dict[str, Any], rep: VetReport, study: Any = None) -> List[str]:
     # it as a blocker and the post cannot be approved with a plain `approve`.
     if study is not None:
         errs += [f"GUARDRAIL {v}" for v in foreign_reference_flags(blob, study)]
+
+    # House style. Prefixed STYLE, never GUARDRAIL, and deliberately excluded
+    # from `publishable` in draft_post() - see style.py's docstring. These are
+    # here so they reach the repair loop, which is the only mechanism in this
+    # pipeline that has ever actually changed how the copy reads. They must
+    # not reach review.blockers(), which counts GUARDRAIL and missing forced
+    # caveats; a tone note sitting in the same list as "this post implies a
+    # mouse result applies to humans" devalues the list that matters.
+    from style import style_flags
+    errs += [f"STYLE {v}" for v in style_flags(post, study)]
 
     # every required caveat must be represented
     for req in rep.required_caveats:
@@ -721,9 +796,17 @@ def audit(post: Dict[str, Any], s: Study) -> Dict[str, Any]:
 # ---------------------------------------------------------------------------
 # The main entry point
 # ---------------------------------------------------------------------------
-def draft_post(s: Study, rep: VetReport, run_audit: bool = True) -> Dict[str, Any]:
-    prompt = build_prompt(s, rep)
-    post = _call_tool(SYSTEM, prompt, POST_SCHEMA)
+def draft_post(s: Study, rep: VetReport, run_audit: bool = True,
+               fmt: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    # One format per draft, chosen here and used by BOTH the prompt and the
+    # tool schema. They have to agree: the prompt names the eyebrows and the
+    # schema enum enforces them, so picking independently in two places would
+    # produce a draft that can never satisfy its own schema.
+    fmt = fmt or pick_format(s)
+    schema = build_post_schema(fmt)
+
+    prompt = build_prompt(s, rep, fmt)
+    post = _call_tool(SYSTEM, prompt, schema)
 
     errs = lint(post, rep, s)
     rounds = 0
@@ -735,7 +818,7 @@ def draft_post(s: Study, rep: VetReport, run_audit: bool = True) -> Dict[str, An
                   + "\n\nPrevious draft:\n" + json.dumps(post, indent=2)
                   + "\n\nFix every issue and emit the corrected post. Keep everything "
                     "that was not flagged.")
-        post = _call_tool(SYSTEM, repair, POST_SCHEMA)
+        post = _call_tool(SYSTEM, repair, schema)
         errs = lint(post, rep, s)
 
     audit_res = audit(post, s) if run_audit else {"supported": None,
@@ -758,13 +841,25 @@ def draft_post(s: Study, rep: VetReport, run_audit: bool = True) -> Dict[str, An
         if n["number"] not in already:
             bad_numbers.append(n)
 
+    # STYLE flags drive the repair loop above but do not decide publishability.
+    # A post can be accurate, fully caveated and still have a slightly limp
+    # CTA; that is worth telling the model about and not worth blocking a
+    # scientifically sound post over. Everything else in `errs` still counts.
+    hard_errs = [e for e in errs if not e.startswith("STYLE ")]
+
     return assemble(s, rep, post, {
+        # Recorded so performance can later be correlated with post shape.
+        # metrics.jsonl already carries niche and publish hour; without this,
+        # "does the reversal format actually do better?" is unanswerable.
+        "format": fmt["name"],
         "lint_errors": errs,
+        "style_flags": [e[len("STYLE "):] for e in errs
+                        if e.startswith("STYLE ")],
         "repair_rounds": rounds,
         "audit": audit_res,
         "blocking_claims": blocking,
         "unverified_numbers": bad_numbers,
-        "publishable": (not errs) and (not blocking) and (not bad_numbers),
+        "publishable": (not hard_errs) and (not blocking) and (not bad_numbers),
     })
 
 

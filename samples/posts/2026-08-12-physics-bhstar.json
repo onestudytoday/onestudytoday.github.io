@@ -14,7 +14,7 @@
     "n": null
   },
   "cover": {
-    "kicker": "Nature \u00b7 JWST, cosmic dawn",
+    "kicker": "Nature · JWST, cosmic dawn",
     "headline": "Solar-system sized, outshining every star we know of. **And it is not a star.**"
   },
   "slides": [
@@ -39,8 +39,8 @@
     "Mass estimates for objects this far away carry wide error bars that headlines tend to drop."
   ],
   "cta": {
-    "headline": "One real study. Every weekday.",
-    "sub": "Follow for science you can actually check. Every paper linked in bio."
+    "headline": "Send this to whoever insists red dots are galaxies",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
   },
   "caption": "The little red dots have been the most annoying thing in astronomy for three years. Webb sees them everywhere in the early universe and nothing explained them cleanly.\n\nThis paper describes MoM-BH*-1, seen as it was roughly 660 million years after the Big Bang. Spectroscopy rules out dust as the source of its redness, because the light disappears at wavelengths where dust would let it through and dense hydrogen would not. Modelling points to an accreting black hole wrapped in a thick gas envelope, radiating far more than fusion could ever manage from an object that size.\n\nHold it loosely. This is one object, and the case rests on model fitting.\n\nFull study: doi.org/10.1038/s41586-026-10846-4\n\nStar, or something new?",
   "hashtag_set": "physics",

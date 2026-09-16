@@ -14,7 +14,7 @@
     "n": 12
   },
   "cover": {
-    "kicker": "Nature \u00b7 12 human brains",
+    "kicker": "Nature · 12 human brains",
     "headline": "Zapping the brain doesn't just fire neurons. **It changes which genes they switch on.**"
   },
   "slides": [
@@ -39,8 +39,8 @@
     "This captures hours of stimulation. Real patients get years, and nobody knows what that does."
   ],
   "cta": {
-    "headline": "One real study. Every weekday.",
-    "sub": "Follow for science you can actually check. Every paper linked in bio."
+    "headline": "Send this to anyone who thinks brain stimulation is crude",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
   },
   "caption": "We have been putting electrodes into human brains for decades without a solid molecular account of why it works. This paper goes and looks.\n\nTwelve patients undergoing epilepsy surgery had a region of cortex stimulated, and the team then read the genetic activity of that exact tissue, with eight more patients supplying validation data. Stimulation strengthened 19 memory-encoding cell assemblies and triggered distinct transcriptional programs in neurons and in astrocytes.\n\nThat second half matters. Astrocytes were treated as passive scaffolding for most of the last century, and here they are, running plasticity genes.\n\nLimits worth holding onto: twelve people, all with epilepsy, temporal cortex only, and only the first few hours of stimulation.\n\nFull study: doi.org/10.1038/s41586-026-10879-9\n\nSurprised, or not surprised?",
   "hashtag_set": "psych",

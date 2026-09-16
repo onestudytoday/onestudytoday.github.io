@@ -16,6 +16,7 @@ import json
 import re
 import sys
 import xml.etree.ElementTree as ET
+from datetime import datetime
 from pathlib import Path
 
 import pytest
@@ -383,3 +384,97 @@ def test_site_url_is_derived_from_public_image_base_without_settings(monkeypatch
     monkeypatch.delenv("SITE_URL", raising=False)
     monkeypatch.delenv("PUBLIC_IMAGE_BASE", raising=False)
     assert linkinbio.site_url() == linkinbio.DEFAULT_SITE_URL
+
+
+# ---------------------------------------------------------------------------
+# 8. Build determinism / no-op churn
+#
+# The page is rebuilt on every scheduled-publish run. Anything in it that
+# varies with WALL-CLOCK rather than with content turns every rebuild into a
+# real diff, which gets committed, which triggers CI on push, which inflates a
+# history that a fetch-depth:0 clone re-downloads on the next poll.
+#
+# That is not hypothetical: the footer carried utcnow().date(), so the first
+# rebuild after each UTC midnight rewrote the date on index.html and all three
+# small-print pages and committed it. 365 commits a year saying nothing
+# happened. Caught by reading the actual commit history, not the code.
+# ---------------------------------------------------------------------------
+def test_rebuilding_across_a_utc_midnight_produces_identical_bytes(site, monkeypatch):
+    """Two scheduled-publish runs on either side of UTC midnight, no new post
+    in between, must produce byte-identical pages.
+
+    Building twice in the same second proves almost nothing - that version of
+    this test passed even with the wall-clock bug in place. The day boundary
+    is the thing that actually triggered it, so the day boundary is what gets
+    simulated here.
+    """
+    published = {
+        "id": "2026-06-01-nature-deadbeef",
+        "niche": "nature",
+        "study": {"title": "A study", "journal": "Nature",
+                  "pub_date": "2026-06-01", "pub_date_display": "Jun 1, 2026",
+                  "doi": "10.1000/x", "url": "https://example.org/x",
+                  "is_preprint": False},
+        "published": {"media_id": "1", "kind": "CAROUSEL",
+                      "at": "2026-06-02T10:00:00Z"},
+    }
+    site.add(published)
+
+    def _freeze(when):
+        class _FakeDatetime(datetime):
+            @classmethod
+            def utcnow(cls):
+                return when
+        monkeypatch.setattr(linkinbio, "datetime", _FakeDatetime)
+
+    _freeze(datetime(2026, 6, 10, 23, 59, 0))
+    site.build()
+    before = {p.name: p.read_bytes()
+              for p in sorted(site.docs_dir.glob("*.html"))}
+    assert before, "expected some pages to be built"
+
+    _freeze(datetime(2026, 6, 11, 0, 1, 0))      # same repo, next UTC day
+    site.build()
+    after = {p.name: p.read_bytes()
+             for p in sorted(site.docs_dir.glob("*.html"))}
+
+    assert before.keys() == after.keys()
+    for name in before:
+        assert before[name] == after[name], (
+            f"{name} changed across UTC midnight with no new post - "
+            f"this is the junk-commit-per-day bug coming back")
+
+
+def test_the_footer_date_is_the_last_publish_not_todays_date(site):
+    """The footer says "Updated automatically when a post publishes". It must
+    therefore show when a post last published - not when the page last got
+    regenerated, which is a different thing and changes every day."""
+    old = {
+        "id": "2026-06-01-nature-deadbeef",
+        "niche": "nature",
+        "study": {"title": "An older study", "journal": "Nature",
+                  "pub_date": "2026-06-01", "pub_date_display": "Jun 1, 2026",
+                  "doi": "10.1000/old", "url": "https://example.org/old",
+                  "is_preprint": False},
+        "published": {"media_id": "1", "kind": "CAROUSEL",
+                      "at": "2026-06-02T10:00:00Z"},
+    }
+    site.add(old)
+    site.build()
+
+    today = datetime.utcnow().date().isoformat()
+    assert linkinbio.last_publish_date([old]).isoformat() == "2026-06-02"
+    # The publish date appears in the footer; today's date does not.
+    assert 'datetime="2026-06-02"' in site.html
+    if today != "2026-06-02":
+        assert f'<time datetime="{today}">' not in site.html, \
+            "footer is still keyed to wall-clock time"
+
+
+def test_with_nothing_published_the_footer_falls_back_to_today(site):
+    """No publish history to be stale against, so today is the honest answer -
+    and an empty date would be worse than a fresh one."""
+    site.build()
+    today = datetime.utcnow().date()
+    assert linkinbio.last_publish_date([]) == today
+    assert f'<time datetime="{today.isoformat()}">' in site.html
