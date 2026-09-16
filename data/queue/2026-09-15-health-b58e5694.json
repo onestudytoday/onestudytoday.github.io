@@ -1,0 +1,160 @@
+{
+  "id": "2026-09-15-health-b58e5694",
+  "niche": "health",
+  "study": {
+    "key": "b58e56943f469d02",
+    "title": "Global biogeography of &lt;i&gt;Bifidobacterium infantis&lt;/i&gt;: stratification and precision probiotic design",
+    "journal": "Gut microbes",
+    "pub_date": "2026-09-15",
+    "pub_date_display": "Sep 15, 2026",
+    "doi": "10.1080/19490976.2026.2732532",
+    "doi_display": "doi.org/10.1080/19490976.2026.2732532",
+    "url": "https://doi.org/10.1080/19490976.2026.2732532",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Deng X",
+      "Yang J."
+    ]
+  },
+  "cover": {
+    "kicker": "Gut Microbes \u2022 global genomics",
+    "headline": "The **baby probiotic strains sold worldwide** were all isolated from infants in wealthy countries."
+  },
+  "slides": [
+    {
+      "eyebrow": "The assumption",
+      "title": "If a strain works in clinical trials, it should work for babies everywhere.",
+      "body": "Commercial probiotic products containing Bifidobacterium infantis and B. longum are marketed globally as universal solutions for infant gut health. The strains inside them come from a small pool of historical isolates, nearly all collected from infants in high-income countries decades ago.\n\nThe working assumption has been that these pioneer colonizers are functionally similar across populations, so a strain validated in one region should transplant successfully to another."
+    },
+    {
+      "eyebrow": "What the data says",
+      "title": "A genomic atlas of 4098 strains from 48 countries revealed profound biogeographic stratification.",
+      "body": "Researchers expanded low- and middle-income country representation by 12- to 17-fold, then mapped high-resolution evolutionary and functional variation across the global collection. B. infantis and B. longum turned out to be distinct species with divergent evolutionary histories.\n\nMore importantly, strains showed diet-driven metabolic adaptations at the biogeographic level. The natural diversity circulating in LMICs had been almost entirely absent from the genomic record that shaped current probiotic design.",
+      "stat": {
+        "value": "4098",
+        "label": "genomes analyzed from 48 countries"
+      }
+    },
+    {
+      "eyebrow": "Why it matters",
+      "title": "Current probiotic strains may be mismatched to the infants who need them most.",
+      "body": "If strain-level metabolic function is shaped by local diet and geography, then exporting a handful of strains from high-income settings ignores the biological context in which they evolved. The atlas provides a blueprint for developing geographically matched therapeutics tailored to diverse infant populations.\n\nThis is not an argument against probiotics. It is an argument for precision: the right strain for the right population, informed by the genomic diversity that actually exists in that region."
+    }
+  ],
+  "caveats": [
+    "This is a genomic analysis, not a clinical trial comparing probiotic efficacy across populations.",
+    "The study does not identify which specific adaptations matter most for health outcomes in different regions."
+  ],
+  "cta": {
+    "headline": "Send this to the probiotic universalist",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Most baby probiotics on the market were designed from a vanishingly small genetic sample. The strains inside them come from historical isolates collected almost exclusively in high-income countries, yet they are sold as universal solutions. A new genomic atlas assembled 4098 high-quality Bifidobacterium genomes from 48 countries, expanding representation from low- and middle-income regions by more than a factor of ten. The analysis revealed biogeographic stratification and diet-driven metabolic adaptations that challenge the one-size-fits-all model. Published in Gut Microbes. This is a genomic survey, not a head-to-head clinical comparison. Full study: doi.org/10.1080/19490976.2026.2732532 \u2014 Send this to anyone still assuming that a probiotic validated in California will work the same way in Kampala.",
+  "hashtag_set": "health",
+  "vet": {
+    "key": "b58e56943f469d02",
+    "verdict": "PASS",
+    "score": 56,
+    "flags": [
+      {
+        "code": "HYPE_LANGUAGE",
+        "severity": "note",
+        "message": "Paper text contains hype words: unprecedented",
+        "caveat": null,
+        "draft_rule": "Do not reuse the paper's promotional wording."
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": 3,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [
+      "Do not reuse the paper's promotional wording."
+    ],
+    "notes": []
+  },
+  "qa": {
+    "format": "reversal",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 0,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "If a strain works in clinical trials, it should work for babies everywhere.",
+          "problem": "The abstract does not make this claim. In fact, the abstract's findings challenge current probiotic strains and call for geographically matched therapeutics, which contradicts the universality implied here. This appears to be a position the copy is setting up to refute, but it's presented as a factual statement without clear framing as a contested assumption.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Commercial probiotic products containing Bifidobacterium infantis and B. longum are marketed globally as universal solutions for infant gut health.",
+          "problem": "The abstract does not state that commercial products are marketed as universal solutions or discuss marketing claims at all.",
+          "severity": "minor"
+        },
+        {
+          "claim": "The strains inside them come from a small pool of historical isolates, nearly all collected from infants in high-income countries decades ago.",
+          "problem": "The abstract says current genomic understanding is biased toward historical isolates from HICs, but does not specify that strains in commercial products come from these isolates, nor that they were collected 'decades ago' or 'nearly all' from HICs.",
+          "severity": "minor"
+        },
+        {
+          "claim": "The working assumption has been that these pioneer colonizers are functionally similar across populations, so a strain validated in one region should transplant successfully to another.",
+          "problem": "The abstract does not describe this as a working assumption in the field. It only states that findings 'challenge the suitability of current probiotic strains.'",
+          "severity": "minor"
+        },
+        {
+          "claim": "doi.org/10.1080/19490976.2026.2732532",
+          "problem": "The abstract does not provide a DOI or any publication identifier. This appears to be invented.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Send this to anyone still assuming that a probiotic validated in California will work the same way in Kampala.",
+          "problem": "The abstract does not mention California or Kampala. This is a specific geographic comparison not present in the source material.",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "4098",
+          "found_in_abstract": true
+        },
+        {
+          "number": "48",
+          "found_in_abstract": true
+        },
+        {
+          "number": "12- to 17-fold",
+          "found_in_abstract": true
+        },
+        {
+          "number": "12",
+          "found_in_abstract": true
+        },
+        {
+          "number": "17",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "doi.org/10.1080/19490976.2026.2732532",
+        "problem": "The abstract does not provide a DOI or any publication identifier. This appears to be invented.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "health",
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'health'"
+  }
+}
