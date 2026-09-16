@@ -1,0 +1,76 @@
+name: Record post performance
+
+# Takes a reading of every published post at +24h and +72h and appends it to
+# data/metrics.jsonl.
+#
+# This exists because publish.insights() has always been able to fetch these
+# numbers and nothing ever kept them, so the account could not answer either
+# of the two questions it actually has: whether 07:00 is really its best slot
+# (PUBLISH_TIMES is a guess from docs/GROWTH.md, written before the account
+# had a follower), and which post deserves the ad budget.
+#
+# Runs twice a day rather than hourly. Snapshots are due at fixed AGES, not at
+# fixed times, so the only thing a higher frequency buys is a tighter window
+# around each age - and src/metrics.py records the true age on every row
+# anyway, so a reading taken a few hours late is still usable and is flagged
+# as such.
+#
+# It can never interfere with publishing: separate workflow, separate job,
+# read-only against the Graph API, and metrics.collect() does not raise.
+
+on:
+  schedule:
+    - cron: "20 13 * * *"      # 08:20 America/Chicago (CDT)
+    - cron: "20 1 * * *"       # 20:20 America/Chicago (CDT)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: collect-metrics
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Take any snapshots that are due
+        env:
+          META_APP_ID: ${{ secrets.META_APP_ID }}
+          META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_BUSINESS_ACCOUNT_ID: ${{ secrets.IG_BUSINESS_ACCOUNT_ID }}
+        run: python src/metrics.py collect
+
+      - name: Commit any new rows
+        run: |
+          set -uo pipefail
+          git config user.name "onestudytoday-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/metrics.jsonl || true
+          # No new rows is the normal outcome most of the time - a post is
+          # only measured twice in its life. Committing nothing must be a
+          # silent success, not a failure.
+          if git diff --cached --quiet; then
+            echo "no new snapshots"
+            exit 0
+          fi
+          git commit -m "metrics: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          # data/metrics.jsonl is append-only, so a rejected push is resolved
+          # by rebasing our appended lines on top of whatever landed first.
+          for i in 1 2 3; do
+            if git push; then exit 0; fi
+            git pull --rebase --autostash || true
+          done
+          echo "could not push metrics after 3 attempts" >&2
+          exit 1

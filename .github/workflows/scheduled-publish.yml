@@ -2,9 +2,9 @@ name: Publish approved posts
 
 # Publishes whatever is approved and past its niche's peak-engagement slot
 # (docs/GROWTH.md's weekly rhythm table), independent of when you actually
-# reviewed it. Runs every 15 minutes rather than at one exact cron time, so
-# it is never pinned to a UTC offset that drifts across daylight saving - the
-# actual time check happens in Python against America/Chicago (see
+# reviewed it. Runs hourly rather than at one exact cron time, so it is never
+# pinned to a UTC offset that drifts across daylight saving - the actual time
+# check happens in Python against America/Chicago (see
 # pipeline.publish_scheduled / pipeline.PUBLISH_TIMES).
 #
 # Run it by hand (Actions -> Publish approved posts -> Run workflow) to
@@ -13,7 +13,29 @@ name: Publish approved posts
 
 on:
   schedule:
-    - cron: "*/15 * * * *"
+    # Hourly, on the hour - deliberately matched to PUBLISH_TIMES, which are
+    # all whole hours (07:00 / 09:00 / 12:00 America/Chicago). So a post that
+    # is waiting for its slot goes out on the very run that its slot opens;
+    # the old */15 bought nothing extra at the slot itself.
+    #
+    # It replaces "*/15 * * * *" = 96 runs a day, ~672 a week, of which
+    # essentially all did nothing. That was free (public repo, unlimited
+    # Actions minutes) but not costless: each run is a full fetch-depth:0
+    # clone of a repo that keeps accumulating committed JPEGs, and 96 green
+    # no-op runs a day is the reason a genuinely failing workflow can sit
+    # unnoticed for weeks. 168 runs a week instead - a 75% cut.
+    #
+    # NOT narrowed to the slot hours, even though that would cut far more.
+    # The recorded behaviour is that a post approved AFTER its slot publishes
+    # on the very next poll rather than waiting for tomorrow, and the actual
+    # commit history shows approvals landing anywhere from 08:00 to 22:00
+    # Central. A slot-hours-only window would silently hold those until the
+    # next morning.
+    #
+    # If you ever see GitHub drop the :00 run (scheduled workflows are
+    # best-effort and :00 is the most contended minute of the hour), add a
+    # second entry `- cron: "30 * * * *"` for a mid-hour retry.
+    - cron: "0 * * * *"
   workflow_dispatch:
 
 permissions:
