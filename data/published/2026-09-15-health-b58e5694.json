@@ -151,7 +151,7 @@
     "unverified_numbers": [],
     "publishable": false
   },
-  "status": "approved",
+  "status": "published",
   "source_niche": "health",
   "reel_status": {
     "built": false,
@@ -159,5 +159,19 @@
   },
   "review": {
     "forced": true
+  },
+  "published": {
+    "media_id": "17965923192177709",
+    "kind": "CAROUSEL",
+    "at": "2026-09-16T23:28:14Z"
+  },
+  "crosspost": {
+    "at": "2026-09-16T23:28:14Z",
+    "posted": [],
+    "skipped": [
+      "bluesky",
+      "threads"
+    ],
+    "failed": {}
   }
 }
