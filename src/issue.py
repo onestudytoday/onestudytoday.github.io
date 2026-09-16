@@ -50,6 +50,24 @@ def _defang(text: Any) -> str:
     return t
 
 
+def _reel_line(post: Dict[str, Any]) -> str:
+    """One line on the review card saying whether this post has a Reel.
+
+    Reels shipped on 31 Aug and silently built nothing for weeks: the skip and
+    the failure paths both only printed to a workflow log. Putting the answer
+    on the card is what turns "Reels are on" into something checkable from a
+    phone rather than something taken on trust.
+    """
+    st = post.get("reel_status")
+    if not isinstance(st, dict):
+        # Drafted before reel_status existed, or by skeleton().
+        return "yes" if post.get("reel") else "unknown (drafted before this was recorded)"
+    if st.get("built"):
+        mb = (st.get("bytes") or 0) / 1e6
+        return f"**yes** - {st.get('duration')}s, {mb:.1f}MB"
+    return f"no - {_defang(st.get('reason', 'unknown'))}"
+
+
 def build(post: Dict[str, Any], image_base: str) -> str:
     st = post["study"]
     vet = post.get("vet", {}) or {}
@@ -96,6 +114,8 @@ design: `{vet.get('design')}` · subjects: `{vet.get('subjects')}` · n: `{vet.g
 | numbers not found in abstract | {len(qa.get('unverified_numbers', []) or [])} |
 | caption length | {cs['chars']} / 2200 |
 | hashtags | {cs['hashtags']} |
+| format | {qa.get('format', 'explainer')} |
+| reel | {_reel_line(post)} |
 
 <details><summary>Full caption</summary>
 

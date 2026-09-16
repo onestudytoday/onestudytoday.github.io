@@ -198,17 +198,48 @@ def run(niche: Optional[str] = None, days: Optional[int] = None, limit: int = 1,
         # committed and already served by Pages before publishing names that
         # URL. See build_reel()'s docstring. Never fatal: a post with no Reel
         # still publishes perfectly well as a carousel.
-        if wants_reel(niche):
+        # The reel decision is RECORDED, not just logged.
+        #
+        # Reels shipped on 31 Aug and not one has ever been built. Two Friday
+        # wildcard posts were drafted after that date, both correctly carrying
+        # niche="wildcard", and neither has a reel: the build was either
+        # skipped by configuration or it threw, and both paths only ever said
+        # so on one line of a workflow log nobody reads. From the outside the
+        # feature looked enabled and was doing nothing - the exact silent-
+        # failure shape this repo keeps rediscovering.
+        #
+        # So every post now carries why it does or does not have a Reel, the
+        # review issue prints it, and "Reels are on" becomes a claim you can
+        # check from your phone instead of one you have to take on trust.
+        allowed = reel_niches()
+        if not allowed:
+            post["reel_status"] = {
+                "built": False,
+                "reason": "REEL_NICHES is set to off/none, so no post gets a Reel"}
+        elif not wants_reel(niche):
+            post["reel_status"] = {
+                "built": False,
+                "reason": f"REEL_NICHES={sorted(allowed)} does not include "
+                          f"this post's niche '{niche}'"}
+        else:
             try:
                 info = build_reel(post["id"], bg=post.get("theme", {}).get("bg")
                                   or DEFAULT_BG, images=[Path(p) for p in paths])
                 post["reel"] = {"path": info["path"], "duration": info["duration"],
                                 "bytes": info["bytes"]}
+                post["reel_status"] = {
+                    "built": True, "duration": info["duration"],
+                    "bytes": info["bytes"]}
                 print(f"           -> reel {info['duration']}s "
                       f"{info['bytes'] / 1e6:.1f}MB")
             except Exception as e:
+                post["reel_status"] = {
+                    "built": False,
+                    "reason": f"build failed: {type(e).__name__}: {e}"}
                 print(f"           ! reel build failed, will publish as a "
                       f"carousel instead: {e}")
+        if not post["reel_status"]["built"]:
+            print(f"           -> no reel: {post['reel_status']['reason']}")
 
         (QUEUE / f"{post['id']}.json").write_text(json.dumps(post, indent=2))
 

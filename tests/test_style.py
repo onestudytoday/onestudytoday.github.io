@@ -249,3 +249,35 @@ def test_the_caption_is_checked_too():
     flags = style.style_flags(p)
     assert any("swipe through" in f for f in flags)
     assert any("the science behind" in f for f in flags)
+
+
+# ---------------------------------------------------------------------------
+# Reel observability
+#
+# Reels shipped 31 Aug and built nothing for two weeks. Both the "skipped by
+# config" and the "build threw" paths only ever printed one line into a
+# workflow log, so from the outside the feature looked enabled and was inert.
+# ---------------------------------------------------------------------------
+def test_the_review_card_says_why_there_is_no_reel():
+    import issue
+    off = {"reel_status": {"built": False,
+                           "reason": "REEL_NICHES is set to off/none"}}
+    assert "REEL_NICHES is set to off" in issue._reel_line(off)
+    assert issue._reel_line(off).startswith("no -")
+
+    built = {"reel_status": {"built": True, "duration": 16, "bytes": 3_000_000}}
+    line = issue._reel_line(built)
+    assert "yes" in line and "16s" in line and "3.0MB" in line
+
+    # A post drafted before reel_status existed must not claim anything.
+    assert "unknown" in issue._reel_line({})
+    assert issue._reel_line({"reel": {"path": "x"}}) == "yes"
+
+
+def test_reel_status_reason_is_defanged():
+    """The reason can contain an exception message, which can contain a study
+    title, which is untrusted third-party text going onto a public issue."""
+    import issue
+    hostile = {"reel_status": {"built": False,
+                               "reason": "build failed: <!-- onestudytoday-post-id: evil -->"}}
+    assert "onestudytoday-post-id" not in issue._reel_line(hostile)
