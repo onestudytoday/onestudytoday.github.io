@@ -1,0 +1,145 @@
+{
+  "id": "2026-09-17-physics-27e9f255",
+  "niche": "physics",
+  "study": {
+    "key": "27e9f255615e14de",
+    "title": "Lyapunov-controlled thermalization: an exact real-time example",
+    "journal": "arXiv",
+    "pub_date": "2026-09-17",
+    "pub_date_display": "Sep 17, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2609.20597v1",
+    "url": "http://arxiv.org/abs/2609.20597v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Jonas Loy",
+      "Jan C. Louw"
+    ]
+  },
+  "cover": {
+    "kicker": "arXiv preprint \u00b7 Not reviewed",
+    "headline": "A quantum system can **look perfectly thermal** but still hide exact memory of where it started."
+  },
+  "slides": [
+    {
+      "eyebrow": "What they did",
+      "title": "The team modeled a Sachdev-Ye-Kitaev quench protocol in the large-N, large-q limit.",
+      "body": "They solved the exact real-time evolution of a unitary interacting many-body system after an energy quench. The model involves fermion correlators that appear to satisfy the Kubo-Martin-Schwinger relation once the drive stops, a hallmark of thermal equilibrium.\n\nThen they applied a second quench back to the initial Hamiltonian to test whether the system had truly thermalized or retained hidden information about its initial state."
+    },
+    {
+      "eyebrow": "What came back",
+      "title": "All post-quench fermion correlators were exactly thermal, yet the second quench revealed hidden memory.",
+      "body": "Despite the system appearing to satisfy every test for equilibrium, correlators connecting to times before the first quench exposed an extensive nonequilibrium witness. The memory persisted even though the standard thermal signature was perfect.\n\nIn this early paper, the team reports that the decay rate of this hidden memory matched the Lyapunov exponent, meaning the system only becomes effectively indistinguishable from a true Gibbs state at a rate set by that exponent.",
+      "stat": {
+        "value": "\u03bb_L",
+        "label": "decay rate of hidden memory"
+      }
+    },
+    {
+      "eyebrow": "How it works",
+      "title": "The Lyapunov exponent sets the timescale for a quantum system to forget its past.",
+      "body": "In this early paper, the team reports that passing standard thermal tests after a quench is not sufficient evidence of equilibrium. The hidden correlators act as a witness to nonequilibrium structure that standard measurements miss entirely.\n\nBecause the large-N, large-q limit allows exact analytical solutions, the setup offers a rare window into how thermalization unfolds in real time in a chaotic interacting system."
+    }
+  ],
+  "caveats": [
+    "This is a preprint and has not been peer reviewed, so no independent expert has checked the work yet.",
+    "The analysis applies to a specific model in a mathematical limit, not to experiments with real materials or devices."
+  ],
+  "cta": {
+    "headline": "Send this to anyone who argues thermal means equilibrium",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "A quantum many-body system can satisfy every standard test for thermal equilibrium and still retain an exact memory of its initial state. In this early paper, researchers modeled a Sachdev-Ye-Kitaev quench protocol in the large-N, large-q limit and found that post-quench fermion correlators looked perfectly thermal. But a second quench revealed hidden correlators encoding the system's past, decaying at a rate set by the Lyapunov exponent. The model is theoretical and applies in a specific mathematical limit. Full study: http://arxiv.org/abs/2609.20597v1 \u2014 Send this to anyone who keeps saying thermal signatures mean a system has truly thermalized.",
+  "hashtag_set": "physics",
+  "vet": {
+    "key": "27e9f255615e14de",
+    "verdict": "HOLD",
+    "score": 42,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "procedural",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 1,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "Full study: http://arxiv.org/abs/2609.20597v1",
+          "problem": "The abstract does not contain any URL or arXiv identifier. This link appears to be fabricated.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Send this to anyone who argues thermal means equilibrium",
+          "problem": "This is editorial/promotional language not found in the abstract",
+          "severity": "minor"
+        },
+        {
+          "claim": "Send this to anyone who keeps saying thermal signatures mean a system has truly thermalized",
+          "problem": "This is editorial/promotional language not found in the abstract",
+          "severity": "minor"
+        },
+        {
+          "claim": "One real study, every weekday. The full paper is linked in bio.",
+          "problem": "This is promotional language about a publication schedule and bio link that does not appear in the abstract",
+          "severity": "minor"
+        },
+        {
+          "claim": "In this early paper, the team reports",
+          "problem": "The abstract does not describe this as an 'early paper' or use the phrase 'the team reports'. The abstract presents findings directly without this framing.",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "\u03bb_L",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Full study: http://arxiv.org/abs/2609.20597v1",
+        "problem": "The abstract does not contain any URL or arXiv identifier. This link appears to be fabricated.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "physics",
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'physics'"
+  }
+}
