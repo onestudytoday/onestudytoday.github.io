@@ -1,0 +1,183 @@
+{
+  "id": "2026-09-17-physics-eb42a547",
+  "niche": "physics",
+  "study": {
+    "key": "eb42a54713a2e817",
+    "title": "The axion mass in the post-inflationary scenario in a minimal scaling model",
+    "journal": "arXiv",
+    "pub_date": "2026-09-17",
+    "pub_date_display": "Sep 17, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2609.20801v1",
+    "url": "http://arxiv.org/abs/2609.20801v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Jos\u00e9 Correia",
+      "Mark Hindmarsh",
+      "Joanes Lizarraga",
+      "Asier Lopez-Eiguren",
+      "Kari Rummukainen",
+      "Jon Urrestilla"
+    ]
+  },
+  "cover": {
+    "kicker": "arXiv \u2022 Preprint simulation",
+    "headline": "If axions make up dark matter, **the particle's mass may sit near 17 microelectronvolts** in one minimal model."
+  },
+  "slides": [
+    {
+      "eyebrow": "The assumption",
+      "title": "Dark matter axions could theoretically span a vast mass range across many orders of magnitude.",
+      "body": "Axions are hypothetical particles proposed to solve problems in particle physics. If they exist and make up dark matter, their mass could fall almost anywhere across an enormous range, making them hard to hunt.\n\nMost experimental searches have to scan frequencies one narrow band at a time, so knowing where to look matters enormously. The mass depends on how and when the underlying symmetry broke in the early universe."
+    },
+    {
+      "eyebrow": "What the data says",
+      "title": "Simulations on grids of over 12 billion points put the axion mass at 17.46 microelectronvolts in this scenario.",
+      "body": "The team modeled a post-inflationary scenario where cosmic strings form and later annihilate with domain walls at the QCD transition. The decay leaves axion radiation with a specific density.\n\nIn this minimal model, the resulting dark matter axion mass is 17.46 microelectronvolts, with an uncertainty of 0.84. That corresponds to a detector resonant frequency of 4.22 gigahertz. The team argues non-minimal variants will yield predictions below about 40 microelectronvolts.",
+      "stat": {
+        "value": "17.46",
+        "label": "microelectronvolts, predicted axion mass"
+      }
+    }
+  ],
+  "caveats": [
+    "This is a preprint and has not been peer reviewed yet, so no independent experts have checked the methods or conclusions.",
+    "The result depends on which lattice calculations of topological susceptibility you use and assumptions about the minimal model structure."
+  ],
+  "cta": {
+    "headline": "Send this to anyone hunting for axion detectors",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Pinning down the axion mass narrows the experimental search window for one of the leading dark matter candidates. This preprint reports field theory simulations on grids containing more than 12 billion points, modeling how strings and domain walls decay in a post-inflationary universe. The calculation uses a minimal scaling model and the most commonly quoted lattice results for topological susceptibility. The team reports the dark matter axion mass at 17.46 microelectronvolts if this scenario is correct, corresponding to a symmetry-breaking scale around 3.27 \u00d7 10\u00b9\u00b9 gigaelectronvolts. The study is a preprint on arXiv and has not been peer reviewed. Full study: http://arxiv.org/abs/2609.20801v1 \u2014 Send this to anyone who keeps asking where experimentalists should point their haloscopes next.",
+  "hashtag_set": "physics",
+  "vet": {
+    "key": "eb42a54713a2e817",
+    "verdict": "HOLD",
+    "score": 42,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      }
+    ],
+    "design": "modelling",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "reversal",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 1,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "Full study: http://arxiv.org/abs/2609.20801v1",
+          "problem": "The abstract does not contain any arXiv identifier or URL. This specific arxiv identifier appears nowhere in the abstract.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Simulations on grids of over 12 billion points",
+          "problem": "The abstract states simulations on 12,288^3 grids. 12,288^3 equals approximately 1.86 trillion points, not 'over 12 billion'. This is off by a factor of more than 100.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "modeling how strings and domain walls decay in a post-inflationary universe",
+          "problem": "The abstract says strings and domain walls 'annihilate' (for strings) and 'decay' (for the combined system), but the copy simplifies this to just 'decay' for both, which is a minor imprecision in technical terminology.",
+          "severity": "minor"
+        },
+        {
+          "claim": "field theory simulations on grids containing more than 12 billion points",
+          "problem": "Same issue as above: 12,288^3 is approximately 1.86 trillion, not 'more than 12 billion'. The number is wrong by more than two orders of magnitude.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "17",
+          "found_in_abstract": true
+        },
+        {
+          "number": "17.46",
+          "found_in_abstract": true
+        },
+        {
+          "number": "0.84",
+          "found_in_abstract": true
+        },
+        {
+          "number": "4.22",
+          "found_in_abstract": true
+        },
+        {
+          "number": "40",
+          "found_in_abstract": true
+        },
+        {
+          "number": "3.27 \u00d7 10\u00b9\u00b9",
+          "found_in_abstract": true
+        },
+        {
+          "number": "12 billion",
+          "found_in_abstract": false
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Full study: http://arxiv.org/abs/2609.20801v1",
+        "problem": "The abstract does not contain any arXiv identifier or URL. This specific arxiv identifier appears nowhere in the abstract.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Simulations on grids of over 12 billion points",
+        "problem": "The abstract states simulations on 12,288^3 grids. 12,288^3 equals approximately 1.86 trillion points, not 'over 12 billion'. This is off by a factor of more than 100.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "field theory simulations on grids containing more than 12 billion points",
+        "problem": "Same issue as above: 12,288^3 is approximately 1.86 trillion, not 'more than 12 billion'. The number is wrong by more than two orders of magnitude.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "12 billion",
+        "found_in_abstract": false
+      },
+      {
+        "number": "0.84",
+        "found_in_abstract": false,
+        "checked_by": "code"
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "physics",
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'physics'"
+  }
+}
