@@ -141,8 +141,9 @@ def _require_ffmpeg() -> None:
     if not ffmpeg_available():
         raise ReelError(
             "ffmpeg/ffprobe not found on PATH.\n"
-            "GitHub's ubuntu-latest runners ship with ffmpeg preinstalled, so this "
-            "normally only bites locally. Install it with:\n"
+            "Do not assume a CI runner has it: ubuntu-latest has shipped "
+            "without ffmpeg, which is why daily-draft.yml installs it "
+            "explicitly rather than hoping. Install it with:\n"
             "  sudo apt-get install -y ffmpeg      (Debian/Ubuntu)\n"
             "  brew install ffmpeg                 (macOS)")
 
@@ -337,7 +338,12 @@ def build_reel(post_id: str, bg: str = DEFAULT_BG,
     mistake that stopped this account publishing anything for its first two
     weeks (out/posts/ vs docs/img/), in a new place.
     """
-    _require_ffmpeg()
+    # Argument validation FIRST, environment check second. The reverse order
+    # means a caller who passed one slide is told to install ffmpeg, which is
+    # not their problem and not the reason the call cannot succeed. It also
+    # made the "refuses fewer than two slides" test fail on any machine
+    # without ffmpeg - including CI, which does not install it - so the test
+    # was reporting on the runner's packages rather than on this function.
     check_post_id(post_id)
     paths = list(images) if images is not None else slide_paths(post_id)
     if len(paths) < 2:
@@ -345,6 +351,7 @@ def build_reel(post_id: str, bg: str = DEFAULT_BG,
             f"Need at least 2 slides to build a Reel for {post_id}, found "
             f"{len(paths)}. Looked in {DOCS / 'img' / post_id}. If the post has "
             f"not published yet its JPEGs are not committed there.")
+    _require_ffmpeg()
 
     dest = dest or (DOCS / "img" / post_id / "reel.mp4")
     slides = [Image.open(p) for p in paths]
