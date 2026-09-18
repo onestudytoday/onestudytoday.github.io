@@ -1,0 +1,150 @@
+{
+  "id": "2026-09-17-physics-0a12eb46",
+  "niche": "physics",
+  "study": {
+    "key": "0a12eb4677f01528",
+    "title": "Systematic Effects of Hydrogen and Helium Atmosphere Mismatch on Radius Inference in PSR~J0740+6620-like Synthetic NICER Data",
+    "journal": "arXiv",
+    "pub_date": "2026-09-17",
+    "pub_date_display": "Sep 17, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2609.20795v1",
+    "url": "http://arxiv.org/abs/2609.20795v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Isiah M. Holt",
+      "M. Coleman Miller",
+      "Alexander J. Dittmann",
+      "Frederick K. Lamb"
+    ]
+  },
+  "cover": {
+    "kicker": "arXiv \u00b7 Synthetic data modeling",
+    "headline": "Getting a neutron star's atmosphere wrong **can hide inside a statistically clean fit** and still bias the radius."
+  },
+  "slides": [
+    {
+      "eyebrow": "What they did",
+      "title": "The team built synthetic pulse waveforms for a 2.1 solar-mass pulsar, then analyzed them with the wrong atmospheric composition.",
+      "body": "Using synthetic data modeled on PSR J0740+6620, the researchers created pulse waveforms assuming either a hydrogen or helium atmosphere. They then analyzed each set with models that assumed the opposite composition.\n\nThe total photon count matched the real observations at around 550,000 counts. They ran the test at the actual spot-to-background ratio, then cranked that ratio up by a factor of 20 to see when composition mismatch would start causing problems."
+    },
+    {
+      "eyebrow": "What came back",
+      "title": "At the real contrast the team reports little bias, but at 20 times higher the mismatch hid inside acceptable residuals.",
+      "body": "When composition was mismatched at the observed contrast level, radius estimates stayed roughly on target. But when the researchers increased spot-to-background contrast twentyfold while holding photon count constant, the wrong atmosphere produced significantly biased radius estimates even though the fit residuals looked statistically fine.\n\nThe Bayesian evidence consistently flagged the correct atmospheric model in every test case, suggesting it's a more reliable check than residuals alone.",
+      "stat": {
+        "value": "~20\u00d7",
+        "label": "contrast boost to expose bias"
+      }
+    }
+  ],
+  "caveats": [
+    "This is a preprint and has not been peer reviewed, so no independent expert has checked the methods or conclusions yet.",
+    "The analysis used synthetic data, not real pulsar observations, so the findings describe modeling behavior rather than measured neutron star properties."
+  ],
+  "cta": {
+    "headline": "Send this to whoever keeps debating atmosphere models",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Assuming the wrong atmospheric composition for a neutron star can bias your radius estimate while leaving fit residuals looking perfectly acceptable. A team used synthetic NICER pulse data modeled on the 2.1 solar-mass pulsar PSR J0740+6620, swapping hydrogen and helium assumptions during analysis. At the real spot-to-background ratio bias stayed small, but when they increased that contrast twentyfold the mismatch produced hidden systematic error. The study appears as a preprint on arXiv using around 550,000 synthetic photon counts. Bayesian evidence identified the correct model in every case. Full study: http://arxiv.org/abs/2609.20795v1 \u2014 Send this to the person in your group who keeps arguing about which atmosphere model to trust in pulsar analysis.",
+  "hashtag_set": "physics",
+  "vet": {
+    "key": "0a12eb4677f01528",
+    "verdict": "HOLD",
+    "score": 42,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "procedural",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 1,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "Full study: http://arxiv.org/abs/2609.20795v1",
+          "problem": "The abstract does not contain any arXiv identifier or URL. This appears to be an invented reference number.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "around 550,000 counts",
+          "problem": "The abstract states '~5.5\u00d710^5' which equals 550,000, but the copy rounds this to 'around 550,000' which is acceptable simplification of the same value",
+          "severity": "minor"
+        },
+        {
+          "claim": "2.1 solar-mass pulsar",
+          "problem": "The abstract states '~2.1 M_\u2609' (approximately 2.1 solar masses), and the copy states '2.1 solar-mass' without the approximation symbol. This is acceptable simplification of the same value.",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "2.1 solar-mass",
+          "found_in_abstract": true
+        },
+        {
+          "number": "20",
+          "found_in_abstract": true
+        },
+        {
+          "number": "550,000",
+          "found_in_abstract": true
+        },
+        {
+          "number": "~20\u00d7",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Full study: http://arxiv.org/abs/2609.20795v1",
+        "problem": "The abstract does not contain any arXiv identifier or URL. This appears to be an invented reference number.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "550,000",
+        "found_in_abstract": false,
+        "checked_by": "code"
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "physics",
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'physics'"
+  }
+}
