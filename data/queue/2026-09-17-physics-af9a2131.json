@@ -1,0 +1,171 @@
+{
+  "id": "2026-09-17-physics-af9a2131",
+  "niche": "physics",
+  "study": {
+    "key": "af9a213169ec9442",
+    "title": "A counterexample to the quantum Hedetniemi conjecture",
+    "journal": "arXiv",
+    "pub_date": "2026-09-17",
+    "pub_date_display": "Sep 17, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2609.20690v1",
+    "url": "http://arxiv.org/abs/2609.20690v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Julius A. Zeiss"
+    ]
+  },
+  "cover": {
+    "kicker": "arXiv preprint \u2022 Pure mathematics",
+    "headline": "A conjecture about quantum graph coloring **lasted 12 years until this counterexample arrived.**"
+  },
+  "slides": [
+    {
+      "eyebrow": "The assumption",
+      "title": "When you multiply two graphs, the quantum coloring difficulty should match the easier factor.",
+      "body": "In quantum graph theory, researchers assumed that if you take the categorical product of two graphs, the quantum chromatic number of the product would equal whichever factor has the smaller quantum chromatic number. This seemed intuitive: the product shouldn't be harder to color than both parts.\n\nThe Hedetniemi conjecture for quantum chromatic numbers, posed by Godsil, Roberson, \u0160\u00e1mal and Severini, predicted exactly this behavior. No counterexample had been found."
+    },
+    {
+      "eyebrow": "What the data says",
+      "title": "The team reports constructing two graphs whose product is easier to color than either piece alone.",
+      "body": "The researchers built explicit finite graphs G and H where the product has a classical chromatic number of at most 1538, while both factors have quantum chromatic numbers of at least 1539. The product is strictly easier to color than either factor.\n\nThey adapted Zhu's counterexample to the classical Hedetniemi conjecture by choosing a base graph where the Lov\u00e1sz theta number of the complement is large, and extended the argument to projection operators in noncommutative C*-algebras.",
+      "stat": {
+        "value": "1538",
+        "label": "product chromatic number vs. 1539"
+      }
+    },
+    {
+      "eyebrow": "Why it matters",
+      "title": "The counterexample holds for spatial, approximate, commuting-operator and C*-algebraic variants of quantum coloring.",
+      "body": "The team reports that their construction works for colorings by projections in any nonzero unital C*-algebra, covering every major variant of the quantum chromatic number. The result applies broadly across different mathematical formulations.\n\nThey also provide smaller counterexamples certified by exact integer data, and the entire construction has been formalized in Lean 4, a proof assistant that verifies mathematical arguments computationally."
+    }
+  ],
+  "caveats": [
+    "This is a preprint posted to arXiv, not a peer-reviewed publication, so no independent expert has checked the constructions or proofs yet.",
+    "The result is purely about mathematical structures called graphs and their quantum chromatic numbers, not about physical quantum systems or practical coloring problems."
+  ],
+  "cta": {
+    "headline": "Send this to the quantum computing theorist",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "A 12-year-old conjecture about quantum graph coloring just met its match. Researchers report constructing two graphs whose categorical product has a classical chromatic number of 1538, while both factors have quantum chromatic numbers of at least 1539. The construction adapts Zhu's counterexample to classical Hedetniemi by using a base graph where the Lov\u00e1sz theta number of the complement is large, then extends the argument to non-commuting projection operators. The entire proof, including graph constructions and certificates, has been formalized in Lean 4. This is a preprint on arXiv. The main limitation: no peer review yet. Full study: http://arxiv.org/abs/2609.20690v1 \u2014 Send this to anyone who thinks quantum versions of hard problems always behave like their classical cousins.",
+  "hashtag_set": "physics",
+  "vet": {
+    "key": "af9a213169ec9442",
+    "verdict": "HOLD",
+    "score": 42,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "reversal",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 1,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "A conjecture about quantum graph coloring lasted 12 years until this counterexample arrived.",
+          "problem": "The abstract does not state how long the conjecture existed or that it lasted 12 years.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "The Hedetniemi conjecture for quantum chromatic numbers, posed by Godsil, Roberson, \u0160\u00e1mal and Severini",
+          "problem": "The abstract states these researchers 'conjectured' something but does not call it 'the Hedetniemi conjecture for quantum chromatic numbers.' The abstract mentions 'Hedetniemi's conjecture' only in reference to Zhu's counterexample to a different (classical) conjecture.",
+          "severity": "minor"
+        },
+        {
+          "claim": "No counterexample had been found.",
+          "problem": "The abstract does not state this fact.",
+          "severity": "minor"
+        },
+        {
+          "claim": "The product has a classical chromatic number of at most 1538",
+          "problem": "The abstract states \u03c7(G\u00d7H) \u2264 1538, where \u03c7 denotes chromatic number (not qualified as 'classical' but standard chromatic number). However, the copy says 'classical chromatic number' which could mislead readers into thinking this is being contrasted with quantum chromatic number in a specific way that the abstract does not make explicit.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Full study: http://arxiv.org/abs/2609.20690v1",
+          "problem": "The abstract contains no URL or arXiv identifier. This specific URL is invented and not supported by the abstract.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "12 years",
+          "found_in_abstract": false
+        },
+        {
+          "number": "1538",
+          "found_in_abstract": true
+        },
+        {
+          "number": "1539",
+          "found_in_abstract": true
+        },
+        {
+          "number": "4",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "A conjecture about quantum graph coloring lasted 12 years until this counterexample arrived.",
+        "problem": "The abstract does not state how long the conjecture existed or that it lasted 12 years.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Full study: http://arxiv.org/abs/2609.20690v1",
+        "problem": "The abstract contains no URL or arXiv identifier. This specific URL is invented and not supported by the abstract.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "12 years",
+        "found_in_abstract": false
+      },
+      {
+        "number": "12",
+        "found_in_abstract": false,
+        "checked_by": "code"
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "physics",
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'physics'"
+  }
+}
