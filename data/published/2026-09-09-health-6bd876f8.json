@@ -141,7 +141,7 @@
     ],
     "publishable": false
   },
-  "status": "approved",
+  "status": "published",
   "source_niche": "health",
   "reel": {
     "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-09-09-health-6bd876f8/reel.mp4",
@@ -155,5 +155,19 @@
   },
   "review": {
     "forced": true
+  },
+  "published": {
+    "media_id": "18190585540398913",
+    "kind": "REELS",
+    "at": "2026-09-18T22:43:53Z"
+  },
+  "crosspost": {
+    "at": "2026-09-18T22:43:53Z",
+    "posted": [],
+    "skipped": [
+      "bluesky",
+      "threads"
+    ],
+    "failed": {}
   }
 }
