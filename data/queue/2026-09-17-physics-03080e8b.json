@@ -1,0 +1,145 @@
+{
+  "id": "2026-09-17-physics-03080e8b",
+  "niche": "physics",
+  "study": {
+    "key": "03080e8b612cac93",
+    "title": "Experimental demonstration of finite-size general security via discrete-modulated CVQKD with real time postprocessing",
+    "journal": "arXiv",
+    "pub_date": "2026-09-17",
+    "pub_date_display": "Sep 17, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2609.20596v1",
+    "url": "http://arxiv.org/abs/2609.20596v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Sven Bodenstedt",
+      "Carlos Pascual-Garc\u00eda",
+      "Nil Canta i Pujol",
+      "Mart\u00ed Sales-Moragues",
+      "Mariana Navarro",
+      "Pau G\u00f3mez Kabelka"
+    ]
+  },
+  "cover": {
+    "kicker": "arXiv preprint, not reviewed",
+    "headline": "A quantum encryption system generated **secure keys in real time** using only a million transmission rounds."
+  },
+  "slides": [
+    {
+      "eyebrow": "What they did",
+      "title": "The team built a discrete-modulated quantum key distribution system using quadrature phase shift keying hardware.",
+      "body": "The system transmitted quantum states across a standard telecom setup, using around one million rounds per key block. The hardware pipeline processed incoming signals in real time on near-commercial equipment, not specialized lab systems.\n\nThe protocol followed a variable-length framework built on entropy accumulation techniques and conic optimization. This approach lets the system demonstrate composable security against general attacks, even with finite block lengths that earlier methods couldn't handle reliably."
+    },
+    {
+      "eyebrow": "What came back",
+      "title": "The system produced composable secret keys that meet the strictest security definition against any possible attack strategy.",
+      "body": "Composable security means the keys remain secure even when embedded in larger cryptographic protocols, not just in isolation. The team reports this is the first experimental demonstration of that guarantee for discrete-modulated continuous-variable quantum key distribution with practical block sizes.\n\nThe finite-size analysis worked with blocks on the order of 10\u2076 rounds, a regime where earlier security proofs either failed or required impractically long transmission sessions. The real-time postprocessing handled key generation without offline batch computation.",
+      "stat": {
+        "value": "~10\u2076",
+        "label": "rounds per key block"
+      }
+    }
+  ],
+  "caveats": [
+    "This is a preprint and has not been peer reviewed, so no independent expert has verified the work yet.",
+    "The paper does not report transmission distance, error rates, or final key generation rates for the experimental system.",
+    "Composable security is a theoretical guarantee; practical deployment still depends on hardware implementation and side-channel protections."
+  ],
+  "cta": {
+    "headline": "Send this to anyone tracking quantum cryptography",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Researchers report a working quantum key distribution system that generated cryptographically secure keys in real time using discrete modulation and finite-size security proofs. The setup used quadrature phase shift keying on near-commercial telecom hardware, processing roughly one million transmission rounds per block with entropy accumulation methods that guarantee composable security against general attacks. Published as a preprint on arXiv with no stated sample or peer review. The paper does not specify transmission distance or final key rates. Full study: http://arxiv.org/abs/2609.20596v1 \u2014 Send this to anyone who keeps saying practical quantum encryption is still decades away from real-world deployment timelines.",
+  "hashtag_set": "physics",
+  "vet": {
+    "key": "03080e8b612cac93",
+    "verdict": "HOLD",
+    "score": 42,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "procedural",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 1,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "Full study: http://arxiv.org/abs/2609.20596v1",
+          "problem": "The abstract does not contain any URL or arXiv identifier. This link appears to be invented.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Published as a preprint on arXiv with no stated sample or peer review",
+          "problem": "The abstract does not mention arXiv or state anything about sample or peer review status.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Send this to anyone tracking quantum cryptography",
+          "problem": "This promotional language does not appear in the abstract and is editorial addition.",
+          "severity": "minor"
+        },
+        {
+          "claim": "One real study, every weekday. The full paper is linked in bio.",
+          "problem": "This promotional text does not appear in the abstract and appears to be social media branding.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Send this to anyone who keeps saying practical quantum encryption is still decades away from real-world deployment timelines.",
+          "problem": "This editorial commentary does not appear in the abstract.",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "one million / 10\u2076 / ~10\u2076",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Full study: http://arxiv.org/abs/2609.20596v1",
+        "problem": "The abstract does not contain any URL or arXiv identifier. This link appears to be invented.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "physics",
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'physics'"
+  }
+}
