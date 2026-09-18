@@ -133,6 +133,11 @@
       "title": "Experimental demonstration of finite-size general security via discrete-modulated CVQKD with real time postprocessing",
       "doi": "",
       "reason": "killed from issue"
+    },
+    "27e9f255615e14de": {
+      "title": "Lyapunov-controlled thermalization: an exact real-time example",
+      "doi": "",
+      "reason": "killed from issue"
     }
   },
   "seen": {
