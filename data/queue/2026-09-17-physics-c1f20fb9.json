@@ -1,0 +1,219 @@
+{
+  "id": "2026-09-17-physics-c1f20fb9",
+  "niche": "physics",
+  "study": {
+    "key": "c1f20fb92d5b1e52",
+    "title": "The JWST Sub-Jupiters Survey: Direct Imaging Discovery of a Giant Planet and a Debris Disk Around the Young M-dwarf RX J0534.0-0221",
+    "journal": "arXiv",
+    "pub_date": "2026-09-17",
+    "pub_date_display": "Sep 17, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2609.20748v1",
+    "url": "http://arxiv.org/abs/2609.20748v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Rodrigo Ferrer-Chavez",
+      "Jason J. Wang",
+      "Kevin Wagner",
+      "Kellen Lawson",
+      "Aarynn L. Carter",
+      "Beth Biller"
+    ]
+  },
+  "cover": {
+    "kicker": "arXiv \u00b7 Direct imaging",
+    "headline": "Giant planets **aren't supposed to form easily** around small stars at these distances."
+  },
+  "slides": [
+    {
+      "eyebrow": "The assumption",
+      "title": "Giant planets around M-dwarf stars should be rare, especially at Solar System scales.",
+      "body": "M-dwarfs are small, low-mass stars. The standard picture of planet formation predicts that their disks lack enough material to build Jupiter-sized worlds, particularly at distances comparable to our own planetary orbits. When giant planets do appear around these stars, they challenge the models.\n\nFinding one within 50 astronomical units would be especially unusual given the mass constraints."
+    },
+    {
+      "eyebrow": "What the data says",
+      "title": "The team reports a 2.8 Jupiter-mass planet orbiting an M-dwarf at just 14 astronomical units.",
+      "body": "JWST imaging revealed a point source near the young M-dwarf RX J0534.0-0221 in the Beta Pictoris moving group. Follow-up observations 16 months later confirmed the object shares the star's motion, ruling out a background object at the 6 to 7 sigma level.\n\nAtmospheric modeling in this early paper yields a mass of 2.8 Jupiter masses with an effective temperature of 674 Kelvin. This is only the second imaged giant planet around an M-dwarf at Solar System scales, and the first within 50 astronomical units confirmed via common proper motion.",
+      "stat": {
+        "value": "14 au",
+        "label": "orbital distance from host star"
+      }
+    }
+  ],
+  "caveats": [
+    "This is a preprint and has not been peer reviewed, so no independent expert has verified the findings yet.",
+    "This study observed a pattern in one system, not what produced the planet's configuration."
+  ],
+  "cta": {
+    "headline": "Send this to whoever argues M-dwarfs can't host giants",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Standard models say M-dwarfs shouldn't easily produce Jupiter-sized planets at distances comparable to our own Solar System. The team reports direct imaging of a 2.8 Jupiter-mass giant orbiting RX J0534.0-0221 at just 14 astronomical units, confirmed through common proper motion tracking over 16 months. The host is an M-dwarf in the 18 to 26 million year old Beta Pictoris moving group. This is one of the lowest-mass planets imaged to date and the first M-dwarf giant planet confirmed via proper motion within 50 au. The planet is young, so its current mass may still reflect formation conditions rather than final architecture. Full study: http://arxiv.org/abs/2609.20748v1 \u2014 Send this to whoever keeps tabs on where giant planets show up and what that means for disk physics.",
+  "hashtag_set": "physics",
+  "vet": {
+    "key": "c1f20fb92d5b1e52",
+    "verdict": "HOLD",
+    "score": 36,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      },
+      {
+        "code": "CORRELATIONAL",
+        "severity": "warn",
+        "message": "Design reads as observational (cross-sectional (observational)); markers: survey",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      }
+    ],
+    "design": "cross-sectional (observational)",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": true,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'.",
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "reversal",
+    "lint_errors": [
+      "slide2.body: 91 words, spec is 55-90"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "Full study: http://arxiv.org/abs/2609.20748v1",
+          "problem": "The abstract does not contain any URL or arxiv identifier. This link appears to be fabricated.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "The full paper is linked in bio",
+          "problem": "The abstract contains no reference to any bio or link location. This is invented content.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Giant planets aren't supposed to form easily around small stars at these distances",
+          "problem": "The abstract states giant planet formation around M-dwarfs is 'challenging' but does not make the broader claim about 'small stars' or definitively say they 'aren't supposed to form easily'. This is interpretation presented as established fact.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Giant planets around M-dwarf stars should be rare, especially at Solar System scales",
+          "problem": "The abstract does not state that giant planets around M-dwarfs 'should be rare'. It mentions the formation is 'challenging' but does not make this predictive claim about rarity.",
+          "severity": "minor"
+        },
+        {
+          "claim": "The standard picture of planet formation predicts that their disks lack enough material to build Jupiter-sized worlds",
+          "problem": "The abstract does not discuss the standard picture of planet formation or disk material constraints. This is background context not present in the abstract.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Standard models say M-dwarfs shouldn't easily produce Jupiter-sized planets at distances comparable to our own Solar System",
+          "problem": "The abstract does not describe what 'standard models say'. It only mentions the 'challenging nature of giant planet formation around M-dwarfs' without elaborating on theoretical predictions.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Finding one within 50 astronomical units would be especially unusual given the mass constraints",
+          "problem": "The abstract does not mention 'mass constraints' or explain why finding one within 50 au would be 'especially unusual'. This is interpretive context not in the abstract.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "The planet is young, so its current mass may still reflect formation conditions rather than final architecture",
+          "problem": "The abstract does not discuss whether the current mass reflects formation conditions versus final architecture. This interpretation is not present.",
+          "severity": "minor"
+        },
+        {
+          "claim": "This study observed a pattern in one system, not what produced the planet's configuration",
+          "problem": "The abstract does not state this limitation or make this distinction. This is editorial commentary not from the abstract.",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "2.8",
+          "found_in_abstract": true
+        },
+        {
+          "number": "14",
+          "found_in_abstract": true
+        },
+        {
+          "number": "6 to 7 sigma",
+          "found_in_abstract": true
+        },
+        {
+          "number": "674",
+          "found_in_abstract": true
+        },
+        {
+          "number": "16 months",
+          "found_in_abstract": true
+        },
+        {
+          "number": "50",
+          "found_in_abstract": true
+        },
+        {
+          "number": "18 to 26 million",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Full study: http://arxiv.org/abs/2609.20748v1",
+        "problem": "The abstract does not contain any URL or arxiv identifier. This link appears to be fabricated.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "The full paper is linked in bio",
+        "problem": "The abstract contains no reference to any bio or link location. This is invented content.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "The standard picture of planet formation predicts that their disks lack enough material to build Jupiter-sized worlds",
+        "problem": "The abstract does not discuss the standard picture of planet formation or disk material constraints. This is background context not present in the abstract.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Standard models say M-dwarfs shouldn't easily produce Jupiter-sized planets at distances comparable to our own Solar System",
+        "problem": "The abstract does not describe what 'standard models say'. It only mentions the 'challenging nature of giant planet formation around M-dwarfs' without elaborating on theoretical predictions.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Finding one within 50 astronomical units would be especially unusual given the mass constraints",
+        "problem": "The abstract does not mention 'mass constraints' or explain why finding one within 50 au would be 'especially unusual'. This is interpretive context not in the abstract.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "physics",
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'physics'"
+  }
+}
