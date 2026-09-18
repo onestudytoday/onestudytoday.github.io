@@ -141,7 +141,7 @@
     ],
     "publishable": false
   },
-  "status": "needs_review",
+  "status": "approved",
   "source_niche": "health",
   "reel": {
     "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-09-09-health-6bd876f8/reel.mp4",
@@ -152,5 +152,8 @@
     "built": true,
     "duration": 16.0,
     "bytes": 3122818
+  },
+  "review": {
+    "forced": true
   }
 }
