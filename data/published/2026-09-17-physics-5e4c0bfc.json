@@ -143,7 +143,7 @@
     ],
     "publishable": false
   },
-  "status": "approved",
+  "status": "published",
   "source_niche": "physics",
   "reel_status": {
     "built": false,
@@ -151,5 +151,19 @@
   },
   "review": {
     "forced": true
+  },
+  "published": {
+    "media_id": "18130493594504009",
+    "kind": "CAROUSEL",
+    "at": "2026-09-18T22:39:04Z"
+  },
+  "crosspost": {
+    "at": "2026-09-18T22:39:04Z",
+    "posted": [],
+    "skipped": [
+      "bluesky",
+      "threads"
+    ],
+    "failed": {}
   }
 }
