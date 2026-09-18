@@ -32,6 +32,17 @@ jobs:
 
       - run: pip install -r requirements.txt
 
+      # Without this, the five tests that actually encode a Reel skip silently
+      # and CI reports green on a feature it never ran. ubuntu-latest does not
+      # reliably ship ffmpeg - the run that caught this had all five skipped -
+      # and daily-draft.yml already installs it for exactly the same reason.
+      - name: Install ffmpeg (the reel tests encode real video)
+        run: |
+          if ! command -v ffmpeg >/dev/null 2>&1; then
+            sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          fi
+          ffmpeg -version | head -1
+
       - name: Run pytest
         env:
           # Four dummy, non-secret placeholders - NOT the real credentials.
