@@ -1,0 +1,152 @@
+{
+  "id": "2026-09-17-physics-5e4c0bfc",
+  "niche": "physics",
+  "study": {
+    "key": "5e4c0bfcd5051b5e",
+    "title": "Formation of Ryugu's parent planetesimal beyond the CO$_{2}$ snow line from small pebbles: insights from thermal evolution modeling",
+    "journal": "arXiv",
+    "pub_date": "2026-09-17",
+    "pub_date_display": "Sep 17, 2026",
+    "doi": "10.1016/j.epsl.2026.119903",
+    "doi_display": "doi.org/10.1016/j.epsl.2026.119903",
+    "url": "http://arxiv.org/abs/2609.20608v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Sota Arakawa",
+      "Hidenori Genda",
+      "Noriyuki Kawasaki",
+      "Wataru Fujiya",
+      "Yosei Iwasaki",
+      "Shigeru Wakita"
+    ]
+  },
+  "cover": {
+    "kicker": "arXiv \u2022 Preprint study",
+    "headline": "Asteroid Ryugu's parent rock **formed from millimeter-sized pebbles** in the outer solar system."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Planetesimals form from tiny dust aggregates called pebbles, but their exact size and timing have been unclear.",
+      "body": "When pebbles accumulate beyond the water snow line in the early solar system, they build icy planetesimals that undergo water-rock separation. The voids in these pebble-pile cores fill with liquid water, which circulates and carries heat around, dampening temperature spikes from radioactive decay.\n\nBy modeling how heat moves through these bodies, researchers can work backward from mineral samples to infer when a planetesimal formed and what size pebbles it was made of. Samples from asteroid Ryugu, returned to Earth in 2020, offered a rare test case."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "The team reports Ryugu's parent planetesimal accreted within 2.0 million years of the solar system's oldest solids forming.",
+      "body": "That early assembly date would make Ryugu's parent older than most carbonaceous chondrite parent bodies, potentially explaining why Ryugu samples contain no chondrules. The modeling also constrained pebble size: the core was built from aggregates no larger than a few millimeters.\n\nThose small pebbles align with theoretical predictions for planetesimals that formed beyond the carbon dioxide snow line, farther out in the disk than the water ice boundary. The match between precipitation ages of Ryugu's aqueous minerals and the modeled thermal history supports the scenario.",
+      "stat": {
+        "value": "2.0 Myr",
+        "label": "accretion window after CAI formation"
+      }
+    }
+  ],
+  "caveats": [
+    "This is a preprint and has not been peer reviewed, so no independent expert has vetted the work yet.",
+    "The findings rely on thermal models that assume pebble-pile structure and circulation of liquid water in the core.",
+    "Ryugu samples represent one asteroid; other carbonaceous bodies may have formed under different conditions."
+  ],
+  "cta": {
+    "headline": "Send this to anyone who asks how asteroids got water.",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Thermal evolution modeling of icy planetesimals offers a new window into the timing and conditions of early solar system assembly. By comparing simulated heat transport through pebble-pile cores with the ages and temperatures recorded in Ryugu's aqueously altered minerals, the team narrows down when and where the parent body came together. The early accretion age supports the idea that Ryugu's parent formed before chondrule-bearing bodies, and the millimeter-scale pebbles match expectations for assembly beyond the CO\u2082 frost line. Published in arXiv as a preprint. The work has not yet been peer reviewed. Full study: doi.org/10.1016/j.epsl.2026.119903 \u2014 Send this to anyone who keeps asking how we know what the early solar system looked like.",
+  "hashtag_set": "physics",
+  "vet": {
+    "key": "5e4c0bfcd5051b5e",
+    "verdict": "HOLD",
+    "score": 42,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "explainer",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 1,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "Samples from asteroid Ryugu, returned to Earth in 2020, offered a rare test case.",
+          "problem": "The abstract does not mention the year 2020 or when Ryugu samples were returned to Earth.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Published in arXiv as a preprint. The work has not yet been peer reviewed. Full study: doi.org/10.1016/j.epsl.2026.119903",
+          "problem": "The abstract does not contain the DOI 'doi.org/10.1016/j.epsl.2026.119903'. The copy adds publication metadata not present in the abstract.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "farther out in the disk than the water ice boundary",
+          "problem": "The abstract states planetesimals formed 'beyond the CO2 snow line' but does not explicitly state this is farther out than the water snow line/ice boundary, though it may be implied by the context.",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "2020",
+          "found_in_abstract": false
+        },
+        {
+          "number": "2.0 million years",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2.0 Myr",
+          "found_in_abstract": true
+        },
+        {
+          "number": "a few millimeters",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Published in arXiv as a preprint. The work has not yet been peer reviewed. Full study: doi.org/10.1016/j.epsl.2026.119903",
+        "problem": "The abstract does not contain the DOI 'doi.org/10.1016/j.epsl.2026.119903'. The copy adds publication metadata not present in the abstract.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "2020",
+        "found_in_abstract": false
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "physics",
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'physics'"
+  }
+}
