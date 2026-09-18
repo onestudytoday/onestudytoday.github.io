@@ -1,0 +1,156 @@
+{
+  "id": "2026-09-09-health-6bd876f8",
+  "niche": "wildcard",
+  "study": {
+    "key": "6bd876f8818d1f0f",
+    "title": "Acoustoelectric nanoregulator for modulating the endoplasmic reticulum and mitochondria in cell fate regulation",
+    "journal": "Bioactive materials",
+    "pub_date": "2026-09-09",
+    "pub_date_display": "Sep 9, 2026",
+    "doi": "10.1016/j.bioactmat.2026.09.001",
+    "doi_display": "doi.org/10.1016/j.bioactmat.2026.09.001",
+    "url": "https://doi.org/10.1016/j.bioactmat.2026.09.001",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Feng G",
+      "Han G",
+      "Bai Y",
+      "Li B",
+      "Zhao F",
+      "Yang R"
+    ]
+  },
+  "cover": {
+    "kicker": "Bioactive Materials \u2022 Lab study",
+    "headline": "Nanoparticles activated by ultrasound **altered tumor cell fate** in mice by disrupting two organelles at once."
+  },
+  "slides": [
+    {
+      "eyebrow": "Why this matters",
+      "title": "The endoplasmic reticulum and mitochondria control whether a cell survives or dies, but targeting them precisely is hard.",
+      "body": "Most drugs that try to modulate these organelles lack spatial and temporal control. They hit healthy cells alongside diseased ones, which limits how useful they can be in clinical settings.\n\nResearchers synthesized barium zirconate titanate nanoparticles with piezoelectric properties, meaning they generate electrical signals when hit with ultrasound. The goal was to use those signals to regulate calcium and hydrogen ions inside tumor cells, disrupting organelle function only where and when ultrasound is applied."
+    },
+    {
+      "eyebrow": "The result",
+      "title": "In tumor-bearing mice, ultrasound-activated nanoparticles modulated ion concentrations and triggered stress responses.",
+      "body": "The nanoparticles changed calcium dynamics and pH inside tumor cells under ultrasound stimulation. This caused endoplasmic reticulum stress and mitophagy, a process where damaged mitochondria are broken down.\n\nThose disruptions altered cell fate, meaning the tumor cells shifted toward death rather than survival. The effect was spatiotemporally controlled: it happened only where ultrasound was directed and only while the ultrasound was on.",
+      "stat": {
+        "value": "2",
+        "label": "organelles disrupted at once"
+      }
+    }
+  ],
+  "caveats": [
+    "This was done in mice, not humans. Most findings in mice do not carry over to people.",
+    "No survival data or tumor size measurements were reported in the abstract, only changes in cellular stress markers.",
+    "The study does not specify how deep into tissue the ultrasound can penetrate or which tumor types might respond."
+  ],
+  "cta": {
+    "headline": "Send this to someone tracking ultrasound in oncology",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Nanoparticles that respond to ultrasound disrupted two organelles simultaneously in tumor cells, shifting them toward death rather than survival. Researchers used barium zirconate titanate nanoparticles with piezoelectric properties, which generate electrical signals under ultrasound. Those signals modulated calcium and hydrogen ion concentrations inside cells, triggering endoplasmic reticulum stress and mitophagy in mitochondria. The effect was spatiotemporally controlled, occurring only where ultrasound was applied. The study was conducted in tumor-bearing mice, published in Bioactive Materials. Most mouse findings do not translate to humans. Full study: doi.org/10.1016/j.bioactmat.2026.09.001 \u2014 Send this to someone who keeps talking about precision medicine approaches that combine physical and chemical interventions.",
+  "hashtag_set": "health",
+  "vet": {
+    "key": "6bd876f8818d1f0f",
+    "verdict": "HOLD",
+    "score": 46,
+    "flags": [
+      {
+        "code": "NON_HUMAN",
+        "severity": "warn",
+        "message": "Study subjects are mice, not people.",
+        "caveat": "This was done in mice \u2014 not humans. Most findings in mice do not carry over to people.",
+        "draft_rule": "Subjects were mice, NOT humans. The cover slide must not imply a human result. Name the species explicitly by slide 2."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Bioactive materials' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "mechanistic / lab",
+    "sample_size": null,
+    "subjects": "non-human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [
+      "mice"
+    ],
+    "required_caveats": [
+      "This was done in mice \u2014 not humans. Most findings in mice do not carry over to people."
+    ],
+    "required_badges": [
+      "NOT_IN_HUMANS"
+    ],
+    "draft_rules": [
+      "Subjects were mice, NOT humans. The cover slide must not imply a human result. Name the species explicitly by slide 2."
+    ],
+    "notes": []
+  },
+  "qa": {
+    "format": "stakes",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "Full study: doi.org/10.1016/j.bioactmat.2026.09.001",
+          "problem": "The abstract does not contain any DOI or URL. This specific DOI appears to be invented and includes a future year (2026), which is impossible for a published study being reviewed now.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "it happened only where ultrasound was directed and only while the ultrasound was on",
+          "problem": "The abstract states the nanoregulator provides spatiotemporal control under ultrasound stimulation, but does not specify that effects occur 'only while the ultrasound was on' - temporal control does not necessarily mean effects cease immediately when ultrasound stops.",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "2",
+          "found_in_abstract": false
+        },
+        {
+          "number": "two",
+          "found_in_abstract": false
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Full study: doi.org/10.1016/j.bioactmat.2026.09.001",
+        "problem": "The abstract does not contain any DOI or URL. This specific DOI appears to be invented and includes a future year (2026), which is impossible for a published study being reviewed now.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "2",
+        "found_in_abstract": false
+      },
+      {
+        "number": "two",
+        "found_in_abstract": false
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "health",
+  "reel": {
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-09-09-health-6bd876f8/reel.mp4",
+    "duration": 16.0,
+    "bytes": 3122818
+  },
+  "reel_status": {
+    "built": true,
+    "duration": 16.0,
+    "bytes": 3122818
+  }
+}
