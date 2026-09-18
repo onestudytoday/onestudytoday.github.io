@@ -1,0 +1,161 @@
+{
+  "id": "2026-09-17-physics-e37540dd",
+  "niche": "physics",
+  "study": {
+    "key": "e37540dd21894702",
+    "title": "Scalable logical qubits",
+    "journal": "arXiv",
+    "pub_date": "2026-09-17",
+    "pub_date_display": "Sep 17, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2609.20549v1",
+    "url": "http://arxiv.org/abs/2609.20549v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Matthias Troyer",
+      "Chetan Nayak",
+      "John Martinis"
+    ]
+  },
+  "cover": {
+    "kicker": "arXiv preprint, not reviewed",
+    "headline": "Quantum computing needs qubits that last. The team lays out **what scalable means** for error-corrected logic."
+  },
+  "slides": [
+    {
+      "eyebrow": "The assumption",
+      "title": "Building bigger quantum computers is mostly about adding more physical qubits to the system.",
+      "body": "The intuition is straightforward: more qubits mean more computational power. Scale up the hardware, scale up what you can solve.\n\nBut physical qubits are fragile. They lose information quickly, and utility-scale algorithms require error rates far below what any physical qubit can deliver on its own. You need something more robust to run long computations."
+    },
+    {
+      "eyebrow": "What the data says",
+      "title": "The paper defines scalable logical qubits as units preserved by repeated error correction across four dimensions.",
+      "body": "The team reports that scalable logical qubits must meet four coupled criteria: reliability through repeated quantum error correction, scale to hundreds or thousands of units, capability for fault-tolerant universal operations, and performance with low-latency real-time decoding and feedback.\n\nThese dimensions trade off against each other. Improving one can constrain the others, and applications will require managing all four simultaneously to run long, complex algorithms end-to-end."
+    },
+    {
+      "eyebrow": "Why it matters",
+      "title": "Without a shared definition of scalable, progress on logical qubits is hard to measure or compare.",
+      "body": "Different research groups optimize different things. One might maximize qubit lifetime, another might prioritize operation speed, a third might focus on replicability. Without common benchmarks, you cannot tell which approach is advancing toward utility-scale computation.\n\nThis framework gives the field a common language. It does not solve the engineering problems, but it makes the path to solving them measurable across labs and platforms."
+    }
+  ],
+  "caveats": [
+    "This is a preprint that has not been peer reviewed, so no independent expert has verified the work yet.",
+    "The paper proposes a definition and characterization framework but does not report experimental results testing it."
+  ],
+  "cta": {
+    "headline": "Send this to whoever keeps asking when quantum arrives",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Scaling quantum computers is not just about packing in more physical qubits. The fragility of those qubits means utility-scale algorithms need error-corrected logical qubits that can survive long computations. In this early paper, a team introduces a definition of scalable logical qubits characterized along four dimensions: reliability, scale, capability, and performance. The framework is designed to make progress measurable and comparable across different quantum computing platforms. Published in arXiv as a preprint. The work proposes a definition without experimental validation. Full study: http://arxiv.org/abs/2609.20549v1 \u2014 Send this to the person in your life who keeps asking when quantum computers will actually be able to do something useful.",
+  "hashtag_set": "physics",
+  "vet": {
+    "key": "e37540dd21894702",
+    "verdict": "HOLD",
+    "score": 42,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "reversal",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 1,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "Building bigger quantum computers is mostly about adding more physical qubits to the system.",
+          "problem": "This claim about what building bigger quantum computers is 'mostly about' is not stated in the abstract. The abstract discusses what utility-scale quantum computing will require, but does not make this assertion about what building bigger quantum computers is mostly about.",
+          "severity": "minor"
+        },
+        {
+          "claim": "The intuition is straightforward: more qubits mean more computational power. Scale up the hardware, scale up what you can solve.",
+          "problem": "This explanation of intuition and the relationship between qubit count and computational power is not stated in the abstract. The abstract does not discuss this intuition.",
+          "severity": "minor"
+        },
+        {
+          "claim": "The team reports that scalable logical qubits must meet four coupled criteria",
+          "problem": "The abstract uses 'introduce the definition' and 'characterize', not 'reports that'. This suggests experimental findings rather than a definitional/framework contribution.",
+          "severity": "minor"
+        },
+        {
+          "claim": "These dimensions trade off against each other. Improving one can constrain the others",
+          "problem": "The abstract says 'discuss trade-offs among these dimensions' but does not specifically state that improving one can constrain the others. This is an interpretation that goes slightly beyond what is stated.",
+          "severity": "minor"
+        },
+        {
+          "claim": "applications will require managing all four simultaneously to run long, complex algorithms end-to-end",
+          "problem": "The abstract does not state that applications will require managing all four simultaneously. It discusses trade-offs but does not make this specific claim about simultaneous management being required.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Without a shared definition of scalable, progress on logical qubits is hard to measure or compare.",
+          "problem": "While the abstract says the definition is introduced 'to make the progress on logical qubits measurable and comparable', it does not explicitly state that without it, progress is hard to measure or compare. This is a reasonable inference but not directly stated.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Different research groups optimize different things. One might maximize qubit lifetime, another might prioritize operation speed, a third might focus on replicability.",
+          "problem": "The abstract does not discuss what different research groups currently do or how they optimize different things. This is speculation not present in the abstract.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Full study: http://arxiv.org/abs/2609.20549v1",
+          "problem": "The abstract does not contain this URL or arXiv identifier. This appears to be an invented reference link.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "four",
+          "found_in_abstract": true
+        },
+        {
+          "number": "hundreds or thousands",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Full study: http://arxiv.org/abs/2609.20549v1",
+        "problem": "The abstract does not contain this URL or arXiv identifier. This appears to be an invented reference link.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "physics",
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'physics'"
+  }
+}
