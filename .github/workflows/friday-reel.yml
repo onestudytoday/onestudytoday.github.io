@@ -1,0 +1,312 @@
+name: Friday feature Reel
+
+# The Friday extra: one strong image (or a short free-source clip) held for
+# twelve seconds, with optional music. Separate from the weekday carousel
+# Reel, and deliberately a different shape.
+#
+# WHY NOT THE USUAL REEL FORMAT
+# =============================
+# The carousel-derived Reel shows six slides with crossfades. reel.py's own
+# docstring warned that this "reads as a slideshow, and slideshows do not
+# travel", and the first published one confirmed it. Every cut resets the
+# viewer's attention and invites a swipe. One image held, with nothing to
+# swipe past, is the opposite bet.
+#
+# HOW YOU USE IT
+# ==============
+# Actions -> Friday feature Reel -> Run workflow, then fill in:
+#
+#   concept    what the Reel is about, in your words. This becomes the
+#              caption and the name of the output folder. e.g.
+#              "the path of asteroid Ryugu through the solar system"
+#   image      OPTIONAL. A still to hold. Either:
+#                - a path already in the repo (docs/img/<post-id>/01_cover.jpg
+#                  reuses this week's cover, which is already on-brand), or
+#                - an https URL to download (NASA, ESA, Wikimedia...).
+#              Defaults to the cover slide of the most recent published post.
+#   clip       OPTIONAL. An https URL to a short public-domain video. Takes
+#              precedence over `image`. NASA's library is public domain and
+#              excellent for anything astronomical.
+#   audio      OPTIONAL. A track name from assets/audio/. Leave empty for a
+#              silent track - see that folder's README for why a trending
+#              sound cannot be used here, and when posting by hand is the
+#              better trade.
+#   seconds    How long to hold. Default 12.
+#
+# The result is committed and a review issue is opened with the video
+# attached, so you can either approve it or just download it and post it from
+# your phone with a trending sound.
+#
+# NOTHING HERE PUBLISHES BY ITSELF. This builds an asset and shows it to you.
+
+on:
+  workflow_dispatch:
+    inputs:
+      concept:
+        description: "What is this Reel about? (becomes the caption)"
+        required: true
+        type: string
+      image:
+        description: "Still: repo path or https URL (blank = latest post's cover)"
+        required: false
+        type: string
+      clip:
+        description: "Video: https URL to a short public-domain clip (beats image)"
+        required: false
+        type: string
+      audio:
+        description: "Track name from assets/audio/ (blank = silent)"
+        required: false
+        type: string
+      seconds:
+        description: "Seconds to hold"
+        required: false
+        default: "12"
+        type: string
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: friday-reel
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      # Same reason ci.yml and daily-draft.yml do this: ubuntu-latest does not
+      # reliably ship ffmpeg, and without it the build fails at the last step
+      # having already done all the work.
+      - name: Install ffmpeg
+        run: |
+          if ! command -v ffmpeg >/dev/null 2>&1; then
+            sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          fi
+          ffmpeg -version | head -1
+
+      - name: Work out the source material
+        id: src
+        env:
+          CONCEPT: ${{ inputs.concept }}
+          IMAGE: ${{ inputs.image }}
+          CLIP: ${{ inputs.clip }}
+          SECONDS_IN: ${{ inputs.seconds }}
+        run: |
+          python - <<'PY'
+          import os, re, sys, pathlib, urllib.parse
+          sys.path.insert(0, "src")
+
+          # Outputs are written HERE, by one function, never by redirecting
+          # this interpreter's stdout into $GITHUB_OUTPUT. Two reasons:
+          # importing reel prints nothing today but is free to later, and -
+          # the live one - urlparse silently STRIPS newlines, so a dispatch
+          # input of "https://example.com/a\npost_id=whatever" passed the URL
+          # check and then injected a second output line, overriding a value
+          # that check_post_id() had already validated.
+          def out(key, value):
+              v = str(value).replace("\n", " ").replace("\r", " ")
+              if "=" in key or not key.isidentifier():
+                  raise SystemExit(f"bad output key {key!r}")
+              with open(os.environ["GITHUB_OUTPUT"], "a") as fh:
+                  fh.write(f"{key}={v}\n")
+
+          concept = (os.environ.get("CONCEPT") or "").strip()
+          # The slug becomes a directory name and a URL path segment, so it is
+          # built from a strict allowlist rather than by escaping what arrived.
+          # reel.check_post_id() refuses anything else downstream, but the
+          # first line of defence is never constructing a bad one.
+          slug = re.sub(r"[^a-z0-9]+", "-", concept.lower()).strip("-")[:48] or "feature"
+          import datetime
+          post_id = f"{datetime.date.today():%Y-%m-%d}-friday-{slug}"
+          from reel import check_post_id
+          check_post_id(post_id)
+          out("post_id", post_id)
+
+          def vet_url(u):
+              """Only plain https, to a public host.
+
+              The scheme check alone is not enough on its own: curl follows
+              redirects, so an https URL that 302s to http://169.254.169.254/
+              would defeat it entirely. The fetch step pins the protocol
+              across redirects too; this is the other half.
+              """
+              if not u:
+                  return ""
+              p = urllib.parse.urlparse(u)
+              if p.scheme != "https" or not p.netloc:
+                  raise SystemExit(f"Refusing {u!r}: only https:// URLs can be downloaded.")
+              if "@" in p.netloc:
+                  raise SystemExit(f"Refusing {u!r}: credentials in the URL.")
+              host = (p.hostname or "").lower()
+              import ipaddress, socket
+              try:
+                  infos = socket.getaddrinfo(host, 443)
+              except Exception:
+                  raise SystemExit(f"Refusing {u!r}: host does not resolve.")
+              for info in infos:
+                  ip = ipaddress.ip_address(info[4][0])
+                  if (ip.is_private or ip.is_loopback or ip.is_link_local
+                          or ip.is_reserved or ip.is_multicast):
+                      raise SystemExit(
+                          f"Refusing {u!r}: {ip} is an internal address. "
+                          f"The runner can reach GitHub's own metadata and "
+                          f"service endpoints, and whatever is fetched here is "
+                          f"committed to a PUBLIC repository.")
+              # Return the REPARSED url, not the raw input: urlparse tolerates
+              # embedded newlines and control characters that the caller would
+              # otherwise write out verbatim.
+              return urllib.parse.urlunparse(p)
+
+          clip = (os.environ.get("CLIP") or "").strip()
+          image = (os.environ.get("IMAGE") or "").strip()
+          if clip:
+              out("clip_url", vet_url(clip))
+          elif image.startswith("http"):
+              out("image_url", vet_url(image))
+          elif image:
+              # A repo-relative path. Must stay inside the repo.
+              # is_relative_to, NOT a string prefix. cwd is
+              # /home/runner/work/sciscroll/sciscroll, so "../sciscroll-evil/x"
+              # resolves to a SIBLING directory whose path still starts with
+              # the same characters and would have passed a startswith check.
+              p = (pathlib.Path.cwd() / image).resolve()
+              if not p.is_relative_to(pathlib.Path.cwd()) or not p.is_file():
+                  raise SystemExit(f"Refusing {image!r}: not a file inside the repo.")
+              out("image_path", p.relative_to(pathlib.Path.cwd()))
+          else:
+              # Default: the newest published post's cover slide.
+              imgs = sorted(pathlib.Path("docs/img").glob("*/01_cover.jpg"))
+              if not imgs:
+                  raise SystemExit("No cover slide found to use - pass an image.")
+              out("image_path", imgs[-1])
+
+          try:
+              secs = float(os.environ.get("SECONDS_IN") or 12)
+          except ValueError:
+              secs = 12.0
+          out("seconds", min(max(secs, 3.0), 60.0))
+          PY
+
+      # Downloads are capped and content-type checked. This is owner-triggered
+      # so it is not a hostile input in the usual sense, but a mistyped URL
+      # that returns a 900 MB file should fail here rather than after ffmpeg
+      # has spent ten minutes on it.
+      - name: Fetch remote material
+        if: steps.src.outputs.clip_url != '' || steps.src.outputs.image_url != ''
+        env:
+          CLIP_URL: ${{ steps.src.outputs.clip_url }}
+          IMAGE_URL: ${{ steps.src.outputs.image_url }}
+        run: |
+          set -euo pipefail
+          mkdir -p .reel-src
+          fetch () {
+            # --proto-redir pins the SCHEME across redirects but says nothing
+            # about the DESTINATION, so a public host that 302s to
+            # https://169.254.169.254/ would still be fetched - and whatever
+            # comes back is committed to a PUBLIC repo. So: no redirects at
+            # all here. Each hop is resolved and re-vetted in Python first,
+            # and only the final URL is handed to curl.
+            python3 src/fetch_guard.py "$1" > .reel-src/final-url.txt
+            curl -fsS --proto '=https' --max-redirs 0 \
+                 --max-time 120 --max-filesize 209715200 \
+                 -A "onestudytoday/1.0" -o "$2" "$(cat .reel-src/final-url.txt)"
+            file "$2"
+          }
+          if [ -n "$CLIP_URL" ];  then fetch "$CLIP_URL" .reel-src/clip.bin; fi
+          if [ -n "$IMAGE_URL" ]; then fetch "$IMAGE_URL" .reel-src/image.bin; fi
+
+      - name: Build the Reel
+        id: build
+        env:
+          POST_ID: ${{ steps.src.outputs.post_id }}
+          IMAGE_PATH: ${{ steps.src.outputs.image_path }}
+          SECS: ${{ steps.src.outputs.seconds }}
+          AUDIO: ${{ inputs.audio }}
+        run: |
+          set -euo pipefail
+          # ${AUDIO:+--audio "$AUDIO"} rather than building a string and
+          # letting it word-split. An audio name of `x --feature /etc/passwd`
+          # would otherwise add real arguments and change which branch
+          # reel._main() takes, and `*` would glob to repo filenames.
+          if [ -f .reel-src/clip.bin ]; then
+            python src/reel.py "$POST_ID" --clip .reel-src/clip.bin \
+              --seconds "$SECS" ${AUDIO:+--audio "$AUDIO"} | tee reel.json
+          elif [ -f .reel-src/image.bin ]; then
+            python src/reel.py "$POST_ID" --feature .reel-src/image.bin \
+              --seconds "$SECS" ${AUDIO:+--audio "$AUDIO"} | tee reel.json
+          else
+            python src/reel.py "$POST_ID" --feature "$IMAGE_PATH" \
+              --seconds "$SECS" ${AUDIO:+--audio "$AUDIO"} | tee reel.json
+          fi
+
+      - name: Commit it
+        env:
+          POST_ID: ${{ steps.src.outputs.post_id }}
+        run: |
+          rm -rf .reel-src
+          git config user.name  "onestudytoday-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add docs/img || true
+          git commit -m "friday reel: $POST_ID" || echo "nothing to commit"
+          for attempt in 1 2 3; do
+            git push && break
+            git pull --rebase origin "$GITHUB_REF_NAME" || true
+            sleep $(( attempt * 3 ))
+          done
+
+      - name: Open a review issue
+        uses: actions/github-script@v7
+        env:
+          POST_ID: ${{ steps.src.outputs.post_id }}
+          CONCEPT: ${{ inputs.concept }}
+          BASE: ${{ vars.PUBLIC_IMAGE_BASE }}
+        with:
+          script: |
+            const fs = require("fs");
+            let info = {};
+            try { info = JSON.parse(fs.readFileSync("reel.json", "utf8")); } catch {}
+            const id = process.env.POST_ID;
+            const url = `${process.env.BASE || ""}/${id}/reel.mp4`;
+            const mb = info.bytes ? (info.bytes / 1e6).toFixed(1) : "?";
+            // The concept is your own text but it lands in a public issue
+            // body, so it goes in a fenced block rather than as markdown.
+            const concept = String(process.env.CONCEPT || "").slice(0, 300);
+            await github.rest.issues.create({
+              owner: context.repo.owner, repo: context.repo.repo,
+              title: `Friday Reel: ${concept.slice(0, 60)}`,
+              labels: ["reel"],
+              body: [
+                "A Friday feature Reel has been built and committed.",
+                "",
+                "```",
+                concept,
+                "```",
+                "",
+                `**${info.duration || "?"}s · ${mb}MB · ${info.kind || "?"}` +
+                `${info.audio ? " · with audio" : " · silent"}**`,
+                "",
+                `[Download the file](${url})`,
+                "",
+                "### Two ways to use it",
+                "",
+                "1. **Post it by hand** — download it, post from the app, and pick a",
+                "   trending sound. Instagram's audio library is not reachable through",
+                "   the API, and trending audio is itself a ranking signal, so this",
+                "   usually gets more reach.",
+                "2. **Leave it** — it is committed and served, so it can be published",
+                "   automatically later with whatever audio is baked in.",
+                "",
+                "Nothing publishes on its own from here.",
+              ].join("\n")
+            });
