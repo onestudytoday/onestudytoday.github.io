@@ -107,7 +107,7 @@
     "unverified_numbers": [],
     "publishable": false
   },
-  "status": "needs_review",
+  "status": "approved",
   "source": {
     "abstract": "With broad-spectrum, low resistance, and multifunctional properties, antimicrobial peptides (AMPs) are promising therapeutic agents against drug-resistant pathogens, yet their discovery and optimization still remain challenging due to the complexity of sequence-function associations. Artificial intelligence (AI), through the construction of comprehensive data-driven models that assisted with miscellaneous learning strategies, enables de novo peptide design by learning latent representations inherent in peptide sequences as well as their biological properties to ensure physically plausible and biologically relevant predictions. Consequently, this paradigm enhances the likelihood of designing peptide candidates with significantly improved therapeutic potential, reducing resource-intensive trial-and-error processes and revealing the transformative impact of computational innovation in advancing next-generation therapeutics. Here, we provide a snapshot of this field and survey two modes of AI-driven technologies for AMP design, one concentrated on identifying whether current data possess antimicrobial activity (identification-oriented) and the other on generating AMP candidates with potential therapeutic properties (generation-oriented). We also highlight the challenges and limitations that still hinder AMP development even accelerated by AI, as well as the foreseeable prospects, from finer-grained explorations to model-driven data enrichment and model enhancement.",
     "source": "europepmc",
@@ -124,5 +124,8 @@
   "reel_status": {
     "built": false,
     "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'nature'"
+  },
+  "review": {
+    "forced": true
   }
 }
