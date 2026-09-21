@@ -4,11 +4,19 @@ name: Approve, kill, or force-approve
 # review issue. Anyone else commenting does nothing.
 #
 # Comments understood:
-#   approve         mark it approved - it publishes at its niche's next
-#                   peak-engagement slot (docs/GROWTH.md), not immediately.
+#   approve         mark it approved - it publishes at the configured
+#                   publish time (config/niches.yaml, 15:00 Central), or on
+#                   the next hourly run if that has already passed today.
 #                   See scheduled-publish.yml.
 #   force approve   same, but overriding a flagged blocker
 #   kill            reject it now and add it to the do-not-use ledger
+#   revise: <what>  rewrite the copy to your instruction ("revise: tighten
+#                   slide 3, make the CTA name the actual subject"), re-render
+#                   the slides and update this issue in place. The rewrite is
+#                   put through every check the first draft faced and is
+#                   REFUSED if it fails one, so asking for "punchier" can
+#                   never quietly strip a caveat. Stays needs_review.
+#   revert          undo the last revision.
 #
 # This workflow never talks to the Instagram API itself. Approving used to
 # publish in the same job, which meant a post went out at whatever time you
@@ -52,7 +60,9 @@ jobs:
       (
         startsWith(github.event.comment.body, 'approve') ||
         startsWith(github.event.comment.body, 'force approve') ||
-        startsWith(github.event.comment.body, 'kill')
+        startsWith(github.event.comment.body, 'kill') ||
+        startsWith(github.event.comment.body, 'revise') ||
+        startsWith(github.event.comment.body, 'revert')
       )
     runs-on: ubuntu-latest
     steps:
@@ -99,9 +109,32 @@ jobs:
           C=$(printf '%s' "$COMMENT" | tr '[:upper:]' '[:lower:]')
           case "$C" in
             force\ approve*) echo "action=force" >> "$GITHUB_OUTPUT" ;;
+            revert*)         echo "action=revert" >> "$GITHUB_OUTPUT" ;;
+            revise*)         echo "action=revise" >> "$GITHUB_OUTPUT" ;;
             approve*)        echo "action=approve" >> "$GITHUB_OUTPUT" ;;
             kill*)           echo "action=kill" >> "$GITHUB_OUTPUT" ;;
           esac
+          # The instruction is everything after the verb. Extracted in Python,
+          # not shell, and written with a RANDOM heredoc delimiter.
+          #
+          # Both details matter. A multi-line value goes into $GITHUB_OUTPUT as
+          # a heredoc, and if the value itself contains a line equal to the
+          # delimiter it closes the block early and every following line is
+          # read as more outputs - so a comment containing that one word could
+          # set `action=force` and approve a blocked post. A fixed delimiter is
+          # guessable by anyone who can read this file; a per-run random one is
+          # not, and the value is scanned for it anyway.
+          python3 - <<'PARSE'
+          import os, re, secrets
+          body = os.environ.get("COMMENT", "")
+          instruction = re.sub(r"^\s*(revise|revert)\s*:?\s*", "", body,
+                               count=1, flags=re.I).strip()
+          delim = "OSD_" + secrets.token_hex(16)
+          while delim in instruction:                 # belt and braces
+              delim = "OSD_" + secrets.token_hex(16)
+          with open(os.environ["GITHUB_OUTPUT"], "a") as fh:
+              fh.write(f"instruction<<{delim}\n{instruction}\n{delim}\n")
+          PARSE
 
       # The post id goes to these three steps through the environment and is
       # quoted as "$POST_ID". Pasting it in with ${{ }} would drop it into the
@@ -124,6 +157,38 @@ jobs:
           POST_ID: ${{ steps.what.outputs.post_id }}
         run: python src/review.py force-approve "$POST_ID"
 
+      # Needs the model (a revision is a fresh generation) and the fonts that
+      # render.py draws with. continue-on-error because a REFUSED revision is
+      # a legitimate outcome - the post stays exactly as it was and the reason
+      # is reported on the issue below, rather than the run going red with the
+      # explanation buried in a log.
+      - name: Revise or revert it
+        id: revise
+        if: steps.what.outputs.action == 'revise' || steps.what.outputs.action == 'revert'
+        continue-on-error: true
+        env:
+          POST_ID: ${{ steps.what.outputs.post_id }}
+          ACTION: ${{ steps.what.outputs.action }}
+          INSTRUCTION: ${{ steps.what.outputs.instruction }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          set -o pipefail
+          if [ "$ACTION" = "revert" ]; then
+            python src/review.py revert "$POST_ID" 2>&1 | tee revise.log
+          else
+            python src/review.py revise "$POST_ID" "$INSTRUCTION" 2>&1 | tee revise.log
+          fi
+
+      - name: Rebuild the review card for the new copy
+        if: steps.what.outputs.action == 'revise' || steps.what.outputs.action == 'revert'
+        env:
+          POST_ID: ${{ steps.what.outputs.post_id }}
+          PUBLIC_IMAGE_BASE: ${{ vars.PUBLIC_IMAGE_BASE }}
+        run: |
+          if [ -f "data/queue/$POST_ID.json" ]; then
+            python src/issue.py "data/queue/$POST_ID.json" > issue_body.md
+          fi
+
       - name: Commit the result
         env:
           POST_ID: ${{ steps.what.outputs.post_id }}
@@ -132,13 +197,100 @@ jobs:
           git config user.name  "onestudytoday-bot"
           git config user.email "bot@users.noreply.github.com"
           git add data/ docs/ || true
-          git commit -m "publish: $POST_ID ($ACTION)" || echo "nothing to commit"
+          git commit -m "$ACTION: $POST_ID" || echo "nothing to commit"
           git push
 
-      - name: Close the issue with the outcome
+      # Asked of the Python that actually holds the gate, never written out a
+      # second time here. A hand-copied JavaScript mirror of PUBLISH_TIMES
+      # used to live in the script below, which meant moving the real slot
+      # left the bot cheerfully promising the old one. See
+      # pipeline.publish_time()'s docstring.
+      - name: Ask the pipeline when this will actually go out
+        id: slot
+        env:
+          NICHE_LABELS: ${{ join(github.event.issue.labels.*.name, ' ') }}
+        run: |
+          # The value is captured and written by ONE explicit echo, rather
+          # than redirecting the interpreter's whole stdout into the outputs
+          # file. Importing pipeline/sources prints progress lines, and any
+          # line that happened to look like `key=value` would have become a
+          # workflow output.
+          WHEN="$(python - <<'PY'
+          import os, sys
+          sys.path.insert(0, "src")
+          from pipeline import publish_time_display
+          from sources import load_niches
+          known = set((load_niches().get("niches") or {}))
+          niche = next((l for l in os.environ.get("NICHE_LABELS", "").split()
+                        if l in known), "")
+          sys.stdout.write(publish_time_display(niche))
+          PY
+          )"
+          # One line, no newlines possible: publish_time_display returns a
+          # short formatted time or the raw HH:MM.
+          echo "when=$(printf '%s' "$WHEN" | tr -d '\n' | head -c 32)" >> "$GITHUB_OUTPUT"
+
+      # A revision REPLACES the card rather than appending to it: the issue
+      # body is rewritten from the new copy, and a comment says what changed.
+      # The issue stays OPEN and the post stays needs_review - revising is not
+      # a decision, it is another draft.
+      - name: Update the issue with the revised draft
+        if: steps.what.outputs.action == 'revise' || steps.what.outputs.action == 'revert'
         uses: actions/github-script@v7
         env:
           ACTION: ${{ steps.what.outputs.action }}
+          OUTCOME: ${{ steps.revise.outcome }}
+        with:
+          script: |
+            const fs = require("fs");
+            const act = process.env.ACTION;
+            const failed = process.env.OUTCOME !== "success";
+            const read = f => { try { return fs.readFileSync(f, "utf8"); } catch { return ""; } };
+
+            if (failed) {
+              // The refusal reason is written by review.py, which gets it from
+              // draft.revise_post - i.e. the actual failing checks, not a
+              // generic "something went wrong". Trimmed because a repair-loop
+              // log can be long, and fenced so no part of it renders as
+              // markup in the issue.
+              const why = read("revise.log").trim().slice(-1500) ||
+                          "no output was captured from the revision step";
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: "**The revision was not applied — this post is unchanged.**\n\n" +
+                      "```\n" + why + "\n```\n\n" +
+                      "The rewrite has to pass the same checks as the original draft. " +
+                      "You can try a different instruction, `approve` the draft as it " +
+                      "stands, or `kill` it."
+              });
+              return;
+            }
+
+            const body = read("issue_body.md");
+            if (body) {
+              await github.rest.issues.update({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: context.issue.number, body
+              });
+            }
+            await github.rest.issues.createComment({
+              owner: context.repo.owner, repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: (act === "revert"
+                      ? "Reverted to the previous draft."
+                      : "Revised. The card above now shows the new copy and the " +
+                        "re-rendered slides.") +
+                    "\n\nStill awaiting your decision — `approve`, `kill`, or " +
+                    "another `revise: ...`."
+            });
+
+      - name: Close the issue with the outcome
+        if: steps.what.outputs.action == 'approve' || steps.what.outputs.action == 'force' || steps.what.outputs.action == 'kill'
+        uses: actions/github-script@v7
+        env:
+          ACTION: ${{ steps.what.outputs.action }}
+          WHEN: ${{ steps.slot.outputs.when }}
         with:
           script: |
             const act = process.env.ACTION;
@@ -146,16 +298,14 @@ jobs:
             if (act === "kill") {
               msg = "Killed. Added to the do-not-use ledger so it will never be sourced again.";
             } else {
-              // Which label on this issue names the niche, so the message can
-              // say roughly when it'll actually go out.
-              const PUBLISH_TIMES = { nature: "7:00am", psych: "7:00am",
-                health: "12:00pm", physics: "9:00am", wildcard: "9:00am" };
-              const labels = context.payload.issue.labels.map(l => l.name);
-              const niche = labels.find(l => l in PUBLISH_TIMES);
-              const when = niche ? `around ${PUBLISH_TIMES[niche]} Central` : "at its next scheduled slot";
+              // The time comes from the previous step, which asked the same
+              // Python the publish gate uses. Never hardcoded here.
+              const slot = process.env.WHEN;
+              const when = slot ? `around ${slot} Central` : "at its next scheduled slot";
               msg = (act === "force" ? "Force-approved" : "Approved") +
-                ` — it'll actually go out ${when}, whenever that next arrives ` +
-                "(reviewing early doesn't publish early). I'll comment here again once it's live.";
+                ` — it'll go out ${when}. If that time has already passed today,` +
+                " it goes out on the next hourly run rather than waiting for" +
+                " tomorrow. I'll comment here again once it's live.";
             }
             await github.rest.issues.createComment({
               owner: context.repo.owner, repo: context.repo.repo,
