@@ -644,7 +644,9 @@ def check_draft(draft_text: str, rep: VetReport,
 def _main():
     ap = argparse.ArgumentParser(description="Vet candidate studies for a niche")
     ap.add_argument("niche", choices=["nature", "psych", "health", "physics"])
-    ap.add_argument("--days", type=int, default=14)
+    ap.add_argument("--days", type=int, default=None,
+                    help="Publication window (default: defaults.recency_days "
+                         "in config/niches.yaml)")
     ap.add_argument("--no-deep", action="store_true",
                     help="skip Crossref/retraction lookups (faster, less safe)")
     ap.add_argument("--json", action="store_true")

@@ -183,3 +183,29 @@ def test_a_broken_config_does_not_publish_everything_immediately(monkeypatch):
 
 def test_publish_time_display_is_human_readable():
     assert pipeline.publish_time_display() == "3:00pm"
+
+
+def test_the_draft_workflow_does_not_hardcode_a_recency_window():
+    """Regression: the SIXTH copy of `14`.
+
+    daily-draft.yml's workflow_dispatch input had `default: "14"`. GitHub
+    fills an input default in whether or not you touch the box, so every
+    MANUAL draft passed --days 14 and silently overrode the 75 configured in
+    niches.yaml - while the cron run, which sends no inputs, used 75. A
+    hand-started draft therefore searched a fortnight and reported finding
+    nothing, with the log confidently printing "(last 14 days)".
+    """
+    wf = (Path(__file__).resolve().parent.parent
+          / ".github" / "workflows" / "daily-draft.yml").read_text()
+    import yaml as _yaml
+    inputs = _yaml.safe_load(wf)[True]["workflow_dispatch"]["inputs"]
+    assert inputs["days"].get("default", "") == "", \
+        "a non-empty default here silently overrides config/niches.yaml"
+
+
+def test_the_python_entry_points_take_their_window_from_the_config():
+    """draft.py and vet.py had their own `default=14` argparse values too."""
+    import inspect
+    for mod in ("draft", "vet"):
+        src = inspect.getsource(__import__(mod))
+        assert 'add_argument("--days", type=int, default=14)' not in src, mod

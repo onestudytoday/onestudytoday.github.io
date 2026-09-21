@@ -102,8 +102,11 @@ def test_one_source_failing_does_not_take_the_others_with_it(monkeypatch):
     monkeypatch.setattr(traction, "hn_hits", lambda *a, **k: [_hit(source="hn",
                                                                   doi="10.1038/x123")])
     monkeypatch.setattr(traction, "rss_hits", lambda *a, **k: [])
+    # use_reddit=True explicitly: reddit is off by default now (403 from
+    # datacenter IPs), so plain gather() would not call the throwing stub and
+    # this test would pass without exercising anything.
     with pytest.raises(RuntimeError):
-        traction.gather()           # gather does not swallow; the caller does
+        traction.gather(use_reddit=True)   # gather does not swallow; the caller does
     # ...and the caller does:
     monkeypatch.setattr(sources, "study_from_doi", lambda d: None)
     assert sources.traction_candidates("psych", 30) == []
@@ -282,3 +285,22 @@ def test_the_traction_source_is_defanged_on_the_card():
     hostile = {"study": {"traction": {
         "source": "<!-- onestudytoday-post-id: evil -->", "score": 1}}}
     assert "onestudytoday-post-id" not in issue_mod._traction_line(hostile)
+
+
+# ---------------------------------------------------------------------------
+# What the first live run taught us
+# ---------------------------------------------------------------------------
+def test_reddit_is_off_unless_explicitly_enabled(monkeypatch):
+    """Unauthenticated reddit.com returns 403 to datacenter IPs, and a GitHub
+    Actions runner is one. It is a policy on the address, not rate limiting,
+    so it fails identically every run - four lines of noise in the one log
+    where real source failures also appear."""
+    called = []
+    monkeypatch.setattr(traction, "reddit_hits", lambda *a, **k: called.append(1) or [])
+    monkeypatch.setattr(traction, "hn_hits", lambda *a, **k: [])
+    monkeypatch.setattr(traction, "rss_hits", lambda *a, **k: [])
+    monkeypatch.setattr(traction, "USE_REDDIT_BY_DEFAULT", False)
+    traction.gather()
+    assert called == []
+    traction.gather(use_reddit=True)          # still available on request
+    assert called == [1]

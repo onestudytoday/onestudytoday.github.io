@@ -22,6 +22,7 @@ So the tests come in two kinds, and they are deliberately not mixed:
 """
 
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -408,3 +409,128 @@ def test_a_revision_failure_cannot_leak_a_credential(monkeypatch, tmp_path, caps
         review_mod._main()
     assert "SUPERSECRET" not in str(e.value), str(e.value)
     assert "REDACTED" in str(e.value) or "RuntimeError" in str(e.value)
+
+
+def test_the_review_card_renders_without_publishing_credentials(tmp_path):
+    """The card is markdown. Rendering it must not require the Meta secrets.
+
+    Regression: the workflow step that rebuilds the card after a revision
+    passed the image base as an ENV VAR, but issue.py's CLI reads it from
+    argv[2] and otherwise falls back to settings(), which hard-requires
+    META_APP_ID. The step died asking for a credential it had no use for,
+    turning a successful revision into a red run.
+    """
+    import subprocess
+    post_file = tmp_path / "p.json"
+    post_file.write_text(json.dumps(_post()))
+    env = {k: v for k, v in os.environ.items()
+           if k not in ("META_APP_ID", "META_APP_SECRET",
+                        "IG_ACCESS_TOKEN", "IG_BUSINESS_ACCOUNT_ID")}
+    r = subprocess.run(
+        [sys.executable, str(ROOT / "src" / "issue.py"), str(post_file),
+         "https://x.test/img"],
+        capture_output=True, text=True, env=env, cwd=ROOT)
+    assert r.returncode == 0, r.stderr[-400:]
+    # The card rendered. (No <img> tags here: build() only emits them for
+    # slides it finds in out/posts/<id>/, which this fixture has none of -
+    # what is being pinned is that it ran at all without the credentials.)
+    assert "onestudytoday-post-id" in r.stdout
+    assert "Missing required setting" not in r.stderr
+
+
+def test_the_workflow_passes_the_image_base_as_an_argument():
+    """If this fails, the step is back to relying on settings()."""
+    wf = (ROOT / ".github" / "workflows" / "publish-on-approve.yml").read_text()
+    assert 'python src/issue.py "data/queue/$POST_ID.json" "$BASE"' in wf
+
+
+# ---------------------------------------------------------------------------
+# Reviving older posts, and the force override
+# ---------------------------------------------------------------------------
+def test_a_missing_abstract_is_fetched_back_from_the_doi(monkeypatch):
+    """Posts drafted before the abstract was stored are not stuck.
+
+    The abstract is re-fetched from Europe PMC by DOI - the same place the
+    original draft got it - so every check still runs on the real text. The
+    stored copy is an optimisation, not the source of truth.
+    """
+    post = _post()
+    post.pop("source")
+    post["study"]["doi"] = "10.1038/abc123"
+
+    import sources
+    monkeypatch.setattr(sources, "study_from_doi",
+                        lambda doi: sources.Study(
+                            source="europepmc", ext_id="1", title="T",
+                            abstract=ABSTRACT, journal="Nature",
+                            pub_date="2026-09-16", doi=doi))
+    s = draft.study_from_post(post)
+    assert "19 percent" in s.abstract
+
+
+def test_the_refetched_abstract_still_catches_an_invented_number(monkeypatch):
+    """The re-fetch must not become a way in. Same check, same result."""
+    post = _post()
+    post.pop("source")
+    post["study"]["doi"] = "10.1038/abc123"
+    import sources
+    monkeypatch.setattr(sources, "study_from_doi",
+                        lambda doi: sources.Study(
+                            source="europepmc", ext_id="1", title="T",
+                            abstract=ABSTRACT, journal="Nature",
+                            pub_date="2026-09-16", doi=doi))
+    monkeypatch.setattr(draft, "_call_tool", lambda *a, **k: _copy_of(
+        post, caption="Recall fell by 81 percent."))
+    with pytest.raises(draft.ReviseError) as e:
+        draft.revise_post(post, "punchier")
+    assert "81" in str(e.value)
+
+
+def test_a_post_with_no_abstract_and_no_usable_doi_still_refuses(monkeypatch):
+    post = _post()
+    post.pop("source")
+    import sources
+    monkeypatch.setattr(sources, "study_from_doi", lambda doi: None)
+    with pytest.raises(draft.ReviseError) as e:
+        draft.study_from_post(post)
+    assert "force revise" in str(e.value)
+
+
+def test_force_applies_the_rewrite_but_blocks_the_post(monkeypatch):
+    """Forcing an EDIT is reversible; forcing a PUBLISH is not.
+
+    So force revise applies the copy AND writes every failure into qa as a
+    blocker, which means the card shows the CAUTION box and a plain `approve`
+    is refused. Publishing it needs `force approve` as a second, separate act.
+    """
+    import review as review_mod
+    post = _post()
+    monkeypatch.setattr(draft, "_call_tool", lambda *a, **k: _copy_of(
+        post, caption="Recall fell by 62 percent, easily."))
+
+    with pytest.raises(draft.ReviseError):
+        draft.revise_post(post, "punchier")            # refused without force
+
+    out = draft.revise_post(post, "punchier", force=True)
+    assert "62 percent" in out["caption"], "force did not apply the rewrite"
+    assert out["qa"]["publishable"] is False
+    assert out["qa"]["forced_revision"]
+    blockers = review_mod.blocking_reasons(out)
+    assert blockers, "a forced revision must still block publication"
+    assert any("forced past the checks" in b for b in blockers)
+
+
+def test_a_forced_revision_can_still_be_reverted(monkeypatch, no_checks):
+    post = _post()
+    original = post["caption"]
+    monkeypatch.setattr(draft, "_call_tool",
+                        lambda *a, **k: _copy_of(post, caption="Forced copy."))
+    out = draft.revise_post(post, "x", force=True)
+    assert draft.revert_post(out)["caption"] == original
+
+
+def test_the_workflow_understands_force_revise():
+    wf = (ROOT / ".github" / "workflows" / "publish-on-approve.yml").read_text()
+    assert "force revise" in wf
+    assert "forcerevise" in wf
+    assert "--force" in wf

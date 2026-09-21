@@ -413,6 +413,9 @@ def _main():
     rv = sub.add_parser("revise")
     rv.add_argument("post_id")
     rv.add_argument("instruction")
+    rv.add_argument("--force", action="store_true",
+                    help="apply the rewrite even if the checks reject it. The "
+                         "post is then BLOCKED and needs force-approve.")
     sub.add_parser("revert").add_argument("post_id")
     a = ap.parse_args()
 
@@ -455,8 +458,8 @@ def _main():
         if not p:
             raise SystemExit(f"No queued post with id {a.post_id}")
         try:
-            p = (revise_post(p, a.instruction) if a.cmd == "revise"
-                 else revert_post(p))
+            p = (revise_post(p, a.instruction, force=getattr(a, "force", False))
+                 if a.cmd == "revise" else revert_post(p))
         except ReviseError as e:
             # A refused revision is a normal outcome, not a crash: the post is
             # left exactly as it was. Exit non-zero so the workflow surfaces
@@ -477,6 +480,12 @@ def _main():
         n = len(p.get("revisions") or [])
         print(f"{a.post_id} {'revised' if a.cmd == 'revise' else 'reverted'} "
               f"({n} revision{'' if n == 1 else 's'} on record). Slides re-rendered.")
+        forced = (p.get("qa") or {}).get("forced_revision")
+        if forced:
+            print("FORCED past the checks. This post is now BLOCKED and needs "
+                  "`force approve` to publish. What failed:")
+            for r in forced:
+                print(f"  - {r}")
         return
     if a.cmd == "reject":
         set_status(a.post_id, "rejected", a.note)

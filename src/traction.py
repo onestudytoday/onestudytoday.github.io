@@ -62,6 +62,7 @@ below is a public, documented, free API or feed meant to be read by programs.
 from __future__ import annotations
 
 import json
+import os
 import re
 import sys
 import time
@@ -81,10 +82,31 @@ TIMEOUT = 20
 # ---------------------------------------------------------------------------
 REDDIT_SUBS = ["science", "EverythingScience", "psychology", "health"]
 REDDIT_URL = "https://www.reddit.com/r/{sub}/top.json"
+
+# Reddit is OFF by default, and that is not timidity - it is what the first
+# live run showed.
+#
+# Unauthenticated reddit.com returns "403 Blocked" to datacenter IP ranges,
+# and a GitHub Actions runner is squarely in one. It is not rate limiting and
+# it does not clear on a retry: it is a policy on the address, so the call
+# fails every time, on every sub, on every run. The first draft after this
+# shipped printed four identical 403 lines and moved on.
+#
+# Four lines of noise per run, for a source that structurally cannot answer,
+# trains you to skim a log that is also where genuine source failures appear.
+# So it is disabled unless OSD_REDDIT=1, and the code is kept because the
+# signal is the best one available if the account ever gets reddit OAuth
+# credentials (a free app registration) or runs the draft somewhere with a
+# residential address.
+USE_REDDIT_BY_DEFAULT = os.environ.get("OSD_REDDIT", "").strip() in ("1", "true", "yes")
+
 HN_URL = "https://hn.algolia.com/api/v1/search_by_date"
 CROSSREF_EVENTS = "https://api.eventdata.crossref.org/v1/events"
+
+# EurekAlert's per-topic feed path returned 404 on the first live run; the
+# top-level feed is the documented one. ScienceDaily answered fine.
 RSS_FEEDS = {
-    "eurekalert": "https://www.eurekalert.org/rss/technology_engineering.xml",
+    "eurekalert": "https://www.eurekalert.org/rss.xml",
     "sciencedaily": "https://www.sciencedaily.com/rss/top/science.xml",
 }
 
@@ -316,11 +338,15 @@ def _title_words(t: str) -> set:
     return {w for w in _WORD.findall(str(t or "").lower()) if w not in _STOP}
 
 
-def gather(days: int = 7, use_reddit: bool = True, use_hn: bool = True,
-           use_rss: bool = True) -> List[TractionHit]:
-    """Everything, from whichever sources answer. Never raises."""
+def gather(days: int = 7, use_reddit: Optional[bool] = None,
+           use_hn: bool = True, use_rss: bool = True) -> List[TractionHit]:
+    """Everything, from whichever sources answer.
+
+    `use_reddit` defaults to USE_REDDIT_BY_DEFAULT (off unless OSD_REDDIT is
+    set) - see that constant for why.
+    """
     hits: List[TractionHit] = []
-    if use_reddit:
+    if USE_REDDIT_BY_DEFAULT if use_reddit is None else use_reddit:
         hits += reddit_hits()
     if use_hn:
         hits += hn_hits(days=days)

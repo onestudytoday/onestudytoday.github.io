@@ -883,25 +883,50 @@ class ReviseError(RuntimeError):
     pass
 
 
-def study_from_post(post: Dict[str, Any]) -> Study:
+def study_from_post(post: Dict[str, Any], allow_fetch: bool = True) -> Study:
     """Rebuild the Study a queued post was drafted from.
 
-    Raises rather than guessing when the abstract is absent. The abstract is
-    the reference that local_unverified_numbers() checks invented figures
-    against, so a revision performed without it would be the one code path in
-    this repo where a fabricated statistic reaches a slide unchallenged.
-    Posts drafted before `source` was stored simply cannot be revised; they
-    can still be approved or killed exactly as before.
+    The abstract is the reference that local_unverified_numbers() checks
+    invented figures against, so a revision performed without it would be the
+    one code path in this repo where a fabricated statistic reaches a slide
+    unchallenged. It is therefore required, not preferred.
+
+    Posts drafted before `source.abstract` was stored do not carry one. Rather
+    than making those permanently unrevisable, the abstract is FETCHED BACK
+    from the paper by DOI. That is not a weakening: the abstract arrives from
+    Europe PMC, the same place the original draft got it, so every check runs
+    on the real text. The stored copy is an optimisation, not the source of
+    truth.
+
+    If the fetch fails - no DOI, the record is not indexed, the network is
+    down - this still raises. Refusing is the fail-closed answer; there is no
+    version of "revise it anyway without the paper" that is safe, which is
+    what `force` is separately for.
     """
     src = post.get("source") or {}
     st = post.get("study") or {}
     abstract = str(src.get("abstract") or "")
+
+    if len(abstract.strip()) < 50 and allow_fetch:
+        doi = str(st.get("doi") or "").strip()
+        if doi:
+            try:
+                from sources import study_from_doi
+                fetched = study_from_doi(doi)
+            except Exception as e:
+                print(f"  ! could not re-fetch the abstract for {doi}: {e}")
+                fetched = None
+            if fetched is not None and len(str(fetched.abstract).strip()) >= 50:
+                print(f"  re-fetched the abstract for {doi} "
+                      f"({len(fetched.abstract)} chars) - revision can be checked")
+                abstract = fetched.abstract
+
     if len(abstract.strip()) < 50:
         raise ReviseError(
-            "this post was drafted before the abstract was stored with it, so "
-            "a revision could not be re-checked against the paper. Approve, "
-            "kill, or wait for tomorrow's draft - anything drafted from now on "
-            "can be revised.")
+            "this post has no abstract stored with it and one could not be "
+            "fetched back from its DOI, so a revision cannot be re-checked "
+            "against the paper. Approve, kill, or use `force revise:` if you "
+            "have read the paper yourself.")
     return Study(
         source=str(src.get("source") or "europepmc"),
         ext_id=str(src.get("ext_id") or ""),
@@ -939,7 +964,8 @@ def _format_for(post: Dict[str, Any], s: Study) -> Dict[str, Any]:
     return pick_format(s)
 
 
-def revise_post(post: Dict[str, Any], instruction: str) -> Dict[str, Any]:
+def revise_post(post: Dict[str, Any], instruction: str,
+                force: bool = False) -> Dict[str, Any]:
     """Rewrite an already-drafted post to a human instruction.
 
     Returns a NEW post dict. The caller decides whether to keep it.
@@ -960,6 +986,26 @@ def revise_post(post: Dict[str, Any], instruction: str) -> Dict[str, Any]:
     So: same schema, same lint(), same repair loop, same audit(), same
     code-level number check. If the revision cannot pass, the ORIGINAL is
     kept and the reason is reported. The worst case is that you are told no.
+
+    WHAT `force` DOES, AND WHAT IT DELIBERATELY DOES NOT
+    ===================================================
+    `force=True` applies the rewrite even when the checks reject it. It is
+    your account and there will be times the checker is wrong - a number it
+    cannot find because the abstract writes it as a word, a caveat it thinks
+    is missing because you phrased it differently.
+
+    What force does NOT do is make the post publishable. Every failure is
+    written into `qa` as a blocker, so review.blocking_reasons() reports it,
+    the card shows the CAUTION box, and a plain `approve` is refused. You
+    would still have to `force approve` on top, which is a second, separate,
+    deliberate act.
+
+    That split is the whole point. Forcing an EDIT is cheap and reversible -
+    `revert` puts it back. Forcing a PUBLISH is irreversible the instant the
+    Graph API accepts it. Collapsing the two into one verb would mean a
+    momentary "just let me fix this sentence" could put an unchecked claim
+    on a public account, and that is exactly the kind of one-step mistake the
+    rest of this repo is built to make impossible.
     """
     instruction = _sanitize_untrusted(instruction, 600).strip()
     if not instruction:
@@ -1047,12 +1093,16 @@ def revise_post(post: Dict[str, Any], instruction: str) -> Dict[str, Any]:
             bad_numbers.append(n)
 
     hard_errs = [e for e in errs if not e.startswith("STYLE ")]
-    if hard_errs or blocking or bad_numbers:
-        reasons = hard_errs + [str(c.get("claim", c)) for c in blocking] \
-            + [f"number not in the abstract: {n['number']}" for n in bad_numbers]
+    failed = bool(hard_errs or blocking or bad_numbers)
+    reasons = (hard_errs + [str(c.get("claim", c)) for c in blocking]
+               + [f"number not in the abstract: {n['number']}" for n in bad_numbers])
+    if failed and not force:
         raise ReviseError(
             "the revision did not survive the checks, so the post is "
-            "unchanged:\n" + "\n".join(f"  - {r}" for r in reasons))
+            "unchanged:\n" + "\n".join(f"  - {r}" for r in reasons)
+            + "\n\nIf you have read the paper and disagree, `force revise:` "
+              "applies it anyway - the post is then BLOCKED and needs "
+              "`force approve` as a separate step.")
 
     out = dict(post)
     out.update({
@@ -1083,9 +1133,17 @@ def revise_post(post: Dict[str, Any], instruction: str) -> Dict[str, Any]:
         "audit": audit_res,
         "blocking_claims": blocking,
         "unverified_numbers": bad_numbers,
-        "publishable": True,
+        "publishable": not failed,
         "revised": len(out["revisions"]),
     })
+    if failed:
+        # Forced through. Record WHY, in the form blocking_reasons() acts on,
+        # so the card carries the CAUTION box and `approve` is refused. The
+        # GUARDRAIL prefix is load-bearing - that function counts nothing else.
+        qa["forced_revision"] = reasons
+        qa["lint_errors"] = sorted(set(list(qa.get("lint_errors") or []) + [
+            "GUARDRAIL this copy was forced past the checks with "
+            "`force revise`. " + "; ".join(reasons)[:400]]))
     out["qa"] = qa
     # Only ever increases - see issue.py's cache-buster.
     out["render_seq"] = int(post.get("render_seq") or 0) + 1
@@ -1283,7 +1341,9 @@ def _main():
     ap.add_argument("--niche", required=True,
                     choices=["nature", "psych", "health", "physics"])
     ap.add_argument("--limit", type=int, default=1)
-    ap.add_argument("--days", type=int, default=14)
+    ap.add_argument("--days", type=int, default=None,
+                    help="Publication window (default: defaults.recency_days "
+                         "in config/niches.yaml)")
     ap.add_argument("--no-audit", action="store_true")
     ap.add_argument("--skeleton", action="store_true")
     a = ap.parse_args()
