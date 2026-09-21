@@ -1,0 +1,128 @@
+{
+  "id": "2026-07-28-nature-5da5c6f5",
+  "niche": "nature",
+  "study": {
+    "key": "5da5c6f5c08c008f",
+    "title": "Artificial intelligence catalyzes antimicrobial peptide design",
+    "journal": "Synthetic and systems biotechnology",
+    "pub_date": "2026-07-28",
+    "pub_date_display": "Jul 28, 2026",
+    "doi": "10.1016/j.synbio.2026.05.019",
+    "doi_display": "doi.org/10.1016/j.synbio.2026.05.019",
+    "url": "https://doi.org/10.1016/j.synbio.2026.05.019",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Liu Y",
+      "Hu J",
+      "Zhang N",
+      "Bai Y",
+      "Yao Y",
+      "Chen G."
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Synthetic & Systems Biotechnology",
+    "headline": "Artificial intelligence is being applied to **design antimicrobial peptides** that fight drug-resistant infections."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Antimicrobial peptides could tackle drug-resistant pathogens, but designing them is complicated.",
+      "body": "Antimicrobial peptides show broad-spectrum activity, low resistance rates, and multifunctional properties that make them promising therapeutic candidates. But discovering and optimizing them remains difficult because the relationship between their sequence and function is complex.\n\nTraditional trial-and-error methods are resource-intensive. Researchers wanted to know whether AI could learn the patterns hidden in peptide sequences and their biological properties to speed up the design process."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Two distinct AI approaches are linked to accelerated antimicrobial peptide design in current research.",
+      "body": "The review identified two modes of AI-driven technology now being applied to AMP development. One mode focuses on identification: using data-driven models to determine whether existing peptide sequences possess antimicrobial activity.\n\nThe other mode focuses on generation: creating new AMP candidates with desired therapeutic properties by learning latent representations in peptide data. Both approaches are associated with reducing the need for resource-heavy experimental screening."
+    },
+    {
+      "eyebrow": "Why it matters",
+      "title": "Computational models are linked to designing peptides that are both physically plausible and biologically relevant.",
+      "body": "AI-assisted design is associated with higher likelihood of producing peptide candidates with improved therapeutic potential. The models learn from comprehensive datasets and use various learning strategies to ensure predictions align with real biological constraints.\n\nThis computational approach goes together with a shift away from exhaustive trial-and-error testing. The pattern suggests a transformative role for AI in developing next-generation antimicrobial therapies, though challenges in model accuracy and data quality still remain."
+    }
+  ],
+  "caveats": [
+    "This is a review of existing AI methods, not a test of a new peptide or treatment approach.",
+    "The review found a pattern linking AI use to faster design, not proof that AI causes better therapeutic outcomes."
+  ],
+  "cta": {
+    "headline": "Send this to the AI-in-drug-design skeptic",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "AI models are now being applied to the design of antimicrobial peptides, molecules that could help fight infections resistant to traditional antibiotics. This review in Synthetic and Systems Biotechnology surveyed two approaches: identification-oriented models that screen existing sequences for antimicrobial activity, and generation-oriented models that create new candidate peptides from scratch. The computational methods are linked to learning latent patterns in sequence data and predicting biologically relevant properties. The authors note that challenges in data quality, model interpretability, and experimental validation still limit progress even with AI acceleration. Full study: doi.org/10.1016/j.synbio.2026.05.019 \u2014 Send this to anyone who keeps bringing up artificial intelligence in pharmaceutical research.",
+  "hashtag_set": "health",
+  "vet": {
+    "key": "5da5c6f5c08c008f",
+    "verdict": "HOLD",
+    "score": 48,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "warn",
+        "message": "Design reads as observational (cross-sectional (observational)); markers: survey, association",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Synthetic and systems biotechnology' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "cross-sectional (observational)",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": true,
+    "species": [],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "explainer",
+    "lint_errors": [
+      "GUARDRAIL causal_verb_on_observational: Draft uses a causal verb but the study design is observational."
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": []
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "With broad-spectrum, low resistance, and multifunctional properties, antimicrobial peptides (AMPs) are promising therapeutic agents against drug-resistant pathogens, yet their discovery and optimization still remain challenging due to the complexity of sequence-function associations. Artificial intelligence (AI), through the construction of comprehensive data-driven models that assisted with miscellaneous learning strategies, enables de novo peptide design by learning latent representations inherent in peptide sequences as well as their biological properties to ensure physically plausible and biologically relevant predictions. Consequently, this paradigm enhances the likelihood of designing peptide candidates with significantly improved therapeutic potential, reducing resource-intensive trial-and-error processes and revealing the transformative impact of computational innovation in advancing next-generation therapeutics. Here, we provide a snapshot of this field and survey two modes of AI-driven technologies for AMP design, one concentrated on identifying whether current data possess antimicrobial activity (identification-oriented) and the other on generating AMP candidates with potential therapeutic properties (generation-oriented). We also highlight the challenges and limitations that still hinder AMP development even accelerated by AI, as well as the foreseeable prospects, from finer-grained explorations to model-driven data enrichment and model enhancement.",
+    "source": "europepmc",
+    "ext_id": "MED:42569460",
+    "pub_types": [
+      "review-article",
+      "Review",
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "http://creativecommons.org/licenses/by/4.0/;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "nature",
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'nature'"
+  }
+}
