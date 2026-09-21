@@ -389,3 +389,136 @@ def test_reel_niche_with_a_committed_mp4_publishes_a_reel(tmp_path, monkeypatch)
     assert res["kind"] == "REELS"
     assert seen["url"].endswith(f"/{post['id']}/reel.mp4")
     assert seen["url"].startswith("https://")
+
+
+# ---------------------------------------------------------------------------
+# The Friday feature Reel: one still, held.
+#
+# The carousel-derived format reads as a slideshow - this module's own
+# docstring said so before the first one was published, and publishing it
+# confirmed it. These cover the other shape: a single image with nothing to
+# swipe past, and audio that is actually allowed to be there.
+# ---------------------------------------------------------------------------
+def test_feature_frames_are_all_reel_sized():
+    im = Image.new("RGB", (1080, 1350), (10, 20, 30))
+    frames = list(reel.feature_frames(im, seconds=1.0, fps=6))
+    assert len(frames) == 6
+    assert all(f.size == (reel.W, reel.H) for f in frames)
+
+
+def test_the_still_actually_moves():
+    """A perfectly static video reads as a broken upload in some players, and
+    the push is the only thing separating this from a JPEG."""
+    im = Image.new("RGB", (1080, 1350))
+    for x in range(0, 1080, 4):                    # vertical stripes to compare
+        for y in range(1350):
+            im.putpixel((x, y), (255, 255, 255))
+    frames = list(reel.feature_frames(im, seconds=1.0, fps=6))
+    assert frames[0].tobytes() != frames[-1].tobytes()
+
+
+def test_a_feature_reel_refuses_a_missing_image(tmp_path):
+    with pytest.raises(reel.ReelError) as e:
+        reel.build_feature_reel("POST", tmp_path / "nope.jpg")
+    assert "no such image" in str(e.value)
+
+
+def test_a_feature_reel_refuses_to_be_too_short(tmp_path):
+    """Meta rejects anything under 3s with an error that does not say so."""
+    img = tmp_path / "a.jpg"
+    Image.new("RGB", (1080, 1350)).save(img)
+    with pytest.raises(reel.ReelError) as e:
+        reel.build_feature_reel("POST", img, seconds=1.0)
+    assert "at least" in str(e.value)
+
+
+def test_a_feature_reel_validates_its_post_id(tmp_path):
+    img = tmp_path / "a.jpg"
+    Image.new("RGB", (1080, 1350)).save(img)
+    with pytest.raises(reel.ReelError):
+        reel.build_feature_reel("../../etc/passwd", img)
+
+
+def test_encode_refuses_an_audio_file_that_is_not_there(tmp_path):
+    with pytest.raises(reel.ReelError) as e:
+        reel.encode(tmp_path, tmp_path / "out.mp4", audio=tmp_path / "ghost.mp3")
+    assert "does not exist" in str(e.value)
+
+
+def test_no_audio_folder_means_silence_not_a_crash(tmp_path, monkeypatch):
+    """Nothing is bundled with the repo, so this is the normal case."""
+    monkeypatch.setattr(reel, "AUDIO_DIR", tmp_path / "nothing-here")
+    assert reel.pick_audio() is None
+
+
+def test_naming_a_track_that_is_not_there_is_an_error(tmp_path, monkeypatch):
+    """Silently falling back to silence would mean discovering on the grid
+    that the Reel you thought had music does not."""
+    monkeypatch.setattr(reel, "AUDIO_DIR", tmp_path)
+    (tmp_path / "calm.mp3").write_bytes(b"not really audio")
+    assert reel.pick_audio("calm") == tmp_path / "calm.mp3"
+    with pytest.raises(reel.ReelError):
+        reel.pick_audio("something-else")
+
+
+def test_normalise_clip_refuses_a_missing_file(tmp_path):
+    with pytest.raises(reel.ReelError):
+        reel.normalise_clip(tmp_path / "ghost.mp4", tmp_path / "out.mp4")
+
+
+@needs_ffmpeg
+def test_a_feature_reel_encodes_to_spec(tmp_path):
+    img = tmp_path / "cover.jpg"
+    Image.new("RGB", (1080, 1350), (20, 40, 90)).save(img, "JPEG")
+    info = reel.build_feature_reel("POST", img, seconds=4.0,
+                                   dest=tmp_path / "reel.mp4")
+    assert info["kind"] == "feature"
+    assert 3.5 <= info["duration"] <= 4.5
+    assert info["bytes"] < reel.MAX_BYTES
+
+
+@needs_ffmpeg
+def test_short_music_is_looped_to_fill_the_whole_reel(tmp_path):
+    """A 2s track under a 6s still would otherwise leave 4s of silence, which
+    reads as the video having broken half way through."""
+    img = tmp_path / "cover.jpg"
+    Image.new("RGB", (1080, 1350), (20, 40, 90)).save(img, "JPEG")
+    tone = tmp_path / "tone.m4a"
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi",
+                    "-i", "sine=frequency=440:duration=2", "-c:a", "aac",
+                    str(tone)], check=True)
+    dest = tmp_path / "reel.mp4"
+    reel.build_feature_reel("POST", img, audio=tone, seconds=6.0, dest=dest)
+    out = subprocess.run(
+        ["ffprobe", "-v", "error", "-select_streams", "a:0", "-show_entries",
+         "stream=duration", "-of", "csv=p=0", str(dest)],
+        capture_output=True, text=True).stdout.strip()
+    assert float(out) > 5.0, f"audio stopped early: {out}s"
+
+
+@needs_ffmpeg
+def test_a_landscape_clip_is_letterboxed_not_cropped(tmp_path):
+    """Cropping landscape footage to 9:16 throws away most of the frame, which
+    for a labelled diagram usually removes the actual subject."""
+    src = tmp_path / "wide.mp4"
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i",
+                    "testsrc=size=1920x1080:duration=2:rate=30",
+                    "-pix_fmt", "yuv420p", str(src)], check=True)
+    dest = tmp_path / "out.mp4"
+    info = reel.normalise_clip(src, dest, seconds=4.0)
+    assert info["kind"] == "clip"
+    geom = subprocess.run(
+        ["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries",
+         "stream=width,height", "-of", "csv=p=0", str(dest)],
+        capture_output=True, text=True).stdout.strip()
+    assert geom == f"{reel.W},{reel.H}"
+
+
+@needs_ffmpeg
+def test_a_short_clip_is_looped_to_the_requested_length(tmp_path):
+    src = tmp_path / "short.mp4"
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i",
+                    "testsrc=size=640x480:duration=2:rate=30",
+                    "-pix_fmt", "yuv420p", str(src)], check=True)
+    info = reel.normalise_clip(src, tmp_path / "out.mp4", seconds=7.0)
+    assert info["duration"] >= 6.5

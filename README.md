@@ -38,7 +38,7 @@ post, from zero followers.
      |              YOU comment `approve`. Nothing else publishes.
      v
   publishing        Instagram Graph API carousel, at your niche's
-                    peak-engagement time (docs/GROWTH.md) - not the
+                    configured publish time (config/niches.yaml) - not the
                     moment you approved it. link-in-bio rebuilds itself.
 ```
 

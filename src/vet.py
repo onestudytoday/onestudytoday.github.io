@@ -21,7 +21,7 @@ import argparse
 import json
 import re
 import sys
-from dataclasses import dataclass, field, asdict
+from dataclasses import dataclass, field, asdict, fields
 from typing import Any, Dict, List, Optional, Tuple
 
 import yaml
@@ -148,6 +148,31 @@ class VetReport:
         d = asdict(self)
         d["flags"] = [asdict(f) for f in self.flags]
         return d
+
+    @classmethod
+    def from_dict(cls, d: Dict[str, Any]) -> "VetReport":
+        """Rebuild a report from what was stored on a queued post.
+
+        The round trip matters because `revise` re-checks a rewritten draft
+        hours later, in a different process, and check_draft() needs the SAME
+        report the first draft was held to - notably causal_language_banned
+        and species, which are what stop a rewrite quietly reintroducing
+        "causes" or implying a mouse result applies to people.
+
+        Unknown keys are ignored rather than raising: a post queued by an
+        older version of this file must still be revisable.
+        """
+        d = dict(d or {})
+        flags = []
+        for f in (d.pop("flags", None) or []):
+            if isinstance(f, dict):
+                flags.append(Flag(code=str(f.get("code", "")),
+                                  severity=str(f.get("severity", "note")),
+                                  message=str(f.get("message", "")),
+                                  caveat=f.get("caveat"),
+                                  draft_rule=f.get("draft_rule")))
+        known = {fld.name for fld in fields(cls)} - {"flags"}
+        return cls(flags=flags, **{k: v for k, v in d.items() if k in known})
 
     def human(self) -> str:
         icons = {"hard": "REJECT", "warn": "  WARN", "note": "  note"}

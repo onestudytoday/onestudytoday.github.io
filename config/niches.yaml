@@ -27,6 +27,37 @@ defaults:
   # accumulate, so `engagement_proxy` and any future attention signal start
   # returning something other than 0 at this window. At 14 days they could not.
   recency_days: 75
+
+  # America/Chicago wall-clock time an approved post goes live.
+  #
+  # ONE time for every niche, deliberately. This used to be five per-niche
+  # slots (07:00 nature/psych, 09:00 physics/wildcard, 12:00 health) copied
+  # out of docs/GROWTH.md's weekly rhythm table - a table written before the
+  # account had posted anything, so those hours were a guess dressed up as
+  # data. src/metrics.py exists precisely to replace that guess with measured
+  # reach, and until it has n>=5 per slot there is nothing to spread posts
+  # across. Five guessed slots also meant "when does today's post go out?"
+  # had five different answers depending on the niche, which is what made
+  # reviewing feel unpredictable.
+  #
+  # A post approved AFTER this time does NOT wait for tomorrow: it goes out on
+  # the next hourly run. Reviewing late should not cost a day.
+  #
+  # A niche may still override it by setting its own `publish_time:` - the
+  # lookup in pipeline.publish_time() checks the niche first. Nothing sets one
+  # today, and metrics should be what decides if anything ever does.
+  publish_time: "15:00"
+
+  # Whether to look at what a general audience is already reading (see
+  # src/traction.py) as well as searching the literature by topic.
+  #
+  # Set to false to go back to topic-search-only sourcing. Everything a
+  # traction-discovered study meets afterwards - recency, journal standards,
+  # retraction checks, required caveats, your approval - is identical, so
+  # this switch changes what gets CONSIDERED and nothing about what gets
+  # allowed.
+  use_traction: true
+
   per_source_limit: 60
   min_abstract_chars: 500      # below this there is not enough to summarise
   # The batch the model actually ranks. Raised alongside the window: a wider

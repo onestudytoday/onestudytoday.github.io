@@ -68,6 +68,48 @@ def _reel_line(post: Dict[str, Any]) -> str:
     return f"no - {_defang(st.get('reason', 'unknown'))}"
 
 
+def _traction_line(post: Dict[str, Any]) -> str:
+    """Whether a general audience had already picked this paper out.
+
+    Worth a row of its own because it changes how you read the rest of the
+    card: "4,200 people upvoted this" is a reason to look harder at whether
+    the copy is overstating, since the studies that travel are
+    disproportionately the ones whose headline outruns their data.
+    """
+    tr = ((post.get("study") or {}).get("traction")) or {}
+    if not isinstance(tr, dict) or not tr:
+        return "found by topic search"
+    src = _defang(tr.get("source", "?"))
+    score = tr.get("score")
+    try:
+        score = f"{float(score):.0f}"
+    except Exception:
+        score = "?"
+    return f"picked up on **{src}** (traction {score}/20)"
+
+
+def _revision_line(post: Dict[str, Any]) -> str:
+    """What has been asked of this draft since it was written.
+
+    Defanged like everything else on the card: the instruction is your own
+    text, but it arrives from a GitHub comment and lands in a public issue
+    body, so it goes through the same marker-stripping as the study title.
+    """
+    history = post.get("revisions") or []
+    if not isinstance(history, list) or not history:
+        return "none - this is the original draft"
+    last = history[-1] if isinstance(history[-1], dict) else {}
+    # Collapsed to one line before it goes in a table cell. _defang() neuters
+    # the post-id marker but leaves newlines and pipes alone, and either one
+    # ends the row early and drops the rest of the instruction into the issue
+    # body as free markdown. Confusing rather than dangerous - but the whole
+    # point of this card is that it reads accurately at a glance on a phone.
+    asked = " ".join(_defang(last.get("instruction", "?")).split()).replace("|", "/")
+    if len(asked) > 120:
+        asked = asked[:117] + "..."
+    return f"**{len(history)}** - latest: _{asked}_"
+
+
 def build(post: Dict[str, Any], image_base: str) -> str:
     st = post["study"]
     vet = post.get("vet", {}) or {}
@@ -76,8 +118,29 @@ def build(post: Dict[str, Any], image_base: str) -> str:
     cap = build_caption(post)
     cs = caption_stats(cap)
 
+    # ?v=<n> is a cache-buster, and it is load-bearing for `revise`.
+    #
+    # GitHub does not hotlink these images: it rewrites every <img> through
+    # its own camo proxy, which caches aggressively and keys on the full URL.
+    # A revision re-renders the slides and overwrites docs/img/<id>/*.jpg at
+    # the SAME paths, so without a changing query string the issue would keep
+    # showing the pre-revision slides indefinitely - the copy would be fixed,
+    # the pictures would not, and the feature would look broken while working
+    # perfectly. Bumping n on each revision gives camo a URL it has not seen.
+    #
+    # A query string rather than versioned filenames on purpose: reel.py and
+    # publish.py both glob that directory, and renaming files to bust a cache
+    # would leave them picking up whichever copy sorted first.
+    # MONOTONIC, not a revision count. `revert` shortens the history, so a
+    # count would go 0,1,0,1 across revise/revert/revise - and the second
+    # revision's slides would be requested at ?v=1, a URL the proxy already
+    # cached with the FIRST revision's images. The card would then show one
+    # draft's words over another draft's pictures, which is the worst possible
+    # failure for a review step whose entire job is that you looked at it.
+    ver = int(post.get("render_seq") or len(post.get("revisions") or []))
+    q = f"?v={ver}" if ver else ""
     imgs = "\n".join(
-        f'<img src="{image_base}/{post["id"]}/{Path(p).stem}.jpg" width="230">'
+        f'<img src="{image_base}/{post["id"]}/{Path(p).stem}.jpg{q}" width="230">'
         for p in sorted((Path("out/posts") / post["id"]).glob("*.png")))
 
     flags = "\n".join(
@@ -116,6 +179,8 @@ design: `{vet.get('design')}` · subjects: `{vet.get('subjects')}` · n: `{vet.g
 | hashtags | {cs['hashtags']} |
 | format | {qa.get('format', 'explainer')} |
 | reel | {_reel_line(post)} |
+| revisions | {_revision_line(post)} |
+| why this study | {_traction_line(post)} |
 
 <details><summary>Full caption</summary>
 

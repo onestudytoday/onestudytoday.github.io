@@ -29,7 +29,8 @@ from config import DOCS, OUT, PUBLISHED, QUEUE, settings
 from config import _opt as _opt
 from draft import draft_post, skeleton
 from render import contact_sheet, render_post
-from sources import Study, fetch_candidates, load_ledger, mark_seen, save_ledger, study_key
+from sources import (Study, fetch_candidates, load_ledger, load_niches,
+                     mark_seen, save_ledger, study_key)
 from vet import default_recency_days, vet
 from publish import PublishError
 from secrets_guard import safe_error
@@ -287,13 +288,46 @@ def run(niche: Optional[str] = None, days: Optional[int] = None, limit: int = 1,
 # Both funnel through _publish_one() so there is exactly one place that knows
 # how to actually turn an approved post into a live Instagram post.
 # ---------------------------------------------------------------------------
-PUBLISH_TIMES = {
-    # America/Chicago wall-clock time of day, from docs/GROWTH.md's weekly
-    # rhythm table. Wildcard uses Friday's slot regardless of which niche it
-    # was actually sourced from.
-    "nature": "07:00", "psych": "07:00", "health": "12:00",
-    "physics": "09:00", "wildcard": "09:00",
-}
+DEFAULT_PUBLISH_TIME = "15:00"
+
+
+def publish_time(niche: str = "") -> str:
+    """The America/Chicago wall-clock time this niche's posts go live.
+
+    Read from config/niches.yaml, which is the ONE place that defines it.
+
+    This used to be a five-entry dict literal right here, and a SECOND copy of
+    the same five values written in JavaScript inside publish-on-approve.yml
+    to tell you when your approval would go out. Two hand-maintained copies of
+    a mapping that must agree is the seam this repo keeps rediscovering - the
+    four-copies-of-`14` recency bug was the same shape, and the failure mode
+    here was worse than useless: the bot would confidently comment "it'll go
+    out around 9:00am Central" while the gate that actually holds the post had
+    been moved to a different hour entirely. A wrong promise is harder to
+    debug than no promise, because nothing looks broken.
+
+    Now: one value in the YAML, read by the gate AND by the comment that
+    announces it, so they cannot drift apart.
+    """
+    try:
+        cfg = load_niches()
+        per_niche = ((cfg.get("niches") or {}).get(niche) or {}).get("publish_time")
+        if per_niche:
+            return str(per_niche)
+        return str((cfg.get("defaults") or {})["publish_time"])
+    except Exception:
+        # A malformed YAML must not mean "publish everything immediately".
+        return DEFAULT_PUBLISH_TIME
+
+
+def publish_time_display(niche: str = "") -> str:
+    """publish_time() as a human would say it: "3:00pm", not "15:00"."""
+    try:
+        h, m = (int(x) for x in publish_time(niche).split(":"))
+        suffix = "am" if h < 12 else "pm"
+        return f"{(h % 12) or 12}:{m:02d}{suffix}"
+    except Exception:
+        return publish_time(niche)
 
 
 def already_published(post: Dict[str, Any]) -> Optional[str]:
@@ -540,7 +574,7 @@ def publish_scheduled(live: bool = True, tz: str = "America/Chicago",
         post = json.loads(f.read_text())
         if post.get("status") != "approved":
             continue
-        target = PUBLISH_TIMES.get(post.get("niche", ""))
+        target = publish_time(post.get("niche", ""))
         if target:
             th, tm = (int(x) for x in target.split(":"))
             target_dt = now.replace(hour=th, minute=tm, second=0, microsecond=0)

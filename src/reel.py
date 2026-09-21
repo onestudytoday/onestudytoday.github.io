@@ -62,6 +62,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import re
 import shutil
 import subprocess
@@ -72,7 +73,7 @@ from typing import Any, Dict, List, Optional, Sequence, Tuple
 
 from PIL import Image
 
-from config import DOCS, PUBLISHED, QUEUE
+from config import DOCS, PUBLISHED, QUEUE, ROOT
 
 # --- Reel geometry -----------------------------------------------------------
 W, H = 1080, 1920
@@ -287,17 +288,47 @@ def verify(path: Path) -> Dict[str, Any]:
             "vcodec": video.get("codec_name"), "acodec": audio.get("codec_name")}
 
 
-def encode(frames_dir: Path, dest: Path, fps: int = FPS) -> Path:
-    """Encode a numbered frame directory to a Reels-compatible MP4."""
+def encode(frames_dir: Path, dest: Path, fps: int = FPS,
+           audio: Optional[Path] = None) -> Path:
+    """Encode a numbered frame directory to a Reels-compatible MP4.
+
+    `audio` is an optional real soundtrack. When absent the track is silent,
+    which is what every carousel-derived Reel has used so far.
+
+    WHY THE SOUNDTRACK CANNOT BE A TRENDING SONG
+    ============================================
+    Meta's Content Publishing API gives no access to Instagram's licensed
+    audio library, and a Reel's audio cannot be changed after it is published.
+    So an API-published Reel can only carry audio that is already inside the
+    file, which in practice means music you hold a licence to - CC0 or
+    similar. Trending audio is a real ranking signal and is simply not
+    reachable this way; the only route to it is posting by hand in the app.
+
+    That is not a limitation to work around quietly. It is the reason
+    build_feature_reel() writes a file that is equally usable either way:
+    committed for the API to fetch, or downloaded and posted by hand with a
+    trending sound picked in the app.
+    """
+    # Arguments before environment, the same order build_reel() uses and for
+    # the same reason: "install ffmpeg" is a wrong answer to "your audio file
+    # is missing". This function had them the other way round until the
+    # ffmpeg-less test run caught it - which is precisely the configuration
+    # that made the original ordering bug visible, one commit earlier.
+    if audio is not None and not Path(audio).is_file():
+        raise ReelError(f"audio track {audio} does not exist")
     _require_ffmpeg()
     dest.parent.mkdir(parents=True, exist_ok=True)
+    audio_in = (["-stream_loop", "-1", "-i", str(audio)] if audio else
+                ["-f", "lavfi", "-i",
+                 f"anullsrc=channel_layout=stereo:sample_rate={AUDIO_RATE}"])
     cmd = [
         "ffmpeg", "-y", "-loglevel", "error",
         "-framerate", str(fps), "-i", str(frames_dir / "%06d.jpg"),
-        # Silent stereo track. anullsrc is infinite; -shortest trims it to the
-        # video, so this can never extend the duration.
-        "-f", "lavfi", "-i",
-        f"anullsrc=channel_layout=stereo:sample_rate={AUDIO_RATE}",
+        # Either a real track (looped, then trimmed by -shortest) or silence.
+        # -stream_loop -1 matters: a 12-second song under a 16-second still
+        # would otherwise leave four seconds of silence, which reads as the
+        # video having broken.
+        *audio_in,
         "-c:v", "libx264", "-profile:v", "high", "-preset", "medium",
         "-pix_fmt", "yuv420p", "-r", str(fps),
         # Closed GOP, keyframe every second. Meta's spec asks for closed GOP
@@ -318,6 +349,190 @@ def encode(frames_dir: Path, dest: Path, fps: int = FPS) -> Path:
     if not dest.exists() or dest.stat().st_size == 0:
         raise ReelError(f"ffmpeg reported success but {dest} is missing or empty.")
     return dest
+
+
+# ---------------------------------------------------------------------------
+# The Friday feature reel: ONE image, held.
+# ---------------------------------------------------------------------------
+FEATURE_SECONDS = 12.0
+FEATURE_ZOOM = 0.06          # 6% push across the whole hold
+AUDIO_DIR = ROOT / "assets" / "audio"
+AUDIO_EXTS = (".mp3", ".m4a", ".aac", ".wav", ".ogg")
+
+
+def feature_frames(image: Image.Image, bg: str = DEFAULT_BG,
+                   seconds: float = FEATURE_SECONDS, fps: int = FPS,
+                   zoom: float = FEATURE_ZOOM):
+    """Yield frames for a single still, slowly pushing in.
+
+    WHY A SEPARATE SHAPE FROM compose_frames()
+    ==========================================
+    The carousel-derived Reel shows six 4:5 slides drifting on a 9:16 canvas
+    with crossfades between them. This module's own docstring predicted the
+    problem and the first published one confirmed it: that reads as a
+    slideshow, and slideshows do not travel. Every cut resets the viewer's
+    attention and invites a swipe.
+
+    One image held for twelve seconds is the opposite bet - nothing to swipe
+    past, the whole frame doing one job. The slow push exists only so the
+    video is not literally static, which some players and some viewers treat
+    as a broken upload.
+
+    A single still with audio is a perfectly ordinary Reel as far as Instagram
+    is concerned; "a video" is a container requirement, not an editorial one.
+    """
+    total = max(1, int(round(seconds * fps)))
+    canvas_bg = _hex_rgb(bg)
+    src = image.convert("RGB")
+    # Pre-scale once to the largest size any frame will need, then crop per
+    # frame. Resizing the ORIGINAL every frame is both slower and visibly
+    # softer, because each frame resamples from scratch at a different ratio.
+    big_w = int(W * (1 + zoom))
+    big_h = int(H * (1 + zoom))
+    fitted = _cover(src, big_w, big_h)
+    for i in range(total):
+        t = i / max(1, total - 1)
+        # Ease in and out so the motion has no hard start or stop.
+        e = 0.5 - 0.5 * math.cos(math.pi * t)
+        cur_w = int(big_w - (big_w - W) * e)
+        cur_h = int(big_h - (big_h - H) * e)
+        x = (fitted.width - cur_w) // 2
+        y = (fitted.height - cur_h) // 2
+        frame = fitted.crop((x, y, x + cur_w, y + cur_h)).resize(
+            (W, H), Image.LANCZOS)
+        if frame.size != (W, H):                       # paranoia
+            canvas = Image.new("RGB", (W, H), canvas_bg)
+            canvas.paste(frame, (0, 0))
+            frame = canvas
+        yield frame
+
+
+def _cover(im: Image.Image, w: int, h: int) -> Image.Image:
+    """Scale to COVER w x h, centre-cropping the overflow."""
+    scale = max(w / im.width, h / im.height)
+    out = im.resize((max(1, int(im.width * scale)), max(1, int(im.height * scale))),
+                    Image.LANCZOS)
+    left = (out.width - w) // 2
+    top = (out.height - h) // 2
+    return out.crop((left, top, left + w, top + h))
+
+
+def pick_audio(name: str = "") -> Optional[Path]:
+    """A licensed track from assets/audio/, or None for silence.
+
+    Nothing is bundled with the repo: there is no track here until you put one
+    there, and it must be one you are entitled to publish - CC0, or licensed
+    to you. Instagram's own library is not reachable through the API (see
+    encode()), and shipping "some music" with a tool that publishes to a real
+    account would be handing you a copyright strike with extra steps.
+
+    assets/audio/README.md spells this out next to the empty folder.
+    """
+    if not AUDIO_DIR.is_dir():
+        return None
+    tracks = sorted(p for p in AUDIO_DIR.iterdir()
+                    if p.suffix.lower() in AUDIO_EXTS)
+    if not tracks:
+        return None
+    if name:
+        for t in tracks:
+            if t.stem.lower() == name.lower():
+                return t
+        raise ReelError(
+            f"no track called {name!r} in assets/audio/ "
+            f"(found: {', '.join(t.stem for t in tracks) or 'nothing'})")
+    return tracks[0]
+
+
+def build_feature_reel(post_id: str, image: Path, audio: Optional[Path] = None,
+                       bg: str = DEFAULT_BG, seconds: float = FEATURE_SECONDS,
+                       dest: Optional[Path] = None) -> Dict[str, Any]:
+    """One still + optional music, as docs/img/<id>/reel.mp4.
+
+    Argument validation before the environment check, for the same reason
+    build_reel() does it: telling someone to install ffmpeg when their real
+    problem is a missing image is a wrong answer to a question they did not
+    ask.
+    """
+    check_post_id(post_id)
+    image = Path(image)
+    if not image.is_file():
+        raise ReelError(f"no such image: {image}")
+    if seconds < MIN_DURATION_S:
+        raise ReelError(
+            f"a Reel must be at least {MIN_DURATION_S:g}s; {seconds:g}s was asked for.")
+    _require_ffmpeg()
+
+    dest = Path(dest) if dest else (DOCS / "img" / post_id / "reel.mp4")
+    im = Image.open(image)
+    try:
+        with tempfile.TemporaryDirectory(prefix=f"reel-{post_id}-") as td:
+            frames_dir = Path(td)
+            n = 0
+            for n, frame in enumerate(
+                    feature_frames(im, bg=bg, seconds=seconds), start=1):
+                frame.save(frames_dir / f"{n:06d}.jpg", "JPEG",
+                           quality=94, optimize=False, progressive=False)
+            if n == 0:
+                raise ReelError("No frames were composed.")
+            encode(frames_dir, dest, audio=audio)
+    finally:
+        im.close()
+
+    info = verify(dest)
+    info.update({"post_id": post_id, "path": str(dest), "slides": 1,
+                 "kind": "feature", "audio": str(audio) if audio else ""})
+    return info
+
+
+def normalise_clip(src: Path, dest: Path, seconds: float = 15.0,
+                   audio: Optional[Path] = None,
+                   bg: str = DEFAULT_BG) -> Dict[str, Any]:
+    """Turn a free-source video into a Reels-shaped MP4.
+
+    For the other half of the Friday idea: a public-domain clip of the thing
+    a study was about. NASA's video library is the obvious well for anything
+    astronomical - it is public domain, no attribution legally required
+    (though it is polite), and the footage is genuinely good. ESA, Wikimedia
+    and Pexels are usable too but carry licence conditions, so whatever you
+    download, keep the licence note with it.
+
+    Scales to fit 1080x1920 and pads rather than cropping: a centre-crop of
+    landscape footage throws away most of the frame, which for an orbital
+    diagram or a labelled figure usually removes the actual subject.
+    """
+    src, dest = Path(src), Path(dest)
+    if not src.is_file():
+        raise ReelError(f"no such clip: {src}")
+    if seconds < MIN_DURATION_S:
+        raise ReelError(f"a Reel must be at least {MIN_DURATION_S:g}s.")
+    _require_ffmpeg()
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    r, g, b = _hex_rgb(bg)
+    vf = (f"scale={W}:{H}:force_original_aspect_ratio=decrease,"
+          f"pad={W}:{H}:(ow-iw)/2:(oh-ih)/2:color=0x{r:02x}{g:02x}{b:02x},"
+          f"setsar=1,fps={FPS}")
+    audio_in = (["-stream_loop", "-1", "-i", str(audio)] if audio else
+                ["-f", "lavfi", "-i",
+                 f"anullsrc=channel_layout=stereo:sample_rate={AUDIO_RATE}"])
+    cmd = ["ffmpeg", "-y", "-loglevel", "error",
+           "-stream_loop", "-1", "-i", str(src), *audio_in,
+           "-map", "0:v:0", "-map", "1:a:0",
+           "-t", f"{seconds:g}", "-vf", vf,
+           "-c:v", "libx264", "-profile:v", "high", "-preset", "medium",
+           "-pix_fmt", "yuv420p", "-r", str(FPS),
+           "-g", str(FPS * 2), "-keyint_min", str(FPS), "-sc_threshold", "0",
+           "-flags", "+cgop",
+           "-crf", VIDEO_CRF, "-maxrate", VIDEO_MAXRATE, "-bufsize", VIDEO_BUFSIZE,
+           "-c:a", "aac", "-b:a", AUDIO_BITRATE, "-ar", str(AUDIO_RATE), "-ac", "2",
+           "-movflags", "+faststart", str(dest)]
+    proc = subprocess.run(cmd, capture_output=True, text=True, timeout=900)
+    if proc.returncode != 0:
+        raise ReelError(f"ffmpeg failed on {src.name}:\n{proc.stderr.strip()[:1200]}")
+    info = verify(dest)
+    info.update({"path": str(dest), "kind": "clip",
+                 "audio": str(audio) if audio else ""})
+    return info
 
 
 def build_reel(post_id: str, bg: str = DEFAULT_BG,
@@ -397,7 +612,33 @@ def _main() -> None:
     ap.add_argument("post_id")
     ap.add_argument("--bg", default=DEFAULT_BG)
     ap.add_argument("--open", action="store_true", help="print the output path only")
+    ap.add_argument("--feature", metavar="IMAGE",
+                    help="one still held for the whole Reel, instead of the "
+                         "slide sequence (the Friday format)")
+    ap.add_argument("--clip", metavar="VIDEO",
+                    help="a free-source video clip, letterboxed to 9:16")
+    ap.add_argument("--audio", metavar="NAME", default=None,
+                    help="track name from assets/audio/ (default: the first "
+                         "one there; omit the flag entirely for silence)")
+    ap.add_argument("--seconds", type=float, default=None)
     a = ap.parse_args()
+
+    if a.feature or a.clip:
+        audio = pick_audio(a.audio) if a.audio is not None else None
+        try:
+            if a.feature:
+                info = build_feature_reel(
+                    a.post_id, Path(a.feature), audio=audio, bg=a.bg,
+                    seconds=a.seconds or FEATURE_SECONDS)
+            else:
+                check_post_id(a.post_id)
+                info = normalise_clip(
+                    Path(a.clip), DOCS / "img" / a.post_id / "reel.mp4",
+                    seconds=a.seconds or 15.0, audio=audio, bg=a.bg)
+        except ReelError as e:
+            raise SystemExit(f"\n{e}\n")
+        print(info["path"] if a.open else json.dumps(info, indent=2))
+        return
 
     # Use the post's own background colour when we can find its record.
     bg = a.bg

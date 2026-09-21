@@ -410,6 +410,10 @@ def _main():
     r = sub.add_parser("reject")
     r.add_argument("post_id")
     r.add_argument("note", nargs="?", default="")
+    rv = sub.add_parser("revise")
+    rv.add_argument("post_id")
+    rv.add_argument("instruction")
+    sub.add_parser("revert").add_argument("post_id")
     a = ap.parse_args()
 
     if a.cmd == "serve":
@@ -437,6 +441,42 @@ def _main():
         p.setdefault("review", {})["forced"] = True
         save(p)
         print(f"{a.post_id} FORCE approved - blockers overridden by a human.")
+        return
+
+    # ---- revise / revert ------------------------------------------------
+    # Both re-render, because the slides are what actually publish. Skipping
+    # that is the mistake rerender()'s docstring was written about: the copy
+    # changes, the committed JPEGs do not, and Instagram receives the old
+    # carousel next to the new caption.
+    if a.cmd in ("revise", "revert"):
+        from draft import ReviseError, revert_post, revise_post
+        from secrets_guard import redact, safe_error
+        p = load(a.post_id)
+        if not p:
+            raise SystemExit(f"No queued post with id {a.post_id}")
+        try:
+            p = (revise_post(p, a.instruction) if a.cmd == "revise"
+                 else revert_post(p))
+        except ReviseError as e:
+            # A refused revision is a normal outcome, not a crash: the post is
+            # left exactly as it was. Exit non-zero so the workflow surfaces
+            # the reason on the issue instead of reporting success.
+            raise SystemExit(f"REVISION REFUSED - {redact(e)}")
+        except Exception as e:
+            # Anything else - an SDK error, a timeout - is reported through
+            # safe_error() because this output is tee'd to a log that the
+            # workflow pastes into a PUBLIC issue comment. An unwrapped
+            # exception from an HTTP client can quote the request it was
+            # making, and secrets_guard exists precisely because a quoted
+            # request can carry a credential. Actions' own secret masking does
+            # not help here: it covers the log stream, not bytes a process
+            # writes to a file, and not a REST payload.
+            raise SystemExit(f"REVISION FAILED - {safe_error(e)}")
+        save(p)
+        rerender(p)
+        n = len(p.get("revisions") or [])
+        print(f"{a.post_id} {'revised' if a.cmd == 'revise' else 'reverted'} "
+              f"({n} revision{'' if n == 1 else 's'} on record). Slides re-rendered.")
         return
     if a.cmd == "reject":
         set_status(a.post_id, "rejected", a.note)

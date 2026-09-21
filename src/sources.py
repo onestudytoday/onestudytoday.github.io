@@ -33,7 +33,7 @@ import xml.etree.ElementTree as ET
 from dataclasses import dataclass, field, asdict
 from datetime import date, datetime, timedelta
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional
+from typing import Any, Dict, Iterable, List, Optional, Sequence
 
 import requests
 import yaml
@@ -172,6 +172,37 @@ def europepmc_search(topic_query: str, days: int, limit: int = 60,
     for r in data.get("resultList", {}).get("result", []):
         out.append(_epmc_to_study(r))
     return out
+
+
+def study_from_doi(doi: str) -> Optional[Study]:
+    """Look one specific paper up by DOI, with a real abstract attached.
+
+    Europe PMC rather than Crossref, because Crossref's metadata very often
+    has no abstract at all, and an abstract is not optional here: it is what
+    the drafting prompt is built from and what every invented-number check is
+    measured against. A record without one is no use, so this returns None
+    rather than a Study that would be rejected three steps later for a reason
+    nobody could see from the log.
+
+    Used by the traction path, which discovers DOIs from places that show
+    what people are reading (see traction.py). Nothing about arriving this
+    way exempts the result from anything: it comes back as an ordinary Study
+    and meets vet() on identical terms.
+    """
+    doi = (doi or "").strip().lower()
+    if not doi.startswith("10."):
+        return None
+    q = f'DOI:"{doi}"'
+    params = {"query": q, "format": "json", "resultType": "core", "pageSize": 1}
+    try:
+        data = _get(EPMC, params, cache_key=f"epmc-doi:{doi}", ttl=86400)
+    except Exception as e:
+        print(f"  ! DOI lookup failed for {doi}: {e}")
+        return None
+    results = (data.get("resultList", {}) or {}).get("result", []) or []
+    if not results:
+        return None
+    return _epmc_to_study(results[0])
 
 
 def _epmc_to_study(r: Dict[str, Any]) -> Study:
@@ -463,9 +494,61 @@ def load_niches() -> Dict[str, Any]:
     return yaml.safe_load((ROOT / "config" / "niches.yaml").read_text())
 
 
+def traction_candidates(niche: str, days: int, limit: int = 12,
+                        hits: Optional[Sequence[Any]] = None) -> List[Study]:
+    """Studies discovered because people were already reading them.
+
+    Runs BEFORE the topic searches and contributes to the same pool. The
+    studies it returns are ordinary Study objects from Europe PMC; the only
+    thing traction did was decide which DOIs were worth looking up.
+
+    Everything downstream is unchanged - the recency cut, the abstract length
+    floor, the exclusion terms, the ledger check, vet(), and your approval.
+    That is the entire safety argument for this feature: it widens what gets
+    considered and touches nothing about what gets allowed. See
+    traction.py's module docstring.
+
+    Wrapped in a blanket except because it is the newest and least proven
+    path in the file, and a weekday post must never fail to exist because
+    reddit changed a JSON key.
+    """
+    try:
+        import traction
+    except Exception:
+        return []
+    out: List[Study] = []
+    try:
+        found = (traction.discover_dois(hits=hits) if hits is not None
+                 else traction.discover_dois(days=min(days, 30)))
+    except Exception as e:
+        print(f"  ! traction discovery unavailable, continuing without it: {e}")
+        return []
+    if not found:
+        return []
+    print(f"  traction: {len(found)} DOIs with public pickup, resolving top {limit}")
+    for entry in found[:limit]:
+        try:
+            s = study_from_doi(entry["doi"])
+        except Exception:
+            continue
+        if s is None:
+            continue
+        s.niche = niche
+        # Recorded so the review card and any later analysis can say WHY this
+        # study was in front of you, rather than it looking like any other
+        # search result.
+        s.interest_source = s.interest_source or "traction"
+        s.raw = dict(s.raw or {})
+        s.raw["traction"] = {"score": entry["score"], "source": entry["source"],
+                             "url": entry["url"]}
+        out.append(s)
+    return out
+
+
 def fetch_candidates(niche: str, days: Optional[int] = None,
                      include_preprints: bool = True,
-                     rank_by_interest: bool = True) -> List[Study]:
+                     rank_by_interest: bool = True,
+                     use_traction: bool = True) -> List[Study]:
     cfg = load_niches()
     defaults = cfg["defaults"]
     n = cfg["niches"][niche]
@@ -473,6 +556,23 @@ def fetch_candidates(niche: str, days: Optional[int] = None,
     limit = defaults["per_source_limit"]
 
     studies: List[Study] = []
+
+    # Gathered ONCE and used twice - for discovery below and for the ranking
+    # nudge further down. Fetching separately for each meant two full rounds
+    # of reddit/HN/RSS calls per run, which is slower, doubles what these
+    # free services are asked for, and can return two different views of the
+    # week inside one run.
+    tr_hits: List[Any] = []
+    if use_traction and defaults.get("use_traction", True):
+        try:
+            import traction
+            tr_hits = traction.gather(days=7)
+        except Exception as e:
+            print(f"  ! traction sources unavailable: {e}")
+        try:
+            studies += traction_candidates(niche, days, hits=tr_hits)
+        except Exception as e:
+            print(f"  ! traction path failed, continuing without it: {e}")
     # Each source call goes over the network to a service we do not control.
     # A single timeout or 5xx from Europe PMC or arXiv used to crash the whole
     # weekday job with an uncaught exception - "Draft today's post" would go
@@ -534,7 +634,29 @@ def fetch_candidates(niche: str, days: Optional[int] = None,
     uniq = uniq[:pool_size]
 
     terms = load_interest_terms()
-    uniq.sort(key=lambda s: heuristic_interest(s, terms), reverse=True)
+
+    # Traction is folded into the FREE heuristic pass, not bolted on after
+    # the model ranks. The heuristic is what decides which candidates the
+    # model ever sees, so a paper with real public pickup that the heuristic
+    # happens to score low would otherwise be cut before anything could
+    # notice - the same truncation trap that made the old date-sorted
+    # shortlist discard interesting older papers.
+    #
+    # Additive and capped, never multiplicative: traction nudges the order,
+    # and a paper with no pickup at all is not pushed down for it. Most good
+    # papers never reach reddit, and an account that only posted what was
+    # already popular would be a lagging aggregator of other people's picks.
+    def _rank_key(s: Study) -> float:
+        base = heuristic_interest(s, terms)
+        if not tr_hits:
+            return base
+        try:
+            import traction
+            return base + min(traction.traction_score(s, tr_hits), 20.0)
+        except Exception:
+            return base
+
+    uniq.sort(key=_rank_key, reverse=True)
     uniq = uniq[: defaults["max_candidates"]]
 
     # engagement_proxy is kept only as the last tie-break. On this account it

@@ -1,22 +1,36 @@
 """
-Peak-time publish gating. Approving a post used to publish it in the same
-breath, so it went out at whatever time you happened to review it - usually
-right at the 6am draft slot, not when the audience is actually around.
-publish_scheduled() only lets an approved post out once its niche's
-peak-engagement time (docs/GROWTH.md) has arrived in America/Chicago.
+Publish-time gating. Approving a post used to publish it in the same breath,
+so it went out at whatever time you happened to review it - usually right at
+the 6am draft slot, not when the audience is actually around.
+publish_scheduled() only lets an approved post out once the configured
+publish time has arrived in America/Chicago.
+
+The hours here are DERIVED from pipeline.publish_time(), never written as
+literals. These tests used to hardcode "physics = 09:00 slot", so moving the
+slot to a single 15:00 broke a test that was really asserting "a post past
+its slot publishes" - a true statement at any hour. Deriving keeps the test
+about the behaviour instead of about the number.
 
     python -m pytest tests/ -q
 """
 
 import json
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 
 import pipeline  # noqa: E402
+
+CENTRAL = ZoneInfo("America/Chicago")
+
+
+def _slot_on(day: datetime, niche: str = "") -> datetime:
+    """The configured publish moment on `day`, whatever it is set to."""
+    h, m = (int(x) for x in pipeline.publish_time(niche).split(":"))
+    return day.replace(hour=h, minute=m, second=0, microsecond=0)
 
 
 def _approved_post(post_id, niche):
@@ -30,10 +44,11 @@ def test_post_not_yet_at_its_slot_is_skipped(tmp_path, monkeypatch):
     monkeypatch.setattr(pipeline, "_publish_one",
                         lambda f, p, live: calls.append(p["id"]) or {})
 
-    post = _approved_post("2026-08-20-physics-deadbeef", "physics")  # 09:00 slot
+    post = _approved_post("2026-08-20-physics-deadbeef", "physics")
     (tmp_path / f"{post['id']}.json").write_text(json.dumps(post))
 
-    before_slot = datetime(2026, 8, 20, 8, 0, tzinfo=ZoneInfo("America/Chicago"))
+    day = datetime(2026, 8, 20, tzinfo=CENTRAL)
+    before_slot = _slot_on(day, "physics") - timedelta(hours=1)
     pipeline.publish_scheduled(live=True, _now=before_slot)
     assert calls == []
 
@@ -44,10 +59,11 @@ def test_post_at_or_past_its_slot_is_published(tmp_path, monkeypatch):
     monkeypatch.setattr(pipeline, "_publish_one",
                         lambda f, p, live: calls.append(p["id"]) or {})
 
-    post = _approved_post("2026-08-20-physics-deadbeef", "physics")  # 09:00 slot
+    post = _approved_post("2026-08-20-physics-deadbeef", "physics")
     (tmp_path / f"{post['id']}.json").write_text(json.dumps(post))
 
-    after_slot = datetime(2026, 8, 20, 9, 30, tzinfo=ZoneInfo("America/Chicago"))
+    day = datetime(2026, 8, 20, tzinfo=CENTRAL)
+    after_slot = _slot_on(day, "physics") + timedelta(minutes=30)
     pipeline.publish_scheduled(live=True, _now=after_slot)
     assert calls == [post["id"]]
 
@@ -61,11 +77,12 @@ def test_approved_late_still_publishes_on_next_poll(tmp_path, monkeypatch):
     monkeypatch.setattr(pipeline, "_publish_one",
                         lambda f, p, live: calls.append(p["id"]) or {})
 
-    post = _approved_post("2026-08-20-nature-deadbeef", "nature")  # 07:00 slot
+    post = _approved_post("2026-08-20-nature-deadbeef", "nature")
     (tmp_path / f"{post['id']}.json").write_text(json.dumps(post))
 
-    late_afternoon = datetime(2026, 8, 20, 15, 0, tzinfo=ZoneInfo("America/Chicago"))
-    pipeline.publish_scheduled(live=True, _now=late_afternoon)
+    day = datetime(2026, 8, 20, tzinfo=CENTRAL)
+    late = _slot_on(day, "nature") + timedelta(hours=6)
+    pipeline.publish_scheduled(live=True, _now=late)
     assert calls == [post["id"]]
 
 
@@ -97,3 +114,72 @@ def test_publish_approved_ignores_the_time_gate(tmp_path, monkeypatch):
 
     pipeline.publish_approved(live=True)  # no time argument at all
     assert calls == [post["id"]]
+
+
+# ---------------------------------------------------------------------------
+# One publish time, defined once
+#
+# There used to be two hand-maintained copies of the slot table: a dict in
+# pipeline.py and a JavaScript object in publish-on-approve.yml that told you
+# when your approval would go out. Nothing made them agree, so moving the real
+# slot left the bot confidently promising the old one - a wrong promise, which
+# is worse than no promise because nothing looks broken.
+# ---------------------------------------------------------------------------
+def test_every_niche_shares_one_publish_time_from_the_yaml():
+    from sources import load_niches
+    configured = load_niches()["defaults"]["publish_time"]
+    for niche in load_niches()["niches"]:
+        assert pipeline.publish_time(niche) == configured
+
+
+def test_the_workflow_no_longer_carries_its_own_copy_of_the_slot_table():
+    """Regression: a second copy of the times, written in JS, in the workflow.
+
+    If this ever fails, the bot's "it'll go out around X" comment has been
+    hardcoded again and can drift from the gate that actually holds the post.
+    """
+    wf = (Path(__file__).resolve().parent.parent
+          / ".github" / "workflows" / "publish-on-approve.yml").read_text()
+    assert "const PUBLISH_TIMES" not in wf
+    # It must ask the Python that owns the gate instead.
+    assert "publish_time_display" in wf
+
+
+def test_the_yaml_is_really_what_decides_the_time(monkeypatch):
+    """Proves the YAML path is live, not decorative.
+
+    Without this, the fallback test below passes whether or not publish_time()
+    ever reads the config - because the configured value and the hardcoded
+    fallback are deliberately the same string. Asserting on a DIFFERENT value
+    is the only way to show the read actually happens.
+    """
+    monkeypatch.setattr(pipeline, "load_niches",
+                        lambda: {"defaults": {"publish_time": "06:30"},
+                                 "niches": {"physics": {}}})
+    assert pipeline.publish_time("physics") == "06:30"
+    assert pipeline.publish_time_display("physics") == "6:30am"
+
+
+def test_a_per_niche_override_wins_over_the_default(monkeypatch):
+    monkeypatch.setattr(pipeline, "load_niches",
+                        lambda: {"defaults": {"publish_time": "15:00"},
+                                 "niches": {"health": {"publish_time": "12:00"}}})
+    assert pipeline.publish_time("health") == "12:00"
+    assert pipeline.publish_time("physics") == "15:00"
+
+
+def test_a_broken_config_does_not_publish_everything_immediately(monkeypatch):
+    """Failing open here would dump the whole approved queue at once.
+
+    Patches pipeline.load_niches, NOT sources.load_niches: pipeline imports the
+    name directly, so patching the source module leaves pipeline's binding
+    untouched and this test would pass without the fallback ever running.
+    """
+    def boom():
+        raise RuntimeError("malformed yaml")
+    monkeypatch.setattr(pipeline, "load_niches", boom)
+    assert pipeline.publish_time("physics") == pipeline.DEFAULT_PUBLISH_TIME
+
+
+def test_publish_time_display_is_human_readable():
+    assert pipeline.publish_time_display() == "3:00pm"

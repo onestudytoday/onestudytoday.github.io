@@ -344,7 +344,7 @@ Comment `approve` on the issue.
 
 That closes the issue and marks the post approved - it does **not** post to
 Instagram right away. A separate workflow checks every 15 minutes for
-approved posts and publishes each one once its niche's peak-engagement time
+approved posts and publishes each one once the configured publish time
 arrives (the table in `docs/GROWTH.md` - e.g. nature/psych at 7am Central,
 health at noon). Reviewing at 6am does not publish at 6am; it just means the
 post is ready and waiting for its slot. Once it actually goes out, the bot
