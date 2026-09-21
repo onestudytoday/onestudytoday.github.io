@@ -1,8 +1,8 @@
 name: Publish approved posts
 
-# Publishes whatever is approved and past its niche's peak-engagement slot
-# (docs/GROWTH.md's weekly rhythm table), independent of when you actually
-# reviewed it. Runs hourly rather than at one exact cron time, so it is never
+# Publishes whatever is approved and past the configured publish time
+# (config/niches.yaml `defaults.publish_time`, currently 15:00 Central),
+# independent of when you actually reviewed it. Runs hourly rather than at one exact cron time, so it is never
 # pinned to a UTC offset that drifts across daylight saving - the actual time
 # check happens in Python against America/Chicago (see
 # pipeline.publish_scheduled / pipeline.PUBLISH_TIMES).
@@ -13,10 +13,10 @@ name: Publish approved posts
 
 on:
   schedule:
-    # Hourly, on the hour - deliberately matched to PUBLISH_TIMES, which are
-    # all whole hours (07:00 / 09:00 / 12:00 America/Chicago). So a post that
-    # is waiting for its slot goes out on the very run that its slot opens;
-    # the old */15 bought nothing extra at the slot itself.
+    # Hourly, on the hour - deliberately matched to publish_time, which is a
+    # whole hour (15:00 America/Chicago). So a post that is waiting for its
+    # slot goes out on the very run that its slot opens; the old */15 bought
+    # nothing extra at the slot itself.
     #
     # It replaces "*/15 * * * *" = 96 runs a day, ~672 a week, of which
     # essentially all did nothing. That was free (public repo, unlimited
