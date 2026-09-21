@@ -20,9 +20,24 @@ on:
         type: choice
         options: ["", "nature", "psych", "health", "physics", "wildcard"]
       days:
-        description: "Recency window in days"
+        # Blank, NOT a number. This was `default: "14"`, and a
+        # workflow_dispatch input's default is filled in by GitHub whether or
+        # not you touch the box - so every manual run passed `--days 14` and
+        # silently overrode config/niches.yaml's 75-day window. The cron run
+        # sends no input at all and was therefore fine, which is why a
+        # hand-started draft quietly searched a fortnight while the scheduled
+        # one searched three months.
+        #
+        # That made it the SIXTH copy of `14`: four were consolidated out of
+        # the Python in August, a fifth sat in linkinbio's public methodology
+        # text, and this one survived because it only misbehaves on the path
+        # nothing runs on a schedule.
+        #
+        # Leave it blank to use the configured window. Type a number only to
+        # deliberately override it for one run.
+        description: "Recency window in days (blank = use config/niches.yaml)"
         required: false
-        default: "14"
+        default: ""
 
 permissions:
   contents: write
