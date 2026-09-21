@@ -185,8 +185,21 @@ jobs:
           POST_ID: ${{ steps.what.outputs.post_id }}
           PUBLIC_IMAGE_BASE: ${{ vars.PUBLIC_IMAGE_BASE }}
         run: |
+          # The image base is passed as an ARGUMENT, not just an env var.
+          #
+          # issue.py's CLI only reads argv[2]; with one argument it falls back
+          # to settings().public_image_base, and settings() hard-requires the
+          # four Meta credentials. So this step died with "Missing required
+          # setting: META_APP_ID" while rendering a markdown file that needs
+          # no credential at all.
+          #
+          # Passing the argument rather than adding the secrets on purpose:
+          # this step builds a string. A step that does not publish should not
+          # be handed publishing credentials - the same reasoning ci.yml uses
+          # for its four dummy placeholders.
+          BASE="${PUBLIC_IMAGE_BASE:-https://onestudytoday.github.io/img}"
           if [ -f "data/queue/$POST_ID.json" ]; then
-            python src/issue.py "data/queue/$POST_ID.json" > issue_body.md
+            python src/issue.py "data/queue/$POST_ID.json" "$BASE" > issue_body.md
           fi
 
       - name: Commit the result
