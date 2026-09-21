@@ -1,0 +1,176 @@
+{
+  "id": "2026-09-03-nature-f17546c1",
+  "niche": "nature",
+  "study": {
+    "key": "f17546c1be489db9",
+    "title": "Organoid Intelligent Morphomics: Decoding the organoid morphome through artificial intelligence from phenotypic quantification to mechanistic insight",
+    "journal": "Bioactive materials",
+    "pub_date": "2026-09-03",
+    "pub_date_display": "Sep 3, 2026",
+    "doi": "10.1016/j.bioactmat.2026.08.043",
+    "doi_display": "doi.org/10.1016/j.bioactmat.2026.08.043",
+    "url": "https://doi.org/10.1016/j.bioactmat.2026.08.043",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Li S",
+      "Huang J",
+      "Yan Y",
+      "Jaspers RT",
+      "Pathak JL",
+      "Xiao Y"
+    ]
+  },
+  "cover": {
+    "kicker": "Bioactive Materials \u00b7 Review",
+    "headline": "Organoid research is stuck with **subjective quality checks and inconsistent results**. AI imaging might fix it."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Lab-grown organoids mimic human organs, but scoring their quality still relies on human eyeballing and one-off tests.",
+      "body": "Organoids are three-dimensional clusters of cells that replicate the structure and function of real organs. They're used to model disease and test drugs, but their adoption is limited by a stubborn problem: researchers assess morphology subjectively, and most tests destroy the sample.\n\nThat makes it hard to standardize protocols, scale up production, or predict which organoids will develop correctly. The field has lacked a quantitative, non-invasive way to link what an organoid looks like to how it functions and why."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "A new framework combines automated imaging with AI to map organoid shape to function and molecular mechanism in real time.",
+      "body": "The authors present Organoid Intelligent Morphomics, or OIM. The term describes a system that pairs high-resolution imaging with machine learning algorithms. The system quantifies organoid morphology continuously and non-invasively, then infers viability, differentiation outcomes, disease phenotypes, and drug responses from visual features alone.\n\nOIM is linked to three applications: quality control that predicts which organoids will differentiate successfully, disease modeling that connects shape to molecular pathways, and drug screening that assesses efficacy and toxicity at scale. All without destroying the sample."
+    },
+    {
+      "eyebrow": "Why it matters",
+      "title": "This approach could enable scalable organoid manufacturing and faster translation to clinical therapies.",
+      "body": "Current endpoint assays are slow, expensive, and incompatible with the kind of real-time monitoring needed for industrial-scale organoid production. OIM shifts the paradigm from qualitative observation to quantitative tracking, and from static snapshots to dynamic longitudinal data.\n\nThe authors argue this creates the infrastructure needed to move organoid-based treatments from research labs to patients. But the framework still faces challenges in data standardization, algorithm generalization across organoid types, and regulatory validation before it can be widely adopted."
+    }
+  ],
+  "caveats": [
+    "This is a review, not original research. It synthesizes existing methods and proposes a framework, but doesn't test it in new experiments.",
+    "This study found a pattern, not a cause. Something else could explain the link between organoid morphology and function.",
+    "All examples involve lab-grown organoids, not humans. Most findings in organoids don't carry over to living people."
+  ],
+  "cta": {
+    "headline": "Send this to whoever still scores organoids by eye",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Lab-grown organoids could revolutionize drug testing and personalized medicine, but right now quality control is a bottleneck. Researchers typically assess organoid morphology by hand and rely on destructive endpoint assays, making it nearly impossible to standardize or scale production. This review in Bioactive Materials introduces Organoid Intelligent Morphomics, a framework that uses AI-driven image analysis to quantify organoid structure continuously and infer function, viability, and drug response without destroying samples. The system is linked to applications in quality prediction, disease modeling, and high-throughput screening. The main limitation: this is a conceptual review, not experimental validation. Full study: doi.org/10.1016/j.bioactmat.2026.08.043 Send this to anyone trying to turn organoids into actual therapies.",
+  "hashtag_set": "health",
+  "vet": {
+    "key": "f17546c1be489db9",
+    "verdict": "HOLD",
+    "score": 44,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "note",
+        "message": "Design reads as observational (mechanistic / lab); markers: association",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      },
+      {
+        "code": "NON_HUMAN",
+        "severity": "warn",
+        "message": "Study subjects are lab-grown organoids, not people.",
+        "caveat": "This was done in lab-grown organoids \u2014 not humans. Most findings in lab-grown organoids do not carry over to people.",
+        "draft_rule": "Subjects were lab-grown organoids, NOT humans. The cover slide must not imply a human result. Name the species explicitly by slide 2."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Bioactive materials' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      },
+      {
+        "code": "HYPE_LANGUAGE",
+        "severity": "note",
+        "message": "Paper text contains hype words: paradigm shift",
+        "caveat": null,
+        "draft_rule": "Do not reuse the paper's promotional wording."
+      }
+    ],
+    "design": "mechanistic / lab",
+    "sample_size": null,
+    "subjects": "non-human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [
+      "lab-grown organoids"
+    ],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link.",
+      "This was done in lab-grown organoids \u2014 not humans. Most findings in lab-grown organoids do not carry over to people."
+    ],
+    "required_badges": [
+      "NOT_IN_HUMANS"
+    ],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'.",
+      "Subjects were lab-grown organoids, NOT humans. The cover slide must not imply a human result. Name the species explicitly by slide 2.",
+      "Do not reuse the paper's promotional wording."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "explainer",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 1,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "Full study: doi.org/10.1016/j.bioactmat.2026.08.043",
+          "problem": "The abstract does not contain any DOI or publication identifier. This specific DOI with a 2026 date is not provided in the abstract and appears to be invented.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Most findings in organoids don't carry over to living people.",
+          "problem": "The abstract does not discuss translation rates of organoid findings to humans, success rates, or state that most findings don't carry over. This is an unsupported claim about organoid-to-human translation that goes beyond the abstract's scope.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "This study found a pattern, not a cause. Something else could explain the link between organoid morphology and function.",
+          "problem": "The abstract does not characterize the review as finding patterns vs. causes, nor does it discuss confounding factors or alternative explanations for morphology-function links. This is editorial commentary not supported by the abstract.",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "three",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2026",
+          "found_in_abstract": false
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Full study: doi.org/10.1016/j.bioactmat.2026.08.043",
+        "problem": "The abstract does not contain any DOI or publication identifier. This specific DOI with a 2026 date is not provided in the abstract and appears to be invented.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Most findings in organoids don't carry over to living people.",
+        "problem": "The abstract does not discuss translation rates of organoid findings to humans, success rates, or state that most findings don't carry over. This is an unsupported claim about organoid-to-human translation that goes beyond the abstract's scope.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "2026",
+        "found_in_abstract": false
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source_niche": "nature",
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'nature'"
+  }
+}
