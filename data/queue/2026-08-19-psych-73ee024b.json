@@ -1,0 +1,159 @@
+{
+  "id": "2026-08-19-psych-73ee024b",
+  "niche": "psych",
+  "study": {
+    "key": "73ee024bb378e7ba",
+    "title": "Genome-integrated engineering of &lt;i&gt;Escherichia coli&lt;/i&gt; Nissle 1917 enables sustained gut-local biosynthesis of 5-hydroxytryptophan",
+    "journal": "Synthetic and systems biotechnology",
+    "pub_date": "2026-08-19",
+    "pub_date_display": "Aug 19, 2026",
+    "doi": "10.1016/j.synbio.2026.08.002",
+    "doi_display": "doi.org/10.1016/j.synbio.2026.08.002",
+    "url": "https://doi.org/10.1016/j.synbio.2026.08.002",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Wu J",
+      "Yang Y",
+      "Li T",
+      "Zhang B",
+      "Chen Z",
+      "Li J"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Synthetic Biology \u00b7 EcN probiotic",
+    "headline": "Engineered gut bacteria were modified to **produce the serotonin precursor 5-HTP** inside the intestine."
+  },
+  "slides": [
+    {
+      "eyebrow": "The setup",
+      "title": "Delivering neuroactive compounds to the gut sounds promising, but keeping production stable is hard.",
+      "body": "5-HTP is the direct precursor to serotonin, and delivering it locally in the gut could bypass some challenges of oral supplementation. But engineering microbes to produce it consistently in the intestinal environment has been difficult, especially when genetic circuits rely on plasmids that can be lost.\n\nResearchers used Escherichia coli Nissle 1917, a probiotic strain already used clinically, and integrated the biosynthesis pathway directly into the bacterial genome. They also added modules to produce and regenerate BH4, a cofactor the bacteria need but that is scarce in the gut."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "The engineered strain produced 5-HTP at 863.2 mg/L and stayed stable without antibiotics.",
+      "body": "The genome-integrated strain maintained 5-HTP production in the lab even without selection pressure, and retained its biosynthetic capacity after passing through the mouse intestine. Plasmid-based versions lost production rapidly under the same conditions.\n\nIn mice, a single dose caused a brief spike in plasma 5-HTP. Repeated dosing led to fluctuations in gut bacterial numbers and local biosynthesis. In a reserpine-induced depression model, treatment with the engineered probiotic improved behavioral outcomes and altered brain metabolites linked to serotonin.",
+      "stat": {
+        "value": "863.2",
+        "label": "mg/L 5-HTP produced"
+      }
+    }
+  ],
+  "caveats": [
+    "This was done in cells in a dish and mice, not humans. Most findings in cells and mice do not carry over to people.",
+    "The behavioral effects were measured in a pharmacologically induced mouse model, not in animals with naturally occurring mood disorders."
+  ],
+  "cta": {
+    "headline": "Send this to anyone who thinks genome integration can't stabilize microbial biosynthesis.",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Engineering gut bacteria to make neuroactive molecules locally could sidestep some of the instability problems that plague oral supplements. This team inserted the entire 5-HTP biosynthesis pathway into the genome of a clinically used probiotic, E. coli Nissle 1917, and added machinery to produce the cofactor BH4 on-site. The result was stable production at 863.2 mg/L in the lab and sustained activity after gut passage in mice. In a reserpine depression model, the engineered probiotic improved behavior and shifted brain serotonin metabolites. Published in Synthetic and Systems Biotechnology, the experiments used bacterial cultures and mouse models. The work has not been tested in humans. Full study: doi.org/10.1016/j.synbio.2026.08.002 \u2014 Send this to anyone who keeps arguing that chromosomal integration doesn't solve the plasmid stability problem.",
+  "hashtag_set": "health",
+  "vet": {
+    "key": "73ee024bb378e7ba",
+    "verdict": "HOLD",
+    "score": 50,
+    "flags": [
+      {
+        "code": "NON_HUMAN",
+        "severity": "warn",
+        "message": "Study subjects are cells in a dish and mice, not people.",
+        "caveat": "This was done in cells in a dish and mice \u2014 not humans. Most findings in cells in a dish and mice do not carry over to people.",
+        "draft_rule": "Subjects were cells in a dish and mice, NOT humans. The cover slide must not imply a human result. Name the species explicitly by slide 2."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Synthetic and systems biotechnology' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "mechanistic / lab",
+    "sample_size": null,
+    "subjects": "non-human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [
+      "cells in a dish",
+      "mice"
+    ],
+    "required_caveats": [
+      "This was done in cells in a dish and mice \u2014 not humans. Most findings in cells in a dish and mice do not carry over to people."
+    ],
+    "required_badges": [
+      "NOT_IN_HUMANS"
+    ],
+    "draft_rules": [
+      "Subjects were cells in a dish and mice, NOT humans. The cover slide must not imply a human result. Name the species explicitly by slide 2."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "explainer",
+    "lint_errors": [
+      "cta.headline: 12 words, spec is 5-10",
+      "cta.headline: 89 chars, max 58"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "Published in Synthetic and Systems Biotechnology",
+          "problem": "The abstract does not mention the journal name where this was published",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Full study: doi.org/10.1016/j.synbio.2026.08.002",
+          "problem": "The abstract does not contain this DOI or any DOI. This specific DOI reference is not supported by the abstract",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "863.2 mg/L",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Published in Synthetic and Systems Biotechnology",
+        "problem": "The abstract does not mention the journal name where this was published",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Full study: doi.org/10.1016/j.synbio.2026.08.002",
+        "problem": "The abstract does not contain this DOI or any DOI. This specific DOI reference is not supported by the abstract",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "5-Hydroxytryptophan (5-HTP) is a functional precursor of serotonin; however, achieving sustained 5-HTP production in vivo by engineered microbes remains challenging. To address this, we developed a genome-integrated engineered probiotic system enabling gut-local biosynthesis of 5-HTP. Escherichia coli Nissle 1917 (EcN), a clinically validated probiotic with an established safety profile for intestinal application, was selected as the chassis. Constitutive expression was employed to eliminate inducer dependence, while genomic integration was used to enhance genetic stability and avoid reliance on antibiotic selection for pathway maintenance. In addition, BH4 biosynthesis and regeneration modules were incorporated to address the limited endogenous BH4 availability in the gut environment. Different administration strategies were systematically evaluated to characterize in vivo performance. Notably, our results showed that the hTPH2 hydroxylation module, together with the BH4 biosynthesis and regeneration system, supported 5-HTP biosynthesis in EcN. The engineered EcN strain achieved a 5-HTP titer of 863.2 mg/L, the highest level reported in EcN-based systems. Under non-selective conditions, EcN Pconst-5-HTP carrying the chromosomally integrated pathway maintained stable 5-HTP production in vitro and retained 5-HTP-producing capacity after intestinal passage, whereas plasmid loss in non-integrated constructs resulted in a pronounced decrease in production. In vivo analysis showed that single-dose administration induced a transient elevation in plasma 5-HTP, whereas repeated dosing generated reproducible, time-dependent fluctuations in fecal bacterial abundance and gut-local biosynthetic activity. Treatment with the engineered probiotic further improved behavioral phenotypes and modulated brain 5-HT-related metabolites in a reserpine-induced mouse model. Together, these findings provide a translational framework linking in vitro 5-HTP production by engineered probiotics to their in vivo functional performance.",
+    "source": "europepmc",
+    "ext_id": "MED:42662800",
+    "pub_types": [
+      "research-article",
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "http://creativecommons.org/licenses/by-nc-nd/4.0/;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "psych",
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'psych'"
+  }
+}
