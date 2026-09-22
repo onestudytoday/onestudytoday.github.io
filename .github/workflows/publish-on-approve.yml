@@ -178,6 +178,23 @@ jobs:
           ACTION: ${{ steps.what.outputs.action }}
           INSTRUCTION: ${{ steps.what.outputs.instruction }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Four dummy placeholders - NOT the real credentials.
+          #
+          # config.settings() is all-or-nothing: it hard-requires the four
+          # Meta fields to construct at all, and this step reaches it through
+          # draft._client() (the model call) and review.rerender() (the
+          # theme). Neither touches the Graph API - a revision generates copy
+          # and redraws PNGs - so what it needs is a Settings object that
+          # builds, not the ability to publish.
+          #
+          # Same reasoning, and the same four values, as ci.yml. Wiring the
+          # real secrets here would hand publishing credentials to a step
+          # that cannot use them, which is a strictly worse way to fix a
+          # missing-variable error.
+          META_APP_ID: revise-placeholder
+          META_APP_SECRET: revise-placeholder
+          IG_ACCESS_TOKEN: revise-placeholder
+          IG_BUSINESS_ACCOUNT_ID: revise-placeholder
         run: |
           set -o pipefail
           if [ "$ACTION" = "revert" ]; then
