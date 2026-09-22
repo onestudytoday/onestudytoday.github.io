@@ -29,14 +29,20 @@
   },
   "slides": [
     {
+      "eyebrow": "Why this matters",
+      "basis": "inferred",
+      "title": "If this approach holds up, it could allow serotonin precursors to be made locally without oral pills.",
+      "body": "Delivering neuroactive compounds locally in the intestine might sidestep some of the absorption and stability issues that come with supplements. But engineering microbes to produce these molecules consistently has been hard, especially when the genetic circuits are unstable and get lost over time.\n\nA genome-integrated probiotic system could offer sustained, gut-local biosynthesis without needing antibiotics or inducers to keep the pathway active. That matters if the goal is eventual therapeutic use in living organisms."
+    },
+    {
       "eyebrow": "The setup",
-      "title": "Delivering neuroactive compounds to the gut sounds promising, but keeping production stable is hard.",
-      "body": "5-HTP is the direct precursor to serotonin, and delivering it locally in the gut could bypass some challenges of oral supplementation. But engineering microbes to produce it consistently in the intestinal environment has been difficult, especially when genetic circuits rely on plasmids that can be lost.\n\nResearchers used Escherichia coli Nissle 1917, a probiotic strain already used clinically, and integrated the biosynthesis pathway directly into the bacterial genome. They also added modules to produce and regenerate BH4, a cofactor the bacteria need but that is scarce in the gut."
+      "title": "Researchers integrated a 5-HTP biosynthesis pathway into the genome of E. coli Nissle 1917, a clinically used probiotic.",
+      "body": "The team chose Escherichia coli Nissle 1917 because it already has an established safety profile for intestinal use. They inserted the entire pathway directly into the bacterial chromosome to avoid plasmid loss, and they used constitutive expression to eliminate the need for chemical inducers.\n\nThey also added modules to produce and regenerate BH4, a cofactor the bacteria need but that is scarce in the gut environment. The engineered strain was then tested in lab culture, after gut passage in mice, and in a reserpine-induced depression model."
     },
     {
       "eyebrow": "What they found",
-      "title": "The engineered strain produced 5-HTP at 863.2 mg/L and stayed stable without antibiotics.",
-      "body": "The genome-integrated strain maintained 5-HTP production in the lab even without selection pressure, and retained its biosynthetic capacity after passing through the mouse intestine. Plasmid-based versions lost production rapidly under the same conditions.\n\nIn mice, a single dose caused a brief spike in plasma 5-HTP. Repeated dosing led to fluctuations in gut bacterial numbers and local biosynthesis. In a reserpine-induced depression model, treatment with the engineered probiotic improved behavioral outcomes and altered brain metabolites linked to serotonin.",
+      "title": "The engineered strain produced 5-HTP at 863.2 mg/L and stayed stable without antibiotics or selection pressure.",
+      "body": "The genome-integrated version maintained 5-HTP production in the lab even under non-selective conditions, and retained its biosynthetic capacity after passing through the mouse intestine. Plasmid-based versions lost production rapidly under the same conditions.\n\nIn mice, a single dose caused a transient spike in plasma 5-HTP. Repeated dosing led to fluctuations in gut bacterial numbers and local biosynthesis. Treatment with the engineered probiotic improved behavioral phenotypes and modulated brain metabolites linked to serotonin in the reserpine model.",
       "stat": {
         "value": "863.2",
         "label": "mg/L 5-HTP produced"
@@ -48,10 +54,10 @@
     "The behavioral effects were measured in a pharmacologically induced mouse model, not in animals with naturally occurring mood disorders."
   ],
   "cta": {
-    "headline": "Send this to anyone who thinks genome integration can't stabilize microbial biosynthesis.",
+    "headline": "Send this to anyone skeptical of genome integration.",
     "sub": "One real study, every weekday. The full paper is linked in bio."
   },
-  "caption": "Engineering gut bacteria to make neuroactive molecules locally could sidestep some of the instability problems that plague oral supplements. This team inserted the entire 5-HTP biosynthesis pathway into the genome of a clinically used probiotic, E. coli Nissle 1917, and added machinery to produce the cofactor BH4 on-site. The result was stable production at 863.2 mg/L in the lab and sustained activity after gut passage in mice. In a reserpine depression model, the engineered probiotic improved behavior and shifted brain serotonin metabolites. Published in Synthetic and Systems Biotechnology, the experiments used bacterial cultures and mouse models. The work has not been tested in humans. Full study: doi.org/10.1016/j.synbio.2026.08.002 \u2014 Send this to anyone who keeps arguing that chromosomal integration doesn't solve the plasmid stability problem.",
+  "caption": "Engineering gut bacteria to make serotonin precursors locally could bypass some of the instability that plagues oral supplements. This team inserted the entire 5-HTP biosynthesis pathway into the genome of E. coli Nissle 1917, a clinically used probiotic, and added machinery to produce the cofactor BH4 on-site. The result was stable production at 863.2 mg/L in the lab and sustained activity after gut passage in mice. In a reserpine depression model, the engineered probiotic improved behavior and shifted brain serotonin metabolites. Published in Synthetic and Systems Biotechnology, the experiments used bacterial cultures and mouse models. The work has not been tested in humans. Full study: doi.org/10.1016/j.synbio.2026.08.002 \u2014 Send this to anyone who keeps arguing that chromosomal integration doesn't solve the plasmid stability problem.",
   "hashtag_set": "health",
   "vet": {
     "key": "73ee024bb378e7ba",
@@ -98,22 +104,21 @@
   "qa": {
     "format": "explainer",
     "lint_errors": [
-      "cta.headline: 12 words, spec is 5-10",
-      "cta.headline: 89 chars, max 58"
+      "GUARDRAIL this copy was forced past the checks with `force revise`. Full study: doi.org/10.1016/j.synbio.2026.08.002; Published in Synthetic and Systems Biotechnology"
     ],
     "style_flags": [],
-    "repair_rounds": 2,
+    "repair_rounds": 1,
     "audit": {
       "supported": false,
       "unsupported_claims": [
         {
-          "claim": "Published in Synthetic and Systems Biotechnology",
-          "problem": "The abstract does not mention the journal name where this was published",
+          "claim": "Full study: doi.org/10.1016/j.synbio.2026.08.002",
+          "problem": "The abstract does not contain this DOI or any publication information. The year 2026 is also in the future, making this DOI suspicious or fabricated.",
           "severity": "blocking"
         },
         {
-          "claim": "Full study: doi.org/10.1016/j.synbio.2026.08.002",
-          "problem": "The abstract does not contain this DOI or any DOI. This specific DOI reference is not supported by the abstract",
+          "claim": "Published in Synthetic and Systems Biotechnology",
+          "problem": "The abstract does not mention this journal name or any publication venue.",
           "severity": "blocking"
         }
       ],
@@ -126,18 +131,23 @@
     },
     "blocking_claims": [
       {
-        "claim": "Published in Synthetic and Systems Biotechnology",
-        "problem": "The abstract does not mention the journal name where this was published",
+        "claim": "Full study: doi.org/10.1016/j.synbio.2026.08.002",
+        "problem": "The abstract does not contain this DOI or any publication information. The year 2026 is also in the future, making this DOI suspicious or fabricated.",
         "severity": "blocking"
       },
       {
-        "claim": "Full study: doi.org/10.1016/j.synbio.2026.08.002",
-        "problem": "The abstract does not contain this DOI or any DOI. This specific DOI reference is not supported by the abstract",
+        "claim": "Published in Synthetic and Systems Biotechnology",
+        "problem": "The abstract does not mention this journal name or any publication venue.",
         "severity": "blocking"
       }
     ],
     "unverified_numbers": [],
-    "publishable": false
+    "publishable": false,
+    "revised": 1,
+    "forced_revision": [
+      "Full study: doi.org/10.1016/j.synbio.2026.08.002",
+      "Published in Synthetic and Systems Biotechnology"
+    ]
   },
   "status": "needs_review",
   "source": {
@@ -155,5 +165,89 @@
   "reel_status": {
     "built": false,
     "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'psych'"
-  }
+  },
+  "revisions": [
+    {
+      "instruction": "rebuild this around the new format, open with why this matters",
+      "previous": {
+        "cover": {
+          "kicker": "Synthetic Biology \u00b7 EcN probiotic",
+          "headline": "Engineered gut bacteria were modified to **produce the serotonin precursor 5-HTP** inside the intestine."
+        },
+        "slides": [
+          {
+            "eyebrow": "The setup",
+            "title": "Delivering neuroactive compounds to the gut sounds promising, but keeping production stable is hard.",
+            "body": "5-HTP is the direct precursor to serotonin, and delivering it locally in the gut could bypass some challenges of oral supplementation. But engineering microbes to produce it consistently in the intestinal environment has been difficult, especially when genetic circuits rely on plasmids that can be lost.\n\nResearchers used Escherichia coli Nissle 1917, a probiotic strain already used clinically, and integrated the biosynthesis pathway directly into the bacterial genome. They also added modules to produce and regenerate BH4, a cofactor the bacteria need but that is scarce in the gut."
+          },
+          {
+            "eyebrow": "What they found",
+            "title": "The engineered strain produced 5-HTP at 863.2 mg/L and stayed stable without antibiotics.",
+            "body": "The genome-integrated strain maintained 5-HTP production in the lab even without selection pressure, and retained its biosynthetic capacity after passing through the mouse intestine. Plasmid-based versions lost production rapidly under the same conditions.\n\nIn mice, a single dose caused a brief spike in plasma 5-HTP. Repeated dosing led to fluctuations in gut bacterial numbers and local biosynthesis. In a reserpine-induced depression model, treatment with the engineered probiotic improved behavioral outcomes and altered brain metabolites linked to serotonin.",
+            "stat": {
+              "value": "863.2",
+              "label": "mg/L 5-HTP produced"
+            }
+          }
+        ],
+        "caveats": [
+          "This was done in cells in a dish and mice, not humans. Most findings in cells and mice do not carry over to people.",
+          "The behavioral effects were measured in a pharmacologically induced mouse model, not in animals with naturally occurring mood disorders."
+        ],
+        "cta": {
+          "headline": "Send this to anyone who thinks genome integration can't stabilize microbial biosynthesis.",
+          "sub": "One real study, every weekday. The full paper is linked in bio."
+        },
+        "caption": "Engineering gut bacteria to make neuroactive molecules locally could sidestep some of the instability problems that plague oral supplements. This team inserted the entire 5-HTP biosynthesis pathway into the genome of a clinically used probiotic, E. coli Nissle 1917, and added machinery to produce the cofactor BH4 on-site. The result was stable production at 863.2 mg/L in the lab and sustained activity after gut passage in mice. In a reserpine depression model, the engineered probiotic improved behavior and shifted brain serotonin metabolites. Published in Synthetic and Systems Biotechnology, the experiments used bacterial cultures and mouse models. The work has not been tested in humans. Full study: doi.org/10.1016/j.synbio.2026.08.002 \u2014 Send this to anyone who keeps arguing that chromosomal integration doesn't solve the plasmid stability problem."
+      },
+      "previous_qa": {
+        "format": "explainer",
+        "lint_errors": [
+          "cta.headline: 12 words, spec is 5-10",
+          "cta.headline: 89 chars, max 58"
+        ],
+        "style_flags": [],
+        "repair_rounds": 2,
+        "audit": {
+          "supported": false,
+          "unsupported_claims": [
+            {
+              "claim": "Published in Synthetic and Systems Biotechnology",
+              "problem": "The abstract does not mention the journal name where this was published",
+              "severity": "blocking"
+            },
+            {
+              "claim": "Full study: doi.org/10.1016/j.synbio.2026.08.002",
+              "problem": "The abstract does not contain this DOI or any DOI. This specific DOI reference is not supported by the abstract",
+              "severity": "blocking"
+            }
+          ],
+          "numbers_check": [
+            {
+              "number": "863.2 mg/L",
+              "found_in_abstract": true
+            }
+          ]
+        },
+        "blocking_claims": [
+          {
+            "claim": "Published in Synthetic and Systems Biotechnology",
+            "problem": "The abstract does not mention the journal name where this was published",
+            "severity": "blocking"
+          },
+          {
+            "claim": "Full study: doi.org/10.1016/j.synbio.2026.08.002",
+            "problem": "The abstract does not contain this DOI or any DOI. This specific DOI reference is not supported by the abstract",
+            "severity": "blocking"
+          }
+        ],
+        "unverified_numbers": [],
+        "publishable": false
+      },
+      "lint_errors": [],
+      "style_flags": [],
+      "repair_rounds": 1
+    }
+  ],
+  "render_seq": 1
 }
