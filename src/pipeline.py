@@ -190,6 +190,33 @@ def run(niche: Optional[str] = None, days: Optional[int] = None, limit: int = 1,
         post["niche"] = niche
         post["source_niche"] = source_niche
 
+        # A photograph for the cover, chosen from the study's own subject.
+        #
+        # BEFORE render_post, obviously - it is the background. Written into
+        # docs/img/<id>/ rather than out/posts/, because out/posts is
+        # gitignored scratch that exists only on this runner, and review.py's
+        # rerender() (which a `revise` triggers hours later, on a different
+        # runner) needs the file to still be there. That is the same
+        # out/posts-vs-docs/img distinction that stopped this account
+        # publishing anything for its first fortnight.
+        #
+        # Never fatal. No image means the flat cover every post has today.
+        try:
+            from coverart import fetch_for
+            from reel import check_post_id
+            # The same guard every other write into docs/img/ uses. post["id"]
+            # is built from a pub_date copied raw out of a source record and
+            # never validated as a date anywhere, which is exactly why
+            # check_post_id exists; a new write that skipped it would
+            # reintroduce the hole it was added to close.
+            check_post_id(post["id"])
+            art = fetch_for(post, DOCS / "img" / post["id"])
+            if art:
+                post["cover_art"] = art
+        except Exception as e:
+            print(f"           ! cover image step failed, using the flat "
+                  f"background: {type(e).__name__}: {e}")
+
         d = OUT / "posts" / post["id"]
         paths = render_post(post, s.theme, str(d))
         contact_sheet(paths, str(OUT / "posts" / f"SHEET_{post['id']}.png"))

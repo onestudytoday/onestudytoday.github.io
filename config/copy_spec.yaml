@@ -43,10 +43,7 @@ fields:
     # Kept as the union of every format's eyebrows below, because render.py
     # turns this string into a filename and anything outside this set has
     # never been through that path.
-    fixed_values: ["The setup", "What they found", "The mechanism", "Why it matters",
-                   "The assumption", "What the data says", "Why the difference",
-                   "What they did", "What came back", "How it works",
-                   "Why this matters", "The result", "What changes"]
+    fixed_values: ["The setup", "What they found", "The mechanism", "Why it matters", "The assumption", "What the data says", "Why the difference", "What they did", "What came back", "How it works", "Why this matters", "The result", "What changes", "Why you should care", "What it could mean", "What it changes"]
 
   slide.title:
     words: [10, 20]
@@ -121,7 +118,7 @@ voice:
 formats:
 
   - name: explainer
-    eyebrows: ["The setup", "What they found", "The mechanism", "Why it matters"]
+    eyebrows: ["Why this matters", "The setup", "What they found", "The mechanism"]
     shape: >-
       Open on why the question matters and the tension the study resolves,
       then deliver the result.
@@ -130,8 +127,8 @@ formats:
       opening the post.
 
   - name: reversal
-    eyebrows: ["The assumption", "What the data says", "Why the difference",
-               "Why it matters"]
+    eyebrows: ["Why you should care", "The assumption", "What the data says",
+               "Why the difference"]
     shape: >-
       Open on what a reasonable person would assume is true here - stated
       plainly and without strawmanning it - then show what was actually
@@ -142,7 +139,7 @@ formats:
       Address the reader who held the assumption, without mocking them.
 
   - name: procedural
-    eyebrows: ["What they did", "What came back", "How it works", "Why it matters"]
+    eyebrows: ["What it could mean", "What they did", "What came back", "How it works"]
     shape: >-
       Open on the concrete thing the researchers physically did - who, how
       many, for how long, in what - before any interpretation. Method first,
@@ -152,7 +149,7 @@ formats:
       Point at the part of the method a sceptic would want to check.
 
   - name: stakes
-    eyebrows: ["Why this matters", "The result", "What changes", "Why it matters"]
+    eyebrows: ["What it changes", "The result", "What changes", "How it works"]
     shape: >-
       Open on the concrete consequence for one identifiable person, then the
       finding, then how much it actually moves. Be honest about the size of

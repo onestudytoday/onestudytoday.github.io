@@ -71,14 +71,23 @@ def draw_tracked(
     f: ImageFont.FreeTypeFont,
     fill,
     tracking: float = 0.0,
+    stroke: int = 0,
+    stroke_fill=None,
 ) -> float:
-    """Draw text with letter-spacing. Returns final x."""
+    """Draw text with letter-spacing. Returns final x.
+
+    `stroke` outlines each glyph. It exists so the cover can keep a real
+    photograph visible behind the headline instead of dimming the picture
+    until it is texture: an outline buys contrast at the glyph edge, which is
+    where legibility is actually decided, rather than across the whole frame.
+    """
+    kw = {"stroke_width": stroke, "stroke_fill": stroke_fill} if stroke else {}
     x, y = xy
     if tracking == 0:
-        d.text((x, y), s, font=f, fill=fill)
+        d.text((x, y), s, font=f, fill=fill, **kw)
         return x + d.textlength(s, font=f)
     for chgit in s:
-        d.text((x, y), chgit, font=f, fill=fill)
+        d.text((x, y), chgit, font=f, fill=fill, **kw)
         x += d.textlength(chgit, font=f) + tracking
     return x
 
@@ -203,13 +212,16 @@ def draw_runs(
     fill,
     accent_fill,
     tracking: float = 0.0,
+    stroke: int = 0,
+    stroke_fill=None,
 ) -> float:
     space = d.textlength(" ", font=f)
     for line in lines:
         cx = x
         for i, (word, acc) in enumerate(line):
             col = accent_fill if acc else fill
-            cx = draw_tracked(d, (cx, y), word, f, col, tracking)
+            cx = draw_tracked(d, (cx, y), word, f, col, tracking,
+                              stroke=stroke, stroke_fill=stroke_fill)
             if i != len(line) - 1:
                 cx += space + tracking
         y += lh
@@ -253,7 +265,9 @@ def draw_preprint_badge(d, th: Theme, x: int, y: int) -> int:
     return box[3] - y
 
 
-def draw_footer(d, th: Theme, post: Dict, idx: int, total: int, accent: str, on_color: bool):
+def draw_footer(d, th: Theme, post: Dict, idx: int, total: int, accent: str,
+                on_color: bool, stroke: int = 0, stroke_fill=None):
+    kw = {"stroke_width": stroke, "stroke_fill": stroke_fill} if stroke else {}
     fg = th.fg
     muted = th.muted if not on_color else "#FFFFFF"
     f = font("sans_med", 24)
@@ -262,12 +276,15 @@ def draw_footer(d, th: Theme, post: Dict, idx: int, total: int, accent: str, on_
     if post["study"].get("is_preprint"):
         src = f"{post['study']['server']} preprint"
     left = f"{src} · {post['study']['pub_date_display']}"
-    d.text((SAFE, y), left, font=f, fill=hex_rgba(muted, 0.85 if on_color else 1.0))
+    d.text((SAFE, y), left, font=f,
+           fill="#FFFFFF" if stroke else hex_rgba(muted, 0.85 if on_color else 1.0),
+           **kw)
     # slide counter
     cf = font("sans_bold", 24)
     ctxt = f"{idx}/{total}"
     cw = d.textlength(ctxt, font=cf)
-    d.text((W - SAFE - cw, y), ctxt, font=cf, fill=accent if not on_color else "#FFFFFF")
+    d.text((W - SAFE - cw, y), ctxt, font=cf,
+           fill=accent if not on_color else "#FFFFFF", **kw)
     # progress rail
     rail_y = H - SAFE + 14
     d.rectangle((SAFE, rail_y, W - SAFE, rail_y + 4), fill=hex_rgba(muted, 0.28))
@@ -287,7 +304,8 @@ def _handle() -> str:
 
 
 def draw_handle(d, th: Theme, accent: str, on_color: bool,
-                align: str = "right", y: int = None, size: int = 26):
+                align: str = "right", y: int = None, size: int = 26,
+                stroke: int = 0, stroke_fill=None):
     """Account handle. Appears on the cover and the CTA slide only - putting it
     on every slide reads as insecurity, and the carousel is already branded by
     the colour system."""
@@ -298,14 +316,95 @@ def draw_handle(d, th: Theme, accent: str, on_color: bool,
     y = SAFE if y is None else y
     if align == "right":
         w_ = text_w(d, handle, f, tr)
-        draw_tracked(d, (W - SAFE - w_, y), handle, f, col, tr)
+        draw_tracked(d, (W - SAFE - w_, y), handle, f, col, tr,
+                     stroke=stroke, stroke_fill=stroke_fill)
     else:
-        draw_tracked(d, (SAFE, y), handle, f, col, tr)
+        draw_tracked(d, (SAFE, y), handle, f, col, tr,
+                     stroke=stroke, stroke_fill=stroke_fill)
 
 
 # ---------------------------------------------------------------------------
 # Background painters
 # ---------------------------------------------------------------------------
+# Deliberately LIGHT. An earlier version ramped to 0.94 at the bottom, which
+# kept the type crisp by erasing the photograph exactly where the frame had
+# room to show it. The picture is the point of the feature, so contrast is
+# bought at the glyph edge instead - see COVER_TEXT_STROKE below - and the
+# scrim only takes the edge off so the outline is not doing all the work.
+COVER_SCRIM_TOP = 0.10
+COVER_SCRIM_BOTTOM = 0.40
+COVER_SCRIM_KNEE = 0.45
+
+# Outline width for cover type over a photograph, in pixels at 1080 wide.
+# 6 is enough to survive a busy, light background without reading as a
+# cartoon outline at the sizes this headline is set in.
+COVER_TEXT_STROKE = 6
+COVER_CHROME_STROKE = 3
+
+
+def cover_photo_canvas(th: Theme, path: str) -> Optional[Image.Image]:
+    """The cover background, from a photograph, or None if it cannot be used.
+
+    A GRADIENT scrim, not a flat one, and that is the whole design.
+
+    A uniform scrim strong enough to keep white type legible over an unknown
+    photograph is strong enough to erase the photograph - the picture becomes
+    texture and the point is lost. A uniform scrim weak enough to show the
+    picture cannot guarantee contrast, because the next photo might be a
+    snow field. Ramping it means the top of the frame keeps the image and the
+    bottom third - where the kicker, headline and footer all live - is close
+    to flat brand colour, so contrast does not depend on what the picture
+    happens to contain.
+
+    Returns None rather than raising for anything at all: a cover with no
+    photograph is exactly what every post looks like today.
+    """
+    try:
+        src = Image.open(path)
+        src.load()
+        src = src.convert("RGB")
+    except Exception:
+        return None
+
+    # Cover the frame, centre-cropped - never letterboxed. A band of flat
+    # colour above a photo reads as a mistake rather than a choice.
+    scale = max(W / src.width, H / src.height)
+    src = src.resize((max(1, int(src.width * scale)),
+                      max(1, int(src.height * scale))), Image.LANCZOS)
+    left, top = (src.width - W) // 2, (src.height - H) // 2
+    photo = src.crop((left, top, left + W, top + H))
+
+    flat = Image.new("RGB", (W, H), hex_rgb(th.bg))
+    ramp = Image.new("L", (1, H))
+    for y in range(H):
+        f = y / (H - 1)
+        if f < COVER_SCRIM_KNEE:
+            a = COVER_SCRIM_TOP
+        else:
+            k = (f - COVER_SCRIM_KNEE) / (1 - COVER_SCRIM_KNEE)
+            a = COVER_SCRIM_TOP + (COVER_SCRIM_BOTTOM - COVER_SCRIM_TOP) * (k ** 1.4)
+        ramp.putpixel((0, y), int(a * 255))
+    return Image.composite(flat, photo, ramp.resize((W, H)))
+
+
+def draw_cover_credit(d, th: Theme, text: str, stroke: int = 0,
+                      stroke_fill=None) -> None:
+    """The licence credit, small, above the footer, right-aligned.
+
+    On the IMAGE rather than only in the caption, because a CC-BY credit has
+    to travel with the work: captions get truncated in the feed, and a
+    screenshot of the cover carries no caption at all. Small and muted so it
+    reads as a credit and not as part of the copy.
+    """
+    if not text:
+        return
+    f = font("sans_med", 19)
+    w_ = d.textlength(text, font=f)
+    d.text((W - SAFE - w_, H - SAFE - 64), text, font=f,
+           fill="#FFFFFF" if stroke else hex_rgba(th.muted, 0.62),
+           **({"stroke_width": stroke, "stroke_fill": stroke_fill} if stroke else {}))
+
+
 def make_canvas(th: Theme, niche: Dict, kind: str) -> Image.Image:
     if th.use_niche_bg:
         base = niche["block_bg"]
@@ -337,8 +436,19 @@ def make_canvas(th: Theme, niche: Dict, kind: str) -> Image.Image:
 # Slide renderers
 # ---------------------------------------------------------------------------
 def render_cover(post: Dict, th: Theme, niche: Dict, idx: int, total: int) -> Image.Image:
-    img = make_canvas(th, niche, "cover")
+    art = post.get("cover_art") or {}
+    img = None
+    if art.get("path"):
+        img = cover_photo_canvas(th, art["path"])
+    on_photo = img is not None
+    if img is None:
+        img = make_canvas(th, niche, "cover")
     d = ImageDraw.Draw(img)
+    # Outline colour is the theme's own background, so the type looks set
+    # INTO the design rather than stickered on top of a photo.
+    stroke_col = hex_rgb(th.bg)
+    hs = COVER_TEXT_STROKE if on_photo else 0
+    cs = COVER_CHROME_STROKE if on_photo else 0
     accent = niche["accent"]
     on_color = th.use_niche_bg
 
@@ -346,7 +456,8 @@ def render_cover(post: Dict, th: Theme, niche: Dict, idx: int, total: int) -> Im
     label_h = draw_label(d, th, niche, SAFE, y, niche["label"], accent, on_color)
     # handle sits opposite the niche pill, optically centred against it
     draw_handle(d, th, accent, on_color, align="right",
-                y=y + max(0, (label_h - 26) // 2) - 2)
+                y=y + max(0, (label_h - 26) // 2) - 2,
+                stroke=cs, stroke_fill=stroke_col)
     y += label_h + 26
 
     if post["study"].get("is_preprint"):
@@ -367,15 +478,37 @@ def render_cover(post: Dict, th: Theme, niche: Dict, idx: int, total: int) -> Im
     y_head = H - SAFE - 150 - block_h
     y_head = max(y_head, y)
     tr = th.head_tracking * (size / 100.0)
-    draw_runs(d, SAFE, y_head, lines, f, lh, th.fg, accent if not on_color else "#FFFFFF", tr)
+    draw_runs(d, SAFE, y_head, lines, f, lh, th.fg,
+              accent if not on_color else "#FFFFFF", tr,
+              stroke=hs, stroke_fill=stroke_col)
 
     # kicker above headline
     if post["cover"].get("kicker"):
         kf = font("sans_med", 30)
         d.text((SAFE, y_head - 56), post["cover"]["kicker"], font=kf,
-               fill=hex_rgba(th.muted, 0.9))
+               fill=hex_rgba(th.muted, 0.9) if not on_photo else "#FFFFFF",
+               **({"stroke_width": cs, "stroke_fill": stroke_col} if cs else {}))
 
-    draw_footer(d, th, post, idx, total, accent, on_color)
+    if on_photo:
+        # A credit that cannot be drawn must not be shrugged off.
+        #
+        # This used to `except Exception: pass`, which meant any failure here
+        # published a CC-BY photograph with no attribution - a licence breach,
+        # and silent. If the credit cannot be rendered, the PHOTOGRAPH is what
+        # gets dropped: falling back to the flat cover costs nothing, and the
+        # flat cover is what every post looked like last week.
+        from coverart import credit_line
+        line = credit_line(art)
+        if line:
+            try:
+                draw_cover_credit(d, th, line, stroke=2, stroke_fill=stroke_col)
+            except Exception as e:
+                print(f"  ! cover credit could not be drawn ({type(e).__name__}); "
+                      f"dropping the photograph rather than publishing it "
+                      f"uncredited")
+                return render_cover({**post, "cover_art": {}}, th, niche, idx, total)
+    draw_footer(d, th, post, idx, total, accent, on_color,
+                stroke=cs, stroke_fill=stroke_col)
     return img
 
 
