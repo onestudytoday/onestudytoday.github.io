@@ -149,7 +149,7 @@
       "Published in Synthetic and Systems Biotechnology"
     ]
   },
-  "status": "approved",
+  "status": "published",
   "source": {
     "abstract": "5-Hydroxytryptophan (5-HTP) is a functional precursor of serotonin; however, achieving sustained 5-HTP production in vivo by engineered microbes remains challenging. To address this, we developed a genome-integrated engineered probiotic system enabling gut-local biosynthesis of 5-HTP. Escherichia coli Nissle 1917 (EcN), a clinically validated probiotic with an established safety profile for intestinal application, was selected as the chassis. Constitutive expression was employed to eliminate inducer dependence, while genomic integration was used to enhance genetic stability and avoid reliance on antibiotic selection for pathway maintenance. In addition, BH4 biosynthesis and regeneration modules were incorporated to address the limited endogenous BH4 availability in the gut environment. Different administration strategies were systematically evaluated to characterize in vivo performance. Notably, our results showed that the hTPH2 hydroxylation module, together with the BH4 biosynthesis and regeneration system, supported 5-HTP biosynthesis in EcN. The engineered EcN strain achieved a 5-HTP titer of 863.2 mg/L, the highest level reported in EcN-based systems. Under non-selective conditions, EcN Pconst-5-HTP carrying the chromosomally integrated pathway maintained stable 5-HTP production in vitro and retained 5-HTP-producing capacity after intestinal passage, whereas plasmid loss in non-integrated constructs resulted in a pronounced decrease in production. In vivo analysis showed that single-dose administration induced a transient elevation in plasma 5-HTP, whereas repeated dosing generated reproducible, time-dependent fluctuations in fecal bacterial abundance and gut-local biosynthetic activity. Treatment with the engineered probiotic further improved behavioral phenotypes and modulated brain 5-HT-related metabolites in a reserpine-induced mouse model. Together, these findings provide a translational framework linking in vitro 5-HTP production by engineered probiotics to their in vivo functional performance.",
     "source": "europepmc",
@@ -252,5 +252,19 @@
   "render_seq": 1,
   "review": {
     "forced": true
+  },
+  "published": {
+    "media_id": "18246850705310583",
+    "kind": "CAROUSEL",
+    "at": "2026-09-22T22:18:39Z"
+  },
+  "crosspost": {
+    "at": "2026-09-22T22:18:39Z",
+    "posted": [],
+    "skipped": [
+      "bluesky",
+      "threads"
+    ],
+    "failed": {}
   }
 }
