@@ -1,0 +1,170 @@
+{
+  "id": "2026-09-08-health-5439257a",
+  "niche": "health",
+  "study": {
+    "key": "5439257a5b40db25",
+    "title": "Engineering bioactive citrate-based hydrogels for wound repair: From structure-function design to microenvironmental regulation",
+    "journal": "Bioactive materials",
+    "pub_date": "2026-09-08",
+    "pub_date_display": "Sep 8, 2026",
+    "doi": "10.1016/j.bioactmat.2026.08.015",
+    "doi_display": "doi.org/10.1016/j.bioactmat.2026.08.015",
+    "url": "https://doi.org/10.1016/j.bioactmat.2026.08.015",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Zhang L",
+      "Lei B",
+      "Zhao H."
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Bioactive Materials \u00b7 Review",
+    "headline": "Citrate-based hydrogels are being engineered as **modular wound-healing platforms** with seven functions."
+  },
+  "slides": [
+    {
+      "eyebrow": "Why this matters",
+      "basis": "stated",
+      "title": "Chronic wounds resist healing because of infection, inflammation, and failed blood vessel growth.",
+      "body": "Standard dressings can't address that triad at once. This review maps how citrate chemistry can be tuned to tackle all three barriers in a single material platform. Citrate is already known for versatile crosslinking.\n\nThe authors propose seven functional modules: antimicrobial, antioxidant, pro-angiogenic, and four others. Each ties structure to biological outcome, offering a blueprint for translation-ready wound dressings that match the complexity of the problem."
+    },
+    {
+      "eyebrow": "The setup",
+      "title": "The review classifies citrate-based polymer hydrogels by their structure-function relationships.",
+      "body": "Citrate sits at the center of cellular metabolism, so polymers built from it carry intrinsic bioactivity. The network design dictates whether a hydrogel kills bacteria, quenches reactive oxygen, or recruits new vessels. Crosslink density, degradation rate, and functional groups all matter.\n\nThe authors synthesize findings across the field to show how each design choice maps onto a wound-healing need. The goal is precision: match hydrogel architecture to the defect in the microenvironment.",
+      "stat": {
+        "value": "7",
+        "label": "functional wound-repair paradigms classified"
+      }
+    }
+  ],
+  "caveats": [
+    "This is a review article synthesizing existing research, not a new experimental study with original data.",
+    "No clinical trial outcomes or patient healing rates are reported in the abstract provided."
+  ],
+  "cta": {
+    "headline": "Send this to the citrate skeptic",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Chronic wounds stay open because infection, inflammation, and absent angiogenesis create a microenvironment hostile to repair. Citrate-based polymer hydrogels can be engineered with modular functions: killing bacteria, neutralizing oxidative stress, coaxing blood vessels to grow, all from one tunable chemistry. This review in Bioactive Materials maps seven functional paradigms and the structure-property-function relationships that govern each. The work identifies bottlenecks in clinical translation and calls for precision design, multi-omics mechanistic work, and standardized manufacturing. This is a synthesis of the field, not a head-to-head trial or human outcome study. Full study: doi.org/10.1016/j.bioactmat.2026.08.015 \u2014 Send this to anyone designing materials for tissue repair who needs a roadmap from chemistry to clinic.",
+  "hashtag_set": "health",
+  "vet": {
+    "key": "5439257a5b40db25",
+    "verdict": "PASS",
+    "score": 54,
+    "flags": [
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Bioactive materials' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "mechanistic / lab",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "explainer",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 1,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "Full study: doi.org/10.1016/j.bioactmat.2026.08.015",
+          "problem": "The abstract does not contain any DOI or publication reference. This specific DOI is not provided in the abstract and appears to be invented. Additionally, the year 2026 is in the future, which is suspicious.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Citrate-based hydrogels are being engineered as **modular wound-healing platforms** with seven functions.",
+          "problem": "The abstract says 'seven functional paradigms' are proposed as a classification, not that the hydrogels themselves have seven functions. The abstract states 'It encompasses seven functional paradigms including antimicrobial, antioxidant, and pro-angiogenic activities' - only three are named, with 'including' suggesting these are examples, not an exhaustive list.",
+          "severity": "minor"
+        },
+        {
+          "claim": "The authors propose seven functional modules: antimicrobial, antioxidant, pro-angiogenic, and four others.",
+          "problem": "The abstract only explicitly names three functional paradigms (antimicrobial, antioxidant, and pro-angiogenic) and uses 'including' to introduce them. The abstract does not list or describe the other four paradigms, so claiming there are 'four others' is an inference not directly supported.",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "seven",
+          "found_in_abstract": true
+        },
+        {
+          "number": "7",
+          "found_in_abstract": true
+        },
+        {
+          "number": "three",
+          "found_in_abstract": false
+        },
+        {
+          "number": "2026",
+          "found_in_abstract": false
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Full study: doi.org/10.1016/j.bioactmat.2026.08.015",
+        "problem": "The abstract does not contain any DOI or publication reference. This specific DOI is not provided in the abstract and appears to be invented. Additionally, the year 2026 is in the future, which is suspicious.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "three",
+        "found_in_abstract": false
+      },
+      {
+        "number": "2026",
+        "found_in_abstract": false
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Chronic non-healing wounds, characterized by a complex microenvironment of persistent infection, chronic inflammation, and defective angiogenesis, pose a significant hurdle to regenerative medicine. Citrate-based chemistry has emerged as a sophisticated platform for engineering bio-instructive materials due to its versatile crosslinking chemistry and intrinsic metabolic bioactivity. This review provides a comprehensive appraisal of hydrogels constructed from citrate-based polymers (PC hydrogels) as a high-performance therapeutic toolkit for wound orchestration. Guided by the biological imperatives of the skin-healing cascade, we delineate the network construction mechanisms and structure-function relationships of PC hydrogels, together with the molecular mechanisms underlying their regulation of the wound microenvironment. On this basis, a modular classification of PC hydrogels is proposed. It encompasses seven functional paradigms including antimicrobial, antioxidant, and pro-angiogenic activities, with a critical focus on their structure-property-function relationships. Finally, we identify the existing bottlenecks in clinical translation and offer strategic perspectives on next-generation PC platforms, emphasizing precision design, mechanistic elucidation through multi-omics, and standardized manufacturing. This work aims to catalyze the development of intelligent, translation-ready PC wound dressings for complex tissue repair.",
+    "source": "europepmc",
+    "ext_id": "MED:42741660",
+    "pub_types": [
+      "review-article",
+      "Review",
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "http://creativecommons.org/licenses/by-nc-nd/4.0/;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "health",
+  "cover_art": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/1c/Professor_Tina_Jeoh_Biological_and_Agricultural_Engineering_%2851480844806%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "licence": "CC BY 2.0",
+    "author": "UC Davis College of Engineering",
+    "needs_credit": true,
+    "source": "Wikimedia Commons",
+    "page": "File:Professor Tina Jeoh Biological and Agricultural Engineering (51480844806).jpg",
+    "query": "Engineering bioactive",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-09-08-health-5439257a/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'health'"
+  }
+}
