@@ -47,7 +47,7 @@ from __future__ import annotations
 
 import re
 import statistics
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 # ---------------------------------------------------------------------------
 # Phrases that mark copy as generic. Ones that currently appear in the account's
@@ -100,6 +100,37 @@ MIN_SENTENCES_FOR_RHYTHM_CHECK = 10
 # Measured across the 12 published posts and 5 samples: MAD 2.0-6.0. The
 # metronomic fixture scores 0.0. 1.5 sits in the gap with margin on both sides.
 MIN_SENTENCE_LENGTH_MAD = 1.5
+
+
+def _voice() -> Dict[str, Any]:
+    """config/copy_spec.yaml's `voice` block, or {} if it cannot be read.
+
+    Read from the spec rather than hardcoded here, because the drafting prompt
+    quotes the same numbers back to the model. Two copies of a threshold is
+    one edit away from a checker that enforces something the prompt never
+    asked for - which is how this repo ended up with a `fixed_values` list
+    that no line of code had read for months.
+    """
+    global _VOICE_CACHE
+    if _VOICE_CACHE is None:
+        try:
+            import yaml
+            from config import ROOT
+            spec = yaml.safe_load(
+                (ROOT / "config" / "copy_spec.yaml").read_text())
+            _VOICE_CACHE = dict((spec or {}).get("voice") or {})
+        except Exception:
+            _VOICE_CACHE = {}
+    return _VOICE_CACHE
+
+
+_VOICE_CACHE: Optional[Dict[str, Any]] = None
+
+# Defaults, used only if the spec cannot be read. See the calibration note
+# above syllables() for where these numbers come from.
+MAX_READING_GRADE = 12.0        # a high-school senior
+MAX_LONG_WORD_PCT = 7.0
+
 _CONTENT_WORD = re.compile(r"[a-z]{5,}")
 
 # Words that are shared between a CTA and a headline without the CTA actually
@@ -112,6 +143,85 @@ _CTA_STOPWORDS = {
     "people", "human", "humans", "paper", "papers", "curious", "curiosity",
     "latest", "explained", "clearly", "follow", "swipe",
 }
+
+
+# ---------------------------------------------------------------------------
+# Reading ease
+#
+# WHY THIS IS MEASURED IN CODE RATHER THAN ASKED FOR IN THE PROMPT
+# ================================================================
+# "Write simply" has been in the drafting prompt from the beginning. Measured
+# across everything this account has actually published and queued, the copy
+# scores a MEDIAN Flesch reading ease of 35.7 - which is roughly a university
+# textbook - and one in twelve words has four or more syllables. Asking has
+# not worked, because the model is summarising a paper and the paper's own
+# vocabulary is right there.
+#
+# So it is a number now. lint() feeds these flags back into the repair loop the
+# same way it feeds back a word count, and the model gets told which words to
+# replace rather than told to be simpler.
+#
+# CALIBRATION, against this repo's own corpus (17 published, 19 queued, 5
+# samples): shipped posts run 14-58 ease and 1.4-17.3% long words. The five
+# samples rewritten to the current word budgets run 60-76 ease and 1.4-5.9%
+# long words - so the thresholds below are set where the good copy already
+# sits, not at an aspirational number nothing can reach.
+#
+# STYLE-prefixed, deliberately. A dense sentence is worth another drafting
+# round; it is not worth blocking a scientifically sound post over, and a
+# paper about nucleocapsid phosphoprotein signalling has a floor this cannot
+# argue with.
+# ---------------------------------------------------------------------------
+_WORD_RE = re.compile(r"[A-Za-z][A-Za-z'\-]*")
+_SENT_RE = re.compile(r"(?<=[.!?])\s+")
+
+
+def syllables(word: str) -> int:
+    """Rough English syllable count. Good enough to compare against itself."""
+    w = re.sub(r"[^a-z]", "", str(word).lower())
+    if not w:
+        return 0
+    if len(w) <= 3:
+        return 1
+    w = re.sub(r"(?:[^laeiouy]es|ed|[^laeiouy]e)$", "", w)
+    w = re.sub(r"^y", "", w)
+    return max(1, len(re.findall(r"[aeiouy]{1,2}", w)))
+
+
+def reading_ease(text: str) -> Optional[float]:
+    """Flesch reading ease. Higher is plainer; 60+ is ordinary English."""
+    sents = [s for s in _SENT_RE.split(text or "") if s.strip()]
+    words = _WORD_RE.findall(text or "")
+    if not sents or not words:
+        return None
+    syl = sum(syllables(w) for w in words)
+    return 206.835 - 1.015 * (len(words) / len(sents)) - 84.6 * (syl / len(words))
+
+
+def reading_grade(text: str) -> Optional[float]:
+    """Flesch-Kincaid grade level: the US school year this reads at.
+
+    Reported instead of reading ease because it names a PERSON. "Grade 12" is
+    a high-school senior and anyone can picture one; "reading ease 55" is the
+    same measurement upside down and means nothing without a table. When the
+    target is "a general audience, not a graduate", the units should be the
+    ones the target is expressed in.
+    """
+    sents = [s for s in _SENT_RE.split(text or "") if s.strip()]
+    words = _WORD_RE.findall(text or "")
+    if not sents or not words:
+        return None
+    syl = sum(syllables(w) for w in words)
+    return 0.39 * (len(words) / len(sents)) + 11.8 * (syl / len(words)) - 15.59
+
+
+def long_words(text: str, min_syllables: int = 4) -> List[str]:
+    """The words doing the damage, so the repair round can be told which."""
+    seen: List[str] = []
+    for w in _WORD_RE.findall(text or ""):
+        if syllables(w) >= min_syllables and w.lower() not in seen:
+            seen.append(w.lower())
+    return seen
 
 
 def _texts(post: Dict[str, Any]) -> List[str]:
@@ -213,16 +323,61 @@ def _style_flags(post: Dict[str, Any], study: Any = None) -> List[str]:
     cta = post.get("cta") or {}
     cta_text = f"{cta.get('headline') or ''} {cta.get('sub') or ''}"
     if cta_text.strip():
-        source = str((post.get("cover") or {}).get("headline") or "")
+        # The cover headline is no longer the finding.
+        #
+        # When it was, comparing the CTA against it was a fair proxy for "does
+        # this CTA name the study's subject". Now the cover carries the
+        # IMPLICATION and the finding sits on slide 1, so a CTA that names the
+        # finding precisely - "whoever says weight-loss pills need needles" -
+        # could share no word with the cover and be flagged as filler. The
+        # repair loop would then rewrite the one CTA on the post that was
+        # already doing its job.
+        #
+        # So the source is the whole of this post's subject matter: the cover,
+        # the slide titles, and the paper's own title. It stays a real check
+        # because _content_words drops the stopwords a generic CTA is made of -
+        # "send this to a friend" still shares nothing with any of it.
+        parts = [str((post.get("cover") or {}).get("headline") or "")]
+        parts += [str(sl.get("title") or "") for sl in (post.get("slides") or [])
+                  if isinstance(sl, dict)]
         if study is not None:
-            source += " " + str(getattr(study, "title", "") or "")
+            parts.append(str(getattr(study, "title", "") or ""))
+        source = " ".join(parts)
         shared = _content_words(cta_text) & _content_words(source)
         if not shared:
             flags.append(
                 "cta names nothing from the study - it would fit any post on "
                 "the account, which is what makes it read as filler")
 
-    # 6. Sentence rhythm. Calibrated as a regression alarm: the real corpus
+    # 6. Reading ease, and the words costing it.
+    #
+    #    Two numbers rather than one, because they fail differently: a post
+    #    can be dense from long SENTENCES or from long WORDS, and the rewrite
+    #    for each is different. Naming the offending words matters more than
+    #    the score - "replace transcriptional, supplementation" is actionable
+    #    and "be simpler" is not.
+    voice = _voice()
+    grade_max = float(voice.get("reading_grade_max", MAX_READING_GRADE))
+    long_max = float(voice.get("long_word_max_pct", MAX_LONG_WORD_PCT))
+
+    grade = reading_grade(blob)
+    if grade is not None and grade > grade_max:
+        flags.append(
+            f"reads at US grade {grade:.0f}; the target is grade "
+            f"{grade_max:.0f}, a high-school senior. Shorter sentences and "
+            f"everyday words. This is the single biggest reason a scroller "
+            f"passes a science post by")
+    words = _WORD_RE.findall(blob)
+    if words:
+        hard = long_words(blob)
+        pct = 100.0 * sum(1 for w in words if syllables(w) >= 4) / len(words)
+        if pct > long_max:
+            flags.append(
+                f"{pct:.0f}% of words are four syllables or more (max "
+                f"{long_max:.0f}%) - replace or define: "
+                f"{', '.join(hard[:8])}")
+
+    # 7. Sentence rhythm. Calibrated as a regression alarm: the real corpus
     #    sits at 4.46-6.81, so this fires only if the copy becomes markedly
     #    more metronomic than anything published so far.
     lengths = [len(s.split()) for s in _sentences(blob)]

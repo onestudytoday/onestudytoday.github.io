@@ -82,6 +82,40 @@ def rerender(post: Dict[str, Any]) -> List[str]:
         for old in staged_dir.glob("*.jpg"):
             old.unlink()
     to_jpeg(paths, staged_dir)
+
+    # The Reel is built from these same JPEGs, ONCE, at draft time - and
+    # _publish_one() sends the Reel in PREFERENCE to the carousel when the
+    # niche wants one and the file exists. So re-rendering the slides and
+    # leaving reel.mp4 alone republishes the pre-edit slides as a video:
+    # excluding a clipping would take the page off the carousel and leave it
+    # in the Reel, and a corrected number or a restored caveat would go out
+    # uncorrected. Same class of bug as the one this function's docstring is
+    # about, one layer further down.
+    #
+    # Rebuilt if it can be, and DELETED if it cannot. Deleting is the safe
+    # failure: no Reel means the carousel publishes, and the carousel is
+    # always current. A stale Reel is the only outcome that is actually wrong.
+    stale = staged_dir / "reel.mp4"
+    if stale.exists():
+        stale.unlink()
+        post.pop("reel", None)
+        try:
+            from reel import build_reel
+            info = build_reel(post["id"], images=[Path(p) for p in paths])
+            post["reel"] = {"path": info["path"], "duration": info["duration"],
+                            "bytes": info["bytes"]}
+            post["reel_status"] = {"built": True,
+                                   "duration": info["duration"],
+                                   "bytes": info["bytes"],
+                                   "reason": "rebuilt after an edit"}
+        except Exception as e:
+            print(f"  ! the Reel could not be rebuilt after this edit "
+                  f"({type(e).__name__}: {e}); it has been removed, so this "
+                  f"post publishes as a carousel with the corrected slides")
+            post["reel_status"] = {
+                "built": False,
+                "reason": f"removed on re-render, rebuild failed "
+                          f"({type(e).__name__})"}
     return paths
 
 
@@ -128,6 +162,10 @@ def set_status(post_id: str, status: str, note: str = "") -> Dict[str, Any]:
         p = QUEUE / f"{post_id}.json"
         if p.exists():
             p.unlink()
+        # And the editable document beside it - see pipeline._drop_doc().
+        doc = QUEUE / f"{post_id}.md"
+        if doc.exists():
+            doc.unlink()
         return post
     save(post)
     return post
@@ -417,6 +455,14 @@ def _main():
                     help="apply the rewrite even if the checks reject it. The "
                          "post is then BLOCKED and needs force-approve.")
     sub.add_parser("revert").add_argument("post_id")
+    sub.add_parser("apply-doc").add_argument("post_id")
+    for c in ("exclude-clipping", "include-clipping"):
+        sub.add_parser(c).add_argument("post_id")
+    ri = sub.add_parser("reimage")
+    ri.add_argument("post_id")
+    ri.add_argument("query", nargs="?", default="",
+                    help="what to search for instead. Omitted: try the next "
+                         "candidate for the automatic search term.")
     a = ap.parse_args()
 
     if a.cmd == "serve":
@@ -444,6 +490,131 @@ def _main():
         p.setdefault("review", {})["forced"] = True
         save(p)
         print(f"{a.post_id} FORCE approved - blockers overridden by a human.")
+        return
+
+    # ---- pick a different cover photograph ------------------------------
+    #
+    # `revise` could never do this. It rewrites COPY - it calls a model,
+    # gets new text back, re-runs the checks and re-renders - and it does not
+    # touch cover_art at all. So "revise: change the background picture"
+    # produced a perfectly successful revision in which the picture did not
+    # change, over and over, with nothing reporting that the request had not
+    # been understood. This is the command that actually does it.
+    if a.cmd == "reimage":
+        from config import DOCS
+        from coverart import fetch_for
+        from reel import check_post_id
+        p = load(a.post_id)
+        if not p:
+            raise SystemExit(f"No queued post with id {a.post_id}")
+        # The same guard every other write into docs/img/ uses: post["id"]
+        # becomes a directory name here.
+        check_post_id(a.post_id)
+
+        # EVERY image already tried, not just the current one. The search is
+        # deterministic - same query, same candidates, same scoring - so
+        # without this the second request returns the first answer again and
+        # the reviewer concludes the command is broken.
+        tried = [str(u) for u in (p.get("cover_art_tried") or []) if u]
+        cur = (p.get("cover_art") or {}).get("url")
+        if cur and cur not in tried:
+            tried.append(str(cur))
+
+        art = fetch_for(p, DOCS / "img" / a.post_id,
+                        query=a.query or None, exclude=tried)
+        if not art:
+            raise SystemExit(
+                "No usable image found" + (f" for {a.query!r}" if a.query else "")
+                + ". Nothing changed - the post keeps the picture it has.\n"
+                  "Try `reimage: <something concrete and photographable>`, or "
+                  "leave it: the flat background is what every post used to "
+                  "look like.")
+        p["cover_art"] = art
+        p["cover_art_tried"] = tried + [str(art.get("url"))]
+        # Bump the cache-buster BEFORE re-rendering. GitHub proxies these
+        # images and caches on the full URL, so a new picture at the same
+        # path would keep showing as the old one on the review card - the
+        # change would have happened and looked like it had not.
+        p["render_seq"] = int(p.get("render_seq") or 0) + 1
+        rerender(p)
+        save(p)
+        print(f"{a.post_id}: new cover image from {art.get('source')} "
+              f"<- {art.get('query')!r} ({art.get('licence')}). "
+              f"{len(tried) + 1} tried so far. Slides re-rendered.")
+        return
+
+    # ---- show or hide the clipping page ---------------------------------
+    #
+    # A flag, not a delete. `include clipping` puts the same article back,
+    # rather than sending the pipeline out to find another one that may no
+    # longer be there - and it re-renders, because the slides are what
+    # publish. The status is deliberately NOT changed: showing or hiding a
+    # quotation from somebody else does not touch a word of our own copy, so
+    # an approved post stays approved.
+    if a.cmd in ("exclude-clipping", "include-clipping"):
+        from clipping import ClippingError, set_excluded
+        p = load(a.post_id)
+        if not p:
+            raise SystemExit(f"No queued post with id {a.post_id}")
+        try:
+            p = set_excluded(p, a.cmd == "exclude-clipping")
+        except ClippingError as e:
+            raise SystemExit(str(e))
+        save(p)
+        rerender(p)
+        md_path = QUEUE / f"{a.post_id}.md"
+        if md_path.exists():
+            # Keep the editable document honest about what the post now says.
+            from postdoc import to_markdown
+            md_path.write_text(to_markdown(p))
+        print(f"{a.post_id}: clipping "
+              f"{'excluded' if a.cmd == 'exclude-clipping' else 'included'}. "
+              f"Slides re-rendered.")
+        return
+
+    # ---- apply an edited document ---------------------------------------
+    if a.cmd == "apply-doc":
+        from postdoc import apply_markdown, recheck, to_markdown
+        p = load(a.post_id)
+        if not p:
+            raise SystemExit(f"No queued post with id {a.post_id}")
+        md_path = QUEUE / f"{a.post_id}.md"
+        if not md_path.exists():
+            raise SystemExit(f"No document at {md_path}")
+        was = p
+        before = json.dumps(p, sort_keys=True)
+        p = recheck(apply_markdown(p, md_path.read_text()), before=was)
+        if json.dumps(p, sort_keys=True) == before:
+            print(f"{a.post_id}: the document matches the post already.")
+            return
+        # RENDER FIRST, SAVE SECOND.
+        #
+        # The other order looks harmless and is not. rerender() can fail on
+        # hand-edited copy in ways lint() never sees - a slide heading renamed
+        # in the document becomes the eyebrow, and the eyebrow becomes a
+        # filename - and this command runs in a workflow step that tolerates a
+        # non-zero exit so a refused edit can be reported rather than going
+        # red. Saving first therefore left the NEW copy in the queue file, the
+        # OLD images in docs/img, and a comment on the issue saying "your
+        # edits are in - the card shows the re-rendered slides". The card
+        # would show the new words over the old pictures, and publishing would
+        # send the old carousel with the new caption. That is exactly the
+        # failure rerender()'s own docstring was written about.
+        #
+        # Rendering first means a failure here leaves the post, the images and
+        # the document all as they were, and the error reaches the issue.
+        rerender(p)
+        save(p)
+        # Rewrite the document FROM the post, so the file always reflects what
+        # was actually stored. Without this, a heading the parser ignored
+        # would sit in the file looking like it had taken effect.
+        md_path.write_text(to_markdown(p))
+        blockers = blocking_reasons(p)
+        print(f"{a.post_id}: your edits are in. Slides re-rendered.")
+        if blockers:
+            print("This post is now BLOCKED and needs `force approve`:")
+            for b in blockers:
+                print(f"  - {b}")
         return
 
     # ---- revise / revert ------------------------------------------------
@@ -477,6 +648,17 @@ def _main():
             raise SystemExit(f"REVISION FAILED - {safe_error(e)}")
         save(p)
         rerender(p)
+        # Rewrite the editable document from the revised post.
+        #
+        # Without this the .md beside the post still holds the PRE-revision
+        # copy: a reviewer who revises and then opens the document to fix one
+        # word would commit the old sentences back over the new ones, and the
+        # apply would look like it worked. The two representations of a post
+        # have to move together or the one nobody re-read wins.
+        md_path = QUEUE / f"{a.post_id}.md"
+        if md_path.exists():
+            from postdoc import to_markdown
+            md_path.write_text(to_markdown(p))
         n = len(p.get("revisions") or [])
         print(f"{a.post_id} {'revised' if a.cmd == 'revise' else 'reverted'} "
               f"({n} revision{'' if n == 1 else 's'} on record). Slides re-rendered.")

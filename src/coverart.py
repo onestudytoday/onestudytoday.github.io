@@ -142,16 +142,103 @@ def subjects_for(post: Dict[str, Any], limit: int = 3) -> List[str]:
     field existed, and skeleton() drafts, still get a cover.
     """
     cover = post.get("cover") or {}
-    subs = [str(s).strip() for s in (cover.get("image_subjects") or [])
-            if str(s).strip()]
-    if not subs:
-        title = str((post.get("study") or {}).get("title") or "")
-        words = [w for w in _WORD.findall(title)
-                 if w.lower() not in {s.lower() for s in _STOP}]
-        # Pairs read far better as image queries than single words:
-        # "gut bacteria" finds what "gut" and "bacteria" separately do not.
-        subs = [" ".join(words[i:i + 2]) for i in range(0, min(len(words), 6), 2)]
-    return [safe_query(s) for s in subs[:limit] if safe_query(s)]
+
+    # THE COVER HEADLINE COMES FIRST, and it is ONE WORD.
+    #
+    # `image_subjects` is a phrase the drafting model emits, and in practice
+    # it drifts towards the abstract of the study rather than a picture of it.
+    # A paper on citrate-based hydrogels produced a stock photograph of a
+    # person at a College of Engineering, because "engineering" was in the
+    # subject and Commons has a great many photographs of engineers. The
+    # headline is what the reader is looking at while the picture is behind
+    # it, so the picture should be of the thing the headline names -
+    # "hydrogels" gets a photograph of a gel.
+    #
+    # One word, not a phrase: an image search narrows fast, and a two-word
+    # query on a specific noun ("citrate hydrogels") usually returns nothing
+    # at all, which falls through to a broader, worse query.
+    subs: List[str] = []
+    head = headline_keyword(cover.get("headline"))
+    if head:
+        subs.append(head)
+
+    subs += [str(s).strip() for s in (cover.get("image_subjects") or [])
+             if str(s).strip()]
+    title = str((post.get("study") or {}).get("title") or "")
+    words = [w for w in _WORD.findall(title)
+             if w.lower() not in {s.lower() for s in _STOP}]
+    # Pairs read far better as image queries than single words:
+    # "gut bacteria" finds what "gut" and "bacteria" separately do not.
+    subs += [" ".join(words[i:i + 2]) for i in range(0, min(len(words), 6), 2)]
+
+    out: List[str] = []
+    for s in subs:
+        q = safe_query(s)
+        if q and q.lower() not in {o.lower() for o in out}:
+            out.append(q)
+    return out[:limit]
+
+
+# Words that are in every science headline and name nothing photographable.
+# Kept apart from _STOP, which is tuned for pulling nouns out of a paper
+# title; this one is about what makes a picture.
+_UNPHOTOGRAPHABLE = {
+    "could", "might", "makes", "made", "make", "means", "matter", "matters",
+    "study", "studies", "research", "people", "person", "human", "humans",
+    "first", "found", "finding", "findings", "result", "results", "years",
+    "year", "shows", "showed", "change", "changes", "changed", "better",
+    "worse", "higher", "lower", "faster", "slower", "risk", "risks", "link",
+    "linked", "links", "effect", "effects", "evidence", "data", "number",
+    "numbers", "percent", "times", "level", "levels", "group", "groups",
+    "using", "used", "after", "before", "without", "within", "between",
+    "about", "their", "there", "these", "those", "which", "while", "where",
+    "engineering", "engineered", "modular", "platform", "platforms",
+    "function", "functions", "approach", "method", "methods", "system",
+    "systems", "based", "novel", "potential", "significant",
+    "decades", "decade", "months", "month", "weeks", "week", "hours",
+    "minutes", "cheapest", "biggest", "largest", "smallest",
+}
+
+
+def headline_keyword(headline: Any) -> str:
+    """The one photographable noun in the cover headline.
+
+    Longest wins, which is a crude specificity proxy and a good one here:
+    in "Citrate-based hydrogels are being engineered as modular wound-healing
+    platforms", the longest word that is not scaffolding is "hydrogels", and
+    that is exactly the picture wanted. Accent markup is stripped first, and
+    a plural is reduced to its singular because image libraries file things
+    under the singular.
+    """
+    text = str(headline or "").replace("**", "")
+    stop = {s.lower() for s in _STOP}
+    best, best_score = "", -99.0
+    for w in _WORD.findall(text):
+        lw = w.lower().strip("-")
+        if len(lw) < 5 or lw in _UNPHOTOGRAPHABLE or lw in stop:
+            continue
+        # Score, rather than simply take the longest. Longest alone picked
+        # "citrate-based" over "hydrogels" and "self-feeding" over "implants"
+        # - adjectives, which no image library files anything under.
+        score = float(len(lw))
+        if "-" in lw:
+            score -= 8          # compound modifiers: wound-healing, self-feeding
+        if lw.endswith(("ed", "ing", "est", "ly", "ous", "ive", "able", "al",
+                        "ic", "ical")):
+            score -= 6          # adjective and participle endings
+        if lw.endswith(("ion", "ions", "ment", "ments")):
+            score += 2          # noun endings that outweigh the "-al"-ish hit
+        if lw.endswith("s") and not lw.endswith("ss"):
+            score += 3          # a plural is almost always the concrete noun
+        if score > best_score:
+            best, best_score = lw, score
+    if best.endswith("ies") and len(best) > 4:
+        best = best[:-3] + "y"
+    elif best.endswith("ses") or best.endswith("xes"):
+        best = best[:-2]
+    elif best.endswith("s") and not best.endswith("ss"):
+        best = best[:-1]
+    return safe_query(best)
 
 
 # ---------------------------------------------------------------------------
@@ -229,10 +316,15 @@ def search_commons(query: str, limit: int = 8) -> List[Dict[str, Any]]:
             continue
         if min(int(info.get("width") or 0), int(info.get("height") or 0)) < MIN_PIXELS:
             continue
+        title = page.get("title", "")
+        if not looks_english(title, author):
+            # A file captioned in another language is a picture captioned in
+            # another language. See the note above looks_english().
+            continue
         out.append({"url": info.get("thumburl") or info.get("url"),
                     "licence": lic, "author": author.strip()[:80] or "Wikimedia Commons",
                     "needs_credit": credit, "source": "Wikimedia Commons",
-                    "page": page.get("title", "")})
+                    "page": title})
     return out
 
 
@@ -271,9 +363,13 @@ def search_openverse(query: str, limit: int = 8) -> List[Dict[str, Any]]:
         usable, credit = classify_licence(r.get("license") or "")
         if not usable or not r.get("url"):
             continue
+        if not looks_english(r.get("title"), r.get("creator")):
+            continue
         out.append({"url": r["url"], "licence": str(r.get("license") or "").upper(),
                     "author": str(r.get("creator") or ""), "needs_credit": credit,
-                    "source": "Openverse", "page": r.get("foreign_landing_url", "")})
+                    "source": "Openverse",
+                    "page": str(r.get("title") or "")[:120]
+                            or r.get("foreign_landing_url", "")})
     return out
 
 
@@ -282,22 +378,102 @@ SOURCES = (("wikimedia", search_commons),
            ("openverse", search_openverse))
 
 
+# ---------------------------------------------------------------------------
+# Language, and why it is checked on the filename
+#
+# A post about dental implants shipped with a diagram captioned in ARMENIAN
+# across the whole cover. Wikimedia Commons is a global archive: a search for
+# an English term matches files described in any language, and a labelled
+# diagram carries its labels in whatever language its author drew it in.
+#
+# There is no cheap way to read the text INSIDE an image, but the file's own
+# title and description are right there and are written in the same language
+# as the labels essentially every time. So: if the metadata is not in a Latin
+# script, the picture is not either, and it is refused.
+#
+# Explicit script ranges rather than "is it ASCII". Scientific filenames are
+# full of accented Latin (Müller, Ångström) and of Greek letters used as
+# symbols (α-synuclein, µm) - all of them fine, all of them non-ASCII. These
+# are the scripts that mean the file is captioned in another LANGUAGE.
+# ---------------------------------------------------------------------------
+_NON_LATIN = (
+    (0x0400, 0x052F),    # Cyrillic
+    (0x0530, 0x058F),    # Armenian  <- the one that shipped
+    (0x0590, 0x05FF),    # Hebrew
+    (0x0600, 0x06FF),    # Arabic
+    (0x0700, 0x074F),    # Syriac
+    (0x0900, 0x097F),    # Devanagari
+    (0x0E00, 0x0E7F),    # Thai
+    (0x10A0, 0x10FF),    # Georgian
+    (0x1100, 0x11FF),    # Hangul Jamo
+    (0x3040, 0x30FF),    # Hiragana, Katakana
+    (0x3400, 0x9FFF),    # CJK
+    (0xAC00, 0xD7AF),    # Hangul syllables
+)
+
+# Titles that describe a drawing rather than a photograph. A diagram is the
+# thing that carries text, and text behind a headline is noise whatever
+# language it is in.
+_DIAGRAMMATIC = ("diagram", "schema", "scheme", "chart", "graph", "infographic",
+                 "flowchart", "map of", "illustration", "drawing", "sketch",
+                 "logo", "icon", "poster", "screenshot", "table", "plot of",
+                 "timeline", "figure ")
+
+
+def looks_english(*texts: Any) -> bool:
+    """False if any of this file's own metadata is in a non-Latin script."""
+    for text in texts:
+        for ch in str(text or ""):
+            cp = ord(ch)
+            for lo, hi in _NON_LATIN:
+                if lo <= cp <= hi:
+                    return False
+    return True
+
+
 def _score(cand: Dict[str, Any]) -> float:
-    """Prefer images that need no credit - they are simply less to get wrong."""
-    return 0.0 if cand.get("needs_credit") else 1.0
+    """Rank the usable candidates. Higher is better.
+
+    Credit is the original axis - an image needing none is simply less to get
+    wrong. The rest is about what makes a readable COVER: a headline is set
+    over this picture, so a photograph beats a labelled diagram, and a
+    diagram's labels are the text that fights the headline.
+    """
+    score = 0.0 if cand.get("needs_credit") else 1.0
+    title = f"{cand.get('page', '')} {cand.get('author', '')}".lower()
+    if any(w in title for w in _DIAGRAMMATIC):
+        score -= 2.0
+    url = str(cand.get("url") or "").lower().split("?")[0]
+    if url.endswith((".jpg", ".jpeg")):
+        score += 0.5       # photographs are filed as jpg, diagrams as png/svg
+    elif url.endswith(".svg"):
+        score -= 1.0
+    return score
 
 
 def find_image(post: Dict[str, Any],
-               order: Sequence[str] = ("wikimedia", "pexels", "openverse")
+               order: Sequence[str] = ("wikimedia", "pexels", "openverse"),
+               query: Optional[str] = None,
+               exclude: Sequence[str] = (),
                ) -> Optional[Dict[str, Any]]:
     """The first usable image for this post, or None.
 
     None is a perfectly good outcome: the cover falls back to the flat
     background it has today, which is what every post looks like now.
+
+    `query` overrides the automatic search terms, so a reviewer who can see
+    the picture and knows it is wrong can say what to look for instead.
+
+    `exclude` is the URLs already tried. Without it, asking for a different
+    picture re-runs the same deterministic search, scores the same candidates
+    the same way, and hands back the SAME image - which looks exactly like
+    the request being ignored.
     """
-    subs = subjects_for(post)
+    subs = [safe_query(query)] if query else subjects_for(post)
+    subs = [s for s in subs if s]
     if not subs:
         return None
+    skip = {str(u) for u in exclude if u}
     by_name = dict(SOURCES)
     for name in order:
         fn = by_name.get(name)
@@ -309,7 +485,8 @@ def find_image(post: Dict[str, Any],
             except Exception as e:
                 print(f"  ! {name} raised on {q!r}: {type(e).__name__}")
                 continue
-            cands = [c for c in cands if c.get("url")]
+            cands = [c for c in cands
+                     if c.get("url") and str(c["url"]) not in skip]
             if not cands:
                 continue
             best = sorted(cands, key=_score, reverse=True)[0]
@@ -370,10 +547,17 @@ def download(art: Dict[str, Any]) -> Optional[bytes]:
         return None
 
 
-def fetch_for(post: Dict[str, Any], dest_dir: Any) -> Optional[Dict[str, Any]]:
-    """Find, download and save a cover image. Returns its record, or None."""
+def fetch_for(post: Dict[str, Any], dest_dir: Any,
+              query: Optional[str] = None,
+              exclude: Sequence[str] = ()) -> Optional[Dict[str, Any]]:
+    """Find, download and save a cover image. Returns its record, or None.
+
+    `query` and `exclude` are passed straight through to find_image() so the
+    review step can ask for a different picture, or for a picture of
+    something specific. See its docstring.
+    """
     from pathlib import Path
-    art = find_image(post)
+    art = find_image(post, query=query, exclude=exclude)
     if not art:
         return None
     data = download(art)

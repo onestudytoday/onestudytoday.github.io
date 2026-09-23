@@ -299,8 +299,147 @@ def test_reddit_is_off_unless_explicitly_enabled(monkeypatch):
     monkeypatch.setattr(traction, "reddit_hits", lambda *a, **k: called.append(1) or [])
     monkeypatch.setattr(traction, "hn_hits", lambda *a, **k: [])
     monkeypatch.setattr(traction, "rss_hits", lambda *a, **k: [])
-    monkeypatch.setattr(traction, "USE_REDDIT_BY_DEFAULT", False)
+    monkeypatch.setattr(traction, "use_reddit_by_default", lambda: False)
     traction.gather()
     assert called == []
     traction.gather(use_reddit=True)          # still available on request
     assert called == [1]
+
+
+# ---------------------------------------------------------------------------
+# Reddit OAuth
+#
+# The unauthenticated endpoint 403s from any datacenter IP, so on a GitHub
+# runner reddit is either authenticated or absent. These cover the switch, the
+# token, and the ways it is allowed to fail.
+# ---------------------------------------------------------------------------
+def _creds(monkeypatch, cid="id123", secret="sec456"):
+    monkeypatch.setattr(traction, "REDDIT_CLIENT_ID", cid)
+    monkeypatch.setattr(traction, "REDDIT_CLIENT_SECRET", secret)
+    monkeypatch.setattr(traction, "_TOKEN", {"value": "", "expires": 0.0})
+
+
+class _Resp:
+    def __init__(self, payload=None, status=200):
+        self._p = payload or {}
+        self.status_code = status
+
+    def raise_for_status(self):
+        if self.status_code >= 400:
+            raise RuntimeError(f"HTTP {self.status_code}")
+
+    def json(self):
+        return self._p
+
+
+def test_configuring_credentials_is_all_it_takes_to_turn_reddit_on(monkeypatch):
+    """Adding the two secrets must be the ONLY step. Anything else is a
+    second thing to remember, and the thing you forget is the thing that
+    makes the feature look broken."""
+    monkeypatch.delenv("OSD_REDDIT", raising=False)
+    monkeypatch.setattr(traction, "REDDIT_CLIENT_ID", "")
+    monkeypatch.setattr(traction, "REDDIT_CLIENT_SECRET", "")
+    assert traction.use_reddit_by_default() is False
+
+    _creds(monkeypatch)
+    assert traction.reddit_configured() is True
+    assert traction.use_reddit_by_default() is True
+
+
+def test_the_token_is_requested_once_and_reused(monkeypatch):
+    """Four subs must not mean four token requests - reddit rate-limits token
+    issuance harder than it rate-limits reads."""
+    _creds(monkeypatch)
+    calls = []
+
+    def post(url, **kw):
+        calls.append(url)
+        return _Resp({"access_token": "tok", "expires_in": 3600})
+    monkeypatch.setattr(traction.requests, "post", post)
+
+    assert traction.reddit_token() == "tok"
+    assert traction.reddit_token() == "tok"
+    assert len(calls) == 1
+
+
+def test_an_expired_token_is_refetched(monkeypatch):
+    _creds(monkeypatch)
+    monkeypatch.setattr(traction, "_TOKEN",
+                        {"value": "stale", "expires": 0.0})
+    monkeypatch.setattr(traction.requests, "post",
+                        lambda url, **kw: _Resp({"access_token": "fresh",
+                                                 "expires_in": 3600}))
+    assert traction.reddit_token() == "fresh"
+
+
+def test_reddit_reads_go_to_the_oauth_host_with_the_token(monkeypatch):
+    """www.reddit.com is what 403s. If a request ever goes back there with a
+    token in hand, the feature is silently broken again."""
+    _creds(monkeypatch)
+    monkeypatch.setattr(traction.requests, "post",
+                        lambda url, **kw: _Resp({"access_token": "tok",
+                                                 "expires_in": 3600}))
+    seen = {}
+
+    def get_json(url, params=None, headers=None):
+        seen["url"] = url
+        seen["headers"] = headers or {}
+        return {"data": {"children": []}}
+    monkeypatch.setattr(traction, "_get_json", get_json)
+
+    traction.reddit_hits(subs=["science"])
+    assert seen["url"].startswith("https://oauth.reddit.com/")
+    assert seen["headers"].get("Authorization") == "bearer tok"
+
+
+def test_a_refused_token_skips_reddit_without_killing_the_draft(monkeypatch):
+    """Wrong secrets, revoked app, reddit down - none of these may take the
+    weekday post with them."""
+    _creds(monkeypatch)
+
+    def boom(url, **kw):
+        raise RuntimeError("401 Unauthorized")
+    monkeypatch.setattr(traction.requests, "post", boom)
+
+    assert traction.reddit_token() == ""
+    assert traction.reddit_hits(subs=["science"]) == []
+
+
+def test_bad_credentials_do_not_fall_back_to_the_blocked_endpoint(monkeypatch):
+    """Falling through to www.reddit.com would 403 and print a message
+    implying the credentials were wrong when they may not have been."""
+    _creds(monkeypatch)
+    monkeypatch.setattr(traction.requests, "post",
+                        lambda url, **kw: _Resp({}, status=401))
+    called = []
+    monkeypatch.setattr(traction, "_get_json",
+                        lambda *a, **k: called.append(1) or {})
+    assert traction.reddit_hits(subs=["science"]) == []
+    assert called == [], "fell back to the endpoint that always 403s"
+
+
+def test_a_token_failure_never_prints_the_credentials(monkeypatch, capsys):
+    """A requests exception for a POST carrying basic auth can quote the
+    request. secrets_guard cannot scrub what it never sees, so this path
+    prints only the exception TYPE."""
+    _creds(monkeypatch, cid="SUPERSECRETID", secret="SUPERSECRETVALUE")
+
+    def boom(url, **kw):
+        raise RuntimeError(f"failed POST {url} with auth {kw.get('auth')}")
+    monkeypatch.setattr(traction.requests, "post", boom)
+
+    traction.reddit_token()
+    out = capsys.readouterr().out
+    assert "SUPERSECRET" not in out, out
+
+
+def test_the_draft_workflow_passes_the_reddit_secrets():
+    wf = (ROOT / ".github" / "workflows" / "daily-draft.yml").read_text()
+    assert "REDDIT_CLIENT_ID" in wf and "REDDIT_CLIENT_SECRET" in wf
+
+
+def test_the_runbook_explains_how_to_get_the_credentials():
+    """A feature nobody can turn on is a feature nobody has."""
+    rb = (ROOT / "docs" / "RUNBOOK.md").read_text()
+    assert "reddit.com/prefs/apps" in rb
+    assert "REDDIT_CLIENT_ID" in rb

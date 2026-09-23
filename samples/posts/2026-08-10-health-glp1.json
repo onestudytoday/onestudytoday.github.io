@@ -1,64 +1,71 @@
 {
-  "id": "2026-08-10-health-glp1",
-  "niche": "health",
-  "study": {
-    "title": "Aleniglipron, a daily oral small-molecule GLP-1 receptor agonist, in adults with obesity: a phase 2b randomised, double-blind, placebo-controlled trial",
-    "journal": "Nature Medicine",
-    "pub_date": "2026-08-10",
-    "pub_date_display": "Aug 10, 2026",
-    "doi": "10.1038/s41591-026-04476-6",
-    "doi_display": "doi.org/10.1038/s41591-026-04476-6",
-    "url": "https://doi.org/10.1038/s41591-026-04476-6",
-    "is_preprint": false,
-    "server": null,
-    "n": 230
+ "id": "2026-08-10-health-glp1",
+ "niche": "health",
+ "study": {
+  "title": "Aleniglipron, a daily oral small-molecule GLP-1 receptor agonist, in adults with obesity: a phase 2b randomised, double-blind, placebo-controlled trial",
+  "journal": "Nature Medicine",
+  "pub_date": "2026-08-10",
+  "pub_date_display": "Aug 10, 2026",
+  "doi": "10.1038/s41591-026-04476-6",
+  "doi_display": "doi.org/10.1038/s41591-026-04476-6",
+  "url": "https://doi.org/10.1038/s41591-026-04476-6",
+  "is_preprint": false,
+  "server": null,
+  "n": 230
+ },
+ "cover": {
+  "kicker": "Nature Medicine · 230 adults",
+  "headline": "Take the needle out of obesity medicine and **far more people can actually start.**"
+ },
+ "slides": [
+  {
+   "eyebrow": "The result",
+   "title": "Across 38 US sites, the top dose beat placebo by roughly twelve percentage points.",
+   "body": "230 adults were split at random between three doses and a placebo for 36 weeks. The top dose took off 12.1% of body weight; placebo managed 0.5%.\n\nOne in ten stopped early. Gut side effects eased over time.",
+   "stat": {
+    "value": "12.1%",
+    "label": "body weight lost on the top dose"
+   }
   },
-  "cover": {
-    "kicker": "Nature Medicine · 230 adults",
-    "headline": "A GLP-1 you swallow took off 12.1% of body weight. **Placebo managed 0.5%.**"
+  {
+   "eyebrow": "What it means for you",
+   "basis": "stated",
+   "title": "A daily pill skips the cold chain, the prescriber training and the fear of needles.",
+   "body": "Semaglutide and tirzepatide changed obesity medicine and both arrive as a weekly injection. That is a hard no for a large share of the people they would help.\n\nAn oral version is the same receptor with the barrier removed."
   },
-  "slides": [
-    {
-      "eyebrow": "The setup",
-      "title": "The weight-loss drugs that work are injections. That is a real barrier for many people.",
-      "body": "Semaglutide and tirzepatide changed obesity medicine, and both arrive as a weekly needle. Needles mean cold chain, prescriber training, and a hard no from a lot of patients.\n\nA pill would dodge all of it. The problem is that the peptide drugs fall apart in the gut. So chemists have been hunting for a small molecule that hits the same receptor and survives being swallowed."
-    },
-    {
-      "eyebrow": "What they found",
-      "title": "Across 38 US sites, the top dose beat placebo by roughly twelve percentage points.",
-      "body": "230 adults, average age 50, were randomly assigned to one of three doses or placebo for 36 weeks. Weight change came in at 9.0% on 45 mg, 10.7% on 90 mg and 12.1% on 120 mg, against 0.5% on placebo.\n\nGut side effects were mild to moderate and got less frequent as the trial ran on. About one in ten participants stopped early. No cases of drug-induced liver injury were reported.",
-      "stat": {
-        "value": "12.1%",
-        "label": "body weight lost on the top dose"
-      }
-    }
-  ],
-  "caveats": [
-    "The trial was funded by Structure Therapeutics, the company that owns the drug.",
-    "Phase 2b means 230 people over 36 weeks. Rare harms only show up in far larger trials.",
-    "Around one in ten quit before the end, so tolerability is not a solved problem.",
-    "Weight regain after stopping was not tested here. For every other GLP-1, it happens."
-  ],
-  "cta": {
-    "headline": "Send this to whoever says weight-loss pills need needles",
-    "sub": "One real study, every weekday. The full paper is linked in bio."
-  },
-  "caption": "The interesting number here is not 12.1%. It is the 0.5% next to it.\n\nThis was a phase 2b randomised, double-blind, placebo-controlled trial of aleniglipron, a daily oral small-molecule GLP-1 receptor agonist, in 230 adults with obesity across 38 US medical centres. At 36 weeks: 9.0% weight loss on 45 mg, 10.7% on 90 mg, 12.1% on 120 mg, and 0.5% on placebo. Gastrointestinal side effects were mild to moderate and eased over time. The discontinuation rate was 10.4%.\n\nTwo things to hold onto. The trial was funded by the company that owns the drug. And phase 2b is a signal, not a verdict.\n\nFull study: doi.org/10.1038/s41591-026-04476-6\n\nPill or needle?",
-  "hashtag_set": "health",
-  "vet": {
-    "key": "x",
-    "verdict": "HOLD",
-    "score": 74,
-    "flags": [],
-    "design": "randomised trial",
-    "sample_size": 230,
-    "subjects": "human",
-    "journal_tier": 1,
-    "required_caveats": [
-      "Funded in part by industry."
-    ],
-    "required_badges": [],
-    "draft_rules": [],
-    "notes": []
+  {
+   "eyebrow": "What changes",
+   "title": "The peptide drugs fall apart in the gut, which is why this one is not a peptide.",
+   "body": "Chemists went looking for a small molecule that hits the GLP-1 receptor and survives being swallowed. Aleniglipron is one of those.\n\nThis is the phase 2b readout: it works, at a dose people mostly tolerated."
   }
+ ],
+ "caveats": [
+  "The trial was funded by Structure Therapeutics, the company that owns the drug.",
+  "Phase 2b means 230 people over 36 weeks. Rare harms only show up in far larger trials.",
+  "Around one in ten quit before the end, so tolerability is not a solved problem.",
+  "Weight regain after stopping was not tested here. For every other GLP-1, it happens."
+ ],
+ "cta": {
+  "headline": "Send this to whoever says weight-loss pills need needles",
+  "sub": "One real study, every weekday. The full paper is linked in bio."
+ },
+ "caption": "The interesting number is not the 12.1% lost. It is that you swallow this one, and 0.5% is what placebo managed.",
+ "hashtag_set": "health",
+ "vet": {
+  "key": "x",
+  "verdict": "HOLD",
+  "score": 74,
+  "flags": [],
+  "design": "randomised trial",
+  "sample_size": 230,
+  "subjects": "human",
+  "journal_tier": 1,
+  "required_caveats": [
+   "Funded in part by industry."
+  ],
+  "required_badges": [],
+  "draft_rules": [],
+  "notes": []
+ },
+ "shape": "implication-first-v1"
 }

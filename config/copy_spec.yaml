@@ -12,15 +12,26 @@
 
 carousel:
   slides_min: 5
-  slides_max: 7
+  slides_max: 8
+  # THE ORDER, and why it is this one.
+  #
+  # The cover used to carry the finding and nothing said why a stranger should
+  # care. So the cover now carries the IMPLICATION - the one line that answers
+  # "why do we even care" - and the finding moves to slide 2, where the numbers
+  # belong. Slide 3 is the same implication again, explained properly.
+  #
+  # Saying it twice is the point, not an accident: the cover is what a scroller
+  # sees for 400 milliseconds, and slide 3 is what someone who stopped reads.
+  # One has to work stripped of all context; the other has to earn it.
   order:
-    - cover          # 1  the hook
-    - setup          # 2  why this question matters
-    - setup_extra    # 3  optional, only if the context genuinely needs it
-    - findings       # 4  what they actually found
-    - findings_extra # 5  optional, the second finding or the mechanism
-    - caveats        # 6  ALWAYS present. non-negotiable.
-    - cta            # 7  follow + link to the paper
+    - cover          # 1  the implication, in one line. why anyone should care.
+    - finding        # 2  what the study actually found, with the numbers
+    - implications   # 3  the same implication, explained
+    - clipping       # 4  optional, a published parallel to the implication
+    - context        # 5  optional, the setup, the method or the mechanism
+    - context_extra  # 6  optional
+    - caveats        # 7  ALWAYS present. non-negotiable.
+    - cta            # 8  send + link to the paper
 
 fields:
 
@@ -35,15 +46,27 @@ fields:
     chars_max: 115
     sentences: [1, 2]
     accent_runs: [1, 1]          # exactly one **highlighted** phrase
-    rule: "One sentence a smart 15-year-old understands instantly. State the
-           finding, not the topic. Never a question. Never a colon-title.
-           The **highlighted** phrase carries the surprise."
+    rule: "The IMPLICATION, not the finding. One sentence answering 'why
+           should I care' that a smart 15-year-old understands instantly.
+           The finding itself is slide 2. Never a question. Never a
+           colon-title. The **highlighted** phrase carries the stake.
+           If the implications slide is marked `inferred`, this sentence is
+           our extrapolation too and must be conditional - lint enforces it."
 
   slide.eyebrow:
-    # Kept as the union of every format's eyebrows below, because render.py
-    # turns this string into a filename and anything outside this set has
-    # never been through that path.
-    fixed_values: ["The setup", "What they found", "The mechanism", "Why it matters", "The assumption", "What the data says", "Why the difference", "What they did", "What came back", "How it works", "Why this matters", "The result", "What changes", "Why you should care", "What it could mean", "What it changes"]
+    # The union of every format's eyebrows below, PLUS labels that already
+    # appear on published posts. render.py turns this string into a filename,
+    # so anything outside this set has never been through that path - and
+    # lint() rejects it, which is also what `revise` re-runs against an old
+    # post. That is why the legacy labels stay: dropping "Why it matters"
+    # would make thirteen already-published posts unrevisable.
+    fixed_values: ["What they found", "Why this matters", "The setup", "The mechanism",
+                   "What the data says", "Why you should care", "The assumption", "Why the difference",
+                   "Results", "What it could mean", "What they did", "How it works",
+                   "The result", "What it means for you", "What changes",
+                   # legacy - shipped on live posts, or drafted under an older
+                   # spec, and kept only so `revise` can still re-lint them
+                   "Why it matters", "What it changes", "What came back"]
 
   slide.title:
     words: [10, 20]
@@ -51,7 +74,7 @@ fields:
     rule: "A full sentence that could stand alone as a mini-headline."
 
   slide.body:
-    words: [55, 90]
+    words: [30, 40]
     paragraphs: [2, 2]
     rule: "Two paragraphs separated by a blank line. First paragraph sets the
            scene, second delivers the turn. Short sentences. No jargon that
@@ -80,7 +103,7 @@ fields:
     chars_max: 96
 
   caption:
-    words: [70, 140]
+    words: [12, 28]
     rule: "Opens with a line that repeats the hook in different words. Ends
            with the study link and a question that is answerable in four words."
 
@@ -95,7 +118,47 @@ voice:
   emoji: false
   second_person_ok: true
   contractions: true
-  sentence_length_target: 14        # average words per sentence
+  sentence_length_target: 12        # average words per sentence
+
+  # HOW HARD THE COPY IS TO READ, as a school year.
+  #
+  # "Write simply" has been in the drafting prompt since the beginning and the
+  # account's published copy still reads at roughly a SECOND-YEAR UNIVERSITY
+  # level, with one word in twelve running to four or more syllables. Asking
+  # did not work, so style.py measures it and feeds the offending words back
+  # into the rewrite loop.
+  #
+  # Flesch-Kincaid GRADE LEVEL, not reading ease, because the target is a
+  # person rather than a number: 12 is a high-school senior. Reading ease was
+  # the same measurement upside down and nobody can say what 55 means.
+  #
+  # A page can fail this two ways and the fixes differ, so both are measured:
+  # long SENTENCES (grade level) and long WORDS (the percentage).
+  reading_grade_max: 12
+  long_word_max_pct: 7
+
+  # Swaps to reach for first. Not a banned list - sometimes the technical word
+  # IS the point of the post - but these are the ones that cost the most ease
+  # for the least meaning in this account's own published copy.
+  plain_swaps:
+    administered: "given"
+    approximately: "about"
+    associated with: "linked to"
+    demonstrated: "showed"
+    elevated: "higher"
+    facilitate: "help"
+    implemented: "put in place"
+    indicates: "suggests"
+    individuals: "people"
+    initiated: "started"
+    methodology: "method"
+    participants: "the people in the study"
+    prior to: "before"
+    subsequently: "then"
+    sufficient: "enough"
+    supplementation: "taking it as a supplement"
+    therapeutic: "treatment"
+    transcriptional: "gene-switching"
 
 # ---------------------------------------------------------------------------
 # POST FORMATS
@@ -111,50 +174,64 @@ voice:
 # enum for that draft, so the model physically cannot emit labels from a
 # different format and quietly drift back to the default one.
 #
+# THE ORDER WITHIN `eyebrows` IS LOAD-BEARING and is the same for all four:
+#
+#   eyebrows[0]  slide 2 - THE FINDING. What the study measured, with numbers.
+#   eyebrows[1]  slide 3 - THE IMPLICATION, explained. Carries `basis`.
+#   eyebrows[2:] slides 4+ - the rest: setup, method, mechanism.
+#
+# The cover sits above all of them and carries the implication in one line, so
+# the post opens on the stake, proves it, then explains it. draft.py reads
+# these by index to build the prompt; reordering this list reorders the post.
+#
 # Adding a format: add the eyebrows to fields."slide.eyebrow".fixed_values as
 # well. render.py lowercases the eyebrow into a PNG filename, so keep them
-# ASCII, no punctuation, no slashes.
+# ASCII, no punctuation, no slashes. Keep the four labels distinguishable from
+# each other - two near-identical ones ("What it changes" next to "What
+# changes") read as a rendering bug.
 # ---------------------------------------------------------------------------
 formats:
 
   - name: explainer
-    eyebrows: ["Why this matters", "The setup", "What they found", "The mechanism"]
+    eyebrows: ["What they found", "Why this matters", "The setup", "The mechanism"]
     shape: >-
-      Open on why the question matters and the tension the study resolves,
-      then deliver the result.
+      Deliver the result plainly, explain why it matters to someone outside
+      the field, then give the tension the study was resolving.
     cta_shape: >-
       Name the single thing a reader now knows that they did not know before
       opening the post.
 
   - name: reversal
-    eyebrows: ["Why you should care", "The assumption", "What the data says",
+    eyebrows: ["What the data says", "Why you should care", "The assumption",
                "Why the difference"]
     shape: >-
-      Open on what a reasonable person would assume is true here - stated
-      plainly and without strawmanning it - then show what was actually
-      measured. The gap between the two IS the post. Do not manufacture a
-      reversal: if the study confirms the obvious, say so and make the
-      interesting part how precisely it was pinned down.
+      Give what was actually measured, then why that lands for the reader,
+      then what a reasonable person would have assumed instead - stated
+      plainly and without strawmanning it. The gap between the assumption and
+      the data IS the post. Do not manufacture a reversal: if the study
+      confirms the obvious, say so and make the interesting part how precisely
+      it was pinned down.
     cta_shape: >-
       Address the reader who held the assumption, without mocking them.
 
   - name: procedural
-    eyebrows: ["What it could mean", "What they did", "What came back", "How it works"]
+    # "Results", not "What came back". Plain words beat clever ones on a label
+    # a reader sees for half a second.
+    eyebrows: ["Results", "What it could mean", "What they did", "How it works"]
     shape: >-
-      Open on the concrete thing the researchers physically did - who, how
-      many, for how long, in what - before any interpretation. Method first,
-      motivation second. This is the format that earns trust, so keep the
-      numbers close to the verbs.
+      Give the result, then what it could mean, then the concrete thing the
+      researchers physically did - who, how many, for how long, in what. This
+      is the format that earns trust, so keep the numbers close to the verbs.
     cta_shape: >-
       Point at the part of the method a sceptic would want to check.
 
   - name: stakes
-    eyebrows: ["What it changes", "The result", "What changes", "How it works"]
+    eyebrows: ["The result", "What it means for you", "What changes", "How it works"]
     shape: >-
-      Open on the concrete consequence for one identifiable person, then the
-      finding, then how much it actually moves. Be honest about the size of
-      the effect; a small effect stated exactly is more interesting than a
-      large one implied.
+      Give the finding and how much it actually moves, then the concrete
+      consequence for one identifiable person. Be honest about the size of the
+      effect; a small effect stated exactly is more interesting than a large
+      one implied.
     cta_shape: >-
       Name who specifically should see this and why it is relevant to them.
 

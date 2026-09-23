@@ -534,3 +534,62 @@ def test_the_workflow_understands_force_revise():
     assert "force revise" in wf
     assert "forcerevise" in wf
     assert "--force" in wf
+
+
+def test_the_revise_step_declares_everything_settings_needs():
+    """Regression, twice over.
+
+    config.settings() is all-or-nothing: it hard-requires the four Meta
+    fields to construct at all. The revise step reaches it through
+    draft._client() (the model call) and review.rerender() (the theme), and
+    neither touches the Graph API - so the step died with "Missing required
+    setting: META_APP_ID" while doing work that needs no credential.
+
+    This runs review.py's revise entry point with ONLY the environment that
+    workflow step actually declares, and asserts it gets far enough to
+    complain about the POST, not about configuration. Reading the YAML for
+    the key names would pass if settings() later grew a fifth requirement.
+    """
+    import subprocess
+    import yaml as _yaml
+
+    wf = _yaml.safe_load(
+        (ROOT / ".github" / "workflows" / "publish-on-approve.yml").read_text())
+    steps = wf["jobs"]["gate"]["steps"]
+    step = next(s for s in steps if s.get("id") == "revise")
+
+    # Whatever the step declares, with placeholder values - the point is the
+    # SET OF KEYS, not their contents.
+    env = {"PATH": os.environ["PATH"], "HOME": os.environ.get("HOME", "/tmp")}
+    for k in (step.get("env") or {}):
+        env[k] = "placeholder"
+
+    # Build a Settings object with exactly that environment. Invoking
+    # `review.py revise <id>` instead would prove nothing: a missing post id
+    # exits before settings() is ever reached, so the test passed with the
+    # variable removed. This asks the question the runner actually asked.
+    r = subprocess.run(
+        [sys.executable, "-c",
+         "import sys; sys.path.insert(0, 'src');"
+         "from config import settings; settings();"
+         "import draft, review; draft.settings(); print('built')"],
+        capture_output=True, text=True, env=env, cwd=ROOT)
+    combined = r.stdout + r.stderr
+    assert "Missing required setting" not in combined, combined[-500:]
+    assert r.returncode == 0, combined[-500:]
+
+
+def test_no_workflow_step_hands_real_publishing_secrets_to_a_render_step():
+    """The fix for the above must not be 'give it the real credentials'.
+
+    A step that generates copy and redraws PNGs cannot publish and should not
+    be able to. ci.yml sets the same precedent with its four placeholders.
+    """
+    import yaml as _yaml
+    wf = _yaml.safe_load(
+        (ROOT / ".github" / "workflows" / "publish-on-approve.yml").read_text())
+    step = next(s for s in wf["jobs"]["gate"]["steps"] if s.get("id") == "revise")
+    for key, val in (step.get("env") or {}).items():
+        if key.startswith(("META_", "IG_")):
+            assert "secrets." not in str(val), \
+                f"{key} is wired to a real secret in a step that never publishes"

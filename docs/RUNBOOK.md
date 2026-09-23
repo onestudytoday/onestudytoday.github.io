@@ -240,6 +240,45 @@ publishes as a carousel and says so in the log. It never blocks publishing.
 
 ---
 
+### 1.9 Reddit traction sourcing  **YOU — optional, 5 minutes, worth it**
+
+The pipeline looks at what a general audience is already reading, as well as
+searching the literature by topic (see 1.6). Hacker News, ScienceDaily and
+EurekAlert work with no setup. **Reddit does not, and it is the best signal of
+the four** — r/science upvotes are "would a non-scientist care about this?"
+answered by a few million non-scientists.
+
+Unauthenticated reddit returns `403 Blocked` to datacenter IPs, and a GitHub
+Actions runner is one. That is a policy on the address, so no retry fixes it.
+The supported path is OAuth, and it takes about five minutes:
+
+1. Go to **https://www.reddit.com/prefs/apps** (log in first).
+2. Scroll down, click **"are you a developer? create an app..."**.
+3. Fill in:
+   - **name**: `onestudytoday`
+   - **type**: choose **script** (the radio button — this matters)
+   - **redirect uri**: `http://localhost:8080` (unused, but required)
+4. Click **create app**.
+5. You now have two values:
+   - the **client ID** — the short string directly under the app name, just
+     below "personal use script"
+   - the **secret** — the longer string labelled `secret`
+6. Add both to GitHub: **Settings → Secrets and variables → Actions → New
+   repository secret**
+   - `REDDIT_CLIENT_ID`
+   - `REDDIT_CLIENT_SECRET`
+
+That is all. Adding the secrets is what turns it on — nothing else to change.
+The next draft will start seeing reddit hits, and the review card's "why this
+study" row will say `reddit:science` when one came from there.
+
+**What it reads:** public post listings only — title, link, score, comment
+count. Application-only OAuth is not tied to any reddit account, so there is
+no user whose data could be read even in principle. It never reads comments.
+
+**If you skip it:** everything still works. Reddit is silently omitted and the
+other traction sources carry on.
+
 ### 1.8 Crossposting to Bluesky and Threads  **YOU — Bluesky is worth 5 minutes**
 
 When a study publishes to Instagram, the finding and its DOI are also posted to
@@ -338,6 +377,22 @@ mobile app.
 Read the slides against the paper — the link is at the top. You are checking
 one thing: **does the copy say anything the paper does not?**
 
+#### What the checks will and will not tell you
+
+The fact-checker sees the copy with the paper's own identifiers removed — the
+DOI, the journal name, the publication date. It used to see them and report
+them: "this specific DOI appears to be invented... the year 2026 is in the
+future, which is suspicious". Sixteen of the forty blockers sitting on the
+queue were that one false alarm, and every one of them made `approve` refuse.
+
+Those facts are still checked, just in code, which can compare them to the
+catalogue record instead of guessing. A wrong journal on the cover is still a
+blocker.
+
+So a blocker on a post now means something. If you find yourself reaching for
+`force approve` on every draft, that is a bug worth reporting rather than a
+habit worth keeping.
+
 ### 3.3 Publish
 
 Comment `approve` on the issue.
@@ -359,6 +414,89 @@ Other comments it understands:
 - `kill` — reject it, and never source that study again
 - `force approve` — publish despite a flagged blocker. Only use this when you
   have read the paper yourself and think the checker is wrong.
+- `revise: <what you want changed>` — rewrite the copy and re-render. The
+  rewrite faces every check the first draft did and is refused if it fails
+  one, so asking for "punchier" can never quietly strip a caveat.
+- `revert` — undo the last revision, blockers and all.
+- `exclude clipping` — drop the clipping slide from this post.
+  `include clipping` puts it back. Neither touches the approval.
+- `reimage` — pick a different cover photograph. `reimage: petri dish`
+  searches for that instead of the automatic term. Each call skips every
+  image already tried on this post, so asking twice really does give you a
+  third one.
+
+  **`revise:` cannot change the picture.** It rewrites the words and never
+  touches the cover image, which is why asking it to "change the background"
+  appeared to succeed and changed nothing. It now refuses and points here.
+
+### What the cover photograph is a picture of
+
+The search term is **one concrete noun from the cover headline**: "Citrate-based
+hydrogels are being engineered as..." searches `hydrogel`. Adjectives and
+compound modifiers are skipped, because no image library files anything under
+"citrate-based".
+
+Two things are refused outright: files whose own title is in a non-Latin
+script (a post once shipped with a diagram captioned in Armenian across the
+whole cover), and, where there is a choice, labelled diagrams in favour of
+photographs — a headline sits over this picture and a diagram's labels fight
+it.
+
+### 3.2a Editing the words yourself
+
+Every drafted post also gets a plain Markdown file beside it,
+`data/queue/<post-id>.md`, carrying the cover, every slide, the caveats, the
+CTA and the caption hook. Open it in GitHub's web editor on your phone, fix
+the sentence, commit. A workflow reads it back into the post, re-renders the
+slides and updates the issue. No model call and no interpretation: what you
+type is what gets rendered.
+
+Your edits are still checked afterwards. Deleting a forced caveat leaves the
+post BLOCKED with that reason on the card rather than quietly publishing.
+
+That file is also where you set `**Exclude:** yes` under `## Clipping` if you
+do not want the clipping slide. The quoted headline and the outlet are NOT
+editable there - attributing an edited sentence to a named masthead would be
+a fabricated quote.
+
+### 3.2b What the post looks like
+
+The running order is deliberately not the obvious one:
+
+| page | what is on it |
+|---|---|
+| 1 cover | **the implication** — why a stranger should care, in one line |
+| 2 | the finding itself, with the real numbers |
+| 3 | the implication again, explained properly |
+| 4 | *optional* — a screenshot of a published article making the same argument |
+| 5-6 | the setup, the method, or the mechanism |
+| 7 | the caveats. Always present. |
+| 8 | send + link to the paper |
+
+Page 3 carries a `basis` of `stated` or `inferred`. `stated` means the paper
+itself says it. `inferred` means it is **our** extrapolation — and then both
+that slide and the cover must be conditional, and the fine-print slide gains
+a line saying so:
+
+> Claims are our interpretation of this study, read it for yourself at the
+> DOI provided.
+
+That line is added by the **renderer**, not written into the copy, so no
+edit — yours, a `revise:` rewrite, or the model's — can lose it. A post that
+marks an extrapolation as the paper's claim, or states an inferred one as
+fact, is blocked.
+
+The clipping slide is a real **screenshot** of the article's own headline,
+taken off the outlet's page by a headless browser, with the web address in
+small type underneath. Nothing on that page is re-typeset in our fonts,
+because a headline in our typeface reads as us saying it. No screenshot means
+no clipping page — paywalls and consent walls both end that way, and that is
+fine.
+
+Your one job on that page is to **open the address and check the article
+really does say what the slide implies it says.** The address is on the review
+card and in the editable document. Nothing about it is editable: `exclude
+clipping` is the lever.
 
 ### 3.4 Set your bio link
 

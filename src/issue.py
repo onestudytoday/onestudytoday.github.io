@@ -68,6 +68,28 @@ def _reel_line(post: Dict[str, Any]) -> str:
     return f"no - {_defang(st.get('reason', 'unknown'))}"
 
 
+def _clipping_line(post: Dict[str, Any]) -> str:
+    """The clipping, with a link you can actually open.
+
+    The SLIDE deliberately shows only the outlet and the date - a URL is
+    unreadable at that size and is chosen by whoever wrote the article rather
+    than by us. So the link belongs here, on the card, in front of the one
+    person whose job is to check that the article really does say what the
+    slide implies it says.
+
+    The headline is third-party prose and is defanged like everything else
+    that reaches this card; the URL is printed as CODE rather than as a
+    markdown link, so a crafted URL cannot render as arbitrary link text.
+    """
+    c = post.get("clipping")
+    if not isinstance(c, dict) or not c.get("headline"):
+        return "none found"
+    state = "**EXCLUDED** - not rendered" if c.get("excluded") else "shown"
+    return (f"{state} · _{_defang(c.get('outlet', '?'))}_, "
+            f"{_defang(c.get('date', '?'))} — \"{_defang(c.get('headline'))}\" "
+            f"`{_defang(c.get('url', ''))}`")
+
+
 def _traction_line(post: Dict[str, Any]) -> str:
     """Whether a general audience had already picked this paper out.
 
@@ -181,6 +203,7 @@ design: `{vet.get('design')}` · subjects: `{vet.get('subjects')}` · n: `{vet.g
 | reel | {_reel_line(post)} |
 | revisions | {_revision_line(post)} |
 | why this study | {_traction_line(post)} |
+| clipping | {_clipping_line(post)} |
 
 <details><summary>Full caption</summary>
 
@@ -204,6 +227,9 @@ Comment **`kill`** to reject it and add the study to the do-not-use ledger.
 
 Comment **`force approve`** only if you have read the paper yourself and
 disagree with a blocker above.
+
+Comment **`exclude clipping`** to drop the "not just us" slide, or
+**`include clipping`** to put it back. Neither changes the approval.
 
 <!-- onestudytoday-post-id: {post['id']} -->
 """

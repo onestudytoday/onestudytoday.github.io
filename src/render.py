@@ -17,6 +17,7 @@ from __future__ import annotations
 import os
 import re
 import textwrap
+from urllib.parse import urlsplit
 from typing import Dict, List, Optional, Tuple
 
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
@@ -119,22 +120,79 @@ def _wrap_para(
     max_w: float,
     tracking: float,
 ) -> List[List[Tuple[str, bool]]]:
-    words: List[Tuple[str, bool]] = []
+    # Each word carries a third flag: "join me to the word before, with no
+    # space".
+    #
+    # THE BUG THIS FIXES. An accent run that ends mid-phrase is followed by
+    # punctuation outside the asterisks - "**switches on**, not just firing
+    # it." _split_runs returns ("...switches on", accent) and (", not just...",
+    # plain); this function then split each run on spaces independently, so the
+    # comma became a WORD of its own and the drawer put a space in front of it:
+    #
+    #     genes a cell switches on , not just firing it.
+    #
+    # Live on the cover of any post whose highlighted phrase did not happen to
+    # end a sentence. The implication-first cover makes that the common case,
+    # because the accent now lands on the stake in the middle of the line
+    # rather than on the finding at the end of it.
+    words: List[Tuple[str, bool, bool]] = []
+    open_word = False          # the previous run ended without whitespace
     for txt, acc in _split_runs(s):
-        for p in txt.split(" "):
-            if p:
-                words.append((p, acc))
-    lines: List[List[Tuple[str, bool]]] = []
-    cur: List[Tuple[str, bool]] = []
+        pieces = txt.split(" ")
+        for i, p in enumerate(pieces):
+            if not p:
+                # An empty piece means there was real whitespace here.
+                open_word = False
+                continue
+            words.append((p, acc, open_word and i == 0))
+            open_word = False
+        open_word = bool(txt) and not txt.endswith(" ")
+
+    def _join(ws: List[Tuple[str, bool, bool]]) -> str:
+        s_ = ""
+        for i_, (t_, _a, g_) in enumerate(ws):
+            s_ += t_ if (g_ and i_) else ((" " if i_ else "") + t_)
+        return s_
+
+    lines: List[List[Tuple[str, bool, bool]]] = []
+    cur: List[Tuple[str, bool, bool]] = []
     cur_txt = ""
-    for w_, acc in words:
+    for w_, acc, glue in words:
+        if glue and cur:
+            # A glued piece is never put on a line of its own - a line that
+            # starts with a comma is the same defect wearing a hat - but it is
+            # still MEASURED.
+            #
+            # The first version of this just appended and skipped the width
+            # test, on the assumption that a glued piece is a stray comma. It
+            # is not always: `**the drug works**—unimaginably` glues a whole
+            # word, and that headline ran 490px past the right edge of a
+            # 1080px canvas and was drawn off the image. fit_runs only
+            # binary-searches on HEIGHT, so nothing downstream catches an
+            # overlong line.
+            #
+            # So when it does not fit, the previous word and everything glued
+            # to it move down to the next line together, as the one unit they
+            # render as.
+            trial = cur_txt + w_
+            if text_w(d, trial, f, tracking) <= max_w or len(cur) == 1:
+                cur.append((w_, acc, True))
+                cur_txt = trial
+                continue
+            atom: List[Tuple[str, bool, bool]] = [cur.pop()]
+            while cur and atom[0][2]:
+                atom.insert(0, cur.pop())
+            lines.append(cur)
+            cur = atom + [(w_, acc, True)]
+            cur_txt = _join(cur)
+            continue
         trial = (cur_txt + " " + w_).strip()
         if text_w(d, trial, f, tracking) <= max_w or not cur:
-            cur.append((w_, acc))
+            cur.append((w_, acc, False))
             cur_txt = trial
         else:
             lines.append(cur)
-            cur = [(w_, acc)]
+            cur = [(w_, acc, False)]
             cur_txt = w_
     if cur:
         lines.append(cur)
@@ -218,12 +276,16 @@ def draw_runs(
     space = d.textlength(" ", font=f)
     for line in lines:
         cx = x
-        for i, (word, acc) in enumerate(line):
+        for i, item in enumerate(line):
+            # Tolerant of the old 2-tuple shape, so a caller that builds lines
+            # by hand does not start drawing punctuation against the margin.
+            word, acc, *rest = item
+            glue = bool(rest and rest[0])
+            if i and not glue:
+                cx += space + tracking
             col = accent_fill if acc else fill
             cx = draw_tracked(d, (cx, y), word, f, col, tracking,
                               stroke=stroke, stroke_fill=stroke_fill)
-            if i != len(line) - 1:
-                cx += space + tracking
         y += lh
     return y
 
@@ -265,6 +327,55 @@ def draw_preprint_badge(d, th: Theme, x: int, y: int) -> int:
     return box[3] - y
 
 
+# The disclosure, when a post's implication is ours rather than the paper's.
+#
+# It used to be a three-word stamp - "Our read, not the paper's claim" - on the
+# cover and on the implications slide. It now says what it means, once, as a
+# forced bullet on the fine-print slide. Three reasons that is better:
+#
+#   * it tells the reader what to DO about it (go and read the paper), which a
+#     stamp cannot
+#   * the fine-print slide is where this account already puts everything it is
+#     honest about, so a reader looking for the catch finds it in one place
+#   * the cover is a photograph with one sentence over it, and every extra
+#     line competes with the only thing a scroller actually reads
+#
+# Defined HERE, beside the code that draws it, and re-exported by draft.py -
+# because build_prompt() and audit() both TELL a model this disclosure is
+# printed, and the auditor stands down on the implication BECAUSE it exists.
+# A promise and its implementation that live in different files drift; this
+# one already did once, and was never drawn at all.
+DISCLOSURE_CAVEAT = ("Claims are our interpretation of this study, read it "
+                     "for yourself at the DOI provided.")
+
+# The old stamp. Kept importable because posts drafted before this change have
+# no record of which disclosure they carried, and a future reader of the git
+# history should be able to find the string that used to be on those images.
+INFERRED_MARK = "Our read, not the paper's claim"
+
+
+def _inferred(post: Dict) -> bool:
+    """Is this post's implication our own extrapolation, not the paper's claim?
+
+    Read straight off the slides rather than through draft.is_inferred().
+
+    The first version imported draft lazily inside a try/except that returned
+    False on any failure. That fails OPEN on the one thing this function
+    decides: whether the cover prints "OUR READ, NOT THE PAPER'S CLAIM". An
+    import error - draft.py reaches config and the Meta credentials - would
+    have dropped the marker from the slide that travels, silently, while the
+    audit had already stood down precisely because that marker exists. The
+    disclosure has to be the thing that is hardest to lose, not the easiest.
+
+    The rule itself is two lines and needs no import, so there is nothing left
+    to fail.
+    """
+    for sl in post.get("slides") or []:
+        if isinstance(sl, dict) and str(sl.get("basis") or "") == "inferred":
+            return True
+    return False
+
+
 def draw_footer(d, th: Theme, post: Dict, idx: int, total: int, accent: str,
                 on_color: bool, stroke: int = 0, stroke_fill=None):
     kw = {"stroke_width": stroke, "stroke_fill": stroke_fill} if stroke else {}
@@ -294,13 +405,34 @@ def draw_footer(d, th: Theme, post: Dict, idx: int, total: int, accent: str,
 
 
 def _handle() -> str:
-    """Read the handle lazily so tests and samples do not need a full env."""
+    """Read the handle lazily so tests and samples do not need a full env.
+
+    THE EXCEPT CLAUSE WAS NOT CATCHING ANYTHING.
+    ===========================================
+    config._req() signals a missing setting with `raise SystemExit(...)`, and
+    SystemExit derives from BaseException, NOT from Exception. So this
+    function - whose entire docstring is "tests and samples do not need a full
+    env" - let the four Meta credentials propagate anyway, and rendering a
+    slide demanded the ability to publish.
+
+    That is the same all-or-nothing settings() edge that has broken a
+    non-publishing workflow step three separate times (see the placeholder
+    comments in ci.yml, apply-edits.yml and publish-on-approve.yml). Here it
+    had been "fixed" in a way that read correctly and did nothing: `pytest
+    tests/ -q` on a clean checkout failed twenty-one rendering tests on a
+    missing META_APP_ID, for a handle with a default.
+
+    Drawing an account handle needs a string. It does not need a credential.
+    """
+    import os
+    env = os.environ.get("HANDLE", "").strip()
+    if env:
+        return env
     try:
         from config import settings
         return settings().handle
-    except Exception:
-        import os
-        return os.environ.get("HANDLE", "@onestudytoday")
+    except (Exception, SystemExit):
+        return "@onestudytoday"
 
 
 def draw_handle(d, th: Theme, accent: str, on_color: bool,
@@ -463,6 +595,18 @@ def render_cover(post: Dict, th: Theme, niche: Dict, idx: int, total: int) -> Im
     if post["study"].get("is_preprint"):
         y += draw_preprint_badge(d, th, SAFE, y) + 26
 
+    # No "our read" marker here, and no kicker.
+    #
+    # Both used to sit on this slide and both were taken off deliberately. The
+    # cover is a photograph with one sentence over it; every line added to it
+    # is a line competing with the only thing a scroller will actually read.
+    # The kicker ("Nature - 12 human brains") also repeated the footer rail,
+    # which already carries the journal and the date on every single page.
+    #
+    # The disclosure did NOT disappear - it moved to the fine-print slide as a
+    # full sentence, which says more than a three-word stamp did. See
+    # DISCLOSURE_CAVEAT below and the paragraph draft.audit() sends the
+    # fact-checker, which has to keep describing where it actually is.
     box_w = W - SAFE * 2
     box_h = H - y - 300
     head = post["cover"]["headline"]
@@ -482,12 +626,10 @@ def render_cover(post: Dict, th: Theme, niche: Dict, idx: int, total: int) -> Im
               accent if not on_color else "#FFFFFF", tr,
               stroke=hs, stroke_fill=stroke_col)
 
-    # kicker above headline
-    if post["cover"].get("kicker"):
-        kf = font("sans_med", 30)
-        d.text((SAFE, y_head - 56), post["cover"]["kicker"], font=kf,
-               fill=hex_rgba(th.muted, 0.9) if not on_photo else "#FFFFFF",
-               **({"stroke_width": cs, "stroke_fill": stroke_col} if cs else {}))
+    # The kicker is no longer drawn - see the note further up. The FIELD is
+    # kept on the post: the drafting model still writes it, style.py reads it
+    # when it checks whether the copy names the study's subject, and the
+    # review card shows it. It just is not on the picture any more.
 
     if on_photo:
         # A credit that cannot be drawn must not be shrugged off.
@@ -525,6 +667,9 @@ def render_body(post: Dict, slide: Dict, th: Theme, niche: Dict, idx: int, total
     draw_tracked(d, (SAFE, y), slide["eyebrow"].upper(), ef,
                  accent if not on_color else "#FFFFFF", tr)
     y += 62
+
+    # No marker here either - the disclosure is one sentence on the fine-print
+    # slide now. See DISCLOSURE_CAVEAT.
 
     box_w = W - SAFE * 2
     # slide title
@@ -584,7 +729,22 @@ def render_caveat(post: Dict, th: Theme, niche: Dict, idx: int, total: int) -> I
     y += 76
 
     box_w = W - SAFE * 2
-    items: List[str] = post["caveats"]
+
+    # The disclosure is APPENDED HERE, not read out of post["caveats"].
+    #
+    # That is the whole point of it being in the renderer. post["caveats"] is
+    # model-written, hand-editable in the queue document, and rewritable by a
+    # `revise:` comment - three ways for the one sentence that says "this
+    # conclusion is ours" to go missing from an image. Building it in at draw
+    # time means the only way to publish an inferred implication without the
+    # disclosure is to stop marking it inferred, and lint() already treats
+    # that as a guardrail breach.
+    #
+    # It is also not counted against the 2-4 caveat budget in copy_spec.yaml,
+    # because it is not one of the paper's limitations - it is ours.
+    items: List[str] = list(post["caveats"])
+    if _inferred(post):
+        items.append(DISCLOSURE_CAVEAT)
     bullet_font = font(th.body_font, th.body_size - 2)
     for it in items:
         # marker
@@ -598,6 +758,98 @@ def render_caveat(post: Dict, th: Theme, niche: Dict, idx: int, total: int) -> I
                       th.fg if not on_color else "#FFFFFF",
                       accent if not on_color else "#FFFFFF", 0)
         y += 30
+
+    draw_footer(d, th, post, idx, total, accent, on_color)
+    return img
+
+
+def _display_url(raw: str, limit: int = 62) -> str:
+    """The web address as a person would read it out.
+
+    Scheme and `www.` dropped, query string and fragment dropped, and the
+    middle elided if it is long - a tracking-laden URL set in small type is
+    noise, and the point of printing it is that somebody can find the article.
+
+    PARSED, not stripped with a regex. `https://www.reuters.com@evil.example/a`
+    has a hostname of evil.example, but chopping the scheme off the front with
+    a substitution prints "www.reuters.com@evil.example/a" - and a reader
+    glancing at small grey type under a screenshot reads the first thing that
+    looks like a domain. clipping.outlet_for() parses properly and would
+    already have refused that URL, so this is the second lock on the same
+    door; it is here because this function is what a reader actually sees.
+    """
+    parts = urlsplit(str(raw or "").strip())
+    if parts.hostname:
+        host = parts.hostname[4:] if parts.hostname.startswith("www.") else parts.hostname
+        s = host + (parts.path or "")
+    else:
+        # No scheme, so nothing to parse - fall back to the raw text rather
+        # than printing nothing.
+        s = str(raw or "").strip().split("?")[0].split("#")[0]
+    s = s.rstrip("/")
+    if len(s) <= limit:
+        return s
+    head, tail = s[: limit - 18], s[-14:]
+    return f"{head}.../{tail.lstrip('/')}"
+
+
+def render_clipping(post: Dict, th: Theme, niche: Dict, idx: int, total: int) -> Image.Image:
+    """The article's own headline, photographed, with its address underneath.
+
+    Nothing on this page is set in our typeface except the address. The
+    screenshot is the outlet's own page - their masthead type, their column
+    width, their byline - because a headline re-typeset in our fonts reads as
+    US saying it, which is the exact impression this page exists to avoid.
+
+    So: no eyebrow label, no line of our own commentary, no quotation card. A
+    picture of somebody else's page, and a web address so a reader can go and
+    check it. If the screenshot is missing this function is never called -
+    clipping.get() treats a record without one as no clipping at all.
+    """
+    img = make_canvas(th, niche, "body")
+    d = ImageDraw.Draw(img)
+    accent = niche["accent"]
+    on_color = th.use_niche_bg
+    clip = post.get("clipping") or {}
+
+    box_w = W - SAFE * 2
+    url_font = font("sans_med", 25)
+    url_text = _display_url(clip.get("url"))
+    url_h = 40
+
+    # The shot gets the whole page minus the footer rail and the address line.
+    avail_h = H - SAFE * 2 - url_h - 26 - 90
+    shot = None
+    try:
+        shot = Image.open(str(clip.get("shot"))).convert("RGB")
+    except Exception:
+        shot = None
+    if shot is None:
+        # Should be unreachable - render_post only calls this when a shot
+        # exists - so say so loudly rather than publishing an empty page.
+        raise FileNotFoundError(
+            f"clipping screenshot missing for {post.get('id')}: "
+            f"{clip.get('shot')!r}")
+
+    scale = min(box_w / shot.width, avail_h / shot.height)
+    if scale < 1:
+        shot = shot.resize((max(1, int(shot.width * scale)),
+                            max(1, int(shot.height * scale))),
+                           Image.LANCZOS)
+
+    x = SAFE + (box_w - shot.width) // 2
+    y = SAFE + max(0, (avail_h - shot.height) // 2)
+
+    # A hairline around the shot, so a white article page does not bleed into
+    # a light theme's background and stop reading as a separate object.
+    d.rectangle((x - 2, y - 2, x + shot.width + 1, y + shot.height + 1),
+                fill=None, outline=hex_rgba(th.muted, 0.45), width=2)
+    img.paste(shot, (x, y))
+
+    if url_text:
+        draw_tracked(d, (x, y + shot.height + 22), url_text, url_font,
+                     hex_rgba(th.muted if not on_color else "#FFFFFF", 0.95),
+                     0.8)
 
     draw_footer(d, th, post, idx, total, accent, on_color)
     return img
@@ -671,13 +923,51 @@ def render_cta(post: Dict, th: Theme, niche: Dict, idx: int, total: int) -> Imag
 # ---------------------------------------------------------------------------
 # Orchestration
 # ---------------------------------------------------------------------------
+def _slug(text: str) -> str:
+    """An eyebrow, as a safe filename component.
+
+    The eyebrow used to go straight into the path as
+    `.lower().replace(" ", "_")`, which is fine for the labels the spec allows
+    and not fine for the ones that can actually arrive. postdoc.apply_markdown
+    takes the eyebrow verbatim from a Markdown HEADING, so a reviewer renaming
+    `## Slide 1 - What they found` to `... - What they found / measured` put a
+    slash in a path and render_post died with FileNotFoundError - after the
+    edited copy had already been written to the queue. lint() rejects an
+    eyebrow outside the spec, but it rejects it as a blocker on a post that
+    has to render first to be looked at.
+    """
+    s = re.sub(r"[^a-z0-9]+", "_", str(text or "").lower()).strip("_")
+    return s[:48] or "slide"
+
+
 def render_post(post: Dict, theme_key: str, outdir: str, prefix: str = "") -> List[str]:
     th = THEMES[theme_key]
     niche = NICHES[post["niche"]]
     os.makedirs(outdir, exist_ok=True)
 
     slides = post["slides"]
-    total = 1 + len(slides) + (1 if post.get("caveats") else 0) + 1
+
+    # The clipping page, when there is one the reviewer has not excluded. It
+    # goes straight after the implications slide: it is corroboration for that
+    # claim, and corroboration that arrives three slides later is just trivia.
+    #
+    # Imported lazily and guarded, so a post rendered in a workflow where
+    # clipping.py is unavailable - or one drafted before clippings existed -
+    # renders exactly as it did before.
+    clip_after = -1
+    try:
+        from clipping import is_shown
+        if is_shown(post):
+            from draft import IMPLICATIONS_INDEX, implications_slide
+            sl = implications_slide(post)
+            at = next((n for n, s in enumerate(slides) if s is sl), None)
+            clip_after = IMPLICATIONS_INDEX if at is None else at
+    except Exception:
+        clip_after = -1
+    has_clip = 0 <= clip_after < len(slides)
+
+    total = (1 + len(slides) + (1 if has_clip else 0)
+             + (1 if post.get("caveats") else 0) + 1)
 
     paths: List[str] = []
     i = 1
@@ -686,12 +976,18 @@ def render_post(post: Dict, theme_key: str, outdir: str, prefix: str = "") -> Li
     img.save(p, "PNG", optimize=True)
     paths.append(p)
 
-    for s in slides:
+    for n, s in enumerate(slides):
         i += 1
         img = render_body(post, s, th, niche, i, total)
-        p = os.path.join(outdir, f"{prefix}{i:02d}_{s['eyebrow'].lower().replace(' ', '_')}.png")
+        p = os.path.join(outdir, f"{prefix}{i:02d}_{_slug(s['eyebrow'])}.png")
         img.save(p, "PNG", optimize=True)
         paths.append(p)
+        if has_clip and n == clip_after:
+            i += 1
+            img = render_clipping(post, th, niche, i, total)
+            p = os.path.join(outdir, f"{prefix}{i:02d}_clipping.png")
+            img.save(p, "PNG", optimize=True)
+            paths.append(p)
 
     if post.get("caveats"):
         i += 1

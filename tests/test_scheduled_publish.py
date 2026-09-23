@@ -209,3 +209,46 @@ def test_the_python_entry_points_take_their_window_from_the_config():
     for mod in ("draft", "vet"):
         src = inspect.getsource(__import__(mod))
         assert 'add_argument("--days", type=int, default=14)' not in src, mod
+
+
+# ---------------------------------------------------------------------------
+# "Nothing approved pending" said two completely different things
+# ---------------------------------------------------------------------------
+def _queue_post(tmp_path, monkeypatch, status, niche="nature", pid="2026-09-23-nature-aaaabbbb"):
+    import json
+    import pipeline
+    q = tmp_path / "queue"
+    q.mkdir(exist_ok=True)
+    (q / f"{pid}.json").write_text(json.dumps(
+        {"id": pid, "niche": niche, "status": status,
+         "study": {"title": "t"}, "cover": {}, "slides": [],
+         "caveats": [], "cta": {}}))
+    monkeypatch.setattr(pipeline, "QUEUE", q)
+    return pipeline
+
+
+def test_an_approved_post_waiting_for_its_slot_says_so(tmp_path, monkeypatch, capsys):
+    """"Nothing is approved" and "something is approved and its slot is two
+    hours away" are different situations. Printing the same sentence for both
+    makes an approval look lost - which is why approvals were being chased
+    with a manual publish run instead of left to the schedule."""
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+    pipeline = _queue_post(tmp_path, monkeypatch, "approved")
+    morning = datetime(2026, 9, 23, 9, 0, tzinfo=ZoneInfo("America/Chicago"))
+    assert pipeline.publish_scheduled(live=False, _now=morning) == []
+    out = capsys.readouterr().out
+    assert "1 approved" in out
+    assert "Central" in out, "it never says WHEN"
+    assert "Publish approved posts" in out, "it never says how to send it now"
+
+
+def test_nothing_approved_says_that_instead(tmp_path, monkeypatch, capsys):
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+    pipeline = _queue_post(tmp_path, monkeypatch, "needs_review")
+    evening = datetime(2026, 9, 23, 20, 0, tzinfo=ZoneInfo("America/Chicago"))
+    assert pipeline.publish_scheduled(live=False, _now=evening) == []
+    out = capsys.readouterr().out
+    assert "Nothing is approved" in out
+    assert "awaiting a decision" in out

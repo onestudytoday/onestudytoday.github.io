@@ -206,7 +206,6 @@ def publish_reel(post: Dict[str, Any], video_url: str, live: bool,
     if not video_url:
         raise PublishError("No video_url - build the Reel first (src/reel.py).")
 
-    s = settings()
     caption = build_caption(post)
 
     plan = {
@@ -221,6 +220,17 @@ def publish_reel(post: Dict[str, Any], video_url: str, live: bool,
     if not live:
         plan["mode"] = "DRY RUN - nothing was sent to Instagram"
         return plan
+
+    # settings() AFTER the dry-run return, because a dry run does not publish.
+    #
+    # It sat above, and settings() is all-or-nothing: it hard-requires the four
+    # Meta credentials to construct at all. So `--live`-less previewing a Reel -
+    # and the test whose whole point is that a dry run sends nothing - died on
+    # "Missing required setting: META_APP_ID" while doing nothing that needs a
+    # credential. Same edge as the placeholder comments in ci.yml,
+    # apply-edits.yml and publish-on-approve.yml, in the one place where it
+    # could be fixed by moving a line instead of by inventing a dummy value.
+    s = settings()
 
     # Reels are published through the same /media_publish edge as feed posts,
     # and Meta documents no exemption, so they consume the SAME 100-per-24h
@@ -358,6 +368,10 @@ def _main():
         q = QUEUE / f"{post['id']}.json"
         if q.exists():
             q.unlink()
+        # And the editable document beside it - see pipeline._drop_doc().
+        doc = QUEUE / f"{post['id']}.md"
+        if doc.exists():
+            doc.unlink()
         print(f"\nPublished. Moved to data/published/{post['id']}.json")
 
 

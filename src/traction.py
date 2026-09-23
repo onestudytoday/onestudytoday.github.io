@@ -81,24 +81,89 @@ TIMEOUT = 20
 # Sources. Each is (name, enabled-by-default) and each can fail on its own.
 # ---------------------------------------------------------------------------
 REDDIT_SUBS = ["science", "EverythingScience", "psychology", "health"]
-REDDIT_URL = "https://www.reddit.com/r/{sub}/top.json"
 
-# Reddit is OFF by default, and that is not timidity - it is what the first
-# live run showed.
+# TWO reddit endpoints, and which one is used decides whether this works.
 #
-# Unauthenticated reddit.com returns "403 Blocked" to datacenter IP ranges,
-# and a GitHub Actions runner is squarely in one. It is not rate limiting and
-# it does not clear on a retry: it is a policy on the address, so the call
-# fails every time, on every sub, on every run. The first draft after this
-# shipped printed four identical 403 lines and moved on.
+# www.reddit.com/r/<sub>/top.json needs no credentials and is what this
+# module used first. It returns "403 Blocked" to datacenter IP ranges, and a
+# GitHub Actions runner is squarely in one. That is a policy on the address,
+# not rate limiting: it fails every time, on every sub, on every run, and no
+# retry or User-Agent changes it. The first live draft printed four identical
+# 403s and moved on.
 #
-# Four lines of noise per run, for a source that structurally cannot answer,
-# trains you to skim a log that is also where genuine source failures appear.
-# So it is disabled unless OSD_REDDIT=1, and the code is kept because the
-# signal is the best one available if the account ever gets reddit OAuth
-# credentials (a free app registration) or runs the draft somewhere with a
-# residential address.
-USE_REDDIT_BY_DEFAULT = os.environ.get("OSD_REDDIT", "").strip() in ("1", "true", "yes")
+# oauth.reddit.com is the supported path and answers normally from a
+# datacenter, given a token. The token comes from a free "script" app
+# registered at reddit.com/prefs/apps - see docs/RUNBOOK.md. No reddit
+# account content is read: application-only OAuth (client_credentials) grants
+# exactly the public-listing access this needs and nothing tied to a user.
+REDDIT_PUBLIC_URL = "https://www.reddit.com/r/{sub}/top.json"
+REDDIT_OAUTH_URL = "https://oauth.reddit.com/r/{sub}/top"
+REDDIT_TOKEN_URL = "https://www.reddit.com/api/v1/access_token"
+
+REDDIT_CLIENT_ID = os.environ.get("REDDIT_CLIENT_ID", "").strip()
+REDDIT_CLIENT_SECRET = os.environ.get("REDDIT_CLIENT_SECRET", "").strip()
+
+
+def reddit_configured() -> bool:
+    return bool(REDDIT_CLIENT_ID and REDDIT_CLIENT_SECRET)
+
+
+def use_reddit_by_default() -> bool:
+    """On when credentials exist; otherwise only if forced.
+
+    Deliberately NOT a module-level constant evaluated at import: the tests
+    set the environment per-case, and a constant would freeze whatever the
+    first import saw. It is also the switch that makes adding the two secrets
+    the ONLY step needed to turn reddit on - nothing else to remember.
+
+    OSD_REDDIT=1 still forces the unauthenticated path on, which is useful
+    only somewhere with a residential IP (a laptop). On a runner it will just
+    403, which is why it is not the default.
+    """
+    if reddit_configured():
+        return True
+    return os.environ.get("OSD_REDDIT", "").strip() in ("1", "true", "yes")
+
+
+# Cached across subs within one run: four listings would otherwise mean four
+# token requests, and reddit rate-limits token issuance harder than reads.
+_TOKEN: Dict[str, Any] = {"value": "", "expires": 0.0}
+
+
+def reddit_token() -> str:
+    """An application-only OAuth token, or "" if one cannot be had.
+
+    Never raises. A missing or refused token means reddit contributes nothing
+    this run, exactly as an unreachable source does - it must not be able to
+    take the weekday draft down with it.
+    """
+    if not reddit_configured():
+        return ""
+    if _TOKEN["value"] and time.time() < float(_TOKEN["expires"]) - 60:
+        return str(_TOKEN["value"])
+    try:
+        r = requests.post(
+            REDDIT_TOKEN_URL,
+            auth=(REDDIT_CLIENT_ID, REDDIT_CLIENT_SECRET),
+            data={"grant_type": "client_credentials"},
+            headers={"User-Agent": UA}, timeout=TIMEOUT)
+        r.raise_for_status()
+        payload = r.json()
+    except Exception as e:
+        # The message is deliberately shaped, not raw: a requests exception
+        # for a POST with basic auth can quote the URL, and secrets_guard
+        # cannot scrub what it never sees. Only the type and status are
+        # printed, never the body or the credentials.
+        print(f"  ! reddit token request failed ({type(e).__name__}); "
+              f"continuing without reddit this run")
+        return ""
+    token = str((payload or {}).get("access_token") or "")
+    if not token:
+        print("  ! reddit returned no access_token; continuing without reddit")
+        return ""
+    _TOKEN["value"] = token
+    _TOKEN["expires"] = time.time() + float((payload or {}).get("expires_in") or 3600)
+    return token
 
 HN_URL = "https://hn.algolia.com/api/v1/search_by_date"
 CROSSREF_EVENTS = "https://api.eventdata.crossref.org/v1/events"
@@ -175,10 +240,11 @@ def dois_in(text: str) -> List[str]:
     return out
 
 
-def _get_json(url: str, params: Optional[Dict[str, Any]] = None) -> Any:
-    r = requests.get(url, params=params or {},
-                     headers={"User-Agent": UA, "Accept": "application/json"},
-                     timeout=TIMEOUT)
+def _get_json(url: str, params: Optional[Dict[str, Any]] = None,
+              headers: Optional[Dict[str, str]] = None) -> Any:
+    h = {"User-Agent": UA, "Accept": "application/json"}
+    h.update(headers or {})
+    r = requests.get(url, params=params or {}, headers=h, timeout=TIMEOUT)
     r.raise_for_status()
     return r.json()
 
@@ -190,8 +256,10 @@ def reddit_hits(subs: Optional[Sequence[str]] = None, window: str = "week",
                 limit: int = 50) -> List[TractionHit]:
     """Top posts from the science subreddits, as traction evidence.
 
-    Reads the public .json view, which needs no key and no account. Only the
-    submission's own fields are read - never comments, never user data.
+    Uses oauth.reddit.com when REDDIT_CLIENT_ID/SECRET are set, and the
+    public .json view otherwise. Only the submission's own fields are read -
+    never comments, never user data, and application-only OAuth has no user
+    to read anything from in the first place.
 
     Most posts link to a news write-up rather than the paper, so the DOI is
     often absent; those still count as a TITLE-matched signal even when they
@@ -200,10 +268,24 @@ def reddit_hits(subs: Optional[Sequence[str]] = None, window: str = "week",
     from, because the wrong paper would be drafted with total confidence.
     """
     out: List[TractionHit] = []
+    token = reddit_token()
+    if reddit_configured() and not token:
+        # Credentials are set but unusable. Say so once rather than four
+        # times, and do not fall through to the public endpoint, which would
+        # just 403 and imply the credentials were the problem when they may
+        # not be.
+        return out
+
     for sub in (subs or REDDIT_SUBS):
         try:
-            data = _get_json(REDDIT_URL.format(sub=sub),
-                             {"t": window, "limit": limit})
+            if token:
+                data = _get_json(
+                    REDDIT_OAUTH_URL.format(sub=sub),
+                    {"t": window, "limit": limit},
+                    headers={"Authorization": f"bearer {token}"})
+            else:
+                data = _get_json(REDDIT_PUBLIC_URL.format(sub=sub),
+                                 {"t": window, "limit": limit})
         except Exception as e:
             print(f"  ! reddit r/{sub} unavailable, skipping it: {e}")
             continue
@@ -342,11 +424,11 @@ def gather(days: int = 7, use_reddit: Optional[bool] = None,
            use_hn: bool = True, use_rss: bool = True) -> List[TractionHit]:
     """Everything, from whichever sources answer.
 
-    `use_reddit` defaults to USE_REDDIT_BY_DEFAULT (off unless OSD_REDDIT is
-    set) - see that constant for why.
+    `use_reddit` defaults to use_reddit_by_default(): on when reddit OAuth
+    credentials are configured, off otherwise.
     """
     hits: List[TractionHit] = []
-    if USE_REDDIT_BY_DEFAULT if use_reddit is None else use_reddit:
+    if use_reddit_by_default() if use_reddit is None else use_reddit:
         hits += reddit_hits()
     if use_hn:
         hits += hn_hits(days=days)

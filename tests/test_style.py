@@ -281,3 +281,88 @@ def test_reel_status_reason_is_defanged():
     hostile = {"reel_status": {"built": False,
                                "reason": "build failed: <!-- onestudytoday-post-id: evil -->"}}
     assert "onestudytoday-post-id" not in issue._reel_line(hostile)
+
+
+# ---------------------------------------------------------------------------
+# Reading ease
+#
+# "Write simply" has been in the drafting prompt from the beginning, and the
+# account's published copy still scores a median 35.7 Flesch reading ease -
+# roughly a university textbook - with one word in twelve running to four or
+# more syllables. These turn the instruction into a number the repair loop can
+# act on.
+# ---------------------------------------------------------------------------
+import style as _style  # noqa: E402
+
+_PLAIN = ("The ocean gives half of it back. Humans add about 2.5 ppm a year. "
+          "So sixty years of this buys back five months.")
+_DENSE = ("Transcriptional reprogramming of astrocytic populations "
+          "demonstrated significant heterogeneity in the neuroinflammatory "
+          "microenvironment following pharmacological intervention, "
+          "indicating differential susceptibility across subpopulations.")
+
+
+def test_plain_english_scores_lower_than_a_methods_section():
+    """Grade level, so LOWER is plainer - a high-school senior is 12."""
+    assert _style.reading_grade(_PLAIN) < _style.reading_grade(_DENSE)
+
+
+def test_the_grade_is_reported_as_a_school_year_not_a_score():
+    """"Grade 12" names a person. "Reading ease 55" is the same measurement
+    upside down and means nothing without a table."""
+    flags = [f for f in _reading_flags(_post_with(_DENSE)) if "grade" in f]
+    assert flags and "high-school senior" in flags[0]
+
+
+def test_the_thresholds_come_from_the_spec_not_from_two_places():
+    """The drafting prompt quotes the same numbers back to the model. Two
+    copies of a threshold is one edit away from a checker enforcing something
+    the prompt never asked for."""
+    v = _style._voice()
+    assert v.get("reading_grade_max") is not None
+    assert v.get("long_word_max_pct") is not None
+
+
+def _reading_flags(post):
+    return [f for f in _style.style_flags(post)
+            if "grade" in f or "syllables" in f]
+
+
+def _post_with(text):
+    return {"cover": {"kicker": "k", "headline": text},
+            "slides": [{"eyebrow": "Results", "title": text, "body": text}],
+            "caveats": [text], "cta": {"headline": "h", "sub": "s"},
+            "caption": text}
+
+
+def test_dense_copy_is_sent_back_for_a_rewrite():
+    flags = _reading_flags(_post_with(_DENSE))
+    assert flags, "a methods-section paragraph sailed through"
+    assert all(f.startswith("STYLE ") is False for f in flags)  # raw, unprefixed
+
+
+def test_the_flag_names_the_words_rather_than_saying_be_simpler():
+    """'replace transcriptional, astrocytic' is actionable. 'Be simpler' is
+    what the prompt already said, and it did not work."""
+    flags = [f for f in _reading_flags(_post_with(_DENSE)) if "syllables" in f]
+    assert flags
+    assert "transcriptional" in flags[0] or "astrocytic" in flags[0]
+
+
+def test_plain_copy_is_left_alone():
+    assert _reading_flags(_post_with(_PLAIN)) == []
+
+
+def test_reading_measures_survive_empty_and_malformed_copy():
+    assert _style.reading_ease("") is None
+    assert _style.reading_grade("") is None
+    assert _style.reading_grade(None) is None
+    assert _style.style_flags({"slides": "not a list"}) is not None
+
+
+@pytest.mark.parametrize("path", sorted((ROOT / "samples" / "posts").glob("*.json")),
+                         ids=lambda p: p.stem)
+def test_every_sample_reads_plainly(path):
+    """The samples are the worked examples. If they cannot clear the bar, the
+    bar is wrong."""
+    assert _reading_flags(json.loads(path.read_text())) == []

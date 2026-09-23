@@ -48,10 +48,20 @@ def test_every_sample_has_a_caveats_slide(path):
 
 @pytest.mark.parametrize("path", SAMPLES, ids=lambda p: p.stem)
 def test_every_sample_links_the_paper(path):
+    """The link has to be in the caption that gets POSTED.
+
+    This used to assert the link was in post["caption"], the raw field the
+    drafting model writes. That stopped being the right place to look when the
+    caption was cut to a single hook line and caption.py took over appending
+    the link - and the assertion would have gone on passing for months on any
+    post whose model-written text happened to mention a DOI, while saying
+    nothing about what Instagram actually receives. build_caption() is what
+    Instagram actually receives.
+    """
     post = json.loads(path.read_text())
     st = post["study"]
     assert st.get("doi") or st.get("url")
-    assert st["doi_display"] in post["caption"]
+    assert st["doi_display"] in build_caption(post)
 
 
 @pytest.mark.parametrize("path", SAMPLES, ids=lambda p: p.stem)
@@ -123,7 +133,11 @@ def test_renders_all_themes_at_correct_size(theme, tmp_path):
     from PIL import Image
     post = json.loads(SAMPLES[0].read_text())
     paths = render_post(post, theme, str(tmp_path / theme))
-    assert len(paths) == 5
+    # cover + every body slide + caveats + cta. Derived, not the literal 5 this
+    # used to assert: that number was only true while every sample happened to
+    # have two body slides, so adding the implications slide broke a test that
+    # is not about how many slides a post has.
+    assert len(paths) == len(post["slides"]) + 3
     for p in paths:
         assert Image.open(p).size == (1080, 1350)
 
@@ -134,6 +148,84 @@ def test_rendering_is_deterministic(tmp_path):
     b = render_post(post, "neon", str(tmp_path / "b"))
     for x, y in zip(a, b):
         assert Path(x).read_bytes() == Path(y).read_bytes()
+
+
+# ---------------------------------------------------------------------------
+# Accent runs and the punctuation that follows them
+# ---------------------------------------------------------------------------
+def _words(s, width=900):
+    from PIL import Image, ImageDraw
+    import render
+    d = ImageDraw.Draw(Image.new("RGB", (render.W, render.H)))
+    lines = render.wrap_runs(d, s, render.font("sans_black", 60), width, 0)
+    return [w for line in lines for w in line]
+
+
+def test_punctuation_after_an_accent_run_is_not_pushed_off_the_word():
+    """Shipped on the cover of any post whose **highlighted phrase** did not
+    end a sentence, as `switches on , not just firing it.`
+
+    The runs are split on the asterisks and each run was then split on spaces
+    independently, so the comma became a word of its own and the drawer put a
+    space in front of it. The implication-first cover makes this the common
+    case: the accent now lands on the stake mid-line rather than on the
+    finding at the end of it.
+    """
+    words = _words("Brain stimulation may work by **rewriting which genes a "
+                   "cell switches on**, not just firing it.")
+    comma = [w for w in words if w[0] == ","]
+    assert comma, "the comma vanished"
+    assert comma[0][2] is True, "the comma is a free-standing word again"
+    assert comma[0][1] is False, "the comma got the accent colour"
+
+
+def test_a_glued_piece_never_starts_a_line():
+    """A line beginning with a comma is the same defect wearing a hat."""
+    from PIL import Image, ImageDraw
+    import render
+    d = ImageDraw.Draw(Image.new("RGB", (render.W, render.H)))
+    s = ("Brain stimulation may work by **rewriting which genes a cell "
+         "switches on**, not just firing it.")
+    # Sweep widths so the wrap point lands everywhere in the sentence.
+    for width in range(140, 1000, 10):
+        for line in render.wrap_runs(d, s, render.font("sans_black", 60),
+                                     width, 0):
+            if line:
+                assert line[0][0] not in ",.;:", f"width {width}: {line}"
+
+
+def test_a_glued_word_is_still_measured_against_the_box():
+    """THE one the first version of the glue fix got wrong.
+
+    A glued piece was appended without the width test, on the assumption that
+    it is always a stray comma. `**the drug works**—unimaginably` glues a
+    whole word: that headline ran 490px past the right edge of a 1080px canvas
+    and was drawn off the image. fit_runs only binary-searches on height, so
+    nothing downstream caught it.
+    """
+    from PIL import Image, ImageDraw
+    import render
+    d = ImageDraw.Draw(Image.new("RGB", (render.W, render.H)))
+    f = render.font("sans_black", 60)
+    box = 912
+    s = "A study says the **drug works**—unimaginably everything about recovery."
+    for line in render.wrap_runs(d, s, f, box, 0):
+        text = ""
+        for i, (w, _acc, glue) in enumerate(line):
+            text += w if (glue and i) else ((" " if i else "") + w)
+        assert render.text_w(d, text, f, 0) <= box, f"{text!r} overflows"
+
+
+def test_an_accent_run_at_the_very_end_keeps_its_full_stop_attached():
+    words = _words("The ocean gives **half of it back**.")
+    assert words[-1][0] == "." and words[-1][2] is True
+
+
+def test_ordinary_spacing_is_untouched():
+    words = _words("Gut bacteria **made a precursor** inside.")
+    assert [w[0] for w in words] == ["Gut", "bacteria", "made", "a",
+                                     "precursor", "inside."]
+    assert not any(w[2] for w in words)
 
 
 def test_flatten_excludes_cta_when_asked():
@@ -257,3 +349,44 @@ def test_word_equivalence_is_scoped_to_zero_through_twenty():
     abstract = "Response rates were twenty-five percent in the treated arm."
     bad = local_unverified_numbers("Response rates hit 25%.", abstract)
     assert [n["number"] for n in bad] == ["25%"]
+
+
+# ---------------------------------------------------------------------------
+# Rendering must not require the ability to publish
+# ---------------------------------------------------------------------------
+_CREDS = ("META_APP_ID", "META_APP_SECRET", "IG_ACCESS_TOKEN",
+          "IG_BUSINESS_ACCOUNT_ID")
+
+
+def test_rendering_needs_no_publishing_credentials(monkeypatch, tmp_path):
+    """`python -m pytest tests/ -q` on a clean checkout used to fail twenty-one
+    rendering tests on a missing META_APP_ID.
+
+    render._handle() reads the handle through config.settings(), which is
+    all-or-nothing, inside a `try/except Exception` - and config._req signals a
+    missing setting with SystemExit, which derives from BaseException and is
+    therefore not caught. The guard read correctly and did nothing, so drawing
+    an account handle demanded four publishing credentials.
+
+    CI sets placeholders, so nothing on CI would ever notice this coming back.
+    This test clears them itself.
+    """
+    for k in _CREDS:
+        monkeypatch.delenv(k, raising=False)
+    monkeypatch.delenv("HANDLE", raising=False)
+    post = json.loads(SAMPLES[0].read_text())
+    paths = render_post(post, "neon", str(tmp_path / "bare"))
+    assert len(paths) == len(post["slides"]) + 3
+
+
+def test_a_reel_dry_run_needs_no_publishing_credentials(monkeypatch):
+    """A dry run sends nothing, so it cannot need the ability to send."""
+    import publish as publish_mod
+    for k in _CREDS:
+        monkeypatch.delenv(k, raising=False)
+    monkeypatch.setattr(publish_mod, "_post", lambda *a, **k: pytest.fail("sent"))
+    monkeypatch.setattr(publish_mod, "check_quota", lambda *a, **k: pytest.fail("sent"))
+    post = json.loads(SAMPLES[0].read_text())
+    post["status"] = "approved"
+    res = publish_mod.publish_reel(post, "https://x.test/reel.mp4", live=False)
+    assert res["mode"].startswith("DRY RUN")

@@ -22,28 +22,34 @@ from config import ROOT
 
 TAGS = yaml.safe_load((ROOT / "config" / "hashtags.yaml").read_text())
 
+# Three things, in this order, and nothing else.
+#
+# The caption used to carry the hook, a source block with authors and journal,
+# a three-line preprint disclosure, a four-line explainer of the weekly
+# schedule, a link-in-bio pointer and the tags - around 1,400 characters, of
+# which Instagram shows roughly 125 before "... more". Everything after that
+# fold was being written for nobody: the schedule blurb is the same every day,
+# and the source block repeats what the cover slide already prints.
+#
+# What is left is what a reader actually acts on. The hook is the implications
+# slide said in one breath, because that is the line that earns the tap.
 CAPTION_TEMPLATES = {
-    # The drafting model writes `body`. These wrap it.
     "standard": (
         "{body}\n"
         "{preprint_line}"
-        "———\n"
-        "SOURCE: {authors_short}, \"{title}\"\n"
-        "{journal_line}\n"
-        "{link_line}\n"
-        "———\n"
-        "New study every weekday. Monday nature, Tuesday mind, Wednesday health, "
-        "Thursday space, Friday whatever was best.\n"
-        "Every paper we cover is linked in bio.\n\n"
+        "{link_line}\n\n"
         "{hashtags}"
     ),
 }
 
-PREPRINT_LINE = (
-    "\nHEADS UP: this is a preprint. It has been posted publicly but has not "
-    "been peer reviewed, so no independent expert has checked it yet. Treat it "
-    "as an early signal, not a settled result.\n"
-)
+# Short, but NOT removed.
+#
+# "Everything else removed" was the instruction and this is the deliberate
+# exception. The account's README promises preprints are flagged, and a
+# caption is the one part of a post that travels when someone screenshots or
+# reposts it - the cover badge does not come with them. Three lines became
+# one; the disclosure stays.
+PREPRINT_LINE = "\nNot yet peer reviewed - a preprint, so treat it as an early signal.\n"
 
 
 def _rng(post_id: str) -> random.Random:
@@ -86,27 +92,11 @@ def build_hashtags(post: Dict[str, Any], total: int = None) -> str:
 def build_caption(post: Dict[str, Any]) -> str:
     st = post["study"]
 
-    authors = st.get("authors") or []
-    if len(authors) > 2:
-        authors_short = f"{authors[0]} et al."
-    elif authors:
-        authors_short = " & ".join(authors)
-    else:
-        authors_short = "See paper"
-
-    if st.get("is_preprint"):
-        journal_line = f"{st.get('server') or 'Preprint server'} · {st['pub_date_display']} · PREPRINT"
-    else:
-        journal_line = f"{st['journal']} · {st['pub_date_display']}"
-
-    link_line = f"LINK: {st.get('doi_display') or st.get('url', '')}"
+    link_line = st.get("doi_display") or st.get("url", "")
 
     text = CAPTION_TEMPLATES["standard"].format(
         body=post.get("caption", "").strip(),
         preprint_line=PREPRINT_LINE if st.get("is_preprint") else "\n",
-        authors_short=authors_short,
-        title=st["title"][:180],
-        journal_line=journal_line,
         link_line=link_line,
         hashtags=build_hashtags(post),
     )

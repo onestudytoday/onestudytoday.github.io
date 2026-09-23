@@ -70,6 +70,23 @@ def reel_niches() -> set:
     return {n.strip().lower() for n in raw.split(",") if n.strip()}
 
 
+def _drop_doc(post_id: str) -> None:
+    """Remove a finished post's editable document.
+
+    data/queue/ is the directory the reviewer browses to find the post they
+    are looking at, and an orphaned <id>.md left behind by every post ever
+    drafted turns that into a haystack. Worse, editing an orphan triggers
+    apply-edits.yml, whose load() finds no JSON and exits - a green run that
+    did nothing, on an issue that is already closed, so nothing reports it.
+
+    The .json and the .md are two halves of one post and are deleted together
+    everywhere, which is why this is a function rather than two more lines.
+    """
+    doc = QUEUE / f"{post_id}.md"
+    if doc.exists():
+        doc.unlink()
+
+
 def wants_reel(niche: Optional[str]) -> bool:
     return bool(niche) and niche.lower() in reel_niches()
 
@@ -217,6 +234,25 @@ def run(niche: Optional[str] = None, days: Optional[int] = None, limit: int = 1,
             print(f"           ! cover image step failed, using the flat "
                   f"background: {type(e).__name__}: {e}")
 
+        # A published article that already made the same argument.
+        #
+        # Also before render_post, because it is a page of the carousel. Also
+        # never fatal, and for the same reason the cover photo is not: no
+        # clipping is what every post looked like yesterday. attach() returns
+        # the post unchanged when nothing is a genuine parallel, which is the
+        # common case by design - see clipping.py's first rule.
+        try:
+            from clipping import attach as attach_clipping
+            # Same directory the cover photo goes into, and for the same
+            # reason: docs/img/<id>/ is the only copy that survives to a
+            # later run on a different runner. The screenshot lands in a
+            # clip/ subfolder, invisible to the non-recursive *.jpg globs
+            # that treat every file beside it as a slide.
+            post = attach_clipping(post, DOCS / "img" / post["id"])
+        except Exception as e:
+            print(f"           ! clipping step failed, shipping without one: "
+                  f"{type(e).__name__}: {e}")
+
         d = OUT / "posts" / post["id"]
         paths = render_post(post, s.theme, str(d))
         contact_sheet(paths, str(OUT / "posts" / f"SHEET_{post['id']}.png"))
@@ -270,6 +306,13 @@ def run(niche: Optional[str] = None, days: Optional[int] = None, limit: int = 1,
             print(f"           -> no reel: {post['reel_status']['reason']}")
 
         (QUEUE / f"{post['id']}.json").write_text(json.dumps(post, indent=2))
+        # The same post as a document you can edit. See src/postdoc.py.
+        try:
+            from postdoc import to_markdown
+            (QUEUE / f"{post['id']}.md").write_text(to_markdown(post))
+        except Exception as e:
+            print(f"           ! could not write the editable document: "
+                  f"{type(e).__name__}: {e}")
 
         qa = post["qa"]
         print(f"           -> queued {post['id']}  "
@@ -410,6 +453,7 @@ def _publish_one(f: Path, post: Dict[str, Any], live: bool) -> Dict[str, Any]:
         # though nothing was sent.
         if live and f.exists():
             f.unlink()
+            _drop_doc(post["id"])
         return {"post_id": post["id"], "skipped": "already_published",
                 "media_id": seen}
 
@@ -485,6 +529,7 @@ def _publish_one(f: Path, post: Dict[str, Any], live: bool) -> Dict[str, Any]:
             "at": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")}
         (PUBLISHED / f"{post['id']}.json").write_text(json.dumps(post, indent=2))
         f.unlink()
+        _drop_doc(post["id"])
         led = load_ledger()
         led.setdefault("posted", {})[study_key(post)] = {
             "doi": post["study"]["doi"], "media_id": res["media_id"]}
@@ -597,8 +642,11 @@ def publish_scheduled(live: bool = True, tz: str = "America/Chicago",
     """
     now = _now or datetime.now(ZoneInfo(tz))
     jobs = []
+    waiting = []
+    queued = 0
     for f in sorted(QUEUE.glob("*.json")):
         post = json.loads(f.read_text())
+        queued += 1
         if post.get("status") != "approved":
             continue
         target = publish_time(post.get("niche", ""))
@@ -606,10 +654,26 @@ def publish_scheduled(live: bool = True, tz: str = "America/Chicago",
             th, tm = (int(x) for x in target.split(":"))
             target_dt = now.replace(hour=th, minute=tm, second=0, microsecond=0)
             if now < target_dt:
+                waiting.append((post["id"], publish_time_display(post.get("niche", ""))))
                 continue   # not this post's turn yet
         jobs.append((f, post))
     if not jobs:
-        print("Nothing is both approved and past its scheduled slot yet.")
+        # SAY WHICH. "Nothing is approved" and "something is approved and its
+        # slot is two hours away" are completely different situations, and
+        # printing the same sentence for both makes an approval look lost.
+        # That ambiguity is why approvals were being chased with a manual
+        # publish run instead of being left to the schedule.
+        if waiting:
+            print(f"{len(waiting)} approved, none due yet "
+                  f"(it is {now:%H:%M} {tz}):")
+            for pid, when in waiting:
+                print(f"  {pid} -> {when} Central")
+            print("They publish on the first hourly run after their slot. "
+                  "To send one now: Actions -> Publish approved posts -> "
+                  "Run workflow.")
+        else:
+            print(f"Nothing is approved. {queued} post(s) in the queue, all "
+                  f"still awaiting a decision on their review issue.")
         return []
     return _publish_batch(jobs, live)
 
