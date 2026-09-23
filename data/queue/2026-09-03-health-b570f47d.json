@@ -81,7 +81,7 @@
   "qa": {
     "format": "explainer",
     "lint_errors": [
-      "GUARDRAIL this copy was forced past the checks with `force revise`. Full study: doi.org/10.1016/j.bioactmat.2026.08.061"
+      "GUARDRAIL this copy was forced past the checks with `force revise`. Full study: doi.org/10.1016/j.bioactmat.2026.08.061; number not in the abstract: 2026"
     ],
     "style_flags": [],
     "repair_rounds": 0,
@@ -90,12 +90,12 @@
       "unsupported_claims": [
         {
           "claim": "Full study: doi.org/10.1016/j.bioactmat.2026.08.061",
-          "problem": "The abstract does not contain any DOI or journal reference. The copy invents a specific DOI that is not present in the abstract.",
+          "problem": "The abstract does not contain any DOI or publication identifier. The specific DOI and year (2026) are not present in the abstract.",
           "severity": "blocking"
         },
         {
-          "claim": "This framework from Bioactive Materials",
-          "problem": "While the copy section header mentions 'Bioactive Materials \u2022 Framework', the abstract does not state where this framework was published. The journal name may be correct but cannot be verified from the abstract alone.",
+          "claim": "Bioactive Materials",
+          "problem": "While the copy presents 'Bioactive Materials' as the journal name, the abstract does not state where this work was published.",
           "severity": "minor"
         }
       ],
@@ -105,23 +105,29 @@
           "found_in_abstract": true
         },
         {
-          "number": "three",
-          "found_in_abstract": true
+          "number": "2026",
+          "found_in_abstract": false
         }
       ]
     },
     "blocking_claims": [
       {
         "claim": "Full study: doi.org/10.1016/j.bioactmat.2026.08.061",
-        "problem": "The abstract does not contain any DOI or journal reference. The copy invents a specific DOI that is not present in the abstract.",
+        "problem": "The abstract does not contain any DOI or publication identifier. The specific DOI and year (2026) are not present in the abstract.",
         "severity": "blocking"
       }
     ],
-    "unverified_numbers": [],
+    "unverified_numbers": [
+      {
+        "number": "2026",
+        "found_in_abstract": false
+      }
+    ],
     "publishable": false,
-    "revised": 2,
+    "revised": 3,
     "forced_revision": [
-      "Full study: doi.org/10.1016/j.bioactmat.2026.08.061"
+      "Full study: doi.org/10.1016/j.bioactmat.2026.08.061",
+      "number not in the abstract: 2026"
     ]
   },
   "status": "needs_review",
@@ -320,7 +326,91 @@
       "lint_errors": [],
       "style_flags": [],
       "repair_rounds": 0
+    },
+    {
+      "instruction": "Remake the title slide with new background picture",
+      "previous": {
+        "cover": {
+          "kicker": "Bioactive Materials \u2022 Framework",
+          "headline": "Dental implants fail when **metal, microbes, and immune cells trap each other** in a self-feeding cycle."
+        },
+        "slides": [
+          {
+            "eyebrow": "Why this matters",
+            "basis": "stated",
+            "title": "Peri-implantitis was blamed on plaque or overload. This framework points to a three-way collision.",
+            "body": "The authors argue that titanium implants corrode not from one cause but from a self-reinforcing loop: the metal surface weakens, the biofilm shifts, and immune tolerance breaks, all at once. Lipopolysaccharide, metal nanoparticles inside cells, and neutrophil traps amplify the damage.\n\nThey propose multi-targeted, ecosystem-level therapies that interrupt the cycle at several points, aiming to restore balance at the implant-host interface rather than chasing a single villain.",
+            "stat": {
+              "value": "3",
+              "label": "pillars that fail together"
+            }
+          },
+          {
+            "eyebrow": "The setup",
+            "title": "The framework organizes evidence from the peri-implantitis microenvironment around an immune-microbe-metal triad.",
+            "body": "Three pillars carry intrinsic weaknesses. These are the titanium passive film, the biofilm's ecological balance, and host immune tolerance. When all three fail together, they launch an autocatalytic corrosion cycle.\n\nThe cycle lowers the threshold for inflammatory cell-induced corrosion, and tissue destruction advances toward irreversibility. Current therapies fall short because they target one element instead of the system."
+          }
+        ],
+        "caveats": [
+          "This is a framework paper integrating existing evidence, not a controlled experiment with new data.",
+          "The abstract does not report sample size, patient outcomes, or direct tests of the proposed multi-targeted therapies."
+        ],
+        "cta": {
+          "headline": "Send this to the implant skeptic",
+          "sub": "One real study, every weekday. The full paper is linked in bio."
+        },
+        "caption": "Dental implants don't fail from plaque alone or from mechanical stress alone. They fail when metal corrosion, microbial ecology, and immune dysfunction lock into a cycle that feeds on itself. This framework from Bioactive Materials names three weak points: the titanium passive film, biofilm balance, and immune tolerance. It explains how lipopolysaccharide, intracellular metal nanoparticles, and neutrophil extracellular traps amplify the damage once the cycle starts. The authors argue that treating peri-implantitis as a nonlinear, self-reinforcing system calls for combination therapies that hit multiple nodes at once. This is a conceptual framework synthesizing existing evidence, not new experimental data. Full study: doi.org/10.1016/j.bioactmat.2026.08.061 \u2014 Send this to anyone who's been told their implant problem is just about brushing better."
+      },
+      "previous_qa": {
+        "format": "explainer",
+        "lint_errors": [
+          "GUARDRAIL this copy was forced past the checks with `force revise`. Full study: doi.org/10.1016/j.bioactmat.2026.08.061"
+        ],
+        "style_flags": [],
+        "repair_rounds": 0,
+        "audit": {
+          "supported": false,
+          "unsupported_claims": [
+            {
+              "claim": "Full study: doi.org/10.1016/j.bioactmat.2026.08.061",
+              "problem": "The abstract does not contain any DOI or journal reference. The copy invents a specific DOI that is not present in the abstract.",
+              "severity": "blocking"
+            },
+            {
+              "claim": "This framework from Bioactive Materials",
+              "problem": "While the copy section header mentions 'Bioactive Materials \u2022 Framework', the abstract does not state where this framework was published. The journal name may be correct but cannot be verified from the abstract alone.",
+              "severity": "minor"
+            }
+          ],
+          "numbers_check": [
+            {
+              "number": "3",
+              "found_in_abstract": true
+            },
+            {
+              "number": "three",
+              "found_in_abstract": true
+            }
+          ]
+        },
+        "blocking_claims": [
+          {
+            "claim": "Full study: doi.org/10.1016/j.bioactmat.2026.08.061",
+            "problem": "The abstract does not contain any DOI or journal reference. The copy invents a specific DOI that is not present in the abstract.",
+            "severity": "blocking"
+          }
+        ],
+        "unverified_numbers": [],
+        "publishable": false,
+        "revised": 2,
+        "forced_revision": [
+          "Full study: doi.org/10.1016/j.bioactmat.2026.08.061"
+        ]
+      },
+      "lint_errors": [],
+      "style_flags": [],
+      "repair_rounds": 0
     }
   ],
-  "render_seq": 2
+  "render_seq": 3
 }
