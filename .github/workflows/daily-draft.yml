@@ -73,6 +73,27 @@ jobs:
           fi
           ffmpeg -version | head -1
 
+      # A browser, for the clipping slide.
+      #
+      # That page is a real screenshot of a real article's headline on the
+      # outlet's own page - not a headline re-typeset in our fonts, which
+      # would read as US saying it. Taking one needs a browser.
+      #
+      # NOT in requirements.txt on purpose: publish, apply-edits and the
+      # scheduled publisher all install that file and none of them takes a
+      # screenshot, so putting Chromium in there would add a browser download
+      # to three workflows that will never open one.
+      #
+      # Fails soft by design. clipping.shoot() returns None when there is no
+      # browser, and no screenshot means no clipping page - which is exactly
+      # what every post looked like before the feature existed. So this step
+      # is `continue-on-error` and the draft goes ahead without it.
+      - name: Install a browser (for the clipping screenshot)
+        continue-on-error: true
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+
       - name: Draft, vet and render
         id: draft
         env:
@@ -93,6 +114,13 @@ jobs:
           # (Friday) - see pipeline.reel_niches(). Set it to "off" to disable;
           # an EMPTY value means unset here, not off.
           REEL_NICHES: ${{ vars.REEL_NICHES }}
+          # Reddit traction sourcing. BOTH optional: with neither set, reddit
+          # is skipped silently and the other traction sources carry on.
+          # Setting them is the only step needed to turn reddit on - see
+          # docs/RUNBOOK.md. Unauthenticated reddit 403s from a runner, so
+          # there is no useful halfway state.
+          REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
+          REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
           # The two "Run workflow" inputs come in as environment variables and
           # are read as shell variables below. They are NOT written into the
           # script with ${{ }}, which would paste whatever was typed in the box
