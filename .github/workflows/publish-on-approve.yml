@@ -16,6 +16,17 @@ name: Approve, kill, or force-approve
 #                   put through every check the first draft faced and is
 #                   REFUSED if it fails one, so asking for "punchier" can
 #                   never quietly strip a caveat. Stays needs_review.
+#   reimage         pick a different cover photograph. `reimage: petri dish`
+#                   searches for that instead. Each call excludes every image
+#                   already tried on this post, so asking twice really does
+#                   give you a third one. NOTE: `revise:` cannot do this - it
+#                   rewrites copy and never touches the picture.
+#
+#   exclude clipping
+#                   drop the "somebody else said this too" slide from this
+#                   post. `include clipping` puts it back - nothing is
+#                   deleted, and neither touches the approval.
+#
 #   force revise: <what>
 #                   same, but applies the rewrite even if the checks reject
 #                   it. The post is then BLOCKED and needs `force approve` as
@@ -68,11 +79,19 @@ jobs:
         startsWith(github.event.comment.body, 'kill') ||
         startsWith(github.event.comment.body, 'revise') ||
         startsWith(github.event.comment.body, 'force revise') ||
-        startsWith(github.event.comment.body, 'revert')
+        startsWith(github.event.comment.body, 'revert') ||
+        startsWith(github.event.comment.body, 'exclude clipping') ||
+        startsWith(github.event.comment.body, 'include clipping') ||
+        startsWith(github.event.comment.body, 'reimage')
       )
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Deep enough to rebase. The commit step retries a rejected push by
+          # rebasing onto origin, and the default shallow clone cannot do that
+          # - so the retry would fail in exactly the case it exists for.
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -114,6 +133,9 @@ jobs:
           echo "post_id=$POST_ID" >> "$GITHUB_OUTPUT"
           C=$(printf '%s' "$COMMENT" | tr '[:upper:]' '[:lower:]')
           case "$C" in
+            reimage*)        echo "action=reimage" >> "$GITHUB_OUTPUT" ;;
+            exclude\ clipping*) echo "action=clipoff" >> "$GITHUB_OUTPUT" ;;
+            include\ clipping*) echo "action=clipon" >> "$GITHUB_OUTPUT" ;;
             force\ approve*) echo "action=force" >> "$GITHUB_OUTPUT" ;;
             force\ revise*)  echo "action=forcerevise" >> "$GITHUB_OUTPUT" ;;
             revert*)         echo "action=revert" >> "$GITHUB_OUTPUT" ;;
@@ -134,8 +156,8 @@ jobs:
           python3 - <<'PARSE'
           import os, re, secrets
           body = os.environ.get("COMMENT", "")
-          instruction = re.sub(r"^\s*(force\s+)?(revise|revert)\s*:?\s*", "",
-                               body, count=1, flags=re.I).strip()
+          instruction = re.sub(r"^\s*(force\s+)?(revise|revert|reimage)\s*:?\s*",
+                               "", body, count=1, flags=re.I).strip()
           delim = "OSD_" + secrets.token_hex(16)
           while delim in instruction:                 # belt and braces
               delim = "OSD_" + secrets.token_hex(16)
@@ -171,7 +193,7 @@ jobs:
       # explanation buried in a log.
       - name: Revise or revert it
         id: revise
-        if: contains(fromJSON('["revise","forcerevise","revert"]'), steps.what.outputs.action)
+        if: contains(fromJSON('["revise","forcerevise","revert","clipoff","clipon","reimage"]'), steps.what.outputs.action)
         continue-on-error: true
         env:
           POST_ID: ${{ steps.what.outputs.post_id }}
@@ -197,7 +219,13 @@ jobs:
           IG_BUSINESS_ACCOUNT_ID: revise-placeholder
         run: |
           set -o pipefail
-          if [ "$ACTION" = "revert" ]; then
+          if [ "$ACTION" = "reimage" ]; then
+            python src/review.py reimage "$POST_ID" "$INSTRUCTION" 2>&1 | tee revise.log
+          elif [ "$ACTION" = "clipoff" ]; then
+            python src/review.py exclude-clipping "$POST_ID" 2>&1 | tee revise.log
+          elif [ "$ACTION" = "clipon" ]; then
+            python src/review.py include-clipping "$POST_ID" 2>&1 | tee revise.log
+          elif [ "$ACTION" = "revert" ]; then
             python src/review.py revert "$POST_ID" 2>&1 | tee revise.log
           elif [ "$ACTION" = "forcerevise" ]; then
             python src/review.py revise "$POST_ID" "$INSTRUCTION" --force 2>&1 | tee revise.log
@@ -206,7 +234,7 @@ jobs:
           fi
 
       - name: Rebuild the review card for the new copy
-        if: contains(fromJSON('["revise","forcerevise","revert"]'), steps.what.outputs.action)
+        if: contains(fromJSON('["revise","forcerevise","revert","clipoff","clipon","reimage"]'), steps.what.outputs.action)
         env:
           POST_ID: ${{ steps.what.outputs.post_id }}
           PUBLIC_IMAGE_BASE: ${{ vars.PUBLIC_IMAGE_BASE }}
@@ -236,8 +264,31 @@ jobs:
           git config user.name  "onestudytoday-bot"
           git config user.email "bot@users.noreply.github.com"
           git add data/ docs/ || true
-          git commit -m "$ACTION: $POST_ID" || echo "nothing to commit"
-          git push
+          # Normalised so the message prefix is one apply-edits.yml knows.
+          # These steps rewrite data/queue/*.md, which is the path that
+          # workflow triggers on; a message it does not recognise would start
+          # an apply, and an apply sets status back to needs_review.
+          case "$ACTION" in
+            clipoff|clipon)          PREFIX=clipping ;;
+            reimage)                 PREFIX=reimage ;;
+            revise|forcerevise)      PREFIX=revise ;;
+            revert)                  PREFIX=revert ;;
+            *)                       PREFIX="$ACTION" ;;
+          esac
+          git commit -m "$PREFIX: $POST_ID" || echo "nothing to commit"
+          # RETRIED, the way apply-edits.yml and scheduled-publish.yml already
+          # retry. A bare `git push` loses this race whenever the daily draft,
+          # a metrics run or a publish lands between this job's checkout and
+          # its push - and what gets lost is the commit that records your
+          # approval. The step would go red, the issue would stay open, and
+          # the post would sit at needs_review looking like the approval never
+          # happened. Rare, silent, and exactly the kind of cross-workflow
+          # timing seam this repo keeps rediscovering.
+          for attempt in 1 2 3; do
+            git push && break
+            git pull --rebase origin "$GITHUB_REF_NAME" || true
+            sleep $(( attempt * 3 ))
+          done
 
       # Asked of the Python that actually holds the gate, never written out a
       # second time here. A hand-copied JavaScript mirror of PUBLISH_TIMES
@@ -274,7 +325,7 @@ jobs:
       # The issue stays OPEN and the post stays needs_review - revising is not
       # a decision, it is another draft.
       - name: Update the issue with the revised draft
-        if: contains(fromJSON('["revise","forcerevise","revert"]'), steps.what.outputs.action)
+        if: contains(fromJSON('["revise","forcerevise","revert","clipoff","clipon","reimage"]'), steps.what.outputs.action)
         uses: actions/github-script@v7
         env:
           ACTION: ${{ steps.what.outputs.action }}
