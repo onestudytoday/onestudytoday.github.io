@@ -145,13 +145,13 @@
   },
   "source_niche": "health",
   "cover_art": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Bronchiectasis_Vicious_Cycle_Pathogenesis_%28hy%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-    "licence": "CC BY-SA 4.0",
-    "author": "Surajkapoor94, Armenian translation by user:GgGevorg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Cdm_hip_implant_348.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "licence": "CC BY-SA 3.0",
+    "author": "Booyabazooka",
     "needs_credit": true,
     "source": "Wikimedia Commons",
-    "page": "File:Bronchiectasis Vicious Cycle Pathogenesis (hy).png",
-    "query": "vicious cycle",
+    "page": "File:Cdm hip implant 348.jpg",
+    "query": "implant",
     "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-09-03-health-b570f47d/bg/cover.jpg"
   },
   "reel_status": {
@@ -412,5 +412,9 @@
       "repair_rounds": 0
     }
   ],
-  "render_seq": 3
+  "render_seq": 4,
+  "cover_art_tried": [
+    "https://upload.wikimedia.org/wikipedia/commons/1/1f/Bronchiectasis_Vicious_Cycle_Pathogenesis_%28hy%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "https://upload.wikimedia.org/wikipedia/commons/5/5c/Cdm_hip_implant_348.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+  ]
 }
