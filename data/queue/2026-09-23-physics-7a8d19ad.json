@@ -131,17 +131,22 @@
   },
   "source_niche": "physics",
   "cover_art": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/Wey_source_farringdon.jpg/1920px-Wey_source_farringdon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "licence": "Public domain",
-    "author": "SuzanneKn at English Wikipedia",
-    "needs_credit": false,
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/D-Wave_Two_512_qubit_Vesuvius_chip.jpg/1920px-D-Wave_Two_512_qubit_Vesuvius_chip.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC BY 2.0",
+    "author": "Steve Jurvetson",
+    "needs_credit": true,
     "source": "Wikimedia Commons",
-    "page": "File:Wey source farringdon.jpg",
-    "query": "source",
+    "page": "File:D-Wave Two 512 qubit Vesuvius chip.jpg",
+    "query": "quantum computer",
     "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-09-23-physics-7a8d19ad/bg/cover.jpg"
   },
   "reel_status": {
     "built": false,
     "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'physics'"
-  }
+  },
+  "cover_art_tried": [
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/Wey_source_farringdon.jpg/1920px-Wey_source_farringdon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/D-Wave_Two_512_qubit_Vesuvius_chip.jpg/1920px-D-Wave_Two_512_qubit_Vesuvius_chip.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+  ],
+  "render_seq": 1
 }
