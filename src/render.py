@@ -617,10 +617,22 @@ def render_cover(post: Dict, th: Theme, niche: Dict, idx: int, total: int) -> Im
         th.head_max, th.head_min, th.head_leading, th.head_tracking,
         variation="Bold" if th.head_font == "serif" else None,
     )
-    # bottom-align the headline block so covers feel anchored
+    # CENTRE the headline block in what is left of the frame.
+    #
+    # It used to be hard bottom-aligned - `H - SAFE - 150 - block_h` - which
+    # put a constant 90px under the text and everything else above it. The
+    # gap above therefore depended entirely on how long the headline was:
+    # measured on real covers, a six-line headline left 316px above and a
+    # three-line one left 619px. So no two covers sat the same way, and every
+    # one of them read as slightly wrong rather than deliberately low.
+    #
+    # The top of the available area is `y`, which has already been advanced
+    # past the niche pill, the handle and the preprint badge if there is one.
+    # The bottom is the footer rail. Centring between those two is stable
+    # whatever the headline length and whatever chrome is above it.
     block_h = lh * len(lines)
-    y_head = H - SAFE - 150 - block_h
-    y_head = max(y_head, y)
+    bottom = H - SAFE - 100          # the footer rail and its breathing room
+    y_head = y + max(0, (bottom - y - block_h) // 2)
     tr = th.head_tracking * (size / 100.0)
     draw_runs(d, SAFE, y_head, lines, f, lh, th.fg,
               accent if not on_color else "#FFFFFF", tr,
@@ -948,8 +960,16 @@ def render_post(post: Dict, theme_key: str, outdir: str, prefix: str = "") -> Li
     slides = post["slides"]
 
     # The clipping page, when there is one the reviewer has not excluded. It
-    # goes straight after the implications slide: it is corroboration for that
-    # claim, and corroboration that arrives three slides later is just trivia.
+    # goes straight after the FINDING - which is the slide after the
+    # implications one.
+    #
+    # It used to go directly after the implications slide, and that was right
+    # while the finding came first: the clipping corroborates the implication,
+    # and corroboration three slides later is just trivia. Moving the
+    # implication in front of the finding made "next to the implication" and
+    # "before the evidence" the same position, which is the wrong one - a
+    # newspaper agreeing with a claim the reader has not yet seen supported
+    # reads as padding it. Claim, evidence, then who else says so.
     #
     # Imported lazily and guarded, so a post rendered in a workflow where
     # clipping.py is unavailable - or one drafted before clippings existed -
@@ -961,7 +981,7 @@ def render_post(post: Dict, theme_key: str, outdir: str, prefix: str = "") -> Li
             from draft import IMPLICATIONS_INDEX, implications_slide
             sl = implications_slide(post)
             at = next((n for n, s in enumerate(slides) if s is sl), None)
-            clip_after = IMPLICATIONS_INDEX if at is None else at
+            clip_after = (IMPLICATIONS_INDEX if at is None else at) + 1
     except Exception:
         clip_after = -1
     has_clip = 0 <= clip_after < len(slides)

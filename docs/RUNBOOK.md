@@ -466,14 +466,14 @@ The running order is deliberately not the obvious one:
 | page | what is on it |
 |---|---|
 | 1 cover | **the implication** — why a stranger should care, in one line |
-| 2 | the finding itself, with the real numbers |
-| 3 | the implication again, explained properly |
+| 2 | the implication again, explained properly — "why you should care" |
+| 3 | the finding itself, with the real numbers |
 | 4 | *optional* — a screenshot of a published article making the same argument |
 | 5-6 | the setup, the method, or the mechanism |
 | 7 | the caveats. Always present. |
 | 8 | send + link to the paper |
 
-Page 3 carries a `basis` of `stated` or `inferred`. `stated` means the paper
+Page 2 carries a `basis` of `stated` or `inferred`. `stated` means the paper
 itself says it. `inferred` means it is **our** extrapolation — and then both
 that slide and the cover must be conditional, and the fine-print slide gains
 a line saying so:

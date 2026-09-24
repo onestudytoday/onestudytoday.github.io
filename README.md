@@ -34,9 +34,9 @@ post, from zero followers.
      v
   rendering         5-8 1080x1350 slides, deterministic. cover is a photo
      |              with one sentence over it. cover carries the
-     |              IMPLICATION, slide 2 the finding, slide 3 the implication
-     |              explained - plus an optional clipping slide showing a
-     |              named outlet that already made the same argument.
+     |              IMPLICATION, slide 2 explains it, slide 3 is the finding
+     |              - plus an optional clipping slide showing a named outlet
+     |              that already made the same argument.
      v
   review            GitHub issue on your phone, or a local web app
      |              YOU comment `approve`. Nothing else publishes.
@@ -70,7 +70,7 @@ These are gates in the pipeline, not items on a checklist.
 | Copy too dense for a general reader | above US grade 12 (a high-school senior), or over 7% four-syllable words, is sent back for a rewrite with the offending words named |
 | Wrong journal named on the cover | **hard blocker**, checked in code against the catalogue record — not by a model that was only ever shown the abstract |
 | Cover image captioned in a non-Latin script | never used; the file's own title is in the same language as the labels in the picture |
-| Implication slide missing or out of order | blocked — the finding has to be on the page before the extrapolation |
+| Implication slide missing or out of order | blocked — "why it matters" has to be the page straight after the cover, before the numbers |
 | Clipping from an outlet not on the allowlist | never shown; the outlet is taken from the URL and the record's own domain field has to agree |
 | Clipping that could not be photographed | no page at all — the slide IS a real screenshot of the outlet's own page, never a headline re-typeset in our fonts |
 

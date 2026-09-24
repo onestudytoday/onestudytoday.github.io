@@ -17,16 +17,18 @@ carousel:
   #
   # The cover used to carry the finding and nothing said why a stranger should
   # care. So the cover now carries the IMPLICATION - the one line that answers
-  # "why do we even care" - and the finding moves to slide 2, where the numbers
-  # belong. Slide 3 is the same implication again, explained properly.
+  # "why do we even care" - slide 2 explains that same implication properly,
+  # and the finding follows on slide 3, where the numbers belong.
   #
   # Saying it twice is the point, not an accident: the cover is what a scroller
-  # sees for 400 milliseconds, and slide 3 is what someone who stopped reads.
-  # One has to work stripped of all context; the other has to earn it.
+  # sees for 400 milliseconds, and slide 2 is what someone who stopped reads.
+  # One has to work stripped of all context; the other has to earn it. The
+  # reader is given the reason to care BEFORE the evidence for it, because a
+  # reader who does not care does not reach the evidence.
   order:
     - cover          # 1  the implication, in one line. why anyone should care.
-    - finding        # 2  what the study actually found, with the numbers
-    - implications   # 3  the same implication, explained
+    - implications   # 2  the same implication, explained. why you should care.
+    - finding        # 3  what the study actually found, with the numbers
     - clipping       # 4  optional, a published parallel to the implication
     - context        # 5  optional, the setup, the method or the mechanism
     - context_extra  # 6  optional
@@ -176,13 +178,19 @@ voice:
 #
 # THE ORDER WITHIN `eyebrows` IS LOAD-BEARING and is the same for all four:
 #
-#   eyebrows[0]  slide 2 - THE FINDING. What the study measured, with numbers.
-#   eyebrows[1]  slide 3 - THE IMPLICATION, explained. Carries `basis`.
+#   eyebrows[0]  slide 2 - THE IMPLICATION, explained. Carries `basis`.
+#   eyebrows[1]  slide 3 - THE FINDING. What the study measured, with numbers.
 #   eyebrows[2:] slides 4+ - the rest: setup, method, mechanism.
 #
 # The cover sits above all of them and carries the implication in one line, so
-# the post opens on the stake, proves it, then explains it. draft.py reads
+# the post opens on the stake, explains it, then proves it. draft.py reads
 # these by index to build the prompt; reordering this list reorders the post.
+#
+# The first two were the other way round until 24 Sep. The finding came second
+# and the explanation third, on the reasoning that a claim should be proved
+# before it is expanded on. In practice that spends the slide right after the
+# hook on numbers, to a reader who has not yet been told why the numbers
+# matter - so the explanation moved in front of it.
 #
 # Adding a format: add the eyebrows to fields."slide.eyebrow".fixed_values as
 # well. render.py lowercases the eyebrow into a PNG filename, so keep them
@@ -193,7 +201,7 @@ voice:
 formats:
 
   - name: explainer
-    eyebrows: ["What they found", "Why this matters", "The setup", "The mechanism"]
+    eyebrows: ["Why this matters", "What they found", "The setup", "The mechanism"]
     shape: >-
       Deliver the result plainly, explain why it matters to someone outside
       the field, then give the tension the study was resolving.
@@ -202,8 +210,7 @@ formats:
       opening the post.
 
   - name: reversal
-    eyebrows: ["What the data says", "Why you should care", "The assumption",
-               "Why the difference"]
+    eyebrows: ["Why you should care", "What the data says", "The assumption", "Why the difference"]
     shape: >-
       Give what was actually measured, then why that lands for the reader,
       then what a reasonable person would have assumed instead - stated
@@ -217,7 +224,7 @@ formats:
   - name: procedural
     # "Results", not "What came back". Plain words beat clever ones on a label
     # a reader sees for half a second.
-    eyebrows: ["Results", "What it could mean", "What they did", "How it works"]
+    eyebrows: ["What it could mean", "Results", "What they did", "How it works"]
     shape: >-
       Give the result, then what it could mean, then the concrete thing the
       researchers physically did - who, how many, for how long, in what. This
@@ -226,7 +233,7 @@ formats:
       Point at the part of the method a sceptic would want to check.
 
   - name: stakes
-    eyebrows: ["The result", "What it means for you", "What changes", "How it works"]
+    eyebrows: ["What it means for you", "The result", "What changes", "How it works"]
     shape: >-
       Give the finding and how much it actually moves, then the concrete
       consequence for one identifiable person. Be honest about the size of the

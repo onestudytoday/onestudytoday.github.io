@@ -19,6 +19,12 @@
  },
  "slides": [
   {
+   "eyebrow": "Why you should care",
+   "basis": "stated",
+   "title": "The gap in this part of the family tree is a storage problem as much as a digging problem.",
+   "body": "Dinosaurs and crocodiles share a grandparent, and that grandparent is barely known. Every specimen matters more than usual when the record is this thin.\n\nThis one spent two decades in the wrong place, and the tree stayed wrong with it."
+  },
+  {
    "eyebrow": "What the data says",
    "title": "A fossil lost for twenty years turned out to be a reptile nobody had ever named.",
    "body": "Collected in southern Brazil, misplaced, recovered in 2022. The team named it Silescelida acristata and placed it near Euparkeriidae.\n\nThat puts it on the branch running towards dinosaurs and crocodiles, rather than inside either one.",
@@ -26,12 +32,6 @@
     "value": "240 M",
     "label": "years old, from the Middle Triassic"
    }
-  },
-  {
-   "eyebrow": "Why you should care",
-   "basis": "stated",
-   "title": "The gap in this part of the family tree is a storage problem as much as a digging problem.",
-   "body": "Dinosaurs and crocodiles share a grandparent, and that grandparent is barely known. Every specimen matters more than usual when the record is this thin.\n\nThis one spent two decades in the wrong place, and the tree stayed wrong with it."
   },
   {
    "eyebrow": "The assumption",

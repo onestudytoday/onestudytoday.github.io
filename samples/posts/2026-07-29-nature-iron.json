@@ -19,6 +19,12 @@
  },
  "slides": [
   {
+   "eyebrow": "Why this matters",
+   "basis": "stated",
+   "title": "Iron seeding is the cheapest ocean climate fix on the table, and it cannot carry the load.",
+   "body": "Every ton not removed here is a ton that has to come from cutting emissions instead. The paper calls it a trade-off, not a fix.\n\nThe bill is paid twice: less carbon banked, and a thinner food web."
+  },
+  {
    "eyebrow": "What they found",
    "title": "Sixty years of fertilising ten ocean regions bought between 1.1 and 5.3 ppm of CO2.",
    "body": "Humans add roughly 2.5 ppm every year. So six decades of non-stop seeding buys back somewhere between five months and two years of emissions.\n\nMore than half the captured carbon leaked back out within decades of stopping.",
@@ -26,12 +32,6 @@
     "value": "5.3 ppm",
     "label": "best case, after 60 years of seeding"
    }
-  },
-  {
-   "eyebrow": "Why this matters",
-   "basis": "stated",
-   "title": "Iron seeding is the cheapest ocean climate fix on the table, and it cannot carry the load.",
-   "body": "Every ton not removed here is a ton that has to come from cutting emissions instead. The paper calls it a trade-off, not a fix.\n\nThe bill is paid twice: less carbon banked, and a thinner food web."
   },
   {
    "eyebrow": "The setup",

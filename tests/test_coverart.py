@@ -300,25 +300,25 @@ def test_the_credit_is_printed_on_the_image(tmp_path):
 # ---------------------------------------------------------------------------
 # The implications slide
 # ---------------------------------------------------------------------------
-def test_every_format_puts_the_finding_first_and_the_implication_second():
+def test_every_format_puts_the_implication_first_and_the_finding_second():
     """The running order, asserted where it is actually configured.
 
     Published posts had no 'why we care' slide at all: seven of twelve emitted
-    none, and the five that did put it LAST, after the findings. The fix was
-    not simply to move it to the front - the cover now carries the implication
-    in one line, slide 1 carries the finding, and slide 2 explains the
-    implication. draft.py reads `eyebrows` BY INDEX to build that prompt, so a
-    format whose list is in the wrong order silently produces a post in the
-    wrong order. This is the test that notices.
+    none, and the five that did put it LAST, after the findings. The cover now
+    carries the implication in one line, slide 1 explains it, and slide 2
+    carries the finding - a reader who has not been given a reason to care
+    never reaches the numbers. draft.py reads `eyebrows` BY INDEX to build that
+    prompt, so a format whose list is in the wrong order silently produces a
+    post in the wrong order. This is the test that notices.
     """
     imp = ("matters", "care", "mean", "means", "changes")
     for fmt in draft.FORMATS:
         ebs = fmt["eyebrows"]
-        assert len(ebs) >= 3, f"{fmt['name']} has no slides after the implication"
-        assert not any(w in ebs[0].lower() for w in imp), \
-            f"{fmt['name']} opens on {ebs[0]!r}, but slide 1 is the finding"
-        assert any(w in ebs[1].lower() for w in imp), \
-            f"{fmt['name']} has {ebs[1]!r} on slide 2, which is not an implication"
+        assert len(ebs) >= 3, f"{fmt['name']} has no slides after the finding"
+        assert any(w in ebs[0].lower() for w in imp), \
+            f"{fmt['name']} opens on {ebs[0]!r}, which is not an implication"
+        assert not any(w in ebs[1].lower() for w in imp), \
+            f"{fmt['name']} has {ebs[1]!r} on slide 2, but that is the finding"
 
 
 def test_the_first_two_eyebrows_stay_distinct_so_rotation_is_real():
@@ -360,9 +360,9 @@ def _implications(basis, body, headline=None, shape=draft.SHAPE_VERSION):
     return {"cover": {"kicker": "k",
                       "headline": headline if headline is not None
                       else "this could change how it is done"},
-            "slides": [{"eyebrow": "What they found", "title": "T", "body": "b"},
-                       {"eyebrow": "Why this matters", "title": "T",
-                        "body": body, "basis": basis}],
+            "slides": [{"eyebrow": "Why this matters", "title": "T",
+                        "body": body, "basis": basis},
+                       {"eyebrow": "What they found", "title": "T", "body": "b"}],
             "caveats": ["a", "b"], "cta": {"headline": "h", "sub": "s"},
             "caption": "c", "study": {}, "shape": shape}
 
@@ -405,7 +405,7 @@ def test_a_paper_stated_implication_needs_no_hedging():
 def test_a_slide_with_no_basis_is_not_treated_as_an_implications_slide():
     """Older posts, and skeleton() drafts, have no basis field."""
     post = _implications("stated", "x", shape="")
-    post["slides"][1].pop("basis")
+    post["slides"][0].pop("basis")
     assert draft.implications_slide(post) is None
     assert not [e for e in draft.lint(post, VetReport(key="k"))
                 if "implications slide" in e]
@@ -425,21 +425,21 @@ def test_an_implications_slide_in_the_wrong_position_is_BLOCKED():
     post = _implications("stated", "The authors note this.")
     post["slides"] = list(reversed(post["slides"]))
     errs = draft.lint(post, VetReport(key="k"))
-    bad = [e for e in errs if "has to be slide 2" in e]
+    bad = [e for e in errs if "has to be slide 1" in e]
     assert bad, f"a misplaced implications slide passed: {errs}"
     assert bad[0].startswith("GUARDRAIL")
 
 
 def test_a_post_with_no_implications_slide_at_all_is_BLOCKED():
     post = _implications("stated", "The authors note this.")
-    post["slides"][1].pop("basis")
+    post["slides"][0].pop("basis")
     errs = draft.lint(post, VetReport(key="k"))
     assert [e for e in errs if "no slide carries `basis`" in e]
 
 
 def test_two_slides_claiming_basis_is_BLOCKED():
     post = _implications("stated", "The authors note this.")
-    post["slides"][0]["basis"] = "inferred"
+    post["slides"][1]["basis"] = "inferred"
     errs = draft.lint(post, VetReport(key="k"))
     assert [e for e in errs if "belongs to the implications slide only" in e]
 
@@ -449,7 +449,7 @@ def test_the_structural_rules_do_not_fire_on_copy_that_predates_them():
     cover carried the implication and carrying no `basis` anywhere. Changing
     the template must not turn all of them into guardrail-blocked posts."""
     post = _implications("stated", "x", shape="")
-    post["slides"][1].pop("basis")
+    post["slides"][0].pop("basis")
     post["slides"] = list(reversed(post["slides"]))
     errs = draft.lint(post, VetReport(key="k"))
     assert not [e for e in errs if "basis" in e or "has to be slide" in e], errs
@@ -622,7 +622,7 @@ def test_the_audit_is_told_which_slide_is_an_extrapolation(monkeypatch):
     # cover as unsupported on every inferred post, and the repair loop would
     # then rewrite the one line the post exists for.
     assert "TWO PARTS OF THIS COPY ARE DIFFERENT" in u
-    assert "COVER HEADLINE" in u and "SECOND SLIDE" in u
+    assert "COVER HEADLINE" in u and "FIRST SLIDE" in u
     assert "stated as fact rather than as a possibility" in u
 
 
@@ -1105,3 +1105,26 @@ def test_the_wrong_journal_on_the_cover_is_blocked_through_lint():
     errs = draft.lint(post, VetReport(key="k"), s)
     assert [e for e in errs if "was published in" in e], \
         "lint never asked about the journal"
+
+
+def test_the_implication_is_the_page_straight_after_the_cover():
+    """The cover asserts it in one line; this slide is where it is earned.
+    An explanation that arrives after the numbers is answering a question the
+    reader gave up on two slides ago."""
+    assert draft.IMPLICATIONS_INDEX == 0
+
+
+def test_the_shape_stamp_was_bumped_with_the_order():
+    """Posts already in the queue were drafted with the implications slide at
+    index 1, because that is where the previous version put it. Without a new
+    stamp every one of them would report a guardrail breach for obeying the
+    rules it was drafted under."""
+    assert draft.SHAPE_VERSION.endswith("v2")
+
+
+def test_a_post_from_the_previous_order_is_not_retroactively_blocked():
+    post = _implications("stated", "The authors note this.",
+                         shape="implication-first-v1")
+    post["slides"] = list(reversed(post["slides"]))      # v1's order
+    errs = draft.lint(post, VetReport(key="k"))
+    assert not [e for e in errs if "has to be slide" in e], errs

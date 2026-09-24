@@ -19,6 +19,12 @@
  },
  "slides": [
   {
+   "eyebrow": "What it means for you",
+   "basis": "stated",
+   "title": "A daily pill skips the cold chain, the prescriber training and the fear of needles.",
+   "body": "Semaglutide and tirzepatide changed obesity medicine and both arrive as a weekly injection. That is a hard no for a large share of the people they would help.\n\nAn oral version is the same receptor with the barrier removed."
+  },
+  {
    "eyebrow": "The result",
    "title": "Across 38 US sites, the top dose beat placebo by roughly twelve percentage points.",
    "body": "230 adults were split at random between three doses and a placebo for 36 weeks. The top dose took off 12.1% of body weight; placebo managed 0.5%.\n\nOne in ten stopped early. Gut side effects eased over time.",
@@ -26,12 +32,6 @@
     "value": "12.1%",
     "label": "body weight lost on the top dose"
    }
-  },
-  {
-   "eyebrow": "What it means for you",
-   "basis": "stated",
-   "title": "A daily pill skips the cold chain, the prescriber training and the fear of needles.",
-   "body": "Semaglutide and tirzepatide changed obesity medicine and both arrive as a weekly injection. That is a hard no for a large share of the people they would help.\n\nAn oral version is the same receptor with the barrier removed."
   },
   {
    "eyebrow": "What changes",

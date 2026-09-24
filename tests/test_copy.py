@@ -390,3 +390,51 @@ def test_a_reel_dry_run_needs_no_publishing_credentials(monkeypatch):
     post["status"] = "approved"
     res = publish_mod.publish_reel(post, "https://x.test/reel.mp4", live=False)
     assert res["mode"].startswith("DRY RUN")
+
+
+# ---------------------------------------------------------------------------
+# The cover headline sits in the middle of the frame
+# ---------------------------------------------------------------------------
+def _headline_block(post, theme_key="neon"):
+    """Where render_cover actually puts the headline, and how tall it is."""
+    import render
+    grab = {}
+    real = render.draw_runs
+
+    def spy(d, x, y, lines, f, lh, *a, **k):
+        grab.setdefault("h", (y, lh * len(lines)))
+        return real(d, x, y, lines, f, lh, *a, **k)
+
+    render.draw_runs = spy
+    try:
+        render.render_cover(post, render.THEMES[theme_key],
+                            render.NICHES[post["niche"]], 1, 6)
+    finally:
+        render.draw_runs = real
+    return grab["h"]
+
+
+@pytest.mark.parametrize("headline,preprint", [
+    ("Gut bacteria **made a precursor** inside.", False),
+    ("Brain stimulation may work by **rewriting which genes a cell switches "
+     "on**, not just firing it.", False),
+    ("Gut bacteria **made a precursor** inside.", True),
+])
+def test_the_cover_headline_is_centred_whatever_its_length(headline, preprint):
+    """It used to be hard bottom-aligned, so the gap above it depended
+    entirely on how long the headline was - measured on real covers, 316px
+    above for six lines and 619px for three. No two covers sat the same way,
+    and every one read as slightly wrong rather than deliberately low.
+    """
+    import render
+    from theme import SAFE
+    post = json.loads(SAMPLES[0].read_text())
+    post["cover"] = {**post["cover"], "headline": headline}
+    post["study"] = {**post["study"], "is_preprint": preprint,
+                     "server": "bioRxiv"}
+    y, h = _headline_block(post)
+    above = y - (SAFE + 110)             # under the niche pill row
+    below = (render.H - SAFE - 100) - (y + h)   # above the footer rail
+    assert above > 0 and below > 0, f"headline overruns: {above}/{below}"
+    assert abs(above - below) < 70, \
+        f"{above}px above vs {below}px below - not centred"

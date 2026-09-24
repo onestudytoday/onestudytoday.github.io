@@ -19,6 +19,12 @@
  },
  "slides": [
   {
+   "eyebrow": "Why this matters",
+   "basis": "inferred",
+   "title": "If the little red dots are all built like this one, the early universe stops looking impossible.",
+   "body": "Read as dusty galaxies, the dots need more stars forming faster than there was time to build them. That is the crisis.\n\nRead as gas-wrapped black holes, the crisis may simply go away. One object cannot settle it."
+  },
+  {
    "eyebrow": "What they found",
    "title": "The reddening is not dust. It is a cocoon of hydrogen gas wrapped around a black hole.",
    "body": "At specific wavelengths the light simply vanished, which dense hydrogen does and dust does not.\n\nThe best fit inside the cocoon is a black hole feeding hard, buried in gas thick enough that the whole object mimics one enormous star.",
@@ -26,12 +32,6 @@
     "value": "660 M",
     "label": "years after the Big Bang, this existed"
    }
-  },
-  {
-   "eyebrow": "Why this matters",
-   "basis": "inferred",
-   "title": "If the little red dots are all built like this one, the early universe stops looking impossible.",
-   "body": "Read as dusty galaxies, the dots need more stars forming faster than there was time to build them. That is the crisis.\n\nRead as gas-wrapped black holes, the crisis may simply go away. One object cannot settle it."
   },
   {
    "eyebrow": "The setup",

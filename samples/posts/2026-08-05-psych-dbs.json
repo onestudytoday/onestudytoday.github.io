@@ -19,6 +19,12 @@
  },
  "slides": [
   {
+   "eyebrow": "What it could mean",
+   "basis": "inferred",
+   "title": "If electricity edits gene programs, stimulation could be tuned rather than simply turned up.",
+   "body": "Clinical stimulators are set by dose: more current, more relief. If the real lever is which gene program a pulse starts, timing might matter more than strength.\n\nThat would be a different dial, and nobody has built it."
+  },
+  {
    "eyebrow": "Results",
    "title": "Stimulation tightened the neuron gangs that hold a memory, and woke the support cells.",
    "body": "They mapped 19 cell assemblies, the neuron clusters that hold one memory. After stimulation those clusters fired in tighter lockstep.\n\nSeparate gene programs switched on in neurons and in astrocytes, the support cells long written off as glue.",
@@ -26,12 +32,6 @@
     "value": "19",
     "label": "memory cell assemblies mapped and tracked"
    }
-  },
-  {
-   "eyebrow": "What it could mean",
-   "basis": "inferred",
-   "title": "If electricity edits gene programs, stimulation could be tuned rather than simply turned up.",
-   "body": "Clinical stimulators are set by dose: more current, more relief. If the real lever is which gene program a pulse starts, timing might matter more than strength.\n\nThat would be a different dial, and nobody has built it."
   },
   {
    "eyebrow": "What they did",

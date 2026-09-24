@@ -358,8 +358,8 @@ def build_prompt(s: Study, rep: VetReport,
     # Read by INDEX, and the index is the post's running order. See the long
     # comment above `formats:` in copy_spec.yaml.
     ebs = list(fmt["eyebrows"])
-    eb_found = ebs[0]                                   # slide 2: the finding
-    eb_imp = ebs[1] if len(ebs) > 1 else ebs[0]         # slide 3: implications
+    eb_imp = ebs[0]                                     # slide 2: implications
+    eb_found = ebs[1] if len(ebs) > 1 else ebs[0]       # slide 3: the finding
     eb_rest = ebs[2:] or [ebs[-1]]                      # slides 4+: the rest
     rest_labels = " or ".join(f'"{e}"' for e in eb_rest)
 
@@ -447,18 +447,20 @@ def build_prompt(s: Study, rep: VetReport,
         {fmt_shape}
 
         THE RUNNING ORDER IS FIXED, AND IT IS NOT THE OBVIOUS ONE
-        The post opens on the STAKE, then proves it, then explains it.
+        The post opens on the STAKE, explains it, and only then proves it. A
+        reader who has not been given a reason to care never reaches the
+        numbers, so the numbers do not go first.
 
           COVER     cover.headline is THE IMPLICATION in one line - why a
                     person who does not work in this field should care. NOT
                     the finding. This is the only thing most people will ever
                     read, so it has to work with no context at all.
-          SLIDE 1   eyebrow "{eb_found}". THE FINDING: what was measured and
-                    what came back, with real numbers from the abstract. This
-                    is what used to be on the cover.
-          SLIDE 2   eyebrow "{eb_imp}". THE IMPLICATION, EXPLAINED - the same
+          SLIDE 1   eyebrow "{eb_imp}". THE IMPLICATION, EXPLAINED - the same
                     claim as the cover, now with room to earn it. Carries
                     `basis` (see below). No other slide carries `basis`.
+          SLIDE 2   eyebrow "{eb_found}". THE FINDING: what was measured and
+                    what came back, with real numbers from the abstract. This
+                    is what used to be on the cover.
           SLIDE 3+  eyebrow {rest_labels}. The rest: the setup, the method,
                     the mechanism. Whatever a reader who stayed this long
                     wants next.
@@ -466,16 +468,16 @@ def build_prompt(s: Study, rep: VetReport,
         These labels are fixed for this format; you cannot use labels from any
         other format, and you cannot reorder them.
         Add a `stat` object to whichever slide has the single most striking
-        number - normally slide 1. Only one slide gets a stat.
+        number - normally slide 2, the finding. Only one slide gets a stat.
 
         THE IMPLICATION - and the one field that makes it honest
-        The cover asserts it in one line; slide 2 makes the case. Both want a
+        The cover asserts it in one line; slide 1 makes the case. Both want a
         concrete consequence for an identifiable person, not a vague gesture
         at future research. "This could make serotonin easier to raise
         without a pill that hits the whole body" beats "this has important
         implications for the field", which says nothing.
 
-        Set `basis` on slide 2, and set it honestly:
+        Set `basis` on slide 1, and set it honestly:
 
           "stated"   - the PAPER says this. Abstracts very often end with
                        exactly this sentence ("these findings suggest...",
@@ -490,7 +492,7 @@ def build_prompt(s: Study, rep: VetReport,
 
         If you set "inferred", THE COVER HEADLINE IS ALSO YOURS and must be
         conditional in the same way. This is the part it would be easiest to
-        get wrong: a hedged slide 2 under a cover that states the same
+        get wrong: a hedged slide 1 under a cover that states the same
         extrapolation flatly is worse than no implication at all, because the
         cover is the slide that travels. Both are checked.
 
@@ -597,12 +599,14 @@ def lint(post: Dict[str, Any], rep: VetReport, study: Any = None) -> List[str]:
 
     # The implications slide has to be the SECOND slide.
     #
-    # Not a style preference. `basis` is what licenses that slide to go beyond
-    # the abstract, and the licence is only defensible because the finding it
-    # extrapolates from is on the page before it. A post that explains an
-    # implication before it has stated what was measured is asking the reader
-    # to take the extrapolation on trust, which is the thing the label exists
-    # to prevent. It is also the order render.py lays out.
+    # Not a style preference. The cover asserts the implication in one line
+    # and this slide is where it is earned, so it has to be the page directly
+    # after the cover - an explanation that arrives after the numbers is
+    # answering a question the reader gave up on two slides ago.
+    #
+    # The extrapolation is still not taken on trust: `basis` labels it, the
+    # fine-print slide discloses it, and the finding it rests on is on the
+    # very next page.
     # Only for copy drafted in the current shape.
     #
     # There are twenty-odd posts sitting in the queue at needs_review that were
@@ -621,8 +625,8 @@ def lint(post: Dict[str, Any], rep: VetReport, study: Any = None) -> List[str]:
                 errs.append(
                     f"GUARDRAIL the implications slide is slide "
                     f"{'?' if at is None else at + 1} of the body, and it has to "
-                    f"be slide {IMPLICATIONS_INDEX + 1} - the finding comes "
-                    f"first, then what it could mean")
+                    f"be slide {IMPLICATIONS_INDEX + 1} - why it matters "
+                    f"comes first, then the numbers behind it")
         elif slides_:
             # No slide carries `basis`, so nothing says whether the cover's
             # claim is the paper's or ours. That attribution is the shape.
@@ -1106,17 +1110,27 @@ _HEDGE = re.compile(
 from render import DISCLOSURE_CAVEAT, INFERRED_MARK  # noqa: E402,F401
 
 
-# Where the implications slide belongs in post["slides"], 0-based. Slide 1 is
-# the finding, so this is the second slide and the third page of the carousel.
-# lint() enforces it; everything else finds the slide by its `basis` field so
-# that a misplaced one is still checked rather than silently unchecked.
-IMPLICATIONS_INDEX = 1
+# Where the implications slide belongs in post["slides"], 0-based. It is the
+# FIRST body slide and the second page of the carousel: the cover asserts the
+# implication in one line and this slide earns it, before any numbers.
+#
+# It was index 1 until 24 Sep, with the finding in front of it. That order
+# spent the slide right after the hook on numbers, addressed to a reader who
+# had not yet been told why the numbers mattered.
+#
+# lint() enforces the position; everything else finds the slide by its `basis`
+# field, so a misplaced one is still checked rather than silently unchecked.
+IMPLICATIONS_INDEX = 0
 
 # Stamped onto copy produced under the current template, and checked by lint()
 # before it enforces where the implications slide sits. Bump it when the
 # running order changes again; posts carrying an older stamp, or none, keep
 # being linted for everything EXCEPT the structural rules they predate.
-SHAPE_VERSION = "implication-first-v1"
+#
+# v1 -> v2 on 24 Sep: the implications slide moved in front of the finding.
+# The bump is what stops every v1 post in the queue reporting a guardrail
+# breach for sitting where v1 told it to sit.
+SHAPE_VERSION = "implication-first-v2"
 
 
 def implications_slide(post: Dict[str, Any]) -> Optional[Dict[str, Any]]:
@@ -1178,7 +1192,7 @@ def audit(post: Dict[str, Any], s: Study) -> Dict[str, Any]:
         # for the post to have a reason to exist.
         extra = (
             "\n\nTWO PARTS OF THIS COPY ARE DIFFERENT: the COVER HEADLINE and "
-            "the SECOND SLIDE. They are the same claim - an explicitly flagged "
+            "the FIRST SLIDE. They are the same claim - an explicitly flagged "
             "extrapolation from the finding. The account discloses it: the "
             "fine-print slide carries the line " + repr(DISCLOSURE_CAVEAT) +
             ", which the renderer adds to every post in this state and which "

@@ -65,9 +65,9 @@ def _post(**over):
                    "headline": "The ocean's cheapest climate fix **buys months, "
                                "not decades.**"},
          "slides": [
-             {"eyebrow": "What they found", "title": "t", "body": "b"},
              {"eyebrow": "Why this matters", "title": "Iron seeding cannot "
               "carry the load", "body": "b", "basis": "stated"},
+             {"eyebrow": "What they found", "title": "t", "body": "b"},
              {"eyebrow": "The setup", "title": "t", "body": "b"}],
          "caveats": ["a", "b"], "cta": {"headline": "h", "sub": "s"},
          "caption": "c", "clipping": dict(CLIP)}
@@ -319,10 +319,12 @@ def test_a_clipping_with_no_screenshot_is_not_a_clipping():
 # ---------------------------------------------------------------------------
 # Rendering
 # ---------------------------------------------------------------------------
-def test_the_clipping_page_lands_right_after_the_implications_slide(shot, tmp_path):
+def test_the_clipping_page_lands_right_after_the_finding(shot, tmp_path):
+    """Claim, evidence, then who else says so. Next to the implication and
+    BEFORE the evidence is the same position now, and it is the wrong one."""
     paths = [Path(p).stem for p in
              render.render_post(_shot_post(shot), "neon", str(tmp_path / "a"))]
-    assert paths == ["01_cover", "02_what_they_found", "03_why_this_matters",
+    assert paths == ["01_cover", "02_why_this_matters", "03_what_they_found",
                      "04_clipping", "05_the_setup", "06_caveats", "07_cta"]
 
 
@@ -513,9 +515,12 @@ def test_flipping_basis_to_stated_in_the_document_is_BLOCKED():
     explicitly told to skip them."""
     from postdoc import apply_markdown, recheck, to_markdown
     was = _post()
-    was["slides"][1]["basis"] = "inferred"
+    was["slides"][0]["basis"] = "inferred"
     was["cover"]["headline"] = "This **could change** how the ocean is managed"
     was["shape"] = draft.SHAPE_VERSION
+    was["study"] = {"abstract": "An abstract with no numbers at all.",
+                    "title": "t", "journal": "Nature", "pub_date": "2026-09-23",
+                    "doi": "10.1038/x"}
     md = to_markdown(was).replace("**Basis:** inferred", "**Basis:** stated")
     after = recheck(apply_markdown(was, md), before=was)
     errs = (after.get("qa") or {}).get("lint_errors") or []
@@ -544,18 +549,18 @@ def test_a_renamed_slide_heading_cannot_break_the_render(tmp_path):
     render_post puts it in a path. `## Slide 1 - What they found / measured`
     used to raise FileNotFoundError - after the edited copy had been saved."""
     from postdoc import apply_markdown, to_markdown
-    md = to_markdown(_post()).replace("## Slide 1 - What they found",
-                                      "## Slide 1 - What they found / measured")
+    md = to_markdown(_post()).replace("## Slide 2 - What they found",
+                                      "## Slide 2 - What they found / measured")
     post = apply_markdown(_post(), md)
-    assert post["slides"][0]["eyebrow"] == "What they found / measured"
+    assert post["slides"][1]["eyebrow"] == "What they found / measured"
     paths = render.render_post(post, "neon", str(tmp_path / "a"))
     assert all(Path(p).parent == tmp_path / "a" for p in paths)
 
 
 def test_an_eyebrow_that_walks_out_of_the_directory_cannot(tmp_path):
     from postdoc import apply_markdown, to_markdown
-    md = to_markdown(_post()).replace("## Slide 1 - What they found",
-                                      "## Slide 1 - ../../../../tmp/pwned")
+    md = to_markdown(_post()).replace("## Slide 2 - What they found",
+                                      "## Slide 2 - ../../../../tmp/pwned")
     post = apply_markdown(_post(), md)
     paths = render.render_post(post, "neon", str(tmp_path / "b"))
     assert all(Path(p).parent == tmp_path / "b" for p in paths)
