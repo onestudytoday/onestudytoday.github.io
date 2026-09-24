@@ -32,7 +32,7 @@
       "eyebrow": "What it could mean",
       "basis": "stated",
       "title": "If researchers keep using different methods, we can't tell which quantum light source is actually best.",
-      "body": "Teams around the world are competing to build sources for quantum computers and secure messages. But they measure quality in different ways, so benchmarks can't be compared.\n\nThis paper shows that the choice of method changes the reported quality for the same device."
+      "body": "Teams around the world are competing to build sources for quantum computers and secure messages. But they measure quality in different ways.\n\nThis paper shows the choice of method changes the reported quality for the same device."
     },
     {
       "eyebrow": "Results",
@@ -46,7 +46,7 @@
     {
       "eyebrow": "What they did",
       "title": "The team took a quantum dot that doesn't blink and added blinking in two controlled ways.",
-      "body": "They masked recorded data after the fact and gated laser pulses to copy a blinking system. Then they ran the data through each method.\n\nFitting the long-time pattern with the correct blinking model worked best. Adjusting to the Poisson level performed worst."
+      "body": "They masked recorded data after the fact and gated laser pulses to copy a blinking system. Then they ran the data through each method.\n\nFitting the long-time pattern with the correct blinking model worked best. Poisson level adjustment performed worst."
     }
   ],
   "caveats": [
@@ -54,12 +54,12 @@
     "The experiment used quantum dots in a lab setup. Real-world quantum devices may behave differently under operating conditions."
   ],
   "cta": {
-    "headline": "Send this to the envelope-fitting sceptic",
+    "headline": "Send this to your friend following quantum computing",
     "sub": "One real study, every weekday. The full paper is linked in bio."
   },
   "caption": "When the same quantum light source gets five different quality scores depending on how you measure it",
   "hashtag_set": "physics",
-  "shape": "",
+  "shape": "implication-first-v2",
   "vet": {
     "key": "7a8d19ad7faadddb",
     "verdict": "HOLD",
@@ -94,14 +94,8 @@
   },
   "qa": {
     "format": "procedural",
-    "lint_errors": [
-      "slide1.body: 43 words, spec is 30-40",
-      "slide3.body: 42 words, spec is 30-40",
-      "STYLE cta names nothing from the study - it would fit any post on the account, which is what makes it read as filler"
-    ],
-    "style_flags": [
-      "cta names nothing from the study - it would fit any post on the account, which is what makes it read as filler"
-    ],
+    "lint_errors": [],
+    "style_flags": [],
     "repair_rounds": 2,
     "audit": {
       "supported": true,
@@ -115,7 +109,8 @@
     },
     "blocking_claims": [],
     "unverified_numbers": [],
-    "publishable": false
+    "publishable": true,
+    "revised": 1
   },
   "status": "needs_review",
   "source": {
@@ -148,5 +143,76 @@
     "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/Wey_source_farringdon.jpg/1920px-Wey_source_farringdon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/D-Wave_Two_512_qubit_Vesuvius_chip.jpg/1920px-D-Wave_Two_512_qubit_Vesuvius_chip.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   ],
-  "render_seq": 1
+  "render_seq": 2,
+  "revisions": [
+    {
+      "instruction": "replace \"send this to the envelope-fitting sceptic\" with \"send this to your friend following quantum computing\"",
+      "previous": {
+        "cover": {
+          "kicker": "arXiv (preprint, not reviewed)",
+          "headline": "**Different ways of measuring quantum light sources** can make identical devices look better or worse on paper"
+        },
+        "slides": [
+          {
+            "eyebrow": "What it could mean",
+            "basis": "stated",
+            "title": "If researchers keep using different methods, we can't tell which quantum light source is actually best.",
+            "body": "Teams around the world are competing to build sources for quantum computers and secure messages. But they measure quality in different ways, so benchmarks can't be compared.\n\nThis paper shows that the choice of method changes the reported quality for the same device."
+          },
+          {
+            "eyebrow": "Results",
+            "title": "The team tested five methods now used in published papers to measure the same blinking quantum dot.",
+            "body": "One method matched the true no-blinking result closely. Another gave results that were far off the mark.\n\nThe researchers then used their model to identify the blinking pattern in a quantum dot inside a circular Bragg grating cavity.",
+            "stat": {
+              "value": "5",
+              "label": "different analysis methods compared"
+            }
+          },
+          {
+            "eyebrow": "What they did",
+            "title": "The team took a quantum dot that doesn't blink and added blinking in two controlled ways.",
+            "body": "They masked recorded data after the fact and gated laser pulses to copy a blinking system. Then they ran the data through each method.\n\nFitting the long-time pattern with the correct blinking model worked best. Adjusting to the Poisson level performed worst."
+          }
+        ],
+        "caveats": [
+          "This is a preprint. No independent expert has checked the work yet, because it hasn't been peer reviewed.",
+          "The experiment used quantum dots in a lab setup. Real-world quantum devices may behave differently under operating conditions."
+        ],
+        "cta": {
+          "headline": "Send this to the envelope-fitting sceptic",
+          "sub": "One real study, every weekday. The full paper is linked in bio."
+        },
+        "caption": "When the same quantum light source gets five different quality scores depending on how you measure it"
+      },
+      "previous_shape": "",
+      "previous_qa": {
+        "format": "procedural",
+        "lint_errors": [
+          "slide1.body: 43 words, spec is 30-40",
+          "slide3.body: 42 words, spec is 30-40",
+          "STYLE cta names nothing from the study - it would fit any post on the account, which is what makes it read as filler"
+        ],
+        "style_flags": [
+          "cta names nothing from the study - it would fit any post on the account, which is what makes it read as filler"
+        ],
+        "repair_rounds": 2,
+        "audit": {
+          "supported": true,
+          "unsupported_claims": [],
+          "numbers_check": [
+            {
+              "number": "5",
+              "found_in_abstract": true
+            }
+          ]
+        },
+        "blocking_claims": [],
+        "unverified_numbers": [],
+        "publishable": false
+      },
+      "lint_errors": [],
+      "style_flags": [],
+      "repair_rounds": 2
+    }
+  ]
 }
