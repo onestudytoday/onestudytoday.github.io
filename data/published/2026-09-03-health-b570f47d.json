@@ -130,7 +130,7 @@
       "number not in the abstract: 2026"
     ]
   },
-  "status": "approved",
+  "status": "published",
   "source": {
     "abstract": "The interface around a dental implant behaves as a dynamic ecosystem. The metal surface, the colonizing microbiota, and the host immune network continually interact rather than remaining inert neighbors. Once this equilibrium breaks, a destructive cascade can feed on itself. This challenges the older view that peri-implantitis stems only from plaque infection or from mechanical overload. We integrate evidence from the peri-implantitis microenvironment to build a framework organized around an immune-microbe-metal triad, which we use to explain how biomaterials corrode in this disease. Three pillars carry intrinsic weaknesses: the titanium passive film, the biofilm's ecological balance, and host immune tolerance. When these fail together, they set off an autocatalytic corrosion cycle. Key molecular mediators-lipopolysaccharide (LPS), intracellular metal nanoparticles, and neutrophil extracellular traps (NETs)-amplify the damage. The cycle then lowers the threshold for inflammatory cell-induced corrosion (ICIC), and tissue destruction advances toward irreversibility. Against this framework we assess current therapies and where they fall short. In their place we propose multi-targeted, ecosystem-level strategies that hit the cycle at several points, aiming to restore interfacial homeostasis. Treating peri-implantitis as a nonlinear, self-reinforcing system reframes how we understand its pathogenesis, offering a roadmap toward next-generation biomaterials and combination therapies suited to the complexity of the implant-host interface.",
     "source": "europepmc",
@@ -420,5 +420,19 @@
   ],
   "review": {
     "forced": true
+  },
+  "published": {
+    "media_id": "17867012949660689",
+    "kind": "CAROUSEL",
+    "at": "2026-09-24T01:52:27Z"
+  },
+  "crosspost": {
+    "at": "2026-09-24T01:52:27Z",
+    "posted": [],
+    "skipped": [
+      "bluesky",
+      "threads"
+    ],
+    "failed": {}
   }
 }
