@@ -1,0 +1,154 @@
+{
+  "id": "2026-09-23-physics-bfa5da98",
+  "niche": "physics",
+  "study": {
+    "key": "bfa5da98343aac1d",
+    "title": "JWST evidence for a sharp \"Cosmic Daybreak\" at z = 15",
+    "journal": "arXiv",
+    "pub_date": "2026-09-23",
+    "pub_date_display": "Sep 23, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2609.28257v1",
+    "url": "http://arxiv.org/abs/2609.28257v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Jiashuo Zhang",
+      "Tom Broadhurst",
+      "Tzihong Chiueh",
+      "Keiichi Umetsu",
+      "Hsi-Yu Schive",
+      "Chian-Chou Chen"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "arXiv preprint, not reviewed",
+    "headline": "**Early JWST data may suggest galaxies ignited suddenly** at a specific moment, not gradually as expected"
+  },
+  "slides": [
+    {
+      "eyebrow": "What they found",
+      "title": "The team reports that stellar ages in high-redshift galaxies converge to zero by z=15, with no earlier star formation.",
+      "body": "JWST has found bright young galaxies out to z=14.5. But deeper searches for fainter, earlier ones now turn up only misidentified objects.\n\nThe stars in these distant galaxies all appear to have formed recently, with no older populations.",
+      "stat": {
+        "value": "z = 15",
+        "label": "where stellar ages hit zero"
+      }
+    },
+    {
+      "eyebrow": "Why this matters",
+      "basis": "stated",
+      "title": "The paper argues this sharp cutoff confirms a prediction of Wave Dark Matter models.",
+      "body": "Standard dark matter predicts a gradual Cosmic Dawn. Galaxies should appear progressively fainter as you look back.\n\nInstead, this early paper suggests a late, abrupt transition. That matches ultra-light boson dark matter, not heavy particles."
+    },
+    {
+      "eyebrow": "The mechanism",
+      "title": "In Wave Dark Matter, quantum pressure resists collapse until gas clouds reach 4 billion solar masses at z=15.",
+      "body": "The team calculates a boson mass of 2.2 \u00d7 10\u207b\u00b2\u00b2 eV. That figure is similar to independent estimates from lensing and dwarf galaxies.\n\nThe highest-redshift galaxy luminosities converge to the predicted scale, not the lower values standard models expect."
+    }
+  ],
+  "caveats": [
+    "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+    "The interpretation depends on stellar age estimates, which carry large uncertainties at these extreme distances.",
+    "Wave Dark Matter remains a minority hypothesis. Most cosmologists work with cold dark matter made of heavy particles."
+  ],
+  "cta": {
+    "headline": "Send this to the dark matter skeptic",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "JWST may have found the exact moment the first galaxies switched on, and it doesn't match the standard dark matter story.",
+  "hashtag_set": "physics",
+  "shape": "",
+  "vet": {
+    "key": "bfa5da98343aac1d",
+    "verdict": "HOLD",
+    "score": 42,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "explainer",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "z=14.5",
+          "found_in_abstract": true
+        },
+        {
+          "number": "z=15",
+          "found_in_abstract": true
+        },
+        {
+          "number": "4 billion solar masses",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2.2 \u00d7 10\u207b\u00b2\u00b2",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": true
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Luminous young galaxies have been uncovered with relative ease by JWST, extending to z=14.5, so it is puzzling that deeper spectroscopy of fainter candidates now finds only interlopers. This redshift `\u00ecmpasse\" is underscored by the measured stellar ages of these high-z galaxies, which we show converge to zero by z=15, with a marked absence of earlier star-formation. Taken literally, such a late transition from the Dark Ages to luminous galaxies is unlike the gradual Cosmic Dawn of standard LCDM, but does confirm a key prediction of Wave Dark Matter, $\u03c8$DM, as a Bose-Einstein condensate. The de Broglie wave pressure resists gravity until a substantial Jeans mass of $4\\times 10^9M_\\odot$ is overcome at z$=$15, corresponding to a light boson $m_\u03c8=2.2_{-0.3}^{+0.4} \\times 10^{-22}$eV, and similar to independent estimates from lensing anomalies and dwarf galaxies. Furthermore, the substantial luminosities of the highest redshift galaxies appear to converge to the initial Jeans scale of $\u03c8$DM, whereas LCDM predictions extend to lower luminosities and larger ages than observed. These contrasting predictions can be definitively tested as JWST observations accumulate, with diametric implications for Dark Matter as heavy particles beyond the Standard Model, or ultra-light bosons motivated by the String Axiverse.",
+    "source": "arxiv",
+    "ext_id": "2609.28257v1",
+    "pub_types": [
+      "astro-ph.CO",
+      "astro-ph.GA"
+    ],
+    "publisher": "arXiv",
+    "license": ""
+  },
+  "source_niche": "physics",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/Antennae_galaxies_xl.jpg/1920px-Antennae_galaxies_xl.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "Public domain",
+    "author": "NASA, ESA, and the Hubble Heritage Team (STScI/AURA)-ESA/Hubble Collaboration",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Antennae galaxies xl.jpg",
+    "query": "galaxy",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-09-23-physics-bfa5da98/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'physics'"
+  }
+}
