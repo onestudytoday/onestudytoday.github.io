@@ -1,0 +1,173 @@
+{
+  "id": "2026-09-23-physics-550b2776",
+  "niche": "physics",
+  "study": {
+    "key": "550b27768f4e1e41",
+    "title": "A sub-100 pc view at z~5 of a Multiply-Imaged Massive Quiescent Galaxy",
+    "journal": "arXiv",
+    "pub_date": "2026-09-23",
+    "pub_date_display": "Sep 23, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2609.28474v1",
+    "url": "http://arxiv.org/abs/2609.28474v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Richard Pan",
+      "Danilo Marchesini",
+      "Joseph F. V. Allingham",
+      "Seiji Fujimoto",
+      "Adi Zitrin",
+      "Dan Coe"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "arXiv \u2022 gravitational lensing",
+    "headline": "Early-universe galaxies may **not be as dense** as astronomers thought, magnified observations suggest."
+  },
+  "slides": [
+    {
+      "eyebrow": "What the data says",
+      "title": "A massive quenched galaxy at z=5.18 shows twice the expected radius and half a dex lower central density.",
+      "body": "The team reports that gravitational lensing magnified this post-starburst galaxy by up to 11 times, achieving 70 pc resolution.\n\nThe galaxy stopped forming stars without the dense core that models assume, and shows off-center ionized gas.",
+      "stat": {
+        "value": "2\u00d7",
+        "label": "larger than expected radius"
+      }
+    },
+    {
+      "eyebrow": "Why you should care",
+      "title": "If this holds up, unresolved telescope images may overestimate how tightly packed early galaxies really are.",
+      "basis": "stated",
+      "body": "Most high-redshift galaxies appear compact because instruments blur them. This magnified view shows that one massive galaxy is more spread out than it looks.\n\nTheoretical models may need new ways to explain how galaxies stopped forming stars so early."
+    },
+    {
+      "eyebrow": "The assumption",
+      "title": "Cosmological simulations assume rapid star formation followed by compaction-driven quenching in the early universe.",
+      "body": "Models require baryons to convert into stars efficiently, then stop abruptly. That shutdown is thought to go hand in hand with a dense, compacted core.\n\nBut this galaxy quenched without one, suggesting alternative pathways exist."
+    }
+  ],
+  "caveats": [
+    "This is a preprint. It has not been peer reviewed yet, so no independent expert has checked the work.",
+    "This study found a pattern, not a cause. Something else could explain the link between low density and early quenching.",
+    "This is one galaxy. The team cannot yet say how common this structure is among early quenched systems."
+  ],
+  "cta": {
+    "headline": "Send this to anyone who models early galaxies",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Gravitational lensing reveals that at least one massive early galaxy is less dense than telescope blur makes it look.",
+  "hashtag_set": "physics",
+  "shape": "",
+  "vet": {
+    "key": "550b27768f4e1e41",
+    "verdict": "HOLD",
+    "score": 28,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      },
+      {
+        "code": "CORRELATIONAL",
+        "severity": "warn",
+        "message": "Design reads as observational (cross-sectional (observational)); markers: survey",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      },
+      {
+        "code": "CAUSAL_LANGUAGE_IN_OBSERVATIONAL",
+        "severity": "warn",
+        "message": "The paper's own text uses causal verbs (cured) despite an observational design. The authors are overreaching - do not repeat it.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "cross-sectional (observational)",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": true,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'.",
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "reversal",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "z=5.18",
+          "found_in_abstract": true
+        },
+        {
+          "number": "11",
+          "found_in_abstract": true
+        },
+        {
+          "number": "70 pc",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2\u00d7 (twice)",
+          "found_in_abstract": true
+        },
+        {
+          "number": "half a dex",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": true
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Recent James Webb Space Telescope spectroscopic surveys reveal an abundance of rapidly assembled early galaxies in the first billion years. Cosmological simulations struggle to reproduce this population because models require a rapid, highly efficient conversion of baryons into stars followed by an abrupt cessation of star-formation, known as quenching, in the early Universe. Testing these theoretical models remains difficult because high-redshift field galaxies appear compact and unresolved. This lack of resolution makes it impossible to distinguish compaction-driven quenching from secular evolution. Here we present VENUS-CLJ0152-QG1, a massive post-starburst galaxy at $z=5.18\\pm0.15$, with inferred low-levels of star-formation in the last 30 Myr. The foreground cluster CL J0152.7-1357 gravitationally lenses the system into three images with median magnifications of $\u03bc\\sim$ 7, 11, and 0.6. This geometry yields a physical resolution of $\\sim 70$ pc, a factor of $\\sim 7$ better than the JWST/NIRCam fundamental blurring limit (full-width half-maximum of $\\sim$0.48 kpc at $z\\sim5$). Our two-dimensional mapping reveals a half-light radius twice as large as expected, a central stellar mass surface density half a dex lower than field analogs, and off-center ionized gas emission. Together, these features show that VENUS-CLJ0152-QG1 abruptly ceased star formation in the absence of a compaction event or an obvious active galactic nucleus. Consequently, this galaxy shows that unresolved observations likely overestimate the global densities of early galaxies, and that theoretical models require alternative pathways to quench massive sources without relying on compaction or unobscured AGN.",
+    "source": "arxiv",
+    "ext_id": "2609.28474v1",
+    "pub_types": [
+      "astro-ph.GA"
+    ],
+    "publisher": "arXiv",
+    "license": ""
+  },
+  "source_niche": "physics",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/Explosion_of_the_Observation_%28Btv1b9036117m_f1%29.jpg/1920px-Explosion_of_the_Observation_%28Btv1b9036117m_f1%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "Public domain",
+    "author": "Acme Newspicture",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Explosion of the Observation (Btv1b9036117m f1).jpg",
+    "query": "observation",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-09-23-physics-550b2776/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'physics'"
+  }
+}
