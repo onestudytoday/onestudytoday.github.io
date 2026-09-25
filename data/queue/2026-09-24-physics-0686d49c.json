@@ -1,0 +1,230 @@
+{
+  "id": "2026-09-24-physics-0686d49c",
+  "niche": "wildcard",
+  "study": {
+    "key": "0686d49c21771450",
+    "title": "DKIST unveils MHD-predicted sub-50 km photospheric vortices",
+    "journal": "arXiv",
+    "pub_date": "2026-09-24",
+    "pub_date_display": "Sep 24, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2609.30051v1",
+    "url": "http://arxiv.org/abs/2609.30051v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "S. Vargas Dominguez",
+      "O. A. Calvo Rebellon",
+      "J. S. Castellanos Duran",
+      "M. van Noort",
+      "F. W\u00f6ger",
+      "D. A. Rodriguez Torres"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "arXiv \u00b7 12.3 km resolution",
+    "headline": "A solar telescope has captured **spinning plasma vortices smaller than any model predicted** could be seen."
+  },
+  "slides": [
+    {
+      "eyebrow": "Why you should care",
+      "basis": "stated",
+      "title": "The telescope gives scientists their first direct look at the tiny spinning vortices that theory says drive solar energy upward.",
+      "body": "These spinning structures may transport energy and magnetic twist from the sun's surface into its outer atmosphere. Models predicted they exist at 50 to 100 km across, but no tool could see them.\n\nDKIST's sharpness is 12.3 km. That opens a window into how the sun's smallest spinning flows behave."
+    },
+    {
+      "eyebrow": "What the data says",
+      "title": "The team reports 201 vortex detections in 3.2 minutes, with a median diameter of 38.6 km.",
+      "body": "Virtually all detections were smaller than 50 km, placing them in the regime that models predict but no one had observed. Median swirling period was 37.3 seconds.\n\nThere was no preference for one spin direction over the other. That fits theory: Coriolis force is too weak at these scales.",
+      "stat": {
+        "value": "38.6 km",
+        "label": "median vortex diameter"
+      }
+    },
+    {
+      "eyebrow": "The assumption",
+      "title": "Previous solar telescopes lacked the sharpness to confirm that vortices this small exist.",
+      "body": "DKIST is a 4-meter telescope observing at 416 nanometers. It analyzed a bright patch on the sun's surface containing concentrated magnetic fields.\n\nThe observations cover a field of view of 4.92 by 4.13 megameters across 143 frames."
+    }
+  ],
+  "caveats": [
+    "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+    "This study found a pattern, not a cause. Something else could explain the link between vortex size and the magnetic environment."
+  ],
+  "cta": {
+    "headline": "Send this to anyone who quotes solar physics models",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "A solar telescope with record sharpness has spotted spinning plasma vortices smaller than models predicted anyone would ever see directly.",
+  "hashtag_set": "physics",
+  "shape": "",
+  "vet": {
+    "key": "0686d49c21771450",
+    "verdict": "HOLD",
+    "score": 36,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      },
+      {
+        "code": "CORRELATIONAL",
+        "severity": "note",
+        "message": "Design reads as observational (modelling); markers: observational",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      }
+    ],
+    "design": "modelling",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'.",
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "reversal",
+    "lint_errors": [
+      "slide1.body: 51 words, spec is 30-40",
+      "slide2.body: 50 words, spec is 30-40",
+      "slide2.stat.label: 3 words, spec is 4-10"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "spinning plasma vortices smaller than any model predicted could be seen",
+          "problem": "The abstract states that numerical simulations PREDICT vortices of 50-100 km diameter and that these fall within the subgranular regime PREDICTED by magnetohydrodynamic simulations. The copy claims they are smaller than models predicted could be seen, but the abstract indicates models did predict their existence at these scales.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "A solar telescope with record sharpness has spotted spinning plasma vortices smaller than models predicted anyone would ever see directly",
+          "problem": "Same issue - the abstract says simulations predicted vortices at 50-100 km, and the observations found vortices with median 38.6 km that fall within the subgranular regime predicted by simulations. The abstract does not say models predicted no one would ever see them directly.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Models predicted they exist at 50 to 100 km across",
+          "problem": "The abstract states simulations predict vortices with diameters of 50-100 km, but the observed vortices have a median diameter of 38.6 km and mean of 39.5\u00b13.3 km. The copy's phrasing suggests models predicted 50-100 km as the size of small vortices, but the observations show they are actually smaller than this predicted range.",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "12.3 km",
+          "found_in_abstract": true
+        },
+        {
+          "number": "201",
+          "found_in_abstract": true
+        },
+        {
+          "number": "3.2 minutes",
+          "found_in_abstract": true
+        },
+        {
+          "number": "38.6 km",
+          "found_in_abstract": true
+        },
+        {
+          "number": "50 km",
+          "found_in_abstract": true
+        },
+        {
+          "number": "37.3 seconds",
+          "found_in_abstract": true
+        },
+        {
+          "number": "4-meter",
+          "found_in_abstract": true
+        },
+        {
+          "number": "416 nanometers",
+          "found_in_abstract": true
+        },
+        {
+          "number": "4.92",
+          "found_in_abstract": true
+        },
+        {
+          "number": "4.13",
+          "found_in_abstract": true
+        },
+        {
+          "number": "143",
+          "found_in_abstract": true
+        },
+        {
+          "number": "50 to 100 km",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "spinning plasma vortices smaller than any model predicted could be seen",
+        "problem": "The abstract states that numerical simulations PREDICT vortices of 50-100 km diameter and that these fall within the subgranular regime PREDICTED by magnetohydrodynamic simulations. The copy claims they are smaller than models predicted could be seen, but the abstract indicates models did predict their existence at these scales.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "A solar telescope with record sharpness has spotted spinning plasma vortices smaller than models predicted anyone would ever see directly",
+        "problem": "Same issue - the abstract says simulations predicted vortices at 50-100 km, and the observations found vortices with median 38.6 km that fall within the subgranular regime predicted by simulations. The abstract does not say models predicted no one would ever see them directly.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Solar vortices are rotating plasma structures that play a key role in the transport of energy and magnetic helicity from the photosphere to the chromosphere and corona. While numerical simulations predict the existence of small-scale photospheric vortices with diameters of $50$--$100$ km, no direct observational evidence has been reported to date, primarily because of the limited spatial resolution of previous instrumentation. Here, we analyze high-resolution observations obtained with the 4-meter Daniel K. Inouye Solar Telescope (DKIST) at 416 nm, with a spatial resolution of 12.3 km. Using Fourier local correlation tracking and the swirling strength criterion ($\u03bb_{\\rm ci}$), we identify 201 vortex detections across a sequence of 143 reconstructed frames, spanning approximately 3.2 minutes, within a field of view of $4.92 \\times 4.13$ Mm. The observations cover a photospheric plage region containing pore-like magnetic concentrations. The detected vortices have a median equivalent diameter of 38.6 km and a mean diameter of $39.5 \\pm 3.3$ km. Virtually all detections are smaller than 50 km and therefore fall within the subgranular regime predicted by magnetohydrodynamic simulations but never previously observed. The median swirling period, $\u03c4_{\\rm ci}=37.3$ s, satisfies the $\u03c4_{\\rm ci}<100$ s criterion established by MURaM simulations. No statistically significant preference is found for prograde rotation (53.7\\%) over retrograde rotation (46.3\\%), consistent with the negligible influence of the Coriolis force at subgranular scales. These results demonstrate the unique capability of DKIST to resolve the population of photospheric convective vortices predicted by state-of-the-art magnetoconvection simulations, opening a new observational window into small-scale solar convective dynamics.",
+    "source": "arxiv",
+    "ext_id": "2609.30051v1",
+    "pub_types": [
+      "astro-ph.SR"
+    ],
+    "publisher": "arXiv",
+    "license": ""
+  },
+  "source_niche": "physics",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/Airplane_vortex_edit.jpg/1920px-Airplane_vortex_edit.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "Public domain",
+    "author": "NASA Langley Research Center (NASA-LaRC), Edited by Fir0002",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Airplane vortex edit.jpg",
+    "query": "vortice",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-09-24-physics-0686d49c/bg/cover.jpg"
+  },
+  "reel": {
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-09-24-physics-0686d49c/reel.mp4",
+    "duration": 19.2,
+    "bytes": 4283242
+  },
+  "reel_status": {
+    "built": true,
+    "duration": 19.2,
+    "bytes": 4283242
+  }
+}
