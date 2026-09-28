@@ -1,0 +1,174 @@
+{
+  "id": "2026-08-31-nature-7ac31c9b",
+  "niche": "nature",
+  "study": {
+    "key": "7ac31c9b011ddeec",
+    "title": "Dual metabolic checkpoint blockade &lt;i&gt;via&lt;/i&gt; a 3D-Printed metalloplatform remodels the tumor ecosystem for systemic antitumor immunity",
+    "journal": "Bioactive materials",
+    "pub_date": "2026-08-31",
+    "pub_date_display": "Aug 31, 2026",
+    "doi": "10.1016/j.bioactmat.2026.08.034",
+    "doi_display": "doi.org/10.1016/j.bioactmat.2026.08.034",
+    "url": "https://doi.org/10.1016/j.bioactmat.2026.08.034",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Meng X",
+      "Liu Z",
+      "Hao Y",
+      "Zhu Y",
+      "Gu J",
+      "Zhong H"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Bioactive Materials, dual-target implant",
+    "headline": "A 3D-printed metal implant placed in one tumor **shrank a second tumor across the body** without direct treatment."
+  },
+  "slides": [
+    {
+      "eyebrow": "What it means for you",
+      "basis": "stated",
+      "title": "Local treatment that triggers whole-body immune response could change how spreading cancer is managed.",
+      "body": "The platform reprogrammed the immune setting around the treated tumor. That change trained immune cells to recognize and attack distant cancer.\n\nThe approach may offer a way to treat disease that has spread without targeting every site."
+    },
+    {
+      "eyebrow": "The result",
+      "title": "A single implant in a primary breast tumor cleared distant untreated sites in mice.",
+      "body": "The 3D-printed copper-manganese alloy released ions that disrupted sugar processing in cancer cells and reprogrammed suppressive macrophages. The remodeled immune cells then cleared tumors elsewhere in the body.\n\nThe effect depended on immune system changes, not just local poison effects.",
+      "stat": {
+        "value": "1 dose",
+        "label": "to clear distant tumors"
+      }
+    },
+    {
+      "eyebrow": "How it works",
+      "title": "The implant exploits a split in how cancer cells and immune cells handle fuel.",
+      "body": "Cancer cells run on hyperactive sugar burning. Nearby macrophages that suppress the immune response rely on fructose instead.\n\nManganese ions block sugar use in cancer but increase fructose use in macrophages. Adding a fructose blocker flips those cells from pro-tumor to anti-tumor."
+    }
+  ],
+  "caveats": [
+    "This was tested in a mouse model of breast cancer, not in people. Human trials have not been reported.",
+    "The study does not report how long the effect lasted or whether it worked across different cancer types.",
+    "The paper does not specify poison data, implant breakdown rates, or clinical use in humans."
+  ],
+  "cta": {
+    "headline": "Send this to anyone tracking spreading cancer treatment",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "A single implant in one tumor site trained the immune system to recognize and destroy cancer elsewhere in the body.",
+  "hashtag_set": "health",
+  "shape": "",
+  "vet": {
+    "key": "7ac31c9b011ddeec",
+    "verdict": "PASS",
+    "score": 54,
+    "flags": [
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Bioactive materials' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "stakes",
+    "lint_errors": [
+      "slide3.body: 42 words, spec is 30-40"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "shrank a second tumor across the body",
+          "problem": "The abstract states the platform 'eradicated distant untreated lesions', not that it shrank them. Eradication is complete removal, whereas shrinking implies partial reduction.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "A single implant in a primary breast tumor cleared distant untreated sites in mice",
+          "problem": "The abstract describes a 'bilateral breast carcinoma model' where the implant 'eradicated distant untreated lesions', but does not specify that one tumor was 'primary' and the other 'distant' - bilateral means two-sided, which could mean symmetric tumors rather than primary/metastatic relationship.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Manganese ions block sugar use in cancer",
+          "problem": "The abstract states manganese ions 'selectively suggest a potential inhibitory effect on glycolysis' - this is tentative language about a potential effect, not a definitive statement that they block sugar use.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "1 dose to clear distant tumors",
+          "problem": "While the abstract mentions 'a single intratumoral implantation', it does not use the term 'dose' or confirm that distant tumors were 'cleared' (the abstract says 'eradicated distant untreated lesions' and 'inhibited distant tumor growth' - these are different claims with the latter being weaker).",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "1 dose",
+          "found_in_abstract": true
+        },
+        {
+          "number": "3D",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "shrank a second tumor across the body",
+        "problem": "The abstract states the platform 'eradicated distant untreated lesions', not that it shrank them. Eradication is complete removal, whereas shrinking implies partial reduction.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Manganese ions block sugar use in cancer",
+        "problem": "The abstract states manganese ions 'selectively suggest a potential inhibitory effect on glycolysis' - this is tentative language about a potential effect, not a definitive statement that they block sugar use.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "The immunosuppressive tumor microenvironment limits the efficacy of therapies that target metabolism. Here we show a strategy of dual metabolic regulation that simultaneously reprogramming glycolysis in cancer cells and fructose metabolism in tumor-associated macrophages, transforms the metabolic ecosystem from pro-tumor to antitumor, eliciting systemic immunity. Through pan-cancer single-cell analysis, we identified a metabolic division of labor: cancer cells exhibit hyperactive glycolysis, while immunosuppressive macrophages display elevated fructose metabolism. We uncovered that manganese ions (Mn 2+ ) selectively suggest a potential inhibitory effect on glycolysis, induce pyroptosis, yet paradoxically upregulate fructose metabolism in M2-like macrophages, creating an exploitable vulnerability. To harness this dual activity, we engineered a 3D-printed nanoporous Cu-Mn alloy (CuMn) that provides sustained intratumoral release of Mn 2+ and delivers a fructokinase inhibitor. In a bilateral breast carcinoma model, a single intratumoral implantation of this platform suppressed primary tumor growth and eradicated distant untreated lesions. Therapeutic efficacy was associated with macrophage reprogramming, which remodeled the immune microenvironment, alleviated T cell exhaustion, and inhibited distant tumor growth, suggesting potential systemic antitumor effects. Local delivery of the nano platform offers a strategy to overcome tumor immunosuppression and enhance cancer immunotherapy.",
+    "source": "europepmc",
+    "ext_id": "MED:42724565",
+    "pub_types": [
+      "research-article",
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "http://creativecommons.org/licenses/by-nc-nd/4.0/;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "nature",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Polio_physical_therapy.jpg/1920px-Polio_physical_therapy.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "Public domain",
+    "author": "Photo Credit:\nContent Providers: CDC/Charles Farmer",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Polio physical therapy.jpg",
+    "query": "treatment",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-08-31-nature-7ac31c9b/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'nature'"
+  }
+}
