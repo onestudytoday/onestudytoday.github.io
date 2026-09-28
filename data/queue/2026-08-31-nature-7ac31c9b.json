@@ -144,7 +144,7 @@
     "unverified_numbers": [],
     "publishable": false
   },
-  "status": "needs_review",
+  "status": "approved",
   "source": {
     "abstract": "The immunosuppressive tumor microenvironment limits the efficacy of therapies that target metabolism. Here we show a strategy of dual metabolic regulation that simultaneously reprogramming glycolysis in cancer cells and fructose metabolism in tumor-associated macrophages, transforms the metabolic ecosystem from pro-tumor to antitumor, eliciting systemic immunity. Through pan-cancer single-cell analysis, we identified a metabolic division of labor: cancer cells exhibit hyperactive glycolysis, while immunosuppressive macrophages display elevated fructose metabolism. We uncovered that manganese ions (Mn 2+ ) selectively suggest a potential inhibitory effect on glycolysis, induce pyroptosis, yet paradoxically upregulate fructose metabolism in M2-like macrophages, creating an exploitable vulnerability. To harness this dual activity, we engineered a 3D-printed nanoporous Cu-Mn alloy (CuMn) that provides sustained intratumoral release of Mn 2+ and delivers a fructokinase inhibitor. In a bilateral breast carcinoma model, a single intratumoral implantation of this platform suppressed primary tumor growth and eradicated distant untreated lesions. Therapeutic efficacy was associated with macrophage reprogramming, which remodeled the immune microenvironment, alleviated T cell exhaustion, and inhibited distant tumor growth, suggesting potential systemic antitumor effects. Local delivery of the nano platform offers a strategy to overcome tumor immunosuppression and enhance cancer immunotherapy.",
     "source": "europepmc",
@@ -175,5 +175,8 @@
     "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Polio_physical_therapy.jpg/1920px-Polio_physical_therapy.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "https://upload.wikimedia.org/wikipedia/commons/4/44/Common_Dendritic_Cell_Progenitor_Cell_%28NIH_BioArt_82%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
   ],
-  "render_seq": 1
+  "render_seq": 1,
+  "review": {
+    "forced": true
+  }
 }
