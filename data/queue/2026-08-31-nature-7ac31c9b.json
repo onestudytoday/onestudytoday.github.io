@@ -158,17 +158,22 @@
   },
   "source_niche": "nature",
   "cover_art": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Polio_physical_therapy.jpg/1920px-Polio_physical_therapy.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/44/Common_Dendritic_Cell_Progenitor_Cell_%28NIH_BioArt_82%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
     "licence": "Public domain",
-    "author": "Photo Credit:\nContent Providers: CDC/Charles Farmer",
+    "author": "Courtesy of NIAID\n\nRyan Kissinger",
     "needs_credit": false,
     "source": "Wikimedia Commons",
-    "page": "File:Polio physical therapy.jpg",
-    "query": "treatment",
+    "page": "File:Common Dendritic Cell Progenitor Cell (NIH BioArt 82).png",
+    "query": "cell illustration cell",
     "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-08-31-nature-7ac31c9b/bg/cover.jpg"
   },
   "reel_status": {
     "built": false,
     "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'nature'"
-  }
+  },
+  "cover_art_tried": [
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Polio_physical_therapy.jpg/1920px-Polio_physical_therapy.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "https://upload.wikimedia.org/wikipedia/commons/4/44/Common_Dendritic_Cell_Progenitor_Cell_%28NIH_BioArt_82%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+  ],
+  "render_seq": 1
 }
