@@ -144,7 +144,7 @@
     "unverified_numbers": [],
     "publishable": false
   },
-  "status": "approved",
+  "status": "published",
   "source": {
     "abstract": "The immunosuppressive tumor microenvironment limits the efficacy of therapies that target metabolism. Here we show a strategy of dual metabolic regulation that simultaneously reprogramming glycolysis in cancer cells and fructose metabolism in tumor-associated macrophages, transforms the metabolic ecosystem from pro-tumor to antitumor, eliciting systemic immunity. Through pan-cancer single-cell analysis, we identified a metabolic division of labor: cancer cells exhibit hyperactive glycolysis, while immunosuppressive macrophages display elevated fructose metabolism. We uncovered that manganese ions (Mn 2+ ) selectively suggest a potential inhibitory effect on glycolysis, induce pyroptosis, yet paradoxically upregulate fructose metabolism in M2-like macrophages, creating an exploitable vulnerability. To harness this dual activity, we engineered a 3D-printed nanoporous Cu-Mn alloy (CuMn) that provides sustained intratumoral release of Mn 2+ and delivers a fructokinase inhibitor. In a bilateral breast carcinoma model, a single intratumoral implantation of this platform suppressed primary tumor growth and eradicated distant untreated lesions. Therapeutic efficacy was associated with macrophage reprogramming, which remodeled the immune microenvironment, alleviated T cell exhaustion, and inhibited distant tumor growth, suggesting potential systemic antitumor effects. Local delivery of the nano platform offers a strategy to overcome tumor immunosuppression and enhance cancer immunotherapy.",
     "source": "europepmc",
@@ -178,5 +178,19 @@
   "render_seq": 1,
   "review": {
     "forced": true
+  },
+  "published": {
+    "media_id": "17967429372170597",
+    "kind": "CAROUSEL",
+    "at": "2026-09-28T23:55:50Z"
+  },
+  "crosspost": {
+    "at": "2026-09-28T23:55:50Z",
+    "posted": [],
+    "skipped": [
+      "bluesky",
+      "threads"
+    ],
+    "failed": {}
   }
 }
