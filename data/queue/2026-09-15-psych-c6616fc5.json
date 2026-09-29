@@ -1,0 +1,148 @@
+{
+  "id": "2026-09-15-psych-c6616fc5",
+  "niche": "psych",
+  "study": {
+    "key": "c6616fc513b12598",
+    "title": "Dismantling the eDNA-mediated H&lt;sub&gt;2&lt;/sub&gt;S barrier with biohybrids against refractory biofilm infections",
+    "journal": "Bioactive materials",
+    "pub_date": "2026-09-15",
+    "pub_date_display": "Sep 15, 2026",
+    "doi": "10.1016/j.bioactmat.2026.08.049",
+    "doi_display": "doi.org/10.1016/j.bioactmat.2026.08.049",
+    "url": "https://doi.org/10.1016/j.bioactmat.2026.08.049",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Yin M",
+      "Su M",
+      "Yi J",
+      "Ren Y",
+      "Zhang Y",
+      "Wu Q"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Bioactive Materials, bacterial biofilm study",
+    "headline": "Bacterial biofilms may use **hydrogen sulfide gas to jam immune defenses** and resist antibiotics"
+  },
+  "slides": [
+    {
+      "eyebrow": "Why you should care",
+      "basis": "stated",
+      "title": "This could point to new ways to treat persistent infections that antibiotics alone cannot clear.",
+      "body": "The study found that biofilm bacteria create a defensive loop using hydrogen sulfide gas. This loop blocks immune cells and helps bacteria survive treatment.\n\nThe researchers built a system that breaks the loop and clears persistent bacteria in lab models."
+    },
+    {
+      "eyebrow": "What the data says",
+      "title": "Extracellular DNA in biofilms is linked to local hydrogen sulfide enrichment, stronger barriers, and immune suppression.",
+      "body": "The biofilm matrix traps and concentrates hydrogen sulfide from bacteria. This gas stabilizes the DNA scaffold and suppresses macrophage activity.\n\nThe engineered minicells target low-oxygen zones, scavenge hydrogen sulfide, and degrade the DNA matrix.",
+      "stat": {
+        "value": "H\u2082S",
+        "label": "Gas linked to biofilm defense"
+      }
+    },
+    {
+      "eyebrow": "The assumption",
+      "title": "Biofilm resilience is usually attributed to physical barriers and slow bacterial metabolism, not gas-mediated signaling.",
+      "body": "Most research focuses on how biofilm structure blocks drug entry or how dormant bacteria evade antibiotics. Gas regulation has been less explored.\n\nThis work suggests that gaseous mediators like hydrogen sulfide actively maintain biofilm defenses in the local environment."
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Something else could explain the link between hydrogen sulfide and biofilm defense.",
+    "The biohybrid system was tested in lab models, not in human infections, so clinical effectiveness remains unknown."
+  ],
+  "cta": {
+    "headline": "Send this to the antibiotic resistance worrier",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Biofilms may build a defensive loop with hydrogen sulfide gas that jams immune cells and keeps bacteria alive through treatment",
+  "hashtag_set": "health",
+  "shape": "",
+  "vet": {
+    "key": "c6616fc513b12598",
+    "verdict": "HOLD",
+    "score": 40,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "note",
+        "message": "Design reads as observational (unclear); markers: linked to",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      },
+      {
+        "code": "CAUSAL_LANGUAGE_IN_OBSERVATIONAL",
+        "severity": "warn",
+        "message": "The paper's own text uses causal verbs (triggered, induces) despite an observational design. The authors are overreaching - do not repeat it.",
+        "caveat": null,
+        "draft_rule": null
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Bioactive materials' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "reversal",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 1,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": []
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": true
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "The spatiotemporal distribution of gaseous mediators is critical for maintaining physiological functions. Biofilms both contain gas-producing bacteria and possess complex architectures that reshape gaseous mediator distribution. However, whether biofilm pathogenicity is linked to such gaseous regulation remains unclear. In this study, we reveal that extracellular DNA (eDNA) within the biofilm matrix contributes to the local retention and enrichment of H 2 S. This enrichment stabilizes eDNA, strengthens biofilm barriers, impedes gas clearance, promotes bacterial persistence, and induces macrophage immunosuppression, creating a reciprocally protective defensive loop. To dismantle this defense, we engineered a stepwise-responsive biohybrid system in which probiotic-derived engineered minicells actively target hypoxic biofilm regions, while H 2 S-triggered nanoparticle degradation enables deeper matrix penetration and concurrent H 2 S scavenging. The retained minicells then catalyze in situ glucose oxidation to generate H 2 O 2 , which, together with Fe 2+ -mediated Fenton-like reactions, degrades eDNA and collapses the biofilm. This strategy eradicates persistent bacteria, reverses immunosuppression, and provides a therapeutic strategy to reduce recurrence and optimize refractory infection treatments.",
+    "source": "europepmc",
+    "ext_id": "MED:42781235",
+    "pub_types": [
+      "research-article",
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "http://creativecommons.org/licenses/by/4.0/;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "psych",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Staphylococcus_aureus_%28AB_Test%29.jpg/1920px-Staphylococcus_aureus_%28AB_Test%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "Public domain",
+    "author": "CDC / Provider: Don Stalons",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Staphylococcus aureus (AB Test).jpg",
+    "query": "antibiotic",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-09-15-psych-c6616fc5/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'psych'"
+  }
+}
