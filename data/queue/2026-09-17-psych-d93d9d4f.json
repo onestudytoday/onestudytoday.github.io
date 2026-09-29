@@ -1,0 +1,137 @@
+{
+  "id": "2026-09-17-psych-d93d9d4f",
+  "niche": "psych",
+  "study": {
+    "key": "d93d9d4ffa4e6d1e",
+    "title": "An endoplasmic reticulum-enriched nanogel couples ferroptotic tumor damage with macrophage reprogramming for triple-negative breast cancer immunotherapy",
+    "journal": "Bioactive materials",
+    "pub_date": "2026-09-17",
+    "pub_date_display": "Sep 17, 2026",
+    "doi": "10.1016/j.bioactmat.2026.09.015",
+    "doi_display": "doi.org/10.1016/j.bioactmat.2026.09.015",
+    "url": "https://doi.org/10.1016/j.bioactmat.2026.09.015",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Chen H",
+      "Ni Y",
+      "Tang J",
+      "Ma Y",
+      "Zhang J",
+      "Zhang J"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Bioactive Materials, mouse study",
+    "headline": "**Stressing one structure in breast cancer cells** may trigger cell death while flipping immune cells."
+  },
+  "slides": [
+    {
+      "eyebrow": "Why you should care",
+      "basis": "stated",
+      "title": "A nanogel that stresses a cell structure called the ER could flip hard-to-treat breast cancer from immune-cold to immune-hot.",
+      "body": "The study targeted the ER in both tumor cells and immune cells. In cancer cells, ER stress triggered cell death and released immune signals.\n\nIn white blood cells, the same ER stress flipped protumor cells to fighters. That dual hit built lasting immune memory in mice."
+    },
+    {
+      "eyebrow": "What the data says",
+      "title": "The nanogel blocked primary tumor growth, regrowth after surgery, distant tumors, and lung spread in a mouse model.",
+      "body": "The team loaded iron oxide particles with a chemo drug and a DNA molecule. The package opened in the acidic environment of tumors.\n\nTreated mice showed more CD4 and CD8 T cells inside tumors. The effect reached tumors far from the injection site.",
+      "stat": {
+        "value": "4T1",
+        "label": "Mouse breast cancer model"
+      }
+    },
+    {
+      "eyebrow": "The assumption",
+      "title": "Most nanogel strategies focus on killing tumor cells or activating immune cells, not running both from a single structure.",
+      "body": "Hard-to-treat breast cancer resists some forms of cell death and harbors white blood cells that suppress immune responses.\n\nTargeting the ER in both cell types at once created a chain reaction. The ER acts as a control hub linking tumor weakness and immune cell behavior."
+    }
+  ],
+  "caveats": [
+    "This was tested in mouse models of breast cancer, not in human patients.",
+    "The abstract does not report survival rates, tumor size reduction percentages, or dosing specifics for the nanogel.",
+    "How the nanogel selectively enriches in the ER of both tumor cells and white blood cells without affecting other cell types is not detailed."
+  ],
+  "cta": {
+    "headline": "Send this to the cell structure skeptic",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "A nanogel that stresses one structure in breast cancer cells killed tumors and reprogrammed immune cells in the same pass.",
+  "hashtag_set": "health",
+  "shape": "",
+  "vet": {
+    "key": "d93d9d4ffa4e6d1e",
+    "verdict": "PASS",
+    "score": 50,
+    "flags": [
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Bioactive materials' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "mechanistic / lab",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [],
+    "notes": []
+  },
+  "qa": {
+    "format": "reversal",
+    "lint_errors": [
+      "slide1.body: 46 words, spec is 30-40",
+      "slide2.body: 43 words, spec is 30-40",
+      "slide3.body: 45 words, spec is 30-40"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "4T1",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Triple-negative breast cancer (TNBC) is characterized by severely immunosuppressive tumor microenvironment (TME), which leads to tumor ferroptosis resistance and dominant protumor M2 macrophages, restraining innate-to-adaptive antitumor immune cascade. Herein, an endoplasmic reticulum (ER)-enriched pH/redox-sensitive SPIONS@P-CpG-DOX nanogel was constructed to realize dual ER-targeted manipulation on TNBC cells and tumor-associated macrophages (TAMs) to elicit an ER-centered innate-to-adaptive immune amplification axis. In TNBC cells, nanogel-induced ER stress inhibits the GSH-GPX4 axis and accelerates lipid peroxidation, triggering ER-originated ferroptosis and immunogenic cell death (ICD) to release antigens and damage-associated molecular patterns (DAMPs) for immune priming. In macrophages, nanogel activates ER-dependent STING/NF-\u03baB pathways without ferroptosis, facilitating M2-to-M1 polarization and inflammatory TME remodeling. The dual ER-initiated pathways synergistically facilitate dendritic cell (DC) maturation, enhance intratumoral CD4 + and CD8 + T-cell infiltration and build long-term systemic immune memory. In 4T1 TNBC models, the nanogel efficiently inhibits primary tumor growth, postoperative recurrence, distant rechallenge and lung metastasis with favorable biosafety. This work validates ER as a core regulatory hub linking tumor ferroptosis and macrophage reprogramming, providing an organelle-targeted strategy for durable TNBC immunotherapy.",
+    "source": "europepmc",
+    "ext_id": "MED:42787620",
+    "pub_types": [
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "http://creativecommons.org/licenses/by-nc-nd/4.0/;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "psych",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Trust_by_Design_Framework_%28Five_Principles%29.png/1920px-Trust_by_Design_Framework_%28Five_Principles%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "Public domain",
+    "author": "gamma.app",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Trust by Design Framework (Five Principles).png",
+    "query": "structure",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-09-17-psych-d93d9d4f/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'psych'"
+  }
+}
