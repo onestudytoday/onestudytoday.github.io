@@ -110,7 +110,7 @@
     "unverified_numbers": [],
     "publishable": false
   },
-  "status": "approved",
+  "status": "published",
   "source": {
     "abstract": "This study explores the applicability of hair as a non-invasive matrix for the spectroscopic assessment of mood disorders. Hair specimens were collected from individuals diagnosed with: recurrent depressive disorder or depressive episodes, mixed anxiety and depressive disorders, and bipolar affective disorder, alongside a control group of healthy individuals. Using Fourier-transform infrared microspectroscopy in an attenuated total reflectance configuration (\u03bc-ATR-FTIR), 30 spectra were recorded from the cortex of each 0.5 cm hair segment. The normalized and smoothed second derivative spectra underwent principal component analysis (PCA). Results demonstrated distinct clustering patterns, indicating that \u03bc-ATR-FTIR spectroscopy can reliably differentiate bipolar affective disorder from other conditions. These findings highlight the potential of vibrational spectroscopy in developing diagnostic methods for classifying mood-related neurological disorders.",
     "source": "europepmc",
@@ -138,5 +138,19 @@
   },
   "review": {
     "forced": true
+  },
+  "published": {
+    "media_id": "17894854683415345",
+    "kind": "CAROUSEL",
+    "at": "2026-09-30T01:32:34Z"
+  },
+  "crosspost": {
+    "at": "2026-09-30T01:32:34Z",
+    "posted": [],
+    "skipped": [
+      "bluesky",
+      "threads"
+    ],
+    "failed": {}
   }
 }
