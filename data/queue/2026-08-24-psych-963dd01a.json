@@ -1,0 +1,139 @@
+{
+  "id": "2026-08-24-psych-963dd01a",
+  "niche": "psych",
+  "study": {
+    "key": "963dd01a68e009c2",
+    "title": "Hair as a window to mood disorders: Discrimination of bipolar affective disorder using mapping spectroscopy",
+    "journal": "Spectrochimica acta. Part A, Molecular and biomolecular spectroscopy",
+    "pub_date": "2026-08-24",
+    "pub_date_display": "Aug 24, 2026",
+    "doi": "10.1016/j.saa.2026.128659",
+    "doi_display": "doi.org/10.1016/j.saa.2026.128659",
+    "url": "https://doi.org/10.1016/j.saa.2026.128659",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "\u015awi\u0105dro-Pi\u0119to\u0144 M",
+      "Tajdu\u015b G",
+      "Zaj\u0105c A",
+      "Sroga P",
+      "Dudek D",
+      "Wietecha-Pos\u0142uszny R."
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Spectrochimica Acta \u00b7 Molecular spectroscopy",
+    "headline": "A strand of hair could **hold enough chemical detail** to tell bipolar disorder apart from other mood conditions."
+  },
+  "slides": [
+    {
+      "eyebrow": "What it means for you",
+      "basis": "stated",
+      "title": "Hair mapping may offer a new path to diagnosing bipolar disorder without invasive tests.",
+      "body": "This technique could help develop methods that classify mood disorders based on what is already in your hair. No blood draw, no brain scan.\n\nThe chemical pattern was distinct enough to separate bipolar from depression and anxiety disorders."
+    },
+    {
+      "eyebrow": "The result",
+      "title": "Light-based mapping found distinct patterns that reliably told bipolar disorder from other conditions.",
+      "body": "Researchers collected hair from people with bipolar disorder, repeated depression, mixed anxiety and depression, and healthy controls. They recorded 30 readings from each 0.5 cm segment.\n\nThe bipolar samples grouped apart. The chemical signature was clear enough to tell the conditions apart.",
+      "stat": {
+        "value": "30",
+        "label": "readings per hair segment"
+      }
+    },
+    {
+      "eyebrow": "How it works",
+      "title": "The method uses infrared light to read chemical signals in hair cortex without damaging the sample.",
+      "body": "Each reading captures a chemical pattern. The data were smoothed and then analyzed to reveal patterns tied to different mood disorders.\n\nThe technique measures how molecules in the hair vibrate when hit with infrared light."
+    }
+  ],
+  "caveats": [
+    "The study does not report sample sizes or the number of people tested in each condition group.",
+    "The abstract does not specify whether this method can tell all mood disorders apart or only bipolar from the rest."
+  ],
+  "cta": {
+    "headline": "Send this to anyone arguing about bipolar diagnosis delays",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Your hair may carry a chemical signature specific enough to tell bipolar disorder from other mood conditions using light.",
+  "hashtag_set": "health",
+  "shape": "",
+  "vet": {
+    "key": "963dd01a68e009c2",
+    "verdict": "PASS",
+    "score": 50,
+    "flags": [
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Spectrochimica acta. Part A, Molecular and biomolecular spectroscopy' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [],
+    "notes": []
+  },
+  "qa": {
+    "format": "stakes",
+    "lint_errors": [
+      "slide2.body: 43 words, spec is 30-40",
+      "GUARDRAIL the cover kicker says 'Spectrochimica Acta \u00b7 Molecular spectroscopy', but this paper was published in 'Spectrochimica acta. Part A, Molecular and biomolecular spectroscopy'. The journal is the credibility claim on the cover and it has to be the real one"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "30",
+          "found_in_abstract": true
+        },
+        {
+          "number": "0.5 cm",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "This study explores the applicability of hair as a non-invasive matrix for the spectroscopic assessment of mood disorders. Hair specimens were collected from individuals diagnosed with: recurrent depressive disorder or depressive episodes, mixed anxiety and depressive disorders, and bipolar affective disorder, alongside a control group of healthy individuals. Using Fourier-transform infrared microspectroscopy in an attenuated total reflectance configuration (\u03bc-ATR-FTIR), 30 spectra were recorded from the cortex of each 0.5 cm hair segment. The normalized and smoothed second derivative spectra underwent principal component analysis (PCA). Results demonstrated distinct clustering patterns, indicating that \u03bc-ATR-FTIR spectroscopy can reliably differentiate bipolar affective disorder from other conditions. These findings highlight the potential of vibrational spectroscopy in developing diagnostic methods for classifying mood-related neurological disorders.",
+    "source": "europepmc",
+    "ext_id": "MED:42660051",
+    "pub_types": [
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "https://doi.org/10.15223/policy-004;https://doi.org/10.15223/policy-012;https://doi.org/10.15223/policy-017;https://doi.org/10.15223/policy-029;https://doi.org/10.15223/policy-037;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "psych",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Mycobacterium_tuberculosis.jpg/1920px-Mycobacterium_tuberculosis.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "Public domain",
+    "author": "Photo Credit: Janice Carr\nContent Providers(s): CDC/ Dr. Ray Butler; Janice Carr",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Mycobacterium tuberculosis.jpg",
+    "query": "condition",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-08-24-psych-963dd01a/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'psych'"
+  }
+}
