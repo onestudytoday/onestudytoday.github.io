@@ -1,0 +1,160 @@
+{
+  "id": "2026-08-15-health-7e4dbdf2",
+  "niche": "health",
+  "study": {
+    "key": "7e4dbdf2f9ceaeb2",
+    "title": "Oligomerized flavonoid nanointerfaces regulate gastrointestinal nutrient flux and metabolic inflammation",
+    "journal": "Biomaterials",
+    "pub_date": "2026-08-15",
+    "pub_date_display": "Aug 15, 2026",
+    "doi": "10.1016/j.biomaterials.2026.124554",
+    "doi_display": "doi.org/10.1016/j.biomaterials.2026.124554",
+    "url": "https://doi.org/10.1016/j.biomaterials.2026.124554",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Zhou T",
+      "Zhang R",
+      "Li L",
+      "Yu J",
+      "Li H",
+      "Liu H"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Biomaterials \u00b7 mouse model",
+    "headline": "**Engineered tea-extract particles** might regulate how much fat and sugar your gut absorbs after a meal."
+  },
+  "slides": [
+    {
+      "eyebrow": "Why you should care",
+      "basis": "inferred",
+      "title": "If this holds in people, it could offer a way to manage nutrient uptake without blocking digestion entirely.",
+      "body": "Most oral treatments for weight gain focus on one thing at a time. This approach coordinates enzyme function, gut barrier health, microbial balance and swelling all at once.\n\nThe particles work locally in the gut, not throughout the body."
+    },
+    {
+      "eyebrow": "What the data says",
+      "title": "Oligomerized EGCG particles reduced postprandial nutrient flux and lessened weight gain in high-fat-diet-fed mice.",
+      "body": "The particles changed four key digestive enzymes through surface binding and shape shifts. They stayed stable in the gut and lowered carbohydrate and lipid absorption after meals.\n\nRepeated dosing reduced body weight gain, liver fat, blood lipid levels and insulin resistance.",
+      "stat": {
+        "value": "4",
+        "label": "digestive enzymes remodeled"
+      }
+    },
+    {
+      "eyebrow": "The assumption",
+      "title": "Most flavonoid supplements deliver monomers that absorb quickly and show weak enzyme interactions.",
+      "body": "Researchers converted five flavonoids into oligomers using acetaldehyde and assembled them into carrier-free particles. The oligomerized structure created clustered phenolic groups on the surface.\n\nOligomeric EGCG particles outperformed both monomeric EGCG and non-assembled oligomers."
+    }
+  ],
+  "caveats": [
+    "This was done in mice, not humans. Most findings in mice do not carry over to people.",
+    "The study did not report how long the effects lasted after stopping treatment or whether tolerance developed.",
+    "Implications on slide one are inferred. They reflect our reading of the findings; read the paper for the authors' own conclusions."
+  ],
+  "cta": {
+    "headline": "Send this to the supplement skeptic",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Turning tea extract into particles changed how it interacts with digestion, shifting it from absorbed compound to local gut regulator.",
+  "hashtag_set": "health",
+  "shape": "",
+  "vet": {
+    "key": "7e4dbdf2f9ceaeb2",
+    "verdict": "HOLD",
+    "score": 46,
+    "flags": [
+      {
+        "code": "NON_HUMAN",
+        "severity": "warn",
+        "message": "Study subjects are mice, not people.",
+        "caveat": "This was done in mice \u2014 not humans. Most findings in mice do not carry over to people.",
+        "draft_rule": "Subjects were mice, NOT humans. The cover slide must not imply a human result. Name the species explicitly by slide 2."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Biomaterials' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "non-human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [
+      "mice"
+    ],
+    "required_caveats": [
+      "This was done in mice \u2014 not humans. Most findings in mice do not carry over to people."
+    ],
+    "required_badges": [
+      "NOT_IN_HUMANS"
+    ],
+    "draft_rules": [
+      "Subjects were mice, NOT humans. The cover slide must not imply a human result. Name the species explicitly by slide 2."
+    ],
+    "notes": []
+  },
+  "qa": {
+    "format": "reversal",
+    "lint_errors": [
+      "slide2.body: 41 words, spec is 30-40",
+      "slide2.stat.label: 3 words, spec is 4-10"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "five",
+          "found_in_abstract": true
+        },
+        {
+          "number": "four",
+          "found_in_abstract": false
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [
+      {
+        "number": "four",
+        "found_in_abstract": false
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Oral strategies for obesity and its associated metabolic dysfunction rarely coordinate nutrient digestion, microbial ecology, barrier integrity and low-grade inflammation within the gastrointestinal lumen. Here we report an interface-engineering strategy that converts flavonoid monomers into oligomerized flavonoid-derived polyphenolic nanointerfaces for local gastrointestinal regulation. Five representative flavonoids were oligomerized through an acetaldehyde-mediated reaction and assembled into carrier-free nanoparticles with clustered surface phenolic motifs. Among them, oligomeric EGCG nanoparticles (O-EGCG NPs) showed the strongest interfacial activity, outperforming monomeric EGCG and non-assembled oligomers. Mechanistic analyses showed that O-EGCG NPs non-competitively modulated \u03b1-glucosidase, \u03b1-amylase, pancreatic lipase and pancreatic cholesterol esterase through enzyme binding and conformational remodeling. After oral administration, the nanoparticles maintained gastrointestinal colloidal stability, prolonged intestinal retention and reduced postprandial carbohydrate and lipid flux in substrate and mixed-meal tolerance tests. Repeated administration in high-fat diet-fed mice attenuated body-weight gain, hepatic lipid accumulation, dyslipidaemia and insulin resistance, accompanied by changes in intestinal barrier status, inflammatory cytokines and gut microbiota composition. These findings establish oligomerized flavonoid nanoparticles as locally acting luminal nanomaterials for regulating nutrient processing and microbiota-associated metabolic inflammation.",
+    "source": "europepmc",
+    "ext_id": "MED:42612319",
+    "pub_types": [
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "https://doi.org/10.15223/policy-004;https://doi.org/10.15223/policy-012;https://doi.org/10.15223/policy-017;https://doi.org/10.15223/policy-029;https://doi.org/10.15223/policy-037;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "health",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Flash_illuminating_particles.jpg/1920px-Flash_illuminating_particles.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC0",
+    "author": "Julie Crowell",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Flash illuminating particles.jpg",
+    "query": "particle",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-08-15-health-7e4dbdf2/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'health'"
+  }
+}
