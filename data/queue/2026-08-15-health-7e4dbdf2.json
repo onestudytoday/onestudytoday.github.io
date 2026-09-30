@@ -144,17 +144,22 @@
   },
   "source_niche": "health",
   "cover_art": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Flash_illuminating_particles.jpg/1920px-Flash_illuminating_particles.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "licence": "CC0",
-    "author": "Julie Crowell",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/Lipton-mug-tea.jpg/1920px-Lipton-mug-tea.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "Public domain",
+    "author": "Evan-Amos",
     "needs_credit": false,
     "source": "Wikimedia Commons",
-    "page": "File:Flash illuminating particles.jpg",
-    "query": "particle",
+    "page": "File:Lipton-mug-tea.jpg",
+    "query": "Tea",
     "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-08-15-health-7e4dbdf2/bg/cover.jpg"
   },
   "reel_status": {
     "built": false,
     "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'health'"
-  }
+  },
+  "cover_art_tried": [
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Flash_illuminating_particles.jpg/1920px-Flash_illuminating_particles.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/Lipton-mug-tea.jpg/1920px-Lipton-mug-tea.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+  ],
+  "render_seq": 1
 }
