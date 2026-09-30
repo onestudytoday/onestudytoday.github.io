@@ -1,0 +1,191 @@
+{
+  "id": "2026-09-08-health-9273402a",
+  "niche": "health",
+  "study": {
+    "key": "9273402ac6709648",
+    "title": "Discordance between clinician- and patient-reported outcomes during radiotherapy for brain metastases: the prospective NeuroPRO study",
+    "journal": "Clinical and translational radiation oncology",
+    "pub_date": "2026-09-08",
+    "pub_date_display": "Sep 8, 2026",
+    "doi": "10.1016/j.ctro.2026.101283",
+    "doi_display": "doi.org/10.1016/j.ctro.2026.101283",
+    "url": "https://doi.org/10.1016/j.ctro.2026.101283",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Dejonckheere CS",
+      "Layer YL",
+      "Potthoff AL",
+      "Zeyen T",
+      "Caglayan L",
+      "Grau F"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Clinical and translational radiation oncology",
+    "headline": "Doctors systematically **miss symptoms** that matter most to patients with brain cancer"
+  },
+  "slides": [
+    {
+      "eyebrow": "Why this matters",
+      "basis": "stated",
+      "title": "If clinicians alone decide what counts as a side effect, patients suffer symptoms no one is tracking or treating.",
+      "body": "This reveals a structural perception gap in neuro-oncology care. The symptoms doctors miss most are psychological distress and physical complaints not obviously tied to radiation.\n\nRoutine patient self-reports could catch what clinical exams overlook and shift care toward what patients experience."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Across 84% of symptoms tracked, patients reported worse severity than their doctors recorded during brain radiation treatment.",
+      "body": "Researchers compared clinician assessments against patient questionnaires at three points during radiotherapy for brain metastases. Agreement was fair for worry and depression but almost perfect for vomiting and seizures.\n\nThe biggest gaps appeared for shortness of breath, fatigue, and sleep trouble.",
+      "stat": {
+        "value": "84%",
+        "label": "of symptoms underscored by clinicians"
+      }
+    },
+    {
+      "eyebrow": "The setup",
+      "title": "Sixty-three patients receiving brain radiation completed questionnaires at baseline, end of treatment, and first follow-up.",
+      "body": "Doctors scored side effects using standardized toxicity criteria. Patients rated the same symptoms using quality-of-life scales designed for cancer and brain tumor patients.\n\nThe study generated 4,448 matched comparisons and measured agreement for each symptom."
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Something else could explain the link between clinician assessments and patient reports.",
+    "The sample was sixty-three patients at centers participating in the study, which may not reflect all radiation oncology practices or patient populations.",
+    "Agreement varied widely by symptom type, so the overall pattern may obscure important differences in how specific side effects are perceived."
+  ],
+  "cta": {
+    "headline": "Send this to anyone who thinks doctors always know best",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "When patients rate their own symptoms during brain cancer treatment, doctors have been missing most of what matters",
+  "hashtag_set": "health",
+  "shape": "",
+  "vet": {
+    "key": "9273402ac6709648",
+    "verdict": "HOLD",
+    "score": 54,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "warn",
+        "message": "Design reads as observational (cohort (observational)); markers: cohort, questionnaire",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Clinical and translational radiation oncology' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "cohort (observational)",
+    "sample_size": null,
+    "subjects": "human",
+    "journal_tier": null,
+    "causal_language_banned": true,
+    "species": [],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "explainer",
+    "lint_errors": [
+      "cover.kicker: 45 chars, max 44",
+      "slide1.body: 41 words, spec is 30-40",
+      "slide2.body: 41 words, spec is 30-40"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "patients with brain cancer",
+          "problem": "The abstract specifies patients receiving radiotherapy for brain metastases. Brain metastases are secondary cancers that have spread to the brain from elsewhere, not primary brain cancer. This is a medically significant distinction.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "The symptoms doctors miss most are psychological distress and physical complaints not obviously tied to radiation",
+          "problem": "The abstract states 'particularly within psychological domains and somatic symptoms not readily attributable to radiotherapy.' The copy changes 'not readily attributable to radiotherapy' to 'not obviously tied to radiation,' which is essentially the same meaning, but adds 'The symptoms doctors miss most' as a superlative claim. The abstract shows these had larger discrepancies but does not explicitly state these are 'most missed' in a definitive ranking.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Across 84% of symptoms tracked, patients reported worse severity than their doctors recorded during brain radiation treatment",
+          "problem": "The abstract states 'Across 27 of 32 shared symptoms (84%), PRO scores were higher than CRO scores.' However, the abstract does not specify this occurred 'during brain radiation treatment' - the timepoints were baseline, end of treatment, and first follow-up, so some assessments were before or after treatment, not only during.",
+          "severity": "minor"
+        },
+        {
+          "claim": "The biggest gaps appeared for shortness of breath, fatigue, and sleep trouble",
+          "problem": "The abstract states 'The largest single-item discrepancies were observed for dyspnea' (dyspnea is shortness of breath) but the text is cut off with 'bias 1.00; 95% LoA 0.85-1.14; group p p p' without completing the sentence or listing other symptoms with large discrepancies. Fatigue and sleep trouble are not mentioned in the abstract as having the biggest gaps.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "84%",
+          "found_in_abstract": true
+        },
+        {
+          "number": "63",
+          "found_in_abstract": true
+        },
+        {
+          "number": "4,448",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "patients with brain cancer",
+        "problem": "The abstract specifies patients receiving radiotherapy for brain metastases. Brain metastases are secondary cancers that have spread to the brain from elsewhere, not primary brain cancer. This is a medically significant distinction.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "The biggest gaps appeared for shortness of breath, fatigue, and sleep trouble",
+        "problem": "The abstract states 'The largest single-item discrepancies were observed for dyspnea' (dyspnea is shortness of breath) but the text is cut off with 'bias 1.00; 95% LoA 0.85-1.14; group p p p' without completing the sentence or listing other symptoms with large discrepancies. Fatigue and sleep trouble are not mentioned in the abstract as having the biggest gaps.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Background Clinician-reported outcomes (CROs) remain a central component of side effect assessment in radiotherapy, while patient-reported outcomes (PROs) are increasingly being integrated into standard practice to better capture the subjective symptom burden experienced by patients. Agreement between CRO and PRO has not been prospectively studied in patients undergoing radiotherapy for brain metastases. Methods NeuroPRO was a prospective longitudinal cohort study enrolling patients receiving radiotherapy for brain metastases. CROs were assessed using predefined CTCAE (version 5.0) items, while PROs were collected using the EORTC QLQ-C30 and BN20 at baseline, end of treatment, and first follow-up. Upon completion of radiotherapy, decision regret was evaluated additionally using the Ottawa Decision Regret Scale. Chance-corrected agreement between CRO and PRO was quantified for each item using Gwet's second-order agreement coefficient (AC2). Longitudinal differences were additionally explored using two-way ANOVA and agreement was further characterized using Bland-Altman analyses with calculation of limits of agreement (LoA). Results Sixty-three patients were included, completing 278 questionnaires and yielding 4448 matched CRO-PRO item comparisons. Across 27 of 32 shared symptoms (84%), PRO scores were higher than CRO scores, indicating systematic symptom underestimation by clinicians. Chance-corrected agreement (Gwet's AC2) was fair to moderate for psychological and neurological symptoms (worry AC2 = 0.30; depression AC2 = 0.39; drowsiness AC2 = 0.44) and substantial to almost perfect for gastrointestinal and treatment-related symptoms (vomiting AC2 = 0.96; seizures AC2 = 0.94; nausea AC2 = 0.92), corroborating the pattern observed with mean-based comparisons. The largest single-item discrepancies were observed for dyspnea (bias 1.00; 95% LoA 0.85-1.14; group p p p Conclusion Sole clinician assessment systematically underestimates symptom burden in patients undergoing radiotherapy for brain metastases, particularly within psychological domains and somatic symptoms not readily attributable to radiotherapy. These findings reveal a structural perception gap and support the routine integration of PROs into interdisciplinary neuro-oncologic care to enhance symptom recognition and promote patient-centered management (DRKS00031480).",
+    "source": "europepmc",
+    "ext_id": "MED:42751485",
+    "pub_types": [
+      "research-article",
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "http://creativecommons.org/licenses/by/4.0/;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "health",
+  "cover_art": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/26/An_index_of_symptoms_with_diagnostic_methods_%281915%29_%2814802978343%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "licence": "No restrictions",
+    "author": "Internet Archive Book Images",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:An index of symptoms with diagnostic methods (1915) (14802978343).jpg",
+    "query": "symptom",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-09-08-health-9273402a/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'health'"
+  }
+}
