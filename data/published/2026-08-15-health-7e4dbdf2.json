@@ -131,7 +131,7 @@
     ],
     "publishable": false
   },
-  "status": "approved",
+  "status": "published",
   "source": {
     "abstract": "Oral strategies for obesity and its associated metabolic dysfunction rarely coordinate nutrient digestion, microbial ecology, barrier integrity and low-grade inflammation within the gastrointestinal lumen. Here we report an interface-engineering strategy that converts flavonoid monomers into oligomerized flavonoid-derived polyphenolic nanointerfaces for local gastrointestinal regulation. Five representative flavonoids were oligomerized through an acetaldehyde-mediated reaction and assembled into carrier-free nanoparticles with clustered surface phenolic motifs. Among them, oligomeric EGCG nanoparticles (O-EGCG NPs) showed the strongest interfacial activity, outperforming monomeric EGCG and non-assembled oligomers. Mechanistic analyses showed that O-EGCG NPs non-competitively modulated \u03b1-glucosidase, \u03b1-amylase, pancreatic lipase and pancreatic cholesterol esterase through enzyme binding and conformational remodeling. After oral administration, the nanoparticles maintained gastrointestinal colloidal stability, prolonged intestinal retention and reduced postprandial carbohydrate and lipid flux in substrate and mixed-meal tolerance tests. Repeated administration in high-fat diet-fed mice attenuated body-weight gain, hepatic lipid accumulation, dyslipidaemia and insulin resistance, accompanied by changes in intestinal barrier status, inflammatory cytokines and gut microbiota composition. These findings establish oligomerized flavonoid nanoparticles as locally acting luminal nanomaterials for regulating nutrient processing and microbiota-associated metabolic inflammation.",
     "source": "europepmc",
@@ -164,5 +164,19 @@
   "render_seq": 1,
   "review": {
     "forced": true
+  },
+  "published": {
+    "media_id": "18090918041687912",
+    "kind": "CAROUSEL",
+    "at": "2026-09-30T22:03:17Z"
+  },
+  "crosspost": {
+    "at": "2026-09-30T22:03:17Z",
+    "posted": [],
+    "skipped": [
+      "bluesky",
+      "threads"
+    ],
+    "failed": {}
   }
 }
