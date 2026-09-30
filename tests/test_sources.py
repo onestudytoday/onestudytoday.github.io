@@ -60,8 +60,11 @@ def test_one_source_failing_does_not_drop_the_other(monkeypatch):
     monkeypatch.setattr(sources, "europepmc_search", boom)
 
     good = [sources.Study(
-        source="arxiv", ext_id="9999.99999", title="A physics thing",
-        abstract="x" * 900, journal="arXiv", pub_date="2026-08-10",
+        # "test" is this fabricated niche's only topic term, and
+        # fetch_candidates now checks that a candidate is actually about the
+        # niche it is filed under.
+        source="arxiv", ext_id="9999.99999", title="A test of a physics thing",
+        abstract="test " + "x" * 900, journal="arXiv", pub_date="2026-08-10",
     )]
     monkeypatch.setattr(sources, "arxiv_search", lambda *a, **kw: list(good))
 

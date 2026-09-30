@@ -41,8 +41,12 @@ def _quiet_niches(monkeypatch):
 
 def _study(key_seed="10.1000/repeat-me"):
     return Study(
-        source="europepmc", ext_id="MED:1", title="A study of things",
-        abstract="x" * 900, journal="Nature", pub_date="2026-08-10",
+        # "test" is the stub niche's only topic term, and fetch_candidates
+        # now checks that a candidate is actually about the niche it is filed
+        # under - see sources.on_topic().
+        source="europepmc", ext_id="MED:1", title="A test of some things",
+        abstract="test " + "x" * 900, journal="Nature",
+        pub_date="2026-08-10",
         doi=key_seed, niche="nature",
     )
 

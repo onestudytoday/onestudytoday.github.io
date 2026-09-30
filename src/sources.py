@@ -33,7 +33,7 @@ import xml.etree.ElementTree as ET
 from dataclasses import dataclass, field, asdict
 from datetime import date, datetime, timedelta
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional, Sequence
+from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
 
 import requests
 import yaml
@@ -155,23 +155,164 @@ def _cached_text(url: str, params: Dict[str, Any], cache_key: str, ttl: int = 36
 # ---------------------------------------------------------------------------
 # Europe PMC
 # ---------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
+# Is this paper actually about the niche?
+#
+# THE BUG THIS EXISTS FOR, observed on three consecutive Tuesdays: the psych
+# slot drafted three papers from *Bioactive Materials* - a ferroptotic tumour
+# nanogel, collagen hydrogel yarns, and an eDNA/H2S biofilm biohybrid. The
+# slide said PSYCHOLOGY & NEUROSCIENCE over a cancer nanomedicine paper.
+#
+# Two causes, stacked:
+#
+#   1. `europepmc_query` listed bare terms with no field prefix, and Europe
+#      PMC searches the FULL TEXT of open-access records for an unqualified
+#      term. So "memory" matched shape-memory polymers, "attention" matched
+#      "has attracted attention", "learning" matched machine learning.
+#      Measured on those three papers: two had NO psych term anywhere in
+#      title or abstract, and the third's only hit was "immune memory".
+#
+#   2. Nothing downstream re-checked the topic. The journal tiers in
+#      niches.yaml are read by vet.py for CREDIBILITY SCORING only, so an
+#      off-topic paper in an unlisted journal was never rejected for being
+#      off-topic - it just scored a little lower and still won on a thin day.
+#
+# Psych is the niche this hit because its terms are ordinary English: nine of
+# its twenty are words like memory, attention, learning, sleep, bias, habit.
+# nature and health use distinctive vocabulary and never drifted.
+#
+# The query is now scoped to title and abstract, AND this runs over whatever
+# comes back, because the two protect against different things: the scoping
+# depends on Europe PMC's field semantics staying as they are, and this does
+# not depend on the source at all. Traction-sourced DOIs never went through
+# the topic query in the first place, and they go through this.
+# ---------------------------------------------------------------------------
+
+# Terms that are also ordinary English, and the phrases that make them mean
+# something else. One of these alone is not evidence that a paper is about
+# the mind; two of them, or one distinctive term, is.
+_WEAK_CONTEXT = (
+    r"shape[- ]memory", r"immun\w*\s+memory",
+    r"memory\s+(?:[TB]\s+)?cells?\b", r"memory\s+[TB]\b",
+    r"machine\s+learning", r"deep\s+learning", r"federated\s+learning",
+    r"transfer\s+learning", r"attention\s+(?:mechanism|head|layer|module)",
+    r"self[- ]attention", r"attracted?\s+(?:much\s+)?attention",
+    r"paid\s+attention", r"sleep\s+mode", r"habit\w*\s+(?:at|of)\s+",
+    # nature's everyday words in their biomedical senses. "tumour ecosystem"
+    # and "cell migration" are how a cancer-nanomedicine paper ends up in the
+    # Monday nature slot - one of them did.
+    r"tumou?r\s+ecosystem", r"metabolic\s+ecosystem", r"immune\s+ecosystem",
+    r"cell(?:ular)?\s+migration", r"migration\s+assay",
+    r"evolution\s+of\s+(?:resistance|the\s+tumou?r)",
+)
+
+
+def topic_terms(niche_cfg: Dict[str, Any]) -> List[str]:
+    """The searchable phrases out of a niche's europepmc_query."""
+    q = re.sub(r"[()]", " ", str(niche_cfg.get("europepmc_query") or ""))
+    out: List[str] = []
+    for part in re.split(r"\bOR\b|\bAND\b", q):
+        s = part.strip().strip('"').strip().lower()
+        if len(s) > 2 and s not in out:
+            out.append(s)
+    return out
+
+
+def topic_hits(text: str, niche_cfg: Dict[str, Any]) -> Tuple[List[str], List[str]]:
+    """(distinctive, weak) terms this text actually contains.
+
+    A weak term inside a phrase that means something else - "immune memory",
+    "machine learning" - is not counted at all.
+    """
+    blob = " ".join(str(text or "").lower().split())
+    masked = blob
+    for pat in _WEAK_CONTEXT:
+        # re.I even though `blob` is already lower-cased: the patterns are
+        # written the way the phrases read ("memory T cells"), and a silently
+        # non-matching pattern here is a false positive nobody would notice.
+        masked = re.sub(pat, " ", masked, flags=re.I)
+    weak_set = {w.lower() for w in (niche_cfg.get("weak_terms") or [])}
+    strong, weak = [], []
+    for term in topic_terms(niche_cfg):
+        hay = masked if term in weak_set else blob
+        if re.search(r"\b" + re.escape(term) + r"\b", hay):
+            (weak if term in weak_set else strong).append(term)
+    return strong, weak
+
+
+def on_topic(study: Any, niche_cfg: Dict[str, Any]) -> bool:
+    """Is this paper's TITLE or ABSTRACT actually about the niche?
+
+    Full text does not count, which is the whole point. A niche with no
+    europepmc_query - physics and the Friday wildcard source from arXiv
+    categories, which are already topical - is not filtered here.
+    """
+    if not topic_terms(niche_cfg):
+        return True
+    strong, weak = topic_hits(
+        f"{getattr(study, 'title', '')} {getattr(study, 'abstract', '')}",
+        niche_cfg)
+    return bool(strong) or len(weak) >= 2
+
+
+def scoped_query(topic_query: str) -> str:
+    """The same terms, restricted to title and abstract.
+
+    Written out as (TITLE:"x" OR ABSTRACT:"x") per term rather than using
+    TITLE_ABS, because those two field names are the ones this pipeline has
+    actually seen work and a query that silently matches nothing costs a
+    whole day's post.
+    """
+    q = re.sub(r"[()]", " ", str(topic_query or ""))
+    parts = []
+    for raw in re.split(r"\bOR\b", q):
+        s = raw.strip().strip('"').strip()
+        if len(s) > 2:
+            parts.append(f'TITLE:"{s}" OR ABSTRACT:"{s}"')
+    return " OR ".join(parts)
+
+
 def europepmc_search(topic_query: str, days: int, limit: int = 60,
                      include_preprints: bool = True) -> List[Study]:
     since = (date.today() - timedelta(days=days)).isoformat()
     until = date.today().isoformat()
     srcs = "(SRC:MED OR SRC:PMC" + (" OR SRC:PPR" if include_preprints else "") + ")"
-    q = (
-        f"({topic_query.strip()}) AND {srcs} "
-        f"AND (FIRST_PDATE:[{since} TO {until}]) "
-        f"AND (HAS_ABSTRACT:Y) AND (LANG:eng)"
-    )
-    params = {"query": q, "format": "json", "resultType": "core",
-              "pageSize": min(limit, 100), "sort": "P_PDATE_D desc"}
-    data = _get(EPMC, params, cache_key=f"epmc:{q}:{limit}")
-    out: List[Study] = []
-    for r in data.get("resultList", {}).get("result", []):
-        out.append(_epmc_to_study(r))
-    return out
+    tail = (f" AND {srcs} AND (FIRST_PDATE:[{since} TO {until}]) "
+            f"AND (HAS_ABSTRACT:Y) AND (LANG:eng)")
+
+    def fetch(topic: str) -> List[Study]:
+        q = f"({topic})" + tail
+        params = {"query": q, "format": "json", "resultType": "core",
+                  "pageSize": min(limit, 100), "sort": "P_PDATE_D desc"}
+        data = _get(EPMC, params, cache_key=f"epmc:{q}:{limit}")
+        return [_epmc_to_study(r)
+                for r in data.get("resultList", {}).get("result", [])]
+
+    # TITLE AND ABSTRACT ONLY.
+    #
+    # An unqualified term searches the FULL TEXT of open-access records, which
+    # is how the psych slot drafted three cancer-nanomedicine papers in a row:
+    # "memory" matched shape-memory polymers and "attention" matched "has
+    # attracted attention", in papers whose abstracts say nothing about the
+    # mind. See the note above topic_terms().
+    #
+    # Falls back to the unscoped query if the scoped one finds nothing at all.
+    # The fallback is not there to be lenient - on_topic() re-checks whatever
+    # comes back either way - it is there because this runs unattended once a
+    # day, and a field name Europe PMC stops honouring should cost relevance,
+    # not the whole post.
+    scoped = scoped_query(topic_query)
+    if scoped:
+        try:
+            out = fetch(scoped)
+            if out:
+                return out
+            print("  ! the title/abstract-scoped search found nothing; "
+                  "retrying across full text and filtering afterwards")
+        except Exception as e:
+            print(f"  ! scoped search failed ({type(e).__name__}); "
+                  f"falling back to the unscoped query")
+    return fetch(topic_query.strip())
 
 
 def study_from_doi(doi: str) -> Optional[Study]:
@@ -615,6 +756,22 @@ def fetch_candidates(niche: str, days: Optional[int] = None,
     ex = [e.lower() for e in n.get("exclude_terms", [])]
     uniq = [s for s in uniq
             if not any(e in (s.title + " " + " ".join(s.pub_types)).lower() for e in ex)]
+
+    # IS IT ACTUALLY ABOUT THIS NICHE?
+    #
+    # Nothing used to ask. The journal tiers in niches.yaml are read by vet.py
+    # for credibility scoring, not for filtering, so a paper from a journal
+    # the niche has never heard of was never rejected for being off-topic - it
+    # scored a little lower and still won on a thin day. Three Tuesdays
+    # running, the psych slot drafted biomaterials papers. See on_topic().
+    #
+    # Applied to EVERYTHING, including traction-sourced DOIs, which never went
+    # through the topic query at all.
+    before = len(uniq)
+    uniq = [s for s in uniq if on_topic(s, n)]
+    if before != len(uniq):
+        print(f"  {before - len(uniq)} candidate(s) dropped as off-topic for "
+              f"'{niche}' - no {niche} term in the title or abstract")
 
     # ---- Shortlisting, in three steps. The order of these matters. ----
     #

@@ -22,8 +22,11 @@ from sources import (Study, altmetric_score, engagement_proxy,    # noqa: E402
 
 def _study(citations=0, open_access=False, pub_date="2026-08-20", doi="10.1/x"):
     return Study(
-        source="europepmc", ext_id="MED:1", title="A study of things",
-        abstract="x" * 900, journal="Nature", pub_date=pub_date, doi=doi,
+        # "test" is the stub niche's only topic term - fetch_candidates now
+        # checks relevance. See sources.on_topic().
+        source="europepmc", ext_id="MED:1", title="A test of some things",
+        abstract="test " + "x" * 900, journal="Nature",
+        pub_date=pub_date, doi=doi,
         citations=citations, open_access=open_access,
     )
 
@@ -125,7 +128,11 @@ def test_interest_ranking_overrides_engagement_order(monkeypatch):
     monkeypatch.setattr(sources, "load_niches", lambda: {
         "defaults": {"recency_days": 75, "per_source_limit": 60,
                      "min_abstract_chars": 500, "max_candidates": 25},
-        "niches": {"nature": {"europepmc_query": "test", "arxiv_categories": [],
+        # Terms the two fixtures below actually contain: fetch_candidates
+        # now drops a candidate whose title and abstract say nothing about
+        # the niche it is filed under, and this test is about ORDER - both
+        # have to survive in order to be ordered.
+        "niches": {"nature": {"europepmc_query": "signalling OR sleep", "arxiv_categories": [],
                               "exclude_terms": []}},
     })
     monkeypatch.setattr(sources, "load_ledger",

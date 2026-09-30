@@ -89,6 +89,13 @@ niches:
       3: ["Journal of Animal Ecology", "Conservation Biology", "Ecology",
           "Functional Ecology", "Biology Letters", "Environmental Research Letters",
           "Molecular Ecology", "Journal of Ecology"]
+    # Everyday-in-biology words - see sources.on_topic(). A cancer
+    # nanomedicine paper reached this slot on "tumour ecosystem", and "cell
+    # migration" is in half the biomedical literature. One of these is not
+    # evidence a paper is about the natural world; two of them, or one
+    # distinctive term (rainforest, pollinator, coral reef), is.
+    weak_terms: [ecosystem, evolution, migration, conservation]
+
     exclude_terms: ["case report", "erratum", "protocol", "study protocol"]
 
   # --------------------------------------------------------------- TUESDAY
@@ -112,6 +119,17 @@ niches:
       3: ["Cognition", "Psychological Bulletin", "Journal of Experimental Psychology",
           "Social Psychological and Personality Science", "Cortex", "NeuroImage",
           "Sleep", "Emotion", "Developmental Science", "Psychonomic Bulletin & Review"]
+    # Terms that are also ordinary English. One of these in a title or
+    # abstract is not evidence a paper is about the mind - "immune memory",
+    # "machine learning" and "shape-memory polymer" all match, and none of
+    # them is psych. A paper needs one DISTINCTIVE term (dopamine, prefrontal
+    # cortex, neuroimaging) or TWO of these. See sources.on_topic().
+    #
+    # Only psych needs this: nine of its twenty terms are everyday words,
+    # where nature and health use vocabulary that means one thing. Three
+    # Tuesdays running, this slot drafted Bioactive Materials papers.
+    weak_terms: [memory, attention, learning, sleep, emotion, perception,
+                 bias, habit, motivation]
     exclude_terms: ["case report", "erratum", "protocol", "commentary"]
 
   # ------------------------------------------------------------- WEDNESDAY
