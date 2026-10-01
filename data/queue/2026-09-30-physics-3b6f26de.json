@@ -1,0 +1,187 @@
+{
+  "id": "2026-09-30-physics-3b6f26de",
+  "niche": "physics",
+  "study": {
+    "key": "3b6f26deae42cdcf",
+    "title": "Probing the Reionization History and Bubble Sizes with JWST Lyman-$\u03b1$ Fraction Measurements",
+    "journal": "arXiv",
+    "pub_date": "2026-09-30",
+    "pub_date_display": "Sep 30, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2609.40363v1",
+    "url": "http://arxiv.org/abs/2609.40363v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Aritra Kundu",
+      "Adam Lidz",
+      "Guochao Sun"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "arXiv \u2022 modeling study",
+    "headline": "**JWST galaxy data may reveal** when the early universe switched from opaque to clear"
+  },
+  "slides": [
+    {
+      "eyebrow": "Why this matters",
+      "basis": "stated",
+      "title": "The fraction of galaxies emitting detectable light at specific wavelengths may tell us when and how reionization happened.",
+      "body": "After the Big Bang, neutral hydrogen filled the universe and blocked ultraviolet light. Early galaxies ionized it, creating clear bubbles that merged.\n\nTracking which galaxies show Lyman-alpha light lets researchers map that transition and estimate bubble sizes."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "The team reports the universe was 57 percent neutral at redshift 8 and 93 percent neutral at redshift 11.",
+      "body": "They compared JWST Lyman-alpha fractions with simulation predictions. The match was good, with reduced chi-squared between 0.4 and 1.2.\n\nAt redshift 7, the data suggest roughly 38 percent neutral hydrogen by mass, rising steeply at earlier times.",
+      "stat": {
+        "value": "93%",
+        "label": "neutral hydrogen at z~11"
+      }
+    },
+    {
+      "eyebrow": "The setup",
+      "title": "Lyman-alpha photons scatter off neutral hydrogen, so fewer galaxies show the line when more of the medium is neutral.",
+      "body": "The researchers used the THESAN simulation and a semi-analytic model. They calibrated intrinsic emission using data from redshift 6.\n\nThe fraction of galaxies with detectable Lyman-alpha drops sharply at higher redshifts, tracking the rising neutral fraction."
+    }
+  ],
+  "caveats": [
+    "This is a preprint and has not been peer reviewed yet, so no independent expert has checked the work.",
+    "The bounds are wide and rely on models of both galaxy emission and reionization that carry their own assumptions."
+  ],
+  "cta": {
+    "headline": "Send this to anyone who asks when reionization finished",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "New JWST data on early galaxies may pinpoint when the universe cleared and how large the first ionized bubbles were.",
+  "hashtag_set": "physics",
+  "shape": "",
+  "vet": {
+    "key": "3b6f26deae42cdcf",
+    "verdict": "HOLD",
+    "score": 42,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      }
+    ],
+    "design": "modelling",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "explainer",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 1,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "The team reports the universe was 57 percent neutral at redshift 8 and 93 percent neutral at redshift 11.",
+          "problem": "The abstract gives ranges with error bars, not single point estimates. At z~8, the abstract reports 0.57^{+0.23}_{-0.57} (or 0.68^{+0.12}_{-0.39}), and at z~11 it reports 0.93^{+0.05}_{-0.17} (or 0.89^{+0.11}_{-0.15}). The copy presents these as definitive 'reports' of 57% and 93% without uncertainty, which misrepresents the findings.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "At redshift 7, the data suggest roughly 38 percent neutral hydrogen by mass",
+          "problem": "The abstract reports a range of 0.38^{+0.14}_{-0.38} (or 0.52^{+0.09}_{-0.21}) at z~7. The lower bound of the first estimate goes to 0%, making '38 percent' misleadingly precise. The copy should reflect the uncertainty.",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "57 percent",
+          "found_in_abstract": true
+        },
+        {
+          "number": "93 percent",
+          "found_in_abstract": true
+        },
+        {
+          "number": "0.4",
+          "found_in_abstract": true
+        },
+        {
+          "number": "1.2",
+          "found_in_abstract": true
+        },
+        {
+          "number": "38 percent",
+          "found_in_abstract": true
+        },
+        {
+          "number": "redshift 8",
+          "found_in_abstract": true
+        },
+        {
+          "number": "redshift 11",
+          "found_in_abstract": true
+        },
+        {
+          "number": "redshift 7",
+          "found_in_abstract": true
+        },
+        {
+          "number": "redshift 6",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "The team reports the universe was 57 percent neutral at redshift 8 and 93 percent neutral at redshift 11.",
+        "problem": "The abstract gives ranges with error bars, not single point estimates. At z~8, the abstract reports 0.57^{+0.23}_{-0.57} (or 0.68^{+0.12}_{-0.39}), and at z~11 it reports 0.93^{+0.05}_{-0.17} (or 0.89^{+0.11}_{-0.15}). The copy presents these as definitive 'reports' of 57% and 93% without uncertainty, which misrepresents the findings.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Recent James Webb Space Telescope (JWST) measurements quantify the fraction of ultraviolet-selected galaxies showing detectable Lyman-alpha (Ly-$\u03b1$) lines at $z \\sim 6-14$. These Ly-$\u03b1$ fractions are partly shaped by Ly-$\u03b1$ scattering from neutral hydrogen in the surrounding intergalactic medium (IGM), and so the observed Ly-$\u03b1$ fraction evolution can inform our understanding of the reionization history and the size distribution of ionized bubbles during reionization. We compare the JWST measurements with Ly-$\u03b1$ transmission calculations based on both the THESAN reionization simulations and a flexible semi-analytic model. In each case, we calibrate a sub-grid model for the intrinsic Ly-$\u03b1$ emission lines emerging from the interstellar medium (ISM) and circumgalactic medium (CGM) of the host galaxies using empirical estimates of the Ly-$\u03b1$ equivalent width (EW) distributions at $z \\sim 6$. We find that the reionization history and bubble sizes in THESAN yield good agreement with current JWST Ly-$\u03b1$ fraction observations, with a reduced $\u03c7^2_\u03bd= 0.4-1.2$. Our semi-analytic models and THESAN Ly-$\u03b1$ transmission calculations agree well, allowing us to explore a wide range of reionization models. We derive $1\u03c3$ bounds on the average mass-weighted neutral fractions of: $\\langle x_{\\mathrm{HI}} \\rangle$ = $0.38^{+0.14}_{-0.38}$ ($0.52^{+0.09}_{-0.21}$), $0.57^{+0.23}_{-0.57}$ ($0.68^{+0.12}_{-0.39}$), and $0.93^{+0.05}_{-0.17}$ ($0.89^{+0.11}_{-0.15}$) at $z \\sim$ 7, 8, and 11, based on the Ly-$\u03b1$ fraction measurements with EW $>25\\,\\mathring{\\rm A}$ ($>10\\,\\mathring{\\rm A}$).",
+    "source": "arxiv",
+    "ext_id": "2609.40363v1",
+    "pub_types": [
+      "astro-ph.GA",
+      "astro-ph.CO"
+    ],
+    "publisher": "arXiv",
+    "license": ""
+  },
+  "source_niche": "physics",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Good_Morning_From_the_International_Space_Station.jpg/1920px-Good_Morning_From_the_International_Space_Station.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "Public domain",
+    "author": "Scott Kelly",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Good Morning From the International Space Station.jpg",
+    "query": "universe",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-09-30-physics-3b6f26de/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'physics'"
+  }
+}
