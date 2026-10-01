@@ -157,7 +157,7 @@
     "unverified_numbers": [],
     "publishable": false
   },
-  "status": "needs_review",
+  "status": "approved",
   "source": {
     "abstract": "Recent James Webb Space Telescope (JWST) measurements quantify the fraction of ultraviolet-selected galaxies showing detectable Lyman-alpha (Ly-$\u03b1$) lines at $z \\sim 6-14$. These Ly-$\u03b1$ fractions are partly shaped by Ly-$\u03b1$ scattering from neutral hydrogen in the surrounding intergalactic medium (IGM), and so the observed Ly-$\u03b1$ fraction evolution can inform our understanding of the reionization history and the size distribution of ionized bubbles during reionization. We compare the JWST measurements with Ly-$\u03b1$ transmission calculations based on both the THESAN reionization simulations and a flexible semi-analytic model. In each case, we calibrate a sub-grid model for the intrinsic Ly-$\u03b1$ emission lines emerging from the interstellar medium (ISM) and circumgalactic medium (CGM) of the host galaxies using empirical estimates of the Ly-$\u03b1$ equivalent width (EW) distributions at $z \\sim 6$. We find that the reionization history and bubble sizes in THESAN yield good agreement with current JWST Ly-$\u03b1$ fraction observations, with a reduced $\u03c7^2_\u03bd= 0.4-1.2$. Our semi-analytic models and THESAN Ly-$\u03b1$ transmission calculations agree well, allowing us to explore a wide range of reionization models. We derive $1\u03c3$ bounds on the average mass-weighted neutral fractions of: $\\langle x_{\\mathrm{HI}} \\rangle$ = $0.38^{+0.14}_{-0.38}$ ($0.52^{+0.09}_{-0.21}$), $0.57^{+0.23}_{-0.57}$ ($0.68^{+0.12}_{-0.39}$), and $0.93^{+0.05}_{-0.17}$ ($0.89^{+0.11}_{-0.15}$) at $z \\sim$ 7, 8, and 11, based on the Ly-$\u03b1$ fraction measurements with EW $>25\\,\\mathring{\\rm A}$ ($>10\\,\\mathring{\\rm A}$).",
     "source": "arxiv",
@@ -183,5 +183,8 @@
   "reel_status": {
     "built": false,
     "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'physics'"
+  },
+  "review": {
+    "forced": true
   }
 }
