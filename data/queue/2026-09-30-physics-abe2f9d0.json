@@ -1,0 +1,148 @@
+{
+  "id": "2026-09-30-physics-abe2f9d0",
+  "niche": "physics",
+  "study": {
+    "key": "abe2f9d0fd425713",
+    "title": "Interpreting the High-Recoil LUX-ZEPLIN Event with Bino-/Singlino-like and Higgsino Dark Matter",
+    "journal": "arXiv",
+    "pub_date": "2026-09-30",
+    "pub_date_display": "Sep 30, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2609.40234v1",
+    "url": "http://arxiv.org/abs/2609.40234v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Subhojit Roy",
+      "Pedro Schwaller",
+      "Carlos E. M. Wagner"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "arXiv (preprint, not reviewed)",
+    "headline": "**A dark-matter experiment caught a strange signal**, and physicists use it to refine two competing theories"
+  },
+  "slides": [
+    {
+      "eyebrow": "What it means for you",
+      "basis": "stated",
+      "title": "The team uses the LUX-ZEPLIN detector's unusual signal to explore two different particle models of dark matter.",
+      "body": "One candidate event doesn't confirm anything. But it does let physicists test whether their theories can explain what the detector saw.\n\nThis early paper reports two supersymmetric scenarios that could match the signal, each predicting different patterns in future data."
+    },
+    {
+      "eyebrow": "The result",
+      "title": "The LZ experiment recently recorded a nuclear-recoil candidate at an energy of about 248 kiloelectronvolts.",
+      "body": "The team explored two interpretations. One involves a neutralino particle around 500 GeV that scatters elastically, with specific coupling strengths below current limits.\n\nThe other involves a pseudo-Dirac Higgsino with a mass splitting of a few hundred keV.",
+      "stat": {
+        "value": "248 keV",
+        "label": "Energy of the candidate event"
+      }
+    },
+    {
+      "eyebrow": "How it works",
+      "title": "The two mechanisms predict distinct recoil spectra, meaning future detections could distinguish between them.",
+      "body": "In the elastic case, scattering occurs through a diagonal axial Z-boson coupling. In the inelastic case, a pseudo-Dirac Higgsino scatters endothermically with a specific mass splitting.\n\nBoth scenarios can avoid current experimental constraints while remaining consistent with observed dark-matter abundance."
+    }
+  ],
+  "caveats": [
+    "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+    "A single candidate event is not a confirmed detection. It could be background noise or a statistical fluctuation.",
+    "The models are theoretical interpretations. Whether either one actually describes dark matter requires more data from this and other experiments."
+  ],
+  "cta": {
+    "headline": "Send this to anyone hunting for dark matter",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "A dark-matter detector caught an unusual signal, and physicists are using it to test two competing theories about what the invisible stuff actually is",
+  "hashtag_set": "physics",
+  "shape": "",
+  "vet": {
+    "key": "abe2f9d0fd425713",
+    "verdict": "HOLD",
+    "score": 42,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      }
+    ],
+    "design": "mechanistic / lab",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "stakes",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 1,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "248 keV",
+          "found_in_abstract": true
+        },
+        {
+          "number": "500 GeV",
+          "found_in_abstract": true
+        },
+        {
+          "number": "a few hundred keV",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": true
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "The LUX-ZEPLIN (LZ) experiment has recently reported a nuclear-recoil candidate at $E_R\\simeq248$ keV. We study two supersymmetric interpretations based on distinct neutralino couplings to the $Z$ boson. In the elastic case, a bino- or singlino-like neutralino scatters through a diagonal axial $Z$ coupling set by the Higgsino asymmetry $X=|N_{13}|^2-|N_{14}|^2$ rather than by the total Higgsino fraction. Since the spin-dependent blind spot does not coincide with the spin-independent one, Higgs-mediated scattering can be suppressed while retaining $X\\sim10^{-2}$. In the MSSM this favors low $\\tan\u03b2$, in tension with the observed Higgs mass for a few-TeV squark spectrum, a tension relieved by the tree-level quartic of the NMSSM. An explicit NMSSM benchmark with $m_\u03c7\\simeq500$ GeV and $X\\simeq0.007$, below current LZ limits, obtains its relic abundance from a singlet-like pseudoscalar resonance just above threshold, which also suppresses present-day annihilation. In the inelastic case, a pseudo-Dirac Higgsino scatters endothermically, with a splitting of a few hundred keV generated by gauginos at the PeV scale which can be lowered by opposite-sign bino-wino cancellation, or by weak singlino mixing; the minimal thermal realization is strongly constrained by solar-neutrino searches. The two mechanisms predict distinct recoil spectra away from the candidate.",
+    "source": "arxiv",
+    "ext_id": "2609.40234v1",
+    "pub_types": [
+      "hep-ph",
+      "astro-ph.CO",
+      "hep-ex"
+    ],
+    "publisher": "arXiv",
+    "license": ""
+  },
+  "source_niche": "physics",
+  "cover_art": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/3/39/ETH-BIB-Parrinello%2C_Michele_%281945-%29-Portr_17881.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "licence": "CC BY-SA 4.0",
+    "author": "Giulia Marthaler",
+    "needs_credit": true,
+    "source": "Wikimedia Commons",
+    "page": "File:ETH-BIB-Parrinello, Michele (1945-)-Portr 17881.jpg",
+    "query": "physicist",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-09-30-physics-abe2f9d0/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'physics'"
+  }
+}
