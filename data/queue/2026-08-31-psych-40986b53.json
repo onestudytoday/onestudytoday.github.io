@@ -1,0 +1,166 @@
+{
+  "id": "2026-08-31-psych-40986b53",
+  "niche": "wildcard",
+  "study": {
+    "key": "40986b53ec056386",
+    "title": "Disturbed Spatial Learning and Hippocampal Molecular and Histological Alterations in Middle-Aged Rats with a History of Polycystic Ovary Syndrome",
+    "journal": "International journal of endocrinology and metabolism",
+    "pub_date": "2026-08-31",
+    "pub_date_display": "Aug 31, 2026",
+    "doi": "10.5812/ijem-167083",
+    "doi_display": "doi.org/10.5812/ijem-167083",
+    "url": "https://doi.org/10.5812/ijem-167083",
+    "is_preprint": false,
+    "server": "",
+    "n": 7,
+    "authors": [
+      "Noroozzadeh M",
+      "Changaei M",
+      "Farhadi-Azar M",
+      "Mousavi M",
+      "Mousapour P",
+      "Amiri M"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Int J Endocrinol Metab \u2022 n=7",
+    "headline": "A history of PCOS may **raise the risk of spatial learning problems** decades later, at least in rodents."
+  },
+  "slides": [
+    {
+      "eyebrow": "Why you should care",
+      "title": "Hormonal conditions during reproductive years might leave cognitive traces long after symptoms resolve.",
+      "body": "This study found that rats with a history of PCOS showed worse spatial learning in middle age. They also had more damaged neurons across all hippocampal regions.\n\nIf the pattern holds in people, it could mean PCOS affects brain health beyond the years when it's actively treated.",
+      "basis": "inferred"
+    },
+    {
+      "eyebrow": "What the data says",
+      "title": "Middle-aged rats with a history of PCOS took longer to learn spatial tasks and had far more hippocampal damage.",
+      "body": "During training, PCOS rats had higher mean latency and took longer to complete tasks. They also had two to three times as many damaged neurons in every hippocampal region.\n\nMemory performance after learning did not differ between groups.",
+      "stat": {
+        "value": "2-3\u00d7",
+        "label": "more damaged neurons in PCOS rats"
+      }
+    },
+    {
+      "eyebrow": "The assumption",
+      "title": "PCOS is usually framed as a metabolic and reproductive condition, not one with lasting effects on the brain.",
+      "body": "Most research focuses on insulin resistance, ovarian cysts, and fertility during active PCOS years. Cognitive or neurological consequences later in life rarely enter the conversation.\n\nThis study suggests the syndrome might leave a mark on brain tissue that persists into middle age, at least in rats."
+    }
+  ],
+  "caveats": [
+    "This was done in rats, not humans. Most findings in rats do not carry over to people.",
+    "The sample was very small: just seven animals per group. That makes it harder to rule out chance.",
+    "The study does not show that PCOS caused the damage, only that the two occurred together in the same animals.",
+    "The implication slide reflects our extrapolation from the data, not a claim made in the paper itself."
+  ],
+  "cta": {
+    "headline": "Send this to someone with PCOS worried about brain fog",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "A history of PCOS in rats was linked to worse spatial learning and more brain damage in middle age, long after the syndrome itself.",
+  "hashtag_set": "health",
+  "shape": "",
+  "vet": {
+    "key": "40986b53ec056386",
+    "verdict": "HOLD",
+    "score": 50,
+    "flags": [
+      {
+        "code": "NON_HUMAN",
+        "severity": "warn",
+        "message": "Study subjects are rats, not people.",
+        "caveat": "This was done in rats \u2014 not humans. Most findings in rats do not carry over to people.",
+        "draft_rule": "Subjects were rats, NOT humans. The cover slide must not imply a human result. Name the species explicitly by slide 2."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'International journal of endocrinology and metabolism' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "unclear",
+    "sample_size": 7,
+    "subjects": "non-human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [
+      "rats"
+    ],
+    "required_caveats": [
+      "This was done in rats \u2014 not humans. Most findings in rats do not carry over to people."
+    ],
+    "required_badges": [
+      "NOT_IN_HUMANS"
+    ],
+    "draft_rules": [
+      "Subjects were rats, NOT humans. The cover slide must not imply a human result. Name the species explicitly by slide 2."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "reversal",
+    "lint_errors": [
+      "slide1.body: 47 words, spec is 30-40",
+      "slide3.body: 46 words, spec is 30-40",
+      "GUARDRAIL the cover kicker says 'Int J Endocrinol Metab \u2022 n=7', but this paper was published in 'International journal of endocrinology and metabolism'. The journal is the credibility claim on the cover and it has to be the real one"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "7",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2-3\u00d7",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Background Studies have reported inconsistent findings regarding the potential effects of polycystic ovary syndrome (PCOS) on neurocognitive function. Objectives This study aimed to investigate whether cognitive function, particularly spatial learning and memory, and hippocampal tissue are impaired in middle-aged rats with a history of PCOS. Methods Spatial learning and memory, hippocampal histopathology, and the expression of genes including beta-secretase 1 (bace1), microtubule-associated protein tau (mapt), amyloid-beta precursor protein (app), nestin (nes), and doublecortin (dcx) in hippocampal tissue were compared between middle-aged PCOS rats and controls (n = 7/group). Results During training (learning), middle-aged PCOS rats had significantly higher mean latency (22.04 (1.86, 42.22); P = 0.03) and duration (5.62 (1.41, 9.84); P = 0.009) than controls. However, memory performance did not differ significantly between PCOS rats and controls. PCOS rats had a significantly higher number of damaged neurons in the CA1 (24.25 \u00b1 2.68 vs. 9.50 \u00b1 0.64), CA2 (20.75 \u00b1 1.03 vs. 8.25 \u00b1 1.10), CA3 (20.50 \u00b1 1.65 vs. 8.50 \u00b1 1.04), and DG (28.25 \u00b1 1.88 vs. 13.00 \u00b1 1.29) regions of the hippocampus than controls (P Conclusions A history of PCOS during reproductive age may increase the risk of cognitive dysfunction, particularly impaired spatial learning, as well as hippocampal damage later in life.",
+    "source": "europepmc",
+    "ext_id": "MED:42807785",
+    "pub_types": [
+      "research-article",
+      "Journal Article"
+    ],
+    "publisher": "Brieflands",
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "source_niche": "psych",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Olimpiadi_Problem_Solving_2025_Finale_regionale_Marche_01.jpg/1920px-Olimpiadi_Problem_Solving_2025_Finale_regionale_Marche_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC BY-SA 4.0",
+    "author": "Giacomo Alessandroni",
+    "needs_credit": true,
+    "source": "Wikimedia Commons",
+    "page": "File:Olimpiadi Problem Solving 2025 Finale regionale Marche 01.jpg",
+    "query": "problem",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-08-31-psych-40986b53/bg/cover.jpg"
+  },
+  "reel": {
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-08-31-psych-40986b53/reel.mp4",
+    "duration": 19.2,
+    "bytes": 4255244
+  },
+  "reel_status": {
+    "built": true,
+    "duration": 19.2,
+    "bytes": 4255244
+  }
+}
