@@ -114,7 +114,7 @@
     "unverified_numbers": [],
     "publishable": false
   },
-  "status": "approved",
+  "status": "published",
   "source": {
     "abstract": "Crown-of-thorns starfish (COTS) outbreaks seriously threaten coral reef ecosystems, while conventional monitoring approaches are time-consuming and often lack sufficient sensitivity for early warning. Existing electrochemical DNA sensors usually require complex electrode-surface immobilization procedures, which can lead to uneven probe distribution, significant steric hindrance, and poor stability. Meanwhile, the low concentration of environmental DNA (eDNA) in marine environments further complicates detection. To overcome these challenges, this study developed a homogeneous electrochemical DNA sensor assisted by recombinase polymerase amplification (RPA) for COTS eDNA detection. Target DNA was first amplified by RPA, and the amplification products were then hybridized in solution with capture probe (CP)-modified magnetic beads (MB) and biotin-labeled signal probe (SP) to form sandwich-structured MB complexes. These complexes were subsequently magnetically enriched and immobilized on the electrode surface for electrochemical signal readout. Under optimized conditions, the sensor displayed a linear response to COTS genomic DNA from 3.77 fg/\u03bcL to 1 ng/\u03bcL, with an LOD of 2.02 fg/\u03bcL and an LOQ of 3.77 fg/\u03bcL. The sensor was applied to Xisha Islands samples, and the results agreed with droplet digital PCR (ddPCR) (P > 0.05), demonstrating its potential for sensitive and reliable on-site COTS eDNA detection.",
     "source": "europepmc",
@@ -147,5 +147,19 @@
   "render_seq": 1,
   "review": {
     "forced": true
+  },
+  "published": {
+    "media_id": "17989047651073771",
+    "kind": "CAROUSEL",
+    "at": "2026-10-05T20:20:47Z"
+  },
+  "crosspost": {
+    "at": "2026-10-05T20:20:47Z",
+    "posted": [],
+    "skipped": [
+      "bluesky",
+      "threads"
+    ],
+    "failed": {}
   }
 }
