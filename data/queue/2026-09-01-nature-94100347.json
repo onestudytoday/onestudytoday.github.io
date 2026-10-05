@@ -1,0 +1,159 @@
+{
+  "id": "2026-09-01-nature-94100347",
+  "niche": "nature",
+  "study": {
+    "key": "941003476277f7c4",
+    "title": "Water-responsive injectable hydrogel achieving rapid in situ gelation and long-term colonic mucoadhesion for efficient fecal microbiota transplantation",
+    "journal": "Bioactive materials",
+    "pub_date": "2026-09-01",
+    "pub_date_display": "Sep 1, 2026",
+    "doi": "10.1016/j.bioactmat.2026.08.036",
+    "doi_display": "doi.org/10.1016/j.bioactmat.2026.08.036",
+    "url": "https://doi.org/10.1016/j.bioactmat.2026.08.036",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Chen Z",
+      "Li Y",
+      "Xiong W",
+      "Ma P",
+      "Liu W",
+      "Zhou H"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Bioactive Materials \u00b7 mice + pigs",
+    "headline": "A new hydrogel **sticks to the colon for three days**, keeping transplanted gut bacteria alive."
+  },
+  "slides": [
+    {
+      "eyebrow": "What it means for you",
+      "basis": "stated",
+      "title": "If this works in people, fecal transplants could become far more effective at fixing gut bacteria problems.",
+      "body": "Right now, transplanted bacteria get flushed out before they can colonize. Most don't survive the stomach or bowel movement.\n\nThis gel uses colon water to harden in place. It holds bacteria against the gut wall for over 72 hours."
+    },
+    {
+      "eyebrow": "The result",
+      "title": "The injectable gel stayed attached to mouse and pig colons for more than 72 hours while keeping microbiota alive.",
+      "body": "Researchers injected a low-viscosity solution through the rectum. Contact with the wet colon triggered rapid gelation.\n\nThe gel formed strong bonds with the mucosal surface. It significantly improved outcomes in a mouse colitis model.",
+      "stat": {
+        "value": ">72 h",
+        "label": "retention in the colon"
+      }
+    },
+    {
+      "eyebrow": "How it works",
+      "title": "Water from the colon wall triggers a chemical reaction that turns the liquid into a solid mesh.",
+      "body": "The formula mixes two compounds in a biocompatible solvent. When tissue water enters, it causes rapid polymerization.\n\nChemical groups then form hydrogen bonds and covalent links with mucus. The gel conforms to the surface as new mucus secretes."
+    }
+  ],
+  "caveats": [
+    "This was done in mice and pigs, not humans. Most findings in mice and pigs do not carry over to people.",
+    "The study tested the gel's ability to stick and keep bacteria alive, but long-term safety and efficacy in humans remain unknown."
+  ],
+  "cta": {
+    "headline": "Send this to anyone redoing fecal transplants",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "A gel that hardens on contact with water could finally give transplanted gut bacteria enough time to colonize the colon.",
+  "hashtag_set": "health",
+  "shape": "",
+  "vet": {
+    "key": "941003476277f7c4",
+    "verdict": "HOLD",
+    "score": 50,
+    "flags": [
+      {
+        "code": "NON_HUMAN",
+        "severity": "warn",
+        "message": "Study subjects are mice and pigs, not people.",
+        "caveat": "This was done in mice and pigs \u2014 not humans. Most findings in mice and pigs do not carry over to people.",
+        "draft_rule": "Subjects were mice and pigs, NOT humans. The cover slide must not imply a human result. Name the species explicitly by slide 2."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Bioactive materials' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "non-human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [
+      "mice",
+      "pigs"
+    ],
+    "required_caveats": [
+      "This was done in mice and pigs \u2014 not humans. Most findings in mice and pigs do not carry over to people."
+    ],
+    "required_badges": [
+      "NOT_IN_HUMANS"
+    ],
+    "draft_rules": [
+      "Subjects were mice and pigs, NOT humans. The cover slide must not imply a human result. Name the species explicitly by slide 2."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "stakes",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 1,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "three days",
+          "found_in_abstract": true
+        },
+        {
+          "number": "72 hours",
+          "found_in_abstract": true
+        },
+        {
+          "number": ">72 h",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": true
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Gut microbiota dysbiosis is a critical factor in numerous diseases, yet current fecal microbiota (FM) transplantation therapies suffer from poor retention and inconsistent engraftment due to harsh gastric conditions or rapid clearance by bowel peristalsis. Herein, we report a thioester pre-crosslinked, low-viscosity injectable sol (Alg-NHS@\u03b1LA) formulated by directly mixing \u03b1-lipoic acid (\u03b1LA) and N -hydroxysuccinimide ester-modified sodium alginate (Alg-NHS) in a biocompatible polyethylene glycol solvent. This formulation remains flowable for minimally invasive transanal administration. Critically, upon contact with the wet colonic mucosa, tissue-derived water triggers a rapid ring-opening polymerization of \u03b1LA, inducing an in situ sol-gel transition to form a robust hydrogel network. Simultaneously, abundant carboxyl groups and unreacted NHS esters establish strong hydrogen bonds and covalent linkages with the mucosal surface, enabling robust and durable wet adhesion that conventional injectables fail to achieve. More importantly, this hydrogel harnesses continuous mucus secretion to facilitate conformal coating, achieving exceptional long-term retention exceeding 72 h while preserving the viability of the incorporated microbiota. The translational potential of this platform is validated through successful endoscopic delivery in a porcine model. By integrating rapid water-triggered gelation with robust mucosal adhesion, our Alg-NHS@\u03b1LA/FM system significantly enhances FM transplantation efficacy in a mouse colitis model, offering a promising strategy for colonic microbiome-based therapeutics.",
+    "source": "europepmc",
+    "ext_id": "MED:42733554",
+    "pub_types": [
+      "research-article",
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "http://creativecommons.org/licenses/by-nc-nd/4.0/;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "nature",
+  "cover_art": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Andean_Man.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "licence": "CC BY-SA 4.0",
+    "author": "Cacophony",
+    "needs_credit": true,
+    "source": "Wikimedia Commons",
+    "page": "File:Andean Man.jpg",
+    "query": "stick",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-09-01-nature-94100347/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'nature'"
+  }
+}
