@@ -127,17 +127,22 @@
   },
   "source_niche": "nature",
   "cover_art": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/20220927_Uganda_Ebola_Outbreak%281%29.png/1920px-20220927_Uganda_Ebola_Outbreak%281%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "licence": "Public domain",
-    "author": "ERCC - Emergency Response Coordination Centre",
-    "needs_credit": false,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Asterias_rubens.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "licence": "CC BY-SA 4.0",
+    "author": "Hans Hillewaert",
+    "needs_credit": true,
     "source": "Wikimedia Commons",
-    "page": "File:20220927 Uganda Ebola Outbreak(1).png",
-    "query": "outbreak",
+    "page": "File:Asterias rubens.jpg",
+    "query": "starfish",
     "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-08-01-nature-317d5e5e/bg/cover.jpg"
   },
   "reel_status": {
     "built": false,
     "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'nature'"
-  }
+  },
+  "cover_art_tried": [
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/20220927_Uganda_Ebola_Outbreak%281%29.png/1920px-20220927_Uganda_Ebola_Outbreak%281%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "https://upload.wikimedia.org/wikipedia/commons/b/bb/Asterias_rubens.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+  ],
+  "render_seq": 1
 }
