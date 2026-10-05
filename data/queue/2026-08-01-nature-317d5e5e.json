@@ -1,0 +1,143 @@
+{
+  "id": "2026-08-01-nature-317d5e5e",
+  "niche": "nature",
+  "study": {
+    "key": "317d5e5ef6209595",
+    "title": "An RPA-assisted homogeneous electrochemical DNA sensor for on-site eDNA detection toward early warning of crown-of-thorns starfish outbreaks",
+    "journal": "Bioelectrochemistry (Amsterdam, Netherlands)",
+    "pub_date": "2026-08-01",
+    "pub_date_display": "Aug 1, 2026",
+    "doi": "10.1016/j.bioelechem.2026.109407",
+    "doi_display": "doi.org/10.1016/j.bioelechem.2026.109407",
+    "url": "https://doi.org/10.1016/j.bioelechem.2026.109407",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Wen B",
+      "Chen C",
+      "Ni Z",
+      "Chen Y",
+      "Wang L",
+      "Yu K."
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Bioelectrochemistry \u2022 field-tested",
+    "headline": "A new sensor can detect **starfish DNA in seawater at femtogram levels**, low enough to catch outbreaks early."
+  },
+  "slides": [
+    {
+      "eyebrow": "Why you should care",
+      "basis": "inferred",
+      "title": "If coral reefs could be monitored this sensitively, outbreaks might be caught before they spread.",
+      "body": "Crown-of-thorns starfish destroy coral reefs when populations explode. Current monitoring is too slow and too coarse to catch outbreaks early.\n\nThis sensor could detect trace DNA in seawater before the starfish become visible, giving managers time to act."
+    },
+    {
+      "eyebrow": "What the data says",
+      "title": "The sensor detected starfish DNA down to 2.02 femtograms per microlitre and matched reference results in field samples.",
+      "body": "The team used magnetic beads and DNA amplification to concentrate target sequences before electrochemical readout. Detection was linear across six orders of magnitude.\n\nField samples from the Xisha Islands matched droplet digital PCR, the gold standard, with no statistical difference.",
+      "stat": {
+        "value": "2.02 fg",
+        "label": "Detection limit per microlitre"
+      }
+    },
+    {
+      "eyebrow": "The assumption",
+      "title": "You would assume electrochemical sensors need complex surface chemistry that makes them fragile and inconsistent.",
+      "body": "Most DNA sensors immobilize probes directly on electrodes. That creates uneven coverage and poor stability.\n\nThis design does the chemistry in solution, then pulls the complexes onto the electrode with magnets. Simpler, and more consistent."
+    }
+  ],
+  "caveats": [
+    "This was a proof-of-concept study with lab-spiked samples and a limited number of field samples from one location.",
+    "The abstract does not report how the sensor performs with DNA from closely related starfish species or other marine organisms."
+  ],
+  "cta": {
+    "headline": "Send this to the femtogram-level DNA skeptic",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Trace DNA in seawater can now be detected at concentrations low enough to catch coral-eating starfish before outbreaks spread.",
+  "hashtag_set": "wildcard",
+  "shape": "",
+  "vet": {
+    "key": "317d5e5ef6209595",
+    "verdict": "PASS",
+    "score": 50,
+    "flags": [
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Bioelectrochemistry (Amsterdam, Netherlands)' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [],
+    "notes": []
+  },
+  "qa": {
+    "format": "reversal",
+    "lint_errors": [
+      "cover.kicker: 2 words, spec is 3-7",
+      "GUARDRAIL the cover kicker says 'Bioelectrochemistry \u2022 field-tested', but this paper was published in 'Bioelectrochemistry (Amsterdam, Netherlands)'. The journal is the credibility claim on the cover and it has to be the real one"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "2.02 femtograms per microlitre",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2.02 fg",
+          "found_in_abstract": true
+        },
+        {
+          "number": "six orders of magnitude",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Crown-of-thorns starfish (COTS) outbreaks seriously threaten coral reef ecosystems, while conventional monitoring approaches are time-consuming and often lack sufficient sensitivity for early warning. Existing electrochemical DNA sensors usually require complex electrode-surface immobilization procedures, which can lead to uneven probe distribution, significant steric hindrance, and poor stability. Meanwhile, the low concentration of environmental DNA (eDNA) in marine environments further complicates detection. To overcome these challenges, this study developed a homogeneous electrochemical DNA sensor assisted by recombinase polymerase amplification (RPA) for COTS eDNA detection. Target DNA was first amplified by RPA, and the amplification products were then hybridized in solution with capture probe (CP)-modified magnetic beads (MB) and biotin-labeled signal probe (SP) to form sandwich-structured MB complexes. These complexes were subsequently magnetically enriched and immobilized on the electrode surface for electrochemical signal readout. Under optimized conditions, the sensor displayed a linear response to COTS genomic DNA from 3.77 fg/\u03bcL to 1 ng/\u03bcL, with an LOD of 2.02 fg/\u03bcL and an LOQ of 3.77 fg/\u03bcL. The sensor was applied to Xisha Islands samples, and the results agreed with droplet digital PCR (ddPCR) (P > 0.05), demonstrating its potential for sensitive and reliable on-site COTS eDNA detection.",
+    "source": "europepmc",
+    "ext_id": "MED:42561631",
+    "pub_types": [
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "https://doi.org/10.15223/policy-004;https://doi.org/10.15223/policy-012;https://doi.org/10.15223/policy-017;https://doi.org/10.15223/policy-029;https://doi.org/10.15223/policy-037;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "nature",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/20220927_Uganda_Ebola_Outbreak%281%29.png/1920px-20220927_Uganda_Ebola_Outbreak%281%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "Public domain",
+    "author": "ERCC - Emergency Response Coordination Centre",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:20220927 Uganda Ebola Outbreak(1).png",
+    "query": "outbreak",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-08-01-nature-317d5e5e/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'nature'"
+  }
+}
