@@ -31,23 +31,22 @@
     {
       "eyebrow": "Why you should care",
       "title": "If this pattern holds in people, it could explain why anxious patients heal more slowly after a break.",
-      "body": "Clinicians have long observed that anxious patients tend to have worse fracture outcomes. This study offers a possible mechanism: chronic stress appears linked to the expansion of a specific neutrophil type.\n\nIf the same pathway exists in humans, it could open routes to therapies that target the immune response rather than just managing pain.",
+      "body": "Clinicians have long observed that anxious patients tend to have worse fracture outcomes. This study offers a possible mechanism.\n\nIf the same pathway exists in humans, it could open routes to therapies that target immune response rather than just pain.",
       "basis": "inferred"
     },
     {
       "eyebrow": "What the data says",
       "title": "In anxious mice with broken femurs, a subset of neutrophils expanded and blocked the bone cells needed for healing.",
-      "body": "The researchers used chronic restraint stress to model anxiety in mice, then induced femoral fractures. Stressed mice showed higher numbers of TGF\u03b21+CCR5+ neutrophils in bone marrow.\n\nA targeted nanocarrier delivering AKBA reduced this neutrophil population and sped up fracture repair compared to free drug.",
+      "body": "Chronic restraint stress modeled anxiety in mice with femoral fractures. Stressed mice showed higher numbers of TGFB1+CCR5+ neutrophils in bone marrow.\n\nA targeted nanocarrier delivering AKBA reduced this neutrophil population and sped up fracture repair compared to free drug.",
       "stat": {
-        "value": "TGF\u03b21+",
+        "value": "TGFB1+",
         "label": "neutrophil marker linked to impaired healing"
       }
     },
     {
       "eyebrow": "Why the difference",
       "title": "The assumption is that bone healing is mainly about mechanical stability and nutrient supply, not immune cells.",
-      "body": "Most fracture care focuses on alignment, casting, and supporting calcium intake. But this work shows neutrophils can form a feedback loop with stem cells that stalls bone formation.\n\nThe nanocarrier was designed to home in on neutrophils at the fracture site, solving problems with AKBA's poor solubility.",
-      "basis": "inferred"
+      "body": "Most fracture care focuses on alignment, casting, and supporting calcium intake. But this work shows neutrophils can form a feedback loop with stem cells that stalls bone formation.\n\nThe nanocarrier was designed to home in on neutrophils at the fracture site, solving AKBA's poor solubility."
     }
   ],
   "caveats": [
@@ -60,7 +59,7 @@
   },
   "caption": "Chronic anxiety in mice goes together with a neutrophil population that blocks bone repair after fractures, suggesting stress may have measurable immune effects on healing.",
   "hashtag_set": "health",
-  "shape": "",
+  "shape": "implication-first-v2",
   "vet": {
     "key": "76f102bad7db3865",
     "verdict": "HOLD",
@@ -112,9 +111,8 @@
   "qa": {
     "format": "reversal",
     "lint_errors": [
-      "slide1.body: 54 words, spec is 30-40",
-      "slide2.body: 45 words, spec is 30-40",
-      "slide3.body: 47 words, spec is 30-40"
+      "GUARDRAIL this copy was forced past the checks with `force revise`. slide3.body: 45 words, spec is 30-40",
+      "slide3.body: 45 words, spec is 30-40"
     ],
     "style_flags": [],
     "repair_rounds": 2,
@@ -125,7 +123,11 @@
     },
     "blocking_claims": [],
     "unverified_numbers": [],
-    "publishable": false
+    "publishable": false,
+    "revised": 1,
+    "forced_revision": [
+      "slide3.body: 45 words, spec is 30-40"
+    ]
   },
   "status": "needs_review",
   "source": {
@@ -157,5 +159,72 @@
     "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/A6-EDC_Airbus_A380_Emirates_%287602113936%29.jpg/1920px-A6-EDC_Airbus_A380_Emirates_%287602113936%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Femur_-_detail_of_diaphysis_cross_section.jpg/1920px-Femur_-_detail_of_diaphysis_cross_section.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   ],
-  "render_seq": 1
+  "render_seq": 2,
+  "revisions": [
+    {
+      "instruction": "replace beta symbol throughout with \"B\"",
+      "previous": {
+        "cover": {
+          "kicker": "Bioactive Materials + mouse model",
+          "headline": "Stress-driven anxiety might interfere with bone repair by **triggering a damaging immune response** at breaks."
+        },
+        "slides": [
+          {
+            "eyebrow": "Why you should care",
+            "title": "If this pattern holds in people, it could explain why anxious patients heal more slowly after a break.",
+            "body": "Clinicians have long observed that anxious patients tend to have worse fracture outcomes. This study offers a possible mechanism: chronic stress appears linked to the expansion of a specific neutrophil type.\n\nIf the same pathway exists in humans, it could open routes to therapies that target the immune response rather than just managing pain.",
+            "basis": "inferred"
+          },
+          {
+            "eyebrow": "What the data says",
+            "title": "In anxious mice with broken femurs, a subset of neutrophils expanded and blocked the bone cells needed for healing.",
+            "body": "The researchers used chronic restraint stress to model anxiety in mice, then induced femoral fractures. Stressed mice showed higher numbers of TGF\u03b21+CCR5+ neutrophils in bone marrow.\n\nA targeted nanocarrier delivering AKBA reduced this neutrophil population and sped up fracture repair compared to free drug.",
+            "stat": {
+              "value": "TGF\u03b21+",
+              "label": "neutrophil marker linked to impaired healing"
+            }
+          },
+          {
+            "eyebrow": "Why the difference",
+            "title": "The assumption is that bone healing is mainly about mechanical stability and nutrient supply, not immune cells.",
+            "body": "Most fracture care focuses on alignment, casting, and supporting calcium intake. But this work shows neutrophils can form a feedback loop with stem cells that stalls bone formation.\n\nThe nanocarrier was designed to home in on neutrophils at the fracture site, solving problems with AKBA's poor solubility.",
+            "basis": "inferred"
+          }
+        ],
+        "caveats": [
+          "This study found a pattern, not a cause. Something else could explain the link between stress and impaired healing.",
+          "This was done in mice, not humans. Most findings in mice do not carry over to people, and the immune systems differ substantially."
+        ],
+        "cta": {
+          "headline": "Send this to anyone convinced stress is just mental",
+          "sub": "One real study, every weekday. The full paper is linked in bio."
+        },
+        "caption": "Chronic anxiety in mice goes together with a neutrophil population that blocks bone repair after fractures, suggesting stress may have measurable immune effects on healing."
+      },
+      "previous_shape": "",
+      "previous_qa": {
+        "format": "reversal",
+        "lint_errors": [
+          "slide1.body: 54 words, spec is 30-40",
+          "slide2.body: 45 words, spec is 30-40",
+          "slide3.body: 47 words, spec is 30-40"
+        ],
+        "style_flags": [],
+        "repair_rounds": 2,
+        "audit": {
+          "supported": true,
+          "unsupported_claims": [],
+          "numbers_check": []
+        },
+        "blocking_claims": [],
+        "unverified_numbers": [],
+        "publishable": false
+      },
+      "lint_errors": [
+        "slide3.body: 45 words, spec is 30-40"
+      ],
+      "style_flags": [],
+      "repair_rounds": 2
+    }
+  ]
 }
