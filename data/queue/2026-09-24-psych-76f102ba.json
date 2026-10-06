@@ -129,7 +129,7 @@
       "slide3.body: 45 words, spec is 30-40"
     ]
   },
-  "status": "needs_review",
+  "status": "approved",
   "source": {
     "abstract": "Anxiety is clinically associated with impaired fracture healing, but the underlying immunological mechanism remains unclear, and no targeted therapy is available. In a mouse model of chronic restraint stress (CRS)-induced anxiety with femoral fracture, we observed expansion of TGF\u03b21+CCR5+ double-positive neutrophils in the bone marrow. These neutrophils inhibited osteogenic differentiation of bone marrow mesenchymal stem cells (BMSCs) via TGF\u03b21 secretion, while BMSC-derived CCL5 reciprocally promoted neutrophil activation, forming a detrimental feedback that disrupted fracture repair. Mechanistically, CRS activated the NF-\u03baB-CCR5 axis to upregulate CCR5 and sustain this neutrophil subset. We found that acetyl-11-keto-\u03b2-boswellic acid (AKBA) directly bound YAP1, relieved YAP1-mediated suppression of ubiquitin-specific peptidase 31 (USP31), and consequently inhibited NF-\u03baB phosphorylation and CCR5 expression, reducing the pathogenic neutrophil population and restoring BMSCs' osteogenic function. In order to overcome the problems of poor solubility, low bioavailability and tissue non-selectivity of AKBA, we developed a NIMP-R14 aptamer-modified epigallocatechin gallate (EGCG)-coated nanocarrier (AKBA@E-N), which can achieve enhanced uptake and local retention of neutrophils in the acidic microenvironment of the fracture site. In vivo, AKBA@E-N significantly accelerated fracture healing compared with free AKBA. This study reveals a neutrophil-mediated mechanism linking stress to impaired bone repair and provides a targeted nanotherapeutic strategy.",
     "source": "europepmc",
@@ -226,5 +226,8 @@
       "style_flags": [],
       "repair_rounds": 2
     }
-  ]
+  ],
+  "review": {
+    "forced": true
+  }
 }
