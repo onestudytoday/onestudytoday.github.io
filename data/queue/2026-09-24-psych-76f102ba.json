@@ -140,17 +140,22 @@
   },
   "source_niche": "psych",
   "cover_art": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/A6-EDC_Airbus_A380_Emirates_%287602113936%29.jpg/1920px-A6-EDC_Airbus_A380_Emirates_%287602113936%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "licence": "CC BY-SA 3.0",
-    "author": "Aeroprints.com",
-    "needs_credit": true,
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Femur_-_detail_of_diaphysis_cross_section.jpg/1920px-Femur_-_detail_of_diaphysis_cross_section.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC0",
+    "author": "MAKY.OREL",
+    "needs_credit": false,
     "source": "Wikimedia Commons",
-    "page": "File:A6-EDC Airbus A380 Emirates (7602113936).jpg",
-    "query": "interfere",
+    "page": "File:Femur - detail of diaphysis cross section.jpg",
+    "query": "femur",
     "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-09-24-psych-76f102ba/bg/cover.jpg"
   },
   "reel_status": {
     "built": false,
     "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'psych'"
-  }
+  },
+  "cover_art_tried": [
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/A6-EDC_Airbus_A380_Emirates_%287602113936%29.jpg/1920px-A6-EDC_Airbus_A380_Emirates_%287602113936%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Femur_-_detail_of_diaphysis_cross_section.jpg/1920px-Femur_-_detail_of_diaphysis_cross_section.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+  ],
+  "render_seq": 1
 }
