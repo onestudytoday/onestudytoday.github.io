@@ -1,0 +1,156 @@
+{
+  "id": "2026-09-24-psych-76f102ba",
+  "niche": "psych",
+  "study": {
+    "key": "76f102bad7db3865",
+    "title": "Aptamer-functionalized EGCG nanocarrier for neutrophil-targeted AKBA delivery promotes anxiety-related fracture healing",
+    "journal": "Bioactive materials",
+    "pub_date": "2026-09-24",
+    "pub_date_display": "Sep 24, 2026",
+    "doi": "10.1016/j.bioactmat.2026.09.028",
+    "doi_display": "doi.org/10.1016/j.bioactmat.2026.09.028",
+    "url": "https://doi.org/10.1016/j.bioactmat.2026.09.028",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Ouyang L",
+      "Zhang Y",
+      "Liao J",
+      "Zhang Z",
+      "He X",
+      "Lin Z"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Bioactive Materials + mouse model",
+    "headline": "Stress-driven anxiety might interfere with bone repair by **triggering a damaging immune response** at breaks."
+  },
+  "slides": [
+    {
+      "eyebrow": "Why you should care",
+      "title": "If this pattern holds in people, it could explain why anxious patients heal more slowly after a break.",
+      "body": "Clinicians have long observed that anxious patients tend to have worse fracture outcomes. This study offers a possible mechanism: chronic stress appears linked to the expansion of a specific neutrophil type.\n\nIf the same pathway exists in humans, it could open routes to therapies that target the immune response rather than just managing pain.",
+      "basis": "inferred"
+    },
+    {
+      "eyebrow": "What the data says",
+      "title": "In anxious mice with broken femurs, a subset of neutrophils expanded and blocked the bone cells needed for healing.",
+      "body": "The researchers used chronic restraint stress to model anxiety in mice, then induced femoral fractures. Stressed mice showed higher numbers of TGF\u03b21+CCR5+ neutrophils in bone marrow.\n\nA targeted nanocarrier delivering AKBA reduced this neutrophil population and sped up fracture repair compared to free drug.",
+      "stat": {
+        "value": "TGF\u03b21+",
+        "label": "neutrophil marker linked to impaired healing"
+      }
+    },
+    {
+      "eyebrow": "Why the difference",
+      "title": "The assumption is that bone healing is mainly about mechanical stability and nutrient supply, not immune cells.",
+      "body": "Most fracture care focuses on alignment, casting, and supporting calcium intake. But this work shows neutrophils can form a feedback loop with stem cells that stalls bone formation.\n\nThe nanocarrier was designed to home in on neutrophils at the fracture site, solving problems with AKBA's poor solubility.",
+      "basis": "inferred"
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Something else could explain the link between stress and impaired healing.",
+    "This was done in mice, not humans. Most findings in mice do not carry over to people, and the immune systems differ substantially."
+  ],
+  "cta": {
+    "headline": "Send this to anyone convinced stress is just mental",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Chronic anxiety in mice goes together with a neutrophil population that blocks bone repair after fractures, suggesting stress may have measurable immune effects on healing.",
+  "hashtag_set": "health",
+  "shape": "",
+  "vet": {
+    "key": "76f102bad7db3865",
+    "verdict": "HOLD",
+    "score": 40,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "note",
+        "message": "Design reads as observational (mechanistic / lab); markers: associated with",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      },
+      {
+        "code": "NON_HUMAN",
+        "severity": "warn",
+        "message": "Study subjects are mice, not people.",
+        "caveat": "This was done in mice \u2014 not humans. Most findings in mice do not carry over to people.",
+        "draft_rule": "Subjects were mice, NOT humans. The cover slide must not imply a human result. Name the species explicitly by slide 2."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Bioactive materials' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "mechanistic / lab",
+    "sample_size": null,
+    "subjects": "non-human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [
+      "mice"
+    ],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link.",
+      "This was done in mice \u2014 not humans. Most findings in mice do not carry over to people."
+    ],
+    "required_badges": [
+      "NOT_IN_HUMANS"
+    ],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'.",
+      "Subjects were mice, NOT humans. The cover slide must not imply a human result. Name the species explicitly by slide 2."
+    ],
+    "notes": []
+  },
+  "qa": {
+    "format": "reversal",
+    "lint_errors": [
+      "slide1.body: 54 words, spec is 30-40",
+      "slide2.body: 45 words, spec is 30-40",
+      "slide3.body: 47 words, spec is 30-40"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": []
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Anxiety is clinically associated with impaired fracture healing, but the underlying immunological mechanism remains unclear, and no targeted therapy is available. In a mouse model of chronic restraint stress (CRS)-induced anxiety with femoral fracture, we observed expansion of TGF\u03b21+CCR5+ double-positive neutrophils in the bone marrow. These neutrophils inhibited osteogenic differentiation of bone marrow mesenchymal stem cells (BMSCs) via TGF\u03b21 secretion, while BMSC-derived CCL5 reciprocally promoted neutrophil activation, forming a detrimental feedback that disrupted fracture repair. Mechanistically, CRS activated the NF-\u03baB-CCR5 axis to upregulate CCR5 and sustain this neutrophil subset. We found that acetyl-11-keto-\u03b2-boswellic acid (AKBA) directly bound YAP1, relieved YAP1-mediated suppression of ubiquitin-specific peptidase 31 (USP31), and consequently inhibited NF-\u03baB phosphorylation and CCR5 expression, reducing the pathogenic neutrophil population and restoring BMSCs' osteogenic function. In order to overcome the problems of poor solubility, low bioavailability and tissue non-selectivity of AKBA, we developed a NIMP-R14 aptamer-modified epigallocatechin gallate (EGCG)-coated nanocarrier (AKBA@E-N), which can achieve enhanced uptake and local retention of neutrophils in the acidic microenvironment of the fracture site. In vivo, AKBA@E-N significantly accelerated fracture healing compared with free AKBA. This study reveals a neutrophil-mediated mechanism linking stress to impaired bone repair and provides a targeted nanotherapeutic strategy.",
+    "source": "europepmc",
+    "ext_id": "MED:42831169",
+    "pub_types": [
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "http://creativecommons.org/licenses/by/4.0/;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "psych",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/A6-EDC_Airbus_A380_Emirates_%287602113936%29.jpg/1920px-A6-EDC_Airbus_A380_Emirates_%287602113936%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC BY-SA 3.0",
+    "author": "Aeroprints.com",
+    "needs_credit": true,
+    "source": "Wikimedia Commons",
+    "page": "File:A6-EDC Airbus A380 Emirates (7602113936).jpg",
+    "query": "interfere",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-09-24-psych-76f102ba/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'psych'"
+  }
+}
