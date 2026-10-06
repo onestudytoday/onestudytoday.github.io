@@ -1,0 +1,168 @@
+{
+  "id": "2026-09-17-psych-1b0ddb41",
+  "niche": "psych",
+  "study": {
+    "key": "1b0ddb41e65e59b7",
+    "title": "Clinical insight in schizophrenia: Time-specific associations with symptoms, cognition and antipsychotic mechanisms",
+    "journal": "Schizophrenia research. Cognition",
+    "pub_date": "2026-09-17",
+    "pub_date_display": "Sep 17, 2026",
+    "doi": "10.1016/j.scog.2026.100463",
+    "doi_display": "doi.org/10.1016/j.scog.2026.100463",
+    "url": "https://doi.org/10.1016/j.scog.2026.100463",
+    "is_preprint": false,
+    "server": "",
+    "n": 144,
+    "authors": [
+      "Stabell LA",
+      "Johnsen E",
+      "Kroken RA",
+      "L\u00f8berg EM",
+      "Joa I",
+      "Reitan SK"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Schizophrenia Research: Cognition",
+    "headline": "Symptom severity **links to clinical insight** more strongly as treatment continues, no matter the dose"
+  },
+  "slides": [
+    {
+      "eyebrow": "Why this matters",
+      "basis": "stated",
+      "title": "Tracking insight across the full symptom range could improve treatment outcomes in this condition.",
+      "body": "People who lack insight into their condition often skip treatment and have worse outcomes. This study found that symptom severity is the strongest factor tied to insight.\n\nThe link gets tighter over time. That suggests doctors should check insight even when symptoms are mild, not just during severe episodes."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Researchers tracked 144 people at five time points over one year.",
+      "body": "Greater symptom severity was linked to poorer insight at every checkpoint. It was the only factor that showed a linear increase in strength over time.\n\nThinking ability was linked to better insight at baseline. Drug type and dose showed mixed patterns with no clear trend.",
+      "stat": {
+        "value": "144",
+        "label": "people tracked over one year"
+      }
+    },
+    {
+      "eyebrow": "The setup",
+      "title": "The sample included people who had never taken these drugs and those treated before.",
+      "body": "Insight was measured using a single item from a standard psychiatric scale. Researchers tested whether symptom severity, thinking ability, drug type, and dose were linked to insight.\n\nThey ran separate analyses at baseline, 6 weeks, 12 weeks, 6 months, and 12 months."
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Something else could explain the link.",
+    "Insight was measured with a single question on a clinical scale, not a detailed review.",
+    "The study included both first-episode and treated participants, which could affect the patterns seen."
+  ],
+  "cta": {
+    "headline": "Send this to someone tracking treatment outcomes",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Symptom severity is the strongest factor tied to insight in this condition, and the tie strengthens over time no matter the dose.",
+  "hashtag_set": "health",
+  "shape": "",
+  "vet": {
+    "key": "1b0ddb41e65e59b7",
+    "verdict": "HOLD",
+    "score": 60,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "warn",
+        "message": "Design reads as observational (cross-sectional (observational)); markers: cross-sectional, association, associated with",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      }
+    ],
+    "design": "cross-sectional (observational)",
+    "sample_size": 144,
+    "subjects": "human",
+    "journal_tier": 3,
+    "causal_language_banned": true,
+    "species": [],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "explainer",
+    "lint_errors": [
+      "slide1.body: 49 words, spec is 30-40",
+      "slide2.body: 45 words, spec is 30-40",
+      "slide3.body: 42 words, spec is 30-40"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "144",
+          "found_in_abstract": true
+        },
+        {
+          "number": "five",
+          "found_in_abstract": true
+        },
+        {
+          "number": "one year",
+          "found_in_abstract": true
+        },
+        {
+          "number": "6 weeks",
+          "found_in_abstract": true
+        },
+        {
+          "number": "12 weeks",
+          "found_in_abstract": true
+        },
+        {
+          "number": "6 months",
+          "found_in_abstract": true
+        },
+        {
+          "number": "12 months",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Background Impaired clinical insight in schizophrenia is associated with poor treatment adherence and outcomes. Previous research on the influence of symptoms, cognition, and antipsychotic exposure has been inconclusive and restricted to multi-episode samples. We examined time-specific associations between overall psychopathology, cognitive functioning, antipsychotic D\u2082 receptor mechanisms, antipsychotic exposure and dosage, and insight, whether these associations changed over time, and whether dosage moderated them. Methods In 144 individuals with schizophrenia, including antipsychotic-na\u00efve and previously treated participants, multiple regressions were conducted at five cross-sectional time points and examined changes in associations over one year. Insight was assessed using PANSS item G12. Symptom severity was represented by the sum of the remaining PANSS items (mPANSS). Antipsychotic exposure was quantified as cumulative Defined Daily Doses and classified as dopamine antagonists (DA) or partial agonists (DPA). Cognitive functioning was expressed as a mean t-score. Results Greater symptom severity was consistently associated with poorer insight across time points and was the only variable showing a linear increase in strength over time. Higher DPA doses were associated with poorer insight at baseline and 12 months, but improved insight at 12 weeks. Higher cognitive functioning was associated with better insight at baseline and interacted with lower doses at 6 weeks and 12 months. No consistent associations were observed in antipsychotic-na\u00efve participants. Conclusion Clinical insight was most consistently associated with symptom severity, with an increasingly robust association over time, highlighting the need to assess insight across the symptom spectrum, including when symptoms are mild and independently of antipsychotic dosage.",
+    "source": "europepmc",
+    "ext_id": "MED:42780942",
+    "pub_types": [
+      "research-article",
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "http://creativecommons.org/licenses/by/4.0/;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "psych",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Continue_editing.jpg/1920px-Continue_editing.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC BY-SA 4.0",
+    "author": "JBequio",
+    "needs_credit": true,
+    "source": "Wikimedia Commons",
+    "page": "File:Continue editing.jpg",
+    "query": "continue",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-09-17-psych-1b0ddb41/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'psych'"
+  }
+}
