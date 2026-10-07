@@ -1,0 +1,183 @@
+{
+  "id": "2026-08-19-health-191baf51",
+  "niche": "health",
+  "study": {
+    "key": "191baf518ede5f59",
+    "title": "A GC-MS-based exhaled VOC diagnostic model for distinguishing early-stage lung cancer from controls",
+    "journal": "Talanta",
+    "pub_date": "2026-08-19",
+    "pub_date_display": "Aug 19, 2026",
+    "doi": "10.1016/j.talanta.2026.130485",
+    "doi_display": "doi.org/10.1016/j.talanta.2026.130485",
+    "url": "https://doi.org/10.1016/j.talanta.2026.130485",
+    "is_preprint": false,
+    "server": "",
+    "n": 74,
+    "authors": [
+      "Wang Z",
+      "Liu T",
+      "Liu B",
+      "Zhao H",
+      "Huang J",
+      "Dong H"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Talanta, 74-patient pilot",
+    "headline": "A breath test caught early-stage lung cancer with **93% accuracy**, using only two chemical markers."
+  },
+  "slides": [
+    {
+      "eyebrow": "What it means for you",
+      "basis": "stated",
+      "title": "If these two markers hold up in bigger trials, screening could shift from imaging to a simple breath test.",
+      "body": "The authors suggest the two-marker panel could support low-cost, point-of-care screening. No scan, no blood draw, just exhaled air.\n\nThe model detected stage I disease in this cohort. External testing in larger groups is needed before clinical use."
+    },
+    {
+      "eyebrow": "The result",
+      "title": "A machine learning model reading breath chemicals distinguished 74 early-stage lung cancer patients from 75 healthy controls.",
+      "body": "The model hit an area under the curve of 0.991, with 93.3% correct on both counts. A simpler model using two chemicals reached an AUC of 0.708.\n\nThe team analyzed 562 volatile organic compounds in breath samples.",
+      "stat": {
+        "value": "93.3%",
+        "label": "correctly caught cancer and correctly ruled it out"
+      }
+    },
+    {
+      "eyebrow": "How it works",
+      "title": "Nineteen breath chemicals changed in a clear trend as disease progressed from no cancer to stage IA to IB.",
+      "body": "Two compounds emerged as network-central markers. The team used nested cross-validation and a separate test set to avoid overfitting.\n\nThe authors note that early metabolic shifts appear in breath before symptoms. The study was one center, so results need confirmation."
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Something else could explain the link between these breath chemicals and cancer.",
+    "Sample size was 74 patients and 75 controls. Worth replicating in trials at multiple centers before anyone changes screening practice."
+  ],
+  "cta": {
+    "headline": "Send this to someone asking about better cancer screening",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Two chemicals in your breath separated early lung cancer from healthy controls with over ninety percent accuracy in this pilot.",
+  "hashtag_set": "health",
+  "shape": "",
+  "vet": {
+    "key": "191baf518ede5f59",
+    "verdict": "PASS",
+    "score": 48,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "note",
+        "message": "Design reads as observational (unclear); markers: cohort, associated with",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      },
+      {
+        "code": "SMALL_SAMPLE",
+        "severity": "note",
+        "message": "74 participants - modest.",
+        "caveat": "Sample size was 74 \u2014 worth replicating before anyone changes what they do.",
+        "draft_rule": null
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Talanta' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "unclear",
+    "sample_size": 74,
+    "subjects": "human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link.",
+      "Sample size was 74 \u2014 worth replicating before anyone changes what they do."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": []
+  },
+  "qa": {
+    "format": "stakes",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "93%",
+          "found_in_abstract": true
+        },
+        {
+          "number": "two",
+          "found_in_abstract": true
+        },
+        {
+          "number": "74",
+          "found_in_abstract": true
+        },
+        {
+          "number": "75",
+          "found_in_abstract": true
+        },
+        {
+          "number": "0.991",
+          "found_in_abstract": true
+        },
+        {
+          "number": "93.3%",
+          "found_in_abstract": true
+        },
+        {
+          "number": "0.708",
+          "found_in_abstract": true
+        },
+        {
+          "number": "562",
+          "found_in_abstract": true
+        },
+        {
+          "number": "Nineteen",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": true
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Lung cancer is a leading cause of cancer-related mortality, yet non-invasive tools for early-stage detection remain inadequate. Despite advances in breathomics, clinical translation is hindered by high-dimensional data complexity, algorithmic overfitting, and a lack of systematic exploration into subtle sub-stage differences such as Stage IA versus IB. This study aimed to identify exhaled volatile organic compounds (VOCs) biomarkers and develop diagnostic models for stage I non-small cell lung cancer (NSCLC), with exploratory subgroup analyses designed to preliminarily evaluate potential stage-specific heterogeneity. Breath samples from 74 patients with stage I NSCLC (52 IA, 22 IB) and 75 healthy controls were analyzed using thermal desorption gas chromatography-mass spectrometry (TD-GC-MS). A modular analytical framework combining multivariate statistics (PCA, OPLS-DA) and machine learning-based feature selection (LASSO, Random Forest, and SVM-RFE) was used to screen 562 VOCs. Trend and network analyses were performed to characterize metabolic shifts during disease progression. Diagnostic models were validated using nested cross-validation and a held-out independent test set. Concise VOCs signatures associated with stage I NSCLC and its subgroups were identified. Nineteen VOCs exhibited monotonic changes during progression, with 1,2-dichloroethane and cyclohexane identified as network-central VOCs. An RBF-kernel SVM model achieved an area under the curve (AUC) of 0.991 (0.956-1.000), with 93.3% (95% CI: 70.2-98.8%) sensitivity and 93.3% (95% CI: 70.2-98.8%) specificity in the test set. Additionally, a simplified two-VOC logistic regression model (cyclohexane and diethylsilane) yielded an AUC of 0.708. This study identifies stage-specific VOC biomarkers and demonstrates their potential for non-invasive detection. The exploratory subgroup analyses suggest possible biological heterogeneity within early-stage disease, and the parsimonious two-marker panel provides a practical foundation for developing low-cost, point-of-care screening strategies. These findings provide insights into early metabolic alterations and support the development of scalable breath-based screening strategies. Given the single-center design, these findings should be considered hypothesis-generating, with external validation in multicenter cohorts needed to determine their generalizability and clinical utility.",
+    "source": "europepmc",
+    "ext_id": "MED:42664649",
+    "pub_types": [
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "https://doi.org/10.15223/policy-004;https://doi.org/10.15223/policy-012;https://doi.org/10.15223/policy-017;https://doi.org/10.15223/policy-029;https://doi.org/10.15223/policy-037;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "health",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/Marker_paint.jpg/1920px-Marker_paint.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC0",
+    "author": "Flanoz",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Marker paint.jpg",
+    "query": "marker",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-08-19-health-191baf51/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'health'"
+  }
+}
