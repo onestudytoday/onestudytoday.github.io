@@ -154,7 +154,7 @@
     "unverified_numbers": [],
     "publishable": true
   },
-  "status": "needs_review",
+  "status": "approved",
   "source": {
     "abstract": "Lung cancer is a leading cause of cancer-related mortality, yet non-invasive tools for early-stage detection remain inadequate. Despite advances in breathomics, clinical translation is hindered by high-dimensional data complexity, algorithmic overfitting, and a lack of systematic exploration into subtle sub-stage differences such as Stage IA versus IB. This study aimed to identify exhaled volatile organic compounds (VOCs) biomarkers and develop diagnostic models for stage I non-small cell lung cancer (NSCLC), with exploratory subgroup analyses designed to preliminarily evaluate potential stage-specific heterogeneity. Breath samples from 74 patients with stage I NSCLC (52 IA, 22 IB) and 75 healthy controls were analyzed using thermal desorption gas chromatography-mass spectrometry (TD-GC-MS). A modular analytical framework combining multivariate statistics (PCA, OPLS-DA) and machine learning-based feature selection (LASSO, Random Forest, and SVM-RFE) was used to screen 562 VOCs. Trend and network analyses were performed to characterize metabolic shifts during disease progression. Diagnostic models were validated using nested cross-validation and a held-out independent test set. Concise VOCs signatures associated with stage I NSCLC and its subgroups were identified. Nineteen VOCs exhibited monotonic changes during progression, with 1,2-dichloroethane and cyclohexane identified as network-central VOCs. An RBF-kernel SVM model achieved an area under the curve (AUC) of 0.991 (0.956-1.000), with 93.3% (95% CI: 70.2-98.8%) sensitivity and 93.3% (95% CI: 70.2-98.8%) specificity in the test set. Additionally, a simplified two-VOC logistic regression model (cyclohexane and diethylsilane) yielded an AUC of 0.708. This study identifies stage-specific VOC biomarkers and demonstrates their potential for non-invasive detection. The exploratory subgroup analyses suggest possible biological heterogeneity within early-stage disease, and the parsimonious two-marker panel provides a practical foundation for developing low-cost, point-of-care screening strategies. These findings provide insights into early metabolic alterations and support the development of scalable breath-based screening strategies. Given the single-center design, these findings should be considered hypothesis-generating, with external validation in multicenter cohorts needed to determine their generalizability and clinical utility.",
     "source": "europepmc",
@@ -179,5 +179,8 @@
   "reel_status": {
     "built": false,
     "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'health'"
+  },
+  "review": {
+    "forced": true
   }
 }
