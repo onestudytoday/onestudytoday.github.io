@@ -1,0 +1,208 @@
+{
+  "id": "2026-08-18-health-06a0cc0d",
+  "niche": "health",
+  "study": {
+    "key": "06a0cc0d06c73ca6",
+    "title": "Peptide-functionalized magnetic nanobeads for EpCAM-targeted CTC isolation and immunotherapy efficacy evaluation in liver cancer",
+    "journal": "Talanta",
+    "pub_date": "2026-08-18",
+    "pub_date_display": "Aug 18, 2026",
+    "doi": "10.1016/j.talanta.2026.130466",
+    "doi_display": "doi.org/10.1016/j.talanta.2026.130466",
+    "url": "https://doi.org/10.1016/j.talanta.2026.130466",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Li X",
+      "Tian S",
+      "Fan L",
+      "Wang G",
+      "Ma T",
+      "Liao H"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Talanta \u00b7 liver cancer patients",
+    "headline": "A blood test **could soon tell liver cancer patients whether immune therapy will work** in weeks, not months."
+  },
+  "slides": [
+    {
+      "eyebrow": "Why you should care",
+      "basis": "stated",
+      "title": "Liver cancer patients on immune therapy currently wait months to learn their treatment has failed.",
+      "body": "This peptide-coated nanobead system captures tumor cells from blood and measures PD-L1 expression. That score predicted which patients would respond to anti-PD-1 drugs.\n\nThe test could give patients an answer in weeks, not months of ineffective treatment and progressive disease.",
+      "stat": {
+        "value": "48 vs 6",
+        "label": "weeks without progression, high vs low score"
+      }
+    },
+    {
+      "eyebrow": "What the data says",
+      "title": "Patients with high baseline CTC PD-L1 scores had longer survival and better treatment response.",
+      "body": "Those with scores at or above 20 percent showed a 40 percent objective response rate. The low-score group had zero responders.\n\nMedian progression-free survival was 48 weeks in the high group versus 6 weeks in the low group."
+    },
+    {
+      "eyebrow": "The assumption",
+      "title": "Most biomarkers for immune checkpoint therapy look at tumor tissue, not circulating cells.",
+      "body": "Tissue biopsies are invasive and capture only one site. Circulating tumor cells reflect the disease as a whole and can be sampled repeatedly.\n\nThis nanobead method isolates CTCs via a peptide that binds EpCAM, then quantifies PD-L1 with fluorescence imaging."
+    }
+  ],
+  "caveats": [
+    "The study tracked hepatocellular carcinoma and intrahepatic cholangiocarcinoma patients; other liver cancer types were not tested.",
+    "Sample size was not reported in the abstract, so the precision of survival and response estimates is unknown.",
+    "The nanobead platform requires validation in larger cohorts and other cancer types before clinical rollout."
+  ],
+  "cta": {
+    "headline": "Send this to someone tracking PD-L1 scores",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "A blood test using magnetic nanobeads could predict immune therapy response in liver cancer patients within weeks, not months.",
+  "hashtag_set": "health",
+  "shape": "",
+  "vet": {
+    "key": "06a0cc0d06c73ca6",
+    "verdict": "PASS",
+    "score": 56,
+    "flags": [
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Talanta' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [],
+    "notes": []
+  },
+  "qa": {
+    "format": "reversal",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 1,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "A blood test could soon tell liver cancer patients whether immune therapy will work in weeks, not months.",
+          "problem": "The abstract does not state the test delivers results 'in weeks' or compare this timeline to 'months'. The abstract discusses predictive value but not the speed of test results.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Liver cancer patients on immune therapy currently wait months to learn their treatment has failed.",
+          "problem": "The abstract does not discuss current clinical practice or how long patients wait to learn treatment outcomes.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "The test could give patients an answer in weeks, not months of ineffective treatment and progressive disease.",
+          "problem": "The abstract does not state the test provides answers 'in weeks' or discuss avoiding 'months of ineffective treatment'. This appears to be an inference not supported by the abstract.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "48 vs 6 weeks without progression, high vs low score",
+          "problem": "The abstract states median PFS was 48.29 vs. 5.86 weeks. The copy rounds 48.29 to 48 (acceptable) but rounds 5.86 to 6, which changes the value in a potentially misleading way.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Median progression-free survival was 48 weeks in the high group versus 6 weeks in the low group.",
+          "problem": "The abstract reports 48.29 weeks and 5.86 weeks. Rounding 5.86 to 6 changes the value slightly, though the copy does say 'Median' which partially preserves accuracy.",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "20 percent",
+          "found_in_abstract": true
+        },
+        {
+          "number": "40 percent",
+          "found_in_abstract": true
+        },
+        {
+          "number": "zero",
+          "found_in_abstract": true
+        },
+        {
+          "number": "48 weeks",
+          "found_in_abstract": false
+        },
+        {
+          "number": "6 weeks",
+          "found_in_abstract": false
+        },
+        {
+          "number": "48.29 weeks",
+          "found_in_abstract": true
+        },
+        {
+          "number": "5.86 weeks",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "A blood test could soon tell liver cancer patients whether immune therapy will work in weeks, not months.",
+        "problem": "The abstract does not state the test delivers results 'in weeks' or compare this timeline to 'months'. The abstract discusses predictive value but not the speed of test results.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Liver cancer patients on immune therapy currently wait months to learn their treatment has failed.",
+        "problem": "The abstract does not discuss current clinical practice or how long patients wait to learn treatment outcomes.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "The test could give patients an answer in weeks, not months of ineffective treatment and progressive disease.",
+        "problem": "The abstract does not state the test provides answers 'in weeks' or discuss avoiding 'months of ineffective treatment'. This appears to be an inference not supported by the abstract.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "48 weeks",
+        "found_in_abstract": false
+      },
+      {
+        "number": "6 weeks",
+        "found_in_abstract": false
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Primary liver cancer lacks robust biomarkers for anti-PD-1/PD-L1 therapy. Methods: We engineered peptide-functionalized magnetic nanobeads (Pep@MNPs) for high-efficiency, EpCAM-dependent capture of circulating tumor cells (CTCs). This nanotechnology-based platform enabled a precise fluorescence quantitative system (cTPS) associate with immunotherapy outcomes in hepatocellular carcinoma and intrahepatic cholangiocarcinoma. The Pep@MNPs system revealed a significant correlation between high CTC PD-L1 expression and therapeutic response. Patients with baseline cTPS high (\u226520%) achieved a superior objective response rate compared to the low-expression group (40% vs. 0%; P = 0.005). Utilizing this nanobead-enabled quantification, cTPS high patients demonstrated significantly prolonged progression-free survival (median 48.29 vs. 5.86 weeks, P = 0.005) and overall survival (median undefined vs. 25.71 weeks, P = 0.004). Furthermore, multivariate Cox regression confirmed cTPS high as a robust independent predictor for both PFS and OS (both P = 0.005) after adjusting for clinical variables. This peptide-nanobead liquid biopsy strategy effectively stratifies patients benefiting from PD-1 inhibitors, highlighting its potential as a precise theranostic tool for clinical monitoring.",
+    "source": "europepmc",
+    "ext_id": "MED:42632117",
+    "pub_types": [
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "http://creativecommons.org/licenses/by/4.0/;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "health",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/Mask_Diabo_of_Portugal_used_on_folk_fest_and_rituals.jpg/1920px-Mask_Diabo_of_Portugal_used_on_folk_fest_and_rituals.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC0",
+    "author": "Wilfredor",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Mask Diabo of Portugal used on folk fest and rituals.jpg",
+    "query": "whether",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-08-18-health-06a0cc0d/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'health'"
+  }
+}
