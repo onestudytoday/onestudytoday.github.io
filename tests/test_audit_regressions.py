@@ -458,7 +458,13 @@ def test_ensure_raises_when_the_github_secret_writeback_failed(monkeypatch):
     # went green every Sunday while IG_ACCESS_TOKEN still held the OLD token -
     # and the alert issue, wired to `if: failure()`, could never fire.
     monkeypatch.setenv("GITHUB_REPOSITORY", "onestudytoday/onestudytoday.github.io")
-    monkeypatch.setattr(auth, "inspect", lambda tok=None: _fake_token_info())
+    # 5 days left when asked about the CURRENT token, 60 when asked about the
+    # one that was just fetched - which is what a real refresh does, and what
+    # ensure()'s post-refresh assertion checks. A stub that answers "5 days"
+    # to both is describing a refresh that achieved nothing.
+    monkeypatch.setattr(auth, "inspect",
+                        lambda tok=None: _fake_token_info(
+                            days_left=60.0 if tok else 5.0))
     monkeypatch.setattr(auth, "refresh", lambda tok=None: {"access_token": "NEW", "path": "test"})
     monkeypatch.setattr(auth, "verify", lambda tok=None: {"ok": True})
     monkeypatch.setattr(auth, "persist", lambda tok: {"dotenv": True, "github_secret": False})
@@ -470,7 +476,13 @@ def test_ensure_raises_when_the_github_secret_writeback_failed(monkeypatch):
 
 def test_ensure_succeeds_when_the_secret_was_actually_written(monkeypatch):
     monkeypatch.setenv("GITHUB_REPOSITORY", "onestudytoday/onestudytoday.github.io")
-    monkeypatch.setattr(auth, "inspect", lambda tok=None: _fake_token_info())
+    # 5 days left when asked about the CURRENT token, 60 when asked about the
+    # one that was just fetched - which is what a real refresh does, and what
+    # ensure()'s post-refresh assertion checks. A stub that answers "5 days"
+    # to both is describing a refresh that achieved nothing.
+    monkeypatch.setattr(auth, "inspect",
+                        lambda tok=None: _fake_token_info(
+                            days_left=60.0 if tok else 5.0))
     monkeypatch.setattr(auth, "refresh", lambda tok=None: {"access_token": "NEW", "path": "test"})
     monkeypatch.setattr(auth, "verify", lambda tok=None: {"ok": True})
     monkeypatch.setattr(auth, "persist", lambda tok: {"dotenv": False, "github_secret": True})
@@ -482,7 +494,13 @@ def test_ensure_succeeds_when_the_secret_was_actually_written(monkeypatch):
 def test_local_run_without_a_repo_still_accepts_a_dotenv_only_write(monkeypatch):
     # On a laptop there is no GITHUB_REPOSITORY and .env IS the real store.
     monkeypatch.delenv("GITHUB_REPOSITORY", raising=False)
-    monkeypatch.setattr(auth, "inspect", lambda tok=None: _fake_token_info())
+    # 5 days left when asked about the CURRENT token, 60 when asked about the
+    # one that was just fetched - which is what a real refresh does, and what
+    # ensure()'s post-refresh assertion checks. A stub that answers "5 days"
+    # to both is describing a refresh that achieved nothing.
+    monkeypatch.setattr(auth, "inspect",
+                        lambda tok=None: _fake_token_info(
+                            days_left=60.0 if tok else 5.0))
     monkeypatch.setattr(auth, "refresh", lambda tok=None: {"access_token": "NEW", "path": "test"})
     monkeypatch.setattr(auth, "verify", lambda tok=None: {"ok": True})
     monkeypatch.setattr(auth, "persist", lambda tok: {"dotenv": True, "github_secret": False})

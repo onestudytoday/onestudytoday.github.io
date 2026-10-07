@@ -68,17 +68,46 @@ class TokenInfo:
     valid: bool
     kind: str                 # USER | PAGE | IG_USER | UNKNOWN
     app_id: str
-    expires_at: int           # unix; 0 means "never expires"
+    # unix timestamp; 0 means "never expires"; None means "WE DO NOT KNOW".
+    #
+    # Those last two were the same value until 7 Oct 2026, and conflating
+    # them is what let the account's token die. See never_expires below.
+    expires_at: Optional[int]
     data_access_expires_at: int
     scopes: list
     raw: Dict[str, Any]
 
     @property
+    def expiry_known(self) -> bool:
+        """Did the API actually tell us when this token dies?
+
+        Instagram-Login tokens are inspected through graph.instagram.com/me,
+        which does not report an expiry at all. That is not the same as a
+        token that never expires, and treating it as one is what broke:
+        `expires_at = 0` meant days_left was inf, inf is never <= the 20-day
+        threshold, so ensure() printed "Token healthy" and refreshed nothing
+        every Sunday for two months while a 60-day token ran down. The
+        workflow went green each week, and the alert issue is wired to
+        `if: failure()`, so the one warning that mattered never fired.
+        """
+        return self.expires_at is not None
+
+    @property
     def never_expires(self) -> bool:
+        """A token the API positively says has no expiry (a Page token)."""
         return self.expires_at == 0
 
     @property
     def days_left(self) -> float:
+        """Days until expiry. inf for a true never-expiring token.
+
+        NaN when the expiry is unknown, so that every comparison against it is
+        False - including `days_left > threshold`. An unknown expiry must not
+        be able to pass a "plenty of time left" test by accident, whichever
+        direction a future caller writes the comparison.
+        """
+        if self.expires_at is None:
+            return float("nan")
         if self.never_expires:
             return float("inf")
         return (self.expires_at - time.time()) / 86400.0
@@ -91,10 +120,17 @@ class TokenInfo:
 
     def human(self) -> str:
         def fmt(ts):
+            if ts is None:
+                return "not reported by this endpoint"
             if not ts:
                 return "never"
             return datetime.fromtimestamp(ts, timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-        dl = "never" if self.never_expires else f"{self.days_left:.1f} days"
+        if not self.expiry_known:
+            dl = "UNKNOWN - will refresh on every run"
+        elif self.never_expires:
+            dl = "never"
+        else:
+            dl = f"{self.days_left:.1f} days"
         return (
             f"  valid          : {self.valid}\n"
             f"  token type     : {self.kind}\n"
@@ -164,7 +200,11 @@ def _probe_instagram_login(tok: str) -> Optional[TokenInfo]:
         valid=True,
         kind="IG_USER",
         app_id="",
-        expires_at=0,           # unknown from this endpoint; refresh is idempotent
+        # None, not 0. This endpoint does not report an expiry, and "we do
+        # not know" is not "it never expires" - see TokenInfo.expiry_known.
+        # ensure() refreshes unconditionally when it does not know, which is
+        # safe because refreshing is idempotent and this runs weekly.
+        expires_at=None,
         data_access_expires_at=0,
         scopes=[],
         raw=d,
@@ -323,13 +363,24 @@ def ensure(force: bool = False) -> Dict[str, Any]:
             "See docs/RUNBOOK.md section 'Re-authorising from scratch'."
         )
 
-    needs = force or (info.days_left <= REFRESH_THRESHOLD_DAYS)
+    # REFRESH WHEN WE CANNOT TELL.
+    #
+    # The old condition was `days_left <= THRESHOLD` alone, and an unknown
+    # expiry evaluated to inf, so it never fired. Refreshing is idempotent and
+    # this job runs once a week, so the cost of refreshing a token that did not
+    # need it is one API call; the cost of NOT refreshing one that did is the
+    # account going silent with no warning, which is what happened.
+    if not info.expiry_known:
+        print("The API did not report an expiry for this token, so refreshing "
+              "rather than assuming it is immortal.")
+    needs = force or (not info.expiry_known) or (info.days_left <= REFRESH_THRESHOLD_DAYS)
     if not needs:
         print(f"Token healthy: {info.days_left:.1f} days left. No action.")
         out["reason"] = "healthy"
         return out
 
-    print(f"Refreshing (days left: {info.days_left:.1f}, threshold: {REFRESH_THRESHOLD_DAYS})")
+    left = "unknown" if not info.expiry_known else f"{info.days_left:.1f}"
+    print(f"Refreshing (days left: {left}, threshold: {REFRESH_THRESHOLD_DAYS})")
     res = refresh()
     new = res["access_token"]
 
@@ -340,8 +391,31 @@ def ensure(force: bool = False) -> Dict[str, Any]:
     after = inspect(new)
     out.update({"refreshed": True, "path": res["path"],
                 "written": written, "after": asdict(after)})
-    print(f"Refreshed via {res['path']}. New token valid for "
-          f"{after.days_left:.1f} days. Written: {written}")
+    left = "unknown" if not after.expiry_known else f"{after.days_left:.1f} days"
+    print(f"Refreshed via {res['path']}. New token valid for {left}. "
+          f"Written: {written}")
+
+    # THE ASSERTION THAT GIVES THE ALERT SOMETHING TO FIRE ON.
+    #
+    # token-refresh.yml's alert is `if: failure()`, so it can only fire when a
+    # step goes red - and for two months nothing did. This function printed
+    # "Token healthy" every Sunday while a 60-day token ran down, because an
+    # Instagram-Login token reports no expiry and that read as "never
+    # expires". The job was green the whole way to the token dying mid-week.
+    #
+    # Checked HERE rather than in a following workflow step, because this is
+    # the only place the NEW token exists: the step after this one still has
+    # the old value of ${{ secrets.IG_ACCESS_TOKEN }} in its environment -
+    # secrets are resolved when the job starts - so a separate step would
+    # inspect the token we just replaced and cry wolf on every real refresh.
+    if after.expiry_known and not after.never_expires \
+            and after.days_left <= REFRESH_THRESHOLD_DAYS:
+        raise AuthError(
+            f"The refresh ran and was saved, but the new token still expires "
+            f"in {after.days_left:.1f} days - inside the "
+            f"{REFRESH_THRESHOLD_DAYS}-day threshold. Meta did not issue a "
+            f"full-length token. Re-authorise by hand before this one lapses: "
+            f"docs/RUNBOOK.md, 'Re-authorising from scratch'.")
 
     # A refresh that could not be SAVED is a failed refresh, and it has to
     # exit non-zero or nobody ever finds out.
@@ -385,9 +459,34 @@ def _main(argv):
     if cmd == "status":
         info = inspect()
         print("Instagram token status\n" + info.human())
-        if info.days_left < REFRESH_THRESHOLD_DAYS:
+        if not info.expiry_known:
+            print("\n  NOTE: this endpoint does not report an expiry, so the "
+                  "weekly job refreshes unconditionally.")
+        elif info.days_left < REFRESH_THRESHOLD_DAYS:
             print(f"\n  ACTION: below the {REFRESH_THRESHOLD_DAYS}-day threshold. "
                   f"Run: python src/auth.py refresh")
+    elif cmd == "check":
+        # EXITS NON-ZERO when the token is in a state that will stop posting.
+        #
+        # The weekly job's alert is wired to `if: failure()`, so it can only
+        # fire if some step actually fails - and for two months nothing did.
+        # ensure() reported "healthy" every Sunday while a 60-day token ran
+        # down, because an unknown expiry read as infinite. This is the step
+        # that turns "the token is dying" into a failure the alert can see.
+        info = inspect()
+        print("Instagram token status\n" + info.human())
+        if not info.valid:
+            print("\n  FAIL: the token is not valid. A human has to "
+                  "re-authorise - docs/RUNBOOK.md, 'Re-authorising from "
+                  "scratch'.")
+            return 1
+        if info.expiry_known and not info.never_expires \
+                and info.days_left < REFRESH_THRESHOLD_DAYS:
+            print(f"\n  FAIL: {info.days_left:.1f} days left, below the "
+                  f"{REFRESH_THRESHOLD_DAYS}-day threshold, and the refresh "
+                  f"that just ran did not move it.")
+            return 1
+        print("\n  OK: posting will keep working.")
     elif cmd == "refresh":
         print(json.dumps(ensure(force=True), indent=2, default=str))
     elif cmd == "ensure":
