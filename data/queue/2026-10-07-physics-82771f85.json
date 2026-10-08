@@ -129,7 +129,7 @@
     "unverified_numbers": [],
     "publishable": false
   },
-  "status": "needs_review",
+  "status": "approved",
   "source": {
     "abstract": "Lightning-related phenomena are known to interact with and influence all detector systems of the Pierre Auger Observatory. Notably, the Surface Detector has recorded unique signals associated with Terrestrial Gamma-ray Flashes (TGFs), which are rare phenomena linked to the initial processes of lightning. Studying TGFs in coincidence with their parent lightning discharges helps to constrain the mechanisms responsible for their production, providing key insights into how these high-energy emissions are generated and evolve within thunderstorms. To image the parent lightning discharges, we are developing the Broadband Observatory of Lightning and TGFs (BOLT), an interferometric lightning mapping array that enhances the unique capabilities of the Observatory by providing high-resolution 3D (spatial and temporal) imaging of lightning propagation. BOLT consists of VHF radio detectors that have been previously developed for the Auger Engineering Radio Array, sensitive in the 30 MHz to 80 MHz range. The array is co-located with the Surface Detector to enable direct correlation between lightning activity and candidate TGF signals at the Pierre Auger Observatory. The BOLT array is in commissioning, with successful station firmware modifications to acquire and stream multi-second waveforms.",
     "source": "arxiv",
@@ -160,5 +160,8 @@
     "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/Produce_stalls_at_Hmongtown_Marketplace_Saint_Paul_Minnesota.png/1920px-Produce_stalls_at_Hmongtown_Marketplace_Saint_Paul_Minnesota.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Lightning_in_Dallas_2015.jpg/1920px-Lightning_in_Dallas_2015.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   ],
-  "render_seq": 1
+  "render_seq": 1,
+  "review": {
+    "forced": true
+  }
 }
