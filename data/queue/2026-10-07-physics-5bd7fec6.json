@@ -1,0 +1,153 @@
+{
+  "id": "2026-10-07-physics-5bd7fec6",
+  "niche": "physics",
+  "study": {
+    "key": "5bd7fec63242f665",
+    "title": "QuSema: Detecting Silent Bugs in Quantum Libraries via Quantum-knowledge-enhanced Agents",
+    "journal": "arXiv",
+    "pub_date": "2026-10-07",
+    "pub_date_display": "Oct 7, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2610.10258v1",
+    "url": "http://arxiv.org/abs/2610.10258v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Yujin Song",
+      "Kaining Zhang",
+      "Qixin Zhang",
+      "Shuai Wang",
+      "Pingchuan Ma",
+      "Yuxuan Du"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "arXiv preprint, not peer reviewed",
+    "headline": "**Quantum software can output wrong answers** without crashing, and a new agent spotted bugs human testers missed."
+  },
+  "slides": [
+    {
+      "eyebrow": "What it means for you",
+      "basis": "stated",
+      "title": "When quantum code fails silently, bad results flow into research papers and algorithm designs.",
+      "body": "Most testing tools only catch bugs that make programs crash or disagree with another version. Quantum libraries can produce incorrect outputs that look valid.\n\nThe team reports this agent can find bugs that existing methods miss, catching logic errors before they reach production."
+    },
+    {
+      "eyebrow": "The result",
+      "title": "The agent found 40 previously unknown bugs confirmed by developers, including 30 silent bugs.",
+      "body": "It reasons about quantum operations using documentation and code constraints as an oracle. On a benchmark of 20 historical silent bugs, it achieved higher relocation counts than existing code agents.\n\nThe system generates executable tests through library APIs.",
+      "stat": {
+        "value": "40",
+        "label": "new bugs confirmed by developers"
+      }
+    },
+    {
+      "eyebrow": "How it works",
+      "title": "The agent loops through API docs and source code, checking whether logic can produce invalid outputs from valid inputs.",
+      "body": "It uses quantum semantics and documentation as a source-level oracle, not just execution checks. The approach targets Qiskit and PennyLane libraries.\n\nGuided by quantum-domain reasoning, it identifies potential semantic deviations and validates them by generating tests."
+    }
+  ],
+  "caveats": [
+    "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+    "The comparison benchmark included only 20 historical bugs, a small test set for evaluating detection performance.",
+    "The system requires access to documentation and source code, so it cannot test closed or poorly documented quantum libraries."
+  ],
+  "cta": {
+    "headline": "Send this to the quantum developer",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Quantum libraries can fail silently, producing wrong answers that flow into research without triggering any alarms or error messages.",
+  "hashtag_set": "wildcard",
+  "shape": "",
+  "vet": {
+    "key": "5bd7fec63242f665",
+    "verdict": "HOLD",
+    "score": 42,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      }
+    ],
+    "design": "modelling",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "stakes",
+    "lint_errors": [
+      "slide1.body: 43 words, spec is 30-40"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "40",
+          "found_in_abstract": true
+        },
+        {
+          "number": "30",
+          "found_in_abstract": true
+        },
+        {
+          "number": "20",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Quantum libraries are now critical infrastructure for quantum algorithm development, yet their correctness remains difficult to test. Existing testing techniques mainly rely on failure-based or comparison-based oracles, exposing bugs only when executions fail, violate runtime checks, or disagree with another implementation. Their applicability is limited when suitable execution-based oracles are unavailable, leaving some silent bugs undetected. Such missed bugs can produce incorrect results that propagate into experimental conclusions, simulation studies, and algorithmic designs. Here we present QuSema, an autonomous testing agent for finding silent bugs in quantum libraries. QuSema uses constraints from quantum semantics and documentation as a source-level semantic oracle to assess whether implementation logic can produce invalid outputs from valid inputs. It operates through an agentic loop that repeatedly inspects library API documentation and source code, reasons about the intended behavior of quantum operations, identifies potential semantic deviations, and validates them by generating executable tests through library APIs. Guided by quantum-domain reasoning, QuSema turns high-level behavioral mismatches into concrete, user-triggerable bug reports, enabling it to uncover non-crash defects. We implement QuSema for Qiskit and PennyLane. On a benchmark of 20 historical silent bugs, QuSema achieves higher mean bug relocation counts than Claude Code and Codex, with the DeepSeek configuration costing less than Claude Code. QuSema also discovers 40 previously unknown bugs confirmed by the developers, including 30 silent bugs.",
+    "source": "arxiv",
+    "ext_id": "2610.10258v1",
+    "pub_types": [
+      "cs.SE",
+      "cs.AI",
+      "quant-ph"
+    ],
+    "publisher": "arXiv",
+    "license": ""
+  },
+  "source_niche": "physics",
+  "cover_art": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/51/Reply_to_Zhantayev_about_Kozhakhmetov.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "licence": "Public domain",
+    "author": "Baburina",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Reply to Zhantayev about Kozhakhmetov.jpg",
+    "query": "answer",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-07-physics-5bd7fec6/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'physics'"
+  }
+}

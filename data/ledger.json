@@ -592,6 +592,11 @@
       "doi": "",
       "title": "A Decade-Scale Ionization Echo of Black-Hole Accretion in Galactic Nuclei",
       "at": "2026-10-08T12:06:56.698837"
+    },
+    "5bd7fec63242f665": {
+      "doi": "",
+      "title": "QuSema: Detecting Silent Bugs in Quantum Libraries via Quantum-knowledge-enhanced Agents",
+      "at": "2026-10-08T17:46:17.939169"
     }
   }
 }
