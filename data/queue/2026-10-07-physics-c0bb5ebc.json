@@ -1,0 +1,210 @@
+{
+  "id": "2026-10-07-physics-c0bb5ebc",
+  "niche": "physics",
+  "study": {
+    "key": "c0bb5ebc3ec76d03",
+    "title": "A Decade-Scale Ionization Echo of Black-Hole Accretion in Galactic Nuclei",
+    "journal": "arXiv",
+    "pub_date": "2026-10-07",
+    "pub_date_display": "Oct 7, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2610.10373v1",
+    "url": "http://arxiv.org/abs/2610.10373v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Wei-Jian Guo",
+      "Shuo Zhai",
+      "Chen Hu",
+      "David M. Alexander",
+      "Bin Luo",
+      "Pu Du"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "arXiv (preprint astronomy)",
+    "headline": "Gas clouds near black holes **echo nuclear flares a decade later**, the team reports from galactic cores."
+  },
+  "slides": [
+    {
+      "eyebrow": "Why you should care",
+      "basis": "stated",
+      "title": "Compact gas near black holes may form an intermediate response layer on decade timescales.",
+      "body": "The team reports that ionized gas a few light-years from a black hole responds to nuclear outbursts years after the event.\n\nThat would place this gas between fast-responding dust and the much larger emission regions, a middle layer not documented before."
+    },
+    {
+      "eyebrow": "What the data says",
+      "title": "Nineteen galactic nuclei showed narrow emission-line flux more than doubling over twelve to twenty years.",
+      "body": "The team analyzed 473 galactic nuclei with signs of recent brightening. In stacked spectra, one oxygen line increased by 229% while lower-energy lines stayed flat or fell.\n\nFor thirteen sources with infrared outbursts, the infrared energy correlated strongly with the line change.",
+      "stat": {
+        "value": "229%",
+        "label": "increase in [O III] emission"
+      }
+    },
+    {
+      "eyebrow": "Why the difference",
+      "title": "The selective increase in high-ionization lines points to a harder spectrum and higher ionization, not simple rescaling.",
+      "body": "Lower-ionization lines did not follow the same pattern, ruling out a uniform brightness increase. Models fit the data when the ionizing spectrum becomes harder.\n\nThe timescale and mid-infrared data constrain the gas to one and a half to five light-years from the nucleus."
+    }
+  ],
+  "caveats": [
+    "This is a preprint. No independent expert has checked the methods or conclusions yet.",
+    "The study found a pattern linking infrared outbursts and emission-line changes, not a cause. Something else could explain the link."
+  ],
+  "cta": {
+    "headline": "Send this to the decade-timescale echo person",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Gas a few light-years from black holes may echo nuclear flares a decade later, forming a response layer no one had systematically tracked.",
+  "hashtag_set": "physics",
+  "shape": "",
+  "vet": {
+    "key": "c0bb5ebc3ec76d03",
+    "verdict": "HOLD",
+    "score": 36,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      },
+      {
+        "code": "CORRELATIONAL",
+        "severity": "warn",
+        "message": "Design reads as observational (cross-sectional (observational)); markers: survey",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      }
+    ],
+    "design": "cross-sectional (observational)",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": true,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'.",
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "reversal",
+    "lint_errors": [
+      "slide1.body: 41 words, spec is 30-40",
+      "slide2.body: 42 words, spec is 30-40",
+      "slide3.body: 43 words, spec is 30-40"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "The timescale and mid-infrared data constrain the gas to one and a half to five light-years from the nucleus.",
+          "problem": "The abstract states the gas is at 1.5-5.2 pc (parsecs), not 1.5-5 light-years. One parsec equals 3.26 light-years, so 1.5-5.2 pc would be approximately 4.9-17 light-years. The copy has converted the units incorrectly.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "ionized gas a few light-years from a black hole responds to nuclear outbursts",
+          "problem": "Based on the abstract's 1.5-5.2 pc range, this would be roughly 5-17 light-years. 'A few' typically means 3-5, which does not accurately represent the lower bound of approximately 5 light-years and significantly understates the upper bound of 17 light-years.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Gas a few light-years from black holes may echo nuclear flares a decade later",
+          "problem": "Same unit conversion error as above. The abstract specifies 1.5-5.2 pc, which converts to approximately 5-17 light-years, not 'a few light-years'.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "229%",
+          "found_in_abstract": true
+        },
+        {
+          "number": "473",
+          "found_in_abstract": true
+        },
+        {
+          "number": "19",
+          "found_in_abstract": true
+        },
+        {
+          "number": "13",
+          "found_in_abstract": true
+        },
+        {
+          "number": "twelve to twenty years",
+          "found_in_abstract": true
+        },
+        {
+          "number": "one and a half to five light-years",
+          "found_in_abstract": false
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "The timescale and mid-infrared data constrain the gas to one and a half to five light-years from the nucleus.",
+        "problem": "The abstract states the gas is at 1.5-5.2 pc (parsecs), not 1.5-5 light-years. One parsec equals 3.26 light-years, so 1.5-5.2 pc would be approximately 4.9-17 light-years. The copy has converted the units incorrectly.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "ionized gas a few light-years from a black hole responds to nuclear outbursts",
+        "problem": "Based on the abstract's 1.5-5.2 pc range, this would be roughly 5-17 light-years. 'A few' typically means 3-5, which does not accurately represent the lower bound of approximately 5 light-years and significantly understates the upper bound of 17 light-years.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Gas a few light-years from black holes may echo nuclear flares a decade later",
+        "problem": "Same unit conversion error as above. The abstract specifies 1.5-5.2 pc, which converts to approximately 5-17 light-years, not 'a few light-years'.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "one and a half to five light-years",
+        "found_in_abstract": false
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Circumnuclear structures in active galactic nuclei respond to accretion variability over different spatial and temporal scales, but whether compact narrow-line gas responds on decade timescales has not been systematically established. We use repeat Sloan Digital Sky Survey and Dark Energy Spectroscopic Instrument spectroscopy of 473 variability-selected galactic nuclei with evidence for recent nuclear brightening. We identify 19 sources whose narrow [O III] $\\lambda5007$ flux increased by more than a factor of two over rest-frame baselines of 12.0-20.4 yr, which we term narrow-line ionization echoes (NIEs). In equal-weight stacked spectra, [O III] increased by $229\\pm22\\%$, while lower-ionization lines remained nearly unchanged or declined, indicating an ionization-dependent response rather than uniform spectral rescaling. The NIE hosts also moved coherently toward higher excitation in optical diagnostic diagrams, with mean increases of $0.46\\pm0.18$ dex in $\\log([\\mathrm{O III}]/\\mathrm{H}\u03b2)$ and $0.58\\pm0.13$ dex in $\\log([\\mathrm{O III}]/[\\mathrm{O II}])$. Photoionization models reproduce this evolution with a higher ionization parameter and a harder AGN-like ionizing spectrum at fixed gas abundance. For 13 sources with well-defined mid-infrared outbursts, the integrated W1+W2 excess energy correlates strongly with the absolute [O III] luminosity change ($r=0.87$), linking the dust and narrow-line responses to the same nuclear event. The mid-infrared timescale and spectroscopic baseline constrain the variable [O III]-emitting gas to characteristic scales of 1.5-5.2 pc. Compact narrow-line gas therefore appears to form an intermediate, decade-scale response layer between the infrared dust echo and the long-lived extended narrow-line region.",
+    "source": "arxiv",
+    "ext_id": "2610.10373v1",
+    "pub_types": [
+      "astro-ph.GA"
+    ],
+    "publisher": "arXiv",
+    "license": ""
+  },
+  "source_niche": "physics",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/1950_City_of_Columbus_Annual_Report_-_DPLA_-_7dc05d524ef3cecd8ea3702bfc8c1439_%28page_74%29.jpg/1920px-1950_City_of_Columbus_Annual_Report_-_DPLA_-_7dc05d524ef3cecd8ea3702bfc8c1439_%28page_74%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "Public domain",
+    "author": "Columbus City Clerk Office",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:1950 City of Columbus Annual Report - DPLA - 7dc05d524ef3cecd8ea3702bfc8c1439 (page 74).jpg",
+    "query": "report",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-07-physics-c0bb5ebc/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'physics'"
+  }
+}
