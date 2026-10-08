@@ -1,0 +1,159 @@
+{
+  "id": "2026-10-07-physics-82771f85",
+  "niche": "physics",
+  "study": {
+    "key": "82771f856ff8eb6e",
+    "title": "BOLT: Imaging Lightning and Terrestrial Gamma-ray Flashes at the Pierre Auger Observatory",
+    "journal": "arXiv",
+    "pub_date": "2026-10-07",
+    "pub_date_display": "Oct 7, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2610.10434v1",
+    "url": "http://arxiv.org/abs/2610.10434v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Eric-Teunis de Boone",
+      "for the Pierre Auger Collaboration"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "arXiv (preprint, not peer reviewed)",
+    "headline": "A new detector array could help explain **how lightning produces rare bursts of gamma rays** visible from space."
+  },
+  "slides": [
+    {
+      "eyebrow": "What it means for you",
+      "basis": "inferred",
+      "title": "If this imaging system works, it may let scientists watch the exact moment a lightning bolt creates high-energy radiation.",
+      "body": "Terrestrial gamma-ray flashes are rare bursts of radiation linked to the start of lightning. Researchers still don't know how they form.\n\nThe team is building BOLT, a radio array that maps lightning in 3D alongside detectors that have already caught gamma flashes."
+    },
+    {
+      "eyebrow": "The result",
+      "title": "The BOLT array uses radio detectors sensitive to frequencies between 30 MHz and 80 MHz to image lightning propagation.",
+      "body": "The team reports that the array is now in commissioning. Station firmware has been modified to capture and stream multi-second waveforms.\n\nThe system sits at Pierre Auger Observatory, which has already recorded signals tied to gamma-ray flashes.",
+      "stat": {
+        "value": "30\u201380",
+        "label": "MHz range BOLT monitors"
+      }
+    },
+    {
+      "eyebrow": "How it works",
+      "title": "BOLT builds on VHF radio detectors originally developed for the Auger Engineering Radio Array.",
+      "body": "VHF stands for very high frequency radio waves. These detectors map where and when lightning emits radio signals as it branches through a storm.\n\nBy matching that 3D picture to gamma-ray signals, the team hopes to pinpoint which part of a discharge goes with the flash."
+    }
+  ],
+  "caveats": [
+    "This is a preprint. It has not been peer reviewed, so no independent expert has verified the work yet.",
+    "This paper describes a system still in commissioning. The array has not yet produced the coincidence measurements it was built to capture.",
+    "This study found a pattern linking gamma-ray flashes to lightning. That does not show one causes the other.",
+    "The implications on slide one are our extrapolation of what this tool may enable, not a claim the authors make in the abstract."
+  ],
+  "cta": {
+    "headline": "Send this to anyone who thinks lightning is simple",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "A radio detector array in Argentina may reveal how the first moments of a lightning strike produce bursts of gamma rays.",
+  "hashtag_set": "physics",
+  "shape": "",
+  "vet": {
+    "key": "82771f856ff8eb6e",
+    "verdict": "HOLD",
+    "score": 36,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      },
+      {
+        "code": "CORRELATIONAL",
+        "severity": "note",
+        "message": "Design reads as observational (mechanistic / lab); markers: associated with, linked to",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      }
+    ],
+    "design": "mechanistic / lab",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'.",
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "stakes",
+    "lint_errors": [
+      "slide1.body: 42 words, spec is 30-40",
+      "slide3.body: 46 words, spec is 30-40"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "30 MHz",
+          "found_in_abstract": true
+        },
+        {
+          "number": "80 MHz",
+          "found_in_abstract": true
+        },
+        {
+          "number": "30\u201380 MHz",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Lightning-related phenomena are known to interact with and influence all detector systems of the Pierre Auger Observatory. Notably, the Surface Detector has recorded unique signals associated with Terrestrial Gamma-ray Flashes (TGFs), which are rare phenomena linked to the initial processes of lightning. Studying TGFs in coincidence with their parent lightning discharges helps to constrain the mechanisms responsible for their production, providing key insights into how these high-energy emissions are generated and evolve within thunderstorms. To image the parent lightning discharges, we are developing the Broadband Observatory of Lightning and TGFs (BOLT), an interferometric lightning mapping array that enhances the unique capabilities of the Observatory by providing high-resolution 3D (spatial and temporal) imaging of lightning propagation. BOLT consists of VHF radio detectors that have been previously developed for the Auger Engineering Radio Array, sensitive in the 30 MHz to 80 MHz range. The array is co-located with the Surface Detector to enable direct correlation between lightning activity and candidate TGF signals at the Pierre Auger Observatory. The BOLT array is in commissioning, with successful station firmware modifications to acquire and stream multi-second waveforms.",
+    "source": "arxiv",
+    "ext_id": "2610.10434v1",
+    "pub_types": [
+      "astro-ph.IM",
+      "astro-ph.HE"
+    ],
+    "publisher": "arXiv",
+    "license": ""
+  },
+  "source_niche": "physics",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/Produce_stalls_at_Hmongtown_Marketplace_Saint_Paul_Minnesota.png/1920px-Produce_stalls_at_Hmongtown_Marketplace_Saint_Paul_Minnesota.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC0",
+    "author": "Pingnova",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Produce stalls at Hmongtown Marketplace Saint Paul Minnesota.png",
+    "query": "produce",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-07-physics-82771f85/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'physics'"
+  }
+}
