@@ -143,17 +143,22 @@
   },
   "source_niche": "physics",
   "cover_art": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/Produce_stalls_at_Hmongtown_Marketplace_Saint_Paul_Minnesota.png/1920px-Produce_stalls_at_Hmongtown_Marketplace_Saint_Paul_Minnesota.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "licence": "CC0",
-    "author": "Pingnova",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Lightning_in_Dallas_2015.jpg/1920px-Lightning_in_Dallas_2015.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "Public domain",
+    "author": "NOAA Photo Library",
     "needs_credit": false,
     "source": "Wikimedia Commons",
-    "page": "File:Produce stalls at Hmongtown Marketplace Saint Paul Minnesota.png",
-    "query": "produce",
+    "page": "File:Lightning in Dallas 2015.jpg",
+    "query": "lightning",
     "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-07-physics-82771f85/bg/cover.jpg"
   },
   "reel_status": {
     "built": false,
     "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'physics'"
-  }
+  },
+  "cover_art_tried": [
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/Produce_stalls_at_Hmongtown_Marketplace_Saint_Paul_Minnesota.png/1920px-Produce_stalls_at_Hmongtown_Marketplace_Saint_Paul_Minnesota.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Lightning_in_Dallas_2015.jpg/1920px-Lightning_in_Dallas_2015.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+  ],
+  "render_seq": 1
 }
