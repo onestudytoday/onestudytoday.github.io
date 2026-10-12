@@ -1,0 +1,181 @@
+{
+  "id": "2026-08-13-nature-6e90a441",
+  "niche": "nature",
+  "study": {
+    "key": "6e90a4412d46f277",
+    "title": "Magnetic hydrogel encapsulation combined with on-chip processing enhances straw vitrification of mouse oocytes",
+    "journal": "Biomaterials",
+    "pub_date": "2026-08-13",
+    "pub_date_display": "Aug 13, 2026",
+    "doi": "10.1016/j.biomaterials.2026.124549",
+    "doi_display": "doi.org/10.1016/j.biomaterials.2026.124549",
+    "url": "https://doi.org/10.1016/j.biomaterials.2026.124549",
+    "is_preprint": false,
+    "server": "",
+    "n": 73,
+    "authors": [
+      "Lei Y",
+      "Fang Z",
+      "Wei M",
+      "Guo C",
+      "Cheng Y",
+      "Zhao G"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Biomaterials \u00b7 mouse oocytes",
+    "headline": "A magnetic gel coating might make **freezing eggs work more often** than it does now."
+  },
+  "slides": [
+    {
+      "eyebrow": "What it means for you",
+      "title": "If this holds in humans, fewer frozen eggs might fail when clinics try to use them later.",
+      "body": "The method combines a microfluidic chip with magnetic gel beads that hold each egg steady during freezing. That could reduce damage from ice and chemicals.\n\nIn mice, survival after thawing jumped from 57% to 87%.",
+      "basis": "inferred"
+    },
+    {
+      "eyebrow": "The result",
+      "title": "Mouse eggs frozen in magnetic gel survived at 86.6%, compared to 57.5% with standard freezing.",
+      "body": "Researchers froze mouse oocytes using either a standard straw method or a new chip that encases each egg in magnetic hydrogel.\n\nThe gel group showed higher survival, better preserved mitochondria and cytoskeleton, and stronger embryo development after thaw.",
+      "stat": {
+        "value": "86.6%",
+        "label": "survival with magnetic gel"
+      }
+    },
+    {
+      "eyebrow": "How it works",
+      "title": "The hydrogel wraps each egg in a magnetic shield that prevents drift and allows remote control during freezing.",
+      "body": "Traditional microfluidic chips struggle with cell loss and complex loading. This design uses a quick-seal cover and magnetic beads to hold eggs in place.\n\nMagnets outside the chip move eggs through the fluid without touching them, avoiding shear damage.",
+      "stat": null
+    }
+  ],
+  "caveats": [
+    "This was done in mice, not humans. Most findings in mice do not carry over to people.",
+    "The conclusions about human fertility preservation are ours, not the paper's. Read the full study before acting on it.",
+    "Sample sizes were small: 53 eggs in the new method, 73 in the standard group.",
+    "The study measured short-term survival and structure, not live birth rates or long-term embryo health."
+  ],
+  "cta": {
+    "headline": "Send this to anyone tracking egg freezing",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "A magnetic coating during freezing might let more frozen eggs survive the thaw and stay viable for fertility treatment.",
+  "hashtag_set": "core",
+  "shape": "",
+  "vet": {
+    "key": "6e90a4412d46f277",
+    "verdict": "HOLD",
+    "score": 46,
+    "flags": [
+      {
+        "code": "NON_HUMAN",
+        "severity": "warn",
+        "message": "Study subjects are mice, not people.",
+        "caveat": "This was done in mice \u2014 not humans. Most findings in mice do not carry over to people.",
+        "draft_rule": "Subjects were mice, NOT humans. The cover slide must not imply a human result. Name the species explicitly by slide 2."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Biomaterials' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "unclear",
+    "sample_size": 73,
+    "subjects": "non-human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [
+      "mice"
+    ],
+    "required_caveats": [
+      "This was done in mice \u2014 not humans. Most findings in mice do not carry over to people."
+    ],
+    "required_badges": [
+      "NOT_IN_HUMANS"
+    ],
+    "draft_rules": [
+      "Subjects were mice, NOT humans. The cover slide must not imply a human result. Name the species explicitly by slide 2."
+    ],
+    "notes": []
+  },
+  "qa": {
+    "format": "stakes",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "57%",
+          "found_in_abstract": true
+        },
+        {
+          "number": "87%",
+          "found_in_abstract": true
+        },
+        {
+          "number": "86.6%",
+          "found_in_abstract": true
+        },
+        {
+          "number": "57.5%",
+          "found_in_abstract": true
+        },
+        {
+          "number": "53",
+          "found_in_abstract": true
+        },
+        {
+          "number": "73",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [
+      {
+        "number": "87%",
+        "found_in_abstract": false,
+        "checked_by": "code"
+      },
+      {
+        "number": "57.5%",
+        "found_in_abstract": false,
+        "checked_by": "code"
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Oocyte cryopreservation represents a cornerstone technology in assisted reproductive medicine and biodiversity conservation. In this field, microfluidic chips have emerged as promising tools for minimizing osmotic shock and other damage through programmed and automated addition of cryoprotectants (CPAs). Nevertheless, existing microfluidic platforms still face significant challenges in inefficient cell loading/retrieval and operational complexity, which compromise the efficacy of oocyte cryopreservation, hindering their development and application. Here, we developed a novel microfluidic chip and combined it with magnetic hydrogel microencapsulation technology, to establish a comprehensive strategy for optimizing oocyte cryopreservation. Unlike previous microfluidic systems hindered by fluid shear stress or complex capture designs, our platform incorporates a quick-sealing cover for efficient retrieval and magnetic hydrogel immobilization, effectively preventing cell drift and loss without requiring intricate microchannel structures. This innovation not only simplifies operation but also enhances reproducibility. Furthermore, the magnetic hydrogel enables external magnetic control of oocytes in the microchannel, avoid the complex capture structure design of microchannels and provide physical shielding for oocytes during cryopreservation. Compared with conventional straw vitrification, this approach significantly improved oocyte survival rate (86.63% (n = 53) vs. 57.47% (n = 73)) and better preserved mitochondrial activity, cytoskeleton structure, and embryonic development potential. This work presents a combined cryopreservation method that marries high-efficiency protection with operational simplicity, offering a new scheme for oocyte cryopreservation with significant translational potential.",
+    "source": "europepmc",
+    "ext_id": "MED:42604619",
+    "pub_types": [
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "https://doi.org/10.15223/policy-004;https://doi.org/10.15223/policy-012;https://doi.org/10.15223/policy-017;https://doi.org/10.15223/policy-029;https://doi.org/10.15223/policy-037;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "nature",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Piazzetta_and_Bacino_di_San_Marco_-_Giovanni_Antonio_Canal_commonly_known_as_Canaletto.jpg/1920px-Piazzetta_and_Bacino_di_San_Marco_-_Giovanni_Antonio_Canal_commonly_known_as_Canaletto.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "Public domain",
+    "author": "Giovanni Antonio Canal",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Piazzetta and Bacino di San Marco - Giovanni Antonio Canal commonly known as Canaletto.jpg",
+    "query": "often",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-08-13-nature-6e90a441/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'nature'"
+  }
+}
