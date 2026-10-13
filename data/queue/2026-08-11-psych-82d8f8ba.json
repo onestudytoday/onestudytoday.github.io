@@ -1,0 +1,168 @@
+{
+  "id": "2026-08-11-psych-82d8f8ba",
+  "niche": "psych",
+  "study": {
+    "key": "82d8f8ba836ad6f5",
+    "title": "Artificial Intelligence-Driven Digital Tools for Diabetes Self-management in Children: A Scoping Review",
+    "journal": "International journal of endocrinology and metabolism",
+    "pub_date": "2026-08-11",
+    "pub_date_display": "Aug 11, 2026",
+    "doi": "10.5812/ijem-169084",
+    "doi_display": "doi.org/10.5812/ijem-169084",
+    "url": "https://doi.org/10.5812/ijem-169084",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Nakhaee Moghadam M",
+      "Amini S",
+      "Lotfi M",
+      "Nazari Rad M",
+      "Nourmohammadi J."
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Int. J. Endocrin. Metab. \u2022 Review",
+    "headline": "AI-powered apps **may help kids with diabetes track glucose and adjust insulin** without constant parental watch."
+  },
+  "slides": [
+    {
+      "eyebrow": "Why this matters",
+      "basis": "inferred",
+      "title": "Managing diabetes in childhood means round-the-clock decisions about food, insulin, and blood sugar.",
+      "body": "AI-driven tools could shift some of that cognitive load from parent and child to software that learns patterns and prompts action.\n\nIf these tools work reliably in long-term studies, they might make daily care less exhausting and more precise."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Nineteen studies on pediatric diabetes apps showed AI tools clustering into five areas of focus.",
+      "body": "Eight focused on glucose prediction and pattern spotting. Four evaluated insulin dosing and clinical decision support. Six looked at tailored education and behavioral coaching.\n\nFive examined remote monitoring and telemedicine. Five primarily addressed ethical challenges, transparency, and rollout barriers.",
+      "stat": {
+        "value": "19",
+        "label": "studies reviewed from 2010 to 2025"
+      }
+    },
+    {
+      "eyebrow": "The setup",
+      "title": "Researchers searched six databases for studies published between January 2010 and March 2025.",
+      "body": "They screened ninety-seven articles. Nineteen met inclusion criteria for AI-driven digital tools designed for children with diabetes.\n\nTwo independent reviewers extracted data and assessed quality using three established appraisal frameworks."
+    }
+  ],
+  "caveats": [
+    "This is a scoping review, not a trial. It maps what has been studied, not whether the tools work in the long term.",
+    "The authors call for rigorous assessments of clinical outcomes, data privacy, and algorithm performance before widespread use."
+  ],
+  "cta": {
+    "headline": "Send this to anyone counting carbs daily",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "AI tools for kids with diabetes are being tested across five domains, from glucose prediction to remote monitoring and ethics.",
+  "hashtag_set": "health",
+  "shape": "",
+  "vet": {
+    "key": "82d8f8ba836ad6f5",
+    "verdict": "PASS",
+    "score": 60,
+    "flags": [
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'International journal of endocrinology and metabolism' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "explainer",
+    "lint_errors": [
+      "GUARDRAIL the cover kicker says 'Int. J. Endocrin. Metab. \u2022 Review', but this paper was published in 'International journal of endocrinology and metabolism'. The journal is the credibility claim on the cover and it has to be the real one",
+      "STYLE cta names nothing from the study - it would fit any post on the account, which is what makes it read as filler"
+    ],
+    "style_flags": [
+      "cta names nothing from the study - it would fit any post on the account, which is what makes it read as filler"
+    ],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "19",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2010",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2025",
+          "found_in_abstract": true
+        },
+        {
+          "number": "97",
+          "found_in_abstract": true
+        },
+        {
+          "number": "eight",
+          "found_in_abstract": true
+        },
+        {
+          "number": "four",
+          "found_in_abstract": true
+        },
+        {
+          "number": "six",
+          "found_in_abstract": true
+        },
+        {
+          "number": "five",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Context Managing diabetes in children is challenging and requires continuous monitoring and structured self-care support. Artificial intelligence (AI)-driven digital tools may enhance self-management and improve health outcomes. This scoping review aimed to synthesize the existing evidence on AI-driven digital tools for pediatric diabetes self-management, focusing on their functionalities, benefits, and limitations. Evidence acquisition From an initial pool of 97 articles published between January 2010 and March 1, 2025, 19 studies met the predefined inclusion criteria. A systematic search was conducted in PubMed, Scopus, Web of Science, CINAHL, PsycINFO, and Embase using predefined keywords. Two independent reviewers performed screening and data extraction. Methodological quality was appraised using the Cochrane Risk of Bias Tool, the Newcastle-Ottawa Scale, and the Critical Appraisal Skills Programme (CASP) Checklist. Qualitative and quantitative findings were synthesized thematically. Results The 19 included studies addressed several overlapping application domains of AI-driven digital tools for pediatric diabetes self-management. Overall, 8 studies focused primarily on glucose prediction, glycemic monitoring, or pattern recognition; 4 studies evaluated insulin dosing optimization and clinical decision-support systems; 6 studies investigated personalized education, behavioral support, user engagement, or self-management learning interventions; 5 studies examined telemedicine, remote monitoring, or healthcare access; and 5 studies primarily addressed ethical, methodological, transparency, or implementation challenges. Discussion AI-based digital tools have considerable potential to support diabetes self-management in children. Future research should prioritize long-term evaluations, the inclusion of diverse populations, and rigorous assessments of clinical outcomes, data privacy, and algorithm performance.",
+    "source": "europepmc",
+    "ext_id": "MED:42763696",
+    "pub_types": [
+      "review-article",
+      "Review",
+      "Journal Article"
+    ],
+    "publisher": "Brieflands",
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "source_niche": "psych",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Alimentaci%C3%B3n_saludable.jpg/1920px-Alimentaci%C3%B3n_saludable.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC BY-SA 4.0",
+    "author": "Silvia Elizabeth Bonilla Veloz",
+    "needs_credit": true,
+    "source": "Wikimedia Commons",
+    "page": "File:Alimentaci\u00f3n saludable.jpg",
+    "query": "diabete",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-08-11-psych-82d8f8ba/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'psych'"
+  }
+}
