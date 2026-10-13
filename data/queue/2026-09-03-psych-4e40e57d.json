@@ -1,0 +1,217 @@
+{
+  "id": "2026-09-03-psych-4e40e57d",
+  "niche": "psych",
+  "study": {
+    "key": "4e40e57d7365a1ba",
+    "title": "Oblique Hand Radiograph as a Method to Measure Fifth Metacarpal Neck Fracture Angulation",
+    "journal": "Journal of hand surgery global online",
+    "pub_date": "2026-09-03",
+    "pub_date_display": "Sep 3, 2026",
+    "doi": "10.1016/j.jhsg.2026.101108",
+    "doi_display": "doi.org/10.1016/j.jhsg.2026.101108",
+    "url": "https://doi.org/10.1016/j.jhsg.2026.101108",
+    "is_preprint": false,
+    "server": "",
+    "n": 24,
+    "authors": [
+      "Qiu RY",
+      "Ludwig T",
+      "Munn A",
+      "Tarcea A",
+      "Hasselaar CM",
+      "Frizzell B"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Journal of Hand Surgery Global Online",
+    "headline": "A simple angled X-ray may be **just as good as a CT scan** for measuring a broken knuckle."
+  },
+  "slides": [
+    {
+      "eyebrow": "Why this matters",
+      "basis": "stated",
+      "title": "CT scans are the gold standard for measuring broken knuckles, but oblique X-rays might offer the same accuracy.",
+      "body": "Fifth metacarpal neck fractures account for nearly one in five hand fractures. Doctors rely on the angle of the break to decide whether surgery is needed.\n\nThis study suggests a simple oblique X-ray could give the same information as a CT scan."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "In 24 people with healed fifth metacarpal fractures, oblique X-rays matched CT scans almost perfectly.",
+      "body": "The average angle measured 42.6 degrees on both oblique X-ray and CT scan. The mean difference between the two methods was just 3.15 degrees.\n\nThree doctors measured each image. Their readings agreed about as well on both methods.",
+      "stat": {
+        "value": "3.15\u00b0",
+        "label": "average difference between methods"
+      }
+    },
+    {
+      "eyebrow": "The setup",
+      "title": "Researchers recruited people who had broken their fifth metacarpal at least a year earlier and healed without surgery.",
+      "body": "All 24 participants were seen an average of three years after injury. Each had both an oblique hand X-ray and a CT scan taken at the same visit.\n\nThree physicians then measured the apex dorsal angulation on each image."
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Something else could explain the link between imaging methods.",
+    "Only 24 people took part. That is small enough that the result could shift a lot in a bigger study."
+  ],
+  "cta": {
+    "headline": "Send this to anyone who debates broken-knuckle imaging",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "A cheaper, lower-radiation X-ray angle matched CT scans for measuring broken knuckles in a small study of healed fractures.",
+  "hashtag_set": "health",
+  "shape": "",
+  "vet": {
+    "key": "4e40e57d7365a1ba",
+    "verdict": "HOLD",
+    "score": 36,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "note",
+        "message": "Design reads as observational (unclear); markers: cohort, retrospective",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      },
+      {
+        "code": "CAUSAL_LANGUAGE_IN_OBSERVATIONAL",
+        "severity": "warn",
+        "message": "The paper's own text uses causal verbs (results in) despite an observational design. The authors are overreaching - do not repeat it.",
+        "caveat": null,
+        "draft_rule": null
+      },
+      {
+        "code": "TINY_SAMPLE",
+        "severity": "warn",
+        "message": "Only 24 human participants detected.",
+        "caveat": "Only 24 people took part. That is small enough that the result could shift a lot in a bigger study.",
+        "draft_rule": "Sample size is only 24. State the number on the slide and do not generalise to 'people' broadly."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Journal of hand surgery global online' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "unclear",
+    "sample_size": 24,
+    "subjects": "human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link.",
+      "Only 24 people took part. That is small enough that the result could shift a lot in a bigger study."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'.",
+      "Sample size is only 24. State the number on the slide and do not generalise to 'people' broadly."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "explainer",
+    "lint_errors": [
+      "slide1.body: 42 words, spec is 30-40"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "CT scans are the gold standard for measuring broken knuckles",
+          "problem": "The abstract does not state that CT scans are the gold standard. It says sagittal CT and lateral radiographs provide 'the truest views' but routine CT is 'not feasible.' This does not establish CT as the gold standard.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Fifth metacarpal neck fractures account for nearly one in five hand fractures",
+          "problem": "The abstract states these fractures 'comprise up to 18.4% of all hand fractures.' The copy rounds this to 'nearly one in five' (20%), which overstates the figure by converting 18.4% to 20%.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Doctors rely on the angle of the break to decide whether surgery is needed",
+          "problem": "The abstract states clinical decision making is 'influenced by' radiographic parameters, not that doctors 'rely on' the angle to decide whether surgery is needed. This strengthens the claim beyond what the abstract supports.",
+          "severity": "minor"
+        },
+        {
+          "claim": "A cheaper, lower-radiation X-ray angle matched CT scans",
+          "problem": "The abstract does not mention cost or radiation levels. These are invented claims not supported by the abstract.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "24",
+          "found_in_abstract": true
+        },
+        {
+          "number": "42.6 degrees",
+          "found_in_abstract": true
+        },
+        {
+          "number": "3.15 degrees",
+          "found_in_abstract": true
+        },
+        {
+          "number": "three years",
+          "found_in_abstract": true
+        },
+        {
+          "number": "one in five",
+          "found_in_abstract": false
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "CT scans are the gold standard for measuring broken knuckles",
+        "problem": "The abstract does not state that CT scans are the gold standard. It says sagittal CT and lateral radiographs provide 'the truest views' but routine CT is 'not feasible.' This does not establish CT as the gold standard.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "A cheaper, lower-radiation X-ray angle matched CT scans",
+        "problem": "The abstract does not mention cost or radiation levels. These are invented claims not supported by the abstract.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "one in five",
+        "found_in_abstract": false
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Purpose Fifth metacarpal neck fractures (5MCNFs) comprise up to 18.4% of all hand fractures. Clinical decision making is influenced by radiographic parameters, specifically apex dorsal angulation. Although sagittal computed tomography (CT) and lateral radiographs provide the truest views of the sagittal metacarpal, routine CT is not feasible, and metacarpal overlap on lateral radiograph presents a challenge for reliable measurement. Thus, oblique hand radiographs may be a valuable alternative, providing an isolated view of the fifth metacarpal. This study assesses whether oblique hand radiographs are a reliable and valid method of measuring 5MCNF angulation. Methods A retrospective cohort of patients aged \u226518 years treated nonsurgically for 5MCNFs were recruited from three centers in Calgary. All patients had healed malunions. Radiographs and CT scans were obtained at one clinical visit at least 1-year postinjury. Three physicians measured fracture angulation on oblique hand radiographs and sagittal CT. Results In total, 24 patients with malunited 5MCNFs were identified. The average patient age was 40.3 \u00b1 13.3 years and patients were seen on average 2.97 \u00b1 1.70 years postinjury. All patients were treated nonsurgically, and 91.7% were immobilized in a cast or a splint. The average apex dorsal angulation measurement was 42.6\u00b0 \u00b1 8.55\u00b0 on oblique hand radiograph and 42.6\u00b0 \u00b1 8.86\u00b0 on sagittal CT ( P = .825). The interrater intraclass correlation coefficient was 0.795 (95% CI, 0.353-1.000) on oblique hand radiograph and 0.784 (95% CI, 0.414-1.000) on sagittal CT. The mean absolute interobserver difference in angulation measurement was 4.09\u00b0 \u00b1 2.90\u00b0 on oblique hand radiograph and 4.66\u00b0 \u00b1 2.51\u00b0 on sagittal CT. The intermodal intraclass correlation coefficients was 0.877 (95% CI, 0.659-1.000). The mean absolute angular error was 3.15\u00b0 \u00b1 1.82\u00b0. Bland-Altman analysis demonstrated no proportional bias. Conclusions Oblique hand radiographs demonstrate good reliability and high validity as a modality for the measurement of 5MCNF angulation. This study provides radiographic guidance for the assessment of 5MCNFs. Type of study/level of evidence Retrospective reliability study III.",
+    "source": "europepmc",
+    "ext_id": "MED:42733813",
+    "pub_types": [
+      "research-article",
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "http://creativecommons.org/licenses/by-nc-nd/4.0/;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "psych",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Knuckle_Puck_performing_live_in_Toronto_2026.png/1920px-Knuckle_Puck_performing_live_in_Toronto_2026.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC0",
+    "author": "Jsimon1472",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Knuckle Puck performing live in Toronto 2026.png",
+    "query": "knuckle",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-09-03-psych-4e40e57d/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'psych'"
+  }
+}
