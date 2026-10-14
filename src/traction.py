@@ -168,10 +168,22 @@ def reddit_token() -> str:
 HN_URL = "https://hn.algolia.com/api/v1/search_by_date"
 CROSSREF_EVENTS = "https://api.eventdata.crossref.org/v1/events"
 
-# EurekAlert's per-topic feed path returned 404 on the first live run; the
-# top-level feed is the documented one. ScienceDaily answered fine.
+# EurekAlert is OUT, and the history is the reason it is not simply being
+# repointed again. Its per-topic feed path 404'd on the first live run and
+# was replaced with the top-level rss.xml as "the documented one"; that now
+# 404s too, and has been printing
+#
+#     ! eurekalert feed unavailable, skipping it: 404 Client Error
+#
+# at the top of every single draft log. It contributes nothing and it makes
+# a healthy run look broken, which matters more than it sounds: that line
+# sat above the real diagnostic for days and drew the eye every time.
+#
+# Guessing a third URL from here is what produced the second one. If you
+# want EurekAlert back, open the feed in a browser, confirm it returns XML,
+# and put the URL that actually worked in this dict. ScienceDaily answers
+# fine and carries the same wire stories.
 RSS_FEEDS = {
-    "eurekalert": "https://www.eurekalert.org/rss.xml",
     "sciencedaily": "https://www.sciencedaily.com/rss/top/science.xml",
 }
 

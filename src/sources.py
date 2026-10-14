@@ -730,6 +730,35 @@ def fetch_candidates(niche: str, days: Optional[int] = None,
         except Exception as e:
             print(f"  ! arXiv fetch failed, continuing without it: {e}")
 
+    # COUNT EVERY STEP OF THE FUNNEL, NOT JUST ONE OF THEM.
+    #
+    # On 13 Oct the nature slot reported, in full:
+    #
+    #     51 candidate(s) dropped as off-topic for 'nature'
+    #     0 candidates after dedupe and topic filters
+    #
+    # and that was the entire diagnostic. Five filters run between the
+    # sources and the ranking, and exactly ONE of them printed anything, so
+    # the log could not answer the first question anybody asks: did the
+    # search return nothing, or did it return plenty and get eaten? Those
+    # have opposite fixes - widen the query, versus narrow it - and guessing
+    # wrong makes it worse. Two days were spent guessing.
+    #
+    # So each step now says what it took and what it left. It is six lines of
+    # print in a job that runs once a day and whose whole output is read by a
+    # person trying to work out why there is no post.
+    def _step(label: str, before: int, after: int) -> None:
+        if before != after:
+            print(f"  {label}: {before} -> {after} ({before - after} dropped)")
+
+    by_source = {}
+    for s in studies:
+        by_source[getattr(s, "source", None) or "unknown"] = \
+            by_source.get(getattr(s, "source", None) or "unknown", 0) + 1
+    print(f"  fetched {len(studies)} record(s)"
+          + (f" ({', '.join(f'{k}: {v}' for k, v in sorted(by_source.items()))})"
+             if by_source else ""))
+
     # de-dupe within the batch
     seen, uniq = set(), []
     for s in studies:
@@ -738,6 +767,7 @@ def fetch_candidates(niche: str, days: Optional[int] = None,
         seen.add(s.key)
         s.niche = niche
         uniq.append(s)
+    _step("after de-duplicating", len(studies), len(uniq))
 
     # drop anything we have already used or already rejected
     led = load_ledger()
@@ -745,17 +775,38 @@ def fetch_candidates(niche: str, days: Optional[int] = None,
     # not-yet-decided review issue - without this, running the draft workflow
     # again before you approve or kill it just pulls and drafts it a second
     # time, since it is neither "posted" nor "rejected" yet.
-    used = (set(led.get("posted", {})) | set(led.get("rejected", {}))
-            | set(led.get("seen", {})))
+    posted_k = set(led.get("posted", {}))
+    rejected_k = set(led.get("rejected", {}))
+    seen_k = set(led.get("seen", {}))
+    used = posted_k | rejected_k | seen_k
+    before = len(uniq)
+    # Broken out by bucket, because "the pool is used up" and "the pool is
+    # full of papers you killed" are different problems. A big `seen` number
+    # in particular means drafts are piling up unreviewed: every one of them
+    # holds its study out of circulation until it is approved or killed.
+    hits = [s for s in uniq if s.key in used]
     uniq = [s for s in uniq if s.key not in used]
+    if hits:
+        np_ = sum(1 for s in hits if s.key in posted_k)
+        nr = sum(1 for s in hits if s.key in rejected_k)
+        ns = sum(1 for s in hits if s.key in seen_k and s.key not in posted_k
+                 and s.key not in rejected_k)
+        print(f"  already in the ledger: {before} -> {len(uniq)} "
+              f"({len(hits)} dropped - {np_} posted, {nr} killed, "
+              f"{ns} awaiting your review)")
 
     # abstract must be substantial enough to summarise honestly
+    before = len(uniq)
     uniq = [s for s in uniq if len(s.abstract) >= defaults["min_abstract_chars"]]
+    _step(f"abstract under {defaults['min_abstract_chars']} chars",
+          before, len(uniq))
 
     # topic exclusions
     ex = [e.lower() for e in n.get("exclude_terms", [])]
+    before = len(uniq)
     uniq = [s for s in uniq
             if not any(e in (s.title + " " + " ".join(s.pub_types)).lower() for e in ex)]
+    _step("excluded by term", before, len(uniq))
 
     # IS IT ACTUALLY ABOUT THIS NICHE?
     #
@@ -768,10 +819,28 @@ def fetch_candidates(niche: str, days: Optional[int] = None,
     # Applied to EVERYTHING, including traction-sourced DOIs, which never went
     # through the topic query at all.
     before = len(uniq)
+    off = [s for s in uniq if not on_topic(s, n)]
     uniq = [s for s in uniq if on_topic(s, n)]
-    if before != len(uniq):
-        print(f"  {before - len(uniq)} candidate(s) dropped as off-topic for "
-              f"'{niche}' - no {niche} term in the title or abstract")
+    if off:
+        print(f"  off-topic for '{niche}': {before} -> {len(uniq)} "
+              f"({len(off)} dropped - no {niche} term in the title or abstract)")
+        # WHICH journals, and a couple of titles.
+        #
+        # "51 dropped as off-topic" says the filter is working and nothing
+        # about why there was anything to drop. The journal tally is the
+        # tell: the same handful of open-access biomedical titles turning up
+        # in the nature and psych slots - Bioactive Materials, Gut Microbes,
+        # Talanta - means the NICHE QUERY is fishing in the wrong pond, and
+        # the fix is the query in config/niches.yaml, not this filter.
+        tally = {}
+        for s_ in off:
+            j = (s_.journal or "?")[:40]
+            tally[j] = tally.get(j, 0) + 1
+        top = sorted(tally.items(), key=lambda kv: -kv[1])[:6]
+        print("      mostly from: "
+              + ", ".join(f"{j} x{c}" if c > 1 else j for j, c in top))
+        for s_ in off[:2]:
+            print(f"      e.g. {s_.title[:88]}")
 
     # ---- Shortlisting, in three steps. The order of these matters. ----
     #

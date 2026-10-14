@@ -73,11 +73,27 @@ niches:
     day: Monday
     label: "NATURE & ENVIRONMENT"
     accent: "#22C55E"
+    # DISTINCTIVE WORDS ONLY. Nothing here is also ordinary biomedical prose.
+    #
+    # This used to include ecosystem, conservation, evolution, migration and
+    # microbiome. Every one of those has a second, far more common meaning in
+    # the biomedical literature - "tumour ecosystem", "conservation of the
+    # binding site", "evolution of resistance", "cell migration", "gut
+    # microbiome" - and Europe PMC's corpus is overwhelmingly biomedical. So
+    # the Monday search spent its sixty slots on tissue-engineering papers,
+    # on_topic() correctly threw them out, and the slot went empty: on
+    # 13 Oct it reported "51 candidate(s) dropped as off-topic" and zero left.
+    # Six of the twelve nature drafts sitting in the queue are from Bioactive
+    # Materials, Biomaterials, Gut Microbes or Talanta.
+    #
+    # The filter was not the problem. It was doing its job on a catch it
+    # should never have been handed. Fix the net, not the sorting.
     europepmc_query: >
-      (ecology OR biodiversity OR "climate change" OR ecosystem OR conservation
-       OR evolution OR "animal behaviour" OR "animal behavior" OR ocean
-       OR rainforest OR extinction OR pollinator OR microbiome OR "coral reef"
-       OR permafrost OR wildfire OR migration)
+      (ecology OR biodiversity OR "climate change" OR ocean OR marine
+       OR rainforest OR deforestation OR extinction OR "endangered species"
+       OR pollinator OR coral OR reef OR permafrost OR wildfire OR drought
+       OR wildlife OR habitat OR wetland OR glacier OR "sea ice"
+       OR "animal behaviour" OR "animal behavior")
     arxiv_categories: []
     crossref_terms: ["climate", "biodiversity", "ecology", "conservation biology"]
     journals:
@@ -89,12 +105,11 @@ niches:
       3: ["Journal of Animal Ecology", "Conservation Biology", "Ecology",
           "Functional Ecology", "Biology Letters", "Environmental Research Letters",
           "Molecular Ecology", "Journal of Ecology"]
-    # Everyday-in-biology words - see sources.on_topic(). A cancer
-    # nanomedicine paper reached this slot on "tumour ecosystem", and "cell
-    # migration" is in half the biomedical literature. One of these is not
-    # evidence a paper is about the natural world; two of them, or one
-    # distinctive term (rainforest, pollinator, coral reef), is.
-    weak_terms: [ecosystem, evolution, migration, conservation]
+    # NO weak_terms any more, deliberately. They are gone from the query
+    # above, so a paper now has to carry a word that means one thing to count
+    # as on-topic at all - see sources.on_topic(). The "two weak terms will
+    # do" rule is what let a bone-scaffold paper through this slot on
+    # "tissue evolution" plus "conservation of matrix".
 
     exclude_terms: ["case report", "erratum", "protocol", "study protocol"]
 
@@ -103,11 +118,22 @@ niches:
     day: Tuesday
     label: "PSYCHOLOGY & NEUROSCIENCE"
     accent: "#A855F7"
+    # Same rewrite as nature, and for the same reason. Nine of the twenty
+    # terms here were ordinary English - memory, attention, learning, sleep,
+    # emotion, perception, bias, habit, motivation - and in a biomedical
+    # corpus they match "shape-memory polymer", "machine learning",
+    # "selection bias", "has attracted attention" and "learning curve". A
+    # hand-radiograph measurement paper was drafted into the Tuesday slot on
+    # 13 Oct. The bare words are out; the phrases that actually mean the mind
+    # ("working memory", "sleep deprivation") are in, and they are specific
+    # enough to search on.
     europepmc_query: >
-      (memory OR cognition OR "decision making" OR sleep OR emotion OR attention
-       OR depression OR anxiety OR neuroimaging OR "prefrontal cortex" OR dopamine
-       OR "social behaviour" OR "social behavior" OR consciousness OR perception
-       OR learning OR habit OR loneliness OR motivation OR bias)
+      (cognition OR cognitive OR "decision making" OR depression OR anxiety
+       OR neuroimaging OR "prefrontal cortex" OR dopamine OR consciousness
+       OR "social behaviour" OR "social behavior" OR loneliness OR psychiatric
+       OR "working memory" OR "episodic memory" OR "memory consolidation"
+       OR "sleep deprivation" OR "sleep quality" OR "sleep duration"
+       OR insomnia OR "executive function" OR "mental health")
     arxiv_categories: []
     crossref_terms: ["cognitive neuroscience", "psychology", "behavioural science"]
     journals:
@@ -119,17 +145,9 @@ niches:
       3: ["Cognition", "Psychological Bulletin", "Journal of Experimental Psychology",
           "Social Psychological and Personality Science", "Cortex", "NeuroImage",
           "Sleep", "Emotion", "Developmental Science", "Psychonomic Bulletin & Review"]
-    # Terms that are also ordinary English. One of these in a title or
-    # abstract is not evidence a paper is about the mind - "immune memory",
-    # "machine learning" and "shape-memory polymer" all match, and none of
-    # them is psych. A paper needs one DISTINCTIVE term (dopamine, prefrontal
-    # cortex, neuroimaging) or TWO of these. See sources.on_topic().
-    #
-    # Only psych needs this: nine of its twenty terms are everyday words,
-    # where nature and health use vocabulary that means one thing. Three
-    # Tuesdays running, this slot drafted Bioactive Materials papers.
-    weak_terms: [memory, attention, learning, sleep, emotion, perception,
-                 bias, habit, motivation]
+    # NO weak_terms any more - see the note under nature. Every term in the
+    # query above means one thing, so on_topic() needs one of them and the
+    # "two weak ones will do" escape hatch is not reachable from here.
     exclude_terms: ["case report", "erratum", "protocol", "commentary"]
 
   # ------------------------------------------------------------- WEDNESDAY

@@ -120,9 +120,16 @@ def test_one_everyday_term_alone_is_not():
                             PSYCH) is False
 
 
-def test_two_everyday_terms_are():
+def test_two_everyday_terms_are_no_longer_enough():
+    """Inverted on 14 Oct. Two ordinary words used to qualify a paper; that
+    is what admitted a metacarpal-fracture radiograph study to the psych
+    slot on "bias" and "learning". A real sleep-and-memory paper is still
+    found, but by a phrase that means the mind - see the cases above."""
     assert sources.on_topic(
-        _S("Sleep and memory", "sleep improved memory retention"), PSYCH) is True
+        _S("Sleep and memory", "sleep improved memory retention"), PSYCH) is False
+    assert sources.on_topic(
+        _S("Sleep and memory consolidation",
+           "sleep improved memory consolidation"), PSYCH) is True
 
 
 # ---------------------------------------------------------------------------
@@ -164,16 +171,46 @@ def test_a_niche_with_no_topic_query_is_not_filtered():
         assert sources.on_topic(_S("Anything at all", "..."), cfg) is True
 
 
-def test_only_psych_needs_the_everyday_word_list():
-    """nature and health use vocabulary that means one thing. If this starts
-    failing, that niche's terms have drifted towards ordinary English and it
-    needs the same treatment."""
-    assert PSYCH.get("weak_terms")
-    for name in ("nature", "health"):
-        terms = set(sources.topic_terms(NICHES[name]))
-        everyday = terms & {"memory", "attention", "learning", "sleep",
-                            "growth", "development", "energy", "control"}
-        assert not everyday, f"{name} has picked up everyday terms: {everyday}"
+# THE RULE CHANGED ON 14 OCT, and this is what replaced the one above.
+#
+# Every niche used to be allowed a list of `weak_terms` - words that are also
+# ordinary English - on the understanding that TWO of them meant a paper was
+# on topic. nature and psych both had one, and the rule was too generous in
+# a corpus that is overwhelmingly biomedical: "tissue evolution" plus
+# "conservation of the matrix" put a bone-scaffold paper in the Monday nature
+# slot, and "interobserver bias" plus "learning curve" put a hand-radiograph
+# paper in the Tuesday psych slot. Both are sitting in the queue.
+#
+# The deeper problem was that those same ordinary words were in the SEARCH,
+# so Europe PMC spent all sixty result slots on biomedical papers and
+# on_topic() then correctly deleted nearly all of them. On 13 Oct nature
+# reported "51 candidate(s) dropped as off-topic" and zero survivors.
+#
+# So the ordinary words are gone from both queries, and with them the need
+# for weak_terms at all: every term a niche searches for now means one thing,
+# and a paper has to carry one of them.
+def test_no_niche_searches_for_an_ordinary_english_word():
+    """If this fails, a niche's terms have drifted back towards words that
+    mean something else in a biomedical abstract - which is what emptied the
+    nature and psych slots for a week."""
+    ordinary = {"memory", "attention", "learning", "sleep", "emotion",
+                "perception", "bias", "habit", "motivation", "ecosystem",
+                "evolution", "migration", "conservation", "microbiome",
+                "growth", "development", "energy", "control", "stress"}
+    for name, cfg in NICHES.items():
+        terms = set(sources.topic_terms(cfg))
+        drifted = terms & ordinary
+        assert not drifted, (
+            f"{name} searches for {sorted(drifted)} - in Europe PMC's corpus "
+            f"those match biomedical papers, which then fill the slot")
+
+
+def test_no_niche_still_leans_on_the_two_everyday_words_rule():
+    """weak_terms is dead config now. Leaving it in place would look live."""
+    for name, cfg in NICHES.items():
+        assert not cfg.get("weak_terms"), (
+            f"{name} has weak_terms again - a paper can now qualify without "
+            f"one distinctive word, which is how the junk got in")
 
 
 # ---------------------------------------------------------------------------
@@ -280,3 +317,129 @@ def test_the_filter_does_not_simply_reject_everything():
          NICHES["health"]),
     ]
     assert all(sources.on_topic(s, cfg) for s, cfg in passing)
+
+
+# ---------------------------------------------------------------------------
+# THE FOUR PAPERS THAT ACTUALLY GOT DRAFTED, 9-13 OCT
+#
+# Not invented examples. Each of these is a real post sitting in data/queue,
+# drafted into a slot it has nothing to do with, by a pipeline whose topic
+# filter was working perfectly - on a catch it should never have been handed.
+# Abstracts are paraphrased to the phrasing that carried them through, since
+# the queued post records the title and the journal but not the abstract.
+# ---------------------------------------------------------------------------
+DRAFTED_JUNK = [
+    ("nature", "Biomaterials",
+     "Magnetic hydrogel encapsulation combined with on-chip processing "
+     "enhances straw vitrification of oocytes",
+     "Cell migration and tissue evolution within the scaffold, with "
+     "conservation of the extracellular matrix ecosystem."),
+    ("nature", "Talanta",
+     "A flexible hydrogel-based SERS sensor for multi-target detection of "
+     "microbial metabolites",
+     "Detection of metabolites; cellular migration assays and the evolution "
+     "of the signal over time."),
+    ("psych", "Journal of hand surgery global online",
+     "Oblique Hand Radiograph as a Method to Measure Fifth Metacarpal Neck "
+     "Fracture Angulation",
+     "Interobserver bias was assessed, along with the learning curve and "
+     "the perception of angulation by three raters."),
+    ("psych", "International journal of endocrinology and metabolism",
+     "Artificial Intelligence-Driven Digital Tools for Diabetes "
+     "Self-management in Children: A Scoping Review",
+     "Machine learning tools were reviewed; adherence habits, patient "
+     "motivation and attention to glucose readings were extracted."),
+]
+
+
+@pytest.mark.parametrize("niche,journal,title,abstract", DRAFTED_JUNK,
+                         ids=[f"{n}-{j.split()[0].lower()}"
+                              for n, j, _, _ in DRAFTED_JUNK])
+def test_the_papers_that_were_really_drafted_are_now_rejected(
+        niche, journal, title, abstract):
+    assert sources.on_topic(_S(title, abstract), NICHES[niche]) is False, (
+        f"{journal} would still be drafted into the {niche} slot")
+
+
+@pytest.mark.parametrize("niche,journal,title,abstract", DRAFTED_JUNK,
+                         ids=[f"{n}-{j.split()[0].lower()}"
+                              for n, j, _, _ in DRAFTED_JUNK])
+def test_and_the_search_would_not_have_returned_them_either(
+        niche, journal, title, abstract):
+    """The filter rejecting them is the second line of defence. The first is
+    not asking Europe PMC for them: the scoped query searches title and
+    abstract, so if none of the niche's terms appears in either, the record
+    never comes back and does not burn one of the sixty result slots."""
+    blob = f"{title} {abstract}".lower()
+    hit = [t for t in sources.topic_terms(NICHES[niche]) if t in blob]
+    assert not hit, f"the {niche} query still matches this on {hit}"
+
+
+# ---------------------------------------------------------------------------
+# THE LOG HAS TO SAY WHICH STEP ATE THEM
+#
+# The whole of the 13 Oct nature diagnostic was:
+#
+#     51 candidate(s) dropped as off-topic for 'nature'
+#     0 candidates after dedupe and topic filters
+#
+# Five filters run between the sources and the ranking and only one of them
+# printed. "The search found nothing" and "the search found plenty and the
+# filter ate it" have opposite fixes - widen the query, or narrow it - and
+# the log could not tell them apart. Two days went on guessing.
+# ---------------------------------------------------------------------------
+def _study(ext_id, title, abstract, journal="Ecology Letters"):
+    return sources.Study(source="europepmc", ext_id=ext_id, title=title,
+                         abstract=abstract, journal=journal,
+                         doi=f"10.1/{ext_id}", pub_date="2026-09-01")
+
+
+def _run_funnel(monkeypatch, capsys, cands, ledger=None):
+    monkeypatch.setattr(sources, "europepmc_search", lambda *a, **k: list(cands))
+    monkeypatch.setattr(sources, "traction_candidates", lambda *a, **k: [])
+    import traction
+    monkeypatch.setattr(traction, "gather", lambda **k: [])
+    monkeypatch.setattr(sources, "load_ledger",
+                        lambda: ledger or {"posted": {}, "rejected": {}, "seen": {}})
+    out = sources.fetch_candidates("nature", 75)
+    return out, capsys.readouterr().out
+
+
+ECO = ("Long-term monitoring shows pollinator biodiversity declining as "
+       "habitat is lost to climate change. " * 6)
+JUNK = ("Cell migration and tissue evolution in scaffolds, with conservation "
+        "of the extracellular matrix. " * 6)
+
+
+def test_the_log_counts_every_step_not_just_the_topic_filter(monkeypatch, capsys):
+    cands = [_study("a", "Pollinator decline", ECO),
+             _study("b", "Reef recovery", ECO),
+             _study("c", "Bone scaffolds", JUNK, "Bioactive Materials"),
+             _study("d", "Short one", "too short", "Nature")]
+    led = {"posted": {cands[0].key: {}}, "rejected": {}, "seen": {}}
+    out, log = _run_funnel(monkeypatch, capsys, cands, led)
+    assert "fetched 4 record(s)" in log
+    assert "already in the ledger" in log
+    assert "abstract under" in log
+    assert "off-topic for 'nature'" in log
+    assert [s.ext_id for s in out] == ["b"]
+
+
+def test_the_ledger_line_says_which_bucket_held_them(monkeypatch, capsys):
+    """'used up' and 'piling up unreviewed' are different problems. Twelve
+    nature drafts were sitting undecided while the slot reported nothing."""
+    cands = [_study(c, "Pollinator decline", ECO) for c in "abc"]
+    led = {"posted": {cands[0].key: {}}, "rejected": {cands[1].key: {}},
+           "seen": {cands[2].key: {}}}
+    _, log = _run_funnel(monkeypatch, capsys, cands, led)
+    assert "1 posted" in log and "1 killed" in log
+    assert "1 awaiting your review" in log
+
+
+def test_the_log_names_the_journals_it_threw_out(monkeypatch, capsys):
+    """The tell that the QUERY is wrong rather than the filter: the same
+    handful of open-access biomedical titles, every day."""
+    cands = [_study(c, "Bone scaffolds", JUNK, "Bioactive Materials")
+             for c in "abc"]
+    _, log = _run_funnel(monkeypatch, capsys, cands)
+    assert "Bioactive Materials x3" in log
