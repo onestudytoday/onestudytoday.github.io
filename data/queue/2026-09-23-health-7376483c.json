@@ -1,0 +1,153 @@
+{
+  "id": "2026-09-23-health-7376483c",
+  "niche": "health",
+  "study": {
+    "key": "7376483c12a6054f",
+    "title": "Submucosal Invasion and Ulceration in Early Gastric Cancer Affect Mucosal Impedance",
+    "journal": "DEN open",
+    "pub_date": "2026-09-23",
+    "pub_date_display": "Sep 23, 2026",
+    "doi": "10.1002/deo2.70434",
+    "doi_display": "doi.org/10.1002/deo2.70434",
+    "url": "https://doi.org/10.1002/deo2.70434",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Miyashiro K",
+      "Sawada Y",
+      "Kikuchi H",
+      "Goto S",
+      "Yoshizawa T",
+      "Nakano S"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "DEN open \u00b7 Prospective cohort",
+    "headline": "**An electrical test could flag harder-to-treat stomach cancers** during the procedure that removes them"
+  },
+  "slides": [
+    {
+      "eyebrow": "What it means for you",
+      "basis": "inferred",
+      "title": "Electrical readings from tissue could help doctors spot invasion depth they cannot see on a camera.",
+      "body": "Gastric cancer that has pushed into deeper layers is riskier and harder to treat. Cameras show surface patterns, but not what is happening underneath.\n\nThis test might flag those hidden changes in real time, while the tumor is being removed."
+    },
+    {
+      "eyebrow": "The result",
+      "title": "Tissue resistance in removed stomach tumors was linked to both deeper invasion and sores.",
+      "body": "Tumors that had invaded the lower layer showed resistance of 6.9 \u03a9, compared to 9.7 \u03a9 in those limited to the surface. Tumors with sores also had lower readings.\n\nThe pattern held after adjusting for tumor type and protein markers.",
+      "stat": {
+        "value": "6.9 \u03a9",
+        "label": "in lower-layer invasion cases"
+      }
+    },
+    {
+      "eyebrow": "How it works",
+      "title": "The test tracked claudin-18, a junction protein that changes as cancer advances.",
+      "body": "Resistance was measured on specimens right after removal. Researchers used both high- and low-frequency current. Only low-frequency readings matched invasion depth and sore status.\n\nClaudin-18 was the sole independent factor in analysis."
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Something else could explain the link between tissue resistance and tumor behavior.",
+    "Tests were done on removed specimens after the procedure, not during live camera work, so real-time use is not yet validated.",
+    "Single-center study; the findings need testing in other hospitals and with different patient groups before broader use."
+  ],
+  "cta": {
+    "headline": "Send this to anyone tracking GI cancers",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "An electrical test on removed stomach tumors might reveal invasion depth that cameras miss during the same procedure",
+  "hashtag_set": "health",
+  "shape": "",
+  "vet": {
+    "key": "7376483c12a6054f",
+    "verdict": "HOLD",
+    "score": 54,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "warn",
+        "message": "Design reads as observational (cohort (observational)); markers: cohort, associated with, prospective cohort",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'DEN open' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "cohort (observational)",
+    "sample_size": null,
+    "subjects": "human",
+    "journal_tier": null,
+    "causal_language_banned": true,
+    "species": [],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "stakes",
+    "lint_errors": [
+      "slide2.body: 42 words, spec is 30-40"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "6.9 \u03a9",
+          "found_in_abstract": true
+        },
+        {
+          "number": "9.7 \u03a9",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Objectives To investigate early changes in gastric cancers that are difficult to evaluate using endoscopic imaging through the assessment of mucosal impedance (MI) in endoscopic submucosal dissection (ESD) specimens. Methods In this single-center prospective cohort study, we included patients who underwent ESD for early gastric cancer (EGC). MI was measured at both the main tumor site and the surrounding non-neoplastic mucosa in resected specimens. Histopathological evaluation and immunohistochemical staining for claudin-3, -4, and -18 were performed. Furthermore, multivariate analysis was used to investigate factors influencing MI-L. Results The MI measured under high-frequency current (MI-H) of the non-neoplastic mucosa was significantly higher than that of the tumor ( p = 0.0025). Additionally, the MI measured under low-frequency current (MI-L) was significantly lower in pT1b cases than in pT1a cases (6.9 \u03a9 vs. 9.7 \u03a9, p = 0.021). Similarly, the MI-L was significantly lower in the pUL1 cases than in the pUL0 cases (7.5 \u03a9 vs. 9.7 \u03a9, p = 0.030). Multivariable linear regression analysis demonstrated that, among the explanatory variables-including tumor invasion, ulcer status, macroscopic type, and the H-scores for each claudin- only the H-score of claudin-18 was identified as an independent associated factor. Conclusions In resected specimens, MI-L was independently associated with claudin-18 expression and correlated with submucosal invasion, ulcer status, and macroscopic type. MI has the potential to detect non-surface changes involving tight junction proteins in EGC that cannot be observed via endoscopy. Trial Registration : N/A.",
+    "source": "europepmc",
+    "ext_id": "MED:42781318",
+    "pub_types": [
+      "research-article",
+      "Journal Article"
+    ],
+    "publisher": "Wiley",
+    "license": "http://creativecommons.org/licenses/by/4.0/;http://doi.wiley.com/10.1002/tdm_license_1.1"
+  },
+  "source_niche": "health",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/Cancer_of_lower_gum.jpg/1920px-Cancer_of_lower_gum.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC0",
+    "author": "Jmarchn",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Cancer of lower gum.jpg",
+    "query": "cancer",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-09-23-health-7376483c/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'health'"
+  }
+}
