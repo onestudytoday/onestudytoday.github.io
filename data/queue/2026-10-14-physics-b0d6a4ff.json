@@ -1,0 +1,153 @@
+{
+  "id": "2026-10-14-physics-b0d6a4ff",
+  "niche": "physics",
+  "study": {
+    "key": "b0d6a4fffb5e5b89",
+    "title": "Demonstration of a mobile ion-trap quantum device",
+    "journal": "arXiv",
+    "pub_date": "2026-10-14",
+    "pub_date_display": "Oct 14, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2610.20487v1",
+    "url": "http://arxiv.org/abs/2610.20487v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Sara Alfaro",
+      "Dipesh Bhanushali",
+      "Sankarshan Choudapurkar",
+      "Ashwin Bhartia",
+      "Thomas Lafenthaler",
+      "Tommaso Faorlin"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "arXiv preprint (not reviewed)",
+    "headline": "**Quantum computers may one day run** in the back of a van - if the ions survive the journey"
+  },
+  "slides": [
+    {
+      "eyebrow": "Why you should care",
+      "basis": "inferred",
+      "title": "If trapped ions can handle a road trip, quantum sensors and computers could leave the lab.",
+      "body": "Most quantum tech sits bolted to an optical table in a basement. This early paper suggests the hardware might work in transit.\n\nThat could mean quantum sensors in the field, not just the lab."
+    },
+    {
+      "eyebrow": "What the data says",
+      "title": "The team reports transporting a few thousand ions in a Paul trap over several kilometers.",
+      "body": "The ions stayed confined during trips lasting 15 and 45 minutes. Paul traps use oscillating electric fields to hold charged particles.\n\nThis is the first time anyone has moved ions in a Paul trap over distance.",
+      "stat": {
+        "value": "45 min",
+        "label": "longest transport duration reported"
+      }
+    },
+    {
+      "eyebrow": "The assumption",
+      "title": "Ion transport had only been shown in magnetic traps, which are less common in quantum research.",
+      "body": "Penning traps use static magnetic fields and have been used to move ions before. But Paul traps dominate quantum computing and precision measurement work.\n\nShowing that Paul traps can work on the move matters if you want portable devices."
+    }
+  ],
+  "caveats": [
+    "This is a preprint. It has not been peer reviewed yet, so no independent expert has checked the work.",
+    "The paper does not say whether the ions remained viable for quantum operations after transport, only that they stayed confined."
+  ],
+  "cta": {
+    "headline": "Send this to the person building a quantum startup",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Trapped ions just survived a road trip in the kind of device that powers most quantum computers today",
+  "hashtag_set": "physics",
+  "shape": "",
+  "vet": {
+    "key": "b0d6a4fffb5e5b89",
+    "verdict": "HOLD",
+    "score": 42,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "reversal",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "45",
+          "found_in_abstract": true
+        },
+        {
+          "number": "15",
+          "found_in_abstract": true
+        },
+        {
+          "number": "several kilometers",
+          "found_in_abstract": true
+        },
+        {
+          "number": "a few thousand",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": true
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Trapped-ion devices are being investigated for transportable applications, including the transfer of exotic charged particles between laboratories and the development of portable quantum technologies. To date, ion transport has been demonstrated only in magnetic (Penning) traps, whereas radiofrequency (Paul) traps are the predominant platform in quantum science. Here, we report the first transport of a few thousand ions confined in a linear Paul trap over distances of several kilometers, with transport durations of 15 and 45 min. These results establish a foundation for mobile trapped-ion quantum devices capable of operating while in motion and may enable the transport of exotic ions in Paul traps between experimental facilities.",
+    "source": "arxiv",
+    "ext_id": "2610.20487v1",
+    "pub_types": [
+      "quant-ph",
+      "physics.atom-ph"
+    ],
+    "publisher": "arXiv",
+    "license": ""
+  },
+  "source_niche": "physics",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Computer_%28magazine%29_-_Dec_1975_Byte_advert.jpg/1920px-Computer_%28magazine%29_-_Dec_1975_Byte_advert.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "Public domain",
+    "author": "IEEE Computer Society",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Computer (magazine) - Dec 1975 Byte advert.jpg",
+    "query": "computer",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-14-physics-b0d6a4ff/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'physics'"
+  }
+}
