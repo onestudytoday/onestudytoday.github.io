@@ -1,0 +1,188 @@
+{
+  "id": "2026-08-10-health-31111f3d",
+  "niche": "wildcard",
+  "study": {
+    "key": "31111f3d893c5d1d",
+    "title": "circNCX1-nanogel mitigates radiation-induced heart disease",
+    "journal": "Biomaterials",
+    "pub_date": "2026-08-10",
+    "pub_date_display": "Aug 10, 2026",
+    "doi": "10.1016/j.biomaterials.2026.124539",
+    "doi_display": "doi.org/10.1016/j.biomaterials.2026.124539",
+    "url": "https://doi.org/10.1016/j.biomaterials.2026.124539",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Cao S",
+      "Wang X",
+      "Bai X",
+      "Pang C",
+      "Wang J",
+      "Wang T"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Biomaterials \u00b7 mice + cells",
+    "headline": "A targeted nanogel protected mouse hearts from **radiation damage during cancer treatment** by restoring RNA."
+  },
+  "slides": [
+    {
+      "eyebrow": "What it could mean",
+      "basis": "stated",
+      "title": "If this approach translates, it could prevent heart damage in patients receiving radiotherapy for chest cancers.",
+      "body": "Radiation to the chest can injure the heart, limiting how much therapy doctors can safely give. The study shows a nanogel carrying circNCX1 RNA preserved heart function in mice.\n\nThe gel was given before radiation and targeted heart tissue, leaving other organs unaffected."
+    },
+    {
+      "eyebrow": "Results",
+      "title": "Mice given the circNCX1 nanogel before a 20 Gy heart-focused radiation dose maintained cardiac function for 12 weeks.",
+      "body": "Treated mice showed preserved heart function, less muscle scarring, and fewer dying heart cells compared to controls. Blood tests and tissue analysis found no damage to other major organs.\n\nThe nanogel accumulated rapidly in the heart after IV injection.",
+      "stat": {
+        "value": "20 Gy",
+        "label": "single radiation dose to mouse heart"
+      }
+    },
+    {
+      "eyebrow": "What they did",
+      "title": "Researchers built a nanogel carrying a circular RNA and tagged it with peptides to guide it to heart tissue.",
+      "body": "The team first found that radiation suppressed circNCX1, a circular RNA that normally blocks cell death signals. They packaged circNCX1 into a polymer gel coated with targeting peptides.\n\nMale C57BL/6J mice received the gel by vein before chest radiation. Heart function was tracked for three months."
+    }
+  ],
+  "caveats": [
+    "This was done in cells in a dish and mice, not humans. Most findings in cells and mice do not carry over to people.",
+    "The nanogel was given before radiation, not after damage had already occurred. Timing may matter clinically.",
+    "The study tracked outcomes for 12 weeks. Long-term effects and whether protection lasts beyond that window are unknown."
+  ],
+  "cta": {
+    "headline": "Send this to someone tracking peptide-targeted nanogels",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "A nanogel loaded with protective RNA shielded mouse hearts from radiation injury when given before chest cancer treatment doses.",
+  "hashtag_set": "health",
+  "shape": "",
+  "vet": {
+    "key": "31111f3d893c5d1d",
+    "verdict": "HOLD",
+    "score": 46,
+    "flags": [
+      {
+        "code": "NON_HUMAN",
+        "severity": "warn",
+        "message": "Study subjects are cells in a dish and mice, not people.",
+        "caveat": "This was done in cells in a dish and mice \u2014 not humans. Most findings in cells in a dish and mice do not carry over to people.",
+        "draft_rule": "Subjects were cells in a dish and mice, NOT humans. The cover slide must not imply a human result. Name the species explicitly by slide 2."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Biomaterials' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "mechanistic / lab",
+    "sample_size": null,
+    "subjects": "non-human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [
+      "cells in a dish",
+      "mice"
+    ],
+    "required_caveats": [
+      "This was done in cells in a dish and mice \u2014 not humans. Most findings in cells in a dish and mice do not carry over to people."
+    ],
+    "required_badges": [
+      "NOT_IN_HUMANS"
+    ],
+    "draft_rules": [
+      "Subjects were cells in a dish and mice, NOT humans. The cover slide must not imply a human result. Name the species explicitly by slide 2."
+    ],
+    "notes": []
+  },
+  "qa": {
+    "format": "procedural",
+    "lint_errors": [
+      "slide1.body: 43 words, spec is 30-40",
+      "slide3.body: 47 words, spec is 30-40"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "radiation damage during cancer treatment",
+          "problem": "The abstract states the study used 'a single localized 20 Gy heart dose' in mice as 'a model for evaluating RIHD' - this was experimental radiation to study heart disease, not radiation administered during actual cancer treatment in the mice. The abstract discusses radiotherapy for thoracic malignancies as background context, but the study itself did not involve treating cancer.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Mice given the circNCX1 nanogel before a 20 Gy heart-focused radiation dose maintained cardiac function for 12 weeks.",
+          "problem": "The abstract states mice were 'used as a model for evaluating RIHD for 12 weeks' and that the nanogel 'conferred robust cardiac protection, evidenced by preserved cardiac function' - but it does not claim cardiac function was fully 'maintained'. 'Preserved' suggests protection relative to controls, not complete maintenance at baseline levels.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Heart function was tracked for three months.",
+          "problem": "The abstract states '12 weeks' not 'three months'. While 12 weeks is approximately three months, this is a conversion that changes precision - the study tracked for exactly 12 weeks, not a rounded three-month period.",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "4 Gy",
+          "found_in_abstract": true
+        },
+        {
+          "number": "20 Gy",
+          "found_in_abstract": true
+        },
+        {
+          "number": "12 weeks",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "radiation damage during cancer treatment",
+        "problem": "The abstract states the study used 'a single localized 20 Gy heart dose' in mice as 'a model for evaluating RIHD' - this was experimental radiation to study heart disease, not radiation administered during actual cancer treatment in the mice. The abstract discusses radiotherapy for thoracic malignancies as background context, but the study itself did not involve treating cancer.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Radiation-induced heart disease (RIHD) is a significant late complication of radiotherapy for thoracic malignancies, limiting cancer control and patient well-being. Although RIHD has been extensively studied, its precise molecular mechanisms remain poorly defined, and effective therapeutic agents are lacking. Herein, we demonstrate that circNCX1, a circular RNA of SLC8A1 that regulates cytoplasmic calcium levels and muscle excitation-contraction coupling, was inhibited by radiation. To investigate this in vitro, human cardiomyocyte AC16 cells exposed to 4 Gy X-ray irradiation were used as a model. In irradiated AC16 cells, circNCX1 functions as a miR-133a-3p-sequestering competing endogenous RNA (ceRNA) that derepresses PIK3C2A, thereby augmenting PI3K/AKT/mTOR signaling and limiting radiation-induced apoptosis. Building upon this observation, a cardiac-targeted circNCX1-nanogel is assembled by incorporating circNCX1 expression plasmid into a polyethylene glycol-sodium alginate (SA) nanogel matrix, and subsequently modified with targeting PCM and TAT peptides to augment cardiac accumulation. For the in vivo study, male C57BL/6J mice receiving a single localized 20 Gy heart dose were used as a model for evaluating RIHD for 12 weeks. Intravenously administered circNCX1 nanogel rapidly accumulated in the heart prior to irradiation and conferred robust cardiac protection, evidenced by preserved cardiac function and reduced myocardial fibrosis and apoptosis. Histological analyses and serum biochemical markers of major organs demonstrated undetectable off-target injury. Collectively, these findings demonstrate that circNCX1 nanogel, particularly when administered prior to radiation, mitigates RIHD by improving ventricular function, reducing myocardial fibrosis and cardiomyocyte apoptosis, and reactivating the PI3K/AKT/mTOR survival pathway.",
+    "source": "europepmc",
+    "ext_id": "MED:42600511",
+    "pub_types": [
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "https://doi.org/10.15223/policy-004;https://doi.org/10.15223/policy-012;https://doi.org/10.15223/policy-017;https://doi.org/10.15223/policy-029;https://doi.org/10.15223/policy-037;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "health",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Dosimeter_measuring_radiation_in_the_Chernobyl_Exclusion_Zone.jpg/1920px-Dosimeter_measuring_radiation_in_the_Chernobyl_Exclusion_Zone.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC BY 2.0",
+    "author": "Jennifer Boyer from Fredrick, Maryland, USA",
+    "needs_credit": true,
+    "source": "Wikimedia Commons",
+    "page": "File:Dosimeter measuring radiation in the Chernobyl Exclusion Zone.jpg",
+    "query": "radiation",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-08-10-health-31111f3d/bg/cover.jpg"
+  },
+  "reel": {
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-08-10-health-31111f3d/reel.mp4",
+    "duration": 19.2,
+    "bytes": 3951606
+  },
+  "reel_status": {
+    "built": true,
+    "duration": 19.2,
+    "bytes": 3951606
+  }
+}
