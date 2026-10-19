@@ -145,7 +145,7 @@
     "unverified_numbers": [],
     "publishable": false
   },
-  "status": "approved",
+  "status": "published",
   "source": {
     "abstract": "Formaldehyde (HCHO) is a globally distributed ambient air pollutant associated with respiratory disease, cancer, and premature mortality, with evidence of adverse health effects even at low ambient concentrations. As a major oxidation product of volatile organic compounds, atmospheric HCHO is strongly affected by natural sources such as vegetation and wildfires, which are highly sensitive to temperature and drought. However, its response to climate warming remains poorly constrained. Here, we develop a deep learning framework that extracts empirical climate sensitivities from more than a decade of daily satellite observations to project how ambient formaldehyde will evolve in a warming climate. We estimate that global mean HCHO increases by approximately 2.3% per degree of warming, largely associated with enhanced biogenic and wildfire emissions. Approximately one-fifth of the global population is already exposed to potentially risky HCHO concentration levels under present-day conditions. Climate-driven increases are projected to substantially expand this exposure burden. Under a mid-range emissions scenario (SSP2-4.5), global person-month exposure to concentrations exceeding 5 ppb approximately doubles by the end of the century. The largest increases occur in Africa and South America, while exposure in low Human Development Index (HDI) regions globally rises by more than a factor of three, indicating a pronounced amplification of environmental inequality. We further suggest that warming-driven increases may contribute to higher cancer-related health concerns in these regions. Our findings identify formaldehyde as a climate-sensitive yet under-recognized health-relevant pollutant and show that warming amplifies this neglected exposure burden and widens global environmental inequality.",
     "source": "europepmc",
@@ -179,5 +179,19 @@
   "render_seq": 1,
   "review": {
     "forced": true
+  },
+  "published": {
+    "media_id": "18485790988129926",
+    "kind": "CAROUSEL",
+    "at": "2026-10-19T21:18:44Z"
+  },
+  "crosspost": {
+    "at": "2026-10-19T21:18:44Z",
+    "posted": [],
+    "skipped": [
+      "bluesky",
+      "threads"
+    ],
+    "failed": {}
   }
 }
