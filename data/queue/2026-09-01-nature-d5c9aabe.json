@@ -1,0 +1,175 @@
+{
+  "id": "2026-09-01-nature-d5c9aabe",
+  "niche": "nature",
+  "study": {
+    "key": "d5c9aabe30837b4a",
+    "title": "Global warming amplifies atmospheric formaldehyde exposure and widens spatial inequality",
+    "journal": "Eco-Environment & Health",
+    "pub_date": "2026-09-01",
+    "pub_date_display": "Sep 1, 2026",
+    "doi": "10.1016/j.eehl.2026.100280",
+    "doi_display": "doi.org/10.1016/j.eehl.2026.100280",
+    "url": "https://doi.org/10.1016/j.eehl.2026.100280",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Xue J",
+      "Hu Q",
+      "Li T",
+      "Li Q",
+      "Su W",
+      "Hou H"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Eco-Environment & Health journal",
+    "headline": "**Climate warming is linked to rising toxic air pollution** and bigger health gaps between rich and poor nations."
+  },
+  "slides": [
+    {
+      "eyebrow": "What it could mean",
+      "basis": "stated",
+      "title": "Warming may widen global inequality by raising toxic air exposure in low-income regions.",
+      "body": "A toxic gas linked to cancer and lung disease goes up as the planet heats. If this holds, people in Africa and South America face the steepest rises.\n\nPeople in low-income countries could see exposure triple by century's end, while wealthier regions see smaller increases."
+    },
+    {
+      "eyebrow": "Results",
+      "title": "The toxic gas goes up by about 2.3% for every degree of warming, driven by plants and wildfires.",
+      "body": "Researchers used satellite data and deep learning to project future exposure. Under a mid-range climate scenario, global exposure to risky levels roughly doubles by 2100.\n\nOne-fifth of people worldwide already face harmful levels today.",
+      "stat": {
+        "value": "2.3%",
+        "label": "increase per degree of warming"
+      }
+    },
+    {
+      "eyebrow": "What they did",
+      "title": "The team trained a deep learning model on more than a decade of daily satellite observations.",
+      "body": "They extracted patterns showing how the gas responds to heat and drought. Then they projected exposure under different warming scenarios through the end of the century.\n\nThe model linked increases mainly to higher emissions from plants and wildfires."
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Something else could explain the link between warming and the toxic gas levels.",
+    "The projections rely on satellite observations and climate models, which carry uncertainty about future emissions and land use."
+  ],
+  "cta": {
+    "headline": "Send this to the climate-health sceptic",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Warmer weather is linked to higher toxic air pollution worldwide, with the poorest regions facing the sharpest increases in exposure by 2100.",
+  "hashtag_set": "health",
+  "shape": "",
+  "vet": {
+    "key": "d5c9aabe30837b4a",
+    "verdict": "PASS",
+    "score": 48,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "note",
+        "message": "Design reads as observational (unclear); markers: associated with",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Eco-Environment & Health' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "procedural",
+    "lint_errors": [
+      "slide1.body: 45 words, spec is 30-40"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "People in low-income countries could see exposure triple by century's end",
+          "problem": "The abstract states that exposure in low Human Development Index (HDI) regions rises by more than a factor of three, not 'low-income countries'. HDI is a composite measure including life expectancy, education, and income - not just income. This is a different categorization.",
+          "severity": "minor"
+        },
+        {
+          "claim": "global exposure to risky levels roughly doubles by 2100",
+          "problem": "The abstract states 'global person-month exposure to concentrations exceeding 5 ppb approximately doubles by the end of the century', not 'global exposure to risky levels'. The copy omits the specific threshold (5 ppb) and the person-month metric, generalizing to 'risky levels' which could be misleading.",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "2.3%",
+          "found_in_abstract": true
+        },
+        {
+          "number": "triple (factor of three)",
+          "found_in_abstract": true
+        },
+        {
+          "number": "one-fifth",
+          "found_in_abstract": true
+        },
+        {
+          "number": "doubles",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2100",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Formaldehyde (HCHO) is a globally distributed ambient air pollutant associated with respiratory disease, cancer, and premature mortality, with evidence of adverse health effects even at low ambient concentrations. As a major oxidation product of volatile organic compounds, atmospheric HCHO is strongly affected by natural sources such as vegetation and wildfires, which are highly sensitive to temperature and drought. However, its response to climate warming remains poorly constrained. Here, we develop a deep learning framework that extracts empirical climate sensitivities from more than a decade of daily satellite observations to project how ambient formaldehyde will evolve in a warming climate. We estimate that global mean HCHO increases by approximately 2.3% per degree of warming, largely associated with enhanced biogenic and wildfire emissions. Approximately one-fifth of the global population is already exposed to potentially risky HCHO concentration levels under present-day conditions. Climate-driven increases are projected to substantially expand this exposure burden. Under a mid-range emissions scenario (SSP2-4.5), global person-month exposure to concentrations exceeding 5 ppb approximately doubles by the end of the century. The largest increases occur in Africa and South America, while exposure in low Human Development Index (HDI) regions globally rises by more than a factor of three, indicating a pronounced amplification of environmental inequality. We further suggest that warming-driven increases may contribute to higher cancer-related health concerns in these regions. Our findings identify formaldehyde as a climate-sensitive yet under-recognized health-relevant pollutant and show that warming amplifies this neglected exposure burden and widens global environmental inequality.",
+    "source": "europepmc",
+    "ext_id": "MED:42780313",
+    "pub_types": [
+      "research-article",
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "http://creativecommons.org/licenses/by-nc-nd/4.0/;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "nature",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Acc%C3%A8s_Station_Nation_M%C3%A9tro_Paris_Place_Nation_-_Paris_XII_%28FR75%29_-_2022-07-06_-_3.jpg/1920px-Acc%C3%A8s_Station_Nation_M%C3%A9tro_Paris_Place_Nation_-_Paris_XII_%28FR75%29_-_2022-07-06_-_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC BY-SA 4.0",
+    "author": "Chabe01",
+    "needs_credit": true,
+    "source": "Wikimedia Commons",
+    "page": "File:Acc\u00e8s Station Nation M\u00e9tro Paris Place Nation - Paris XII (FR75) - 2022-07-06 - 3.jpg",
+    "query": "nation",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-09-01-nature-d5c9aabe/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'nature'"
+  }
+}
