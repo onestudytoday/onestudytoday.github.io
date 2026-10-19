@@ -159,17 +159,22 @@
   },
   "source_niche": "nature",
   "cover_art": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Acc%C3%A8s_Station_Nation_M%C3%A9tro_Paris_Place_Nation_-_Paris_XII_%28FR75%29_-_2022-07-06_-_3.jpg/1920px-Acc%C3%A8s_Station_Nation_M%C3%A9tro_Paris_Place_Nation_-_Paris_XII_%28FR75%29_-_2022-07-06_-_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "licence": "CC BY-SA 4.0",
-    "author": "Chabe01",
-    "needs_credit": true,
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Environmental_pollution_%28water_pollution%29.jpg/1920px-Environmental_pollution_%28water_pollution%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC0",
+    "author": "SpartanDav",
+    "needs_credit": false,
     "source": "Wikimedia Commons",
-    "page": "File:Acc\u00e8s Station Nation M\u00e9tro Paris Place Nation - Paris XII (FR75) - 2022-07-06 - 3.jpg",
-    "query": "nation",
+    "page": "File:Environmental pollution (water pollution).jpg",
+    "query": "pollution",
     "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-09-01-nature-d5c9aabe/bg/cover.jpg"
   },
   "reel_status": {
     "built": false,
     "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'nature'"
-  }
+  },
+  "cover_art_tried": [
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Acc%C3%A8s_Station_Nation_M%C3%A9tro_Paris_Place_Nation_-_Paris_XII_%28FR75%29_-_2022-07-06_-_3.jpg/1920px-Acc%C3%A8s_Station_Nation_M%C3%A9tro_Paris_Place_Nation_-_Paris_XII_%28FR75%29_-_2022-07-06_-_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Environmental_pollution_%28water_pollution%29.jpg/1920px-Environmental_pollution_%28water_pollution%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+  ],
+  "render_seq": 1
 }
