@@ -138,7 +138,7 @@
     "unverified_numbers": [],
     "publishable": true
   },
-  "status": "needs_review",
+  "status": "approved",
   "source": {
     "abstract": "Background Bipolar disorder is a disabling psychiatric condition affecting approximately 2% of the population, for which identifying modifiable risk factors prior to illness onset is a research priority. Cannabis use is highly prevalent, yet its role in the development of bipolar-spectrum outcomes remains unclear. Previous reviews have included few studies or combined distinct bipolar-spectrum outcomes, limiting outcome-specific inference. Aims To evaluate the association between cannabis exposure and subsequent incident BD and manic/hypomanic symptoms separately and examine potential moderating factors. Methods Registered (https://osf.io/s38x4/), PRISMA/MOOSE-compliant systematic review and meta-analysis of PubMed and Web of Science from inception to October 2025. We included longitudinal observational studies comparing cannabis-exposed and unexposed individuals without prior BD and assessing subsequent bipolar-spectrum outcomes. We meta-analysed studies with extractable data, calculating the unadjusted risk ratios (RRs) for incident BD and manic/hypomanic symptoms. Random-effects meta-analyses, heterogeneity analyses, subgroup analyses and meta-regressions were performed. Study quality was appraised using the Newcastle-Ottawa Scale (NOS). Results Nineteen studies were included (total N = 6,960,517; mean age 23.8 \u00b1 11.8 years; 49% female). Cannabis use was associated with increased risk of BD (RR = 2.46, 95% CI = 1.57-3.84; k = 8; N = 206.572) and manic/hypomanic symptoms (RR = 2.11, 95% CI = 1.07-4.18; k = 6; N = 57,243). Moderator analyses identified significant clinical and methodological sources of heterogeneity. NOS scores ranged from 6 to 9, indicating good to high methodological quality. Conclusion Cannabis use was associated with an increased risk of subsequent bipolar-spectrum outcomes. Routine evaluation of cannabis use alongside prevention strategies, to delay initiation and reduce use, may warranted.",
     "source": "europepmc",
@@ -171,5 +171,8 @@
     "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Acta_Physico-Medica_Academiae_Caesareae_Leopoldino-Carolinae._%281748%29_%2814595340418%29.jpg/1920px-Acta_Physico-Medica_Academiae_Caesareae_Leopoldino-Carolinae._%281748%29_%2814595340418%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/Cannabis_drying_room.jpg/1920px-Cannabis_drying_room.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   ],
-  "render_seq": 1
+  "render_seq": 1,
+  "review": {
+    "forced": true
+  }
 }
