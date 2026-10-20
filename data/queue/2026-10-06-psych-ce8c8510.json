@@ -154,17 +154,22 @@
   },
   "source_niche": "psych",
   "cover_art": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Acta_Physico-Medica_Academiae_Caesareae_Leopoldino-Carolinae._%281748%29_%2814595340418%29.jpg/1920px-Acta_Physico-Medica_Academiae_Caesareae_Leopoldino-Carolinae._%281748%29_%2814595340418%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "licence": "No restrictions",
-    "author": "Academia Caesarea Leopoldino-Carolina Germanica Naturae Curiosorum",
-    "needs_credit": false,
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/Cannabis_drying_room.jpg/1920px-Cannabis_drying_room.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC BY-SA 4.0",
+    "author": "Beeblebrox",
+    "needs_credit": true,
     "source": "Wikimedia Commons",
-    "page": "File:Acta Physico-Medica Academiae Caesareae Leopoldino-Carolinae. (1748) (14595340418).jpg",
-    "query": "cannabi",
+    "page": "File:Cannabis drying room.jpg",
+    "query": "cannabis",
     "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-06-psych-ce8c8510/bg/cover.jpg"
   },
   "reel_status": {
     "built": false,
     "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'psych'"
-  }
+  },
+  "cover_art_tried": [
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Acta_Physico-Medica_Academiae_Caesareae_Leopoldino-Carolinae._%281748%29_%2814595340418%29.jpg/1920px-Acta_Physico-Medica_Academiae_Caesareae_Leopoldino-Carolinae._%281748%29_%2814595340418%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/Cannabis_drying_room.jpg/1920px-Cannabis_drying_room.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+  ],
+  "render_seq": 1
 }
