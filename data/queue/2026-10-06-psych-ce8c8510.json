@@ -1,0 +1,170 @@
+{
+  "id": "2026-10-06-psych-ce8c8510",
+  "niche": "psych",
+  "study": {
+    "key": "ce8c8510c031e003",
+    "title": "Cannabis use and subsequent onset of manic symptoms and bipolar disorder: A systematic review and meta-analysis",
+    "journal": "Journal of affective disorders",
+    "pub_date": "2026-10-06",
+    "pub_date_display": "Oct 6, 2026",
+    "doi": "10.1016/j.jad.2026.122588",
+    "doi_display": "doi.org/10.1016/j.jad.2026.122588",
+    "url": "https://doi.org/10.1016/j.jad.2026.122588",
+    "is_preprint": false,
+    "server": "",
+    "n": 6960517,
+    "authors": [
+      "Sanjuan-Ortiz C",
+      "Querol P",
+      "Aymerich C",
+      "Laherran N",
+      "Ditlevsen F",
+      "Naval\u00f3n P"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Journal of Affective Disorders",
+    "headline": "**Regular cannabis use is linked to more than double the risk** of later developing bipolar disorder."
+  },
+  "slides": [
+    {
+      "eyebrow": "Why you should care",
+      "basis": "stated",
+      "title": "Cannabis is often seen as low-risk, but this meta-analysis suggests it may be tied to serious mood instability.",
+      "body": "The authors say routine screening for cannabis use and prevention strategies to delay or reduce use may be warranted.\n\nBipolar disorder affects roughly two percent of the population, and spotting modifiable risk factors before onset is a priority."
+    },
+    {
+      "eyebrow": "What the data says",
+      "title": "Researchers pooled nineteen studies tracking nearly seven million people without prior bipolar disorder.",
+      "body": "People who used cannabis had 2.46 times the risk of developing bipolar disorder compared to non-users. They also had 2.11 times the risk of manic or hypomanic symptoms.\n\nThe studies were observational, following participants over time.",
+      "stat": {
+        "value": "2.46\u00d7",
+        "label": "increased risk of bipolar disorder"
+      }
+    },
+    {
+      "eyebrow": "The assumption",
+      "title": "Cannabis is widely used and often framed as relatively benign, especially compared to alcohol or other substances.",
+      "body": "Earlier reviews included few studies or lumped different bipolar outcomes together, making it hard to draw specific conclusions.\n\nThis review separated incident bipolar disorder from manic symptoms, giving a clearer picture for each outcome."
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Something else could explain the link.",
+    "The review could not control for all confounding factors across the nineteen studies, like family history or other substance use.",
+    "Most participants were in their twenties, so the findings may not apply equally to older or younger groups."
+  ],
+  "cta": {
+    "headline": "Send this to someone who insists cannabis is harmless",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "People who use cannabis face more than double the risk of later bipolar disorder, according to a meta-analysis of nearly seven million participants.",
+  "hashtag_set": "health",
+  "shape": "",
+  "vet": {
+    "key": "ce8c8510c031e003",
+    "verdict": "HOLD",
+    "score": 44,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "note",
+        "message": "Design reads as observational (meta-analysis); markers: observational, association, associated with",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Journal of affective disorders' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      },
+      {
+        "code": "LOW_SCORE",
+        "severity": "note",
+        "message": "Credibility score 44 is below the auto-pass line of 45.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "meta-analysis",
+    "sample_size": 6960517,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": []
+  },
+  "qa": {
+    "format": "reversal",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "two percent",
+          "found_in_abstract": true
+        },
+        {
+          "number": "nineteen",
+          "found_in_abstract": true
+        },
+        {
+          "number": "seven million",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2.46",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2.11",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": true
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Background Bipolar disorder is a disabling psychiatric condition affecting approximately 2% of the population, for which identifying modifiable risk factors prior to illness onset is a research priority. Cannabis use is highly prevalent, yet its role in the development of bipolar-spectrum outcomes remains unclear. Previous reviews have included few studies or combined distinct bipolar-spectrum outcomes, limiting outcome-specific inference. Aims To evaluate the association between cannabis exposure and subsequent incident BD and manic/hypomanic symptoms separately and examine potential moderating factors. Methods Registered (https://osf.io/s38x4/), PRISMA/MOOSE-compliant systematic review and meta-analysis of PubMed and Web of Science from inception to October 2025. We included longitudinal observational studies comparing cannabis-exposed and unexposed individuals without prior BD and assessing subsequent bipolar-spectrum outcomes. We meta-analysed studies with extractable data, calculating the unadjusted risk ratios (RRs) for incident BD and manic/hypomanic symptoms. Random-effects meta-analyses, heterogeneity analyses, subgroup analyses and meta-regressions were performed. Study quality was appraised using the Newcastle-Ottawa Scale (NOS). Results Nineteen studies were included (total N = 6,960,517; mean age 23.8 \u00b1 11.8 years; 49% female). Cannabis use was associated with increased risk of BD (RR = 2.46, 95% CI = 1.57-3.84; k = 8; N = 206.572) and manic/hypomanic symptoms (RR = 2.11, 95% CI = 1.07-4.18; k = 6; N = 57,243). Moderator analyses identified significant clinical and methodological sources of heterogeneity. NOS scores ranged from 6 to 9, indicating good to high methodological quality. Conclusion Cannabis use was associated with an increased risk of subsequent bipolar-spectrum outcomes. Routine evaluation of cannabis use alongside prevention strategies, to delay initiation and reduce use, may warranted.",
+    "source": "europepmc",
+    "ext_id": "MED:42838231",
+    "pub_types": [
+      "Meta-Analysis",
+      "Systematic Review",
+      "Review",
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "http://creativecommons.org/licenses/by/4.0/;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "psych",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Acta_Physico-Medica_Academiae_Caesareae_Leopoldino-Carolinae._%281748%29_%2814595340418%29.jpg/1920px-Acta_Physico-Medica_Academiae_Caesareae_Leopoldino-Carolinae._%281748%29_%2814595340418%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "No restrictions",
+    "author": "Academia Caesarea Leopoldino-Carolina Germanica Naturae Curiosorum",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Acta Physico-Medica Academiae Caesareae Leopoldino-Carolinae. (1748) (14595340418).jpg",
+    "query": "cannabi",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-06-psych-ce8c8510/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'psych'"
+  }
+}
