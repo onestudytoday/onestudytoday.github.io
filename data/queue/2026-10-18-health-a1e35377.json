@@ -164,17 +164,22 @@
   },
   "source_niche": "health",
   "cover_art": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/Brooklyn_Glass_%2832606%29a.jpg/1920px-Brooklyn_Glass_%2832606%29a.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "licence": "CC BY-SA 4.0",
-    "author": "Rhododendrites",
-    "needs_credit": true,
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/%E0%B0%8A%E0%B0%AA%E0%B0%BF%E0%B0%B0%E0%B0%BF%E0%B0%A4%E0%B0%BF%E0%B0%A4%E0%B1%8D%E0%B0%A4%E0%B1%81%E0%B0%B2%E0%B1%81%2C_%E0%B0%B6%E0%B1%8D%E0%B0%B5%E0%B0%BE%E0%B0%B8%E0%B0%A8%E0%B0%BE%E0%B0%B3_%E0%B0%B6%E0%B0%BE%E0%B0%96%E0%B0%B2%E0%B1%81_%28Lungs_and_Bronchial_tree%29.png/1920px-%E0%B0%8A%E0%B0%AA%E0%B0%BF%E0%B0%B0%E0%B0%BF%E0%B0%A4%E0%B0%BF%E0%B0%A4%E0%B1%8D%E0%B0%A4%E0%B1%81%E0%B0%B2%E0%B1%81%2C_%E0%B0%B6%E0%B1%8D%E0%B0%B5%E0%B0%BE%E0%B0%B8%E0%B0%A8%E0%B0%BE%E0%B0%B3_%E0%B0%B6%E0%B0%BE%E0%B0%96%E0%B0%B2%E0%B1%81_%28Lungs_and_Bronchial_tree%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC0",
+    "author": "\u0c21\u0c3e. \u0c17\u0c28\u0c4d\u0c28\u0c35\u0c30\u0c2a\u0c41 \u0c28\u0c30\u0c38\u0c3f\u0c02\u0c39\u0c2e\u0c42\u0c30\u0c4d\u0c24\u0c3f",
+    "needs_credit": false,
     "source": "Wikimedia Commons",
-    "page": "File:Brooklyn Glass (32606)a.jpg",
-    "query": "tool",
+    "page": "File:\u0c0a\u0c2a\u0c3f\u0c30\u0c3f\u0c24\u0c3f\u0c24\u0c4d\u0c24\u0c41\u0c32\u0c41, \u0c36\u0c4d\u0c35\u0c3e\u0c38\u0c28\u0c3e\u0c33 \u0c36\u0c3e\u0c16\u0c32\u0c41 (Lungs and Bronchial tree).png",
+    "query": "lungs",
     "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-18-health-a1e35377/bg/cover.jpg"
   },
   "reel_status": {
     "built": false,
     "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'health'"
-  }
+  },
+  "cover_art_tried": [
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/Brooklyn_Glass_%2832606%29a.jpg/1920px-Brooklyn_Glass_%2832606%29a.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/%E0%B0%8A%E0%B0%AA%E0%B0%BF%E0%B0%B0%E0%B0%BF%E0%B0%A4%E0%B0%BF%E0%B0%A4%E0%B1%8D%E0%B0%A4%E0%B1%81%E0%B0%B2%E0%B1%81%2C_%E0%B0%B6%E0%B1%8D%E0%B0%B5%E0%B0%BE%E0%B0%B8%E0%B0%A8%E0%B0%BE%E0%B0%B3_%E0%B0%B6%E0%B0%BE%E0%B0%96%E0%B0%B2%E0%B1%81_%28Lungs_and_Bronchial_tree%29.png/1920px-%E0%B0%8A%E0%B0%AA%E0%B0%BF%E0%B0%B0%E0%B0%BF%E0%B0%A4%E0%B0%BF%E0%B0%A4%E0%B1%8D%E0%B0%A4%E0%B1%81%E0%B0%B2%E0%B1%81%2C_%E0%B0%B6%E0%B1%8D%E0%B0%B5%E0%B0%BE%E0%B0%B8%E0%B0%A8%E0%B0%BE%E0%B0%B3_%E0%B0%B6%E0%B0%BE%E0%B0%96%E0%B0%B2%E0%B1%81_%28Lungs_and_Bronchial_tree%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+  ],
+  "render_seq": 1
 }
