@@ -164,13 +164,13 @@
   },
   "source_niche": "health",
   "cover_art": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Smith_Brothers_Cough_Drops_-_Tackle_that_Cough_-_Advertisement_-_1915.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-    "licence": "Public domain",
-    "author": "Various",
-    "needs_credit": false,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/0/08/CT_Abdomen_Scan.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "licence": "CC BY 4.0",
+    "author": "Goleisureintl",
+    "needs_credit": true,
     "source": "Wikimedia Commons",
-    "page": "File:Smith Brothers Cough Drops - Tackle that Cough - Advertisement - 1915.jpg",
-    "query": "cough",
+    "page": "File:CT Abdomen Scan.jpg",
+    "query": "CT scan",
     "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-18-health-a1e35377/bg/cover.jpg"
   },
   "reel_status": {
@@ -180,7 +180,8 @@
   "cover_art_tried": [
     "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/Brooklyn_Glass_%2832606%29a.jpg/1920px-Brooklyn_Glass_%2832606%29a.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/%E0%B0%8A%E0%B0%AA%E0%B0%BF%E0%B0%B0%E0%B0%BF%E0%B0%A4%E0%B0%BF%E0%B0%A4%E0%B1%8D%E0%B0%A4%E0%B1%81%E0%B0%B2%E0%B1%81%2C_%E0%B0%B6%E0%B1%8D%E0%B0%B5%E0%B0%BE%E0%B0%B8%E0%B0%A8%E0%B0%BE%E0%B0%B3_%E0%B0%B6%E0%B0%BE%E0%B0%96%E0%B0%B2%E0%B1%81_%28Lungs_and_Bronchial_tree%29.png/1920px-%E0%B0%8A%E0%B0%AA%E0%B0%BF%E0%B0%B0%E0%B0%BF%E0%B0%A4%E0%B0%BF%E0%B0%A4%E0%B1%8D%E0%B0%A4%E0%B1%81%E0%B0%B2%E0%B1%81%2C_%E0%B0%B6%E0%B1%8D%E0%B0%B5%E0%B0%BE%E0%B0%B8%E0%B0%A8%E0%B0%BE%E0%B0%B3_%E0%B0%B6%E0%B0%BE%E0%B0%96%E0%B0%B2%E0%B1%81_%28Lungs_and_Bronchial_tree%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "https://upload.wikimedia.org/wikipedia/commons/d/d3/Smith_Brothers_Cough_Drops_-_Tackle_that_Cough_-_Advertisement_-_1915.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+    "https://upload.wikimedia.org/wikipedia/commons/d/d3/Smith_Brothers_Cough_Drops_-_Tackle_that_Cough_-_Advertisement_-_1915.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "https://upload.wikimedia.org/wikipedia/commons/0/08/CT_Abdomen_Scan.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
   ],
-  "render_seq": 2
+  "render_seq": 3
 }
