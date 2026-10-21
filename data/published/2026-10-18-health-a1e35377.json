@@ -151,7 +151,7 @@
     ],
     "publishable": false
   },
-  "status": "approved",
+  "status": "published",
   "source": {
     "abstract": "Purpose Clinical features of COPD and asthma overlap, complicating differential diagnosis. This study investigated the prevalence of comorbid asthma in COPD patients and its association with patient-related outcomes. Materials and methods Patients with a doctor's diagnosis of COPD were randomly selected in two cohorts 2005 ( n = 1060) and 2014 ( n = 1671), from primary and secondary care in Sweden. Data were collected from medical records and patient questionnaires at baseline and at follow-up (2012 and 2022, respectively). Questionnaires included data on exacerbations. Symptoms were assessed using the clinical COPD questionnaire (CCQ). Comorbid asthma was identified through medical records. Ten-year mortality data were obtained from national registers. Logistic and linear regression assessed associations with patient-reported outcomes; Cox regression was applied for mortality analyses. Results Comorbid asthma was found in 22% of the 2005 cohort and 9% of the 2014 cohort ( p p = .02, and 2.20 (1.38-3.52), p p = .02. Conclusion Comorbid asthma in COPD has changed from 22 to 9%, potentially due to improved diagnostics. Comorbid asthma remains clinically relevant due to its association with an increased exacerbation risk.",
     "source": "europepmc",
@@ -186,5 +186,19 @@
   "render_seq": 3,
   "review": {
     "forced": true
+  },
+  "published": {
+    "media_id": "18097979588393985",
+    "kind": "CAROUSEL",
+    "at": "2026-10-21T21:57:40Z"
+  },
+  "crosspost": {
+    "at": "2026-10-21T21:57:40Z",
+    "posted": [],
+    "skipped": [
+      "bluesky",
+      "threads"
+    ],
+    "failed": {}
   }
 }
