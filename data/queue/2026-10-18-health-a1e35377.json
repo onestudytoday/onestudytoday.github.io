@@ -1,0 +1,180 @@
+{
+  "id": "2026-10-18-health-a1e35377",
+  "niche": "health",
+  "study": {
+    "key": "a1e353772589c58b",
+    "title": "Comorbid asthma - occurrence and associations with patient-related outcomes in COPD: a cohort study",
+    "journal": "Scandinavian journal of primary health care",
+    "pub_date": "2026-10-18",
+    "pub_date_display": "Oct 18, 2026",
+    "doi": "10.1080/02813432.2026.2747915",
+    "doi_display": "doi.org/10.1080/02813432.2026.2747915",
+    "url": "https://doi.org/10.1080/02813432.2026.2747915",
+    "is_preprint": false,
+    "server": "",
+    "n": 1671,
+    "authors": [
+      "Athlin \u00c5",
+      "Lisspers K",
+      "Hasselgren M",
+      "St\u00e4llberg B",
+      "Sandelowsky H",
+      "Giezeman M"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Scandinavian J. Prim. Health Care",
+    "headline": "**Overlap between COPD and asthma may have dropped sharply** as diagnostic tools improved over the past decade"
+  },
+  "slides": [
+    {
+      "eyebrow": "Why this matters",
+      "basis": "inferred",
+      "title": "Better diagnostics may be reducing confusion between two breathing disorders that used to blur together",
+      "body": "COPD and asthma produce overlapping symptoms, making them hard to tell apart. When diagnosis improves, fewer people get tagged with both.\n\nThat matters because treatment differs. Getting the label right could mean fewer wasted prescriptions and clearer care plans."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Among people diagnosed with COPD, the share who also had asthma fell from 22% to 9% between 2005 and 2014",
+      "body": "Researchers tracked 2,731 COPD patients across Swedish clinics in two waves. The earlier cohort showed comorbid asthma in 22% of cases; nine years later, only 9% carried both labels.\n\nThose with both faced more than double the risk of flare-ups.",
+      "stat": {
+        "value": "22% \u2192 9%",
+        "label": "comorbid asthma decline"
+      }
+    },
+    {
+      "eyebrow": "The setup",
+      "title": "Medical records and patient questionnaires captured diagnoses, symptom scores, and flare-up frequency over ten years",
+      "body": "Data came from primary and secondary care across Sweden. Comorbid asthma was identified through doctor-recorded diagnoses, not spirometry criteria alone.\n\nThe shift likely reflects tighter diagnostic protocols introduced between the two cohorts, though the study did not track specific changes."
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Something else could explain the link between diagnostic era and comorbidity rate.",
+    "The drop may reflect changing diagnostic criteria rather than changing biology, so earlier rates may not represent true overlap.",
+    "Flare-up data came from patient reports, not hospital records, which could introduce recall bias."
+  ],
+  "cta": {
+    "headline": "Send this to anyone with both diagnoses on file",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Fewer COPD patients now carry an asthma label too, and better diagnostics may be the reason that overlap shrank by more than half",
+  "hashtag_set": "health",
+  "shape": "",
+  "vet": {
+    "key": "a1e353772589c58b",
+    "verdict": "HOLD",
+    "score": 54,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "warn",
+        "message": "Design reads as observational (cohort (observational)); markers: cohort, questionnaire, association",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Scandinavian journal of primary health care' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "cohort (observational)",
+    "sample_size": 1671,
+    "subjects": "human",
+    "journal_tier": null,
+    "causal_language_banned": true,
+    "species": [],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": []
+  },
+  "qa": {
+    "format": "explainer",
+    "lint_errors": [
+      "slide2.body: 41 words, spec is 30-40",
+      "slide2.stat.value too long: '22% \u2192 9%'",
+      "slide2.stat.label: 3 words, spec is 4-10",
+      "GUARDRAIL hype: Draft contains promotional hype wording.",
+      "GUARDRAIL the cover kicker says 'Scandinavian J. Prim. Health Care', but this paper was published in 'Scandinavian journal of primary health care'. The journal is the credibility claim on the cover and it has to be the real one"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "22%",
+          "found_in_abstract": true
+        },
+        {
+          "number": "9%",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2005",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2014",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2,731",
+          "found_in_abstract": true
+        },
+        {
+          "number": "double",
+          "found_in_abstract": true
+        },
+        {
+          "number": "ten years",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [
+      {
+        "number": "2,731",
+        "found_in_abstract": false,
+        "checked_by": "code"
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Purpose Clinical features of COPD and asthma overlap, complicating differential diagnosis. This study investigated the prevalence of comorbid asthma in COPD patients and its association with patient-related outcomes. Materials and methods Patients with a doctor's diagnosis of COPD were randomly selected in two cohorts 2005 ( n = 1060) and 2014 ( n = 1671), from primary and secondary care in Sweden. Data were collected from medical records and patient questionnaires at baseline and at follow-up (2012 and 2022, respectively). Questionnaires included data on exacerbations. Symptoms were assessed using the clinical COPD questionnaire (CCQ). Comorbid asthma was identified through medical records. Ten-year mortality data were obtained from national registers. Logistic and linear regression assessed associations with patient-reported outcomes; Cox regression was applied for mortality analyses. Results Comorbid asthma was found in 22% of the 2005 cohort and 9% of the 2014 cohort ( p p = .02, and 2.20 (1.38-3.52), p p = .02. Conclusion Comorbid asthma in COPD has changed from 22 to 9%, potentially due to improved diagnostics. Comorbid asthma remains clinically relevant due to its association with an increased exacerbation risk.",
+    "source": "europepmc",
+    "ext_id": "MED:42894311",
+    "pub_types": [
+      "Journal Article"
+    ],
+    "publisher": "Informa UK Limited",
+    "license": "http://creativecommons.org/licenses/by/4.0/;https://doi.org/10.1080/policies-text-data-mining"
+  },
+  "source_niche": "health",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/Brooklyn_Glass_%2832606%29a.jpg/1920px-Brooklyn_Glass_%2832606%29a.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC BY-SA 4.0",
+    "author": "Rhododendrites",
+    "needs_credit": true,
+    "source": "Wikimedia Commons",
+    "page": "File:Brooklyn Glass (32606)a.jpg",
+    "query": "tool",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-18-health-a1e35377/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'health'"
+  }
+}
