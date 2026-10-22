@@ -1,0 +1,171 @@
+{
+  "id": "2026-10-21-physics-1d67bad9",
+  "niche": "physics",
+  "study": {
+    "key": "1d67bad9574fe668",
+    "title": "Topographically Forced Stationary Waves Can Explain the Near-Surface Zonal Winds Observed by Huygens on Titan",
+    "journal": "arXiv",
+    "pub_date": "2026-10-21",
+    "pub_date_display": "Oct 21, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2610.29930v1",
+    "url": "http://arxiv.org/abs/2610.29930v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Sooman Han",
+      "Scot Rafkin",
+      "J. Michael Battalio",
+      "Bowen Fan",
+      "Juan M. Lora"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "arXiv (preprint - not reviewed)",
+    "headline": "**Titan's mountains may explain** why the Huygens probe measured winds blowing the wrong way when it landed"
+  },
+  "slides": [
+    {
+      "eyebrow": "Why you should care",
+      "basis": "inferred",
+      "title": "Large-scale topography might create local wind patterns that contradict a moon's overall circulation.",
+      "body": "Climate models consistently predict westward winds near Titan's surface. But Huygens measured eastward winds instead.\n\nThis early paper reports that mountains could force stationary waves that flip wind direction in some spots."
+    },
+    {
+      "eyebrow": "What the data says",
+      "title": "The team paired two simulations of Titan's atmosphere: one with topography, one without.",
+      "body": "Only the version with mountains reproduced the eastward flow Huygens saw in the lowest kilometer.\n\nThe effect comes from overlapping wave patterns locked to the terrain. A wave with one peak around the moon provides the eastward push.",
+      "stat": {
+        "value": "s=1",
+        "label": "dominant topographic wave mode"
+      }
+    },
+    {
+      "eyebrow": "The assumption",
+      "title": "Titan's equator superrotates: the atmosphere spins faster than the surface beneath it.",
+      "body": "That creates a westward wind at the ground everywhere, according to models. Huygens landed in 2005 and measured the opposite.\n\nThe team now argues that what Huygens saw was a local exception, not a problem with the models."
+    }
+  ],
+  "caveats": [
+    "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+    "This study found a pattern, not a cause. Something else could explain the link between terrain and wind direction.",
+    "The conclusions about why the probe measured eastward winds are our own extrapolation. Read the full paper for what the authors actually claim."
+  ],
+  "cta": {
+    "headline": "Send this to anyone who believed Titan's models were wrong",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Titan's mountains might explain why Huygens measured winds blowing east when every model said they should blow west",
+  "hashtag_set": "physics",
+  "shape": "",
+  "vet": {
+    "key": "1d67bad9574fe668",
+    "verdict": "HOLD",
+    "score": 36,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      },
+      {
+        "code": "CORRELATIONAL",
+        "severity": "note",
+        "message": "Design reads as observational (modelling); markers: associated with",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      }
+    ],
+    "design": "modelling",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'.",
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "reversal",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 1,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "1",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2005",
+          "found_in_abstract": false
+        },
+        {
+          "number": "2 km",
+          "found_in_abstract": true
+        },
+        {
+          "number": "1 km",
+          "found_in_abstract": true
+        },
+        {
+          "number": "4",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [
+      {
+        "number": "2005",
+        "found_in_abstract": false
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Titan's equatorial superrotation is associated with climatological retrograde (westward) near-surface winds at low latitudes, as consistently simulated by Titan general circulation models. However, the Huygens probe measured prograde (eastward) near-surface winds, contrary to the expected circulation. We investigate whether these observations reflect localized forcing by large-scale topography, using paired three-dimensional dry simulations with and without topography in the Titan Atmospheric Model. We find that topography generates longitude-locked, vertically structured zonal wind anomalies that reproduce key features of the Huygens wind profile in the lowest few kilometers. Helmholtz and spectral analyses show that this structure arises from the superposition of several vertically varying low wavenumber modes. A predominantly rotational, topographically forced stationary zonal wavenumber s=1 response provides a major eastward anomaly throughout the lowest 2 km, whereas a locally divergent s=4 response consistent with a gravity wave, opposes it near the surface. Weaker s=2 and s=3 responses also vary vertically and contribute eastward anomalies near the surface. Combined with the retrograde zonal-mean circulation, these modes produce a Huygens-like profile characterized by prograde flow within the lowest 1 km and shear toward retrograde flow aloft. The paired simulations establish their topographic origin, while coherence with the corresponding terrain-forcing components demonstrates that the responses remain phase locked to the forcing. Similar but weaker stationary responses are simulated near the planned Dragonfly landing site, providing baseline expectations for interpreting its future atmospheric measurements. This study demonstrates how large-scale topography can generate localized departures from Titan's zonal-mean circulation and highlights the importance of stationary waves.",
+    "source": "arxiv",
+    "ext_id": "2610.29930v1",
+    "pub_types": [
+      "astro-ph.EP",
+      "physics.ao-ph"
+    ],
+    "publisher": "arXiv",
+    "license": ""
+  },
+  "source_niche": "physics",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Himalayas.jpg/1920px-Himalayas.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "Public domain",
+    "author": "NASA",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Himalayas.jpg",
+    "query": "mountain",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-21-physics-1d67bad9/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'physics'"
+  }
+}
