@@ -1,6 +1,6 @@
 {
   "id": "2026-09-24-physics-0686d49c",
-  "niche": "wildcard",
+  "niche": "physics",
   "study": {
     "key": "0686d49c21771450",
     "title": "DKIST unveils MHD-predicted sub-50 km photospheric vortices",
@@ -63,7 +63,7 @@
   "vet": {
     "key": "0686d49c21771450",
     "verdict": "HOLD",
-    "score": 36,
+    "score": 32,
     "flags": [
       {
         "code": "PREPRINT",
@@ -97,14 +97,11 @@
       "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'.",
       "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
     ],
-    "notes": [
-      "Open access - readers can actually read the full paper."
-    ]
+    "notes": []
   },
   "qa": {
     "format": "reversal",
     "lint_errors": [
-      "GUARDRAIL this copy was forced past the checks with `force revise`. slide1.body: 43 words, spec is 30-40; slide2.body: 44 words, spec is 30-40; spinning plasma vortices smaller than any model predicted could be seen; A solar telescope with record sharpness has spotted spinning plasma vortices smaller than models predicted anyone would ever see directly",
       "slide1.body: 43 words, spec is 30-40",
       "slide2.body: 44 words, spec is 30-40"
     ],
@@ -368,5 +365,13 @@
       "repair_rounds": 2
     }
   ],
-  "render_seq": 1
+  "render_seq": 2,
+  "reniche": [
+    {
+      "from": "wildcard",
+      "to": "physics",
+      "at": "2026-10-22T22:09:13Z",
+      "carried_caveats": []
+    }
+  ]
 }
