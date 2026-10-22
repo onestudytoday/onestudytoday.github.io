@@ -1,0 +1,201 @@
+{
+  "id": "2026-10-21-physics-8bdc92f4",
+  "niche": "physics",
+  "study": {
+    "key": "8bdc92f4cbfd27d6",
+    "title": "PSR J0653+0443: An Eclipsing Millisecond Pulsar in an Extremely Eccentric Double Neutron Star System",
+    "journal": "arXiv",
+    "pub_date": "2026-10-21",
+    "pub_date_display": "Oct 21, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2610.29838v1",
+    "url": "http://arxiv.org/abs/2610.29838v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Z. L. Yang",
+      "J. L. Han",
+      "L. G. Hou",
+      "Z. W. Chen",
+      "Y. G. Gong",
+      "Y. L. Guo"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "arXiv \u2022 preprint astronomy",
+    "headline": "An extremely warped orbit could mean **binary stars collide more unpredictably** than models allow"
+  },
+  "slides": [
+    {
+      "eyebrow": "Why you should care",
+      "basis": "inferred",
+      "title": "If this orbit survived, current models may badly underestimate how many colliding neutron stars we are missing.",
+      "body": "Astronomers use star evolution models to predict how many neutron star pairs exist and what their orbits look like. This system was predicted to occur less than once in two hundred discoveries.\n\nFinding it suggests the models undercount rare orbits. That matters for gravitational wave searches."
+    },
+    {
+      "eyebrow": "What the data says",
+      "title": "The team reports a neutron star pair in an orbit with eccentricity 0.992, circling once every 79 days.",
+      "body": "A perfect circle has eccentricity zero. This is among the most elongated orbits ever recorded for a neutron star binary.\n\nThe pulsar swings past at 1.14 million meters per second, then coasts out slowly.",
+      "stat": {
+        "value": "0.992",
+        "label": "orbital eccentricity (1.0 = parabola)"
+      }
+    },
+    {
+      "eyebrow": "Why the difference",
+      "title": "The extreme stretch can only come from a violent kick when the second star exploded as a supernova.",
+      "body": "When a massive star collapses, the newborn neutron star can be flung at high speed. A large, mistimed kick warps the orbit drastically.\n\nThe probability of detecting a system like this is less than 0.005, challenging current evolution theory."
+    }
+  ],
+  "caveats": [
+    "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+    "The detection probability estimate depends on existing models, which this discovery itself calls into question.",
+    "The system is inferred from pulsar timing data. Direct imaging of the neutron stars is not possible at this distance."
+  ],
+  "cta": {
+    "headline": "Send this to the stellar evolution pessimist",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "An orbit this warped was supposed to be vanishingly rare, yet turned up early in the search for neutron star pairs.",
+  "hashtag_set": "physics",
+  "shape": "",
+  "vet": {
+    "key": "8bdc92f4cbfd27d6",
+    "verdict": "HOLD",
+    "score": 42,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "reversal",
+    "lint_errors": [
+      "slide1.body: 46 words, spec is 30-40"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "This system was predicted to occur less than once in two hundred discoveries.",
+          "problem": "The abstract states the predicted detection probability is <5\u00d710\u207b\u00b3 (less than 0.005 or less than 1 in 200), not 'once in two hundred discoveries.' The copy converts a detection probability into a rate per discoveries, which is not the same thing and is not stated in the abstract.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "This is among the most elongated orbits ever recorded for a neutron star binary.",
+          "problem": "The abstract does not state or imply this is among the most elongated orbits ever recorded. It only describes this system's eccentricity and calls it 'extremely eccentric' but makes no comparative claim about other DNS systems' eccentricities.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "An orbit this warped was supposed to be vanishingly rare, yet turned up early in the search for neutron star pairs.",
+          "problem": "The abstract does not state this system 'turned up early in the search' or provide any information about when or how early in any search program it was discovered.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "0.992",
+          "found_in_abstract": true
+        },
+        {
+          "number": "79 days",
+          "found_in_abstract": true
+        },
+        {
+          "number": "1.14 million meters per second",
+          "found_in_abstract": true
+        },
+        {
+          "number": "0.005",
+          "found_in_abstract": true
+        },
+        {
+          "number": "1.0",
+          "found_in_abstract": false
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "This system was predicted to occur less than once in two hundred discoveries.",
+        "problem": "The abstract states the predicted detection probability is <5\u00d710\u207b\u00b3 (less than 0.005 or less than 1 in 200), not 'once in two hundred discoveries.' The copy converts a detection probability into a rate per discoveries, which is not the same thing and is not stated in the abstract.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "This is among the most elongated orbits ever recorded for a neutron star binary.",
+        "problem": "The abstract does not state or imply this is among the most elongated orbits ever recorded. It only describes this system's eccentricity and calls it 'extremely eccentric' but makes no comparative claim about other DNS systems' eccentricities.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "An orbit this warped was supposed to be vanishingly rare, yet turned up early in the search for neutron star pairs.",
+        "problem": "The abstract does not state this system 'turned up early in the search' or provide any information about when or how early in any search program it was discovered.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "1.0",
+        "found_in_abstract": false
+      },
+      {
+        "number": "0.005",
+        "found_in_abstract": false,
+        "checked_by": "code"
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Double neutron star (DNS) systems emit gravitational waves (GW) as they orbit each other, with waveforms dependent on their orbital properties \\cite{Poisson+2014grav.book.....P}. The number of DNS systems surviving binary star evolution in the Milky Way and the distribution of their orbital parameters are fundamental questions for GW astronomy and binary evolution studies. Here, we report the discovery of a new Galactic field DNS system, PSR J0653+0443, comprising two ~1.4 $M_\\odot$ components in an extremely eccentric orbit $e=0.992387$, $P_{\\rm orb}=79.084$ d. Its unique orbital dynamics include a 46-minute transit from true anomaly $\u03b8=-90^\\circ$ to $90^\\circ$ and striking periastron relative motion (maximum acceleration 1.11~km~s$^{-2}$, peak speed 1.14$\\times$10$^6$~m~s$^{-1}$. The pulsar undergoes an 85-second conjunction eclipse, indicating a nearly edge-on binary orbit. Short-term variations in the periastron advance induce significant pulse arrival time modulation spanning -2.91 to +2.49 ms --- at least an order of magnitude larger than that observed in any other DNS system. From this modulation, the non-relativistic periastron advance rate is constrained to $-1.5^{+0.9}_{-0.8}\\times10^{-4}$ deg yr$^{-1}$. The extreme orbital eccentricity can only be attributed to a large kick velocity imparted during the iron-core collapse supernova of the progenitor of the second component. The predicted detection probability of such a PSR J0653+0443-like DNS system is $\\lesssim 5 \\times 10^{-3}$, implying that our discovery of this system challenges current understanding of binary evolution. This extraordinary DNS system emits periodic gravitational wave bursts, with the GW energy flux peaking at 0.357 mHz. This makes it an ideal target for the future LISAmax mission.",
+    "source": "arxiv",
+    "ext_id": "2610.29838v1",
+    "pub_types": [
+      "astro-ph.HE"
+    ],
+    "publisher": "arXiv",
+    "license": ""
+  },
+  "source_niche": "physics",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/Starburst_in_NGC_4449_%28captured_by_the_Hubble_Space_Telescope%29.jpg/1920px-Starburst_in_NGC_4449_%28captured_by_the_Hubble_Space_Telescope%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "Public domain",
+    "author": "NASA, ESA, A. Aloisi (STScI/ESA), and The Hubble Heritage (STScI/AURA)-ESA/Hubbl",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Starburst in NGC 4449 (captured by the Hubble Space Telescope).jpg",
+    "query": "star",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-21-physics-8bdc92f4/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'physics'"
+  }
+}
