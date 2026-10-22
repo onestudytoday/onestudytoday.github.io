@@ -32,15 +32,15 @@
       "eyebrow": "Why you should care",
       "basis": "stated",
       "title": "The telescope gives scientists their first direct look at the tiny spinning vortices that theory says drive solar energy upward.",
-      "body": "These spinning structures may transport energy and magnetic twist from the sun's surface into its outer atmosphere. Models predicted they exist at 50 to 100 km across, but no tool could see them.\n\nDKIST's sharpness is 12.3 km. That opens a window into how the sun's smallest spinning flows behave."
+      "body": "These spinning structures may transport energy and magnetic twist from the sun's surface into its outer atmosphere. Models predicted they exist, but no tool could see them.\n\nDKIST's sharpness is 12.3 km. That opens a window into the sun's smallest spinning flows."
     },
     {
       "eyebrow": "What the data says",
       "title": "The team reports 201 vortex detections in 3.2 minutes, with a median diameter of 38.6 km.",
-      "body": "Virtually all detections were smaller than 50 km, placing them in the regime that models predict but no one had observed. Median swirling period was 37.3 seconds.\n\nThere was no preference for one spin direction over the other. That fits theory: Coriolis force is too weak at these scales.",
+      "body": "Virtually all detections were smaller than 50 km, placing them in the regime that models predict but no one had observed. Median swirling period was 37.3 seconds.\n\nThere was no preference for one spin direction. Coriolis force is too weak at these scales.",
       "stat": {
         "value": "38.6 km",
-        "label": "median vortex diameter"
+        "label": "median diameter of vortex"
       }
     },
     {
@@ -59,7 +59,7 @@
   },
   "caption": "A solar telescope with record sharpness has spotted spinning plasma vortices smaller than models predicted anyone would ever see directly.",
   "hashtag_set": "physics",
-  "shape": "",
+  "shape": "implication-first-v2",
   "vet": {
     "key": "0686d49c21771450",
     "verdict": "HOLD",
@@ -104,9 +104,9 @@
   "qa": {
     "format": "reversal",
     "lint_errors": [
-      "slide1.body: 51 words, spec is 30-40",
-      "slide2.body: 50 words, spec is 30-40",
-      "slide2.stat.label: 3 words, spec is 4-10"
+      "GUARDRAIL this copy was forced past the checks with `force revise`. slide1.body: 43 words, spec is 30-40; slide2.body: 44 words, spec is 30-40; spinning plasma vortices smaller than any model predicted could be seen; A solar telescope with record sharpness has spotted spinning plasma vortices smaller than models predicted anyone would ever see directly",
+      "slide1.body: 43 words, spec is 30-40",
+      "slide2.body: 44 words, spec is 30-40"
     ],
     "style_flags": [],
     "repair_rounds": 2,
@@ -115,18 +115,13 @@
       "unsupported_claims": [
         {
           "claim": "spinning plasma vortices smaller than any model predicted could be seen",
-          "problem": "The abstract states that numerical simulations PREDICT vortices of 50-100 km diameter and that these fall within the subgranular regime PREDICTED by magnetohydrodynamic simulations. The copy claims they are smaller than models predicted could be seen, but the abstract indicates models did predict their existence at these scales.",
+          "problem": "The abstract states simulations PREDICT the existence of these vortices at 50-100 km, and the observations found them at median 38.6 km, which is within the predicted subgranular regime. The abstract does not say models predicted they could not be seen - it says no observational evidence existed due to limited spatial resolution of instrumentation, not because models said they couldn't be seen.",
           "severity": "blocking"
         },
         {
           "claim": "A solar telescope with record sharpness has spotted spinning plasma vortices smaller than models predicted anyone would ever see directly",
-          "problem": "Same issue - the abstract says simulations predicted vortices at 50-100 km, and the observations found vortices with median 38.6 km that fall within the subgranular regime predicted by simulations. The abstract does not say models predicted no one would ever see them directly.",
+          "problem": "Same issue - the abstract does not say models predicted these could never be seen. Models predicted their existence at 50-100 km. The lack of observation was due to instrumentation limits, not model predictions about observability.",
           "severity": "blocking"
-        },
-        {
-          "claim": "Models predicted they exist at 50 to 100 km across",
-          "problem": "The abstract states simulations predict vortices with diameters of 50-100 km, but the observed vortices have a median diameter of 38.6 km and mean of 39.5\u00b13.3 km. The copy's phrasing suggests models predicted 50-100 km as the size of small vortices, but the observations show they are actually smaller than this predicted range.",
-          "severity": "minor"
         }
       ],
       "numbers_check": [
@@ -173,27 +168,30 @@
         {
           "number": "143",
           "found_in_abstract": true
-        },
-        {
-          "number": "50 to 100 km",
-          "found_in_abstract": true
         }
       ]
     },
     "blocking_claims": [
       {
         "claim": "spinning plasma vortices smaller than any model predicted could be seen",
-        "problem": "The abstract states that numerical simulations PREDICT vortices of 50-100 km diameter and that these fall within the subgranular regime PREDICTED by magnetohydrodynamic simulations. The copy claims they are smaller than models predicted could be seen, but the abstract indicates models did predict their existence at these scales.",
+        "problem": "The abstract states simulations PREDICT the existence of these vortices at 50-100 km, and the observations found them at median 38.6 km, which is within the predicted subgranular regime. The abstract does not say models predicted they could not be seen - it says no observational evidence existed due to limited spatial resolution of instrumentation, not because models said they couldn't be seen.",
         "severity": "blocking"
       },
       {
         "claim": "A solar telescope with record sharpness has spotted spinning plasma vortices smaller than models predicted anyone would ever see directly",
-        "problem": "Same issue - the abstract says simulations predicted vortices at 50-100 km, and the observations found vortices with median 38.6 km that fall within the subgranular regime predicted by simulations. The abstract does not say models predicted no one would ever see them directly.",
+        "problem": "Same issue - the abstract does not say models predicted these could never be seen. Models predicted their existence at 50-100 km. The lack of observation was due to instrumentation limits, not model predictions about observability.",
         "severity": "blocking"
       }
     ],
     "unverified_numbers": [],
-    "publishable": false
+    "publishable": false,
+    "revised": 1,
+    "forced_revision": [
+      "slide1.body: 43 words, spec is 30-40",
+      "slide2.body: 44 words, spec is 30-40",
+      "spinning plasma vortices smaller than any model predicted could be seen",
+      "A solar telescope with record sharpness has spotted spinning plasma vortices smaller than models predicted anyone would ever see directly"
+    ]
   },
   "status": "needs_review",
   "source": {
@@ -226,5 +224,149 @@
     "built": true,
     "duration": 19.2,
     "bytes": 4283242
-  }
+  },
+  "revisions": [
+    {
+      "instruction": "redraft with today's niche",
+      "previous": {
+        "cover": {
+          "kicker": "arXiv \u00b7 12.3 km resolution",
+          "headline": "A solar telescope has captured **spinning plasma vortices smaller than any model predicted** could be seen."
+        },
+        "slides": [
+          {
+            "eyebrow": "Why you should care",
+            "basis": "stated",
+            "title": "The telescope gives scientists their first direct look at the tiny spinning vortices that theory says drive solar energy upward.",
+            "body": "These spinning structures may transport energy and magnetic twist from the sun's surface into its outer atmosphere. Models predicted they exist at 50 to 100 km across, but no tool could see them.\n\nDKIST's sharpness is 12.3 km. That opens a window into how the sun's smallest spinning flows behave."
+          },
+          {
+            "eyebrow": "What the data says",
+            "title": "The team reports 201 vortex detections in 3.2 minutes, with a median diameter of 38.6 km.",
+            "body": "Virtually all detections were smaller than 50 km, placing them in the regime that models predict but no one had observed. Median swirling period was 37.3 seconds.\n\nThere was no preference for one spin direction over the other. That fits theory: Coriolis force is too weak at these scales.",
+            "stat": {
+              "value": "38.6 km",
+              "label": "median vortex diameter"
+            }
+          },
+          {
+            "eyebrow": "The assumption",
+            "title": "Previous solar telescopes lacked the sharpness to confirm that vortices this small exist.",
+            "body": "DKIST is a 4-meter telescope observing at 416 nanometers. It analyzed a bright patch on the sun's surface containing concentrated magnetic fields.\n\nThe observations cover a field of view of 4.92 by 4.13 megameters across 143 frames."
+          }
+        ],
+        "caveats": [
+          "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+          "This study found a pattern, not a cause. Something else could explain the link between vortex size and the magnetic environment."
+        ],
+        "cta": {
+          "headline": "Send this to anyone who quotes solar physics models",
+          "sub": "One real study, every weekday. The full paper is linked in bio."
+        },
+        "caption": "A solar telescope with record sharpness has spotted spinning plasma vortices smaller than models predicted anyone would ever see directly."
+      },
+      "previous_shape": "",
+      "previous_qa": {
+        "format": "reversal",
+        "lint_errors": [
+          "slide1.body: 51 words, spec is 30-40",
+          "slide2.body: 50 words, spec is 30-40",
+          "slide2.stat.label: 3 words, spec is 4-10"
+        ],
+        "style_flags": [],
+        "repair_rounds": 2,
+        "audit": {
+          "supported": false,
+          "unsupported_claims": [
+            {
+              "claim": "spinning plasma vortices smaller than any model predicted could be seen",
+              "problem": "The abstract states that numerical simulations PREDICT vortices of 50-100 km diameter and that these fall within the subgranular regime PREDICTED by magnetohydrodynamic simulations. The copy claims they are smaller than models predicted could be seen, but the abstract indicates models did predict their existence at these scales.",
+              "severity": "blocking"
+            },
+            {
+              "claim": "A solar telescope with record sharpness has spotted spinning plasma vortices smaller than models predicted anyone would ever see directly",
+              "problem": "Same issue - the abstract says simulations predicted vortices at 50-100 km, and the observations found vortices with median 38.6 km that fall within the subgranular regime predicted by simulations. The abstract does not say models predicted no one would ever see them directly.",
+              "severity": "blocking"
+            },
+            {
+              "claim": "Models predicted they exist at 50 to 100 km across",
+              "problem": "The abstract states simulations predict vortices with diameters of 50-100 km, but the observed vortices have a median diameter of 38.6 km and mean of 39.5\u00b13.3 km. The copy's phrasing suggests models predicted 50-100 km as the size of small vortices, but the observations show they are actually smaller than this predicted range.",
+              "severity": "minor"
+            }
+          ],
+          "numbers_check": [
+            {
+              "number": "12.3 km",
+              "found_in_abstract": true
+            },
+            {
+              "number": "201",
+              "found_in_abstract": true
+            },
+            {
+              "number": "3.2 minutes",
+              "found_in_abstract": true
+            },
+            {
+              "number": "38.6 km",
+              "found_in_abstract": true
+            },
+            {
+              "number": "50 km",
+              "found_in_abstract": true
+            },
+            {
+              "number": "37.3 seconds",
+              "found_in_abstract": true
+            },
+            {
+              "number": "4-meter",
+              "found_in_abstract": true
+            },
+            {
+              "number": "416 nanometers",
+              "found_in_abstract": true
+            },
+            {
+              "number": "4.92",
+              "found_in_abstract": true
+            },
+            {
+              "number": "4.13",
+              "found_in_abstract": true
+            },
+            {
+              "number": "143",
+              "found_in_abstract": true
+            },
+            {
+              "number": "50 to 100 km",
+              "found_in_abstract": true
+            }
+          ]
+        },
+        "blocking_claims": [
+          {
+            "claim": "spinning plasma vortices smaller than any model predicted could be seen",
+            "problem": "The abstract states that numerical simulations PREDICT vortices of 50-100 km diameter and that these fall within the subgranular regime PREDICTED by magnetohydrodynamic simulations. The copy claims they are smaller than models predicted could be seen, but the abstract indicates models did predict their existence at these scales.",
+            "severity": "blocking"
+          },
+          {
+            "claim": "A solar telescope with record sharpness has spotted spinning plasma vortices smaller than models predicted anyone would ever see directly",
+            "problem": "Same issue - the abstract says simulations predicted vortices at 50-100 km, and the observations found vortices with median 38.6 km that fall within the subgranular regime predicted by simulations. The abstract does not say models predicted no one would ever see them directly.",
+            "severity": "blocking"
+          }
+        ],
+        "unverified_numbers": [],
+        "publishable": false
+      },
+      "lint_errors": [
+        "slide1.body: 43 words, spec is 30-40",
+        "slide2.body: 44 words, spec is 30-40"
+      ],
+      "style_flags": [],
+      "repair_rounds": 2
+    }
+  ],
+  "render_seq": 1
 }
