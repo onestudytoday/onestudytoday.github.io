@@ -231,6 +231,10 @@ disagree with a blocker above.
 Comment **`exclude clipping`** to drop the "not just us" slide, or
 **`include clipping`** to put it back. Neither changes the approval.
 
+Comment **`reniche: health`** if this paper is in the wrong slot. It is
+re-vetted against that niche's rules and the slides are redrawn in its
+colour - better than `kill`, which bars the study for good.
+
 <!-- onestudytoday-post-id: {post['id']} -->
 """
 

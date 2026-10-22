@@ -171,6 +171,125 @@ def set_status(post_id: str, status: str, note: str = "") -> Dict[str, Any]:
     return post
 
 
+def reniche(post: Dict[str, Any], new_niche: str):
+    """Re-file a drafted post under a different weekday niche.
+
+    WHY THIS EXISTS. The niche a post was SOURCED for is a guess about what a
+    search would return, and it is wrong often enough to matter: a paper that
+    is really about health lands in the Monday nature slot because the query
+    matched it there. Before this command the only answers were `kill` - which
+    writes the study into the do-not-use ledger, so it can never be sourced
+    again by anyone - or publishing it under the wrong banner. Both are worse
+    than moving it.
+
+    WHAT CHANGES. The niche drives the accent colour, the label on every
+    slide, and the journal tiers and subject rules the vetting engine applies.
+    So the post is RE-VETTED against the new niche and re-linted, not merely
+    relabelled: moving a mouse study into `health`, which sets
+    `require_human_subjects`, has to produce that blocker rather than hide it.
+
+    WHAT DOES NOT CHANGE.
+
+    * The post id, and therefore docs/img/<id>/ and the review issue's marker
+      comment. The id happens to contain the sourcing niche, which makes
+      renaming it look tidy - but the id is an identifier, not a label. The
+      JPEGs under that directory are already committed and already served to
+      Instagram by URL, and the issue is found by that exact marker. Renaming
+      would orphan both to make a filename read better.
+    * `source_niche`, which records where the study was actually found. The
+      sourcing log and the Friday wildcard both read it, and rewriting history
+      so the search looks like it did the right thing is how you stop being
+      able to tell that it did not.
+    * The copy. The words are about the study, and the study has not changed.
+      Use `revise:` for the words.
+
+    TWO THINGS THIS IS CAREFUL ABOUT, both of which are ways a re-filing could
+    quietly WEAKEN a post:
+
+    1. REQUIRED CAVEATS ARE UNIONED, never replaced. Re-vetting rebuilds the
+       report from scratch, and a check that fired the first time might not
+       fire now - a different niche config, or an abstract that came back from
+       Europe PMC slightly differently. Dropping "done in mice, not humans"
+       because the post moved from nature to psych would be a silent
+       weakening of the one promise this account makes. So the new report
+       carries every caveat either report asked for.
+
+    2. RECENCY IS NOT RE-LITIGATED. vet() hard-REJECTS a paper older than the
+       sourcing window, and these posts sit in the queue for weeks. Re-vetting
+       with today's window would reject a post for the passage of time rather
+       than for anything about the paper - turning "this is filed wrong" into
+       "this is now unpublishable". The window is widened to cover the paper's
+       own age, so the recency gate ends where it did at draft time.
+
+    Returns (post, report, message). Raises ReviseError, via study_from_post,
+    if the abstract cannot be recovered - re-vetting without the paper is the
+    one thing there is no safe version of.
+    """
+    from datetime import date, datetime
+    from draft import lint, study_from_post
+    from sources import load_niches
+    from vet import VetReport, default_recency_days, vet
+
+    cfg = load_niches()
+    known = list(cfg.get("niches") or {})
+    if new_niche not in known:
+        raise SystemExit(
+            f"'{new_niche}' is not a niche. Pick one of: {', '.join(known)}.")
+    old_niche = str(post.get("niche") or "")
+    if new_niche == old_niche:
+        raise SystemExit(f"This post is already filed as {new_niche}.")
+
+    s = study_from_post(post)
+    s.niche = new_niche
+
+    # See point 2 above. The paper's age at draft time is what the recency
+    # gate judged; this keeps it judging the same thing.
+    days = default_recency_days()
+    pub = str((post.get("study") or {}).get("pub_date") or "")[:10]
+    try:
+        age = (date.today() - date.fromisoformat(pub)).days
+        days = max(days, age + 1)
+    except Exception:
+        pass
+
+    old_rep = VetReport.from_dict(post.get("vet") or {})
+    rep = vet(s, new_niche, recency_days=days)
+    # See point 1 above.
+    carried = [c for c in old_rep.required_caveats
+               if c not in rep.required_caveats]
+    rep.required_caveats.extend(carried)
+
+    out = dict(post)
+    out["niche"] = new_niche
+    out["vet"] = rep.to_dict()
+
+    errs = lint(out, rep, study=s)
+    qa = dict(out.get("qa") or {})
+    qa["lint_errors"] = errs
+    qa["style_flags"] = [e[len("STYLE "):] for e in errs if e.startswith("STYLE ")]
+    out["qa"] = qa
+
+    out.setdefault("reniche", []).append({
+        "from": old_niche, "to": new_niche,
+        "at": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "carried_caveats": carried,
+    })
+    # A re-filing is not a decision, and it changes the basis on which the
+    # post was judged. Whatever was approved was approved as something else.
+    out["status"] = "needs_review"
+    out["render_seq"] = int(out.get("render_seq") or 0) + 1
+
+    msg = (f"{post.get('id')}: re-filed {old_niche or '?'} -> {new_niche}. "
+           f"Re-vetted: {rep.verdict} {rep.score}/100 "
+           f"(was {old_rep.verdict or '?'} {old_rep.score or '?'}/100). "
+           f"Slides re-rendered in the {new_niche} colour.")
+    if carried:
+        msg += (f"\nCarried {len(carried)} required caveat(s) over from the "
+                f"old report so the re-filing could not drop one: "
+                + "; ".join(c[:70] for c in carried))
+    return out, rep, msg
+
+
 def blocking_reasons(post: Dict[str, Any]) -> List[str]:
     """Everything that must be cleared before this can go live."""
     out: List[str] = []
@@ -458,6 +577,9 @@ def _main():
     sub.add_parser("apply-doc").add_argument("post_id")
     for c in ("exclude-clipping", "include-clipping"):
         sub.add_parser(c).add_argument("post_id")
+    rn = sub.add_parser("reniche")
+    rn.add_argument("post_id")
+    rn.add_argument("niche")
     ri = sub.add_parser("reimage")
     ri.add_argument("post_id")
     ri.add_argument("query", nargs="?", default="",
@@ -541,6 +663,32 @@ def _main():
         print(f"{a.post_id}: new cover image from {art.get('source')} "
               f"<- {art.get('query')!r} ({art.get('licence')}). "
               f"{len(tried) + 1} tried so far. Slides re-rendered.")
+        return
+
+    # ---- re-file a post under a different weekday niche -----------------
+    if a.cmd == "reniche":
+        p = load(a.post_id)
+        if not p:
+            raise SystemExit(f"No queued post with id {a.post_id}")
+        from draft import ReviseError
+        from postdoc import to_markdown
+        from secrets_guard import redact
+        try:
+            p, rep, note = reniche(p, a.niche)
+        except ReviseError as e:
+            raise SystemExit(f"RE-FILING REFUSED - {redact(e)}")
+        rerender(p)
+        save(p)
+        md = QUEUE / f"{a.post_id}.md"
+        if md.exists():
+            md.write_text(to_markdown(p))
+        print(note)
+        blockers = blocking_reasons(p)
+        if blockers:
+            print(f"This post is BLOCKED as {a.niche} and needs "
+                  f"`force approve`:")
+            for b in blockers:
+                print(f"  - {b}")
         return
 
     # ---- show or hide the clipping page ---------------------------------

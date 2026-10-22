@@ -420,6 +420,22 @@ Other comments it understands:
 - `revert` — undo the last revision, blockers and all.
 - `exclude clipping` — drop the clipping slide from this post.
   `include clipping` puts it back. Neither touches the approval.
+- `reniche: <niche>` — re-file the post under a different weekday niche, e.g.
+  `reniche: health`. Use it when the sourcing put a paper in the wrong slot,
+  which is the common case for a study the query matched on a word rather
+  than a subject. The alternative used to be `kill`, and that writes the
+  study into the do-not-use ledger so it can never be sourced again.
+
+  It is a RE-VET, not a relabel: the new niche's journal tiers and subject
+  rules are applied, so moving an animal study into `health` (which requires
+  human subjects) produces that blocker rather than hiding it. Any caveat the
+  old report required is carried over, so a move can never drop one. The copy
+  is untouched — use `revise:` for the words — and the approval is cleared,
+  because it was given on a different basis.
+
+  The post id keeps the niche it was sourced under. That is deliberate: the
+  id names the committed images and the review issue's marker, and renaming
+  it to tidy a filename would orphan both.
 - `reimage` — pick a different cover photograph. `reimage: petri dish`
   searches for that instead of the automatic term. Each call skips every
   image already tried on this post, so asking twice really does give you a
