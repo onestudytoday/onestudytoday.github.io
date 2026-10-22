@@ -190,7 +190,7 @@
       "A solar telescope with record sharpness has spotted spinning plasma vortices smaller than models predicted anyone would ever see directly"
     ]
   },
-  "status": "approved",
+  "status": "published",
   "source": {
     "abstract": "Solar vortices are rotating plasma structures that play a key role in the transport of energy and magnetic helicity from the photosphere to the chromosphere and corona. While numerical simulations predict the existence of small-scale photospheric vortices with diameters of $50$--$100$ km, no direct observational evidence has been reported to date, primarily because of the limited spatial resolution of previous instrumentation. Here, we analyze high-resolution observations obtained with the 4-meter Daniel K. Inouye Solar Telescope (DKIST) at 416 nm, with a spatial resolution of 12.3 km. Using Fourier local correlation tracking and the swirling strength criterion ($\u03bb_{\\rm ci}$), we identify 201 vortex detections across a sequence of 143 reconstructed frames, spanning approximately 3.2 minutes, within a field of view of $4.92 \\times 4.13$ Mm. The observations cover a photospheric plage region containing pore-like magnetic concentrations. The detected vortices have a median equivalent diameter of 38.6 km and a mean diameter of $39.5 \\pm 3.3$ km. Virtually all detections are smaller than 50 km and therefore fall within the subgranular regime predicted by magnetohydrodynamic simulations but never previously observed. The median swirling period, $\u03c4_{\\rm ci}=37.3$ s, satisfies the $\u03c4_{\\rm ci}<100$ s criterion established by MURaM simulations. No statistically significant preference is found for prograde rotation (53.7\\%) over retrograde rotation (46.3\\%), consistent with the negligible influence of the Coriolis force at subgranular scales. These results demonstrate the unique capability of DKIST to resolve the population of photospheric convective vortices predicted by state-of-the-art magnetoconvection simulations, opening a new observational window into small-scale solar convective dynamics.",
     "source": "arxiv",
@@ -376,5 +376,19 @@
   ],
   "review": {
     "forced": true
+  },
+  "published": {
+    "media_id": "17949701169342723",
+    "kind": "CAROUSEL",
+    "at": "2026-10-22T22:12:41Z"
+  },
+  "crosspost": {
+    "at": "2026-10-22T22:12:41Z",
+    "posted": [],
+    "skipped": [
+      "bluesky",
+      "threads"
+    ],
+    "failed": {}
   }
 }
