@@ -137,17 +137,22 @@
   },
   "source_niche": "physics",
   "cover_art": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Computer_%28magazine%29_-_Dec_1975_Byte_advert.jpg/1920px-Computer_%28magazine%29_-_Dec_1975_Byte_advert.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "licence": "Public domain",
-    "author": "IEEE Computer Society",
-    "needs_credit": false,
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/City_of_Van_%28view_from_Van_Kalesi%29.jpg/1920px-City_of_Van_%28view_from_Van_Kalesi%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC BY-SA 4.0",
+    "author": "EvgenyGenkin",
+    "needs_credit": true,
     "source": "Wikimedia Commons",
-    "page": "File:Computer (magazine) - Dec 1975 Byte advert.jpg",
-    "query": "computer",
+    "page": "File:City of Van (view from Van Kalesi).jpg",
+    "query": "van",
     "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-14-physics-b0d6a4ff/bg/cover.jpg"
   },
   "reel_status": {
     "built": false,
     "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'physics'"
-  }
+  },
+  "cover_art_tried": [
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Computer_%28magazine%29_-_Dec_1975_Byte_advert.jpg/1920px-Computer_%28magazine%29_-_Dec_1975_Byte_advert.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/City_of_Van_%28view_from_Van_Kalesi%29.jpg/1920px-City_of_Van_%28view_from_Van_Kalesi%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+  ],
+  "render_seq": 1
 }
