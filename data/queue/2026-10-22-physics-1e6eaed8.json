@@ -1,0 +1,173 @@
+{
+  "id": "2026-10-22-physics-1e6eaed8",
+  "niche": "wildcard",
+  "study": {
+    "key": "1e6eaed86f7281cc",
+    "title": "Formation and Detectability of PSR J0653+0443-like Extremely Eccentric Binary Neutron Stars in the Milky Way",
+    "journal": "arXiv",
+    "pub_date": "2026-10-22",
+    "pub_date_display": "Oct 22, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2610.31583v1",
+    "url": "http://arxiv.org/abs/2610.31583v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Zhiwei Chen",
+      "Jihui Zhang",
+      "Youjun Lu"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "arXiv (preprint\u2014not peer reviewed)",
+    "headline": "A new model suggests **extremely lopsided neutron star orbits** may not be as rare as they first seemed."
+  },
+  "slides": [
+    {
+      "eyebrow": "Why you should care",
+      "title": "When you find one of something bizarre, you cannot tell if you got lucky or if there are thousands.",
+      "body": "A survey found neutron stars in the most eccentric orbit ever seen. The team reports that such extreme systems could make up a small but real slice of the galaxy's population.\n\nThat means detection was not a fluke. These orbits may follow naturally from how neutron stars form.",
+      "basis": "stated"
+    },
+    {
+      "eyebrow": "What the data says",
+      "title": "The team modeled how many neutron star pairs with eccentricity above 0.99 a full sky survey should detect.",
+      "body": "Their calculations suggest systems that eccentric account for roughly 0.6 percent of what the survey can see. They predict around 0.31 detections across the full footprint.\n\nThe completed survey has about a 15 percent chance of finding another above 0.99.",
+      "stat": {
+        "value": "0.6%",
+        "label": "of detectable pairs above e = 0.99"
+      }
+    },
+    {
+      "eyebrow": "The assumption",
+      "title": "PSR J0653+0443 has an orbital eccentricity of 0.992, the highest known in the Milky Way.",
+      "body": "Eccentricity measures how stretched an orbit is. A circle is zero, and these neutron stars come within a hair of a straight line.\n\nBefore this model, it was unclear whether standard binary evolution could produce something so extreme."
+    }
+  ],
+  "caveats": [
+    "This is a preprint. It has not been peer reviewed yet, so no independent expert has checked the work.",
+    "This is a model, not a direct measurement. The numbers depend on assumptions about how binary stars evolve and how surveys find pulsars.",
+    "This study found a pattern, not a cause. Something else could explain the link between formation pathways and eccentricity."
+  ],
+  "cta": {
+    "headline": "Send this to the 0.992 eccentricity skeptic",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "The most warped neutron star orbit ever seen might not be a cosmic accident after all.",
+  "hashtag_set": "physics",
+  "shape": "",
+  "vet": {
+    "key": "1e6eaed86f7281cc",
+    "verdict": "HOLD",
+    "score": 36,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      },
+      {
+        "code": "CORRELATIONAL",
+        "severity": "warn",
+        "message": "Design reads as observational (cross-sectional (observational)); markers: observational, survey",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      }
+    ],
+    "design": "cross-sectional (observational)",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": true,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'.",
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "reversal",
+    "lint_errors": [
+      "slide1.body: 48 words, spec is 30-40",
+      "slide2.body: 43 words, spec is 30-40"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "0.99",
+          "found_in_abstract": true
+        },
+        {
+          "number": "0.6 percent",
+          "found_in_abstract": true
+        },
+        {
+          "number": "0.31",
+          "found_in_abstract": true
+        },
+        {
+          "number": "15 percent",
+          "found_in_abstract": true
+        },
+        {
+          "number": "0.992",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Recently, the Five-hundred-meter-Aperture-Spherical-radio-Telescope (FAST) Galactic Plane Pulsar Snapshot (GPPS) survey discovers an extraordinary binary neutron star (BNS) system, PSR J0653+0443, possessing the highest known orbital eccentricity ($e\\approx0.992$) among Galactic BNSs (Yang et al., 2026), which provides a unique probe into the formation and evolution of BNSs. In this Letter, we perform compact binary population synthesis calculations with self-consistent neutron star spin evolution to model extremely eccentric BNS population detectable by the FAST GPPS survey, explicitly incorporating observational selection effects. We find that BNSs with $e>0.99$ constitute only $\\sim0.6\\%$ of the detectable population, with an expected detection number of $\u03bb_{\\mathrm{GPPS}}\\approx0.31$ over the full planned footprint. Thus, although rare, systems as eccentric as PSR J0653+0443 are compatible with standard binary evolution. We further demonstrate that extremely eccentric BNSs arise preferentially from core-collapse supernovae, whereas imposing $P\\lesssim0.1$ s select older, more frequently recycled systems, which naturally reproduce the observed properties of PSR J0653+0443. We further predict that the completed GPPS sample has a $\\sim15\\%$ chance of finding another $e>0.99$ BNS, but a much higher $\\sim88\\%$ chance for $e>0.90$ systems. By contrast, future facilities are expected to enlarge the detectable highly eccentric BNS population, with SKA potentially detecting PSR J0653+0443-like systems and sub-mHz gravitational-wave detectors probing a larger population with $e>0.9$, enabling much more in-depth population-level constraints.",
+    "source": "arxiv",
+    "ext_id": "2610.31583v1",
+    "pub_types": [
+      "astro-ph.HE",
+      "astro-ph.SR"
+    ],
+    "publisher": "arXiv",
+    "license": ""
+  },
+  "source_niche": "physics",
+  "cover_art": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Dr._Herbert_A._Parkyn%27s_gravestone_in_the_Parkyn_family_lot_at_Cimeti%C3%A8re_Mont-Royal_in_Montreal.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "licence": "Public domain",
+    "author": "Dr. Herbert A. Parkyn's gravestone in the Parkyn family lot at Cimeti\u00e8re Mont-Ro",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Dr. Herbert A. Parkyn's gravestone in the Parkyn family lot at Cimeti\u00e8re Mont-Royal in Montreal.png",
+    "query": "suggest",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-22-physics-1e6eaed8/bg/cover.jpg"
+  },
+  "reel": {
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-22-physics-1e6eaed8/reel.mp4",
+    "duration": 19.2,
+    "bytes": 4631263
+  },
+  "reel_status": {
+    "built": true,
+    "duration": 19.2,
+    "bytes": 4631263
+  }
+}
