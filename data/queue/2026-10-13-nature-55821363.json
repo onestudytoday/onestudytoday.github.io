@@ -1,0 +1,192 @@
+{
+  "id": "2026-10-13-nature-55821363",
+  "niche": "nature",
+  "study": {
+    "key": "55821363385f9a3b",
+    "title": "Multi-tissue accumulation of potentially toxic elements and age-stratified non-carcinogenic dietary risk in fish from the Anzali Wetland, Caspian Basin",
+    "journal": "Toxicology reports",
+    "pub_date": "2026-10-13",
+    "pub_date_display": "Oct 13, 2026",
+    "doi": "10.1016/j.toxrep.2026.102355",
+    "doi_display": "doi.org/10.1016/j.toxrep.2026.102355",
+    "url": "https://doi.org/10.1016/j.toxrep.2026.102355",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Salehi F",
+      "Sharafi S",
+      "Kazemi A",
+      "Esmaeilbeigi M",
+      "Rahmati M."
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Toxicology reports, Iran wetland study",
+    "headline": "Four wetland fish accumulated metals, but **eating the muscle posed no measurable health risk** to any age group."
+  },
+  "slides": [
+    {
+      "eyebrow": "What it could mean",
+      "basis": "stated",
+      "title": "Toxic elements in wetland fish may concentrate in gills and organs, not the flesh people eat.",
+      "body": "That matters for risk assessment. Testing only muscle tissue can miss what biomonitoring studies care about, while testing viscera can overstate dietary danger.\n\nThis study measured both, in four species, and found the separation holds across children, teens, and adults."
+    },
+    {
+      "eyebrow": "Results",
+      "title": "All hazard quotients stayed below 1, meaning no appreciable non-cancer harm under the assessed scenarios.",
+      "body": "Researchers measured aluminium, barium, copper, iron, nickel, and zinc in 48 fish from Iran's Anzali Wetland. Northern pike showed high aluminium, iron, nickel, and zinc.\n\nEvery estimated daily intake from muscle stayed below toxicity benchmarks. Children had the highest risk estimates.",
+      "stat": {
+        "value": "< 1",
+        "label": "all hazard indices, all age groups"
+      }
+    },
+    {
+      "eyebrow": "What they did",
+      "title": "Researchers collected muscle, gill, visceral tissue, and eggs from northern pike, common carp, vimba bream, and tench.",
+      "body": "They used ICP-MS to measure six potentially toxic elements. Tissue-specific patterns differed by species for five of the six elements.\n\nDietary risk was calculated using wet-weight muscle concentrations only, split by age. Cancer risk was not assessed."
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Something else could explain the link between species and tissue metal levels.",
+    "Risk estimates assume people eat only muscle tissue at modeled rates. Different preparation methods or consumption patterns were not assessed.",
+    "The study measured total element concentrations, not chemical forms. Toxicity can vary depending on which molecular form is present."
+  ],
+  "cta": {
+    "headline": "Send this to someone worried about wetland fish",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Metals like nickel and zinc turned up in wetland fish gills and organs, but muscle tissue stayed within safety limits for all ages.",
+  "hashtag_set": "nature",
+  "shape": "",
+  "vet": {
+    "key": "55821363385f9a3b",
+    "verdict": "PASS",
+    "score": 54,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "note",
+        "message": "Design reads as observational (unclear); markers: association",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Toxicology reports' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "procedural",
+    "lint_errors": [
+      "slide2.body: 41 words, spec is 30-40"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "eating the muscle posed no measurable health risk to any age group",
+          "problem": "The abstract states 'appreciable non-carcinogenic effects are unlikely' and that hazard quotients remained below 1, but 'no measurable health risk' is a stronger claim than the abstract supports. The abstract explicitly notes cancer risk was not assessed, so the copy cannot claim no measurable health risk to any age group when only non-carcinogenic risk was evaluated.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "no appreciable non-cancer harm",
+          "problem": "The abstract says 'appreciable non-carcinogenic effects are unlikely' - this is probabilistic language. The copy's phrasing 'no appreciable non-cancer harm' converts this to a definitive statement, which is slightly stronger than what the abstract supports.",
+          "severity": "minor"
+        },
+        {
+          "claim": "muscle tissue stayed within safety limits for all ages",
+          "problem": "The abstract does not use the phrase 'safety limits' or state that muscle tissue 'stayed within' anything. It states that estimated daily intakes remained below oral toxicity benchmarks and hazard quotients remained below 1. The copy's phrasing implies regulatory safety limits were referenced, which the abstract does not establish.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "48",
+          "found_in_abstract": true
+        },
+        {
+          "number": "1",
+          "found_in_abstract": true
+        },
+        {
+          "number": "six",
+          "found_in_abstract": true
+        },
+        {
+          "number": "five",
+          "found_in_abstract": false
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "eating the muscle posed no measurable health risk to any age group",
+        "problem": "The abstract states 'appreciable non-carcinogenic effects are unlikely' and that hazard quotients remained below 1, but 'no measurable health risk' is a stronger claim than the abstract supports. The abstract explicitly notes cancer risk was not assessed, so the copy cannot claim no measurable health risk to any age group when only non-carcinogenic risk was evaluated.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "muscle tissue stayed within safety limits for all ages",
+        "problem": "The abstract does not use the phrase 'safety limits' or state that muscle tissue 'stayed within' anything. It states that estimated daily intakes remained below oral toxicity benchmarks and hazard quotients remained below 1. The copy's phrasing implies regulatory safety limits were referenced, which the abstract does not establish.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "five",
+        "found_in_abstract": false
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Potentially toxic elements (PTEs) in wetland fish are relevant to both environmental monitoring and dietary-exposure assessment, yet studies integrating multi-tissue accumulation with age-stratified health-risk estimates remain limited. This study quantified Al, Ba, Cu, Fe, Ni, and Zn in muscle, gill, visceral, and egg tissues of 48 fish representing northern pike ( Esox lucius ), common carp ( Cyprinus carpio ), vimba bream ( Vimba vimba ), and tench ( Tinca tinca ) from the Anzali Wetland, Iran. Element concentrations were determined using ICP-MS. Species- and tissue-related differences were evaluated using split-plot repeated-measures analysis, with structure-preserving permutation tests applied to the observed concentration data as a robustness assessment. Inter-element associations were evaluated at the independent biological-replicate level. Significant species\u00d7tissue interactions were detected for Al, Ba, Cu, Fe, and Zn, indicating that tissue-specific accumulation patterns differed among fish species. Ni showed a significant species effect but no significant tissue effect or species \u00d7 tissue interaction. Northern pike exhibited comparatively high concentrations of Al, Fe, Ni, and Zn, whereas the most pronounced Ba accumulation occurred in vimba bream gills. After false-discovery-rate correction, significant associations were identified between Al and Fe, Cu and Ni, and Ni and Zn. Dietary exposure and non-carcinogenic risk were estimated for children, adolescents, and adults using wet-weight concentrations measured exclusively in edible muscle tissue. All estimated daily intakes remained below the selected oral toxicity benchmarks, and all individual target hazard quotients and cumulative hazard indices remained below 1. Children consistently showed the highest non-carcinogenic risk estimates. Quantitative carcinogenic risk was not assessed because the investigated elements were evaluated using non-carcinogenic oral toxicity benchmarks and validated oral cancer slope factors applicable to the measured dietary forms, particularly total Ni, were not available within the adopted assessment framework. Overall, the findings demonstrate that multi-tissue elemental accumulation and dietary exposure should be interpreted separately and indicate that appreciable non-carcinogenic effects are unlikely under the assessed muscle-consumption scenarios.",
+    "source": "europepmc",
+    "ext_id": "MED:42927166",
+    "pub_types": [
+      "research-article",
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "http://creativecommons.org/licenses/by/4.0/;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "nature",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/Armes_de_Brunehilde_port%C3%A9es_par_Lucienne_Br%C3%A9val.jpg/1920px-Armes_de_Brunehilde_port%C3%A9es_par_Lucienne_Br%C3%A9val.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "Public domain",
+    "author": "BNF",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Armes de Brunehilde port\u00e9es par Lucienne Br\u00e9val.jpg",
+    "query": "metal",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-13-nature-55821363/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'nature'"
+  }
+}
