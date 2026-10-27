@@ -1,0 +1,218 @@
+{
+  "id": "2026-10-16-psych-70c67094",
+  "niche": "psych",
+  "study": {
+    "key": "70c670949bce6eca",
+    "title": "Children's health before, during, and after parental/caregiver immigration detention in the United States: findings from a cross-sectional survey",
+    "journal": "Lancet regional health. Americas",
+    "pub_date": "2026-10-16",
+    "pub_date_display": "Oct 16, 2026",
+    "doi": "10.1016/j.lana.2026.101658",
+    "doi_display": "doi.org/10.1016/j.lana.2026.101658",
+    "url": "https://doi.org/10.1016/j.lana.2026.101658",
+    "is_preprint": false,
+    "server": "",
+    "n": 8,
+    "authors": [
+      "Thapa K",
+      "Patler C",
+      "Saadi A."
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Lancet Regional Health Americas",
+    "headline": "Locking up a parent may come with **health costs for children** that reverse when the parent gets out."
+  },
+  "slides": [
+    {
+      "eyebrow": "Why this matters",
+      "basis": "stated",
+      "title": "Immigration enforcement policies affect more than the detained parent. The children at home may bear health costs too.",
+      "body": "If parental detention is linked to measurable declines in child health, policymakers need to weigh those consequences when setting enforcement priorities.\n\nThis study suggests those health effects may reverse once the parent is released."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Children's reported health scores dropped by 17 points during parental detention, then bounced back after release.",
+      "body": "Families of eight detained immigrants reported on child health using a standardized scale. Before detention, scores sat at the U.S. average. During detention, they fell two standard deviations below it.\n\nAfter release, scores returned to baseline."
+    },
+    {
+      "eyebrow": "The setup",
+      "title": "Researchers surveyed families of people detained by ICE in 2020\u201321 and later released on bond.",
+      "body": "Forty-nine families with school-aged children answered questions about health before, during, and after detention. About one in six children could not get mental health treatment during detention.\n\nMore than half of families reported food insecurity."
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Something else about the detention period could explain the drop in health scores.",
+    "Only eight families took part. That is small enough that a bigger study could find a very different result.",
+    "This research was partly funded by industry, which is worth keeping in mind when you read the findings."
+  ],
+  "cta": {
+    "headline": "Send this to anyone debating immigration policy",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Children's health scores dropped sharply while a parent was detained by immigration authorities, then recovered after release.",
+  "hashtag_set": "core",
+  "shape": "",
+  "vet": {
+    "key": "70c670949bce6eca",
+    "verdict": "HOLD",
+    "score": 38,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "warn",
+        "message": "Design reads as observational (cross-sectional (observational)); markers: cross-sectional, survey, associated with, retrospective",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      },
+      {
+        "code": "TINY_SAMPLE",
+        "severity": "warn",
+        "message": "Only 8 human participants detected.",
+        "caveat": "Only 8 people took part. That is small enough that the result could shift a lot in a bigger study.",
+        "draft_rule": "Sample size is only 8. State the number on the slide and do not generalise to 'people' broadly."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Lancet regional health. Americas' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      },
+      {
+        "code": "INDUSTRY_FUNDING",
+        "severity": "warn",
+        "message": "Funder list contains commercial entities: corporation",
+        "caveat": "This study was funded in part by industry, which is worth knowing when you read the result.",
+        "draft_rule": null
+      }
+    ],
+    "design": "cross-sectional (observational)",
+    "sample_size": 8,
+    "subjects": "human",
+    "journal_tier": null,
+    "causal_language_banned": true,
+    "species": [],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link.",
+      "Only 8 people took part. That is small enough that the result could shift a lot in a bigger study.",
+      "This study was funded in part by industry, which is worth knowing when you read the result."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'.",
+      "Sample size is only 8. State the number on the slide and do not generalise to 'people' broadly."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "explainer",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 1,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "Families of eight detained immigrants reported on child health using a standardized scale.",
+          "problem": "The abstract states 49 families with at least one school-aged minor child were analyzed, not eight families. The number 8 in the abstract refers to children unable to receive mental health treatment (16%, n=8), not the number of families surveyed.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Only eight families took part. That is small enough that a bigger study could find a very different result.",
+          "problem": "The abstract states 49 families participated, not eight families. This severely misrepresents the sample size of the study.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "This research was partly funded by industry",
+          "problem": "The abstract states funding came from the National Science Foundation, Russell Sage Foundation, and Carnegie Corporation of New York. None of these are industry funders - they are non-profit research foundations and federal agencies. This claim is false.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "17 points",
+          "found_in_abstract": true
+        },
+        {
+          "number": "two standard deviations",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2020\u201321",
+          "found_in_abstract": true
+        },
+        {
+          "number": "Forty-nine families",
+          "found_in_abstract": true
+        },
+        {
+          "number": "one in six",
+          "found_in_abstract": true
+        },
+        {
+          "number": "eight families",
+          "found_in_abstract": false
+        },
+        {
+          "number": "More than half",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Families of eight detained immigrants reported on child health using a standardized scale.",
+        "problem": "The abstract states 49 families with at least one school-aged minor child were analyzed, not eight families. The number 8 in the abstract refers to children unable to receive mental health treatment (16%, n=8), not the number of families surveyed.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Only eight families took part. That is small enough that a bigger study could find a very different result.",
+        "problem": "The abstract states 49 families participated, not eight families. This severely misrepresents the sample size of the study.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "This research was partly funded by industry",
+        "problem": "The abstract states funding came from the National Science Foundation, Russell Sage Foundation, and Carnegie Corporation of New York. None of these are industry funders - they are non-profit research foundations and federal agencies. This claim is false.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "eight families",
+        "found_in_abstract": false
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Background Parental immigration detention is a significant yet understudied stressor with potential consequences for children's well-being. We examined children's general health before, during, and after parental detention, and compared to the United States (US) pediatric population. Methods We conducted a cross-sectional household telephone survey in 2022-2023 of family members of immigrants detained by U.S. Immigration and Customs Enforcement in 2020/21 and released on bond. Of 88 respondents, we analyzed data from 49 families with at least one school-aged minor child. Family members retrospectively reported on child health before, during, and after detention using the 7-item parent-report version of the PROMIS\u00ae Parent Proxy Scale- Global Health 7 measure, which provides standardized T-scores (mean = 50, SD = 10) benchmarked to the U.S. general population. Findings The mean T-scores were statistically equivalent to the population mean of 50 at pre-detention (49; 95% CI: 46.0, 52.0) and after release (48.9; 95% CI: 45.5, 52.4) but 17 T-score points (\u223c2 SD below the population mean) lower during detention (31.8; 95% CI: 28.6, 35.0), substantially exceeding the commonly accepted 5 T-score points threshold (half-SD) for clinically meaningful change. Reported problems for children during parental detention included decline in grades (n = 34, 69%), increased financial responsibilities (n = 29, 59%), household or caregiving responsibilities (n = 26, 53%), and food insecurity (n = 26, 53%). About 16% (n = 8) of children were unable to receive needed treatment or counseling from a mental health professional during parental detention. Interpretation Parental detention was associated with poorer reported child health, and reported health scores improved after release. Findings highlight the need for policies that consider the health consequences of immigration enforcement on children and families. Funding This research was supported by the National Science Foundation and the Russell Sage Foundation and the Carnegie Corporation of New York.",
+    "source": "europepmc",
+    "ext_id": "MED:42926867",
+    "pub_types": [
+      "research-article",
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "http://creativecommons.org/licenses/by-nc-nd/4.0/;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "psych",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Ministerial_Conference_on_the_European_Cooperation_in_Science_and_Technology_%28COST%29-2016-09-22_%2829223481383%29.jpg/1920px-Ministerial_Conference_on_the_European_Cooperation_in_Science_and_Technology_%28COST%29-2016-09-22_%2829223481383%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC0",
+    "author": "EU2016 SK",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Ministerial Conference on the European Cooperation in Science and Technology (COST)-2016-09-22 (29223481383).jpg",
+    "query": "cost",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-16-psych-70c67094/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'psych'"
+  }
+}
