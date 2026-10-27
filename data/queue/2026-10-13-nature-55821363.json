@@ -162,7 +162,7 @@
     ],
     "publishable": false
   },
-  "status": "needs_review",
+  "status": "approved",
   "source": {
     "abstract": "Potentially toxic elements (PTEs) in wetland fish are relevant to both environmental monitoring and dietary-exposure assessment, yet studies integrating multi-tissue accumulation with age-stratified health-risk estimates remain limited. This study quantified Al, Ba, Cu, Fe, Ni, and Zn in muscle, gill, visceral, and egg tissues of 48 fish representing northern pike ( Esox lucius ), common carp ( Cyprinus carpio ), vimba bream ( Vimba vimba ), and tench ( Tinca tinca ) from the Anzali Wetland, Iran. Element concentrations were determined using ICP-MS. Species- and tissue-related differences were evaluated using split-plot repeated-measures analysis, with structure-preserving permutation tests applied to the observed concentration data as a robustness assessment. Inter-element associations were evaluated at the independent biological-replicate level. Significant species\u00d7tissue interactions were detected for Al, Ba, Cu, Fe, and Zn, indicating that tissue-specific accumulation patterns differed among fish species. Ni showed a significant species effect but no significant tissue effect or species \u00d7 tissue interaction. Northern pike exhibited comparatively high concentrations of Al, Fe, Ni, and Zn, whereas the most pronounced Ba accumulation occurred in vimba bream gills. After false-discovery-rate correction, significant associations were identified between Al and Fe, Cu and Ni, and Ni and Zn. Dietary exposure and non-carcinogenic risk were estimated for children, adolescents, and adults using wet-weight concentrations measured exclusively in edible muscle tissue. All estimated daily intakes remained below the selected oral toxicity benchmarks, and all individual target hazard quotients and cumulative hazard indices remained below 1. Children consistently showed the highest non-carcinogenic risk estimates. Quantitative carcinogenic risk was not assessed because the investigated elements were evaluated using non-carcinogenic oral toxicity benchmarks and validated oral cancer slope factors applicable to the measured dietary forms, particularly total Ni, were not available within the adopted assessment framework. Overall, the findings demonstrate that multi-tissue elemental accumulation and dietary exposure should be interpreted separately and indicate that appreciable non-carcinogenic effects are unlikely under the assessed muscle-consumption scenarios.",
     "source": "europepmc",
@@ -194,5 +194,8 @@
     "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/018_Giant_otter_eating_a_fish_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg/1920px-018_Giant_otter_eating_a_fish_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/019_Anhinga_eating_a_fish_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg/1920px-019_Anhinga_eating_a_fish_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   ],
-  "render_seq": 2
+  "render_seq": 2,
+  "review": {
+    "forced": true
+  }
 }
