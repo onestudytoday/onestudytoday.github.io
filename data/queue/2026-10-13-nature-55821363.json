@@ -176,13 +176,13 @@
   },
   "source_niche": "nature",
   "cover_art": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/018_Giant_otter_eating_a_fish_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg/1920px-018_Giant_otter_eating_a_fish_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/019_Anhinga_eating_a_fish_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg/1920px-019_Anhinga_eating_a_fish_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "licence": "CC BY-SA 4.0",
     "author": "Giles Laurent",
     "needs_credit": true,
     "source": "Wikimedia Commons",
-    "page": "File:018 Giant otter eating a fish in Encontro das \u00c1guas State Park Photo by Giles Laurent.jpg",
-    "query": "fish",
+    "page": "File:019 Anhinga eating a fish in Encontro das \u00c1guas State Park Photo by Giles Laurent.jpg",
+    "query": "a fish",
     "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-13-nature-55821363/bg/cover.jpg"
   },
   "reel_status": {
@@ -191,7 +191,8 @@
   },
   "cover_art_tried": [
     "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/Armes_de_Brunehilde_port%C3%A9es_par_Lucienne_Br%C3%A9val.jpg/1920px-Armes_de_Brunehilde_port%C3%A9es_par_Lucienne_Br%C3%A9val.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/018_Giant_otter_eating_a_fish_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg/1920px-018_Giant_otter_eating_a_fish_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/018_Giant_otter_eating_a_fish_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg/1920px-018_Giant_otter_eating_a_fish_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/019_Anhinga_eating_a_fish_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg/1920px-019_Anhinga_eating_a_fish_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   ],
-  "render_seq": 1
+  "render_seq": 2
 }
