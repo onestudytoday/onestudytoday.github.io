@@ -188,7 +188,7 @@
     ],
     "publishable": false
   },
-  "status": "approved",
+  "status": "published",
   "source": {
     "abstract": "Background Parental immigration detention is a significant yet understudied stressor with potential consequences for children's well-being. We examined children's general health before, during, and after parental detention, and compared to the United States (US) pediatric population. Methods We conducted a cross-sectional household telephone survey in 2022-2023 of family members of immigrants detained by U.S. Immigration and Customs Enforcement in 2020/21 and released on bond. Of 88 respondents, we analyzed data from 49 families with at least one school-aged minor child. Family members retrospectively reported on child health before, during, and after detention using the 7-item parent-report version of the PROMIS\u00ae Parent Proxy Scale- Global Health 7 measure, which provides standardized T-scores (mean = 50, SD = 10) benchmarked to the U.S. general population. Findings The mean T-scores were statistically equivalent to the population mean of 50 at pre-detention (49; 95% CI: 46.0, 52.0) and after release (48.9; 95% CI: 45.5, 52.4) but 17 T-score points (\u223c2 SD below the population mean) lower during detention (31.8; 95% CI: 28.6, 35.0), substantially exceeding the commonly accepted 5 T-score points threshold (half-SD) for clinically meaningful change. Reported problems for children during parental detention included decline in grades (n = 34, 69%), increased financial responsibilities (n = 29, 59%), household or caregiving responsibilities (n = 26, 53%), and food insecurity (n = 26, 53%). About 16% (n = 8) of children were unable to receive needed treatment or counseling from a mental health professional during parental detention. Interpretation Parental detention was associated with poorer reported child health, and reported health scores improved after release. Findings highlight the need for policies that consider the health consequences of immigration enforcement on children and families. Funding This research was supported by the National Science Foundation and the Russell Sage Foundation and the Carnegie Corporation of New York.",
     "source": "europepmc",
@@ -217,5 +217,19 @@
   },
   "review": {
     "forced": true
+  },
+  "published": {
+    "media_id": "18110791265349924",
+    "kind": "CAROUSEL",
+    "at": "2026-10-27T22:08:08Z"
+  },
+  "crosspost": {
+    "at": "2026-10-27T22:08:08Z",
+    "posted": [],
+    "skipped": [
+      "bluesky",
+      "threads"
+    ],
+    "failed": {}
   }
 }
