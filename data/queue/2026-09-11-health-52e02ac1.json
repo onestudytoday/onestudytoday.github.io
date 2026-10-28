@@ -1,0 +1,164 @@
+{
+  "id": "2026-09-11-health-52e02ac1",
+  "niche": "health",
+  "study": {
+    "key": "52e02ac1e3e924c5",
+    "title": "Stemmed versus stemless humeral implants in anatomic total shoulder arthroplasty: a systematic review and meta-analysis",
+    "journal": "JSES reviews, reports, and techniques",
+    "pub_date": "2026-09-11",
+    "pub_date_display": "Sep 11, 2026",
+    "doi": "10.1016/j.xrrt.2026.100881",
+    "doi_display": "doi.org/10.1016/j.xrrt.2026.100881",
+    "url": "https://doi.org/10.1016/j.xrrt.2026.100881",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Dieu V",
+      "Puga TB",
+      "Haechten T",
+      "Box MW",
+      "O'Connor KP",
+      "Levy B"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "JSES reviews, reports, techniques \u00b7 21 studies",
+    "headline": "Shoulder replacements **can skip the metal stem** without losing function or raising revision risk."
+  },
+  "slides": [
+    {
+      "eyebrow": "Why you should care",
+      "basis": "stated",
+      "title": "A simpler implant design could mean shorter surgery and less blood loss for patients needing shoulder replacements.",
+      "body": "The stemless version takes less time to put in and causes less bleeding during surgery. Everything else that matters comes out the same.\n\nThat matters most for younger patients with good bone quality who want to preserve their natural anatomy."
+    },
+    {
+      "eyebrow": "What the data says",
+      "title": "A review of 19 studies found no difference in function, range of motion, or revision rates.",
+      "body": "Shoulder scores after surgery, forward flexion, abduction, external rotation, and center of rotation were equivalent. Revision risk showed no difference either.\n\nStemless implants did show shorter surgery time and reduced blood loss compared to traditional stemmed designs.",
+      "stat": {
+        "value": "1.14",
+        "label": "revision odds ratio, stemless vs stemmed"
+      }
+    },
+    {
+      "eyebrow": "The assumption",
+      "title": "The traditional stemmed implant has been the standard for decades. Removing the stem sounds risky.",
+      "body": "Surgeons have relied on the metal stem extending into the bone for fixation and alignment. It sounds like removing a safety feature.\n\nBut this review suggests the metaphyseal bone can hold the implant securely on its own."
+    }
+  ],
+  "caveats": [
+    "This review combined results from 19 studies with different patient groups, implant brands, and follow-up lengths, which can hide important differences.",
+    "The paper reports relative effects without always giving baseline rates, so a percentage difference may represent a small absolute change in real terms."
+  ],
+  "cta": {
+    "headline": "Send this to anyone debating shoulder surgery options",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Stemless shoulder implants match the function and revision rates of traditional stemmed designs, with shorter surgery time and less bleeding.",
+  "hashtag_set": "health",
+  "shape": "",
+  "vet": {
+    "key": "52e02ac1e3e924c5",
+    "verdict": "HOLD",
+    "score": 67,
+    "flags": [
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'JSES reviews, reports, and techniques' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      },
+      {
+        "code": "RELATIVE_RISK_ONLY",
+        "severity": "warn",
+        "message": "Reports relative effects (odds ratio) with no absolute numbers.",
+        "caveat": "The paper reports a relative change. Without the baseline rate, a big-sounding percentage can be a very small real-world difference.",
+        "draft_rule": "A relative effect with no absolute baseline must never be stated as a bare percentage on the cover slide."
+      }
+    ],
+    "design": "meta-analysis",
+    "sample_size": null,
+    "subjects": "human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "The paper reports a relative change. Without the baseline rate, a big-sounding percentage can be a very small real-world difference."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "A relative effect with no absolute baseline must never be stated as a bare percentage on the cover slide."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "reversal",
+    "lint_errors": [
+      "cover.kicker: 46 chars, max 44",
+      "GUARDRAIL the cover kicker says 'JSES reviews, reports, techniques \u00b7 21 studies', but this paper was published in 'JSES reviews, reports, and techniques'. The journal is the credibility claim on the cover and it has to be the real one"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "21 studies",
+          "found_in_abstract": true
+        },
+        {
+          "number": "19 studies",
+          "found_in_abstract": true
+        },
+        {
+          "number": "1.14",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [
+      {
+        "number": "21",
+        "found_in_abstract": false,
+        "checked_by": "code"
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Background A recent advancement in anatomic total shoulder arthroplasty (aTSA) has been the development of stemless humeral implants The objective of this systematic review and meta-analysis is to compare outcomes of traditional stemmed humeral implants (S+) and stemless humeral implants (S-) in aTSA. Methods A search was conducted across 7 databases. Titles and abstracts were screened for eligibility. Full texts were screened for inclusion. Demographic and study results were extracted from articles that met the inclusion criteria. Meta-analysis was conducted to evaluate outcomes. Results Twenty-one studies were included, of which 19 met the inclusion criteria for meta-analysis. No studies were poor quality or at high risk of bias according to the quality assessment. A meta-analysis showed no significant difference in post-operative Constant scores (Cohen d = -0.27; 95% confidence interval [CI]: -0.79 to 0.25; P = .3), forward flexion(Cohen d = -0.07; 95% CI: -0.32 to 0.17; P = .56), abduction (Cohen d = -0.07; 95% CI: -0.46 to 0.33; P = .73), external rotation (Cohen d = -0.12; 95% CI: -0.39 to 0.15; P = .39), restoration of the center of rotation (Cohen d = 0.01; 95% CI: -0.58 to 0.60; P = .97), or revision risk (odds ratio = 1.14; 95% CI: 0.70-1.86; P = .59). However, S- demonstrated a significant reduction in operative time (Cohen d = 1.20; 95% CI: 0.62 to 1.78; P P Conclusion Both S+ and S- aTSAs provide equivalent functional and clinical outcomes, with S- providing some potential benefits such as decreased intra-operative blood loss and operative time. This implant may be particularly beneficial in younger patients with preserved metaphyseal bone quality.",
+    "source": "europepmc",
+    "ext_id": "MED:42908885",
+    "pub_types": [
+      "review-article",
+      "Review",
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "http://creativecommons.org/licenses/by-nc-nd/4.0/;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "health",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/JZ_Replacement_06.jpg/1920px-JZ_Replacement_06.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC BY-SA 4.0",
+    "author": "Schorle",
+    "needs_credit": true,
+    "source": "Wikimedia Commons",
+    "page": "File:JZ Replacement 06.jpg",
+    "query": "replacement",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-09-11-health-52e02ac1/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'health'"
+  }
+}
