@@ -123,7 +123,7 @@
     "unverified_numbers": [],
     "publishable": false
   },
-  "status": "needs_review",
+  "status": "approved",
   "source": {
     "abstract": "Objectives To investigate early changes in gastric cancers that are difficult to evaluate using endoscopic imaging through the assessment of mucosal impedance (MI) in endoscopic submucosal dissection (ESD) specimens. Methods In this single-center prospective cohort study, we included patients who underwent ESD for early gastric cancer (EGC). MI was measured at both the main tumor site and the surrounding non-neoplastic mucosa in resected specimens. Histopathological evaluation and immunohistochemical staining for claudin-3, -4, and -18 were performed. Furthermore, multivariate analysis was used to investigate factors influencing MI-L. Results The MI measured under high-frequency current (MI-H) of the non-neoplastic mucosa was significantly higher than that of the tumor ( p = 0.0025). Additionally, the MI measured under low-frequency current (MI-L) was significantly lower in pT1b cases than in pT1a cases (6.9 \u03a9 vs. 9.7 \u03a9, p = 0.021). Similarly, the MI-L was significantly lower in the pUL1 cases than in the pUL0 cases (7.5 \u03a9 vs. 9.7 \u03a9, p = 0.030). Multivariable linear regression analysis demonstrated that, among the explanatory variables-including tumor invasion, ulcer status, macroscopic type, and the H-scores for each claudin- only the H-score of claudin-18 was identified as an independent associated factor. Conclusions In resected specimens, MI-L was independently associated with claudin-18 expression and correlated with submucosal invasion, ulcer status, and macroscopic type. MI has the potential to detect non-surface changes involving tight junction proteins in EGC that cannot be observed via endoscopy. Trial Registration : N/A.",
     "source": "europepmc",
@@ -149,5 +149,8 @@
   "reel_status": {
     "built": false,
     "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'health'"
+  },
+  "review": {
+    "forced": true
   }
 }
