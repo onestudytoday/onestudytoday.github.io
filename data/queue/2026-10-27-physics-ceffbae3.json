@@ -1,0 +1,174 @@
+{
+  "id": "2026-10-27-physics-ceffbae3",
+  "niche": "physics",
+  "study": {
+    "key": "ceffbae3b2d26b40",
+    "title": "Experimental evidence for quantum Brownian motion in electron-metal decoherence",
+    "journal": "arXiv",
+    "pub_date": "2026-10-27",
+    "pub_date_display": "Oct 27, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2610.37293v1",
+    "url": "http://arxiv.org/abs/2610.37293v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Wayne Cheng-Wei Huang",
+      "Zilin Chen",
+      "Herman Batelaan"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "arXiv preprint (not peer reviewed)",
+    "headline": "**Electrons may blur into classical behavior** more smoothly than we thought, affecting microscopes."
+  },
+  "slides": [
+    {
+      "eyebrow": "Why you should care",
+      "basis": "stated",
+      "title": "The team reports the first clear signs of how electrons lose their quantum nature when passing through metal.",
+      "body": "This settles a two-decade search for a specific quantum test. It also shows that quantum Brownian motion drives how electrons lose their quantum nature.\n\nThat matters for tiny quantum devices and for the sharpness limits of electron microscopes."
+    },
+    {
+      "eyebrow": "What the data says",
+      "title": "The test measured how electrons moving through metal channels lose quantum behavior through contact with the metal.",
+      "body": "The results matched predictions from quantum loss theory. The researchers could tune the loss smoothly, showing quantum Brownian motion is the mechanism.\n\nThis is the first real-world version of a proposal made twenty years ago.",
+      "stat": {
+        "value": "20 yrs",
+        "label": "search for this experiment"
+      }
+    },
+    {
+      "eyebrow": "The assumption",
+      "title": "Motion-based quantum loss is central to the quantum-to-classical shift, but the mechanism was not confirmed in free electrons.",
+      "body": "Quantum objects can exist in multiple states at once. Larger objects do not. The shift happens when a quantum system touches its surroundings.\n\nThe double-slit test shows this with electrons, but proving what drives it needed controlled systems that only now exist."
+    }
+  ],
+  "caveats": [
+    "This is a preprint. It has not been peer reviewed yet, so no independent expert has checked the work.",
+    "The study tests a specific quantum mechanism in a lab system. Real-world uses for devices and microscopes remain to be shown."
+  ],
+  "cta": {
+    "headline": "Send this to the quantum skeptic",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Electrons crossing metal may blur into classical behavior more smoothly than expected, with direct effects on microscopes and quantum tech.",
+  "hashtag_set": "physics",
+  "shape": "",
+  "vet": {
+    "key": "ceffbae3b2d26b40",
+    "verdict": "HOLD",
+    "score": 42,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      }
+    ],
+    "design": "mechanistic / lab",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "reversal",
+    "lint_errors": [
+      "slide3.body: 42 words, spec is 30-40"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "two-decade search / twenty years ago / 20 yrs search for this experiment",
+          "problem": "The abstract states 'two-decade long search' which means approximately 20 years, but does not specify it was exactly twenty years ago. The copy presents this in multiple forms including '20 yrs' as if it's a precise statistic rather than an approximate duration.",
+          "severity": "minor"
+        },
+        {
+          "claim": "affecting microscopes / with direct effects on microscopes",
+          "problem": "The abstract says decoherence 'poses a resolution limit for electron microscopes' - it is already a known limiting factor. The copy implies this finding will affect or have direct effects on microscopes, which is a stronger claim about impact not stated in the abstract.",
+          "severity": "minor"
+        },
+        {
+          "claim": "more smoothly than we thought / more smoothly than expected",
+          "problem": "The abstract demonstrates 'continuous tunability' of decoherence, but does not state this was smoother than previously thought or expected. This comparative claim is invented.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Real-world uses for devices and microscopes remain to be shown",
+          "problem": "The abstract states the work 'paves the way for testing' theory and that these systems are 'viable open quantum platforms' - it does not say real-world uses remain to be shown. In fact, it already mentions relevance to 'miniaturized quantum electron devices' and 'electron microscopes' as established contexts, not future applications to be demonstrated.",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "two-decade / twenty years / 20 yrs",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "more smoothly than we thought / more smoothly than expected",
+        "problem": "The abstract demonstrates 'continuous tunability' of decoherence, but does not state this was smoother than previously thought or expected. This comparative claim is invented.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "20",
+        "found_in_abstract": false,
+        "checked_by": "code"
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Feynman once remarked that the double-slit experiment has in its heart the only mystery of quantum mechanics. Arguably, the scientific significance of double-slit experiments lies in motional decoherence and the mechanism behind it. Decoherence of motional states underpins our understanding of quantum-to-classical transition. It is also central to the operation of miniaturized quantum electron devices and poses a resolution limit for electron microscopes. In this work, we provide experimental evidence for the critical role of quantum Brownian motion in electron motional decoherence. We demonstrate, for the first time, clear signatures of electron-metal decoherence and its continuous tunability. Our experiment concludes a two-decade long search for experimental realization of the Anglin-Paz-Zurek proposal, establishing electron-microchannel systems as viable open quantum platforms for free-electron quantum optics. The quantitative agreement between experiment and theory further paves the way for testing the Caldeira-Leggett quantum dissipation theory with free electrons.",
+    "source": "arxiv",
+    "ext_id": "2610.37293v1",
+    "pub_types": [
+      "quant-ph",
+      "cond-mat.mes-hall",
+      "physics.atom-ph"
+    ],
+    "publisher": "arXiv",
+    "license": ""
+  },
+  "source_niche": "physics",
+  "cover_art": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/14/Barbara_McClintock_%281902-1992%29_shown_in_her_laboratory_in_1947.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "licence": "Public domain",
+    "author": "Smithsonian Institution/Science Service; Restored by Adam Cuerden",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Barbara McClintock (1902-1992) shown in her laboratory in 1947.jpg",
+    "query": "microscope",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-27-physics-ceffbae3/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'physics'"
+  }
+}
