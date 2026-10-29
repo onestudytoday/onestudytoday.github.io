@@ -1,0 +1,216 @@
+{
+  "id": "2026-10-27-physics-c6252a27",
+  "niche": "physics",
+  "study": {
+    "key": "c6252a276c5d84be",
+    "title": "Little Red Dots with Broad H$\u03b2$ Lines Reveal the Black Hole Mass Function at 7<z<9.5",
+    "journal": "arXiv",
+    "pub_date": "2026-10-27",
+    "pub_date_display": "Oct 27, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2610.37564v1",
+    "url": "http://arxiv.org/abs/2610.37564v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Anthony J. Taylor",
+      "Steven L. Finkelstein",
+      "Hollis B. Akins",
+      "Vasily Kokorev",
+      "Pablo Arrabal Haro",
+      "Sophie Koudmani"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "arXiv preprint, early data",
+    "headline": "**Early black holes were bigger** than current models predict, suggesting they grew faster or started heavier."
+  },
+  "slides": [
+    {
+      "eyebrow": "What it means for you",
+      "basis": "stated",
+      "title": "The team reports that current theories cannot explain how black holes got this massive this early.",
+      "body": "Their models require either much heavier starting seeds or faster-than-expected growth. Both options would require rethinking how the first black holes formed.\n\nThis matters because black holes shaped galaxy formation."
+    },
+    {
+      "eyebrow": "The result",
+      "title": "The team measured black hole masses between four million and two hundred million solar masses at redshift eight.",
+      "body": "They found twenty active black holes with broad emission lines in early galaxies. The population density is about ten times higher than at redshift five.\n\nThat growth rate matches an accretion of about ten percent of the Eddington limit.",
+      "stat": {
+        "value": "10\u00d7",
+        "label": "population increase from z~5 to z~8"
+      }
+    },
+    {
+      "eyebrow": "How it works",
+      "title": "They searched over twenty thousand spectra from JWST for broad hydrogen-beta emission in high-redshift galaxies.",
+      "body": "Broad emission lines indicate gas moving fast around a central mass. The width gives you the black hole mass directly.\n\nAll twenty sources were little red dots, compact galaxies with dusty colors."
+    }
+  ],
+  "caveats": [
+    "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+    "The black hole masses assume the broad lines come from gravitationally bound gas. Other mechanisms could mimic the signal.",
+    "The sample relies on spectroscopic completeness corrections that depend on model assumptions about how these objects are distributed."
+  ],
+  "cta": {
+    "headline": "Send this to anyone still using light-seed models",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Black holes in the early universe were heavier than standard models allow, forcing a rethink of how they began.",
+  "hashtag_set": "physics",
+  "shape": "",
+  "vet": {
+    "key": "c6252a276c5d84be",
+    "verdict": "HOLD",
+    "score": 42,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      }
+    ],
+    "design": "modelling",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "stakes",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "The population density is about ten times higher than at redshift five.",
+          "problem": "The abstract states the black hole mass function normalization 'rises by approximately 1.0 dex from z~8-5'. This is a rise by a factor of 10, but it refers to the normalization of the black hole mass FUNCTION, not the population density. These are different measurements and the copy conflates them.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "That growth rate matches an accretion of about ten percent of the Eddington limit.",
+          "problem": "The abstract states 'consistent with average black hole growth at f_Edd \u2248 0.1', where 0.1 refers to the Eddington fraction f_Edd. The copy says 'about ten percent' which is correct, but then says 'That growth rate matches an accretion' implying the 10x population increase causes or equals this growth rate. The abstract presents f_Edd \u2248 0.1 as the growth rate that explains the 1.0 dex rise in normalization, not as a consequence of a '10x population increase'.",
+          "severity": "minor"
+        },
+        {
+          "claim": "All twenty sources were little red dots, compact galaxies with dusty colors.",
+          "problem": "The abstract states 'Our entire sample has colors and morphologies consistent with little red dots (LRDs)' but does not define LRDs as 'compact galaxies with dusty colors'. While this may be a reasonable interpretation, the abstract does not explicitly provide this definition.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Early black holes were bigger than current models predict",
+          "problem": "The abstract states models 'require' heavy seeds or super-Eddington accretion to match observations, not that the black holes were 'bigger than models predict'. The models can accommodate the observations with different assumptions.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "The team reports that current theories cannot explain how black holes got this massive this early.",
+          "problem": "The abstract says the observations 'require heavy seeds or super-Eddington accretion onto light or intermediate mass seeds to match its normalization' - this means current theories CAN explain it with these mechanisms. The copy overstates this as theories 'cannot explain' it.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "four million",
+          "found_in_abstract": true
+        },
+        {
+          "number": "two hundred million",
+          "found_in_abstract": true
+        },
+        {
+          "number": "eight",
+          "found_in_abstract": true
+        },
+        {
+          "number": "twenty",
+          "found_in_abstract": true
+        },
+        {
+          "number": "ten times",
+          "found_in_abstract": false
+        },
+        {
+          "number": "five",
+          "found_in_abstract": true
+        },
+        {
+          "number": "ten percent",
+          "found_in_abstract": true
+        },
+        {
+          "number": "twenty thousand",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "The population density is about ten times higher than at redshift five.",
+        "problem": "The abstract states the black hole mass function normalization 'rises by approximately 1.0 dex from z~8-5'. This is a rise by a factor of 10, but it refers to the normalization of the black hole mass FUNCTION, not the population density. These are different measurements and the copy conflates them.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Early black holes were bigger than current models predict",
+        "problem": "The abstract states models 'require' heavy seeds or super-Eddington accretion to match observations, not that the black holes were 'bigger than models predict'. The models can accommodate the observations with different assumptions.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "The team reports that current theories cannot explain how black holes got this massive this early.",
+        "problem": "The abstract says the observations 'require heavy seeds or super-Eddington accretion onto light or intermediate mass seeds to match its normalization' - this means current theories CAN explain it with these mechanisms. The copy overstates this as theories 'cannot explain' it.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "ten times",
+        "found_in_abstract": false
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "We present a systematic search for broad H$\u03b2$ emission at $7<z<9.5$ in 21,770 JWST/NIRSpec PRISM spectra drawn from four blank fields and six lensing clusters with photometry spanning 1942 arcmin$^2$. We find a sample of 20 sources with statistically significant broad-H$\u03b2$ emission, including 13 new sources. Our entire sample has colors and morphologies consistent with little red dots (LRDs), compared to only 37\\% of broad-line emitters at $3.5<z<6$. Interpreting the broad-lines as indicators of Broad-line Active Galactic Nuclei (BLAGN), we infer black hole masses of $4.2\\times10^{6}-2.1\\times10^{8}$\\,$M_{\\odot}$. We calculate completeness corrections and construct the black hole mass function at $z\\sim8$. The normalization of the black hole mass function rises by $\\approx1.0$~dex from $z\\sim8-5$, consistent with average black hole growth at $f_{\\textrm{Edd}}\\approx0.1$. Comparing with cosmological simulations, the $z\\sim8$ black hole mass function requires heavy ($10^5$\\,$M_{\\odot}$) seeds or super-Eddington accretion onto light or intermediate mass seeds to match its normalization. Finally, we infer bolometric luminosities for the sample and construct a bolometric luminosity function. We integrate over this luminosity function to derive a black hole accretion density (BHAD) of $4.8^{+5.8}_{-2.6}\\times10^{-7}~M_{\\odot}~\\textrm{yr}^{-1}~\\textrm{Mpc}^{-3}$, showing broad agreement with previous photometric work, but disagreement with previous X-ray models, reinforcing the idea that BLAGN are more common in the early universe than previously expected.",
+    "source": "arxiv",
+    "ext_id": "2610.37564v1",
+    "pub_types": [
+      "astro-ph.GA"
+    ],
+    "publisher": "arXiv",
+    "license": ""
+  },
+  "source_niche": "physics",
+  "cover_art": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Hole_in_Norway.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "licence": "Public domain",
+    "author": "No machine-readable author provided. Ekko assumed (based on copyright claims).",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Hole in Norway.JPG",
+    "query": "hole",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-27-physics-c6252a27/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'physics'"
+  }
+}
