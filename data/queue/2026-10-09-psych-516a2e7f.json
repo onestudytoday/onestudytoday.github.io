@@ -1,0 +1,159 @@
+{
+  "id": "2026-10-09-psych-516a2e7f",
+  "niche": "wildcard",
+  "study": {
+    "key": "516a2e7f3ad27bb4",
+    "title": "Aversive learning retroactively modulates neutral episodic memories structured by prior knowledge of predictive sequences",
+    "journal": "Cognition",
+    "pub_date": "2026-10-09",
+    "pub_date_display": "Oct 9, 2026",
+    "doi": "10.1016/j.cognition.2026.106731",
+    "doi_display": "doi.org/10.1016/j.cognition.2026.106731",
+    "url": "https://doi.org/10.1016/j.cognition.2026.106731",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Baczkowski BM",
+      "Villringer A."
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Cognition \u2022 Young adults",
+    "headline": "Learning that something is threatening **can reach back and strengthen old neutral memories** if they warned what was coming."
+  },
+  "slides": [
+    {
+      "eyebrow": "Why this matters",
+      "basis": "stated",
+      "title": "Aversive learning may reach back and reshape earlier memories, bridging time gaps to help you spot warning signs.",
+      "body": "If your brain could reach back and strengthen memories of harmless events that came before danger, you would spot warning signs faster next time.\n\nThis study suggests that is exactly what happens when those neutral events fit a known sequence."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "After people learned one sequence ended with shocks, their memory shifted for events encoded a day earlier in that sequence.",
+      "body": "Young adults first learned two six-item sequences, then viewed new images from each set. One sequence later ended with mild shocks.\n\nAfter 24 hours, memory favored the starting set over the middle one, but only in the shock-linked sequence.",
+      "stat": {
+        "value": "24 h",
+        "label": "delay before memory test"
+      }
+    },
+    {
+      "eyebrow": "The setup",
+      "title": "People first learned to expect a certain order, then encoded new images, then one final set was paired with shocks.",
+      "body": "Two fixed sequences were learned through repeated viewing. Then people saw new examples from each set during sequence viewing.\n\nIn a conditioning phase, examples from one third-position set predicted shocks. The other was never reinforced."
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Something else could explain the link.",
+    "The effect was tested only with fixed sequences and mild electric shocks in a lab setting.",
+    "Memory was measured for image recall, not real-world threat spotting or behavior."
+  ],
+  "cta": {
+    "headline": "Send this to someone rethinking how memory works",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Your brain may reach back and boost old neutral memories when you later learn they warned of danger, as long as they fit a known sequence.",
+  "hashtag_set": "psych",
+  "shape": "",
+  "vet": {
+    "key": "516a2e7f3ad27bb4",
+    "verdict": "PASS",
+    "score": 56,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "note",
+        "message": "Design reads as observational (unclear); markers: association",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "human",
+    "journal_tier": 3,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": []
+  },
+  "qa": {
+    "format": "explainer",
+    "lint_errors": [
+      "cover.headline: 19 words, spec is 9-18",
+      "cover.headline: 125 chars, max 115"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "Young adults first learned two six-item sequences",
+          "problem": "The abstract describes two sequences of three categories each (A \u2192 B \u2192 C and D \u2192 E \u2192 F), not six-item sequences. Each category contained multiple exemplars, but the sequences themselves had three positions, not six.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "After 24 hours, memory favored the starting set over the middle one",
+          "problem": "The abstract says memory favored 'the starting category (A) over the following category (B)', not 'set' over 'set'. The word 'set' implies groups of multiple categories, but the abstract refers to individual categories within a sequence.",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "24 hours or 24 h",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Young adults first learned two six-item sequences",
+        "problem": "The abstract describes two sequences of three categories each (A \u2192 B \u2192 C and D \u2192 E \u2192 F), not six-item sequences. Each category contained multiple exemplars, but the sequences themselves had three positions, not six.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Linking memories of temporally separated neutral and threatening experiences can support later recognition of early warning signals. Yet it remains unclear what cognitive processes might allow the seemingly inconsequential neutral events - encoded in safe contexts and thus prone to forgetting - to nevertheless be preserved in memory well enough to inform future threat predictions. Here, we tested whether Pavlovian threat conditioning retroactively strengthens long-term episodic memory for previously encoded neutral events by leveraging prior knowledge of their predictive relations. Young adults first learned to anticipate the order of semantic categories in two deterministic sequences (A \u2192 B \u2192 C and D \u2192 E \u2192 F) through repeated presentation of images depicting category exemplars. They then incidentally encoded trial-unique exemplars from each category during sequence viewing. In a next phase, exemplars from the third-position categories were repeated such that one (C) predicted mild electric shocks, whereas the other (F) was never reinforced, creating a category-level threat association through conditioning. After 24 h, recognition memory for exemplars of categories encoded before conditioning depended on sequence and position: when a sequence ended with a shock-predictive category, memory favored the starting category (A) over the following category (B) - an effect absent in the control categories (D and E). These results suggest that aversive learning can retroactively reshape episodic memories of neutral events when they are scaffolded by prior sequence knowledge, bridging temporal gaps and thereby potentially promoting early threat anticipation.",
+    "source": "europepmc",
+    "ext_id": "MED:42854332",
+    "pub_types": [
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "http://creativecommons.org/licenses/by/4.0/;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "psych",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Memory_Circuits.jpg/1920px-Memory_Circuits.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "No restrictions",
+    "author": "National Library of Medicine",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Memory Circuits.jpg",
+    "query": "memory",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-09-psych-516a2e7f/bg/cover.jpg"
+  },
+  "reel": {
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-09-psych-516a2e7f/reel.mp4",
+    "duration": 19.2,
+    "bytes": 4140483
+  },
+  "reel_status": {
+    "built": true,
+    "duration": 19.2,
+    "bytes": 4140483
+  }
+}
