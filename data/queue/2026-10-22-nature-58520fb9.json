@@ -1,0 +1,224 @@
+{
+  "id": "2026-10-22-nature-58520fb9",
+  "niche": "nature",
+  "study": {
+    "key": "58520fb9e7ece3df",
+    "title": "Impact of wildfire smoke waves on the association between long-term exposure to fine particulate matter and cardiovascular hospitalizations among older adults in the United States",
+    "journal": "Environmental research, health : ERH",
+    "pub_date": "2026-10-22",
+    "pub_date_display": "Oct 22, 2026",
+    "doi": "10.1088/2752-5309/aeb0c3",
+    "doi_display": "doi.org/10.1088/2752-5309/aeb0c3",
+    "url": "https://doi.org/10.1088/2752-5309/aeb0c3",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Zhang S",
+      "Wang Y",
+      "Wei J",
+      "Krumholz HM",
+      "Lu Y",
+      "Chen K."
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Environmental research, health, 65M adults",
+    "headline": "**Wildfire smoke waves change how air pollution links to heart hospitalizations**, and averages may miss it."
+  },
+  "slides": [
+    {
+      "eyebrow": "What it could mean",
+      "basis": "stated",
+      "title": "Long-term average air pollution may underestimate heart disease burden in areas hit by wildfire smoke waves.",
+      "body": "The link between years of exposure to fine particles and heart hospitalizations was weaker in places that experienced wildfire smoke waves.\n\nRisk assessments that rely only on long-term averages may miss the full cardiovascular toll in smoke-affected regions."
+    },
+    {
+      "eyebrow": "Results",
+      "title": "Moving from 5 to 9 micrograms per cubic meter raised heart hospitalization risk more in years without smoke waves.",
+      "stat": {
+        "value": "9% v 4%",
+        "label": "heart hospitalization increase, by wave status"
+      },
+      "body": "In ZIP codes with no wildfire smoke waves, the jump in two-year average pollution was linked to 9 percent higher risk of heart hospitalizations.\n\nIn ZIP codes with smoke waves, the same increase was linked to only 4 percent higher risk."
+    },
+    {
+      "eyebrow": "What they did",
+      "title": "The team tracked 65.2 million Medicare beneficiaries aged 65 and older from 2017 to 2022 across the contiguous U.S.",
+      "body": "Daily fine particle concentrations were estimated at 1 kilometer resolution and matched to each beneficiary's residential ZIP code.\n\nSmoke waves were defined as two or more consecutive days with wildfire smoke above 10 micrograms per cubic meter."
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Something else about smoke-wave years or the people in those places could explain the difference.",
+    "The paper reports relative changes. Without baseline hospitalization rates, a percentage does not tell you the absolute number of extra cases."
+  ],
+  "cta": {
+    "headline": "Send this to anyone tracking wildfire smoke and health",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Wildfire smoke waves change how long-term air pollution links to heart hospitalizations, and annual averages may miss the full cardiovascular burden in affected regions.",
+  "hashtag_set": "health",
+  "shape": "",
+  "vet": {
+    "key": "58520fb9e7ece3df",
+    "verdict": "HOLD",
+    "score": 37,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "warn",
+        "message": "Design reads as observational (cohort (observational)); markers: cohort, association, associated with",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      },
+      {
+        "code": "CAUSAL_LANGUAGE_IN_OBSERVATIONAL",
+        "severity": "warn",
+        "message": "The paper's own text uses causal verbs (causing, results in) despite an observational design. The authors are overreaching - do not repeat it.",
+        "caveat": null,
+        "draft_rule": null
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Environmental research, health : ERH' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      },
+      {
+        "code": "RELATIVE_RISK_ONLY",
+        "severity": "warn",
+        "message": "Reports relative effects (relative risk) with no absolute numbers.",
+        "caveat": "The paper reports a relative change. Without the baseline rate, a big-sounding percentage can be a very small real-world difference.",
+        "draft_rule": "A relative effect with no absolute baseline must never be stated as a bare percentage on the cover slide."
+      }
+    ],
+    "design": "cohort (observational)",
+    "sample_size": null,
+    "subjects": "human",
+    "journal_tier": null,
+    "causal_language_banned": true,
+    "species": [],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link.",
+      "The paper reports a relative change. Without the baseline rate, a big-sounding percentage can be a very small real-world difference."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'.",
+      "A relative effect with no absolute baseline must never be stated as a bare percentage on the cover slide."
+    ],
+    "notes": []
+  },
+  "qa": {
+    "format": "procedural",
+    "lint_errors": [
+      "slide2.body: 41 words, spec is 30-40",
+      "slide3.title: 21 words, spec is 10-20",
+      "GUARDRAIL the cover kicker says 'Environmental research, health, 65M adults', but this paper was published in 'Environmental research, health : ERH'. The journal is the credibility claim on the cover and it has to be the real one"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "In ZIP codes with no wildfire smoke waves, the jump in two-year average pollution was linked to 9 percent higher risk of heart hospitalizations.",
+          "problem": "The abstract reports RR 1.09 for areas without smoke waves, which represents a 9% increase, but this is for 'overall CVD' not specifically 'heart hospitalizations'. The abstract distinguishes between overall CVD, ischemic heart disease, cerebrovascular disease, and hypertension. 'Heart hospitalizations' is ambiguous and could be misread as only cardiac/ischemic disease rather than all CVD.",
+          "severity": "minor"
+        },
+        {
+          "claim": "In ZIP codes with smoke waves, the same increase was linked to only 4 percent higher risk.",
+          "problem": "The abstract reports RR 1.04 for areas with smoke waves, which represents a 4% increase for 'overall CVD', but the copy simplifies this to just 'risk' without maintaining the CVD specification, creating potential ambiguity about what outcome is being measured.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Moving from 5 to 9 micrograms per cubic meter raised heart hospitalization risk more in years without smoke waves.",
+          "problem": "The abstract refers to 'ZIP-years with and without smoke waves', not 'years without smoke waves'. The comparison is at the ZIP-year level (specific ZIP codes in specific years), not entire calendar years across all locations.",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "65M",
+          "found_in_abstract": true
+        },
+        {
+          "number": "65.2 million",
+          "found_in_abstract": true
+        },
+        {
+          "number": "65",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2017",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2022",
+          "found_in_abstract": true
+        },
+        {
+          "number": "1 kilometer",
+          "found_in_abstract": true
+        },
+        {
+          "number": "two",
+          "found_in_abstract": true
+        },
+        {
+          "number": "10 micrograms per cubic meter",
+          "found_in_abstract": true
+        },
+        {
+          "number": "5",
+          "found_in_abstract": true
+        },
+        {
+          "number": "9",
+          "found_in_abstract": true
+        },
+        {
+          "number": "9 percent",
+          "found_in_abstract": true
+        },
+        {
+          "number": "4 percent",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Background Fine particulate matter (PM 2.5 ) is a risk factor for cardiovascular disease (CVD), even at concentrations below U.S. air quality standards. The frequency and severity of wildfires are increasing, causing episodic PM 2.5 spikes. Our study examined whether associations between long-term exposure to PM 2.5 and cardiovascular hospitalizations differed in the presence and absence of wildfire smoke waves. Methods We conducted a cohort study of 65.2 million U.S. Medicare beneficiaries aged \u2265 65 years across the contiguous U.S. during 2017-2022. Daily total and wildfire smoke PM 2.5 concentrations were estimated at 1 km and 10 km spatial resolutions, respectively, using validated machine learning models that incorporated satellite, meteorological, emission, and land-use data. Exposure estimates were aggregated to beneficiaries' residential ZIP codes by population-weighted averaging. Wildfire smoke waves were defined as \u2265 2 consecutive days with daily smoke PM 2.5 > 10 \u03bcg/m 3 . We applied quasi-Poisson regressions to estimate relative risks (RR) of first hospitalizations for overall CVD, ischemic heart disease, cerebrovascular disease, and hypertension in ZIP-years with and without smoke waves. Results In the full cohort, an increase in two-year average PM 2.5 from 5 \u03bcg/m 3 (WHO annual air quality guideline) to 9 \u03bcg/m 3 (current U.S. annual PM 2.5 standard) was associated with increased risks of overall CVD, cerebrovascular, and hypertension hospitalizations, with stronger associations in ZIP-years without smoke waves than in those with smoke waves (overall CVD: RR 1.09, 95% CI 1.09-1.10 vs. RR 1.04, 95% CI 1.03-1.04; ratio of RR 1.05, 95% CI 1.04-1.06). Similar patterns were observed among beneficiaries residing in ZIP codes with annual PM 2.5 concentrations below 9 \u03bcg/m 3 throughout the study period. Smoke wave-related differences in PM 2.5 -CVD associations were greater among males, urban residents, and residents in the western region compared with their counterparts. Conclusions The association between long-term PM 2.5 exposure and cardiovascular hospitalizations differed by wildfire smoke wave occurrence. These findings suggest that long-term average PM 2.5 may not fully capture episodic high-intensity exposures and may underestimate the cardiovascular morbidity burden in smoke-affected areas, highlighting the need for risk assessments accounting for exposure patterns.",
+    "source": "europepmc",
+    "ext_id": "MED:42921126",
+    "pub_types": [
+      "research-article",
+      "Journal Article"
+    ],
+    "publisher": "IOP Publishing",
+    "license": "https://creativecommons.org/licenses/by/4.0/;https://iopscience.iop.org/info/page/text-and-data-mining;https://publishingsupport.iopscience.iop.org/questions/alternative-author-rights-policies/"
+  },
+  "source_niche": "nature",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3e/Klinikum_Bamberg_S%C3%BCdseite_P2054829.jpg/1920px-Klinikum_Bamberg_S%C3%BCdseite_P2054829.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC BY-SA 4.0",
+    "author": "Ermell",
+    "needs_credit": true,
+    "source": "Wikimedia Commons",
+    "page": "File:Klinikum Bamberg S\u00fcdseite P2054829.jpg",
+    "query": "hospitalization",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-22-nature-58520fb9/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'nature'"
+  }
+}
