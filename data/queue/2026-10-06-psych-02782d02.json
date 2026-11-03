@@ -1,0 +1,131 @@
+{
+  "id": "2026-10-06-psych-02782d02",
+  "niche": "psych",
+  "study": {
+    "key": "02782d0219fb14e4",
+    "title": "Flexibility of hierarchical reasoning across age and species",
+    "journal": "Cognition",
+    "pub_date": "2026-10-06",
+    "pub_date_display": "Oct 6, 2026",
+    "doi": "10.1016/j.cognition.2026.106732",
+    "doi_display": "doi.org/10.1016/j.cognition.2026.106732",
+    "url": "https://doi.org/10.1016/j.cognition.2026.106732",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Dedhe AM",
+      "Ferrigno S",
+      "Liao DA",
+      "Nieder A",
+      "Piantadosi ST",
+      "Cantlon JF."
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Cognition \u00b7 Comparative data",
+    "headline": "**Nested thinking isn't only human** - it shows up in crows and monkeys, just less reliably."
+  },
+  "slides": [
+    {
+      "eyebrow": "What it means for you",
+      "basis": "stated",
+      "title": "The mental skill behind language and tool use appears across species, not just in us.",
+      "body": "Nested reasoning - sorting information in layers - may emerge gradually across development and evolution rather than appearing suddenly in humans.\n\nIf this holds, the line between human and animal cognition is less sharp than we thought."
+    },
+    {
+      "eyebrow": "The result",
+      "title": "Adults showed reliable nested reasoning, while children, crows, and monkeys varied by task.",
+      "body": "Researchers tested US and Bolivian adults, 3-to-6-year-old children, rhesus monkeys, and carrion crows on nested reasoning tasks with different levels of difficulty.\n\nAll groups showed evidence of nested reasoning, but non-human animals and children performed less reliably depending on context.",
+      "stat": {
+        "value": "5",
+        "label": "groups tested across species"
+      }
+    },
+    {
+      "eyebrow": "How it works",
+      "title": "The team used Bayesian modeling to compare performance across visual and conceptual reasoning tasks.",
+      "body": "They analyzed both new data and previously published results. Task difficulty and whether stimuli were visual or semantic both influenced how well each group used nested thinking.\n\nThe findings suggest nested reasoning is flexible and context-dependent, not all-or-none."
+    }
+  ],
+  "caveats": [
+    "The study combined new data with previously published results, so methods varied across the groups tested.",
+    "Individual variation was high within each population, meaning group-level patterns don't predict any single crow or child.",
+    "The tasks were lab-based, so we don't know how nested reasoning plays out in natural behavior."
+  ],
+  "cta": {
+    "headline": "Send this to anyone who says crows can't reason in layers.",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Crows and monkeys can think in nested layers, the mental building block of language and math, just less reliably than adults.",
+  "hashtag_set": "psych",
+  "shape": "",
+  "vet": {
+    "key": "02782d0219fb14e4",
+    "verdict": "PASS",
+    "score": 62,
+    "flags": [],
+    "design": "mechanistic / lab",
+    "sample_size": null,
+    "subjects": "human",
+    "journal_tier": 3,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [],
+    "notes": []
+  },
+  "qa": {
+    "format": "stakes",
+    "lint_errors": [
+      "cta.headline: 11 words, spec is 5-10"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "5 groups",
+          "found_in_abstract": true
+        },
+        {
+          "number": "3-to-6-year-old",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Hierarchical reasoning underlies complex abilities such as language, mathematics, and tool-use. In this study, we examined how hierarchical reasoning flexibly varies in adults across cultures, children, crows, and monkeys. We also tested hierarchical reasoning across varied task complexities and with stimuli from both visual-perceptual and semantic-conceptual relational domains. We conducted Bayesian modelling analyses with both previously published data (Ferrigno et al., 2020; Liao et al., 2022) and newly collected data. These data were cumulatively from US adults, Tsimane adults from an indigenous community at a field location in Bolivia, 3-to-6-year-old US children, rhesus monkeys, and carrion crows. We found evidence for hierarchical reasoning across age and species, though with much individual and cross-population variation. Adults exhibited the most consistent reliance on hierarchical mechanisms, while children and non-humans showed graded performance influenced by task complexity and stimulus type. In summary, the deployment of hierarchical mechanisms varies across contexts rather than operating as an all-or-none capability. These findings suggest that hierarchical reasoning may be a flexible ability-not necessarily unique to humans, but rather emerging through incremental increases in cognitive capacities across development and evolution.",
+    "source": "europepmc",
+    "ext_id": "MED:42837861",
+    "pub_types": [
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "http://www.elsevier.com/open-access/userlicense/1.0/;https://doi.org/10.15223/policy-004;https://doi.org/10.15223/policy-012;https://doi.org/10.15223/policy-017;https://doi.org/10.15223/policy-029;https://doi.org/10.15223/policy-037;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "psych",
+  "cover_art": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/6/64/Cebus_albifrons_edit.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "licence": "CC BY 2.5",
+    "author": "Photo by Whaldener Endo (Edit: Noise reduction and sharpening by User:Diliff.",
+    "needs_credit": true,
+    "source": "Wikimedia Commons",
+    "page": "File:Cebus albifrons edit.jpg",
+    "query": "monkey",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-06-psych-02782d02/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'psych'"
+  }
+}
