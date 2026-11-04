@@ -1,0 +1,137 @@
+{
+  "id": "2026-11-02-health-4b770686",
+  "niche": "health",
+  "study": {
+    "key": "4b770686820e57f5",
+    "title": "Animal protein supply, cognitive ageing and female-male dementia disparities: a global ecological analysis",
+    "journal": "Future science OA",
+    "pub_date": "2026-11-02",
+    "pub_date_display": "Nov 2, 2026",
+    "doi": "10.1080/20565623.2026.2757078",
+    "doi_display": "doi.org/10.1080/20565623.2026.2757078",
+    "url": "https://doi.org/10.1080/20565623.2026.2757078",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "You W",
+      "Sumar B",
+      "Endrawes G",
+      "Garcia L",
+      "Feng S",
+      "Sahay A"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Future Science OA, global data",
+    "headline": "Countries that eat more animal protein **also report more dementia**, but mostly in poorer nations."
+  },
+  "slides": [
+    {
+      "eyebrow": "Why this matters",
+      "basis": "stated",
+      "title": "Animal protein may track with broader changes in diet and health as countries get richer.",
+      "body": "This pattern was stronger in poorer nations than in wealthy ones. That suggests animal protein marks a wider shift in how people eat and age.\n\nThe finding points to risks that depend on where a country sits in that shift."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Researchers linked national animal protein supply to dementia rates in up to 204 countries.",
+      "body": "Higher animal protein supply went together with higher dementia rates. The link was steeper at low-to-moderate supply levels, then flattened at the highest levels.\n\nAnimal protein supply was also linked to larger female-male gaps in dementia.",
+      "stat": {
+        "value": "204",
+        "label": "countries analyzed in the study"
+      }
+    },
+    {
+      "eyebrow": "The setup",
+      "title": "The team used global data from WHO, World Bank, UN, and food databases to test these links.",
+      "body": "They used several methods to compare animal protein supply with dementia rates. They broke down results by income level and region.\n\nThe study treated animal protein as a marker of how diets and health risks change as countries grow."
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Something else could explain the link.",
+    "Country-level data cannot tell us what happens to people who eat more or less animal protein.",
+    "The study did not directly test whether animal protein itself drives dementia, or whether it marks other changes in diet and lifestyle."
+  ],
+  "cta": {
+    "headline": "Send this to anyone fixated on one food",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Countries with more animal protein report more dementia, but the link may mark broader diet shifts rather than one food driving risk.",
+  "hashtag_set": "health",
+  "shape": "",
+  "vet": {
+    "key": "4b770686820e57f5",
+    "verdict": "PASS",
+    "score": 62,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "note",
+        "message": "Design reads as observational (unclear); markers: association, associated with",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": 1,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": []
+  },
+  "qa": {
+    "format": "explainer",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "204",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": true
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Aim: Population-level evidence linking animal protein supply with dementia incidence remains limited. This study examined global associations between national animal protein supply and dementia incidence within an ecological framework of nutritional and epidemiological transition. Materials & methods: Harmonized population-level data from the Food and Agriculture Organization of the United Nations statistical database (FAOSTAT), the Institute for Health Metrics and Evaluation (IHME), the World Bank, the World Health Organization (WHO) and United Nations data platforms were analyzed for up to 204 populations. Animal protein supply was examined in relation to total dementia incidence and female-male differences in dementia incidence using correlation analysis, partial correlation, polynomial modeling, principal component analysis, multivariable regression and stratified analyses by income, development and regional groupings. Results: Animal protein supply was positively associated with total dementia incidence. Associations were non-linear, with steeper increases at low-to-moderate supply levels and attenuation at the highest levels. Associations were stronger in low- and middle-income and developing settings than in high-income or developed contexts. Animal protein supply remained positively associated with female-male incidence differences after adjustment; independence from total incidence and mediation through it were not directly tested. Conclusion: Animal protein supply may operate as an ecological marker of nutritional and epidemiological transition rather than as an isolated dietary exposure. These findings support context-sensitive interpretation of diet-dementia associations in global cognitive ageing research.",
+    "source": "europepmc",
+    "ext_id": "MED:42973038",
+    "pub_types": [
+      "Journal Article"
+    ],
+    "publisher": "Informa UK Limited",
+    "license": "http://creativecommons.org/licenses/by-nc/4.0/;https://doi.org/10.1080/policies-text-data-mining"
+  },
+  "source_niche": "health",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/Bee_Ounsworth_Country_Singer_and_Songwriter.jpg/1920px-Bee_Ounsworth_Country_Singer_and_Songwriter.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC BY-SA 4.0",
+    "author": "BeeMusicUK",
+    "needs_credit": true,
+    "source": "Wikimedia Commons",
+    "page": "File:Bee Ounsworth Country Singer and Songwriter.jpg",
+    "query": "country",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-11-02-health-4b770686/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'health'"
+  }
+}
