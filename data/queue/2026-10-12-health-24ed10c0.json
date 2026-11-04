@@ -1,0 +1,195 @@
+{
+  "id": "2026-10-12-health-24ed10c0",
+  "niche": "health",
+  "study": {
+    "key": "24ed10c00eb41115",
+    "title": "Predicting IGD treatment outcomes across interventions using a whole-brain functional connectome biomarker",
+    "journal": "Dialogues in clinical neuroscience",
+    "pub_date": "2026-10-12",
+    "pub_date_display": "Oct 12, 2026",
+    "doi": "10.1080/19585969.2026.2742156",
+    "doi_display": "doi.org/10.1080/19585969.2026.2742156",
+    "url": "https://doi.org/10.1080/19585969.2026.2742156",
+    "is_preprint": false,
+    "server": "",
+    "n": 90,
+    "authors": [
+      "Wei M",
+      "Luo X",
+      "Fu J",
+      "Li S",
+      "Ni H",
+      "Liu J"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Dialogues in Clinical Neuroscience",
+    "headline": "**Brain scans before treatment** may predict who recovers from internet gaming disorder."
+  },
+  "slides": [
+    {
+      "eyebrow": "What it could mean",
+      "basis": "stated",
+      "title": "A brain pattern predicted symptom change before treatment started, no matter which therapy people received.",
+      "body": "If brain scans can show who will respond to treatment, doctors could tailor care earlier. The pattern worked across three different therapies.\n\nThis moves closer to custom treatment plans based on brain markers, not trial and error."
+    },
+    {
+      "eyebrow": "Results",
+      "title": "One brain network predicted 40% of symptom change; another predicted 48%.",
+      "body": "Researchers looked at resting-state brain scans from 90 people with internet gaming disorder. Whole-brain patterns predicted individual symptom change across all three therapies.\n\nThe positive network showed stronger prediction. Both models were tested on an external dataset.",
+      "stat": {
+        "value": "48%",
+        "label": "of variance in outcomes predicted"
+      }
+    },
+    {
+      "eyebrow": "What they did",
+      "title": "Ninety people with internet gaming disorder received one of three therapies.",
+      "body": "The therapies were mindfulness meditation, approach bias training, or retrieval-aversive training. Resting-state fMRI scans were taken before treatment began.\n\nThe model was tested on how well it predicted individual symptom change across the three different therapy types."
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Something else could explain the link between brain patterns and treatment response.",
+    "All participants had internet gaming disorder. Whether these patterns predict outcomes in other conditions is unknown."
+  ],
+  "cta": {
+    "headline": "Send this to anyone choosing between three therapies",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Brain patterns before therapy began predicted who would improve from internet gaming disorder, no matter which treatment they received.",
+  "hashtag_set": "psych",
+  "shape": "",
+  "vet": {
+    "key": "24ed10c00eb41115",
+    "verdict": "HOLD",
+    "score": 62,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "warn",
+        "message": "Design reads as observational (cohort (observational)); markers: associated with, registry",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      }
+    ],
+    "design": "cohort (observational)",
+    "sample_size": 90,
+    "subjects": "unclear",
+    "journal_tier": 1,
+    "causal_language_banned": true,
+    "species": [],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": []
+  },
+  "qa": {
+    "format": "procedural",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "One brain network predicted 40% of symptom change",
+          "problem": "The abstract states the negative network r = 0.401, which represents correlation, not percentage of symptom change. A correlation of 0.401 corresponds to approximately 16% of variance explained (r-squared), not 40%.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "another predicted 48%",
+          "problem": "The abstract states r = 0.480 for what appears to be another network. A correlation of 0.480 corresponds to approximately 23% of variance explained (r-squared), not 48%.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "48% of variance in outcomes predicted",
+          "problem": "The abstract reports r = 0.480, which when squared gives approximately 23% of variance explained, not 48%. The copy appears to have converted the correlation coefficient directly to a percentage of variance, which is mathematically incorrect.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "approach bias training",
+          "problem": "The abstract refers to 'approach bias modification', not 'approach bias training'. While similar, this changes the terminology used in the study.",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "90",
+          "found_in_abstract": true
+        },
+        {
+          "number": "three",
+          "found_in_abstract": true
+        },
+        {
+          "number": "40%",
+          "found_in_abstract": false
+        },
+        {
+          "number": "48%",
+          "found_in_abstract": false
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "One brain network predicted 40% of symptom change",
+        "problem": "The abstract states the negative network r = 0.401, which represents correlation, not percentage of symptom change. A correlation of 0.401 corresponds to approximately 16% of variance explained (r-squared), not 40%.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "another predicted 48%",
+        "problem": "The abstract states r = 0.480 for what appears to be another network. A correlation of 0.480 corresponds to approximately 23% of variance explained (r-squared), not 48%.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "48% of variance in outcomes predicted",
+        "problem": "The abstract reports r = 0.480, which when squared gives approximately 23% of variance explained, not 48%. The copy appears to have converted the correlation coefficient directly to a percentage of variance, which is mathematically incorrect.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "40%",
+        "found_in_abstract": false
+      },
+      {
+        "number": "48%",
+        "found_in_abstract": false
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Background Although treatment approaches have been explored in internet gaming disorder (IGD), however, little is known about the specific neural activity that is associated with treatment outcomes. This study aims to establish a treatment-sensitive network that reliably predicts treatment outcomes across different interventions for IGD. Methods Resting-state fMRI data were collected from 90 individuals with IGD who received one of three different intervention protocols (mindfulness meditation, approach bias modification, or retrieval-aversive conditioning training). Connectome-based predictive modelling (CPM) was used to build a treatment-sensitive network to predict individual symptom reduction, then validated them on the external dataset. Results The negative ( r = 0.401, p r = 0.480, p Conclusions This study established a treatment-sensitive network based on the whole-brain connectome. These findings provide valuable empirical evidence for identifying biomarkers for IGD treatment and advance personalised therapeutic strategies. Clinical trials registration The trial protocol was pre-registered with the Chinese Clinical Trial Registry (www.chictr.org.cn; ChiCTR2300077831(MM), ChiCTR2300075869(ApBm), ChiCTR2500095444(R-AC), ChiCTR2400090834(SAE)).",
+    "source": "europepmc",
+    "ext_id": "MED:42862599",
+    "pub_types": [
+      "Clinical Trial",
+      "Journal Article"
+    ],
+    "publisher": "Informa UK Limited",
+    "license": "http://creativecommons.org/licenses/by-nc/4.0/;https://doi.org/10.1080/policies-text-data-mining"
+  },
+  "source_niche": "health",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Polio_physical_therapy.jpg/1920px-Polio_physical_therapy.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "Public domain",
+    "author": "Photo Credit:\nContent Providers: CDC/Charles Farmer",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Polio physical therapy.jpg",
+    "query": "treatment",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-12-health-24ed10c0/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'health'"
+  }
+}
