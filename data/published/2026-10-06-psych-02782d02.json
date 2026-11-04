@@ -102,7 +102,7 @@
     "unverified_numbers": [],
     "publishable": false
   },
-  "status": "approved",
+  "status": "published",
   "source": {
     "abstract": "Hierarchical reasoning underlies complex abilities such as language, mathematics, and tool-use. In this study, we examined how hierarchical reasoning flexibly varies in adults across cultures, children, crows, and monkeys. We also tested hierarchical reasoning across varied task complexities and with stimuli from both visual-perceptual and semantic-conceptual relational domains. We conducted Bayesian modelling analyses with both previously published data (Ferrigno et al., 2020; Liao et al., 2022) and newly collected data. These data were cumulatively from US adults, Tsimane adults from an indigenous community at a field location in Bolivia, 3-to-6-year-old US children, rhesus monkeys, and carrion crows. We found evidence for hierarchical reasoning across age and species, though with much individual and cross-population variation. Adults exhibited the most consistent reliance on hierarchical mechanisms, while children and non-humans showed graded performance influenced by task complexity and stimulus type. In summary, the deployment of hierarchical mechanisms varies across contexts rather than operating as an all-or-none capability. These findings suggest that hierarchical reasoning may be a flexible ability-not necessarily unique to humans, but rather emerging through incremental increases in cognitive capacities across development and evolution.",
     "source": "europepmc",
@@ -130,5 +130,19 @@
   },
   "review": {
     "forced": true
+  },
+  "published": {
+    "media_id": "18081833036717451",
+    "kind": "CAROUSEL",
+    "at": "2026-11-04T01:00:45Z"
+  },
+  "crosspost": {
+    "at": "2026-11-04T01:00:45Z",
+    "posted": [],
+    "skipped": [
+      "bluesky",
+      "threads"
+    ],
+    "failed": {}
   }
 }
