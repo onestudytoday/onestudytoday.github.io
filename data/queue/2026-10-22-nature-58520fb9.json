@@ -208,17 +208,22 @@
   },
   "source_niche": "nature",
   "cover_art": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3e/Klinikum_Bamberg_S%C3%BCdseite_P2054829.jpg/1920px-Klinikum_Bamberg_S%C3%BCdseite_P2054829.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "licence": "CC BY-SA 4.0",
-    "author": "Ermell",
-    "needs_credit": true,
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Edmonia_Lewis_by_Henry_Rocher.jpg/1920px-Edmonia_Lewis_by_Henry_Rocher.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "Public domain",
+    "author": "Henry Rocher / Adam Cuerden",
+    "needs_credit": false,
     "source": "Wikimedia Commons",
-    "page": "File:Klinikum Bamberg S\u00fcdseite P2054829.jpg",
-    "query": "hospitalization",
+    "page": "File:Edmonia Lewis by Henry Rocher.jpg",
+    "query": "wildfire",
     "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-22-nature-58520fb9/bg/cover.jpg"
   },
   "reel_status": {
     "built": false,
     "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'nature'"
-  }
+  },
+  "cover_art_tried": [
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3e/Klinikum_Bamberg_S%C3%BCdseite_P2054829.jpg/1920px-Klinikum_Bamberg_S%C3%BCdseite_P2054829.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Edmonia_Lewis_by_Henry_Rocher.jpg/1920px-Edmonia_Lewis_by_Henry_Rocher.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+  ],
+  "render_seq": 1
 }
