@@ -208,13 +208,13 @@
   },
   "source_niche": "nature",
   "cover_art": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Edmonia_Lewis_by_Henry_Rocher.jpg/1920px-Edmonia_Lewis_by_Henry_Rocher.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Lick_Fire_on_the_Umatilla_National_Forest_burning_at_night.jpg/1920px-Lick_Fire_on_the_Umatilla_National_Forest_burning_at_night.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "licence": "Public domain",
-    "author": "Henry Rocher / Adam Cuerden",
+    "author": "U.S. Forest Service- Pacific Northwest Region",
     "needs_credit": false,
     "source": "Wikimedia Commons",
-    "page": "File:Edmonia Lewis by Henry Rocher.jpg",
-    "query": "wildfire",
+    "page": "File:Lick Fire on the Umatilla National Forest burning at night.jpg",
+    "query": "forest fire",
     "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-22-nature-58520fb9/bg/cover.jpg"
   },
   "reel_status": {
@@ -223,7 +223,8 @@
   },
   "cover_art_tried": [
     "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3e/Klinikum_Bamberg_S%C3%BCdseite_P2054829.jpg/1920px-Klinikum_Bamberg_S%C3%BCdseite_P2054829.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Edmonia_Lewis_by_Henry_Rocher.jpg/1920px-Edmonia_Lewis_by_Henry_Rocher.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Edmonia_Lewis_by_Henry_Rocher.jpg/1920px-Edmonia_Lewis_by_Henry_Rocher.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Lick_Fire_on_the_Umatilla_National_Forest_burning_at_night.jpg/1920px-Lick_Fire_on_the_Umatilla_National_Forest_burning_at_night.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   ],
-  "render_seq": 1
+  "render_seq": 2
 }
