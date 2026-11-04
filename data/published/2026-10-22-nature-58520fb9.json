@@ -194,7 +194,7 @@
     "unverified_numbers": [],
     "publishable": false
   },
-  "status": "approved",
+  "status": "published",
   "source": {
     "abstract": "Background Fine particulate matter (PM 2.5 ) is a risk factor for cardiovascular disease (CVD), even at concentrations below U.S. air quality standards. The frequency and severity of wildfires are increasing, causing episodic PM 2.5 spikes. Our study examined whether associations between long-term exposure to PM 2.5 and cardiovascular hospitalizations differed in the presence and absence of wildfire smoke waves. Methods We conducted a cohort study of 65.2 million U.S. Medicare beneficiaries aged \u2265 65 years across the contiguous U.S. during 2017-2022. Daily total and wildfire smoke PM 2.5 concentrations were estimated at 1 km and 10 km spatial resolutions, respectively, using validated machine learning models that incorporated satellite, meteorological, emission, and land-use data. Exposure estimates were aggregated to beneficiaries' residential ZIP codes by population-weighted averaging. Wildfire smoke waves were defined as \u2265 2 consecutive days with daily smoke PM 2.5 > 10 \u03bcg/m 3 . We applied quasi-Poisson regressions to estimate relative risks (RR) of first hospitalizations for overall CVD, ischemic heart disease, cerebrovascular disease, and hypertension in ZIP-years with and without smoke waves. Results In the full cohort, an increase in two-year average PM 2.5 from 5 \u03bcg/m 3 (WHO annual air quality guideline) to 9 \u03bcg/m 3 (current U.S. annual PM 2.5 standard) was associated with increased risks of overall CVD, cerebrovascular, and hypertension hospitalizations, with stronger associations in ZIP-years without smoke waves than in those with smoke waves (overall CVD: RR 1.09, 95% CI 1.09-1.10 vs. RR 1.04, 95% CI 1.03-1.04; ratio of RR 1.05, 95% CI 1.04-1.06). Similar patterns were observed among beneficiaries residing in ZIP codes with annual PM 2.5 concentrations below 9 \u03bcg/m 3 throughout the study period. Smoke wave-related differences in PM 2.5 -CVD associations were greater among males, urban residents, and residents in the western region compared with their counterparts. Conclusions The association between long-term PM 2.5 exposure and cardiovascular hospitalizations differed by wildfire smoke wave occurrence. These findings suggest that long-term average PM 2.5 may not fully capture episodic high-intensity exposures and may underestimate the cardiovascular morbidity burden in smoke-affected areas, highlighting the need for risk assessments accounting for exposure patterns.",
     "source": "europepmc",
@@ -229,5 +229,19 @@
   "render_seq": 2,
   "review": {
     "forced": true
+  },
+  "published": {
+    "media_id": "18036234299667957",
+    "kind": "CAROUSEL",
+    "at": "2026-11-04T00:56:58Z"
+  },
+  "crosspost": {
+    "at": "2026-11-04T00:56:58Z",
+    "posted": [],
+    "skipped": [
+      "bluesky",
+      "threads"
+    ],
+    "failed": {}
   }
 }
