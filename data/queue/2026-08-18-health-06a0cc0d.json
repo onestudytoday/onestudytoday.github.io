@@ -192,17 +192,22 @@
   },
   "source_niche": "health",
   "cover_art": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/Mask_Diabo_of_Portugal_used_on_folk_fest_and_rituals.jpg/1920px-Mask_Diabo_of_Portugal_used_on_folk_fest_and_rituals.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "licence": "CC0",
-    "author": "Wilfredor",
-    "needs_credit": false,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/5b/3D_Medical_Animation_liver_parts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "licence": "CC BY-SA 4.0",
+    "author": "https://www.scientificanimations.com",
+    "needs_credit": true,
     "source": "Wikimedia Commons",
-    "page": "File:Mask Diabo of Portugal used on folk fest and rituals.jpg",
-    "query": "whether",
+    "page": "File:3D Medical Animation liver parts.jpg",
+    "query": "liver",
     "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-08-18-health-06a0cc0d/bg/cover.jpg"
   },
   "reel_status": {
     "built": false,
     "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'health'"
-  }
+  },
+  "cover_art_tried": [
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/Mask_Diabo_of_Portugal_used_on_folk_fest_and_rituals.jpg/1920px-Mask_Diabo_of_Portugal_used_on_folk_fest_and_rituals.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "https://upload.wikimedia.org/wikipedia/commons/5/5b/3D_Medical_Animation_liver_parts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+  ],
+  "render_seq": 1
 }
