@@ -1,0 +1,142 @@
+{
+  "id": "2026-11-04-physics-adad921c",
+  "niche": "physics",
+  "study": {
+    "key": "adad921c2dd6b626",
+    "title": "A Quantum Lower Bound for Triangle Finding",
+    "journal": "arXiv",
+    "pub_date": "2026-11-04",
+    "pub_date_display": "Nov 4, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2611.06751v1",
+    "url": "http://arxiv.org/abs/2611.06751v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Arjan Cornelissen",
+      "Amin Shiraz Gilani",
+      "Xingyu Zhou"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "arXiv preprint (not peer reviewed)",
+    "headline": "**Quantum computers may have a harder limit** on finding patterns in networks than researchers hoped."
+  },
+  "slides": [
+    {
+      "eyebrow": "Why this matters",
+      "basis": "inferred",
+      "title": "If this holds, some network problems might stay out of reach even with quantum speedup.",
+      "body": "Quantum computers promise to search certain structures faster than ordinary machines. But this early paper suggests a floor.\n\nThat could mean some pattern-detection tasks will always be expensive, even in a quantum future."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "The team reports that finding triangles in a network requires at least N to the power 13/12 queries.",
+      "body": "For graphs with N vertices, the best quantum algorithms use about N to the power 5/4 queries. The new lower bound is N to the power 13/12.\n\nThat narrows the gap between possible and necessary.",
+      "stat": {
+        "value": "N^13/12",
+        "label": "minimum queries reported by team"
+      }
+    },
+    {
+      "eyebrow": "The setup",
+      "title": "Triangle finding means detecting when three nodes in a graph all connect to each other.",
+      "body": "It is a benchmark problem in quantum algorithm design. For years, the lower bound was just N queries, the cost of unstructured search.\n\nThe work compares graphs with a planted triangle to random triangle-free graphs."
+    }
+  ],
+  "caveats": [
+    "This is a preprint. It has not been peer reviewed yet, so no independent expert has checked the work.",
+    "The implication slide reflects our interpretation. The paper itself establishes a mathematical lower bound, not a claim about future quantum hardware."
+  ],
+  "cta": {
+    "headline": "Send this to the quantum optimist",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "A new lower bound suggests quantum computers might hit a wall on some graph problems sooner than the best current algorithms imply.",
+  "hashtag_set": "physics",
+  "shape": "",
+  "vet": {
+    "key": "adad921c2dd6b626",
+    "verdict": "HOLD",
+    "score": 42,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "explainer",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "13/12",
+          "found_in_abstract": true
+        },
+        {
+          "number": "5/4",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": true
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Triangle finding is a fundamental problem in graph theory that has played a central role in the development of quantum algorithmic techniques. For $N$-vertex graphs given by their adjacency matrices, a long line of work has improved the quantum query upper bound from $O(N^{3/2})$ to $O(N^{5/4})$. However, the best known lower bound has remained the elementary $\u03a9(N)$ bound obtained from unstructured search. We prove the first superlinear quantum query lower bound for triangle finding, showing that $\u03a9(N^{13/12})$ queries are necessary. Our result also implies the same lower bound for triangle detection and for detecting every fixed connected non-bipartite graph. The proof builds on the compressed oracle approach of Zhandry and the transfer approaches of Belovs. It compares the computation on graphs with a planted triangle to the computation on random graphs conditioned to be triangle-free, through a map on the input registers that almost commutes with every query. We average over local changes to the input while preserving its distribution, through a procedure known as conditional resampling. Our main technical contribution is a set of estimates that let us control the query error under this averaging, despite the dependence introduced by conditioning a dense graph to be triangle-free.",
+    "source": "arxiv",
+    "ext_id": "2611.06751v1",
+    "pub_types": [
+      "quant-ph",
+      "cs.DS"
+    ],
+    "publisher": "arXiv",
+    "license": ""
+  },
+  "source_niche": "physics",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/Researcher_at_work_in_her_laboratory.jpg/1920px-Researcher_at_work_in_her_laboratory.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC BY 4.0",
+    "author": "axventura",
+    "needs_credit": true,
+    "source": "Wikimedia Commons",
+    "page": "File:Researcher at work in her laboratory.jpg",
+    "query": "researcher",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-11-04-physics-adad921c/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'physics'"
+  }
+}
