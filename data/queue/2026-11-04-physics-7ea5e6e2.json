@@ -1,0 +1,170 @@
+{
+  "id": "2026-11-04-physics-7ea5e6e2",
+  "niche": "physics",
+  "study": {
+    "key": "7ea5e6e299336e2f",
+    "title": "Using topology to reveal all mutually unbiased bases in dimension six",
+    "journal": "arXiv",
+    "pub_date": "2026-11-04",
+    "pub_date_display": "Nov 4, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2611.06917v1",
+    "url": "http://arxiv.org/abs/2611.06917v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Mateo C\u00e1rdenes Wuttig",
+      "Joseph Tindall"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "arXiv (not peer reviewed)",
+    "headline": "A puzzle in quantum math **may finally be closed** in the first dimension where nobody knew the full answer."
+  },
+  "slides": [
+    {
+      "eyebrow": "Why this matters",
+      "basis": "inferred",
+      "title": "If the proof holds, dimension six becomes the first solved case where every possible set of these bases is mapped.",
+      "body": "That could guide which quantum systems are useful for tasks that need certainty in one test to guarantee ignorance in another.\n\nSimpler dimensions were already solved. Dimension six was the simplest case still open."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "The team reports every triple of these bases belongs to one family or is one isolated triple.",
+      "body": "Since none extend to a fourth basis, this also shows no four such bases exist in dimension six.\n\nThese bases describe tests where certainty in one gives no information about the others.",
+      "stat": {
+        "value": "30+",
+        "label": "years the question stayed open"
+      }
+    },
+    {
+      "eyebrow": "The mechanism",
+      "title": "The proof rests on showing almost all of these matrices form a connected space in the right topology.",
+      "body": "Connectedness reduced the problem to finitely many overlapping balls in four dimensions.\n\nThe team used interval math to certify the balls cover the space, then found all third bases for every pair in each ball."
+    }
+  ],
+  "caveats": [
+    "This is a preprint. It has not been peer reviewed yet, so no independent expert has checked the proof.",
+    "The conclusions on why this matters are ours. Read the paper to judge for yourself."
+  ],
+  "cta": {
+    "headline": "Send this to the topology nerds",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "A thirty-year question in quantum math may be settled using the topology of the space where these bases live.",
+  "hashtag_set": "physics",
+  "shape": "",
+  "vet": {
+    "key": "7ea5e6e299336e2f",
+    "verdict": "HOLD",
+    "score": 42,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      },
+      {
+        "code": "HYPE_LANGUAGE",
+        "severity": "note",
+        "message": "Paper text contains hype words: proves",
+        "caveat": null,
+        "draft_rule": "Do not reuse the paper's promotional wording."
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'.",
+      "Do not reuse the paper's promotional wording."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "explainer",
+    "lint_errors": [
+      "cover.headline: 19 words, spec is 9-18"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "six",
+          "found_in_abstract": true
+        },
+        {
+          "number": "30+",
+          "found_in_abstract": true
+        },
+        {
+          "number": "four",
+          "found_in_abstract": true
+        },
+        {
+          "number": "two-parameter",
+          "found_in_abstract": true
+        },
+        {
+          "number": "four-dimensional",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [
+      {
+        "number": "30",
+        "found_in_abstract": false,
+        "checked_by": "code"
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Mutually unbiased bases (MUBs) describe complementary quantum measurements: certainty in one basis gives no information about the others. In dimension six, triples of MUBs are known, but whether a fourth basis could exist remained unresolved for over three decades. OpenAI recently reported a proof that none exists. Here we use the topology of the space of complex Hadamard matrices, which describe transitions between MUBs, to characterize all sets in dimension six. We prove that every mutually unbiased triple belongs to a two-parameter family or is a single isolated triple built from the Fourier matrix. Since none of them extend to a fourth basis, this also proves that no four MUBs exist. Our proof rests on a new topological result that all order-six complex Hadamard matrices except Tao's form a connected space. Connectedness reduces the classification of triples to finitely many overlapping four-dimensional phase balls. We certify with interval arithmetic that these balls cover the space and for every pair of MUBs represented in a ball, we then determine all third bases that extend it. Dimension six is now the first non-prime-power dimension in which all sets of MUBs are classified.",
+    "source": "arxiv",
+    "ext_id": "2611.06917v1",
+    "pub_types": [
+      "quant-ph",
+      "math-ph",
+      "math.CO"
+    ],
+    "publisher": "arXiv",
+    "license": ""
+  },
+  "source_niche": "physics",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/2019_Tour_of_Slovenia_%28Team_Dimension_Data%29.jpg/1920px-2019_Tour_of_Slovenia_%28Team_Dimension_Data%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC BY-SA 4.0",
+    "author": "Petar Milo\u0161evi\u0107",
+    "needs_credit": true,
+    "source": "Wikimedia Commons",
+    "page": "File:2019 Tour of Slovenia (Team Dimension Data).jpg",
+    "query": "dimension",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-11-04-physics-7ea5e6e2/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'physics'"
+  }
+}
