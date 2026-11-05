@@ -179,7 +179,7 @@
     ],
     "publishable": false
   },
-  "status": "approved",
+  "status": "published",
   "source": {
     "abstract": "Primary liver cancer lacks robust biomarkers for anti-PD-1/PD-L1 therapy. Methods: We engineered peptide-functionalized magnetic nanobeads (Pep@MNPs) for high-efficiency, EpCAM-dependent capture of circulating tumor cells (CTCs). This nanotechnology-based platform enabled a precise fluorescence quantitative system (cTPS) associate with immunotherapy outcomes in hepatocellular carcinoma and intrahepatic cholangiocarcinoma. The Pep@MNPs system revealed a significant correlation between high CTC PD-L1 expression and therapeutic response. Patients with baseline cTPS high (\u226520%) achieved a superior objective response rate compared to the low-expression group (40% vs. 0%; P = 0.005). Utilizing this nanobead-enabled quantification, cTPS high patients demonstrated significantly prolonged progression-free survival (median 48.29 vs. 5.86 weeks, P = 0.005) and overall survival (median undefined vs. 25.71 weeks, P = 0.004). Furthermore, multivariate Cox regression confirmed cTPS high as a robust independent predictor for both PFS and OS (both P = 0.005) after adjusting for clinical variables. This peptide-nanobead liquid biopsy strategy effectively stratifies patients benefiting from PD-1 inhibitors, highlighting its potential as a precise theranostic tool for clinical monitoring.",
     "source": "europepmc",
@@ -212,5 +212,19 @@
   "render_seq": 1,
   "review": {
     "forced": true
+  },
+  "published": {
+    "media_id": "18097980845404122",
+    "kind": "CAROUSEL",
+    "at": "2026-11-05T03:25:32Z"
+  },
+  "crosspost": {
+    "at": "2026-11-05T03:25:32Z",
+    "posted": [],
+    "skipped": [
+      "bluesky",
+      "threads"
+    ],
+    "failed": {}
   }
 }
