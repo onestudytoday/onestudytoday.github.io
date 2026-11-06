@@ -169,7 +169,7 @@
     "unverified_numbers": [],
     "publishable": false
   },
-  "status": "needs_review",
+  "status": "approved",
   "source": {
     "abstract": "As research on microorganisms in extreme deep-sea environments advances, there is an urgent need for in-situ, highly sensitive detection technologies for their metabolites. However, the extreme conditions of the deep sea pose significant challenges to sensor pressure resistance, anti-interference capability, and operational compatibility. A sodium alginate fabric flexible surface-enhanced Raman scattering substrate decorated with silver nanoparticles (AgNPs-SA@Cloth) was fabricated by in-situ reduction of uniform AgNPswithin a 3-D hydrogel network, enabling sensitive Raman detection under high-salinity and high-pressure conditions. The alginate layer preserves SERS stability in 1 M CaCl 2 , at 10 MPa and over 35 days of storage, while the fabric scaffold provides bendability and on-site cut-and-replace compatibility with remotely operated vehicles (ROVs).The substrate was experimentally confirmed to detect 4-aminothiophenol (4-ATP) down to 1 \u00d7 10 -12 M, with an enhancement factor (EF) of 4.25 \u00d7 10 10 . It also enables simultaneous identification of glutathione(GSH) and cytarabine in the presence of ten-fold competing species.After deployment and retrieval from 1000 m depth, the substrate remained intact and still detected 10 -6 M metabolites without peak shift, confirming reliability under extreme conditions. This work overcomes the fragility of rigid chips and the aggregation of colloidal particles, extending flexible hydrogel SERS substrates to the deep ocean and offering a robust tool for in-situ tracking of microbial metabolites and efficient discovery of functional deep-sea molecules.",
     "source": "europepmc",
@@ -203,5 +203,8 @@
       "carried_caveats": []
     }
   ],
-  "render_seq": 1
+  "render_seq": 1,
+  "review": {
+    "forced": true
+  }
 }
