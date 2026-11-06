@@ -1,0 +1,184 @@
+{
+  "id": "2026-10-08-nature-4a8e3658",
+  "niche": "wildcard",
+  "study": {
+    "key": "4a8e365841d4613a",
+    "title": "A blueprint for &lt;i&gt;Vibrio&lt;/i&gt; surveillance and risk reduction in Europe",
+    "journal": "One health (Amsterdam, Netherlands)",
+    "pub_date": "2026-10-08",
+    "pub_date_display": "Oct 8, 2026",
+    "doi": "10.1016/j.onehlt.2026.101604",
+    "doi_display": "doi.org/10.1016/j.onehlt.2026.101604",
+    "url": "https://doi.org/10.1016/j.onehlt.2026.101604",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Higginson A",
+      "Martinez-Urtaza J",
+      "King C",
+      "Hartnell R",
+      "Baker-Austin C."
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "One Health journal + policy",
+    "headline": "**Europe needs a Vibrio surveillance system** before climate change turns coastal waters into infection hotspots"
+  },
+  "slides": [
+    {
+      "eyebrow": "Why this matters",
+      "basis": "stated",
+      "title": "Rising sea temperatures are pushing tropical bacteria into European coastlines with no coordinated tracking system.",
+      "body": "Vibrio bacteria cause wound and foodborne infections. They used to stay in tropical waters. Warming seas are bringing them north.\n\nRecent outbreaks in the Baltic and North Seas show Europe is unprepared. Surveillance is patchy and public warnings are limited."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Vibrio infections are increasing in frequency and moving to higher latitudes as extreme weather reshapes coastal waters.",
+      "body": "Vibrio vulnificus and V. parahaemolyticus now appear in regions that were previously too cold. Climate change is expanding suitable habitat for these pathogens.\n\nEurope needs integrated monitoring that combines environmental tracking, genomic surveillance, and public health communication.",
+      "stat": {
+        "value": "54/100",
+        "label": "credibility score for this policy perspective"
+      }
+    },
+    {
+      "eyebrow": "The setup",
+      "title": "Vibrio species thrive in warm seawater and infect people through open wounds or contaminated shellfish.",
+      "body": "The bacteria are recognized as a sentinel of climate-linked infectious disease. But no unified European framework exists to monitor outbreaks or warn the public.\n\nCoordinated preparedness will protect health systems and coastal communities as waters continue warming."
+    }
+  ],
+  "caveats": [
+    "This is a policy and surveillance blueprint, not a study measuring new clinical or environmental data.",
+    "The abstract does not quantify infection rates, outbreak frequency, or the geographic spread with specific numbers or trends."
+  ],
+  "cta": {
+    "headline": "Send this to the shellfish skeptic",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Warm-water bacteria are moving into European coastlines, and most countries have no system in place to track or warn about them",
+  "hashtag_set": "health",
+  "shape": "",
+  "vet": {
+    "key": "4a8e365841d4613a",
+    "verdict": "PASS",
+    "score": 54,
+    "flags": [
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'One health (Amsterdam, Netherlands)' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "explainer",
+    "lint_errors": [
+      "GUARDRAIL the cover kicker says 'One Health journal + policy', but this paper was published in 'One health (Amsterdam, Netherlands)'. The journal is the credibility claim on the cover and it has to be the real one"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "They used to stay in tropical waters.",
+          "problem": "The abstract states Vibrio bacteria are 'long regarded as pathogens of tropical waters' but does not claim they actually stayed only in tropical waters or that they are now moving from tropical to European waters for the first time.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Vibrio vulnificus and V. parahaemolyticus now appear in regions that were previously too cold.",
+          "problem": "The abstract does not state these species are appearing in previously too-cold regions. It says they are 'emerging across numerous European coastlines' and that climate change is 'expanding the suitable habitat', but does not claim these regions were previously too cold or that the bacteria are appearing there for the first time.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "credibility score for this policy perspective 54/100",
+          "problem": "This numerical score does not appear anywhere in the abstract and represents an evaluation added by the copy.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "54/100",
+          "found_in_abstract": false
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Vibrio vulnificus and V. parahaemolyticus now appear in regions that were previously too cold.",
+        "problem": "The abstract does not state these species are appearing in previously too-cold regions. It says they are 'emerging across numerous European coastlines' and that climate change is 'expanding the suitable habitat', but does not claim these regions were previously too cold or that the bacteria are appearing there for the first time.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "credibility score for this policy perspective 54/100",
+        "problem": "This numerical score does not appear anywhere in the abstract and represents an evaluation added by the copy.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "54/100",
+        "found_in_abstract": false
+      },
+      {
+        "number": "54",
+        "found_in_abstract": false,
+        "checked_by": "code"
+      },
+      {
+        "number": "100",
+        "found_in_abstract": false,
+        "checked_by": "code"
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Vibrio bacteria, long regarded as pathogens of tropical waters, are now emerging across numerous European coastlines as rising sea surface temperatures and extreme weather reshape microbial ecologies. Wound and foodborne infections caused by Vibrio vulnificus , Vibrio parahaemolyticus and other non-cholera species are increasing in frequency and latitude. Recent heat-related outbreaks in the Baltic and North Seas demonstrate that climate change is already expanding the suitable habitat for these bacteria. Yet across Europe surveillance remains patchy, diagnostics inconsistent, and risk communication limited. Europe requires an integrated approach to Vibrio preparedness, uniting environmental monitoring, genomic epidemiology surveillance, and public health awareness. Recognising Vibrio spp. as a sentinel of climate-linked infectious disease will be necessary for protecting coastal communities, seafood safety, and health systems in a warming world.",
+    "source": "europepmc",
+    "ext_id": "MED:42936307",
+    "pub_types": [
+      "discussion",
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "http://creativecommons.org/licenses/by-nc-nd/4.0/;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "nature",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Remix_Surveillance.png/1920px-Remix_Surveillance.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC0",
+    "author": "Irbsas",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Remix Surveillance.png",
+    "query": "surveillance",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-08-nature-4a8e3658/bg/cover.jpg"
+  },
+  "reel": {
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-08-nature-4a8e3658/reel.mp4",
+    "duration": 19.2,
+    "bytes": 3786646
+  },
+  "reel_status": {
+    "built": true,
+    "duration": 19.2,
+    "bytes": 3786646
+  }
+}
