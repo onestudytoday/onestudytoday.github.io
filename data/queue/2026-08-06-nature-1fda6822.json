@@ -1,6 +1,6 @@
 {
   "id": "2026-08-06-nature-1fda6822",
-  "niche": "wildcard",
+  "niche": "physics",
   "study": {
     "key": "1fda682243570718",
     "title": "A flexible hydrogel-based SERS sensor for multi-target detection of microbial metabolites in deep-sea environments",
@@ -191,14 +191,17 @@
     "query": "chemical",
     "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-08-06-nature-1fda6822/bg/cover.jpg"
   },
-  "reel": {
-    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-08-06-nature-1fda6822/reel.mp4",
-    "duration": 19.2,
-    "bytes": 4393688
-  },
   "reel_status": {
-    "built": true,
-    "duration": 19.2,
-    "bytes": 4393688
-  }
+    "built": false,
+    "reason": "removed on re-render, rebuild failed (ReelError)"
+  },
+  "reniche": [
+    {
+      "from": "wildcard",
+      "to": "physics",
+      "at": "2026-11-06T02:13:24Z",
+      "carried_caveats": []
+    }
+  ],
+  "render_seq": 1
 }
