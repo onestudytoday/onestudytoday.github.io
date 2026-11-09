@@ -1,0 +1,153 @@
+{
+  "id": "2026-09-21-nature-1579a234",
+  "niche": "nature",
+  "study": {
+    "key": "1579a234c0926106",
+    "title": "Outdoor Air Pollution Exposure Alters Fear Regulation and Fear-Related Neural Circuitry in Adolescence",
+    "journal": "Biological psychiatry global open science",
+    "pub_date": "2026-09-21",
+    "pub_date_display": "Sep 21, 2026",
+    "doi": "10.1016/j.bpsgos.2026.100831",
+    "doi_display": "doi.org/10.1016/j.bpsgos.2026.100831",
+    "url": "https://doi.org/10.1016/j.bpsgos.2026.100831",
+    "is_preprint": false,
+    "server": "",
+    "n": 102,
+    "authors": [
+      "Zundel CG",
+      "Jakubiec A",
+      "Ely S",
+      "Carpenter C",
+      "Tamimi R",
+      "Brokamp C"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Biological Psychiatry Global Open Science",
+    "headline": "Breathing polluted air **may reshape how teenage brains respond to fear**, a pattern seen in anxiety disorders."
+  },
+  "slides": [
+    {
+      "eyebrow": "What it means for you",
+      "title": "Air pollution might be getting inside the anxiety loop, not just the lungs.",
+      "body": "Adolescents breathing higher pollution showed fear responses typical of anxiety disorders. Their brains stayed on high alert even after a threat was gone.\n\nIf pollution alters fear learning during adolescence, it could help explain rising anxiety rates in polluted areas.",
+      "basis": "inferred"
+    },
+    {
+      "eyebrow": "The result",
+      "title": "Teens exposed to higher PM2.5 pollution showed stronger fear responses across three separate tests.",
+      "body": "Those above EPA's annual limit showed greater skin conductance and reported more fear during conditioning. During recall, they showed a bigger return of fear to already-safe cues.\n\nBrain scans showed more amygdala and insula activation, regions central to fear processing.",
+      "stat": {
+        "value": "9 \u03bcg/m\u00b3",
+        "label": "EPA annual PM2.5 threshold"
+      }
+    },
+    {
+      "eyebrow": "How it works",
+      "title": "Researchers tracked 102 adolescents through fear conditioning, extinction, and recall over one month.",
+      "body": "Participants learned to fear a cue, then learned it was safe, then were tested days later. Past-month pollution exposure was estimated using spatial models.\n\nThose above versus below EPA limits differed at every stage."
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Something else about high-pollution neighborhoods could explain the link.",
+    "The threshold used was EPA's annual standard, measured over one month of exposure in this study.",
+    "The implications for anxiety risk are inferred. The paper measured fear responses, not diagnosed anxiety disorders."
+  ],
+  "cta": {
+    "headline": "Send this to anyone watching air quality and teen anxiety",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "The difference showed up in sweat responses, self-reports, and brain scans\u2014pollution exposure linked to fear regulation at every level measured.",
+  "hashtag_set": "health",
+  "shape": "",
+  "vet": {
+    "key": "1579a234c0926106",
+    "verdict": "PASS",
+    "score": 66,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "note",
+        "message": "Design reads as observational (mechanistic / lab); markers: self-report, self-reported, association, associated with",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      }
+    ],
+    "design": "mechanistic / lab",
+    "sample_size": 102,
+    "subjects": "unclear",
+    "journal_tier": 1,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "stakes",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "9 \u03bcg/m\u00b3",
+          "found_in_abstract": true
+        },
+        {
+          "number": "102",
+          "found_in_abstract": true
+        },
+        {
+          "number": "three",
+          "found_in_abstract": false
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [
+      {
+        "number": "three",
+        "found_in_abstract": false
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Air pollution is an emerging risk factor for anxiety in youth, but the neurobehavioral mechanisms remain unclear. Anxiety disorders are associated with altered fear-related learning, processes refined across adolescence. We examined whether adolescents with high versus low past-month exposure to fine particulate matter (PM2.5) differ in fear-related learning. Adolescents (N = 102; 55% female; ages 10-17 years) completed a Pavlovian fear conditioning, extinction, and recall paradigm. PM2.5 exposure was estimated using a spatiotemporal model and categorized as low versus high via the Environmental Protection Agency's annual standard (9 \u03bcg/m3). Fear responses were assessed using skin conductance responses (SCRs), behavioral avoidance, and self-reported fear. Linear mixed-effects models tested associations between PM2.5 group, task phase, and conditioned stimulus type, adjusting for age, sex, and neighborhood disadvantage. In a subset (n = 68), neuroimaging analyses examined activation within fear-related regions of interest. Compared with the low group, the high group exhibited greater SCRs and subjective fear in response to conditioned threat cues during conditioning. The high-exposure group demonstrated a greater return of fear during recall, reflected in elevated SCRs in response to the extinguished cue and sustained subjective fear. Across phases, the high-exposure group exhibited higher SCRs overall. Neuroimaging analyses showed greater right amygdala activation during conditioning and extinction and greater left insula activation during recall in youths with high versus low exposure. Compared with low PM2.5 exposure, high PM2.5 exposure was associated with altered fear processing across subjective, physiological, and neural levels, suggesting fear dysregulation as a potential mechanistic link between air pollution and anxiety.",
+    "source": "europepmc",
+    "ext_id": "MED:42997796",
+    "pub_types": [
+      "research-article",
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "http://creativecommons.org/licenses/by-nc-nd/4.0/;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "nature",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/Book_Cover_Pennybottom%27s_Academy_for_Wayward_Dogs.jpg/1920px-Book_Cover_Pennybottom%27s_Academy_for_Wayward_Dogs.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC0",
+    "author": "Scotttevans",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Book Cover Pennybottom's Academy for Wayward Dogs.jpg",
+    "query": "disorder",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-09-21-nature-1579a234/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'nature'"
+  }
+}
