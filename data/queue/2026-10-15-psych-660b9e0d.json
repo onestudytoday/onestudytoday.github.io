@@ -107,7 +107,7 @@
     ],
     "publishable": false
   },
-  "status": "needs_review",
+  "status": "approved",
   "source": {
     "abstract": "Based on a synthesis of recent advances, this review elucidates the distinct yet synergistic roles of non-rapid eye movement (NREM) and rapid eye movement (REM) sleep in memory consolidation. During NREM sleep, cortical slow oscillations (SOs) establish a temporal framework by alternating between UP and DOWN states, facilitating cross-regional communication. SOs phase-couple with thalamic spindles to coordinate hippocampal sharp-wave ripples (SWRs), thereby driving the reactivation and transfer of labile hippocampal memories to neocortical networks for long-term storage. Concurrent synaptic homeostasis optimises network efficiency through global downscaling while selectively strengthening memory-relevant connections. In REM sleep, theta oscillations synchronise limbic-prefrontal-hippocampal circuits, and ponto-geniculo-occipital (PGO) waves further integrate emotional and procedural memories. The cholinergically dominant, monoamine-depleted neurochemical milieu of REM sleep promotes dendritic spine remodelling and sparse neuronal reactivation, enabling affective decoupling and synaptic refinement. Despite progress, key challenges remain in understanding cross-frequency oscillatory coupling among slow oscillations, spindles, ripples and REM-specific rhythms, glial contributions and clinical translation. Future integration of high-density electrophysiology with computational approaches may yield mechanistic models and clinically relevant biomarkers for sleep-based cognitive monitoring and intervention.",
     "source": "europepmc",
@@ -133,5 +133,8 @@
   "reel_status": {
     "built": false,
     "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'psych'"
+  },
+  "review": {
+    "forced": true
   }
 }
