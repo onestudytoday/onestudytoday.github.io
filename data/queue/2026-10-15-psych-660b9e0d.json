@@ -1,0 +1,137 @@
+{
+  "id": "2026-10-15-psych-660b9e0d",
+  "niche": "psych",
+  "study": {
+    "key": "660b9e0d672a1b7a",
+    "title": "Sleep EEG oscillations and synaptic plasticity in memory consolidation across NREM and REM sleep",
+    "journal": "Dialogues in clinical neuroscience",
+    "pub_date": "2026-10-15",
+    "pub_date_display": "Oct 15, 2026",
+    "doi": "10.1080/19585969.2026.2744744",
+    "doi_display": "doi.org/10.1080/19585969.2026.2744744",
+    "url": "https://doi.org/10.1080/19585969.2026.2744744",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Chen Y",
+      "Zhao M",
+      "Cao X",
+      "Zhou G",
+      "Zhang Y."
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Dialogues in Clinical Neuroscience review",
+    "headline": "**Different sleep stages handle different kinds of memory** - and targeting the right one could sharpen recall."
+  },
+  "slides": [
+    {
+      "eyebrow": "Why this matters",
+      "basis": "stated",
+      "title": "Future sleep tools may target specific brain rhythms to strengthen thinking and memory.",
+      "body": "The review suggests that mapping brain waves during sleep could yield markers for checking and improving recall. Dense recording combined with models may guide clinical tools.\n\nThat matters because sleep is already prescribed, but knowing which rhythm does what could make the advice more precise."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Deep sleep transfers new memories to long-term storage; REM sleep refines emotion and skill-based ones.",
+      "body": "During NREM sleep, slow waves coordinate with spindles and ripples to move fragile hippocampal memories into the cortex for permanent storage.\n\nIn REM sleep, theta waves sync limbic circuits. The chemical environment promotes spine reshaping and strips emotion from memory content.",
+      "stat": {
+        "value": "2 types",
+        "label": "of sleep, distinct roles"
+      }
+    },
+    {
+      "eyebrow": "The mechanism",
+      "title": "Each sleep stage uses different brain rhythms and chemical environments to reshape synapses.",
+      "body": "NREM slow waves create UP and DOWN states that let different brain regions communicate. Thalamic spindles couple with hippocampal ripples to replay events and transfer them.\n\nREM sleep depletes monoamines but floods the brain with acetylcholine. That sparse firing allows spines to reshape and feeling to detach from memories."
+    }
+  ],
+  "caveats": [
+    "This is a synthesis review, not a new experiment - it summarizes existing findings rather than reporting fresh data.",
+    "How different brain waves interact across sleep stages remains unclear, as does the role of glial cells in memory consolidation."
+  ],
+  "cta": {
+    "headline": "Send this to anyone who only sleeps six hours",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Deep sleep moves memories into long-term storage, REM sleep refines emotion and skill - and knowing which does what could make sleep advice sharper.",
+  "hashtag_set": "core",
+  "shape": "",
+  "vet": {
+    "key": "660b9e0d672a1b7a",
+    "verdict": "PASS",
+    "score": 68,
+    "flags": [],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": 1,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [],
+    "notes": []
+  },
+  "qa": {
+    "format": "explainer",
+    "lint_errors": [
+      "slide1.body: 45 words, spec is 30-40",
+      "slide2.body: 41 words, spec is 30-40",
+      "slide3.body: 49 words, spec is 30-40"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "2",
+          "found_in_abstract": true
+        },
+        {
+          "number": "six",
+          "found_in_abstract": false
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [
+      {
+        "number": "six",
+        "found_in_abstract": false
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Based on a synthesis of recent advances, this review elucidates the distinct yet synergistic roles of non-rapid eye movement (NREM) and rapid eye movement (REM) sleep in memory consolidation. During NREM sleep, cortical slow oscillations (SOs) establish a temporal framework by alternating between UP and DOWN states, facilitating cross-regional communication. SOs phase-couple with thalamic spindles to coordinate hippocampal sharp-wave ripples (SWRs), thereby driving the reactivation and transfer of labile hippocampal memories to neocortical networks for long-term storage. Concurrent synaptic homeostasis optimises network efficiency through global downscaling while selectively strengthening memory-relevant connections. In REM sleep, theta oscillations synchronise limbic-prefrontal-hippocampal circuits, and ponto-geniculo-occipital (PGO) waves further integrate emotional and procedural memories. The cholinergically dominant, monoamine-depleted neurochemical milieu of REM sleep promotes dendritic spine remodelling and sparse neuronal reactivation, enabling affective decoupling and synaptic refinement. Despite progress, key challenges remain in understanding cross-frequency oscillatory coupling among slow oscillations, spindles, ripples and REM-specific rhythms, glial contributions and clinical translation. Future integration of high-density electrophysiology with computational approaches may yield mechanistic models and clinically relevant biomarkers for sleep-based cognitive monitoring and intervention.",
+    "source": "europepmc",
+    "ext_id": "MED:42879336",
+    "pub_types": [
+      "Review",
+      "Journal Article"
+    ],
+    "publisher": "Informa UK Limited",
+    "license": "http://creativecommons.org/licenses/by/4.0/;https://doi.org/10.1080/policies-text-data-mining"
+  },
+  "source_niche": "psych",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Different_Slant_on_Orion_%28495636660%29.jpg/1920px-Different_Slant_on_Orion_%28495636660%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "Public domain",
+    "author": "Steve Black from Las Vegas, NV, USA",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Different Slant on Orion (495636660).jpg",
+    "query": "different",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-15-psych-660b9e0d/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'psych'"
+  }
+}
