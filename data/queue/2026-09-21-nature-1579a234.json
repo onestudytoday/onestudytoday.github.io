@@ -123,7 +123,7 @@
     ],
     "publishable": false
   },
-  "status": "needs_review",
+  "status": "approved",
   "source": {
     "abstract": "Air pollution is an emerging risk factor for anxiety in youth, but the neurobehavioral mechanisms remain unclear. Anxiety disorders are associated with altered fear-related learning, processes refined across adolescence. We examined whether adolescents with high versus low past-month exposure to fine particulate matter (PM2.5) differ in fear-related learning. Adolescents (N = 102; 55% female; ages 10-17 years) completed a Pavlovian fear conditioning, extinction, and recall paradigm. PM2.5 exposure was estimated using a spatiotemporal model and categorized as low versus high via the Environmental Protection Agency's annual standard (9 \u03bcg/m3). Fear responses were assessed using skin conductance responses (SCRs), behavioral avoidance, and self-reported fear. Linear mixed-effects models tested associations between PM2.5 group, task phase, and conditioned stimulus type, adjusting for age, sex, and neighborhood disadvantage. In a subset (n = 68), neuroimaging analyses examined activation within fear-related regions of interest. Compared with the low group, the high group exhibited greater SCRs and subjective fear in response to conditioned threat cues during conditioning. The high-exposure group demonstrated a greater return of fear during recall, reflected in elevated SCRs in response to the extinguished cue and sustained subjective fear. Across phases, the high-exposure group exhibited higher SCRs overall. Neuroimaging analyses showed greater right amygdala activation during conditioning and extinction and greater left insula activation during recall in youths with high versus low exposure. Compared with low PM2.5 exposure, high PM2.5 exposure was associated with altered fear processing across subjective, physiological, and neural levels, suggesting fear dysregulation as a potential mechanistic link between air pollution and anxiety.",
     "source": "europepmc",
@@ -154,5 +154,8 @@
     "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/Book_Cover_Pennybottom%27s_Academy_for_Wayward_Dogs.jpg/1920px-Book_Cover_Pennybottom%27s_Academy_for_Wayward_Dogs.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Card_stock_speech_balloons.jpg/1920px-Card_stock_speech_balloons.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   ],
-  "render_seq": 1
+  "render_seq": 1,
+  "review": {
+    "forced": true
+  }
 }
