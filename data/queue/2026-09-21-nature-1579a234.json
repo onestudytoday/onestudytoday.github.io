@@ -137,17 +137,22 @@
   },
   "source_niche": "nature",
   "cover_art": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/Book_Cover_Pennybottom%27s_Academy_for_Wayward_Dogs.jpg/1920px-Book_Cover_Pennybottom%27s_Academy_for_Wayward_Dogs.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "licence": "CC0",
-    "author": "Scotttevans",
-    "needs_credit": false,
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Card_stock_speech_balloons.jpg/1920px-Card_stock_speech_balloons.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC BY 2.0",
+    "author": "Martin Cox",
+    "needs_credit": true,
     "source": "Wikimedia Commons",
-    "page": "File:Book Cover Pennybottom's Academy for Wayward Dogs.jpg",
-    "query": "disorder",
+    "page": "File:Card stock speech balloons.jpg",
+    "query": "thought bubble",
     "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-09-21-nature-1579a234/bg/cover.jpg"
   },
   "reel_status": {
     "built": false,
     "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'nature'"
-  }
+  },
+  "cover_art_tried": [
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/Book_Cover_Pennybottom%27s_Academy_for_Wayward_Dogs.jpg/1920px-Book_Cover_Pennybottom%27s_Academy_for_Wayward_Dogs.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Card_stock_speech_balloons.jpg/1920px-Card_stock_speech_balloons.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+  ],
+  "render_seq": 1
 }
