@@ -123,7 +123,7 @@
     ],
     "publishable": false
   },
-  "status": "approved",
+  "status": "published",
   "source": {
     "abstract": "Air pollution is an emerging risk factor for anxiety in youth, but the neurobehavioral mechanisms remain unclear. Anxiety disorders are associated with altered fear-related learning, processes refined across adolescence. We examined whether adolescents with high versus low past-month exposure to fine particulate matter (PM2.5) differ in fear-related learning. Adolescents (N = 102; 55% female; ages 10-17 years) completed a Pavlovian fear conditioning, extinction, and recall paradigm. PM2.5 exposure was estimated using a spatiotemporal model and categorized as low versus high via the Environmental Protection Agency's annual standard (9 \u03bcg/m3). Fear responses were assessed using skin conductance responses (SCRs), behavioral avoidance, and self-reported fear. Linear mixed-effects models tested associations between PM2.5 group, task phase, and conditioned stimulus type, adjusting for age, sex, and neighborhood disadvantage. In a subset (n = 68), neuroimaging analyses examined activation within fear-related regions of interest. Compared with the low group, the high group exhibited greater SCRs and subjective fear in response to conditioned threat cues during conditioning. The high-exposure group demonstrated a greater return of fear during recall, reflected in elevated SCRs in response to the extinguished cue and sustained subjective fear. Across phases, the high-exposure group exhibited higher SCRs overall. Neuroimaging analyses showed greater right amygdala activation during conditioning and extinction and greater left insula activation during recall in youths with high versus low exposure. Compared with low PM2.5 exposure, high PM2.5 exposure was associated with altered fear processing across subjective, physiological, and neural levels, suggesting fear dysregulation as a potential mechanistic link between air pollution and anxiety.",
     "source": "europepmc",
@@ -157,5 +157,19 @@
   "render_seq": 1,
   "review": {
     "forced": true
+  },
+  "published": {
+    "media_id": "17933578806162912",
+    "kind": "CAROUSEL",
+    "at": "2026-11-10T02:38:49Z"
+  },
+  "crosspost": {
+    "at": "2026-11-10T02:38:49Z",
+    "posted": [],
+    "skipped": [
+      "bluesky",
+      "threads"
+    ],
+    "failed": {}
   }
 }
