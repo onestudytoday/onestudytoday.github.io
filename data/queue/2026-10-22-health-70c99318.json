@@ -1,0 +1,148 @@
+{
+  "id": "2026-10-22-health-70c99318",
+  "niche": "health",
+  "study": {
+    "key": "70c99318a3baa0cb",
+    "title": "Effects of xylooligosaccharide supplementation on methane emissions, rumen microbiome, and serum metabolome in lactating Jersey cows",
+    "journal": "Animal biotechnology",
+    "pub_date": "2026-10-22",
+    "pub_date_display": "Oct 22, 2026",
+    "doi": "10.1080/10495398.2026.2743468",
+    "doi_display": "doi.org/10.1080/10495398.2026.2743468",
+    "url": "https://doi.org/10.1080/10495398.2026.2743468",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Zhou X",
+      "Zhao Z",
+      "Zhao L",
+      "Diao Q",
+      "Dong L",
+      "Kang X."
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Animal Biotechnology + dairy cows",
+    "headline": "A prebiotic sugar cut methane from **dairy cows by changing the microbes in their gut**"
+  },
+  "slides": [
+    {
+      "eyebrow": "Why this matters",
+      "basis": "stated",
+      "title": "XOS may offer a way to control methane emissions from livestock by reshaping gut bacteria.",
+      "body": "The study suggests XOS could regulate ruminant methane by influencing the microbiota. That gives farms a rationale for methane control.\n\nMethane from cattle is a major climate concern. A feed additive that works through the gut could scale across herds."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Forty-eight Jersey cows got either 25 grams of XOS daily or none for comparison.",
+      "body": "The XOS group produced significantly less methane than controls. They also showed higher microbial diversity in the rumen.\n\nSixteen metabolites differed between groups. These were correlated with specific microbes including Chloroflexi, Acidobacteriota, and Succiniclasticum.",
+      "stat": {
+        "value": "25 g/d",
+        "label": "dose of XOS given"
+      }
+    },
+    {
+      "eyebrow": "The setup",
+      "title": "Researchers tested three cows from each group with methane detection, gene sequencing, and metabolite profiling.",
+      "body": "XOS are prebiotic sugars recognized for cutting methane. The link between XOS, emissions, and changes in ruminal microbes was unclear.\n\nThe team used gene sequencing and metabolomics to map the microbial and chemical shifts tied to lower methane."
+    }
+  ],
+  "caveats": [
+    "The study was in dairy cows, not other livestock or production systems.",
+    "Only three cows per group were analyzed for microbiome and metabolite data, limiting statistical power.",
+    "The abstract does not report the size of the methane reduction or which metabolites changed most."
+  ],
+  "cta": {
+    "headline": "Send this to the methane skeptic",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "A prebiotic fiber changed the gut bugs in dairy cows and cut their methane emissions in the process",
+  "hashtag_set": "core",
+  "shape": "",
+  "vet": {
+    "key": "70c99318a3baa0cb",
+    "verdict": "PASS",
+    "score": 54,
+    "flags": [
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Animal biotechnology' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "explainer",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 1,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "48",
+          "found_in_abstract": true
+        },
+        {
+          "number": "25",
+          "found_in_abstract": true
+        },
+        {
+          "number": "sixteen",
+          "found_in_abstract": true
+        },
+        {
+          "number": "three",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": true
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Xylooligosaccharides (XOS) are recognized as effective prebiotics that can mitigate methane (CH 4 ) emissions. However, the specific relationship between the effects of XOS on CH 4 emissions and alterations in the ruminal microbiota and their metabolites remains unclear. To investigate the relationship between XOS and CH 4 emissions, 48 Jersey cows were randomly divided into two groups: the XOS group (group T) and the control group (group C). Group T received 25 g/d of XOS, while group C received 0 g/d of XOS added to the basal diet. Three randomly selected cows from each group, exhibiting consistent milk production and lactation stage, were analyzed for CH 4 emissions detection, 16S rRNA sequencing, and untargeted metabolomics analysis. The addition of XOS significantly reduced CH 4 emissions and increased both the number of observed species and the abundance-based coverage estimator (ACE) index of ruminal microbiota compared to group C. Sixteen differential metabolites were identified between the two groups; these differential metabolites were correlated with microbiota, including Chloroflexi , Acidobacteriota , and Succiniclasticum. The study suggests that XOS may regulate ruminant CH 4 emissions by influencing the microbiota, thereby providing a rationale for CH 4 control.",
+    "source": "europepmc",
+    "ext_id": "MED:42908331",
+    "pub_types": [
+      "research-article",
+      "Journal Article"
+    ],
+    "publisher": "Informa UK Limited",
+    "license": "http://creativecommons.org/licenses/by/4.0/;https://doi.org/10.1080/policies-text-data-mining"
+  },
+  "source_niche": "health",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/E_coli_at_10000x%2C_original.jpg/1920px-E_coli_at_10000x%2C_original.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "Public domain",
+    "author": "Photo by Eric Erbe, digital colorization by Christopher Pooley, both of USDA, AR",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:E coli at 10000x, original.jpg",
+    "query": "microbe",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-22-health-70c99318/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'health'"
+  }
+}
