@@ -1,6 +1,6 @@
 {
   "id": "2026-09-17-psych-222d03eb",
-  "niche": "psych",
+  "niche": "health",
   "study": {
     "key": "222d03eb2bb99984",
     "title": "A designable twist-densification route to bioactive collagen hydrogel yarns approaching tendon-like mechanics",
@@ -63,7 +63,7 @@
   "vet": {
     "key": "222d03eb2bb99984",
     "verdict": "PASS",
-    "score": 54,
+    "score": 50,
     "flags": [
       {
         "code": "UNLISTED_JOURNAL",
@@ -82,9 +82,7 @@
     "required_caveats": [],
     "required_badges": [],
     "draft_rules": [],
-    "notes": [
-      "Open access - readers can actually read the full paper."
-    ]
+    "notes": []
   },
   "qa": {
     "format": "stakes",
@@ -137,5 +135,14 @@
   "reel_status": {
     "built": false,
     "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'psych'"
-  }
+  },
+  "reniche": [
+    {
+      "from": "psych",
+      "to": "health",
+      "at": "2026-11-11T17:44:49Z",
+      "carried_caveats": []
+    }
+  ],
+  "render_seq": 1
 }
