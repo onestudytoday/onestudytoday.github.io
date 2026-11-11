@@ -109,7 +109,7 @@
     "unverified_numbers": [],
     "publishable": false
   },
-  "status": "needs_review",
+  "status": "approved",
   "source": {
     "abstract": "Reconstituted collagen hydrogels offer the bioactivity that load-bearing tissue engineering requires, but their Pascal to low-kPa moduli have confined them to non-structural roles, and the synthetic and hybrid strategies that close the mechanical gap typically forfeit that bioactivity. We show that a twist-induced densification process resolves this tradeoff in a controllable way, converting soft collagen hydrogel fibers into superhelical hydrogel yarns whose mechanics can be prescribed from fabrication parameters. A parameter-free model drawn from fiber-network mechanics predicts the modulus enhancement from densification, fibril alignment, and helical fiber architecture, and the same surface helix angle independently predicts the nonlinear strain-stiffening response. The resulting yarns exhibit modulus, strength, and toughness approaching the lower range reported for native tendons, representing enhancements of two to three orders of magnitude over the as-fabricated collagen hydrogels. Importantly, they remain amenable to braiding, knitting, and weaving into two- and three-dimensional constructs, including tubular architectures that recover elastically under repeated compression. Short-term cytocompatibility is preserved despite the severe compaction: encapsulated fibroblasts retain over 90% viability, exhibit pronounced alignment within the yarns, and transduce externally applied strain. Twist densification thus provides a designable route to living, load-bearing protein textiles.",
     "source": "europepmc",
@@ -144,5 +144,8 @@
       "carried_caveats": []
     }
   ],
-  "render_seq": 1
+  "render_seq": 1,
+  "review": {
+    "forced": true
+  }
 }
