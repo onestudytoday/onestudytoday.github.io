@@ -1,0 +1,148 @@
+{
+  "id": "2026-11-10-physics-5ab2a79a",
+  "niche": "physics",
+  "study": {
+    "key": "5ab2a79ab5c99a77",
+    "title": "Nucleation of water ice under weak ionization via clustering on negative ions",
+    "journal": "arXiv",
+    "pub_date": "2026-11-10",
+    "pub_date_display": "Nov 10, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2611.14441v1",
+    "url": "http://arxiv.org/abs/2611.14441v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Andr\u00e9 Nicolov",
+      "Efstratios M. Kritikos",
+      "William A. Goddard III.",
+      "Paul M. Bellan"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "arXiv preprint (not reviewed)",
+    "headline": "**Negatively charged water clusters** may explain how ice forms in deep space and Earth's upper atmosphere."
+  },
+  "slides": [
+    {
+      "eyebrow": "Why this matters",
+      "basis": "stated",
+      "title": "Ice formation in cold space and high in our atmosphere has lacked a clear mechanism until now.",
+      "body": "The team reports that negative ions could be the missing piece. In regions too sparse for normal ice nucleation, charged particles might seed the first crystals.\n\nThis could explain ice in protoplanetary disks and in Earth's mesosphere, where clouds form at the edge of space."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "In a cold plasma with trace water vapor, ice grains formed below 200 K but only when ions were present.",
+      "body": "Negative ion clusters grew to about 200 atomic mass units. These were mainly OH\u207b surrounded by water. Positive clusters stayed small.\n\nAs temperature dropped toward 200 K, negative clusters suddenly vanished, consistent with rapid growth into ice grains.",
+      "stat": {
+        "value": "~200 K",
+        "label": "critical temperature for ice onset"
+      }
+    },
+    {
+      "eyebrow": "The setup",
+      "title": "The lab used a weakly ionized plasma cooled from room temperature down, with a small amount of water added.",
+      "body": "No dust or particles were present. Without ionization, no ice formed. Mass spectrometry tracked clusters on both positive and negative ions separately.\n\nThis setup mimics conditions in protoplanetary disks and the mesosphere, where UV light ionizes gas but dust is scarce."
+    }
+  ],
+  "caveats": [
+    "This is a preprint. It has not been peer reviewed yet, so no independent expert has checked the methods or conclusions.",
+    "The experiment was done in a lab plasma, not in actual space or the mesosphere. Real conditions may differ.",
+    "The team estimates this pathway dominates over dust-seeded ice only in regions with enough UV to partially break water molecules."
+  ],
+  "cta": {
+    "headline": "Send this to the space-ice skeptic",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Negative ions surrounded by water molecules may be the key to ice formation where dust is scarce and conditions are cold.",
+  "hashtag_set": "physics",
+  "shape": "",
+  "vet": {
+    "key": "5ab2a79ab5c99a77",
+    "verdict": "HOLD",
+    "score": 42,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      }
+    ],
+    "design": "mechanistic / lab",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "explainer",
+    "lint_errors": [
+      "slide1.body: 45 words, spec is 30-40",
+      "slide3.body: 41 words, spec is 30-40"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "200 K",
+          "found_in_abstract": true
+        },
+        {
+          "number": "200 atomic mass units",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Water-ice grains are shown to form spontaneously in a cold, weakly-ionized laboratory plasma with trace water admixture when neutrals and ions are cooled below $\\sim$200 K. These conditions serve as an analog of ice nucleation in cold astrophysical and atmospheric environments. The ice grains form without the presence of particulate impurities, and do not form in the absence of ionization, indicating that nucleation is induced by ions. Time-resolved ion mass spectrometry provides separate detection of clusters of water molecules on both positive and negative ions. Hydrated negative ions, mainly $\\mathrm{OH^-(H_2O)_n}$, grow to $\\sim$200 amu, while hydrated positive ions, mainly $\\mathrm{H^+(H_2O)_n}$, remain small and short-lived. As the temperature is reduced from room temperature toward 200 K, negative ion clusters grow in size and then drop sharply in abundance, consistent with the onset of rapid growth into macroscopic ice grains below a critical temperature. This indicates that hydrated negative ions are key precursors to ice nucleation in cold, weakly ionized environments, such as the Earth's mesosphere and protoplanetary disks, providing a concrete pathway for ice formation in environments where the nucleation mechanism has remained unresolved. This negative ion pathway is estimated to dominate over ice deposition on pre-existing dust grains in protoplanetary disk locations where there is sufficient UV to partially dissociate water molecules, and in addition, where negative ions such as OH- can form readily through electron attachment at low temperature.",
+    "source": "arxiv",
+    "ext_id": "2611.14441v1",
+    "pub_types": [
+      "astro-ph.EP",
+      "physics.plasm-ph",
+      "physics.space-ph"
+    ],
+    "publisher": "arXiv",
+    "license": ""
+  },
+  "source_niche": "physics",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Beehive_cluster_%28M44%29.jpg/1920px-Beehive_cluster_%28M44%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC0",
+    "author": "Taavi Niittee",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Beehive cluster (M44).jpg",
+    "query": "cluster",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-11-10-physics-5ab2a79a/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'physics'"
+  }
+}
