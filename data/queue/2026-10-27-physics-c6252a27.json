@@ -200,17 +200,22 @@
   },
   "source_niche": "physics",
   "cover_art": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Hole_in_Norway.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-    "licence": "Public domain",
-    "author": "No machine-readable author provided. Ekko assumed (based on copyright claims).",
-    "needs_credit": false,
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Artist%E2%80%99s_impression_of_the_black_hole_inside_NGC_300_X-1_%28ESO_1004a%29.jpg/1920px-Artist%E2%80%99s_impression_of_the_black_hole_inside_NGC_300_X-1_%28ESO_1004a%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC BY 4.0",
+    "author": "ESO/L. Cal\u00e7ada/M.Kornmesser",
+    "needs_credit": true,
     "source": "Wikimedia Commons",
-    "page": "File:Hole in Norway.JPG",
-    "query": "hole",
+    "page": "File:Artist\u2019s impression of the black hole inside NGC 300 X-1 (ESO 1004a).jpg",
+    "query": "black hole",
     "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-27-physics-c6252a27/bg/cover.jpg"
   },
   "reel_status": {
     "built": false,
     "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'physics'"
-  }
+  },
+  "cover_art_tried": [
+    "https://upload.wikimedia.org/wikipedia/commons/7/7e/Hole_in_Norway.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Artist%E2%80%99s_impression_of_the_black_hole_inside_NGC_300_X-1_%28ESO_1004a%29.jpg/1920px-Artist%E2%80%99s_impression_of_the_black_hole_inside_NGC_300_X-1_%28ESO_1004a%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+  ],
+  "render_seq": 1
 }
