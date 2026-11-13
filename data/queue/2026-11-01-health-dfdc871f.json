@@ -1,0 +1,167 @@
+{
+  "id": "2026-11-01-health-dfdc871f",
+  "niche": "wildcard",
+  "study": {
+    "key": "dfdc871f140d8df7",
+    "title": "Reconsidering the Mechanism of Proton Pump Inhibitor-Associated Fundic Gland Polyps: Absence of Re-enlargement during Potassium-Competitive Acid Blocker Therapy",
+    "journal": "DEN open",
+    "pub_date": "2026-11-01",
+    "pub_date_display": "Nov 1, 2026",
+    "doi": "10.1002/deo2.70463",
+    "doi_display": "doi.org/10.1002/deo2.70463",
+    "url": "https://doi.org/10.1002/deo2.70463",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Misumi Y",
+      "Marumo T",
+      "Ban S",
+      "Nonaka K."
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "DEN open case report",
+    "headline": "One type of acid blocker **may shrink polyps where another grew them**, even with higher gastrin levels."
+  },
+  "slides": [
+    {
+      "eyebrow": "What it means for you",
+      "basis": "inferred",
+      "title": "If you developed stomach polyps on a PPI, switching drug classes might change their course.",
+      "body": "Fundic gland polyps often go together with long-term proton pump inhibitor use. High gastrin from acid suppression has been blamed.\n\nA newer acid blocker raised gastrin even higher. The polyps still shrank, suggesting the link is more than gastrin alone."
+    },
+    {
+      "eyebrow": "The result",
+      "title": "One woman's fundic gland polyps regressed after switching from rabeprazole to a PCAB, with no re-growth.",
+      "body": "The polyps grew over seven years on the PPI rabeprazole. Four months after switching to vonoprazan, they had regressed markedly.\n\nGastrin stayed elevated during PCAB therapy\u2014491.9 and 753.7 pg/mL\u2014yet the polyps did not return.",
+      "stat": {
+        "value": "7 years",
+        "label": "polyp growth on PPI"
+      }
+    },
+    {
+      "eyebrow": "How it works",
+      "title": "The timing is unclear, so regression may have started when the PPI was stopped, not when the PCAB began.",
+      "body": "The woman briefly used an H2-receptor antagonist between drugs. Regression was first documented four months into PCAB use.\n\nLong-term PCAB therapy was not linked to polyp re-enlargement, despite potent acid suppression and elevated gastrin."
+    }
+  ],
+  "caveats": [
+    "This is a single case report in one woman, not a controlled study across many people.",
+    "This study found a pattern, not a cause. Something else could explain the link.",
+    "The exact timing of polyp regression is unknown, so the PCAB may not be solely responsible."
+  ],
+  "cta": {
+    "headline": "Send this to anyone on long-term PPI therapy",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "A different class of acid blocker shrank stomach polyps that grew on a PPI, even with higher gastrin levels.",
+  "hashtag_set": "health",
+  "shape": "",
+  "vet": {
+    "key": "dfdc871f140d8df7",
+    "verdict": "PASS",
+    "score": 48,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "note",
+        "message": "Design reads as observational (mechanistic / lab); markers: association",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'DEN open' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "mechanistic / lab",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "stakes",
+    "lint_errors": [],
+    "style_flags": [],
+    "repair_rounds": 1,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "seven years",
+          "found_in_abstract": true
+        },
+        {
+          "number": "7 years",
+          "found_in_abstract": true
+        },
+        {
+          "number": "four months",
+          "found_in_abstract": true
+        },
+        {
+          "number": "491.9 pg/mL",
+          "found_in_abstract": true
+        },
+        {
+          "number": "753.7 pg/mL",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": true
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Fundic gland polyps (FGPs) may enlarge during long-term proton pump inhibitor (PPI) therapy, potentially in association with acid suppression and hypergastrinemia. Potassium-competitive acid blockers (PCABs) provide potent and sustained acid suppression and may induce comparable or greater elevations in serum gastrin levels than PPIs. We report a case of FGPs in which regression was documented after changes in acid-suppressive therapy, with no subsequent re-enlargement during long-term use of PCABs. A woman in her 60s with gastroesophageal reflux disease developed progressive enlargement of FGPs during 7 years of rabeprazole therapy. Rabeprazole was discontinued because of marked redness of the enlarged FGPs and concern for possible bleeding and was replaced with an H2-receptor antagonist. After reintroduction of rabeprazole, treatment was switched to a PCAB because of insufficient symptom control. Four months after PCAB initiation, esophagogastroduodenoscopy demonstrated marked regression of the FGPs, with no subsequent re-enlargement during continued PCAB therapy. Serum gastrin levels were elevated at both measurements during PCAB use (491.9 and 753.7 pg/mL). Histological examination revealed similar fundic gland changes characteristic of FGPs in both a residual polyp and the endoscopically non-polypoid background mucosa, without dysplasia. Because the exact timing of FGP regression could not be determined, the regression observed 4 months after vonoprazan initiation cannot be solely attributed to vonoprazan therapy and may have occurred, at least in part, during the preceding period of PPI discontinuation. Nevertheless, no subsequent re-enlargement was observed during long-term vonoprazan therapy. Clinical Trial Registration: Clinical trial registration was not applicable because this was a single case report.",
+    "source": "europepmc",
+    "ext_id": "MED:42968916",
+    "pub_types": [
+      "case-study",
+      "Journal Article"
+    ],
+    "publisher": "Wiley",
+    "license": "http://creativecommons.org/licenses/by/4.0/;http://doi.wiley.com/10.1002/tdm_license_1.1"
+  },
+  "source_niche": "health",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Abraham_Trembley%2C_Polyp_Movement.jpg/1920px-Abraham_Trembley%2C_Polyp_Movement.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "Public domain",
+    "author": "Pierre Lyonnet",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Abraham Trembley, Polyp Movement.jpg",
+    "query": "polyp",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-11-01-health-dfdc871f/bg/cover.jpg"
+  },
+  "reel": {
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-11-01-health-dfdc871f/reel.mp4",
+    "duration": 19.2,
+    "bytes": 4370415
+  },
+  "reel_status": {
+    "built": true,
+    "duration": 19.2,
+    "bytes": 4370415
+  }
+}
