@@ -187,7 +187,7 @@
     ],
     "publishable": false
   },
-  "status": "needs_review",
+  "status": "approved",
   "source": {
     "abstract": "We present a systematic search for broad H$\u03b2$ emission at $7<z<9.5$ in 21,770 JWST/NIRSpec PRISM spectra drawn from four blank fields and six lensing clusters with photometry spanning 1942 arcmin$^2$. We find a sample of 20 sources with statistically significant broad-H$\u03b2$ emission, including 13 new sources. Our entire sample has colors and morphologies consistent with little red dots (LRDs), compared to only 37\\% of broad-line emitters at $3.5<z<6$. Interpreting the broad-lines as indicators of Broad-line Active Galactic Nuclei (BLAGN), we infer black hole masses of $4.2\\times10^{6}-2.1\\times10^{8}$\\,$M_{\\odot}$. We calculate completeness corrections and construct the black hole mass function at $z\\sim8$. The normalization of the black hole mass function rises by $\\approx1.0$~dex from $z\\sim8-5$, consistent with average black hole growth at $f_{\\textrm{Edd}}\\approx0.1$. Comparing with cosmological simulations, the $z\\sim8$ black hole mass function requires heavy ($10^5$\\,$M_{\\odot}$) seeds or super-Eddington accretion onto light or intermediate mass seeds to match its normalization. Finally, we infer bolometric luminosities for the sample and construct a bolometric luminosity function. We integrate over this luminosity function to derive a black hole accretion density (BHAD) of $4.8^{+5.8}_{-2.6}\\times10^{-7}~M_{\\odot}~\\textrm{yr}^{-1}~\\textrm{Mpc}^{-3}$, showing broad agreement with previous photometric work, but disagreement with previous X-ray models, reinforcing the idea that BLAGN are more common in the early universe than previously expected.",
     "source": "arxiv",
@@ -217,5 +217,8 @@
     "https://upload.wikimedia.org/wikipedia/commons/7/7e/Hole_in_Norway.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
     "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Artist%E2%80%99s_impression_of_the_black_hole_inside_NGC_300_X-1_%28ESO_1004a%29.jpg/1920px-Artist%E2%80%99s_impression_of_the_black_hole_inside_NGC_300_X-1_%28ESO_1004a%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   ],
-  "render_seq": 1
+  "render_seq": 1,
+  "review": {
+    "forced": true
+  }
 }
