@@ -1,0 +1,176 @@
+{
+  "id": "2026-10-30-nature-35369ab9",
+  "niche": "nature",
+  "study": {
+    "key": "35369ab97d8c864b",
+    "title": "Heat anomaly, wildfire smoke, social-material vulnerability, and incident depression in a national EHR-linked cohort: A preregistered secondary analysis",
+    "journal": "Journal of affective disorders",
+    "pub_date": "2026-10-30",
+    "pub_date_display": "Oct 30, 2026",
+    "doi": "10.1016/j.jad.2026.122663",
+    "doi_display": "doi.org/10.1016/j.jad.2026.122663",
+    "url": "https://doi.org/10.1016/j.jad.2026.122663",
+    "is_preprint": false,
+    "server": "",
+    "n": 179218,
+    "authors": [
+      "Yang S",
+      "Brown HE",
+      "Klimentidis YC",
+      "Sbarra DA."
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Journal of Affective Disorders + EHR",
+    "headline": "Local heat waves may be **quietly linked to new depression diagnoses** in ways social stress amplifies."
+  },
+  "slides": [
+    {
+      "eyebrow": "What it could mean",
+      "basis": "inferred",
+      "title": "If the link holds, managing depression risk might mean tracking local temperature swings alongside social strain.",
+      "body": "The finding suggests that short-term heat anomalies go together with higher rates of first-time depression diagnoses. Social and material hardship showed an even stronger pattern.\n\nIf temperature plays a role, public-health planning could flag heat spikes as a mental-health signal, especially in already-stressed communities."
+    },
+    {
+      "eyebrow": "Results",
+      "title": "Each standard deviation hotter in the prior month went with a six to eight percent higher hazard of new depression.",
+      "body": "Researchers linked 179,218 adults to local temperature anomalies, wildfire smoke, and a vulnerability score. Over a year, 5,484 received a first depression diagnosis.\n\nSocial-material vulnerability had the strongest tie: each standard deviation higher carried a thirty-six percent higher hazard. Wildfire smoke showed no clear link.",
+      "stat": {
+        "value": "179,218",
+        "label": "adults tracked in national cohort"
+      }
+    },
+    {
+      "eyebrow": "What they did",
+      "title": "They pulled health records from All of Us and linked each ZIP prefix to thirty days of climate data.",
+      "body": "Participants had no recorded depression before the study. Temperature anomaly measured how much hotter the month was than usual. Wildfire smoke came from satellite estimates.\n\nCox models estimated time to first diagnosis. The team preregistered the analysis and tested whether vulnerability or follow-up length changed the patterns."
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Something else could explain the link between heat and new diagnoses.",
+    "The paper reports relative hazard ratios. Without the baseline rate, an eight percent increase might still represent a small absolute number of additional cases.",
+    "Depression was identified from EHR diagnoses only. People without regular health care or with unrecorded prior episodes may not appear in the data.",
+    "Exposure was assigned once at baseline using three-digit ZIP prefix, so it does not capture moves or fine-scale variation within neighborhoods."
+  ],
+  "cta": {
+    "headline": "Send this to anyone tracking climate and mental health",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Hotter-than-usual months went together with more first-time depression diagnoses, and social hardship showed an even stronger link in this national cohort.",
+  "hashtag_set": "health",
+  "shape": "",
+  "vet": {
+    "key": "35369ab97d8c864b",
+    "verdict": "HOLD",
+    "score": 53,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "note",
+        "message": "Design reads as observational (unclear); markers: cohort, association, associated with, linked to",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Journal of affective disorders' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      },
+      {
+        "code": "RELATIVE_RISK_ONLY",
+        "severity": "warn",
+        "message": "Reports relative effects (hazard ratio) with no absolute numbers.",
+        "caveat": "The paper reports a relative change. Without the baseline rate, a big-sounding percentage can be a very small real-world difference.",
+        "draft_rule": "A relative effect with no absolute baseline must never be stated as a bare percentage on the cover slide."
+      }
+    ],
+    "design": "unclear",
+    "sample_size": 179218,
+    "subjects": "human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link.",
+      "The paper reports a relative change. Without the baseline rate, a big-sounding percentage can be a very small real-world difference."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'.",
+      "A relative effect with no absolute baseline must never be stated as a bare percentage on the cover slide."
+    ],
+    "notes": []
+  },
+  "qa": {
+    "format": "procedural",
+    "lint_errors": [
+      "slide1.body: 44 words, spec is 30-40",
+      "slide2.body: 47 words, spec is 30-40",
+      "slide3.body: 47 words, spec is 30-40"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "179,218",
+          "found_in_abstract": true
+        },
+        {
+          "number": "5,484",
+          "found_in_abstract": true
+        },
+        {
+          "number": "six to eight percent",
+          "found_in_abstract": true
+        },
+        {
+          "number": "thirty-six percent",
+          "found_in_abstract": true
+        },
+        {
+          "number": "371 days",
+          "found_in_abstract": true
+        },
+        {
+          "number": "thirty days",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Background Recent heat and wildfire smoke may influence depression, yet evidence from longitudinal electronic health record (EHR) cohorts remains limited. Methods We conducted a preregistered secondary analysis in the All of Us Research Program. Adults with a valid index date, residential 3-digit ZIP code prefix (ZIP3) linkage, no EHR-recorded depression before baseline, and post-baseline EHR follow-up were linked to 30-day pre-index PRISM maximum-temperature anomaly, Stanford Environmental Change and Human Outcomes (ECHO) wildfire-smoke PM2.5, and a participant-level social-material vulnerability (SMV) composite. Cox models estimated hazards of first EHR-recorded broad depression. Results The linked cohort included 179,218 participants and 5484 incident depression cases over a mean follow-up of 371 days. Each standard deviation (SD) higher 30-day temperature anomaly was associated with higher depression hazard in Aim 1 (hazard ratio [HR] 1.06, 95% confidence interval [CI] 1.03-1.10) and Aim 2 (HR 1.08, 95% CI 1.04-1.11). We found no evidence of an association between 30-day mean wildfire-smoke PM2.5 and depression. SMV had a stronger per-SD association (HR 1.36, 95% CI 1.33-1.40) than heat anomaly and was stable under stricter component-completeness rules. Heat and SMV associations were similar across follow-up periods, whereas the smoke association varied over time. Limitations Exposure was assigned at ZIP3 level and was not updated after baseline. Depression reflects EHR-recorded diagnosis, and differential health-care access or unrecorded prior depression may affect ascertainment. Conclusions Higher local temperature anomaly and greater SMV were associated with first EHR-recorded depression. We found no evidence of an association between mean wildfire-smoke PM2.5 and depression in the preregistered primary model, while secondary smoke analyses showed heterogeneity by exposure metric and follow-up period. The SMV association was stronger than the heat-anomaly association.",
+    "source": "europepmc",
+    "ext_id": "MED:42962723",
+    "pub_types": [
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "https://doi.org/10.15223/policy-004;https://doi.org/10.15223/policy-012;https://doi.org/10.15223/policy-017;https://doi.org/10.15223/policy-029;https://doi.org/10.15223/policy-037;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "nature",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Depression-loss_of_loved_one.jpg/1920px-Depression-loss_of_loved_one.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "Public domain",
+    "author": "Baker131313",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Depression-loss of loved one.jpg",
+    "query": "depression",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-30-nature-35369ab9/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'nature'"
+  }
+}
