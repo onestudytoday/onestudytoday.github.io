@@ -1,0 +1,236 @@
+{
+  "id": "2026-10-27-nature-d42d9ae0",
+  "niche": "nature",
+  "study": {
+    "key": "d42d9ae069be4dbb",
+    "title": "Differential mortality risks associated with ambient temperature among migrants and non-migrants: a space-time-stratified case-crossover study of the 100 Million Brazilian Cohort (2000-2020)",
+    "journal": "Lancet regional health. Americas",
+    "pub_date": "2026-10-27",
+    "pub_date_display": "Oct 27, 2026",
+    "doi": "10.1016/j.lana.2026.101687",
+    "doi_display": "doi.org/10.1016/j.lana.2026.101687",
+    "url": "https://doi.org/10.1016/j.lana.2026.101687",
+    "is_preprint": false,
+    "server": "",
+    "n": 1199636,
+    "authors": [
+      "Firouraghi N",
+      "Cortes TR",
+      "Jacobson LV",
+      "Neves DJD",
+      "Silveira IH",
+      "Hajat S"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Lancet Regional Health \u00b7 20-year cohort",
+    "headline": "**Extreme heat hits migrants harder** - a gap climate policy may need to address in arrival cities."
+  },
+  "slides": [
+    {
+      "eyebrow": "Why this matters",
+      "basis": "stated",
+      "title": "Climate plans that treat everyone the same may leave migrants behind, widening a heat death gap.",
+      "body": "If migrants are more at risk from heat, then policies that ignore that gap could fail the people who need help most.\n\nThe authors say their results highlight the need to consider migrants for targeted climate policy, with a focus on cutting gaps where migrants arrive."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Internal migrants in Brazil were more likely to die during extreme heat than non-migrants, mainly from breathing-related causes.",
+      "body": "Researchers linked 1.2 million migrant deaths and 3.7 million non-migrant deaths to weather data over twenty years. During extreme heat, breathing-related death risk rose 32 percent among migrants but only 6 percent among non-migrants.\n\nFor migrants who could not read, heat-related breathing risk rose 84 percent.",
+      "stat": {
+        "value": "84%",
+        "label": "rise in heat breathing risk, illiterate migrants"
+      }
+    },
+    {
+      "eyebrow": "The setup",
+      "title": "They used a case-crossover design comparing each person's weather exposure on the day they died to other days.",
+      "body": "The 100 Million Brazilian Cohort was linked to death records from 2000 to 2020. Internal migrants were people whose state of birth differed from where they lived.\n\nThe team compared extreme cold and extreme heat to the level with the lowest death risk, looking at effects over twenty days."
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Something else about moving or where migrants live could explain the link.",
+    "The numbers are relative changes. Without knowing baseline rates, an 84 percent rise might still be a small real-world shift.",
+    "Funded in part by the Wellcome Trust, worth knowing when you read the result."
+  ],
+  "cta": {
+    "headline": "Send this to anyone planning climate policy.",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Internal migrants in Brazil face higher breathing-related death risk during extreme heat, most among those with low literacy - a gap climate policy may need to address.",
+  "hashtag_set": "health",
+  "shape": "",
+  "vet": {
+    "key": "d42d9ae069be4dbb",
+    "verdict": "HOLD",
+    "score": 37,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "note",
+        "message": "Design reads as observational (unclear); markers: cohort, association, associated with",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Lancet regional health. Americas' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      },
+      {
+        "code": "INDUSTRY_FUNDING",
+        "severity": "warn",
+        "message": "Funder list contains commercial entities: llc",
+        "caveat": "This study was funded in part by industry, which is worth knowing when you read the result.",
+        "draft_rule": null
+      },
+      {
+        "code": "RELATIVE_RISK_ONLY",
+        "severity": "warn",
+        "message": "Reports relative effects (relative risk) with no absolute numbers.",
+        "caveat": "The paper reports a relative change. Without the baseline rate, a big-sounding percentage can be a very small real-world difference.",
+        "draft_rule": "A relative effect with no absolute baseline must never be stated as a bare percentage on the cover slide."
+      }
+    ],
+    "design": "unclear",
+    "sample_size": 1199636,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link.",
+      "This study was funded in part by industry, which is worth knowing when you read the result.",
+      "The paper reports a relative change. Without the baseline rate, a big-sounding percentage can be a very small real-world difference."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'.",
+      "A relative effect with no absolute baseline must never be stated as a bare percentage on the cover slide."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "explainer",
+    "lint_errors": [
+      "slide1.body: 46 words, spec is 30-40",
+      "slide2.body: 48 words, spec is 30-40",
+      "slide3.body: 49 words, spec is 30-40",
+      "GUARDRAIL the cover kicker says 'Lancet Regional Health \u00b7 20-year cohort', but this paper was published in 'Lancet regional health. Americas'. The journal is the credibility claim on the cover and it has to be the real one"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "breathing-related death risk rose 32 percent among migrants",
+          "problem": "The abstract reports heat-related respiratory mortality RR for migrants as 1.32 (1.10-1.58), which is a relative risk, not a 32 percent rise. A RR of 1.32 represents a 32% increase, but the copy presents this as a simple percent rise without clarifying it's relative to the baseline, which could be misleading about the nature of the statistic.",
+          "severity": "minor"
+        },
+        {
+          "claim": "breathing-related death risk rose...only 6 percent among non-migrants",
+          "problem": "The abstract reports heat-related respiratory mortality RR for non-migrants as 1.06 (1.00-1.17). A RR of 1.06 represents a 6% increase, not strictly 'only 6 percent' - the conversion from RR to percent is acceptable, but the word 'only' adds interpretation not in the abstract.",
+          "severity": "minor"
+        },
+        {
+          "claim": "For migrants who could not read, heat-related breathing risk rose 84 percent",
+          "problem": "The abstract reports RR for illiterate migrants as 1.84 (1.25-2.71). A RR of 1.84 represents an 84% increase. While mathematically correct, the copy converts the relative risk to a percent increase, which is acceptable simplification.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Researchers linked 1.2 million migrant deaths and 3.7 million non-migrant deaths",
+          "problem": "The abstract states 1,199,636 deaths among internal-migrants and 3,716,900 deaths among non-migrants. '1.2 million' rounds 1,199,636 and '3.7 million' rounds 3,716,900. These are rounded versions that change the precision of the numbers.",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "20-year",
+          "found_in_abstract": true
+        },
+        {
+          "number": "1.2 million",
+          "found_in_abstract": false
+        },
+        {
+          "number": "3.7 million",
+          "found_in_abstract": false
+        },
+        {
+          "number": "32 percent",
+          "found_in_abstract": true
+        },
+        {
+          "number": "6 percent",
+          "found_in_abstract": true
+        },
+        {
+          "number": "84 percent",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2000",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2020",
+          "found_in_abstract": true
+        },
+        {
+          "number": "twenty",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [
+      {
+        "number": "1.2 million",
+        "found_in_abstract": false
+      },
+      {
+        "number": "3.7 million",
+        "found_in_abstract": false
+      },
+      {
+        "number": "3.7",
+        "found_in_abstract": false,
+        "checked_by": "code"
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Background Climate change disproportionately affects socially minoritized populations, but migrants' vulnerability to extreme temperatures remains overlooked. We estimated short-term associations between extreme ambient temperatures and mortality among migrants and non-migrants across Brazil. Methods We linked the 100 Million Brazilian Cohort to mortality and temperature data (2000-2020) and conducted a space-time-stratified case-crossover study analysing the differential effects of extreme temperature on mortality among internal migrants (i.e., Individuals whose state of birth was different from their residence at registration or death) and non-migrants. We used conditional quasi-Poisson regression with distributed lag non-linear model (DLNM) to estimate relative risks (RRs) and 95% confidence intervals (CIs) for all-cause non-accidental and cause-specific mortality associated with extreme-cold (1st percentile) and extreme-heat (99th percentile) compared to minimum-mortality-temperature (i.e., the temperature associated with the lowest mortality risk), over 0-20 days in both groups. We further stratified by age, literacy, urbanicity and housing conditions. Findings We included 1,199,636 deaths among internal-migrants (mean age at death = 62.67 years (standard-deviation (SD) = 18.36), with 673,166 (56%) males) and 3,716,900 deaths among non-migrants (57.18 years (SD = 20.31), with 2,135,293 (57%) males). Over 0-20 days, we observed a consistent pattern of higher risks of all-cause, non-accidental mortality among internal-migrants than non-migrants following both extreme-heat (RR Mig (95%CI):1.05(1.01-1.10) vs. RR Non-mig :1.01(0.99-1.04)) and extreme-cold (RR Mig :1.27(1.22-1.32) vs. RR Non-mig :1.24(1.20-1.28)). Extreme cold-related circulatory mortality (mortality due to diseases of the circulatory system, based on the relevant International Classification of Diseases codes) (I00-I99) was higher among non-migrants (RR Mig :1.32(1.20-1.45) vs. RR Non-mig :1.41(1.31-1.51)) while heat-related respiratory mortality (J00-J99) was higher among internal-migrants (RR Mig :1.32(1.10-1.58) vs. RR Non-mig :1.06(1.00-1.17)), particularly those illiterate (RR Mig :1.84(1.25-2.71) vs. RR Non-mig :1.10(0.89-1.36)). Other subcategories showed greater 95%CI overlap. Interpretation We found internal migrants are likely to experience higher heat-related respiratory mortality than non-migrants particularly low-educated migrants. Our results highlight the need to further consider migrants for targeted climate adaptation policies, with a focus on reducing social inequalities in the place of arrival. Funding The Wellcome Trust.",
+    "source": "europepmc",
+    "ext_id": "MED:42990832",
+    "pub_types": [
+      "research-article",
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "http://creativecommons.org/licenses/by/4.0/;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "nature",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Lange-MigrantMother02.jpg/1920px-Lange-MigrantMother02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "Public domain",
+    "author": "Dorothea Lange",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Lange-MigrantMother02.jpg",
+    "query": "migrant",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-27-nature-d42d9ae0/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'nature'"
+  }
+}
