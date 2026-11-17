@@ -1,0 +1,176 @@
+{
+  "id": "2026-10-14-psych-63a2620a",
+  "niche": "psych",
+  "study": {
+    "key": "63a2620ac45ccb94",
+    "title": "The effect of social robot authority on epistemic vigilance in early childhood",
+    "journal": "Journal of experimental child psychology",
+    "pub_date": "2026-10-14",
+    "pub_date_display": "Oct 14, 2026",
+    "doi": "10.1016/j.jecp.2026.106688",
+    "doi_display": "doi.org/10.1016/j.jecp.2026.106688",
+    "url": "https://doi.org/10.1016/j.jecp.2026.106688",
+    "is_preprint": false,
+    "server": "",
+    "n": 200,
+    "authors": [
+      "Jin X",
+      "Cao X",
+      "Li H."
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Journal of Experimental Child Psychology",
+    "headline": "**When a robot sounds like it knows things, kids question it less** - even if the claim is wrong."
+  },
+  "slides": [
+    {
+      "eyebrow": "Why you should care",
+      "basis": "stated",
+      "title": "Authority cues can shape how much evidence children seek before accepting what a robot tells them.",
+      "body": "As robots become tutors and learning partners, we need to know whether children still check what they hear. If a robot that sounds expert stops kids from asking questions, it could weaken the checking habits they need.\n\nThis study measured whether authority changes how children test a robot's claims."
+    },
+    {
+      "eyebrow": "What the data says",
+      "title": "Chinese children aged four and six checked a robot's claims less when it was presented as knowing things.",
+      "body": "Researchers told 328 children that all aliens in a task had three eyes, using robots with different cues. When the robot seemed to know things, kids checked the claim less often and for less time.\n\nRole cues - teacher versus peer - had no effect.",
+      "stat": {
+        "value": "328",
+        "label": "children tested across two studies"
+      }
+    },
+    {
+      "eyebrow": "The assumption",
+      "title": "You might expect children to question robots the same way they question people, or even more so.",
+      "body": "Robots are tools, not social equals. It would make sense if kids treated them like books - useful but worth checking.\n\nInstead, the same cues that make us defer to human experts worked on a machine."
+    }
+  ],
+  "caveats": [
+    "The study was done in China with Chinese children. Cultural attitudes toward robots and authority may differ elsewhere.",
+    "The task used a simple claim about cartoon aliens, not real schoolwork or advice that could actually mislead a child."
+  ],
+  "cta": {
+    "headline": "Send this to anyone building robot tutors",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "When a robot sounds like it knows things, children check its claims less - the same respect we show human experts.",
+  "hashtag_set": "psych",
+  "shape": "",
+  "vet": {
+    "key": "63a2620ac45ccb94",
+    "verdict": "PASS",
+    "score": 56,
+    "flags": [
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Journal of experimental child psychology' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "unclear",
+    "sample_size": 200,
+    "subjects": "human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [],
+    "notes": []
+  },
+  "qa": {
+    "format": "reversal",
+    "lint_errors": [
+      "slide1.body: 49 words, spec is 30-40",
+      "slide2.body: 43 words, spec is 30-40"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "Researchers told 328 children that all aliens in a task had three eyes",
+          "problem": "The abstract says the robots asserted this claim, not that researchers told children. The abstract describes two studies with N=128 and N=200, totaling 328 children, but the researchers used robots to deliver the information, not researchers directly telling children.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "When the robot seemed to know things, kids checked the claim less often and for less time.",
+          "problem": "The abstract states that in Study 2, cognitive authority decreased verification behavior, but there was NO significant effect of child age. The abstract for Study 1 found children engaged in less verification in the high-authority condition and 6-year-olds checked more often than 4-year-olds. The copy conflates findings across both studies and implies a universal effect across all children when age effects were only found in Study 1.",
+          "severity": "minor"
+        },
+        {
+          "claim": "Chinese children aged four and six checked a robot's claims less when it was presented as knowing things.",
+          "problem": "This combines findings from both studies in a way that could be misleading. Study 1 tested overall authority (high vs low), Study 2 tested cognitive authority vs role authority. Only Study 2 specifically isolated 'knowing things' (cognitive authority) as the factor, and that study found no age effect. The copy implies this finding applies uniformly to both age groups when tested together.",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "328",
+          "found_in_abstract": true
+        },
+        {
+          "number": "four",
+          "found_in_abstract": true
+        },
+        {
+          "number": "six",
+          "found_in_abstract": true
+        },
+        {
+          "number": "three",
+          "found_in_abstract": true
+        },
+        {
+          "number": "two",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Researchers told 328 children that all aliens in a task had three eyes",
+        "problem": "The abstract says the robots asserted this claim, not that researchers told children. The abstract describes two studies with N=128 and N=200, totaling 328 children, but the researchers used robots to deliver the information, not researchers directly telling children.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "328",
+        "found_in_abstract": false,
+        "checked_by": "code"
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Social robots are increasingly deployed as tutors and learning partners, yet their authority cues may discourage children from questioning or verifying information. We investigated whether robot authority influences Chinese children's epistemic vigilance and which source of authority drives this effect. In Study 1 (N = 128, ages 4 and 6, M age = 5.39 years, SD = 0.92, 66 girls and 62 boys), robots with high and low overall authority asserted that all aliens in a task had three eyes. Children's verification behaviors were assessed in terms of the number of times they checked the information, the length of time they spent checking, and how much time passed between checks. Results showed that children engaged in significantly less verification in the high-authority condition, and 6-year-olds checked more often than 4-year-olds. Study 2 (N = 200, ages 4 and 6, M age = 5.19 years, SD = 0.92, 97 girls and 103 boys) built on Study 1 by manipulating two sources of authority: role authority (teacher-like vs. peer-like) and cognitive authority (knowledgeable vs. unknowledgeable). The same task and outcome measures were used as in Study 1. The results showed that cognitive authority significantly decreased children's verification behavior, but there was no significant effect of role authority or child age. Together, these findings suggest that authority cues can shape how much evidence children seek before accepting robot testimony, particularly when the robot is presented as knowledgeable.",
+    "source": "europepmc",
+    "ext_id": "MED:42874494",
+    "pub_types": [
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "https://doi.org/10.15223/policy-004;https://doi.org/10.15223/policy-012;https://doi.org/10.15223/policy-017;https://doi.org/10.15223/policy-029;https://doi.org/10.15223/policy-037;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "psych",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Trunk_of_Questions.jpg/1920px-Trunk_of_Questions.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC BY-SA 4.0",
+    "author": "Suyash Dwivedi",
+    "needs_credit": true,
+    "source": "Wikimedia Commons",
+    "page": "File:Trunk of Questions.jpg",
+    "query": "question",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-14-psych-63a2620a/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'psych'"
+  }
+}
