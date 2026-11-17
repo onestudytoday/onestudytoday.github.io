@@ -206,7 +206,7 @@
     ],
     "publishable": false
   },
-  "status": "approved",
+  "status": "published",
   "source": {
     "abstract": "Background Climate change disproportionately affects socially minoritized populations, but migrants' vulnerability to extreme temperatures remains overlooked. We estimated short-term associations between extreme ambient temperatures and mortality among migrants and non-migrants across Brazil. Methods We linked the 100 Million Brazilian Cohort to mortality and temperature data (2000-2020) and conducted a space-time-stratified case-crossover study analysing the differential effects of extreme temperature on mortality among internal migrants (i.e., Individuals whose state of birth was different from their residence at registration or death) and non-migrants. We used conditional quasi-Poisson regression with distributed lag non-linear model (DLNM) to estimate relative risks (RRs) and 95% confidence intervals (CIs) for all-cause non-accidental and cause-specific mortality associated with extreme-cold (1st percentile) and extreme-heat (99th percentile) compared to minimum-mortality-temperature (i.e., the temperature associated with the lowest mortality risk), over 0-20 days in both groups. We further stratified by age, literacy, urbanicity and housing conditions. Findings We included 1,199,636 deaths among internal-migrants (mean age at death = 62.67 years (standard-deviation (SD) = 18.36), with 673,166 (56%) males) and 3,716,900 deaths among non-migrants (57.18 years (SD = 20.31), with 2,135,293 (57%) males). Over 0-20 days, we observed a consistent pattern of higher risks of all-cause, non-accidental mortality among internal-migrants than non-migrants following both extreme-heat (RR Mig (95%CI):1.05(1.01-1.10) vs. RR Non-mig :1.01(0.99-1.04)) and extreme-cold (RR Mig :1.27(1.22-1.32) vs. RR Non-mig :1.24(1.20-1.28)). Extreme cold-related circulatory mortality (mortality due to diseases of the circulatory system, based on the relevant International Classification of Diseases codes) (I00-I99) was higher among non-migrants (RR Mig :1.32(1.20-1.45) vs. RR Non-mig :1.41(1.31-1.51)) while heat-related respiratory mortality (J00-J99) was higher among internal-migrants (RR Mig :1.32(1.10-1.58) vs. RR Non-mig :1.06(1.00-1.17)), particularly those illiterate (RR Mig :1.84(1.25-2.71) vs. RR Non-mig :1.10(0.89-1.36)). Other subcategories showed greater 95%CI overlap. Interpretation We found internal migrants are likely to experience higher heat-related respiratory mortality than non-migrants particularly low-educated migrants. Our results highlight the need to further consider migrants for targeted climate adaptation policies, with a focus on reducing social inequalities in the place of arrival. Funding The Wellcome Trust.",
     "source": "europepmc",
@@ -235,5 +235,19 @@
   },
   "review": {
     "forced": true
+  },
+  "published": {
+    "media_id": "18096707402179630",
+    "kind": "CAROUSEL",
+    "at": "2026-11-17T01:23:10Z"
+  },
+  "crosspost": {
+    "at": "2026-11-17T01:23:10Z",
+    "posted": [],
+    "skipped": [
+      "bluesky",
+      "threads"
+    ],
+    "failed": {}
   }
 }
