@@ -1,0 +1,241 @@
+{
+  "id": "2026-10-20-health-bdf9b0b4",
+  "niche": "health",
+  "study": {
+    "key": "bdf9b0b424ba0e8a",
+    "title": "Beyond stroke: atrial fibrillation and the broader burden of thromboembolic events in the population-based EpiHealth study",
+    "journal": "Scandinavian cardiovascular journal : SCJ",
+    "pub_date": "2026-10-20",
+    "pub_date_display": "Oct 20, 2026",
+    "doi": "10.1080/14017431.2026.2748120",
+    "doi_display": "doi.org/10.1080/14017431.2026.2748120",
+    "url": "https://doi.org/10.1080/14017431.2026.2748120",
+    "is_preprint": false,
+    "server": "",
+    "n": 22616,
+    "authors": [
+      "H\u00f6iby P",
+      "Zarrouk M",
+      "Lind L",
+      "Basna R",
+      "Overton MC",
+      "Elmst\u00e5hl S."
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Scandinavian Cardiovascular Journal, 22,616 adults",
+    "headline": "**One in five clots in people with atrial fibrillation** arrived the same day the heart disorder was diagnosed."
+  },
+  "slides": [
+    {
+      "eyebrow": "What it could mean",
+      "basis": "stated",
+      "title": "Catching atrial fibrillation earlier could create a window to start blood thinners before a clot forms.",
+      "body": "Twenty percent of clotting events happened right when AF was discovered. That timing suggests many people have undetected irregular heartbeat until a clot forces the diagnosis.\n\nFinding AF sooner might let doctors prescribe anticoagulants in time to prevent the clot."
+    },
+    {
+      "eyebrow": "Results",
+      "title": "Adults with atrial fibrillation had nearly four times the rate of blood clots compared to those without the condition.",
+      "body": "Among people with AF, 5.9 percent had a clotting event during follow-up. Among those without AF, just 1.6 percent did.\n\nMost clots in the AF group were arterial, forming in arteries rather than veins.",
+      "stat": {
+        "value": "3.7\u00d7",
+        "label": "higher clot rate with AF"
+      }
+    },
+    {
+      "eyebrow": "What they did",
+      "title": "Researchers tracked 22,616 Swedish adults for clots over five years, comparing those with and without atrial fibrillation.",
+      "body": "Participants were recruited between 2011 and 2016 and followed through national health registers. At baseline, 873 people had AF. Another 297 developed it during the study.\n\nIn total, 484 people had at least one clotting event across 70,587 person-years."
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Something else could explain the link between atrial fibrillation and higher clot rates.",
+    "The study only tracked events until 2016, so recent changes in treatment or detection would not be captured here."
+  ],
+  "cta": {
+    "headline": "Send this to anyone debating wearable heart monitors",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Twenty percent of blood clots in atrial fibrillation patients showed up the same day the rhythm disorder was diagnosed for the first time.",
+  "hashtag_set": "health",
+  "shape": "",
+  "vet": {
+    "key": "bdf9b0b424ba0e8a",
+    "verdict": "HOLD",
+    "score": 58,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "warn",
+        "message": "Design reads as observational (cohort (observational)); markers: cohort, associated with",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Scandinavian cardiovascular journal : SCJ' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "cohort (observational)",
+    "sample_size": 22616,
+    "subjects": "human",
+    "journal_tier": null,
+    "causal_language_banned": true,
+    "species": [],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": []
+  },
+  "qa": {
+    "format": "procedural",
+    "lint_errors": [
+      "cover.kicker: 50 chars, max 44",
+      "GUARDRAIL the cover kicker says 'Scandinavian Cardiovascular Journal, 22,616 adults', but this paper was published in 'Scandinavian cardiovascular journal : SCJ'. The journal is the credibility claim on the cover and it has to be the real one"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "Adults with atrial fibrillation had nearly four times the rate of blood clots compared to those without the condition.",
+          "problem": "The abstract does not state 'nearly four times' or '4 times' anywhere. The text shows '5.9%' for AF participants and an incomplete comparison starting with '68 events, 5.9%; p' but the sentence is cut off and does not provide the comparison rate or a fold-increase.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Among those without AF, just 1.6 percent did.",
+          "problem": "The abstract does not contain the number 1.6 or 1.6 percent anywhere.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "3.7\u00d7 higher clot rate with AF",
+          "problem": "The abstract does not contain the number 3.7 or any fold-increase calculation.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "Researchers tracked 22,616 Swedish adults for clots over five years",
+          "problem": "The abstract does not specify 'five years' as the follow-up duration. It states recruitment occurred between April 2011 and December 2016 and follow-up was until December 31, 2016, but the actual follow-up duration per participant is not stated as five years.",
+          "severity": "minor"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "22,616",
+          "found_in_abstract": true
+        },
+        {
+          "number": "one in five",
+          "found_in_abstract": true
+        },
+        {
+          "number": "Twenty percent",
+          "found_in_abstract": true
+        },
+        {
+          "number": "5.9 percent",
+          "found_in_abstract": true
+        },
+        {
+          "number": "1.6 percent",
+          "found_in_abstract": false
+        },
+        {
+          "number": "3.7",
+          "found_in_abstract": false
+        },
+        {
+          "number": "four times",
+          "found_in_abstract": false
+        },
+        {
+          "number": "873",
+          "found_in_abstract": true
+        },
+        {
+          "number": "297",
+          "found_in_abstract": true
+        },
+        {
+          "number": "484",
+          "found_in_abstract": true
+        },
+        {
+          "number": "70,587",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "Adults with atrial fibrillation had nearly four times the rate of blood clots compared to those without the condition.",
+        "problem": "The abstract does not state 'nearly four times' or '4 times' anywhere. The text shows '5.9%' for AF participants and an incomplete comparison starting with '68 events, 5.9%; p' but the sentence is cut off and does not provide the comparison rate or a fold-increase.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "Among those without AF, just 1.6 percent did.",
+        "problem": "The abstract does not contain the number 1.6 or 1.6 percent anywhere.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "3.7\u00d7 higher clot rate with AF",
+        "problem": "The abstract does not contain the number 3.7 or any fold-increase calculation.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [
+      {
+        "number": "1.6 percent",
+        "found_in_abstract": false
+      },
+      {
+        "number": "3.7",
+        "found_in_abstract": false
+      },
+      {
+        "number": "four times",
+        "found_in_abstract": false
+      },
+      {
+        "number": "1.6",
+        "found_in_abstract": false,
+        "checked_by": "code"
+      }
+    ],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Objectives To investigate the distribution and risk of thromboembolic events (TEs) among adults with and without atrial fibrillation (AF), and to assess oral anticoagulant (OAC) use over time. Design This population-based longitudinal cohort study included EpiHealth participants recruited between April 2011 and December 2016 and followed through linkage to Swedish health data registers from baseline until the first TE, death, or December 31, 2016. Results At baseline, 873 of 22,616 participants (3.9%) had AF and 297 developed incident AF during follow-up. 484 participants experienced at least one TE during 70,587 person-years. Participants with AF had higher TE incidence (68 events, 5.9%; p Conclusions AF was associated with substantially increased thromboembolic risk, predominantly arterial in nature. One in five TEs among participants with AF coincided with newly diagnosed AF, suggesting potential opportunities for earlier AF detection and timely initiation of anticoagulant treatment.",
+    "source": "europepmc",
+    "ext_id": "MED:42862737",
+    "pub_types": [
+      "Journal Article"
+    ],
+    "publisher": "Informa UK Limited",
+    "license": "http://creativecommons.org/licenses/by-nc/4.0/;https://doi.org/10.1080/policies-text-data-mining"
+  },
+  "source_niche": "health",
+  "cover_art": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/97/Ventricular_Fibrillation.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "licence": "CC BY-SA 4.0",
+    "author": "BruceBlaus",
+    "needs_credit": true,
+    "source": "Wikimedia Commons",
+    "page": "File:Ventricular Fibrillation.png",
+    "query": "fibrillation",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-20-health-bdf9b0b4/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'health'"
+  }
+}
