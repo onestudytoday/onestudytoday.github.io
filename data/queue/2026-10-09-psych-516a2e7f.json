@@ -1,6 +1,6 @@
 {
   "id": "2026-10-09-psych-516a2e7f",
-  "niche": "wildcard",
+  "niche": "psych",
   "study": {
     "key": "516a2e7f3ad27bb4",
     "title": "Aversive learning retroactively modulates neutral episodic memories structured by prior knowledge of predictive sequences",
@@ -146,14 +146,17 @@
     "query": "memory",
     "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-09-psych-516a2e7f/bg/cover.jpg"
   },
-  "reel": {
-    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-09-psych-516a2e7f/reel.mp4",
-    "duration": 19.2,
-    "bytes": 4140483
-  },
   "reel_status": {
-    "built": true,
-    "duration": 19.2,
-    "bytes": 4140483
-  }
+    "built": false,
+    "reason": "removed on re-render, rebuild failed (ReelError)"
+  },
+  "reniche": [
+    {
+      "from": "wildcard",
+      "to": "psych",
+      "at": "2026-11-18T00:44:46Z",
+      "carried_caveats": []
+    }
+  ],
+  "render_seq": 1
 }
