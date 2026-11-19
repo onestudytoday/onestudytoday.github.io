@@ -1,0 +1,197 @@
+{
+  "id": "2026-11-18-physics-45e49fb5",
+  "niche": "physics",
+  "study": {
+    "key": "45e49fb5d3cf181d",
+    "title": "Discovery of a Massive Outer Companion to the TOI-178 Resonant Chain",
+    "journal": "arXiv",
+    "pub_date": "2026-11-18",
+    "pub_date_display": "Nov 18, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2611.24854v1",
+    "url": "http://arxiv.org/abs/2611.24854v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Emma V. Turtelboom",
+      "William Thompson",
+      "Ryan Cloutier",
+      "Alexandra Rochon",
+      "Charles A. Beichman",
+      "Trevor Campbell"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "arXiv preprint, early paper",
+    "headline": "**A rare planetary system kept six worlds in sync** even with a giant trying to pull them apart."
+  },
+  "slides": [
+    {
+      "eyebrow": "What it means for you",
+      "basis": "stated",
+      "title": "Planet formation can produce stable setups we thought impossible to keep long-term.",
+      "body": "The team reports that TOI-178 is the only known system where many planets in sync survived with a massive outer companion nearby.\n\nThe inner six planets have orbited in lockstep for billions of years, despite the giant twenty-one times Jupiter's mass."
+    },
+    {
+      "eyebrow": "The result",
+      "title": "The team found a massive brown dwarf orbiting at 6.9 AU, with 21 Jupiter masses.",
+      "body": "Five of the six inner planets sit in a 2:4:6:9:12 resonant chain within 0.15 AU of the star. The newly found companion lies several AU out.\n\nSimulations show the inner chain stays stable despite the outer companion's pull, consistent with the system being several billion years old.",
+      "stat": {
+        "value": "21 M\u2c7c",
+        "label": "Mass of outer companion"
+      }
+    },
+    {
+      "eyebrow": "How it works",
+      "title": "The discovery came from data showing the star's wobble, plus imaging and velocity measures.",
+      "body": "The researchers analyzed oddities in the Gaia and Hipparcos catalogs showing the star's position shifting over time. Combined with velocity data, this revealed a massive companion.\n\nThe inner chain's survival suggests it formed early and locked in before the outer orbit could break it."
+    }
+  ],
+  "caveats": [
+    "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+    "The mass and orbit parameters have wide error ranges, especially for the distance and orbit shape.",
+    "The stability simulations are models. They show the system could survive, not that this is definitely how it formed."
+  ],
+  "cta": {
+    "headline": "Send this to anyone debating planet migration",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "A planetary system kept six worlds locked in orbital sync for billions of years with a giant trying to disrupt them.",
+  "hashtag_set": "physics",
+  "shape": "",
+  "vet": {
+    "key": "45e49fb5d3cf181d",
+    "verdict": "HOLD",
+    "score": 42,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      }
+    ],
+    "design": "modelling",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "stakes",
+    "lint_errors": [
+      "slide1.body: 41 words, spec is 30-40",
+      "slide2.body: 52 words, spec is 30-40",
+      "slide3.body: 44 words, spec is 30-40"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": false,
+      "unsupported_claims": [
+        {
+          "claim": "The inner six planets have orbited in lockstep for billions of years, despite the giant twenty-one times Jupiter's mass.",
+          "problem": "The abstract states the mass is 21 Jupiter masses with large uncertainty (21^{+47}_{-11} M_J), but does not provide this as a definitive value. The copy states it as a fact ('twenty-one times') without acknowledging the uncertainty.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "The team found a massive brown dwarf orbiting at 6.9 AU, with 21 Jupiter masses.",
+          "problem": "The abstract gives 6.9 AU and 21 M_J as central values with very large uncertainties (6.9^{+12.3}_{-3.3} AU and 21^{+47}_{-11} M_J). The copy presents these as definitive facts without the uncertainties, which is misleading given how large the error bars are.",
+          "severity": "blocking"
+        },
+        {
+          "claim": "The inner chain's survival suggests it formed early and locked in before the outer orbit could break it.",
+          "problem": "This interpretation about formation timing and locking in before the outer orbit could break it is not stated in the abstract. The abstract only says the system showcases 'a unique outcome of planet formation' without this specific causal sequence.",
+          "severity": "blocking"
+        }
+      ],
+      "numbers_check": [
+        {
+          "number": "six",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2:4:6:9:12",
+          "found_in_abstract": true
+        },
+        {
+          "number": "0.15 AU",
+          "found_in_abstract": true
+        },
+        {
+          "number": "21",
+          "found_in_abstract": true
+        },
+        {
+          "number": "6.9 AU",
+          "found_in_abstract": true
+        },
+        {
+          "number": "five",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [
+      {
+        "claim": "The inner six planets have orbited in lockstep for billions of years, despite the giant twenty-one times Jupiter's mass.",
+        "problem": "The abstract states the mass is 21 Jupiter masses with large uncertainty (21^{+47}_{-11} M_J), but does not provide this as a definitive value. The copy states it as a fact ('twenty-one times') without acknowledging the uncertainty.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "The team found a massive brown dwarf orbiting at 6.9 AU, with 21 Jupiter masses.",
+        "problem": "The abstract gives 6.9 AU and 21 M_J as central values with very large uncertainties (6.9^{+12.3}_{-3.3} AU and 21^{+47}_{-11} M_J). The copy presents these as definitive facts without the uncertainties, which is misleading given how large the error bars are.",
+        "severity": "blocking"
+      },
+      {
+        "claim": "The inner chain's survival suggests it formed early and locked in before the outer orbit could break it.",
+        "problem": "This interpretation about formation timing and locking in before the outer orbit could break it is not stated in the abstract. The abstract only says the system showcases 'a unique outcome of planet formation' without this specific causal sequence.",
+        "severity": "blocking"
+      }
+    ],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "We report the discovery of a massive outer companion around TOI-178, a known planetary system with six inner small planets within 0.15 AU, five of which are in a 2:4:6:9:12 resonant chain. We analyse the astrometric anomalies in the combined Gaia DR2/DR3 - Hipparcos catalogue (G23H) and literature radial velocities, revealing strong evidence for a massive outer companion at several AU. We combine the resulting orbital fit posterior with archival high-contrast imaging to constrain the properties of the corresponding massive outer companion, TOI-178 h. We also study the dynamical stability of the inner resonant chain in the presence of this previously unknown outer companion via both heuristic and N-body simulations. We find that the inner system appears to be robust to the perturbing influence of TOI-178\\,h, in line with the systems several Gyr age. Our analysis results in a final posterior solution for TOI-178\\,h with a semi-major axis of $6.9^{+12.3}_{-3.3}$ AU, a mass of $21^{+47}_{-11} M_J$, and eccentricity of $0.76^{+0.18}_{-0.35}$, likely corresponding to an eccentric brown dwarf. TOI-178 is currently the only known system that has maintained a high-multiplicity resonant chain whilst in the dynamical presence of a massive outer companion, showcasing a unique outcome of planet formation.",
+    "source": "arxiv",
+    "ext_id": "2611.24854v1",
+    "pub_types": [
+      "astro-ph.EP"
+    ],
+    "publisher": "arXiv",
+    "license": ""
+  },
+  "source_niche": "physics",
+  "cover_art": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/13/M57_The_Ring_Nebula.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "licence": "Public domain",
+    "author": "The Hubble Heritage Team (AURA/STScI/NASA)",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:M57 The Ring Nebula.JPG",
+    "query": "planetary",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-11-18-physics-45e49fb5/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'physics'"
+  }
+}
