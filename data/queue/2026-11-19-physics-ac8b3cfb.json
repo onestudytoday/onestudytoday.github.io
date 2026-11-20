@@ -1,0 +1,165 @@
+{
+  "id": "2026-11-19-physics-ac8b3cfb",
+  "niche": "wildcard",
+  "study": {
+    "key": "ac8b3cfb1d927e8d",
+    "title": "Chemical Cartography Across Time: The Age-Dependent Chemical Structure of the Milky Way with a Homogeneous Sample of 580,000 Giants from Five Surveys",
+    "journal": "arXiv",
+    "pub_date": "2026-11-19",
+    "pub_date_display": "Nov 19, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2611.26550v1",
+    "url": "http://arxiv.org/abs/2611.26550v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Jeff Shen",
+      "Neige Frankel",
+      "David W. Hogg",
+      "Joshua S. Speagle",
+      "Shirley Ho"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "arXiv astronomy preprint",
+    "headline": "The oldest stars in the Milky Way **have almost no chemical gradient**, pointing to a well-mixed early disk."
+  },
+  "slides": [
+    {
+      "eyebrow": "Why this matters",
+      "basis": "stated",
+      "title": "If the oldest stars reflect a well-mixed disk, our Galaxy started more uniform than it is today.",
+      "body": "The team reports that the oldest stars show near-zero chemical gradients. This suggests the early Milky Way was either well-mixed or stars migrated significantly.\n\nYounger stars show steeper gradients. The disk became less uniform over time, helping astronomers test competing theories of how galaxies assemble."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "The metallicity gradient is U-shaped: shallow for young stars, steepest at five to six billion years, then near zero.",
+      "body": "The team analyzed 580,000 giant stars from five surveys, all on a single scale. The steepest gradient is about -0.07 dex per kiloparsec at intermediate ages.\n\nThe oldest stars have almost flat gradients. The thin-disk population is linked to the pattern, while thick-disk stars show weak gradients at all ages.",
+      "stat": {
+        "value": "~-0.07",
+        "label": "dex/kpc, steepest gradient"
+      }
+    },
+    {
+      "eyebrow": "The setup",
+      "title": "Mapping how element distribution changed over time requires uniform ages and abundances for a large disk sample.",
+      "body": "Previous studies often used stars from different surveys with inconsistent labels. Here one model estimated parameters, abundances, distances, and ages for all 580,000 giants.\n\nThe team then traced how metallicity structure goes together with stellar age across five spectroscopic surveys."
+    }
+  ],
+  "caveats": [
+    "This is a preprint. It has not been peer reviewed yet, so no independent expert has checked the work.",
+    "This study found a pattern in the data, not a cause. Something else could explain the link between stellar age and chemical gradients."
+  ],
+  "cta": {
+    "headline": "Send this to anyone who thinks the early disk was lumpy",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "The Milky Way's oldest stars show almost no chemical gradient, hinting the early disk may have been well-mixed or heavily migrated.",
+  "hashtag_set": "physics",
+  "shape": "",
+  "vet": {
+    "key": "ac8b3cfb1d927e8d",
+    "verdict": "HOLD",
+    "score": 36,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      },
+      {
+        "code": "CORRELATIONAL",
+        "severity": "warn",
+        "message": "Design reads as observational (cross-sectional (observational)); markers: survey",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      }
+    ],
+    "design": "cross-sectional (observational)",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": true,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+      "This study found a pattern, not a cause. Something else could explain the link."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'.",
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "explainer",
+    "lint_errors": [
+      "slide1.body: 45 words, spec is 30-40",
+      "slide2.body: 52 words, spec is 30-40",
+      "slide3.body: 41 words, spec is 30-40",
+      "cta.headline: 11 words, spec is 5-10"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "580,000",
+          "found_in_abstract": true
+        },
+        {
+          "number": "five",
+          "found_in_abstract": true
+        },
+        {
+          "number": "-0.07 dex/kpc",
+          "found_in_abstract": true
+        },
+        {
+          "number": "five to six billion years",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Mapping the distribution of elements in the Milky Way and understanding how that distribution has changed over time can give us insight into the formation and evolution of our Galaxy. Here we use homogeneously estimated atmospheric parameters, elemental abundances, distances, and ages for ~580,000 giants from five major spectroscopic surveys---all simultaneously placed on a single, self-consistent scale by one model---allowing us, for the first time, to use a large sample of stars with uniform labels and ages that cumulatively span much of the disk to trace how the metallicity structure of the Milky Way depends on stellar age. Our chrono-chemical analysis shows that the radial metallicity gradient of the disk depends non-monotonically on age: it is shallow for the youngest stars, steepening to a maximum of ~-0.07 dex/kpc at intermediate ages (~5-6 Gyr), and flattening to near zero for the oldest stars. This \"U-shaped\" age dependence is driven largely by the low-alpha (thin-disk) population, with the high-alpha (thick-disk) sequence having weak gradients at all ages. In contrast to [Fe/H], the radial [Mg/Fe] gradient is weak (<~0.01 dex/kpc) at all ages. Together, these trends are consistent with an inside-out formation scenario in which the gradient of the star-forming gas has flattened over at least the last ~6 Gyr, while the near-zero gradient of the oldest stars reflects their formation in a well-mixed disk, efficient radial migration, or both.",
+    "source": "arxiv",
+    "ext_id": "2611.26550v1",
+    "pub_types": [
+      "astro-ph.GA"
+    ],
+    "publisher": "arXiv",
+    "license": ""
+  },
+  "source_niche": "physics",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/Starburst_in_NGC_4449_%28captured_by_the_Hubble_Space_Telescope%29.jpg/1920px-Starburst_in_NGC_4449_%28captured_by_the_Hubble_Space_Telescope%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "Public domain",
+    "author": "NASA, ESA, A. Aloisi (STScI/ESA), and The Hubble Heritage (STScI/AURA)-ESA/Hubbl",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Starburst in NGC 4449 (captured by the Hubble Space Telescope).jpg",
+    "query": "star",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-11-19-physics-ac8b3cfb/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "build failed: ReelError: reel.mp4 pix_fmt is yuvj420p, expected yuv420p - other formats are rejected or silently mangled."
+  }
+}
