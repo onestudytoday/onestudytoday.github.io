@@ -1,0 +1,142 @@
+{
+  "id": "2026-09-30-nature-50c00754",
+  "niche": "nature",
+  "study": {
+    "key": "50c00754cb02185b",
+    "title": "Shared regulatory systems in memory suppression and fear extinction: An ALE and MACM meta-analysis",
+    "journal": "Behavioural brain research",
+    "pub_date": "2026-09-30",
+    "pub_date_display": "Sep 30, 2026",
+    "doi": "10.1016/j.bbr.2026.116483",
+    "doi_display": "doi.org/10.1016/j.bbr.2026.116483",
+    "url": "https://doi.org/10.1016/j.bbr.2026.116483",
+    "is_preprint": false,
+    "server": "",
+    "n": 1452,
+    "authors": [
+      "Zhao Y",
+      "Zhang T",
+      "Xiong R",
+      "Cui X",
+      "Hulbert JC",
+      "Liu P"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Behavioural Brain Research + meta-analysis",
+    "headline": "**Stopping an unwanted memory and unlearning fear** use some of the same brain systems to regulate the past."
+  },
+  "slides": [
+    {
+      "eyebrow": "Why you should care",
+      "basis": "stated",
+      "title": "Two ways of controlling the past\u2014one deliberate, one learned\u2014turn out to share neural systems.",
+      "body": "When you try to block a memory and when you unlearn a fear response, your brain recruits the same systems. Both regulate how the past affects you now.\n\nThe same circuits that help you shut down an intrusive thought may also help you stop reacting to what used to scare you."
+    },
+    {
+      "eyebrow": "What the data says",
+      "title": "A combined analysis of 63 brain-imaging studies found shared activity in regions tied to control and attention.",
+      "body": "Memory blocking and fear unlearning both engaged the inferior frontal gyrus, anterior insula, and inferior parietal lobule. These regions sit within networks tied to executive control and attention.\n\nDistinct patterns in memory and emotion areas show key differences remain between the two processes.",
+      "stat": {
+        "value": "63",
+        "label": "brain-imaging studies combined in meta-analysis"
+      }
+    },
+    {
+      "eyebrow": "The assumption",
+      "title": "Memory blocking and fear unlearning are studied separately, as though they are entirely distinct processes.",
+      "body": "They draw on different research traditions. One asks people to deliberately block recall. The other trains threat cues to become safe through exposure.\n\nBut both reduce how past experience affects current behavior. The analysis tested whether they recruit shared neural systems."
+    }
+  ],
+  "caveats": [
+    "The combined analysis pooled studies that used different tasks and designs, which may introduce noise despite efforts to focus on comparable contrasts.",
+    "Shared brain activity does not mean the regions perform identical functions in both processes, only that both recruit them.",
+    "The findings describe group-level patterns across studies and may not reflect how regulation works in any single person."
+  ],
+  "cta": {
+    "headline": "Send this to anyone debating memory versus fear regulation",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Blocking a memory and unlearning fear use shared brain systems, bridging two separate research traditions with one regulatory framework.",
+  "hashtag_set": "psych",
+  "shape": "",
+  "vet": {
+    "key": "50c00754cb02185b",
+    "verdict": "PASS",
+    "score": 72,
+    "flags": [
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Behavioural brain research' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "meta-analysis",
+    "sample_size": 1452,
+    "subjects": "human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [],
+    "notes": []
+  },
+  "qa": {
+    "format": "reversal",
+    "lint_errors": [
+      "slide1.body: 51 words, spec is 30-40",
+      "slide2.body: 43 words, spec is 30-40",
+      "slide3.body: 41 words, spec is 30-40"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "63",
+          "found_in_abstract": true
+        },
+        {
+          "number": "1452",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Memory suppression and fear extinction both reduce the influence of past experiences on current cognition and behavior, but they are typically studied within separate research traditions. The present study examined whether these two processes recruit partially overlapping neural systems involved in the regulation of unwanted memories and previously threat-associated cues. We conducted a preregistered coordinate-based meta-analysis of fMRI studies using activation likelihood estimation (ALE) and meta-analytic connectivity modeling (MACM). The analysis included 63 experiments involving 1452 participants and focused on contrasts commonly used to index retrieval suppression in the Think/No-Think paradigm and threat-cue processing during extinction learning. ALE revealed convergent activation in bilateral inferior frontal gyrus/anterior insula and right inferior parietal lobule. MACM further showed that these regions were embedded within broader executive-control and attention-related coactivation networks. These findings suggest that memory suppression and fear extinction partially converge within broader control- and attention-related systems involved in controlling task-relevant memory and threat representations. At the same time, partly distinct medial temporal and affective-learning patterns point to important domain-specific differences between intentional episodic retrieval suppression and extinction-based threat-safety updating. Overall, the findings help bridge research on memory control and fear extinction by identifying partially overlapping regulatory systems while preserving important theoretical distinctions between the two processes. This framework highlights how control- and attention-related neural systems may contribute to the regulation of unwanted memories and conditioned fear responses through their interactions with memory, threat-learning, and contextual updating processes.",
+    "source": "europepmc",
+    "ext_id": "MED:42815692",
+    "pub_types": [
+      "Meta-Analysis",
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "https://doi.org/10.15223/policy-004;https://doi.org/10.15223/policy-012;https://doi.org/10.15223/policy-017;https://doi.org/10.15223/policy-029;https://doi.org/10.15223/policy-037;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "nature",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/To_regulate_the_conduct_and_to_maintain_the_freedom_and_purity_of_elections_part_1.jpg/1920px-To_regulate_the_conduct_and_to_maintain_the_freedom_and_purity_of_elections_part_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "Public domain",
+    "author": "Louisiana.",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:To regulate the conduct and to maintain the freedom and purity of elections part 1.jpg",
+    "query": "regulate",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-09-30-nature-50c00754/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'nature'"
+  }
+}
