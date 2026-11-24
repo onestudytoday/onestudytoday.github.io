@@ -1,0 +1,143 @@
+{
+  "id": "2026-10-10-psych-7b6fcdfe",
+  "niche": "psych",
+  "study": {
+    "key": "7b6fcdfe6f745221",
+    "title": "Children successfully use external cues as a cognitive strategy in an unsolvable memory task but demonstrate limitation",
+    "journal": "Journal of experimental child psychology",
+    "pub_date": "2026-10-10",
+    "pub_date_display": "Oct 10, 2026",
+    "doi": "10.1016/j.jecp.2026.106685",
+    "doi_display": "doi.org/10.1016/j.jecp.2026.106685",
+    "url": "https://doi.org/10.1016/j.jecp.2026.106685",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Haseltine EL",
+      "Mayerhoff SR",
+      "Szikman I",
+      "McKeon J",
+      "Jackson BN",
+      "Parrish AE"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Journal of Experimental Child Psychology",
+    "headline": "Even preschoolers can invent a memory trick on the fly, **but they may not know why it works**"
+  },
+  "slides": [
+    {
+      "eyebrow": "Why this matters",
+      "basis": "stated",
+      "title": "Young children can create strategies to solve impossible memory problems, but understanding the strategy itself comes later.",
+      "body": "Kids as young as three figured out how to use environmental cues to remember where a toy was hidden when the task was designed to be unsolvable without a trick.\n\nWhen researchers changed the setup slightly, preschoolers struggled to adapt. They could execute the strategy but seemed unaware of why it worked."
+    },
+    {
+      "eyebrow": "What they found",
+      "title": "Children aged three to nine successfully used a uniquely colored cup to mark their preferred toy's location during mixing.",
+      "body": "Kids assigned toys to four opaque cups, one uniquely colored, before the cups were shuffled. High success rates across ages meant children placed the preferred toy in the marked cup.\n\nOlder children reached proficiency faster. All children made fewer errors with practice.",
+      "stat": {
+        "value": "3\u20139 yrs",
+        "label": "age range tested in study"
+      }
+    },
+    {
+      "eyebrow": "The setup",
+      "title": "Researchers gave no instructions, forcing children to invent their own approach to guarantee they could find their favorite toy.",
+      "body": "Four opaque cups were presented, one a different color. Children distributed toys among them, then cups were mixed and re-presented.\n\nWithout using the colored cup as a marker, children had to guess among three identical cups."
+    }
+  ],
+  "caveats": [
+    "The study did not report sample size or detailed demographic information, limiting assessment of how representative the findings are.",
+    "Preschoolers failed follow-up variations that required setting up the task differently, suggesting the original success may have been partly accidental."
+  ],
+  "cta": {
+    "headline": "Send this to anyone raising a preschooler",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Young children can invent clever memory shortcuts under pressure, but grasping the logic behind their own strategy is a separate skill entirely.",
+  "hashtag_set": "psych",
+  "shape": "",
+  "vet": {
+    "key": "7b6fcdfe6f745221",
+    "verdict": "PASS",
+    "score": 56,
+    "flags": [
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Journal of experimental child psychology' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [],
+    "notes": []
+  },
+  "qa": {
+    "format": "explainer",
+    "lint_errors": [
+      "slide1.body: 52 words, spec is 30-40",
+      "slide2.body: 42 words, spec is 30-40"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "three to nine years old",
+          "found_in_abstract": true
+        },
+        {
+          "number": "four opaque cups",
+          "found_in_abstract": true
+        },
+        {
+          "number": "three identical cups",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Cognitive offloading refers to the process of using aids to reduce the cognitive demands of a task. A simple type of offloading-like behavior involves using cues in the environment to later aid in making a correct choice or response when this would otherwise be difficult or even impossible. This project assessed children's ability for spontaneous creation of this type of cognitive strategy use. Children three to nine years old first participated in a task that produced uncertainty surrounding the future location of a preferred toy. Children assigned different toys to four opaque cups, one of which was uniquely colored, before the cups were mixed and re-presented. To guarantee success, children had to place their preferred toy in the uniquely colored cup. Otherwise, they would have to select among three identical cups with no information about where the preferred item was hidden. No instructions were provided initially about where to place items, allowing children to formulate their own approach. Children demonstrated high levels of proficiency. Although age was not a strong indicator of overall performance, older children reached the criterion for proficiency more quickly than younger children. Children also decreased their likelihood of making errors with increased experience. However, subsequent variations of the task showed that preschool age children struggled to set up the game in such a way that an optimal strategy could be implemented. This suggests the possible lack of awareness of why a strategy works to make a task solvable and ensure success at this age.",
+    "source": "europepmc",
+    "ext_id": "MED:42858506",
+    "pub_types": [
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "http://www.elsevier.com/open-access/userlicense/1.0/;https://doi.org/10.15223/policy-004;https://doi.org/10.15223/policy-012;https://doi.org/10.15223/policy-017;https://doi.org/10.15223/policy-029;https://doi.org/10.15223/policy-037;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "psych",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Queen%27s_Preschool_Dunedin%2C_11_May_2026.jpg/1920px-Queen%27s_Preschool_Dunedin%2C_11_May_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC0",
+    "author": "Andykatib",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Queen's Preschool Dunedin, 11 May 2026.jpg",
+    "query": "preschooler",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-10-psych-7b6fcdfe/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'psych'"
+  }
+}
