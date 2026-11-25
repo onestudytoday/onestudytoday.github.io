@@ -1,0 +1,195 @@
+{
+  "id": "2026-11-23-health-0b7636d1",
+  "niche": "health",
+  "study": {
+    "key": "0b7636d1a8d827d4",
+    "title": "Time to treatment of critical hypertension within 30 minutes and obstetrical outcomes",
+    "journal": "The journal of maternal-fetal & neonatal medicine : the official journal of the European Association of Perinatal Medicine, the Federation of Asia and Oceania Perinatal Societies, the International Society of Perinatal Obstetricians",
+    "pub_date": "2026-11-23",
+    "pub_date_display": "Nov 23, 2026",
+    "doi": "10.1080/14767058.2026.2765621",
+    "doi_display": "doi.org/10.1080/14767058.2026.2765621",
+    "url": "https://doi.org/10.1080/14767058.2026.2765621",
+    "is_preprint": false,
+    "server": "",
+    "n": 370,
+    "authors": [
+      "Kobara E",
+      "Miller E",
+      "Rajesh R",
+      "Vertichio R",
+      "Akerman M",
+      "Prasannan L"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Maternal-fetal medicine journal, 271 patients",
+    "headline": "Faster treatment of dangerous pregnancy blood pressure **may not lower serious complications** as much as hoped."
+  },
+  "slides": [
+    {
+      "eyebrow": "What it means for you",
+      "title": "Treating critical blood pressure in pregnancy within 30 minutes might matter less than expected.",
+      "body": "Current guidelines push for fast treatment when blood pressure spikes dangerously during pregnancy. This study found no clear difference in severe complications between patients treated quickly and those treated later.\n\nThe data don't rule out a benefit from speed, but they don't confirm one either.",
+      "basis": "inferred"
+    },
+    {
+      "eyebrow": "The result",
+      "title": "Severe complications happened in 12.6% of patients treated within 30 minutes and 19.3% treated later.",
+      "body": "Researchers tracked 271 pregnant patients with critical high blood pressure. Those treated faster had a lower complication rate, but the difference wasn't statistically significant.\n\nThe adjusted odds ratio was 1.77, with wide confidence intervals.",
+      "stat": {
+        "value": "19.3%",
+        "label": "complication rate, slower treatment"
+      }
+    },
+    {
+      "eyebrow": "How it works",
+      "title": "Critical hypertension was defined as two readings of 160 or 110 or higher, at least 15 minutes apart.",
+      "body": "The study measured time from the second confirmatory reading to when medication was given. Median time was 11 minutes in the fast group and 47 minutes in the slower group.\n\nPatients treated faster were younger and had higher initial blood pressures.",
+      "stat": null
+    }
+  ],
+  "caveats": [
+    "This study found a pattern, not a cause. Something else, like which patients got faster care, could explain the link.",
+    "The paper reports a relative change. Without the baseline rate, a big-sounding percentage can be a very small real-world difference.",
+    "The confidence intervals were wide, so the data can't rule out that faster treatment helps or that it doesn't matter at all."
+  ],
+  "cta": {
+    "headline": "Send this to anyone managing pregnancy hypertension",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Treating dangerous pregnancy blood pressure within 30 minutes showed a lower complication rate, but the difference wasn't statistically clear.",
+  "hashtag_set": "health",
+  "shape": "",
+  "vet": {
+    "key": "0b7636d1a8d827d4",
+    "verdict": "HOLD",
+    "score": 45,
+    "flags": [
+      {
+        "code": "CORRELATIONAL",
+        "severity": "warn",
+        "message": "Design reads as observational (cohort (observational)); markers: cohort, associated with, retrospective",
+        "caveat": "This study found a pattern, not a cause. Something else could explain the link.",
+        "draft_rule": "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'."
+      },
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'The journal of maternal-fetal & neonatal medicine : the official journal of the European Association of Perinatal Medicine, the Federation of Asia and Oceania Perinatal Societies, the International Society of Perinatal Obstetricians' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      },
+      {
+        "code": "RELATIVE_RISK_ONLY",
+        "severity": "warn",
+        "message": "Reports relative effects (odds ratio) with no absolute numbers.",
+        "caveat": "The paper reports a relative change. Without the baseline rate, a big-sounding percentage can be a very small real-world difference.",
+        "draft_rule": "A relative effect with no absolute baseline must never be stated as a bare percentage on the cover slide."
+      }
+    ],
+    "design": "cohort (observational)",
+    "sample_size": 370,
+    "subjects": "human",
+    "journal_tier": null,
+    "causal_language_banned": true,
+    "species": [],
+    "required_caveats": [
+      "This study found a pattern, not a cause. Something else could explain the link.",
+      "The paper reports a relative change. Without the baseline rate, a big-sounding percentage can be a very small real-world difference."
+    ],
+    "required_badges": [],
+    "draft_rules": [
+      "This study is OBSERVATIONAL. Causal verbs are banned in every slide: no 'causes', 'leads to', 'prevents', 'boosts', 'makes'. Use 'is linked to', 'goes together with', 'people who X also Y'.",
+      "A relative effect with no absolute baseline must never be stated as a bare percentage on the cover slide."
+    ],
+    "notes": []
+  },
+  "qa": {
+    "format": "stakes",
+    "lint_errors": [
+      "cover.kicker: 45 chars, max 44",
+      "slide1.body: 45 words, spec is 30-40",
+      "slide3.body: 41 words, spec is 30-40",
+      "GUARDRAIL the cover kicker says 'Maternal-fetal medicine journal, 271 patients', but this paper was published in 'The journal of maternal-fetal & neonatal medicine : the official journal of the European Association of Perinatal Medicine, the Federation of Asia and Oceania Perinatal Societies, the International Society of Perinatal Obstetricians'. The journal is the credibility claim on the cover and it has to be the real one"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "271",
+          "found_in_abstract": true
+        },
+        {
+          "number": "30 minutes",
+          "found_in_abstract": true
+        },
+        {
+          "number": "12.6%",
+          "found_in_abstract": true
+        },
+        {
+          "number": "19.3%",
+          "found_in_abstract": true
+        },
+        {
+          "number": "1.77",
+          "found_in_abstract": true
+        },
+        {
+          "number": "160",
+          "found_in_abstract": true
+        },
+        {
+          "number": "110",
+          "found_in_abstract": true
+        },
+        {
+          "number": "15 minutes",
+          "found_in_abstract": true
+        },
+        {
+          "number": "11 minutes",
+          "found_in_abstract": true
+        },
+        {
+          "number": "47 minutes",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Objective This study aimed to evaluate whether treatment of critical hypertension within 30 min, compared to treatment greater than or equal to 30 min, is associated with lower severe maternal morbidity (SMM). Study design This retrospective cohort study analyzed pregnant patients with singleton gestations \u226520 weeks with critical hypertension [defined as persistent HTN with 2 consecutive SBP \u2265160 or DBP \u2265110 mm HG at least 15 min apart], who delivered between January 2021 and December 2022 at a single tertiary care center. Time to treatment was measured from the confirmatory second blood pressure reading to the time of antihypertensive administration. The study compared Group A (treatment time p Results Out of 370 patients screened, 271 met inclusion criteria (214 in Group A and 57 in Group B). Median time to treatment was 11 min (IQR 6-17) in Group A and 47 min (IQR 38-194) in Group B. Compared with Group B, patients in Group A were younger and had higher admission systolic and diastolic blood pressures. SMM occurred in 27 (12.6%) patients in Group A and 11 (19.3%) in Group B (unadjusted odds ratio [OR] for Group B vs. Group A 1.66, 95% confidence interval [CI] 0.77-3.58; adjusted OR 1.77, 95% CI 0.80-3.91). SNM occurred in 56 (26.2%) and 14 (24.6%) patients, respectively (unadjusted OR 0.92, 95% CI 0.47-1.81). Results were consistent across sensitivity analyses, and no secondary outcome differed significantly between groups. Conclusion In this single-center retrospective cohort, we did not detect a statistically significant difference in SMM between patients treated within 30 min and those treated later. The confidence intervals were wide and do not exclude a clinically important benefit of earlier treatment, and these findings should not be interpreted as evidence of equivalence. Treatment of acute-onset severe hypertension as soon as reasonably possible should remain the standard, and adequately powered prospective studies, including randomized trials, are needed to define the optimal treatment interval.",
+    "source": "europepmc",
+    "ext_id": "MED:43070332",
+    "pub_types": [
+      "Journal Article"
+    ],
+    "publisher": "Informa UK Limited",
+    "license": "http://creativecommons.org/licenses/by/4.0/;https://doi.org/10.1080/policies-text-data-mining"
+  },
+  "source_niche": "health",
+  "cover_art": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/0/01/Operative_midwifery_-_a_guide_to_the_difficulties_and_complications_of_midwifery_practice_%281911%29_%2814755518716%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "licence": "No restrictions",
+    "author": "Munro Kerr, J. M. (John Martin), 1868-1956",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Operative midwifery - a guide to the difficulties and complications of midwifery practice (1911) (14755518716).jpg",
+    "query": "complication",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-11-23-health-0b7636d1/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'health'"
+  }
+}
