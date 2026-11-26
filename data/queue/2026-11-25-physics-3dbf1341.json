@@ -1,0 +1,144 @@
+{
+  "id": "2026-11-25-physics-3dbf1341",
+  "niche": "physics",
+  "study": {
+    "key": "3dbf13419f289b08",
+    "title": "The thermodynamic budget of objectivity",
+    "journal": "arXiv",
+    "pub_date": "2026-11-25",
+    "pub_date_display": "Nov 25, 2026",
+    "doi": "",
+    "doi_display": "http://arxiv.org/abs/2611.34909v1",
+    "url": "http://arxiv.org/abs/2611.34909v1",
+    "is_preprint": true,
+    "server": "arXiv",
+    "n": null,
+    "authors": [
+      "Wonyong Chung"
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "arXiv preprint on thermodynamics",
+    "headline": "**A fact costs work to create**, and past a critical angle no energy can make it objective."
+  },
+  "slides": [
+    {
+      "eyebrow": "What it could mean",
+      "basis": "stated",
+      "title": "Recording an event so it becomes objective fact has a thermodynamic price that scales with redundancy.",
+      "body": "The team computed the minimum work to create records at different levels of redundancy. Beyond a critical misalignment angle, they report objectivity becomes unreachable at any energy cost.\n\nThis links the emergence of classical facts to energy and entropy, not just information."
+    },
+    {
+      "eyebrow": "Results",
+      "title": "Work required to create one event record scaled linearly with redundancy at the Landauer coefficient.",
+      "body": "The model used a central qubit writing to N thermal registers. Work needed was at least R times Boltzmann constant times temperature times a function of error rate.\n\nErasing accessed records yielded net work gain beyond the first copy.",
+      "stat": {
+        "value": "Linear",
+        "label": "work scaling with redundancy"
+      }
+    },
+    {
+      "eyebrow": "What they did",
+      "title": "The team modeled a driven qubit broadcasting records into registers with work sources and thermal baths.",
+      "body": "They calculated exact thermodynamic costs for creating, keeping, and destroying records in this minimal broadcast model. They derived closed-form expressions for optimal work in the pointer basis.\n\nThey also computed power needed to maintain a record as a nonequilibrium steady state."
+    }
+  ],
+  "caveats": [
+    "This is a preprint. It has not been peer reviewed yet, so no independent expert has checked the work.",
+    "This is a theoretical model with idealized conditions. Real physical systems may behave differently from the minimal broadcast setup used here."
+  ],
+  "cta": {
+    "headline": "Send this to the thermodynamics skeptic",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "Creating a fact from an event has an energy price that climbs with redundancy, and past a threshold angle no work is enough.",
+  "hashtag_set": "physics",
+  "shape": "",
+  "vet": {
+    "key": "3dbf13419f289b08",
+    "verdict": "HOLD",
+    "score": 42,
+    "flags": [
+      {
+        "code": "PREPRINT",
+        "severity": "warn",
+        "message": "Not peer reviewed (arXiv).",
+        "caveat": "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet.",
+        "draft_rule": "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "unclear",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [
+      "This is a preprint. It has not been peer reviewed, so no independent expert has checked the work yet."
+    ],
+    "required_badges": [
+      "PREPRINT"
+    ],
+    "draft_rules": [
+      "This is a PREPRINT. The copy must not state findings as settled fact. Use hedged framing such as 'the team reports' or 'in this early paper'."
+    ],
+    "notes": [
+      "Open access - readers can actually read the full paper."
+    ]
+  },
+  "qa": {
+    "format": "procedural",
+    "lint_errors": [
+      "slide1.body: 42 words, spec is 30-40",
+      "slide3.body: 41 words, spec is 30-40"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "N",
+          "found_in_abstract": true
+        },
+        {
+          "number": "R",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "An event becomes a fact when enough independent records of it exist such that no operation is possible that leaves all observers ignorant of it again. Records are physical, and creating, keeping, and destroying them have thermodynamic costs. We compute these costs exactly in a minimal broadcast model with a driven central qubit writing records into $N$ initially thermal registers, with work sources and baths at temperature $T$. The basic arguments for the operations are outlined here, with full treatment in the text. Creation of one event record at redundancy $R$ and information deficit $\u03b4$ requires work $W \\ge R\\, k_\\mathrm{B}T \\ln 2\\, (1-\u03b4) H(\\varepsilon)$, linear in redundancy at the Landauer coefficient. Recording in a basis misaligned by $\u03b8$ with the einselecting interaction fails at a critical angle, $\u03b8_c = 2\\arcsin\\sqrt{H_2^{-1}(\u03b4)}$, beyond which objectivity is unreachable at any work, and below $\u03b8_c$ the optimal work is a closed form in the pointer basis that minimizes the work of objectivity. Reducing objectivity is impossible at any work with access to fewer than $R - R_{\\min} + 1$ records, while work protects nothing if given access. Inter-record redundancy is extractable free energy and erasing the accessed records yields a net gain of work beyond the first copy. The second law constrains the destruction of the correlation: erasing a fact from a sector an adversary controls dissipates at least the mutual information erased, but a consolidation dissipates nothing. Records in re-thermalizing media are nonequilibrium steady states, and the minimal power to maintain a record at $(R,\u03b4)$ is the known two-state driving bound evaluated at the record-quality boundary.",
+    "source": "arxiv",
+    "ext_id": "2611.34909v1",
+    "pub_types": [
+      "quant-ph",
+      "cond-mat.stat-mech",
+      "physics.ins-det"
+    ],
+    "publisher": "arXiv",
+    "license": ""
+  },
+  "source_niche": "physics",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/Ministerial_Conference_on_the_European_Cooperation_in_Science_and_Technology_%28COST%29-2016-09-22_%2829223481513%29.jpg/1920px-Ministerial_Conference_on_the_European_Cooperation_in_Science_and_Technology_%28COST%29-2016-09-22_%2829223481513%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC0",
+    "author": "EU2016 SK",
+    "needs_credit": false,
+    "source": "Wikimedia Commons",
+    "page": "File:Ministerial Conference on the European Cooperation in Science and Technology (COST)-2016-09-22 (29223481513).jpg",
+    "query": "cost",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-11-25-physics-3dbf1341/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "REEL_NICHES=['wildcard'] does not include this post's niche 'physics'"
+  }
+}
