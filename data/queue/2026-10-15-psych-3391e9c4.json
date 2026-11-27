@@ -1,0 +1,135 @@
+{
+  "id": "2026-10-15-psych-3391e9c4",
+  "niche": "wildcard",
+  "study": {
+    "key": "3391e9c4093a2acd",
+    "title": "Restless Legs Syndrome: Current Concepts in Diagnosis and Treatment",
+    "journal": "Neurologic clinics",
+    "pub_date": "2026-10-15",
+    "pub_date_display": "Oct 15, 2026",
+    "doi": "10.1016/j.ncl.2026.08.006",
+    "doi_display": "doi.org/10.1016/j.ncl.2026.08.006",
+    "url": "https://doi.org/10.1016/j.ncl.2026.08.006",
+    "is_preprint": false,
+    "server": "",
+    "n": null,
+    "authors": [
+      "Ibrahim A",
+      "Stefani A."
+    ],
+    "traction": null
+  },
+  "cover": {
+    "kicker": "Neurologic clinics review",
+    "headline": "**Alpha-2-delta drugs have replaced dopamine agonists** as the go-to treatment for restless legs syndrome"
+  },
+  "slides": [
+    {
+      "eyebrow": "What it means for you",
+      "basis": "stated",
+      "title": "If you or someone you know has restless legs syndrome, the first pill your doctor reaches for should have changed",
+      "body": "Alpha-2-delta drugs are now preferred first-line therapy, displacing dopamine agonists. The shift follows evidence that dopamine agonists carry big long-term risk of worsening symptoms.\n\nThe 2025 sleep medicine guideline formalizes the change. Treatment now starts with finding triggers, fixing iron, then adding tailored medicine."
+    },
+    {
+      "eyebrow": "The result",
+      "title": "Restless legs syndrome affects seven percent of adults worldwide and substantially impacts sleep and quality of life",
+      "body": "The review consolidates recent evidence on diagnosis and care. The key shift: dopamine agonists are out as preferred chronic therapy. Alpha-2-delta drugs now lead.\n\nA stepwise approach starting with triggers and iron status offers the best outcomes across the disease spectrum.",
+      "stat": {
+        "value": "7%",
+        "label": "of adults globally have RLS"
+      }
+    }
+  ],
+  "caveats": [
+    "This is a clinical review summarizing existing evidence and guidelines, not a new experimental study with original data.",
+    "The abstract does not detail how much alpha-2-delta drugs reduce symptoms or how often worsening occurs with dopamine agonists."
+  ],
+  "cta": {
+    "headline": "Send this to anyone still on dopamine agonists",
+    "sub": "One real study, every weekday. The full paper is linked in bio."
+  },
+  "caption": "The first-line treatment for restless legs syndrome shifted after evidence showed dopamine agonists carry long-term risk of worsening symptoms",
+  "hashtag_set": "health",
+  "shape": "",
+  "vet": {
+    "key": "3391e9c4093a2acd",
+    "verdict": "PASS",
+    "score": 56,
+    "flags": [
+      {
+        "code": "UNLISTED_JOURNAL",
+        "severity": "note",
+        "message": "'Neurologic clinics' is not on the niche whitelist - not disqualifying, just unverified by us.",
+        "caveat": null,
+        "draft_rule": null
+      }
+    ],
+    "design": "unclear",
+    "sample_size": null,
+    "subjects": "human",
+    "journal_tier": null,
+    "causal_language_banned": false,
+    "species": [],
+    "required_caveats": [],
+    "required_badges": [],
+    "draft_rules": [],
+    "notes": []
+  },
+  "qa": {
+    "format": "stakes",
+    "lint_errors": [
+      "slide1.body: 44 words, spec is 30-40",
+      "slide2.body: 41 words, spec is 30-40"
+    ],
+    "style_flags": [],
+    "repair_rounds": 2,
+    "audit": {
+      "supported": true,
+      "unsupported_claims": [],
+      "numbers_check": [
+        {
+          "number": "7%",
+          "found_in_abstract": true
+        },
+        {
+          "number": "seven percent",
+          "found_in_abstract": true
+        },
+        {
+          "number": "2025",
+          "found_in_abstract": true
+        }
+      ]
+    },
+    "blocking_claims": [],
+    "unverified_numbers": [],
+    "publishable": false
+  },
+  "status": "needs_review",
+  "source": {
+    "abstract": "Restless legs syndrome (RLS) is a common sensorimotor disorder affecting approximately 7% of adults globally, with substantial impact on sleep and quality of life. This review covers the epidemiology, pathophysiology, diagnosis, and evidence-based management of RLS, with emphasis on recent developments: the 2025 American Academy of Sleep Medicine (AASM) systematic review and guideline, and the consolidation of alpha-2-delta ligands as preferred first-line therapy. Alpha-2-delta ligands have replaced dopamine agonists as preferred first-line chronic therapy, given the significant long-term risk of augmentation. A stepwise approach that starts with identifying exacerbating factors, continues optimizing iron, then adds tailored pharmacotherapy, offers the best outcomes across the disease spectrum.",
+    "source": "europepmc",
+    "ext_id": "MED:43045432",
+    "pub_types": [
+      "Review",
+      "Journal Article"
+    ],
+    "publisher": "Elsevier BV",
+    "license": "https://doi.org/10.15223/policy-004;https://doi.org/10.15223/policy-012;https://doi.org/10.15223/policy-017;https://doi.org/10.15223/policy-029;https://doi.org/10.15223/policy-037;https://www.elsevier.com/legal/tdmrep-license;https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  "source_niche": "psych",
+  "cover_art": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/The_Agonist%2C_Carbide%2C_and_Within_Chaos_at_Red_7.jpg/1920px-The_Agonist%2C_Carbide%2C_and_Within_Chaos_at_Red_7.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC BY-SA 2.0",
+    "author": "MarkScottAustinTX",
+    "needs_credit": true,
+    "source": "Wikimedia Commons",
+    "page": "File:The Agonist, Carbide, and Within Chaos at Red 7.jpg",
+    "query": "agonist",
+    "path": "/home/runner/work/onestudytoday.github.io/onestudytoday.github.io/docs/img/2026-10-15-psych-3391e9c4/bg/cover.jpg"
+  },
+  "reel_status": {
+    "built": false,
+    "reason": "build failed: ReelError: reel.mp4 pix_fmt is yuvj420p, expected yuv420p - other formats are rejected or silently mangled."
+  }
+}
